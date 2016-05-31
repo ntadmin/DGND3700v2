@@ -21,6 +21,45 @@ CHANGES from the Netgear version
    configured directly from the web interface.
    (Advanced -> Advanced Setup -> Dynamic DNS)
 
+ - ADSL can be configured with more detail.
+
+ - Port forwarding have started work
+
 
 ----------------------------------------------------------------------
-BUILDING this version
+NOTES
+
+There is a lot of chicken and egg stuff here ...
+
+ - Top level Rule.mak needs things set better in it.
+
+ - I suspect that the building of packages and extra_binaries relies on
+   some makefile rules which are only in place after the Netgear stuff
+   has been made once. Not sure how much they need.
+
+ - rootweb requires the original target.tar.bz2 from Netgear in it as
+   target-orig.tar.bz2. You can't simplty 'use the original' because we
+   replace the original as part of building things in order to
+   delude the netgear 'make source' to include our alterations.
+
+ - rootweb/original is only there for reference.
+
+ - DDNS and ADSL mods are triggered into action only after the ADSL has
+   started because this is the earliuest 'break in' point I have found
+   in the rc_* set. I use rc_ddns which is called after the ADSL is up
+   and set it to point to the added rc_wanup which (a) checks if ADSL
+   is running the right config and if not tells it to try again. If it
+   is running the right config it then starts inadyn-mt.
+
+ - Port forwarding has been modded so that a sdestination start port
+   is added to the internal storage array. No idea yet if that is enough
+   to trigger the right behaviour. If not, we need to break into the 
+   'turn on portforarding' rc, but not quite clear where that is. However ...
+
+ - This code is in the process of replacing udchpd and dnsrd with dnsmasq.
+   The plan is to point rc_dnsrd to rc_dnsmasq which will utrn on both DNS
+   and DHCP. As yet it is just set for DNS, haven't added the DHCP or
+   ad-blocking.
+
+ - The DNS start trigger may be a good point to correct port forwarding if
+   it turns out to be needed.

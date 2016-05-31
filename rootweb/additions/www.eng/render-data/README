@@ -17,6 +17,11 @@ relationship:
  - 'opts:pval1=nval1;pval2=nval2...' there is an option list for which
     the page value 'pvalX' should be used for the nvram value 'nvalX'.
 
+There are quite a few options for handling items which are stored in 'arrays',
+ie a single variable in nvram which has a collection of information in it,
+typically a collection of rows each with a number of cells (columns). The
+best way to understand thes is to look at the examples ...
+
 
 The following render variables should not be listed as they are automatically determined
 for every page:
