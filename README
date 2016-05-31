@@ -1,0 +1,26 @@
+This firmware is based on the publically available Netgear firmware for the DGND3700v2.
+
+----------------------------------------------------------------------
+WARNINGS
+
+1. This is onvly for the DGND3700v2. v1 is not supported. Please don't
+   try.
+
+2. Use this ENTIRELY AT YOUR RISK.
+
+3. Other than using the Netgear source, Netgear take ABSOLUTELY NO
+   RESPONSIBILITY for this customised version.
+
+----------------------------------------------------------------------
+CHANGES from the Netgear version
+
+ - Telnet access can be neabled from the web interface.
+   (Advanced -> Diagnostics -> Enable Telnet Access)
+
+ - DDNS is now provided using inadyn-mt, and DNS-O-Matic can be
+   configured directly from the web interface.
+   (Advanced -> Advanced Setup -> Dynamic DNS)
+
+
+----------------------------------------------------------------------
+BUILDING this version
