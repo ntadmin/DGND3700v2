@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-Control" content="no-cache"><meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT"><meta name="description" content="@model_name#_multilangual"><title>NETGEAR Router @model_name#</title><script language="javascript" type="text/javascript" src="string.js"></script><link rel="stylesheet" href="style/form.css"><script language="javascript" type="text/javascript" src="funcs.js"></script><!-- link rel="stylesheet" href="form.css" --><script language="javascript" type="text/javascript" src="utility.js"></script><script language="javascript" type="text/javascript" src="linux.js"></script><script language="javascript" type="text/javascript">
+<!-- hide script from old browsers
+//-->
+</script></head><body bgcolor="#ffffff" onLoad="dataToVisible(document.forms[0]);" onUnload="closeWin(datSubWinVar);">
+<form method="POST" action="status.cgi">
+<div class="page_title" languageCode = "342">Modem Status</div>
+<div class="fix_button">
+<table width="100%" border="0" cellpadding="0" cellspacing="2"><tr><td nowrap colspan="2" align="center">
+<input class="apply_bt" type="BUTTON" name="system" value = "Show Statistics" onClick="openDataSubWin('./RST_statistics.htm','width=560,height=320,status=yes,resizable=yes');" languageCode = "354">
+</td></tr></table>
+</div>
+<div id="main" class="main_top_button">
+<table border="0" cellpadding="0" cellspacing="3" width="100%"><tr><td width="50%"><b languageCode = "127">Device Name</b></td>
+		<td width="50%">@system_name#</td>
+	</tr><tr><td width="50%"><b languageCode = "346">Firmware Version</b></td>
+		<td width="50%">@fw_version#</td>
+	</tr><tr><!-- RULE --><td colspan="2" background="liteblue.gif" height="12"></td>
+	</tr><tr><td colspan="2"><a href="javascript:loadhelp('@mstatus#','lan_port')" tabindex="-1"><span class="thead">LAN <span languageCode = "92">Port</span></span></a></td>
+	</tr><tr><td width="50%"><b languageCode = "37">IP Address</b></td>
+		<td width="50%">@c4_sysLANIPAddr#</td>
+	</tr><tr><td width="50%"><b languageCode = "40">IP Subnet Mask</b></td>
+		<td width="50%">@c4_sysLANSubnetMask#</td>
+	</tr><tr><!-- RULE --><td colspan="2" background="liteblue.gif" height="12"></td>
+	</tr><tr><td colspan="2"><a href="javascript:loadhelp('@mstatus#','modem')" tabindex="-1"> <span class="thead" languageCode = "347">Modem</span></a></td>
+	</tr><tr><td width="50%"><b languageCode = "348">ADSL Firmware Version</b></td>
+		<td width="50%">@modem_version#</td>
+	</tr><tr><td width="50%"><b languageCode = "342">Modem Status</b></td>
+		<td width="50%">@modem_status#</td>
+	</tr><tr><td width="50%"><b languageCode = "349">DownStream Connection Speed</b></td>
+		<td width="50%">@modem_downstream#</td>
+	</tr><tr><td width="50%"><b languageCode = "350">UpStream Connection Speed</b></td>
+		<td width="50%">@modem_upstream#</td>
+	</tr><tr><td width="50%"><b>VPI</b></td>
+		<td width="50%">@dsl_vpi#</td>
+	</tr><tr><td width="50%"><b>VCI</b></td>
+		<td width="50%">@dsl_vci#</td>
+	</tr><tr><!-- RULE --><td colspan="2" background="liteblue.gif" height="12"></td>
+	</tr>
+	@wireless_hide_s#
+	<tr><td colspan="2"><a href="javascript:loadhelp('@mstatus#','wireless_port')" tabindex="-1">
+		<span class="thead"><span languageCode = "351">Wireless</span> <span languageCode = "92">Port</span></span></a></td>
+<!--
+	</tr><tr><td width="50%"><b><span languageCode="554">Name</span> (11N SSID)</b></td>
+		<td width="50%">@wifi_ssid1#</td>
+	</tr><tr><td width="50%"><b><span languageCode="554">Name</span> (11G SSID)</b></td>
+		<td width="50%">@wifi_ssid#</td>
+-->
+	</tr><tr><td width="50%"><b><span languageCode = "352">Name</span>
+		(SSID)</b></td>
+		<td width="50%">@wifi_r_ssid#</td>
+	</tr><tr><td width="50%"><b languageCode = "9">Region</b></td>
+		<td width="50%">@h_WRegion#</td>
+	</tr><tr><td width="50%"><b languageCode = "10">Channel</b></td>
+		<td width="50%">@h_w_r_channel#</td>
+<!--
+	</tr><tr><td width="50%"><b>11N</b> <b languageCode="36">Channel</b></td>
+		<td width="50%">@h_w_channel1#</td>
+	</tr><tr><td width="50%"><b>11G</b> <b languageCode="36">Channel</b></td>
+		<td width="50%">@h_w_channel#</td>
+-->
+	</tr><tr><td width="50%"><b languageCode = "353">Mode</b></td>
+		<td width="50%">@h_dual_mode_state#</td>
+	</tr><tr><td width="50%"><b languageCode = "11">Wireless AP</b></td>
+		<td width="50%">@h_enable_ap#</td>
+	</tr><tr><td width="50%"><b languageCode = "12">Broadcast Name</b></td>
+		<td width="50%">@h_ssid_bc#</td>
+	</tr><tr><td colspan="2" background="liteblue.gif" height="12"></td>
+	</tr>
+	@wireless_hide_e#
+	<tr><td nowrap colspan="2" align="center"></td>
+	</tr></table><input type="hidden" name="wantype" value="@wantype#"><input type="hidden" name="SID" value="@SID#">
+</div>	
+</form>
+<div id="help" style="display: none">
+		<iframe name="help_iframe" id="helpframe" src="@mstatus#_h.htm" allowtransparency="true" width="100%" frameborder="0">
+		</iframe>
+</div>
+<div id="help_switch" class="close_help">
+	 <img class="help_switch_img" src="image/help/help-bar.gif"><script>
+var help_flag=0;
+if(isIE()){
+	show_hidden_help_top_button(1);
+	var frame_div = top.document.getElementById("formframe_div");
+	frame_div.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+if(get_browser() == "Opera"){
+	window.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+</script><div id="help_space" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_center"><span languageCode="3016">Help Center</span></div>
+<div id="help_button" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_show_hidden"><a href="javascript:void(0)" onClick="show_hidden_help_top_button(help_flag); help_flag++;"><span languageCode="3017">Show/Hide Help Center</span></a></div>
+</div>
+<script language="javascript" type="text/javascript" src="langs.js"></script></body></html>

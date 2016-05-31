@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><HEAD><TITLE>NETGEAR Router @model_name#</TITLE>
+<meta http-equiv="Pragma" CONTENT="no-cache">
+<meta http-equiv="Cache-Control" CONTENT="no-cache">
+<meta http-equiv="Expires" CONTENT="Mon, 06 Jan 1990 00:00:01 GMT">
+<META http-equiv=content-type content="text/html; charset=UTF-8"><LINK href="style/hijack_style.css" type=text/css rel=stylesheet><LINK href="style/hijack_03A_E_IP_problem_staticIP_A_inputIP.css" type=text/css rel=stylesheet>
+<SCRIPT language=javascript src="utility.js" type=text/javascript></SCRIPT>
+<SCRIPT language=javascript src="script/brs_hijack.js" type=text/javascript></SCRIPT>
+<SCRIPT language=javascript src="script/brs_hijack_03A_E_IP_problem_staticIP_A_inputIP.js" type=text/javascript></SCRIPT>
+<SCRIPT language=javascript src="script/funcs.js" type=text/javascript></SCRIPT>
+<SCRIPT language=javascript src="language/English.js" type=text/javascript></SCRIPT>
+<script language="javascript" type="text/javascript" src="string.js"></script><link rel="stylesheet" href="style/form.css"><script language="javascript" type="text/javascript" src="funcs.js"></script>
+<SCRIPT language=javascript type=text/javascript>
+var lan_ip="@c4_sysLANIPAddr#";
+var lan_subnet="@c4_sysLANSubnetMask#";
+</SCRIPT>
+</HEAD>
+<BODY>
+<FORM action="setup.cgi@post_par#">
+<DIV class=wizard_content_div>
+<DIV class=wizard_words_div>
+<H1><span languageCode = "341" align=left>ADSL Settings</span></H1>
+<DIV id=mainContent_div>
+<DIV class=input_left_div id=multiplexing align=right><span languageCode= "731">Multiplexing Method</span></DIV>
+<DIV class=input_img_div>
+    <SELECT id=inputMultiplex align=right name= "h_dsl_multiplex" value="@h_dsl_multiplex#" size=1>
+          <option value= "llc" languageCode= "732">LLC-BASED</option>
+          <option value= "vc" lanbuageCode= "733">VC-BASED</option>
+    </SELECT></DIV>
+<DIV class=input_left_div id=vpi align=right>VPI</DIV>
+<DIV class=input_img_div>
+     <INPUT class=num id=inputVPI value= "@dsl_vpi#" size=3 maxLength=3 align=right name=dsl_vpi></DIV>
+<DIV class=input_left_div id=vci align=right>VCI</DIV>
+<DIV class=input_img_div>
+     <INPUT class=num id=inputVCI value= "@dsl_vci#" size=5 maxLength=5 align=right name=dsl_vci></DIV>
+</DIV>
+<H1><span languageCode = "779">Fixed Internet IP Settings</span></H1>
+<P><span languageCode = "780">Enter the fixed IP settings assigned by your Internet Service Provider and click &lt;b&gt;Next&lt;/b&gt; to proceed.</span></P>
+<DIV id=mainContent_div>
+<DIV class=input_left_div id=IP_addr align=right><span languageCode = "64">My IP Address</span></DIV>
+<DIV class=input_img_div>
+    <INPUT class=input_text id=inputIPaddr maxLength=15 align=right name=c4_WPethr> </DIV>
+<DIV class=input_left_div id=Sub_mask align=right><span languageCode = "428">Subnet Mask</span></DIV>
+<DIV class=input_img_div>
+    <INPUT class=input_text id=inputSubMask maxLength=15 align=right name=c4_WMask> </DIV>
+<DIV class=input_left_div id=Gateway align=right><span languageCode = "429">Default Gateway</span></DIV>
+<DIV class=input_img_div>
+    <INPUT class=input_text id=inputGateway maxLength=15 align=right name=c4_WGateway> </DIV>
+<DIV class=input_left_div id=preDNS align=right><span languageCode = "781">Preferred DNS Server</span></DIV>
+<DIV class=input_img_div>
+    <INPUT class=input_text id=inputPreDns maxLength=15 align=right name=c4_DAddr> </DIV>
+<DIV class=input_left_div id=alteDNS align=right><span languageCode = "782">Alternate DNS Server</span></DIV>
+<DIV class=input_img_div>
+    <INPUT class=input_text id=inputSecDns maxLength=15 align=right name=c4_PDAddr> </DIV>
+<DIV style="CLEAR: both"></DIV></DIV></DIV>
+<DIV class=wizard_buttons_div id=allBtns_div align=right>
+<DIV class=buttons_img_div id=btnsContainer_div><IMG src="image/ca-little-purple-button.gif"> 
+<DIV class=buttons_words_div id=btn_text_div align=center><span languageCode = "6">Next</span></DIV></DIV></DIV></DIV>
+    
+<input type="hidden" name="SID" value="@SID#">
+<input type="hidden" name="h_DNSAssign" value="1">
+<input type="hidden" name="h_WANAssign" value="fixed">
+<input type="hidden" name="todo" value="brs_reset_save">
+<input type="hidden" name="this_file" value="BRS_03A_E_IP_problem_staticIP_A_inputIP.html">
+<input type="hidden" name="next_file" value="BRS_04_applySettings.html">
+</FORM>
+<script language="javascript" type="text/javascript" src="langs.js"></script>
+</BODY></HTML>

@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tag_msg xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<message>
+<tag_code>6</tag_code>
+<translation>Avançar</translation>
+<variable>Next</variable>
+</message>
+<message>
+<tag_code>28</tag_code>
+<translation>Sim</translation>
+<variable>Yes</variable>
+</message>
+<message>
+<tag_code>57</tag_code>
+<translation>Senha</translation>
+<variable>Password</variable>
+</message>
+<message>
+<tag_code>64</tag_code>
+<translation>Meu endereço IP</translation>
+<variable>My IP Address</variable>
+</message>
+<message>
+<tag_code>115</tag_code>
+<translation>Voltar</translation>
+<variable>Back</variable>
+</message>
+<message>
+<tag_code>153</tag_code>
+<translation>Nome de usuário</translation>
+<variable>User Name</variable>
+</message>
+<message>
+<tag_code>158</tag_code>
+<translation>Falha</translation>
+<variable>Failure</variable>
+</message>
+<message>
+<tag_code>160</tag_code>
+<translation>Esta tela passará automaticamente para a tela anterior em poucos segundos...</translation>
+<variable>This screen will automatically return to the previous screen in a few seconds...</variable>
+</message>
+<message>
+<tag_code>296</tag_code>
+<translation>Atualização importante</translation>
+<variable>Important Update</variable>
+</message>
+<message>
+<tag_code>297</tag_code>
+<translation>Para evitar conflitos com o provedor de serviços de Internet, o endereço IP do roteador deve ser atualizado para </translation>
+<variable>To avoid a conflict with your Internet Service Provider, your router's IP address has been updated to </variable>
+</message>
+<message>
+<tag_code>319</tag_code>
+<translation>Assistente de configuração</translation>
+<variable>Setup Wizard</variable>
+</message>
+<message>
+<tag_code>341</tag_code>
+<translation>Configurações ADSL</translation>
+<variable>ADSL Settings</variable>
+</message>
+<message>
+<tag_code>344</tag_code>
+<translation>País</translation>
+<variable>Country</variable>
+</message>
+<message>
+<tag_code>351</tag_code>
+<translation>Sem fio</translation>
+<variable>Wireless</variable>
+</message>
+<message>
+<tag_code>382</tag_code>
+<translation>Tipo de conexão</translation>
+<variable>Connection Type</variable>
+</message>
+<message>
+<tag_code>428</tag_code>
+<translation>Máscara de sub-rede</translation>
+<variable>Subnet Mask</variable>
+</message>
+<message>
+<tag_code>429</tag_code>
+<translation>Gateway padrão</translation>
+<variable>Default Gateway</variable>
+</message>
+<message>
+<tag_code>518</tag_code>
+<translation>Este processo pode levar um ou dois minutos. Aguarde...</translation>
+<variable>This process can take a minute or two; please wait...</variable>
+</message>
+<message>
+<tag_code>542</tag_code>
+<translation>Aguarde um momento...</translation>
+<variable>Please wait a moment...</variable>
+</message>
+<message>
+<tag_code>543</tag_code>
+<translation>Detectado IP (DHCP) dinâmico</translation>
+<variable>Dynamic IP (DHCP) detected</variable>
+</message>
+<message>
+<tag_code>545</tag_code>
+<translation>PPPoA detectado</translation>
+<variable>PPPoA Detected</variable>
+</message>
+<message>
+<tag_code>553</tag_code>
+<translation>Não. Desejo configurar o roteador por conta própria.</translation>
+<variable>No. I want to configure the router myself.</variable>
+</message>
+<message>
+<tag_code>731</tag_code>
+<translation>Método de multiplexação</translation>
+<variable>Multiplexing Method</variable>
+</message>
+<message>
+<tag_code>732</tag_code>
+<translation>BASEADO EM LLC</translation>
+<variable>LLC-BASED</variable>
+</message>
+<message>
+<tag_code>744</tag_code>
+<translation>Configurando a conexão com a Internet</translation>
+<variable>Configuring the Internet Connection</variable>
+</message>
+<message>
+<tag_code>745</tag_code>
+<translation>Você ainda não está conectado à Internet.</translation>
+<variable>You are not yet connected to the Internet.</variable>
+</message>
+<message>
+<tag_code>746</tag_code>
+<translation>Deseja que o NETGEAR Genie lhe ajude?</translation>
+<variable>Do you want NETGEAR Genie to help?</variable>
+</message>
+<message>
+<tag_code>747</tag_code>
+<translation>Não, desejo configurar a conexão com a Internet por conta própria.</translation>
+<variable>No, I want to configure the Internet connection myself.</variable>
+</message>
+<message>
+<tag_code>748</tag_code>
+<translation>Eu salvei as configurações do roteador em um arquivo e desejo restaurá-las.</translation>
+<variable>I have saved the router settings in a file and I want to restore the router to those settings.</variable>
+</message>
+<message>
+<tag_code>749</tag_code>
+<translation>Selecionar país</translation>
+<variable>Select Country</variable>
+</message>
+<message>
+<tag_code>750</tag_code>
+<translation>No DSL Cable Is Plugged into the Router ADSL Port</translation>
+<variable>No DSL Cable Is Plugged into the Router ADSL Port</variable>
+</message>
+<message>
+<tag_code>751</tag_code>
+<translation>Certifique-se de que o cabo esteja firmemente conectado à porta do modem de banda larga e à porta de Internet do roteador.</translation>
+<variable>Make sure that the cable is securely plugged into both the broadband modem port and the router Internet port.</variable>
+</message>
+<message>
+<tag_code>752</tag_code>
+<translation>After you have checked the DSL cable, click &lt;b&gt;Try again&lt;/b&gt;.</translation>
+<variable>After you have checked the DSL cable, click &lt;b&gt;Try again&lt;/b&gt;.</variable>
+</message>
+<message>
+<tag_code>753</tag_code>
+<translation>Tentar novamente</translation>
+<variable>Try again</variable>
+</message>
+<message>
+<tag_code>755</tag_code>
+<translation>Detectando conexão com a Internet</translation>
+<variable>Detecting the Internet Connection</variable>
+</message>
+<message>
+<tag_code>756</tag_code>
+<translation>Clique em "Avançar" para continuar.</translation>
+<variable>Click "Next" to continue.</variable>
+</message>
+<message>
+<tag_code>758</tag_code>
+<translation>Insira as informações solicitadas abaixo.</translation>
+<variable>Enter the required information below.</variable>
+</message>
+<message>
+<tag_code>759</tag_code>
+<translation>A senha ou o nome de usuário do ISP estão incorretos</translation>
+<variable>Incorrect ISP User name or Password</variable>
+</message>
+<message>
+<tag_code>760</tag_code>
+<translation>Insira novamente as informações solicitadas.</translation>
+<variable>Enter the required information again.</variable>
+</message>
+<message>
+<tag_code>761</tag_code>
+<translation>Desejo configurar a conexão com a Internet por conta própria</translation>
+<variable>I want to configure the Internet connection myself</variable>
+</message>
+<message>
+<tag_code>762</tag_code>
+<translation>Conexão com a Internet PPPoE DSL detectada</translation>
+<variable>PPPoE DSL Internet Connection Detected</variable>
+</message>
+<message>
+<tag_code>763</tag_code>
+<translation>Este processo pode levar alguns minutos. Aguarde...</translation>
+<variable>This process can take a few minutes; please wait …</variable>
+</message>
+<message>
+<tag_code>764</tag_code>
+<translation>Detecção de problema com a conexão com a Internet</translation>
+<variable>Problem Detecting the Internet Connection</variable>
+</message>
+<message>
+<tag_code>765</tag_code>
+<translation>Isso pode ocorrer devido a uma das seguintes razões:</translation>
+<variable>This is most likely due to one of the following reasons:</variable>
+</message>
+<message>
+<tag_code>766</tag_code>
+<translation>1.  Não foi realizado o ciclo de energia do modem durante o cabeamento.</translation>
+<variable>1.  The modem was not power cycled during the cabling step.</variable>
+</message>
+<message>
+<tag_code>767</tag_code>
+<translation>Para resolver este problema, realize o ciclo de energia do modem (desligue e ligue o modem). Para realizar o ciclo de energia do modem com uma bateria de backup, remova e reinsira a bateria. Após realizar o ciclo de energia, aguarde 2 minutos para que o modem conclua a inicialização.</translation>
+<variable>To solve this problem, power cycle the modem (turn it off and on). To power cycle a modem with battery backup, you might need to remove and reinsert its battery. After the power cycle, wait 2 minutes for the modem to completely start up.</variable>
+</message>
+<message>
+<tag_code>768</tag_code>
+<translation>2.  O cabo Ethernet amarelo não foi totalmente inserido ou está conectado no lugar errado.</translation>
+<variable>2.  The yellow Ethernet cable is not fully inserted, or is inserted in the wrong place.</variable>
+</message>
+<message>
+<tag_code>769</tag_code>
+<translation>Para resolver este problema, certifique-se de que o cabo Ethernet amarelo esteja firmemente conectado à porta do modem de banda larga e à porta de Internet do roteador.</translation>
+<variable>To solve this problem, make sure that the yellow Ethernet cable is securely plugged in to the broadband modem port and the router Internet port.</variable>
+</message>
+<message>
+<tag_code>770</tag_code>
+<translation>Realizei o ciclo de energia do modem e aguardei 2 minutos.</translation>
+<variable>I just power cycled the modem and waited for 2 minutes.</variable>
+</message>
+<message>
+<tag_code>771</tag_code>
+<translation>Corrigi um problema com o cabo Ethernet.</translation>
+<variable>I corrected a problem with the Ethernet cable.</variable>
+</message>
+<message>
+<tag_code>772</tag_code>
+<translation>Nenhuma das opções acima.</translation>
+<variable>None of the above.</variable>
+</message>
+<message>
+<tag_code>773</tag_code>
+<translation>Detecção de problema com a conexão com a Internet - Endereço IP</translation>
+<variable>Problem Detecting the Internet Connection - IP Address</variable>
+</message>
+<message>
+<tag_code>774</tag_code>
+<translation>Seu ISP (Provedor de serviços da Internet) atribuiu a você um endereço IP fixo (estático)? Essa é uma implementação especial &lt;b&gt;muito rara&lt;/b&gt;. </translation>
+<variable>Did your Internet Service Provider (ISP) assign to you a fixed (static) IP address? This is a &lt;b&gt;very rare&lt;/b&gt; special deployment. </variable>
+</message>
+<message>
+<tag_code>775</tag_code>
+<translation>Selecione uma opção e clique em &lt;b&gt;Next&lt;/b&gt; (Avançar) para prosseguir.</translation>
+<variable>Select an option and click &lt;b&gt;Next&lt;/b&gt; to proceed.</variable>
+</message>
+<message>
+<tag_code>776</tag_code>
+<translation>Sim. Meu ISP atribuiu um endereço IP fixo (estático) para mim.</translation>
+<variable>Yes. My ISP assigned a fixed (static) IP address to me.</variable>
+</message>
+<message>
+<tag_code>777</tag_code>
+<translation>Não. Eu não recebi um endereço IP fixo (estático) de meu ISP.</translation>
+<variable>No, I did not get a fixed (static) IP address from my ISP.</variable>
+</message>
+<message>
+<tag_code>778</tag_code>
+<translation>Não sei. </translation>
+<variable>I don't know. </variable>
+</message>
+<message>
+<tag_code>779</tag_code>
+<translation>Configurações de IP fixo da Internet</translation>
+<variable>Fixed Internet IP Settings</variable>
+</message>
+<message>
+<tag_code>780</tag_code>
+<translation>Insira as configurações do IP fixo atribuído a você pelo seu ISP e clique em &lt;b&gt;Next&lt;/b&gt; (Avançar) para prosseguir.</translation>
+<variable>Enter the fixed IP settings assigned by your Internet Service Provider and click &lt;b&gt;Next&lt;/b&gt; to proceed.</variable>
+</message>
+<message>
+<tag_code>781</tag_code>
+<translation>Servidor DNS preferencial</translation>
+<variable>Preferred DNS Server</variable>
+</message>
+<message>
+<tag_code>782</tag_code>
+<translation>Servidor DNS alternativo</translation>
+<variable>Alternate DNS Server</variable>
+</message>
+<message>
+<tag_code>783</tag_code>
+<translation>Detecção de problema com a conexão com a Internet - Endereço MAC</translation>
+<variable>Problem Detecting the Internet Connection - MAC Address</variable>
+</message>
+<message>
+<tag_code>784</tag_code>
+<translation>Se você já tiver conectado ao serviço de Internet com um computador ou outro roteador, o NETGEAR Genie poderá usar o mesmo endereço MAC usado anteriormente.</translation>
+<variable>If you previously connected to your Internet service with a computer or another router,  NETGEAR Genie can use the same MAC address that worked before.</variable>
+</message>
+<message>
+<tag_code>785</tag_code>
+<translation>O endereço MAC é um número exclusivo.  É possível localizar o endereço MAC do computador ou do roteador na etiqueta do produto.</translation>
+<variable>A MAC address is a unique number.  You can find the MAC address of the computer or router on its product label.</variable>
+</message>
+<message>
+<tag_code>786</tag_code>
+<translation>Insira aqui o endereço MAC.</translation>
+<variable>Enter the MAC address here.</variable>
+</message>
+<message>
+<tag_code>787</tag_code>
+<translation>(formato AABBCCDDEEFF)</translation>
+<variable>(format AABBCCDDEEFF)</variable>
+</message>
+<message>
+<tag_code>788</tag_code>
+<translation>Restaurar configurações do roteador</translation>
+<variable>Restore Router Settings </variable>
+</message>
+<message>
+<tag_code>789</tag_code>
+<translation>Navegue pelo arquivo de backup das configurações do roteador que você salvou anteriormente e clique em &lt;b&gt;Next&lt;/b&gt; (Avançar) para prosseguir.</translation>
+<variable>Browse to the router settings backup file you previously saved, and click &lt;b&gt;Next&lt;/b&gt; to proceed.</variable>
+</message>
+<message>
+<tag_code>790</tag_code>
+<translation>Restaurando as configurações do roteador</translation>
+<variable>Restoring Router Settings</variable>
+</message>
+<message>
+<tag_code>791</tag_code>
+<translation>Aplicando configurações da conexão com a Internet</translation>
+<variable>Applying Internet Connection Settings</variable>
+</message>
+<message>
+<tag_code>792</tag_code>
+<translation>Verificando a conexão com a Internet. Aguarde.</translation>
+<variable>Checking the Internet connection; please wait …</variable>
+</message>
+<message>
+<tag_code>793</tag_code>
+<translation>Problema de conexão com a rede</translation>
+<variable>Network Connection Issue</variable>
+</message>
+<message>
+<tag_code>794</tag_code>
+<translation>O roteador não conseguiu conectar-se com a Internet usando as configurações atuais.</translation>
+<variable>The router cannot connect to the Internet with the current settings.</variable>
+</message>
+<message>
+<tag_code>795</tag_code>
+<translation>Verifique os itens a seguir:</translation>
+<variable>Please review the following items:</variable>
+</message>
+<message>
+<tag_code>796</tag_code>
+<translation>- Verifique se as conexões do cabo estão corretas. Consulte o Guia de instalação para obter instruções.</translation>
+<variable>- Check that the cable connections are correct. Refer to the router Installation Guide for instructions.</variable>
+</message>
+<message>
+<tag_code>797</tag_code>
+<translation>- Verifique se o ciclo de energia de seu modem de banda larga foi realizado corretamente. Caso você tenha um modem alimentado por bateria, remova e recoloque a bateria para realizar o ciclo de energia de seu modem.</translation>
+<variable>- Check that your broadband modem is power cycled correctly. If you have a battery-backed modem, remove and reinsert the battery to power cycle your modem.</variable>
+</message>
+<message>
+<tag_code>798</tag_code>
+<translation>Deseja que o NETGEAR Genie tente novamente?</translation>
+<variable>Do you want NETGEAR Genie to try again?</variable>
+</message>
+<message>
+<tag_code>799</tag_code>
+<translation>Atualize para uma versão 4 ou superior para poder usar a ferramenta de instalação (e ver muitos sites interessantes na Internet!)</translation>
+<variable>Please upgrade to a version 4 or higher browser so that you can use this setup tool (and see lots of great sites on the Internet!)</variable>
+</message>
+<message>
+<tag_code>800</tag_code>
+<translation>Parabéns!</translation>
+<variable>Congratulations!</variable>
+</message>
+<message>
+<tag_code>801</tag_code>
+<translation>A conexão com a Internet foi realizada com êxito.</translation>
+<variable>You are successfully connected to the Internet.</variable>
+</message>
+<message>
+<tag_code>802</tag_code>
+<translation>Este roteador está predefinido com o seguinte nome de rede sem fio exclusivo (SSID) e </translation>
+<variable>This router is preset with the following unique wireless network name (SSID) and </variable>
+</message>
+<message>
+<tag_code>803</tag_code>
+<translation>Seu roteador está predefinido com a segurança sem fio WPA2-PSK para proteger a rede contra acesso não autorizado. Para ingressar em uma rede sem fio, insira a chave de rede (senha). As configurações predefinidas são exclusivas para este dispositivo, como um número de série.  Caso queira alterá-las, vá até a tela Wireless Settings (Configurações sem fio) na interface gráfica de usuário da Web do roteador.</translation>
+<variable>Your router is preset with WPA2-PSK wireless security to protect your network from unwanted access. To join the wireless network, you must enter the network key (password). These preset settings are unique to this device, like a serial number.  If you want to change them, you can do so later in the Wireless Settings screen on the router web GUI.</variable>
+</message>
+<message>
+<tag_code>804</tag_code>
+<translation>chave de rede (senha)</translation>
+<variable>network key (password)</variable>
+</message>
+<message>
+<tag_code>805</tag_code>
+<translation>Nome da rede sem fio (SSID)</translation>
+<variable>Wireless Network Name (SSID)</variable>
+</message>
+<message>
+<tag_code>806</tag_code>
+<translation>Imprimir</translation>
+<variable>Print this</variable>
+</message>
+<message>
+<tag_code>807</tag_code>
+<translation>Leve-me para a Internet</translation>
+<variable>Take me to the Internet</variable>
+</message>
+<message>
+<tag_code>808</tag_code>
+<translation>A segurança sem fio não está habilitada nesse roteador. A NETGEAR recomenda que você</translation>
+<variable>Wireless security is not enabled on this router. NETGEAR highly recommends that you</variable>
+</message>
+<message>
+<tag_code>809</tag_code>
+<translation>Clique aqui</translation>
+<variable>Click here</variable>
+</message>
+<message>
+<tag_code>810</tag_code>
+<translation>habilite a segurança sem fio e proteja sua rede.</translation>
+<variable>to enable wireless security and protect your network.</variable>
+</message>
+<message>
+<tag_code>813</tag_code>
+<translation>Versão do firmware do roteador</translation>
+<variable>Router Firmware Version</variable>
+</message>
+<message>
+<tag_code>814</tag_code>
+<translation>Continuar</translation>
+<variable>Continue</variable>
+</message>
+<message>
+<tag_code>816</tag_code>
+<translation>Detectar automaticamente</translation>
+<variable>Auto-Detect</variable>
+</message>
+<message>
+<tag_code>817</tag_code>
+<translation>O Assistente de configuração Smart pode detectar seu tipo de conexão com a Internet.</translation>
+<variable>The Smart Setup Wizard can detect the type of Internet connection that you have.</variable>
+</message>
+<message>
+<tag_code>818</tag_code>
+<translation>Deseja que o Assistente de configuração Smart tente detectar o tipo de conexão agora?</translation>
+<variable>Do you want the Smart Setup Wizard to try and detect the connection type now?</variable>
+</message>
+<message>
+<tag_code>819</tag_code>
+<translation>UK</translation>
+<variable>UK</variable>
+</message>
+<message>
+<tag_code>820</tag_code>
+<translation>Austrália</translation>
+<variable>Australia</variable>
+</message>
+<message>
+<tag_code>821</tag_code>
+<translation>França</translation>
+<variable>France</variable>
+</message>
+<message>
+<tag_code>822</tag_code>
+<translation>Ireland</translation>
+<variable>Ireland</variable>
+</message>
+<message>
+<tag_code>823</tag_code>
+<translation>Itália</translation>
+<variable>Italy</variable>
+</message>
+<message>
+<tag_code>824</tag_code>
+<translation>Nova Zelândia</translation>
+<variable>New Zealand</variable>
+</message>
+<message>
+<tag_code>825</tag_code>
+<translation>Cingapura</translation>
+<variable>Singapore</variable>
+</message>
+<message>
+<tag_code>826</tag_code>
+<translation>Suécia</translation>
+<variable>Sweden</variable>
+</message>
+<message>
+<tag_code>827</tag_code>
+<translation>Suíça</translation>
+<variable>Switzerland</variable>
+</message>
+<message>
+<tag_code>828</tag_code>
+<translation>Finlândia</translation>
+<variable>Finland</variable>
+</message>
+<message>
+<tag_code>829</tag_code>
+<translation>EUA</translation>
+<variable>USA</variable>
+</message>
+<message>
+<tag_code>830</tag_code>
+<translation>Alemanha</translation>
+<variable>Germany</variable>
+</message>
+<message>
+<tag_code>831</tag_code>
+<translation>Outro</translation>
+<variable>Other</variable>
+</message>
+<message>
+<tag_code>855</tag_code>
+<translation>Este processo pode demorar até seis minutos; aguarde …</translation>
+<variable>This process can take up to six minutes; please wait …</variable>
+</message>
+<message>
+<tag_code>10609</tag_code>
+<translation>Usar VLANID</translation>
+<variable>Use VLANID</variable>
+</message>
+<message>
+<tag_code>10610</tag_code>
+<translation>Provedor de serviços de Internet</translation>
+<variable>Internet Service Provider</variable>
+</message>
+<message>
+<tag_code>10611</tag_code>
+<translation>DT</translation>
+<variable>DT</variable>
+</message>
+</tag_msg>

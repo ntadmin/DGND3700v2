@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-Control" content="no-cache"><meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT"><meta name="description" content="@model_name#_multilangual"><title>NETGEAR Router @model_name#</title><script language="javascript" type="text/javascript" src="string.js"></script><link rel="stylesheet" href="style/form.css"><script language="javascript" type="text/javascript" src="funcs.js"></script><!-- link rel="stylesheet" href="form.css" --><style type="text/javascript">
+	classes.num.all.fontFamily = "Courier";
+	classes.num.all.fontSize = "10pt" ;
+</style><script language="javascript" type="text/javascript" src="utility.js"></script><script language="javascript" type="text/javascript" src="linux.js"></script><script language="javascript" type="text/javascript">
+<!-- hide script from old browsers
+function ping_ck()
+{
+    var cf = document.forms['ping'];
+    if(badIP(cf.IPAddr1,cf.IPAddr2,cf.IPAddr3,cf.IPAddr4,254))
+    {
+        alert(getErrorMsgByVar("gsm_msg_eth_inv_ip"));
+        return false;
+    }
+    dataToHidden(cf);
+    return true;
+}
+function lookup_ck()
+{
+    var cf = document.forms['dnslookup'];
+    if(isBlank(cf.host_name))
+    {
+        alert(getErrorMsgByVar("gsm_msg_dig_no_blank_int_name"));
+        return false;
+    }
+	if(cf.host_name.value.indexOf(".") == -1)
+    {
+        alert(getErrorMsgByVar("gsm_msg_dig_inv_int_name"));
+        return false;
+    }
+	
+    return true;
+}
+//-->
+</script></head><body bgcolor="#ffffff" onLoad="document.forms[0].elements[0].focus();">
+<div class="page_title" languageCode = "130">Diagnostics</div>
+<div class="fix_button">
+<table width="100%" border="0" cellpadding="0" cellspacing="2"><tr><td nowrap colspan="2" align="center">
+</td></tr></table>
+</div>
+<div id="main" class="main_top_button">
+
+<form name="ping" method="POST" action="setup.cgi@post_par#" onSubmit="return ping_ck();">
+<table border="0" cellpadding="0" cellspacing="3" width="100%"><tr><td colspan="3" nowrap><a href="javascript:loadhelp('diag','ping')" tabindex="-1"><b> <span languageCode = "131">Ping an IP address</span> <span languageCode = "548">or</span> <span languageCode = "152">Host Name</span></b></a></td>
+	</tr><tr><td class="hlc" ><span languageCode = "37">IP Address</span> <span languageCode = "548">or</span> <span languageCode = "152">Host Name</span></td>
+		<td width="40%" align="right"><!--input type="text" name="ping_name" value="" size="24" maxlength="128"></td-->
+		    <input type="text" name="IPAddr1" class="num" size="4" maxlength="3" value="" onFocus="this.select()">.<input type="text" name="IPAddr2" class="num" size="4" maxlength="3" value="" onFocus="this.select()">.<input type="text" name="IPAddr3" class="num" size="4" maxlength="3" value="" onFocus="this.select()">.<input type="text" name="IPAddr4" class="num" size="4" maxlength="3" value="" onFocus="this.select()"></td>
+		<td width="10%" align="right"><input class="common_bt" type="submit" name="ping" value = "Ping" languageCode = "139"></td>
+	</tr></table><input type="hidden" name="todo" value="ping_test"><input type="hidden" name="this_file" value="diag.htm"><input type="hidden" name="next_file" value="diagping.htm"><input type="hidden" name="c4_IPAddr" value=""><input type="hidden" name="SID" value="@SID#"></form>
+<form name="dnslookup" method="POST" action="setup.cgi@post_par#" class="compressed" onSubmit="return lookup_ck();">
+<table border="0" cellpadding="0" cellspacing="3" width="100%"><tr><td colspan="3" background="liteblue.gif" height="12"></td>
+	</tr><tr><td colspan="3" nowrap><a href="javascript:loadhelp('diag','dnslookup')" tabindex="-1"><b languageCode = "132">Perform a DNS Lookup</b></a></td>
+	</tr><tr><td class="hlc"><span languageCode = "133">Internet Name</span>:</td>
+		<td width="40%" align="right"><input type="text" name="host_name" value="" size="24" maxlength="128"></td>
+		<td width="10%" align="right"><input class="common_bt" type="submit" name="lookup" value = "Lookup" languageCode = "140"></td>
+	</tr><tr><td><span languageCode = "37">IP Address</span>:</td>
+		<td align="right">@nslookup_output#</td>
+		<td></td>
+	</tr><tr><td>DNS <span languageCode = "136">Server :</span></td>
+		<td align="right">@status_wan_dns#</td>
+		<td></td>
+	</tr></table><input type="hidden" name="todo" value="dnslookup"><input type="hidden" name="this_file" value="diag.htm"><input type="hidden" name="next_file" value="diag.htm"><input type="hidden" name="SID" value="@SID#"></form>
+<form name="diag" method="POST" action="setup.cgi@post_par#" class="compressed">
+<table border="0" cellpadding="0" cellspacing="3" width="100%"><tr><td background="liteblue.gif" height="12"></td>
+	</tr><tr><td nowrap><a href="javascript:loadhelp('diag','rtable')" tabindex="-1"><b languageCode = "137">Display the Routing Table</b></a></td>
+	</tr><tr><td colspan="3" align="right"><input class="common_bt" type="button" name="display" value = "Display" onClick="this.form.next_file.value='diag_rt.htm';stdAction(this.form,'newfile');" languageCode = "141"></td>
+	</tr><tr><td nowrap height="12"></td>
+	</tr><tr><td nowrap background="liteblue.gif" height="12"></td>
+	</tr><tr><td nowrap><a href="javascript:loadhelp('diag','reboot')" tabindex="-1"><b languageCode = "138">Reboot the Router</b></a></td>
+	</tr><tr><td nowrap align="right"><input class="common_bt" type="button" name="Reboot" value = "Reboot" onClick="if(confirm(getErrorMsgByVar('gsm_msg_restart'))) stdAction(this.form,'reboot');" languageCode = "142"></td>
+</table>
+<table border="0" cellpadding="0" cellspacing="3" width="100%">
+    <tr><td background="liteblue.gif" height="12"></td></tr>
+    <tr><td colspan="3" nowrap><a href="javascript:loadhelp('diag','enabletelnet')" tabindex="-1"><b>Enable Telnet access</b></a></td></tr>
+    <tr><td nowrap align="right"><input class="common_bt" type="button" name="enable_telnet" value = "enable Telnet" onClick="stdAction(this.form,'debug');" ></td>
+</table>
+<table border="0" cellpadding="0" cellspacing="3" width="100%">
+    </tr><tr><td nowrap background="liteblue.gif" height="12"></td></tr>
+</table>
+<input type="hidden" name="todo" value="refresh">
+<input type="hidden" name="this_file" value="diag.htm">
+<input type="hidden" name="next_file" value="diag.htm">
+<input type="hidden" name="SID" value="@SID#">
+</form>
+</div>
+<p></p>
+<div id="help" style="display: none">
+		<iframe name="help_iframe" id="helpframe" src="diag_h.htm" allowtransparency="true" width="100%" frameborder="0">
+		</iframe>
+</div>
+<div id="help_switch" class="close_help">
+	 <img class="help_switch_img" src="image/help/help-bar.gif"><script>
+var help_flag=0;
+if(isIE()){
+	show_hidden_help_top_button(1);
+	var frame_div = top.document.getElementById("formframe_div");
+	frame_div.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+if(get_browser() == "Opera"){
+	window.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+</script><div id="help_space" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_center"><span languageCode="3016">Help Center</span></div>
+<div id="help_button" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_show_hidden"><a href="javascript:void(0)" onClick="show_hidden_help_top_button(help_flag); help_flag++;"><span languageCode="3017">Show/Hide Help Center</span></a></div>
+</div>
+<script language="javascript" type="text/javascript" src="langs.js"></script></body></html>

@@ -1,0 +1,34 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-Control" content="no-cache"><meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT"><meta name="description" content="WNR2500_multilangual"><title>NETGEAR Router @model_name#</title><script language="javascript" type="text/javascript" src="string.js"></script><link rel="stylesheet" href="style/form.css"><script language="javascript" type="text/javascript" src="funcs.js"></script><!-- link rel="stylesheet" href="form.css" --><script language="javascript" type="text/javascript" src="utility.js"></script><script language="javascript" type="text/javascript" src="linux.js"></script><script language="javascript" type="text/javascript">
+<!-- hide script from old browsers
+function checkData()
+{
+    var cf = document.forms[0];
+    var f1 = document.forms[1];
+    f1.submit();
+}
+//-->
+</script></head><body bgcolor="#ffffff" onLoad="document.forms[0].elements[0].focus();">
+<div class="page_title"></div>
+<div class="fix_button">
+<table width="100%" border="0" cellpadding="0" cellspacing="2"><tr><td nowrap colspan="2" align="center">
+<div id="uploadbutton">
+<input class="cancel_bt" type="RESET" name="Cancel" value = "Cancel" languageCode = "19">
+&nbsp;
+<input class="apply_bt" type="SUBMIT" name="Upgrade" value = "Upload" onClick="return checkData();" languageCode = "443">
+</td></tr></table>
+</div>
+<div id="main" class="main_top_button">
+<form method="POST" action="setup.cgi@post_par#">
+<table border="0" cellpadding="0" cellspacing="3" width="100%"><tr><td colspan="2">
+		    <pre><textarea name="mtd_info" class="smallfix" rows="25" cols="60" wrap="off" readonly tabindex="-1">@language_mtd_info#</textarea></pre>
+        </td>
+	</tr></table><input type="hidden" name="this_file" value="StringTableUpload.htm"><input type="hidden" name="SID" value="@SID#"></form>
+<form method="POST" action="upgrade_stringTbl.cgi" enctype="multipart/form-data">
+<table border="0" cellpadding="0" cellspacing="3" width="100%"><tr><td colspan="2" align="left" >Upload Language file:</td>
+	</tr><tr><td colspan="2" align="left">
+            <input type="FILE" name="mtenGUIUpload" size="40" maxlength="128" value=""></td>
+	</tr><tr><td colspan="2" align="center"></td>
+	</tr></table></form>
+</div>
+<script language="javascript" type="text/javascript" src="langs.js"></script></body></html>

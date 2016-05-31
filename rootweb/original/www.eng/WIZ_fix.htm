@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-Control" content="no-cache"><meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT"><meta name="description" content="@model_name#_multilangual"><title>NETGEAR Router @model_name#</title><script language="javascript" type="text/javascript" src="string.js"></script><link rel="stylesheet" href="style/form.css"><script language="javascript" type="text/javascript" src="funcs.js"></script><!-- link rel="stylesheet" href="form.css" --><style type="text/javascript">
+	classes.num.all.fontFamily = "Courier";
+	classes.num.all.fontSize = "10pt" ;
+</style><script language="javascript" type="text/javascript" src="utility.js"></script><script language="javascript" type="text/javascript" src="linux.js"></script><script language="javascript" type="text/javascript">
+<!-- hide script from old browsers
+var DisableFixedIP = false;
+var DisableFixedDNS = false;
+function loadcheck()
+{
+	
+}
+function goTestApply()
+{
+	var winoptions = "width=640,height=480,menubar=yes,toolbar=yes,status=yes,location=yes,resizable=yes,scrollbars=yes";
+	if(document.forms[0].runtest.value == "yes")
+		window.open('./BAS_wtest_d.htm','test_win',winoptions);
+}
+function checkData()
+{
+ 	var cf = document.forms[0];
+	var msg = "";
+	var WPethr;
+	var WMask;
+	var fixgw;
+	if(badLANIP(cf.WPethr1,cf.WPethr2,cf.WPethr3,cf.WPethr4,254)
+		|| (parseInt(cf.WPethr4.value, 10)==0))
+		msg+= getErrorMsgByVar("gsm_msg_eth_inv_ip");
+	if(badMASK(cf.WMask1,cf.WMask2,cf.WMask3,cf.WMask4))
+		msg+= getErrorMsgByVar("gsm_msg_eth_inv_mask");
+	if(badLANIP(cf.WGateway1,cf.WGateway2,cf.WGateway3,cf.WGateway4,254))
+		msg+= getErrorMsgByVar("gsm_msg_eth_inv_gateway");
+	if (msg.length > 1)
+	{
+		alert(msg);
+		return false;
+	}
+	/* check IP setting valid */
+	WPethr = cf.WPethr1.value + "." + cf.WPethr2.value + "." + cf.WPethr3.value +"." + cf.WPethr4.value;
+	WMask = cf.WMask1.value + "." + cf.WMask2.value + "." + cf.WMask3.value +"." + cf.WMask4.value;
+	fixgw = cf.WGateway1.value + "." + cf.WGateway2.value + "." + cf.WGateway3.value +"." + cf.WGateway4.value;
+	if(IsGatewayValid(WPethr, WMask, fixgw) == false){
+		msg += getErrorMsgByVar("gsm_msg_eth_inv_gateway");
+	}
+	msg += checkDNSValid(
+		cf.DAddr1, cf.DAddr2, cf.DAddr3, cf.DAddr4,
+		cf.PDAddr1, cf.PDAddr2, cf.PDAddr3, cf.PDAddr4);
+	if (msg.length > 1)
+	{
+		alert(msg);
+		return false;
+	}
+	dataToHidden(cf);
+	return true;
+}
+function saveTest()
+{
+ 	var cf = document.forms[0];
+	if(checkData())
+	{
+		cf.todo.value = "saveandtest";
+		cf.next_file.value = "WIZ_fix.htm";
+		cf.submit();
+	}
+}
+//-->
+</script></head><body bgcolor="#ffffff" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="dataToVisible(document.forms[0]);loadcheck();document.forms[0].elements[0].focus();goTestApply();">
+<form name="formname" action="setup.cgi@post_par#" method="POST" onSubmit="buttonToDisabled(document.forms[0])">
+<div class="page_title" languageCode = "552">Static IP (Fixed) Addresses</div>
+<div class="fix_button">
+<table width="100%" border="0" cellpadding="0" cellspacing="2"><tr><td nowrap colspan="2" align="center">
+<div id="basbuttons">
+<input class="common_bt" type="button" name="Test" value = "Test" onClick="saveTest();buttonToDisabled(document.forms[0])" languageCode = "52">
+&nbsp;
+<input class="cancel_bt" type="RESET" name="Cancel" value = "Cancel" onClick="setTimeout('dataToVisible(document.forms[0])',250)" languageCode = "19">
+&nbsp;
+<input class="apply_bt" type="SUBMIT" name="Apply" value = "Apply" onClick="return checkData()" languageCode = "18">
+</div>
+</td></tr></table>
+</div>
+<div id="main" class="main_top_button">
+<table border="0" cellpadding="0" cellspacing="3" width="100%"><tr><td colspan="2" nowrap><a href="javascript:loadhelp('WIZ_fix','InternetIP')" tabindex="-1"><b languageCode = "36">Internet</b> <b languageCode = "37">IP Address</b></a></td>
+    </tr><tr><td nowrap><img src="spacer.gif" width="20" height="12" border="0"><span languageCode = "37">IP Address</span></td>
+		<td nowrap align="right" class="num">
+			<input type="text" name="WPethr1" class="num" size="4" value="" maxlength="3" onFocus="if(DisableFixedIP) this.blur()">.<input type="text" name="WPethr2" class="num" size="4" value="" maxlength="3" onFocus="if(DisableFixedIP) this.blur()">.<input type="text" name="WPethr3" class="num" size="4" value="" maxlength="3" onFocus="if(DisableFixedIP) this.blur()">.<input type="text" name="WPethr4" class="num" size="4" value="" maxlength="3" onFocus="if(DisableFixedIP) this.blur()"></td>
+	</tr><tr><td nowrap><img src="spacer.gif" width="20" height="12" border="0"><span languageCode = "40">IP Subnet Mask</span></td>
+		<td align="right" class="num">
+			<input type="text" name="WMask1" class="num" size="4" value="" maxlength="3" onFocus="if(DisableFixedIP) this.blur()">.<input type="text" name="WMask2" class="num" size="4" value="" maxlength="3" onFocus="if(DisableFixedIP) this.blur()">.<input type="text" name="WMask3" class="num" size="4" value="" maxlength="3" onFocus="if(DisableFixedIP) this.blur()">.<input type="text" name="WMask4" class="num" size="4" value="" maxlength="3" onFocus="if(DisableFixedIP) this.blur()"></td>
+	</tr><tr><td nowrap><img src="spacer.gif" width="20" height="12" border="0"><span languageCode = "41">Gateway</span> <span languageCode = "37">IP Address</span></td>
+		<td align="right" class="num">
+			<input type="text" name="WGateway1" class="num" size="4" value="" maxlength="3" onFocus="if(DisableFixedIP) this.blur()">.<input type="text" name="WGateway2" class="num" size="4" value="" maxlength="3" onFocus="if(DisableFixedIP) this.blur()">.<input type="text" name="WGateway3" class="num" size="4" value="" maxlength="3" onFocus="if(DisableFixedIP) this.blur()">.<input type="text" name="WGateway4" class="num" size="4" value="" maxlength="3" onFocus="if(DisableFixedIP) this.blur()"></td>
+	</tr><tr><!-- RULE --><td colspan="2" background="liteblue.gif" height="12"></td>
+	</tr><tr><td colspan="2"><a href="javascript:loadhelp('WIZ_fix','DNSaddress')" tabindex="-1"><b languageCode = "42">Domain Name Server (DNS) Address</b></a></td>
+	</tr><tr><td><img src="spacer.gif" width="20" height="12" border="0"><span languageCode = "45">Primary DNS</span></td>
+		<td align="right" class="num"><input type="text" name="DAddr1" class="num" size="4" maxlength="3" value="" onFocus="if(DisableFixedDNS) this.blur()">.<input type="text" name="DAddr2" class="num" size="4" maxlength="3" value="" onFocus="if(DisableFixedDNS) this.blur()">.<input type="text" name="DAddr3" class="num" size="4" maxlength="3" value="" onFocus="if(DisableFixedDNS) this.blur()">.<input type="text" name="DAddr4" class="num" size="4" maxlength="3" value="" onFocus="if(DisableFixedDNS) this.blur()"></td>
+	</tr><tr><td><img src="spacer.gif" width="20" height="12" border="0"><span languageCode = "46">Secondary DNS</span></td>
+		<td align="right" class="num"><input type="text" name="PDAddr1" class="num" size="4" maxlength="3" value="" onFocus="if(DisableFixedDNS) this.blur()">.<input type="text" name="PDAddr2" class="num" size="4" maxlength="3" value="" onFocus="if(DisableFixedDNS) this.blur()">.<input type="text" name="PDAddr3" class="num" size="4" maxlength="3" value="" onFocus="if(DisableFixedDNS) this.blur()">.<input type="text" name="PDAddr4" class="num" size="4" maxlength="3" value="" onFocus="if(DisableFixedDNS) this.blur()"></td>
+	</tr><tr><!-- RULE --><td colspan="2" background="liteblue.gif" height="12"></td>
+	</tr><tr><td nowrap colspan="2" align="center"></td>
+	</tr></table><input type="hidden" name="runtest" value="@runtest#"><input type="hidden" name="todo" value="save"><input type="hidden" name="this_file" value="WIZ_fix.htm"><input type="hidden" name="next_file" value="RST_status.htm"><!-- ServerEnd --><input type="hidden" name="c4_WPethr" value="@c4_WPethr#"><input type="hidden" name="c4_WMask" value="@c4_WMask#"><input type="hidden" name="c4_WGateway" value="@c4_WGateway#"><input type="hidden" name="c4_DAddr" value="@c4_DAddr#"><input type="hidden" name="c4_PDAddr" value="@c4_PDAddr#"><input type="hidden" name="h_DNSAssign" value="1"><input type="hidden" name="WANAssign" value="dynamic"><input type="hidden" name="SID" value="@SID#">
+</div>	
+</form>
+<p></p>
+<div id="help" style="display: none">
+		<iframe name="help_iframe" id="helpframe" src="WIZ_fix_h.htm" allowtransparency="true" width="100%" frameborder="0">
+		</iframe>
+</div>
+<div id="help_switch" class="close_help">
+	 <img class="help_switch_img" src="image/help/help-bar.gif"><script>
+var help_flag=0;
+if(isIE()){
+	show_hidden_help_top_button(1);
+	var frame_div = top.document.getElementById("formframe_div");
+	frame_div.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+if(get_browser() == "Opera"){
+	window.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+</script><div id="help_space" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_center"><span languageCode="3016">Help Center</span></div>
+<div id="help_button" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_show_hidden"><a href="javascript:void(0)" onClick="show_hidden_help_top_button(help_flag); help_flag++;"><span languageCode="3017">Show/Hide Help Center</span></a></div>
+</div>
+<script language="javascript" type="text/javascript" src="langs.js"></script></body></html>

@@ -1,0 +1,274 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-Control" content="no-cache"><meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT"><meta name="description" content="@model_name#_multilangual"><title>NETGEAR Router @model_name#</title><script language="javascript" type="text/javascript" src="string.js"></script><link rel="stylesheet" href="style/form.css"><script language="javascript" type="text/javascript" src="funcs.js"></script><!-- link rel="stylesheet" href="form.css" --><style type="text/javascript">	classes.num.all.fontFamily = "Courier";	classes.num.all.fontSize = "10pt" ;</style><script language="javascript" type="text/javascript" src="utility.js"></script><script language="javascript" type="text/javascript" src="linux.js"></script><script language="javascript" type="text/javascript">
+<!--
+var disable = false;
+
+
+function init()
+{
+
+	switchSupp();		
+}	
+function switchSupp()
+{
+var cf = document.forms[0];
+var i;
+if (!(cf.wds.checked))
+{
+for (i = 1; i< 7; i++)
+cf.apmode[0].disabled = cf.apmode[1].disabled = cf.apmode[2].disabled =
+eval("cf.bridge0mac" + i).disabled = eval("cf.bridge1mac" + i).disabled = eval("cf.bridge2mac" + i).disabled = eval("cf.bridge3mac" + i).disabled = eval("cf.bridge4mac" + i).disabled = eval("cf.repeater1mac" + i).disabled = eval("cf.repeater2mac" + i).disabled = eval("cf.repeater3mac" + i).disabled = eval("cf.repeater4mac" + i).disabled = true;
+}
+else
+{ cf.apmode[0].disabled = cf.apmode[1].disabled = cf.apmode[2].disabled = false; setMAC(); }
+}
+
+var idx_number = 2; //parseInt("@h_idxn#");
+var idx_name_all = "802.11G,802.11N";
+var idx_nameArr = idx_name_all.split(",");
+if( idx_nameArr.length!= idx_number)
+        idx_nameArr=Array(idx_number); //prevent error
+if( idx_nameArr.length != idx_number){
+        alert("MAJOR ERROR: nvram pvcn:"+ idx_number+"does not match with idx_names:"+ idx_nameArr.length +"!");
+}
+
+function show_idx()
+{
+        var cf = document.forms[0];
+        cf.idx_num.options.length=0;//flush out all the items
+
+        for(i=0;i<idx_nameArr.length;i++){
+                cf.idx_num.options[i] = new Option(idx_nameArr[i], (i) +"");
+        }
+}
+
+function selectSSID(){
+        var cf = document.forms[0];
+	location.href="setup.cgi?this_file=wds.htm&next_file=wds.htm&"+"&idx_num="+(cf.idx_num.selectedIndex);
+        return true;
+}
+
+
+function setMAC()
+{
+ 	var cf = document.forms[0];
+	var i;
+	for (i = 1; i< 7; i++)
+	if(cf.apmode[0].checked)
+	{
+	eval("cf.bridge0mac" + i).disabled = false;
+	eval("cf.bridge1mac" + i).disabled = eval("cf.bridge2mac" + i).disabled = eval("cf.bridge3mac" + i).disabled = eval("cf.bridge4mac" + i).disabled = eval("cf.repeater1mac" + i).disabled = eval("cf.repeater2mac" + i).disabled = eval("cf.repeater3mac" + i).disabled = eval("cf.repeater4mac" + i).disabled = true;
+	}
+	else if(cf.apmode[1].checked)
+	{
+eval("cf.bridge0mac" + i).disabled = eval("cf.repeater1mac" + i).disabled = eval("cf.repeater2mac" + i).disabled = eval("cf.repeater3mac" + i).disabled = eval("cf.repeater4mac" + i).disabled = true;
+eval("cf.bridge1mac" + i).disabled = eval("cf.bridge2mac" + i).disabled = eval("cf.bridge3mac" + i).disabled = eval("cf.bridge4mac" + i).disabled = false;
+	}
+	else if(cf.apmode[2].checked)
+	{	
+eval("cf.bridge0mac" + i).disabled = eval("cf.bridge1mac" + i).disabled = eval("cf.bridge2mac" + i).disabled = eval("cf.bridge3mac" + i).disabled = eval("cf.bridge4mac" + i).disabled = true;
+eval("cf.repeater1mac" + i).disabled = eval("cf.repeater2mac" + i).disabled = eval("cf.repeater3mac" + i).disabled = eval("cf.repeater4mac" + i).disabled = false;
+	}
+}
+
+function checkData( save_only )
+{
+ 	var cf = document.forms[0];
+	if( save_only == 1)
+                cf.save_only.value="1"
+        else
+                cf.save_only.value="0"
+
+	var msg = "";
+	var bridge1mac = cf.bridge1mac1.value+cf.bridge1mac2.value+cf.bridge1mac3.value+cf.bridge1mac4.value+cf.bridge1mac5.value+cf.bridge1mac6.value;
+	var bridge2mac = cf.bridge2mac1.value+cf.bridge2mac2.value+cf.bridge2mac3.value+cf.bridge2mac4.value+cf.bridge2mac5.value+cf.bridge2mac6.value;
+	var bridge3mac = cf.bridge3mac1.value+cf.bridge3mac2.value+cf.bridge3mac3.value+cf.bridge3mac4.value+cf.bridge3mac5.value+cf.bridge3mac6.value;
+	var bridge4mac = cf.bridge4mac1.value+cf.bridge4mac2.value+cf.bridge4mac3.value+cf.bridge4mac4.value+cf.bridge4mac5.value+cf.bridge4mac6.value;
+
+	var repeater1mac = cf.repeater1mac1.value+cf.repeater1mac2.value+cf.repeater1mac3.value+cf.repeater1mac4.value+cf.repeater1mac5.value+cf.repeater1mac6.value;
+	var repeater2mac = cf.repeater2mac1.value+cf.repeater2mac2.value+cf.repeater2mac3.value+cf.repeater2mac4.value+cf.repeater2mac5.value+cf.repeater2mac6.value;
+	var repeater3mac = cf.repeater3mac1.value+cf.repeater3mac2.value+cf.repeater3mac3.value+cf.repeater3mac4.value+cf.repeater3mac5.value+cf.repeater3mac6.value;
+	var repeater4mac = cf.repeater4mac1.value+cf.repeater4mac2.value+cf.repeater4mac3.value+cf.repeater4mac4.value+cf.repeater4mac5.value+cf.repeater4mac6.value;
+
+	if((cf.wds.checked)&&(cf.apmode[0].checked))	
+	{		
+		if(!checkmac6to1(cf.bridge0mac1,cf.bridge0mac2,cf.bridge0mac3,cf.bridge0mac4,cf.bridge0mac5,cf.bridge0mac6))
+		msg+= getErrorMsgByVar("gsm_msg_eth_inv_mac");
+	}	
+ 	if ((cf.wds.checked)&&(cf.apmode[1].checked))	
+	{
+		if(!checkmac6to1(cf.bridge1mac1,cf.bridge1mac2,cf.bridge1mac3,cf.bridge1mac4,cf.bridge1mac5,cf.bridge1mac6))
+		msg+= getErrorMsgByVar("gsm_msg_eth_inv_mac");
+				
+		if(bridge2mac != "")
+		{
+		if((!checkmac6to1(cf.bridge2mac1,cf.bridge2mac2,cf.bridge2mac3,cf.bridge2mac4,cf.bridge2mac5,cf.bridge2mac6))||(bridge2mac==bridge1mac)||(bridge2mac==bridge3mac)||(bridge2mac==bridge4mac))
+		msg+= getErrorMsgByVar("gsm_msg_eth_inv_mac");
+		}
+					
+		if(bridge3mac != "")
+		{
+		if((!checkmac6to1(cf.bridge3mac1,cf.bridge3mac2,cf.bridge3mac3,cf.bridge3mac4,cf.bridge3mac5,cf.bridge3mac6))||(bridge3mac==bridge1mac)||(bridge3mac==bridge4mac))
+		msg+= getErrorMsgByVar("gsm_msg_eth_inv_mac");
+		}
+			
+		if(bridge4mac != "")
+		{
+		if((!checkmac6to1(cf.bridge4mac1,cf.bridge4mac2,cf.bridge4mac3,cf.bridge4mac4,cf.bridge4mac5,cf.bridge4mac6))||(bridge4mac==bridge1mac))
+		msg+= getErrorMsgByVar("gsm_msg_eth_inv_mac");
+		}
+	}
+	if ((cf.wds.checked)&&(cf.apmode[2].checked))	
+	{
+		if(!checkmac6to1(cf.repeater1mac1,cf.repeater1mac2,cf.repeater1mac3,cf.repeater1mac4,cf.repeater1mac5,cf.repeater1mac6))
+		msg+= getErrorMsgByVar("gsm_msg_eth_inv_mac");
+				
+		if(repeater2mac != "")
+		{
+		if((!checkmac6to1(cf.repeater2mac1,cf.repeater2mac2,cf.repeater2mac3,cf.repeater2mac4,cf.repeater2mac5,cf.repeater2mac6))||(repeater2mac==repeater1mac)||(repeater2mac==repeater3mac)||(repeater2mac==repeater4mac))
+		msg+= getErrorMsgByVar("gsm_msg_eth_inv_mac");
+		}
+					
+		if(repeater3mac != "")
+		{
+		if((!checkmac6to1(cf.repeater3mac1,cf.repeater3mac2,cf.repeater3mac3,cf.repeater3mac4,cf.repeater3mac5,cf.repeater3mac6))||(repeater3mac==repeater1mac)||(repeater3mac==repeater4mac))
+		msg+= getErrorMsgByVar("gsm_msg_eth_inv_mac");
+		}
+			
+		if(repeater4mac != "")
+		{
+		if((!checkmac6to1(cf.repeater4mac1,cf.repeater4mac2,cf.repeater4mac3,cf.repeater4mac4,cf.repeater4mac5,cf.repeater4mac6))||(repeater4mac==repeater1mac))
+		msg+= getErrorMsgByVar("gsm_msg_eth_inv_mac");
+		}
+	}
+   
+	if (msg.length > 1)
+	{
+		alert(msg);
+		return false;
+	}
+	dataToHidden(cf);
+
+	if ( save_only == 1)
+                return true
+
+        return confirm(getErrorMsgByVar("gsm_msg_wls_cfm_ssid_apply"));
+
+}
+
+
+var DisablePMac = false;
+var DisableMPMac = false;
+var DisableRPMac = false;
+
+//-->
+</script></head><body bgcolor="#ffffff" onLoad="dataToVisible(document.forms[0]);init();">
+
+<form method="POST" action="setup.cgi@post_par#">
+<div class="page_title" languageCode="531">Advanced Wireless Settings</div>
+<div class="fix_button">
+<table width="100%" border="0" cellpadding="0" cellspacing="2"><tr><td nowrap colspan="2" align="center">
+<input class="apply_bt" type="SUBMIT" name="Apply" value="Apply" onClick="if(!checkData(0)) return false;" languageCode="18">
+</td></tr></table>
+</div>
+<div id="main" class="main_top_button">
+<table border="0" cellpadding="0" cellspacing="3" width="100%">
+	@wps_hide_s#
+	<tr><td colspan="3"><input type="radio" name="adv_wlan_type" value="wps" onClick="location.href='adv_wps.htm'"><b>WPS
+		(<span languageCode="29">Push 'N' Connect</span>)</b></td>
+	</tr><tr><td colspan="3"><input type="radio" name="adv_wlan_type" value="wds" checked onClick="this.form.submit();"><b>WDS</b></td>
+	</tr>
+	@wps_hide_e#
+
+	<tr><td colspan="2" background="liteblue.gif" height="12"></td>
+	</tr><tr><td colspan="2"><b>WDS</b> <b languageCode="353">Mode</b></td>
+	</tr><tr><td nowrap align="left"><select name="idx_num" size="1" onChange="selectSSID()"><script>show_idx();</script></select></td>
+	</tr><tr><td colspan="2" nowrap valign="top"><input type="checkbox" name="wds" value="wds" onClick="switchSupp()"><a href="javascript:loadhelp('_wds','wds')" tabindex="-1"> <b languageCode="532">Enable Wireless Bridging and Repeating</b> </a></td>
+	</tr><tr><td colspan="2"></td>
+	</tr><tr><td colspan="2" nowrap valign="top"><img src="spacer.gif" width="20" height="2" border="0"><input type="radio" name="apmode" value="point" onClick="setMAC()"><a href="javascript:loadhelp('_wds','point')" tabindex="-1"><b languageCode="533">Wireless Point-to-Point Bridge</b></a></td>
+	</tr><tr><td nowrap align="right" valign="middle" width="50%"><span languageCode="534">Local</span> <span languageCode="48">MAC
+		Address</span></td>
+		<td><input type="text" name="localmac1" class="num" size="3" value="" maxlength="2" disabled> : <input type="text" name="localmac2" class="num" size="3" value="" maxlength="2" disabled>
+		: <input type="text" name="localmac3" class="num" size="3" value="" maxlength="2" disabled> : <input type="text" name="localmac4" class="num" size="3" value="" maxlength="2" disabled> : <input type="text" name="localmac5" class="num" size="3" value="" maxlength="2" disabled> : <input type="text" name="localmac6" class="num" size="3" value="" maxlength="2" disabled></td>
+	</tr><tr><td nowrap align="right" valign="middle" width="50%"><span languageCode="123">Remote</span> <span languageCode="48">MAC
+		Address</span></td>
+		<td><!-- input type="text" class="num" name="bridge0mac" size="17" maxlength="17" value="@bridge0mac#" -->
+		<input type="text" name="bridge0mac1" class="num" size="3" value="" maxlength="2"> : <input type="text" name="bridge0mac2" class="num" size="3" value="" maxlength="2"> : <input type="text" name="bridge0mac3" class="num" size="3" value="" maxlength="2"> : <input type="text" name="bridge0mac4" class="num" size="3" value="" maxlength="2"> : <input type="text" name="bridge0mac5" class="num" size="3" value="" maxlength="2"> : <input type="text" name="bridge0mac6" class="num" size="3" value="" maxlength="2"></td>
+	</tr><tr><td colspan="2" nowrap valign="top"><img src="spacer.gif" width="20" height="2" border="0"><input type="radio" name="apmode" value="multi" onClick="setMAC()"><a href="javascript:loadhelp('_wds','multi')" tabindex="-1"> <b languageCode="535">Wireless Point to Multi-Point Bridge</b> </a></td>
+	</tr><tr><td nowrap align="right" valign="middle" width="50%"><span languageCode="534">Local</span> <span languageCode="48">MAC
+		Address</span></td>
+		<td><input type="text" name="localmacm1" class="num" size="3" value="" maxlength="2" disabled> : <input type="text" name="localmacm2" class="num" size="3" value="" maxlength="2" disabled> : <input type="text" name="localmacm3" class="num" size="3" value="" maxlength="2" disabled> : <input type="text" name="localmacm4" class="num" size="3" value="" maxlength="2" disabled> : <input type="text" name="localmacm5" class="num" size="3" value="" maxlength="2" disabled> : <input type="text" name="localmacm6" class="num" size="3" value="" maxlength="2" disabled></td>
+	</tr><tr><td nowrap align="right" valign="middle"><span languageCode="123">Remote</span> <span languageCode="48">MAC
+		Address</span> 1</td>
+		<td><input type="text" name="bridge1mac1" class="num" size="3" value="" maxlength="2"> : <input type="text" name="bridge1mac2" class="num" size="3" value="" maxlength="2">
+		: <input type="text" name="bridge1mac3" class="num" size="3" value="" maxlength="2"> : <input type="text" name="bridge1mac4" class="num" size="3" value="" maxlength="2"> : <input type="text" name="bridge1mac5" class="num" size="3" value="" maxlength="2"> : <input type="text" name="bridge1mac6" class="num" size="3" value="" maxlength="2"></td>
+	</tr><tr><td nowrap align="right" valign="middle"><span languageCode="123">Remote</span> <span languageCode="48">MAC
+		Address</span> 2</td>
+		<td><input type="text" name="bridge2mac1" class="num" size="3" value="" maxlength="2"> : <input type="text" name="bridge2mac2" class="num" size="3" value="" maxlength="2">
+		: <input type="text" name="bridge2mac3" class="num" size="3" value="" maxlength="2"> : <input type="text" name="bridge2mac4" class="num" size="3" value="" maxlength="2"> : <input type="text" name="bridge2mac5" class="num" size="3" value="" maxlength="2"> : <input type="text" name="bridge2mac6" class="num" size="3" value="" maxlength="2"></td>
+	</tr><tr><td nowrap align="right" valign="middle"><span languageCode="123">Remote</span> <span languageCode="48">MAC
+		Address</span> 3</td>
+		<td><input type="text" name="bridge3mac1" class="num" size="3" value="" maxlength="2"> : <input type="text" name="bridge3mac2" class="num" size="3" value="" maxlength="2">
+		: <input type="text" name="bridge3mac3" class="num" size="3" value="" maxlength="2"> : <input type="text" name="bridge3mac4" class="num" size="3" value="" maxlength="2"> : <input type="text" name="bridge3mac5" class="num" size="3" value="" maxlength="2"> : <input type="text" name="bridge3mac6" class="num" size="3" value="" maxlength="2"></td>
+	</tr><tr><td nowrap align="right" valign="middle"><span languageCode="123">Remote</span> <span languageCode="48">MAC
+		Address</span> 4</td>
+		<td><input type="text" name="bridge4mac1" class="num" size="3" value="" maxlength="2"> : <input type="text" name="bridge4mac2" class="num" size="3" value="" maxlength="2">
+		: <input type="text" name="bridge4mac3" class="num" size="3" value="" maxlength="2"> : <input type="text" name="bridge4mac4" class="num" size="3" value="" maxlength="2"> : <input type="text" name="bridge4mac5" class="num" size="3" value="" maxlength="2"> : <input type="text" name="bridge4mac6" class="num" size="3" value="" maxlength="2"></td>
+	</tr><td colspan="2" nowrap valign="top"><img src="spacer.gif" width="20" height="2" border="0"><input type="radio" name="apmode" value="repeater" onClick="setMAC()"><a href="javascript:loadhelp('_wds','repeater')" tabindex="-1"> <b languageCode="852">Repeater with Wireless Client Association</b> </a></td>
+
+	<tr><td nowrap align="right" valign="middle" width="50%"><span languageCode="849">Local</span> <span languageCode="48">MAC
+		Address</span></td>
+		<td><input type="text" name="localmacr1" class="num" size="3" value="" maxlength="2" disabled> : <input type="text" name="localmacr2" class="num" size="3" value="" maxlength="2" disabled> : <input type="text" name="localmacr3" class="num" size="3" value="" maxlength="2" disabled> : <input type="text" name="localmacr4" class="num" size="3" value="" maxlength="2" disabled> : <input type="text" name="localmacr5" class="num" size="3" value="" maxlength="2" disabled> : <input type="text" name="localmacr6" class="num" size="3" value="" maxlength="2" disabled></td>
+	</tr><tr><td nowrap align="right" valign="middle"><span languageCode="123">Remote</span> <span languageCode="48">MAC
+		Address</span> 1</td>
+		<td nowrap><input type="text" name="repeater1mac1" class="num" size="3" value="" maxlength="2"> : <input type="text" name="repeater1mac2" class="num" size="3" value="" maxlength="2">
+		: <input type="text" name="repeater1mac3" class="num" size="3" value="" maxlength="2"> : <input type="text" name="repeater1mac4" class="num" size="3" value="" maxlength="2">
+		: <input type="text" name="repeater1mac5" class="num" size="3" value="" maxlength="2"> : <input type="text" name="repeater1mac6" class="num" size="3" value="" maxlength="2"></td>
+	</tr><tr><td nowrap align="right" valign="middle"><span languageCode="123">Remote</span> <span languageCode="48">MAC
+		Address</span> 2</td>
+		<td nowrap><input type="text" name="repeater2mac1" class="num" size="3" value="" maxlength="2"> : <input type="text" name="repeater2mac2" class="num" size="3" value="" maxlength="2">
+		: <input type="text" name="repeater2mac3" class="num" size="3" value="" maxlength="2"> : <input type="text" name="repeater2mac4" class="num" size="3" value="" maxlength="2">
+		: <input type="text" name="repeater2mac5" class="num" size="3" value="" maxlength="2"> : <input type="text" name="repeater2mac6" class="num" size="3" value="" maxlength="2"></td>
+	</tr><tr><td nowrap align="right" valign="middle"><span languageCode="123">Remote</span> <span languageCode="48">MAC
+		Address</span> 3</td>
+		<td nowrap><input type="text" name="repeater3mac1" class="num" size="3" value="" maxlength="2"> : <input type="text" name="repeater3mac2" class="num" size="3" value="" maxlength="2">
+		: <input type="text" name="repeater3mac3" class="num" size="3" value="" maxlength="2"> : <input type="text" name="repeater3mac4" class="num" size="3" value="" maxlength="2">
+		: <input type="text" name="repeater3mac5" class="num" size="3" value="" maxlength="2"> : <input type="text" name="repeater3mac6" class="num" size="3" value="" maxlength="2"></td>
+	</tr><tr><td nowrap align="right" valign="middle"><span languageCode="123">Remote</span> <span languageCode="48">MAC
+		Address</span> 4</td>
+		<td nowrap><input type="text" name="repeater4mac1" class="num" size="3" value="" maxlength="2"> : <input type="text" name="repeater4mac2" class="num" size="3" value="" maxlength="2">
+		: <input type="text" name="repeater4mac3" class="num" size="3" value="" maxlength="2"> : <input type="text" name="repeater4mac4" class="num" size="3" value="" maxlength="2">
+		: <input type="text" name="repeater4mac5" class="num" size="3" value="" maxlength="2"> : <input type="text" name="repeater4mac6" class="num" size="3" value="" maxlength="2"></td>
+	</tr><tr><td colspan="2" background="liteblue.gif" height="12"></td>
+	</tr><tr><td colspan="2" align="center"><input class="common_bt" type="SUBMIT" name="save_only_button" value="Save" onClick="return checkData(1);" languageCode="537"><input class="common_bt" type="button" name="Cancel" value="Cancel" onClick="location.href='setup.cgi?next_file=wds.htm'" languageCode="19"></td>
+	</tr><!-- RULE --><tr><td colspan="2" background="liteblue.gif" height="12"></td>
+	</tr><tr><td colspan="2" align="center"></td>
+	</tr></table><!-- ServerStart --><input type="hidden" name="h_wds" value="@h_wds#"><input type="hidden" name="h_apmode" value="@h_apmode#"><!-- ServerEnd --><input type="hidden" name="c6_localmac" value="@c6_localmac#"><input type="hidden" name="c6_localmacm" value="@c6_localmac#"><input type="hidden" name="c6_localmacr" value="@c6_localmac#"><input type="hidden" name="c6_bridge0mac" value="@c6_bridge0mac#"><input type="hidden" name="c6_bridge1mac" value="@c6_bridge1mac#"><input type="hidden" name="c6_bridge2mac" value="@c6_bridge2mac#"><input type="hidden" name="c6_bridge3mac" value="@c6_bridge3mac#"><input type="hidden" name="c6_bridge4mac" value="@c6_bridge4mac#"><input type="hidden" name="c6_repeater1mac" value="@c6_repeater1mac#"><input type="hidden" name="c6_repeater2mac" value="@c6_repeater2mac#"><input type="hidden" name="c6_repeater3mac" value="@c6_repeater3mac#"><input type="hidden" name="c6_repeater4mac" value="@c6_repeater4mac#"><input type="hidden" name="h_idx_num" value="@h_idx_num#"><input type="hidden" name="save_only" value="sss"><input type="hidden" name="todo" value="save"><input type="hidden" name="this_file" value="wds.htm"><input type="hidden" name="next_file" value="wds.htm"><input type="hidden" name="SID" value="@SID#">
+</div>	
+</form>
+<p></p>
+<div id="help" style="display: none">
+		<iframe name="help_iframe" id="helpframe" src="h_wds.htm" allowtransparency="true" width="100%" frameborder="0">
+		</iframe>
+</div>
+<div id="help_switch" class="close_help">
+	 <img class="help_switch_img" src="image/help/help-bar.gif"><script>
+var help_flag=0;
+if(isIE()){
+	show_hidden_help_top_button(1);
+	var frame_div = top.document.getElementById("formframe_div");
+	frame_div.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+if(get_browser() == "Opera"){
+	window.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+</script><div id="help_space" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_center"><span languageCode="3016">Help Center</span></div>
+<div id="help_button" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_show_hidden"><a href="javascript:void(0)" onClick="show_hidden_help_top_button(help_flag); help_flag++;"><span languageCode="3017">Show/Hide Help Center</span></a></div>
+</div>
+<script language="javascript" type="text/javascript" src="langs.js"></script></body></html>

@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-Control" content="no-cache"><meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT"><meta name="description" content="@model_name#_multilangual"><title>NETGEAR Router @model_name#</title><script language="javascript" type="text/javascript" src="string.js"></script><link rel="stylesheet" href="style/form.css"><script language="javascript" type="text/javascript" src="funcs.js"></script><!-- link rel="stylesheet" href="form.css" --><script language="javascript" type="text/javascript" src="utility.js"></script><script language="javascript" type="text/javascript" src="linux.js"></script><script language="javascript" type="text/javascript">
+<!--
+function checkData()
+{
+	var cf = document.forms[0];
+    if(!showWpsAlert()) return false;
+	if(cf.MacSelect && parseInt(cf.MacSelect.length, 10) > 64)
+	{
+		alert(getErrorMsgByVar("gsm_msg_m_accs_client_max_num"));
+		return false;
+	}
+	cf.todo.value = "save";
+	dataToHidden(cf);
+	return true;  // no check needed
+}
+function init()
+{
+	var cf = document.forms[0];
+	var select_index = cf.h_ruleSelect.value;
+	if(cf.MacSelect)
+    {
+    	var size = cf.MacSelect.length;
+    	if(isNaN(size))
+    	{
+    		cf.MacSelect.checked = true;
+    	} else {
+    	    //in case of return to this page after delete last rule, 
+    	    //selected rule not exist anymore, would cause javascript error.
+    	    if(select_index >= size)
+    	        select_index = 0;
+    		cf.MacSelect[select_index].checked = true;
+    	}
+    }
+}
+function showWpsAlert()
+{
+	var cf = document.forms[0];
+	if(cf.show_wps_alert.value != "0")
+	{
+		alert(getErrorMsgByVar("gsm_msg_wps_in_prog_warn"));
+	    return  false ;
+	}
+	return  true ;
+}
+function add_table()
+{
+    var cf = document.forms[0];
+    var cur_entry_num = @wl_acl_entry_num#;
+    /* Netgear SPEC. max entry number is 64. */
+    if (cur_entry_num >= 64) {
+        alert(getErrorMsgByVar("gsm_msg_wl_acl_tbl_full"));
+        return false;
+    }
+    cf.next_file.value = 'WLG_acl_add.htm';
+    stdAction(cf, 'nbtscan');
+    return true;
+}
+function edit_table()
+{
+	var cf = document.forms[0];
+	cf.ruleSelect.value = cf.h_ruleSelect.value = radioSelectedIndex(cf.MacSelect);
+	if (radioSelectedIndex(cf.MacSelect) > -1) {
+	cf.next_file.value = 'WLG_acl_edit.htm';
+	radioTable(cf, cf.MacSelect, 'edit');
+	return true;
+    }
+    else {
+            alert(getErrorMsgByVar("gsm_msg_fw_no_select"));
+            return false;
+    }
+}
+function delete_entry()
+{
+	var cf = document.forms[0];
+	cf.ruleSelect.value = cf.h_ruleSelect.value = radioSelectedIndex(cf.MacSelect);
+	if (radioSelectedIndex(cf.MacSelect) > -1) {
+	radioTable(cf, cf.MacSelect, 'delete');
+	return true;
+    }
+    else {
+            alert(getErrorMsgByVar("gsm_msg_fw_no_select"));
+            return false;
+   }
+}
+//-->
+</script></head><body bgcolor="#ffffff" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="init();dataToVisible(document.forms[0]);">
+<form action="setup.cgi@post_par#" method="post" name="formname" onSubmit="buttonToDisabled(document.forms[0])">
+<div class="page_title" languageCode = "554">Wireless Card Access List</div>
+<div class="fix_button">
+<table width="100%" border="0" cellpadding="0" cellspacing="2"><tr><td nowrap colspan="2" align="center">
+<input class="cancel_bt" type="button" name="Cancel" value = "Cancel" onClick="location.href='setup.cgi?next_file=WLG_adv.htm&todo=cfg_init'; buttonToDisabled(document.forms[0])" languageCode = "19">
+&nbsp;
+<input class="apply_bt" type="submit" name="Apply" value = "Apply" onClick="return checkData();" languageCode = "18">
+</td></tr></table>
+</div>
+<div id="main" class="main_top_button">
+<table border="0" cellpadding="0" cellspacing="3" width="100%"><tr><td align="left"><input type="checkbox" name="accessLimit" value="accessLimit"><a href="javascript:loadhelp('WLG_acl','control')" tabindex="-1">
+		<b languageCode = "555">Turn Access Control On</b>
+		</a></td>
+	</tr><tr><!-- RULE --><td background="liteblue.gif" height="12"></td>
+	</tr><tr><td><!--access table //-->
+		<div align="center">
+		<TABLE class="tables" border="0" cellpadding="2" cellspacing="0" width="100%">
+		<TR class="table_header"><td width="10%" align="center"><span class="thead"></span></td>
+			<td width="45%" align="center">
+				<span class="thead" languageCode = "127">Device Name</span></td>
+			<td width="45%" align="center">
+				<span class="thead" languageCode = "48">MAC Address</span></td>
+		 </tr>
+			@rt_trusted#
+		 </table></div>
+		<!--access table //--></td>
+	</tr><tr><td align="center">
+	  	<input class="add_bt" type="button" name="Add" value = "Add" onClick="if(add_table()) buttonToDisabled(document.forms[0])" languageCode = "93">
+	&nbsp;
+	<input class="edit_bt" type="button" name="Edit" value = "Edit" onClick="if(edit_table()) buttonToDisabled(document.forms[0])" languageCode = "94">
+	&nbsp;
+	<input class="delete_bt" type="button" name="Delete" value = "Delete" onClick="if(delete_entry()) buttonToDisabled(document.forms[0])" languageCode = "95"></td>
+	</tr><tr><!-- RULE --><td background="liteblue.gif" height="12"></td>
+	</tr><tr><td align="center"></td>
+	</tr></table><input type="hidden" name="h_accessLimit" value="@h_accessLimit#"><!-- ServerEnd --><input type="hidden" name="ruleSelect" value="@ruleSelect#"><input type="hidden" name="h_ruleSelect" value="@h_ruleSelect#"><input type="hidden" name="show_wps_alert" value="@show_wps_alert#"><input type="hidden" name="todo" value="save"><input type="hidden" name="this_file" value="WLG_acl.htm"><input type="hidden" name="next_file" value="WLG_acl.htm"><input type="hidden" name="SID" value="@SID#">
+</div>	
+</form>
+<div id="help" style="display: none">
+		<iframe name="help_iframe" id="helpframe" src="WLG_acl_h.htm" allowtransparency="true" width="100%" frameborder="0">
+		</iframe>
+</div>
+<div id="help_switch" class="close_help">
+	 <img class="help_switch_img" src="image/help/help-bar.gif"><script>
+var help_flag=0;
+if(isIE()){
+	show_hidden_help_top_button(1);
+	var frame_div = top.document.getElementById("formframe_div");
+	frame_div.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+if(get_browser() == "Opera"){
+	window.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+</script><div id="help_space" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_center"><span languageCode="3016">Help Center</span></div>
+<div id="help_button" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_show_hidden"><a href="javascript:void(0)" onClick="show_hidden_help_top_button(help_flag); help_flag++;"><span languageCode="3017">Show/Hide Help Center</span></a></div>
+</div>
+<script language="javascript" type="text/javascript" src="langs.js"></script></body></html>

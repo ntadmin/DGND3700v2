@@ -1,0 +1,186 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-Control" content="no-cache"><meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT"><meta name="description" content="@model_name#_multilangual"><title>NETGEAR Router @model_name#</title><script language="javascript" type="text/javascript" src="string.js"></script><link rel="stylesheet" href="style/form.css"><script language="javascript" type="text/javascript" src="funcs.js"></script><!-- link rel="stylesheet" href="form.css" --><script language="javascript" type="text/javascript" src="utility.js"></script><script language="javascript" type="text/javascript" src="linux.js"></script><script language="javascript" type="text/javascript">
+<!-- hide script from old browsers
+var AlertTimeDisabled = false;
+var AlertHourDisabled = false;
+function disable_am(disable_flag)
+{
+	var cf = document.forms[0];
+	cf.cfAlert_am[0].disabled = disable_flag;
+	cf.cfAlert_am[1].disabled = disable_flag;
+}
+function onEmailEnableChange()
+{
+	var cf = document.forms[0];
+	var disable_flag = !cf.email_notify.checked;
+	setDisabled(disable_flag,
+		cf.email_addr, cf.email_smtp,
+		cf.smtp_auth, cf.auth_user, cf.auth_pwd,
+		cf.alert_blocksite,cf.alert_dos,cf.alert_portscan,
+		cf.cfAlert_Select, cf.cfAlert_Day, cf.cfAlert_Hour, cf.cfAlert_am[0], cf.cfAlert_am[1]);
+	if(!disable_flag) {
+		/* email is enabled, need to call other set disable functions */
+		onAuthChange();
+		OnAlertChange();
+	}
+	return;
+}
+function onAuthChange()
+{
+	var cf = document.forms[0];
+	var disable_flag = !cf.smtp_auth.checked;
+	setDisabled(disable_flag, cf.auth_user, cf.auth_pwd);
+	return;
+}
+function OnAlertChange()
+{
+	var cf = document.forms[0];
+	var index = cf.cfAlert_Select.selectedIndex;
+	if ( (index == 0) || (index == 1) || (index == 4) )
+	{
+//		cf.cfAlert_Day.selectedIndex =  -1;       /* According to WNR2000v2, it should be no blank options, option should be the */
+                                                        /* previous selection */
+		cf.cfAlert_Day.disabled = true;
+//		cf.cfAlert_Hour.selectedIndex= -1;
+		cf.cfAlert_Hour.disabled = true;
+		AlertTimeDisabled = true;
+		AlertHourDisabled = true;
+		disable_am(true);
+	}
+	else if(index == 2)  // daily
+	{
+//		cf.cfAlert_Day.selectedIndex =  -1;
+		cf.cfAlert_Day.disabled = true;
+		cf.cfAlert_Hour.disabled = false;
+		AlertTimeDisabled = true;
+		AlertHourDisabled = false;
+		disable_am(false);
+	}
+	else if(index == 3)  // weekly
+	{
+		cf.cfAlert_Day.disabled = false;
+		cf.cfAlert_Hour.disabled = false;
+		AlertTimeDisabled = false;
+		AlertHourDisabled = false;
+		disable_am(false);
+	}
+}
+function checkData()
+{
+ 	var cf = document.forms[0];
+	var msg = "";
+	var str1 = cf.email_smtp.value ;
+	if(cf.email_notify.checked)
+	{
+	    if(cf.email_smtp.value.indexOf(".")< 0)
+	    {
+		    msg+=getErrorMsgByVar("gsm_msg_mail_inv_smtp_server_ad");
+	    }
+	    if(cf.email_addr.value.indexOf(".")< 0)
+	    {
+		    msg+= getErrorMsgByVar("gsm_msg_mail_inv_email_ad");
+		    cf.email_addr.focus();
+	    }
+	    cf.email_smtp.value = cf.email_smtp.value.replace(/\xA0/g," ");
+	    cf.email_addr.value = cf.email_addr.value.replace(/\xA0/g," ");
+	    if(cf.smtp_auth.checked)
+	    {
+	    	cf.auth_user.value = cf.auth_user.value.replace(/\xA0/g," ");
+	    	cf.auth_pwd.value = cf.auth_pwd.value.replace(/\xA0/g," ");
+	    }
+	}
+// # do not remove this comment!
+	dataToHidden(cf);
+	if (msg.length > 1)
+	{
+		alert(msg);
+		return false;
+	}
+	return true;
+}
+//-->
+</script></head><body bgcolor="#ffffff" onLoad="dataToVisible(document.forms[0]);onEmailEnableChange(); document.forms[0].elements[0].focus();">
+<form name="formname" method="POST" action="setup.cgi@post_par#" onSubmit="buttonToDisabled(document.forms[0])">
+<div class="page_title" languageCode = "162">E-mail</div>
+<div class="fix_button">
+<table width="100%" border="0" cellpadding="0" cellspacing="2"><tr><td nowrap colspan="2" align="center">
+<input class="cancel_bt" type="RESET" name="Cancel" value = "Cancel" onClick="location.href='FW_email.htm';" languageCode = "19">
+&nbsp;
+<input class="apply_bt" type="SUBMIT" name="Apply" value = "Apply" onClick="return checkData()" languageCode = "18">
+</td></tr></table>
+</div>
+<div id="main" class="main_top_button">
+<table border="0" cellpadding="0" cellspacing="3" width="100%"><tr><td colspan="2"><input type="checkbox" name="email_notify" value="email_notify" onChange="onEmailEnableChange();"><b languageCode = "163">Turn E-mail Notification On</b></td>
+	</tr><tr><td colspan="2" background="liteblue.gif" height="12"></td>
+	</tr><tr><td colspan="2"><a href="javascript:loadhelp('FW_email','receive')" tabindex="-1"><b languageCode = "164">Send alerts and logs through e-mail</b></a></td>
+	</tr><tr><td nowrap languageCode = "165">Your Outgoing Mail Server</td>
+		<td nowrap width="50%" align="right"><input type="text" name="email_smtp" value="@email_smtp#" size="24" maxlength="50"></td>
+	</tr><tr><td nowrap languageCode = "166">Send to This E-mail Address</td>
+		<td nowrap width="50%" align="right"><input type="text" name="email_addr" value="@email_addr#" size="24" maxlength="50"></td>
+	</tr><tr><td colspan="2">
+		<input type="checkbox" name="smtp_auth" value="smtp_auth" onChange="onAuthChange();"><span languageCode = "167">My mail server requires authentication</span></td>
+	</tr><tr><td nowrap><img src="spacer.gif" width="20" height="12" border="0"><span languageCode = "153">User Name</span></td>
+		<td nowrap align="right"><input type="text" name="auth_user" size="16" maxlength="63" value="@auth_user#" style="width:130px"></td>
+	</tr><tr><td nowrap><img src="spacer.gif" width="20" height="12" border="0"><span languageCode = "57">Password</span></td>
+		<td nowrap align="right"><input type="password" name="auth_pwd" size="16" maxlength="63" value="@auth_pwd#" style="width:130px"></td>
+	</tr><tr><td colspan="2" background="liteblue.gif" height="12"></td>
+	</tr><tr><td colspan="2"><a href="javascript:loadhelp('FW_email','alert')" tabindex="-1">
+		<b languageCode = "168">Send Alert Immediately</b></a>
+		</td>
+	</tr><tr><td nowrap colspan="2"><input type="checkbox" name="alert_dos" value="alert_dos">
+ 		<span languageCode = "713">If a DoS attack is detected</span></td>
+	</tr><tr><td nowrap colspan="2"><input type="checkbox" name="alert_portscan" value="alert_portscan">
+ 		<span languageCode = "714">If a Port Scan is detected</span></td>
+	</tr><tr><td nowrap colspan="2"><input type="checkbox" name="alert_blocksite" value="alert_blocksite">
+ 		<span languageCode = "106">When someone attempts to visit a blocked site</span></td>
+	</tr><tr><td colspan="2" background="liteblue.gif" height="12"></td>
+	</tr><tr><td colspan="2" nowrap><a href="javascript:loadhelp('FW_email','schedule')" tabindex="-1"><b languageCode = "169">Send logs according to this schedule</b></a></td>
+	</tr><tr><td colspan="2"><select name="cfAlert_Select" size="1" onChange="OnAlertChange();"><option value="full" languageCode = "170">When log is full</option><option value="hourly" languageCode = "171">Hourly</option><option value="daily" languageCode = "172">Daily</option><option value="weekly" languageCode = "173">Weekly</option><option value="none" languageCode = "174">None</option></select></td>
+	</tr><tr><td colspan="2"><span languageCode = "175">Day</span> <select name="cfAlert_Day" size="1" onFocus="if (AlertTimeDisabled) this.blur()"><option value="0" languageCode = "176">Sunday</option><option value="1" languageCode = "177">Monday</option><option value="2" languageCode = "178">Tuesday</option><option value="3" languageCode = "179">Wednesday</option><option value="4" languageCode = "180">Thursday</option><option value="5" languageCode = "181">Friday</option><option value="6" languageCode = "182">Saturday</option></select></td>
+	</tr><tr><td colspan="2"><span languageCode = "183">Time</span> <select name="cfAlert_Hour" size="1" onFocus="if (AlertHourDisabled) this.blur()"><option value="1">1:00</option><option value="2">2:00</option><option value="3">3:00</option><option value="4">4:00</option><option value="5">5:00</option><option value="6">6:00</option><option value="7">7:00</option><option value="8">8:00</option><option value="9">9:00</option><option value="10">10:00</option><option value="11">11:00</option><option value="12">12:00</option></select><input type="radio" name="cfAlert_am" value="am"><span languageCode = "184">am</span> <input type="radio" name="cfAlert_am" value="pm"><span languageCode = "185">pm</span></td>
+	</tr><tr><td colspan="2" background="liteblue.gif" height="12"></td>
+	</tr><tr><td colspan="2" align="center"></td>
+	</tr></table>
+<!-- ServerStart --><input type="hidden" name="h_email_notify" value="@h_email_notify#">
+<input type="hidden" name="h_smtp_auth" value="@h_smtp_auth#">
+<!--input type="hidden" name="h_alert_dos" value="@h_alert_dos#"-->
+<!--input type="hidden" name="h_alert_portscan" value="@h_alert_portscan#"-->
+<input type="hidden" name="h_alert_dos" value="@h_alert_dos#">
+<input type="hidden" name="h_alert_portscan" value="@h_alert_portscan#">
+<input type="hidden" name="h_alert_blocksite" value="@h_alert_blocksite#">
+<input type="hidden" name="h_cfAlert_Select" value="@h_cfAlert_Select#">
+<input type="hidden" name="h_cfAlert_Day" value="@h_cfAlert_Day#">
+<input type="hidden" name="h_cfAlert_Hour" value="@h_cfAlert_Hour#">
+<input type="hidden" name="h_cfAlert_am" value="@h_cfAlert_am#">
+<!-- ServerEnd --><input type="hidden" name="todo" value="save">
+<input type="hidden" name="this_file" value="FW_email.htm">
+<input type="hidden" name="next_file" value="FW_email.htm">
+<input type="hidden" name="SID" value="@SID#">
+</div>
+</form>
+<p></p>
+<div id="help" style="display: none">
+		<iframe name="help_iframe" id="helpframe" src="FW_email_h.htm" allowtransparency="true" width="100%" frameborder="0">
+		</iframe>
+</div>
+<div id="help_switch" class="close_help">
+	 <img class="help_switch_img" src="image/help/help-bar.gif"><script>
+var help_flag=0;
+if(isIE()){
+	show_hidden_help_top_button(1);
+	var frame_div = top.document.getElementById("formframe_div");
+	frame_div.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+if(get_browser() == "Opera"){
+	window.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+</script><div id="help_space" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_center"><span languageCode="3016">Help Center</span></div>
+<div id="help_button" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_show_hidden"><a href="javascript:void(0)" onClick="show_hidden_help_top_button(help_flag); help_flag++;"><span languageCode="3017">Show/Hide Help Center</span></a></div>
+</div>
+<script language="javascript" type="text/javascript" src="langs.js"></script></body></html>

@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-Control" content="no-cache"><meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT"><meta name="description" content="@model_name#_multilangual"><title>NETGEAR Router @model_name#</title><script language="javascript" type="text/javascript" src="string.js"></script><link rel="stylesheet" href="style/form.css"><script language="javascript" type="text/javascript" src="funcs.js"></script><!-- link rel="stylesheet" href="form.css" --><script language="javascript" type="text/javascript" src="utility.js"></script><script language="javascript" type="text/javascript" src="linux.js"></script><script language="javascript" type="text/javascript">
+<!-- hide script from old browsers
+//-->
+var enabled_modem=@modem_flag#;
+function loadmenu()
+{
+	if(top.is_advindex_pg==1)
+		top.load_menu('modem');
+}
+</script></head><body bgcolor="#ffffff" onLoad="dataToVisible(document.forms[0]);document.forms[0].elements[0].focus();loadmenu();" onUnload="closeWin(datSubWinVar);">
+<form method="POST" action="setup.cgi@post_par#">
+<div class="page_title" languageCode = "338">Device Mode</div>
+<div class="fix_button">
+<table width="100%" border="0" cellpadding="0" cellspacing="2"><tr><td nowrap colspan="2" align="center">
+<input class="cancel_bt" type="RESET" name="Cancel" value = "Cancel" onClick="stopAnimation()" languageCode = "19">
+&nbsp;
+<input class="apply_bt" type="SUBMIT" name="Apply" value = "Apply" onClick="dataToHidden(this.form);" languageCode = "18">
+</td></tr></table>
+</div>
+<div id="main" class="main_top_button">
+<table border="0" cellpadding="0" cellspacing="3" width="100%"><tr><td width="50%" align="left" nowrap languageCode = "127">Device Name</td>
+		<td width="50%" align="left">@device_name#</td>
+	</tr><tr><td width="50%" align="left" nowrap languageCode = "338">Device Mode</td>
+		<td width="50%" align="left"><select name="device_mode" size="1"><option value="router" languageCode = "339">Router (Modem + Router)</option><option value="modem" languageCode = "340">Modem (Modem only)</option></select></td>
+	</tr><tr><!-- RULE --><td colspan="2" background="liteblue.gif" height="12"></td>
+	</tr><tr><td colspan="2" align="center"></td>
+	</tr></table><input type="hidden" name="todo" value="save"><input type="hidden" name="this_file" value="mode.htm"><input type="hidden" name="next_file" value="mode.htm"><!-- ServerStart --><input type="hidden" name="h_device_mode" value="@h_device_mode#"><!-- ServerEnd --><input type="hidden" name="SID" value="@SID#">
+</div>	
+</form>
+<p></p>
+<div id="help" style="display: none">
+		<iframe name="help_iframe" id="helpframe" src="mode_h.htm" allowtransparency="true" width="100%" frameborder="0">
+		</iframe>
+</div>
+<div id="help_switch" class="close_help">
+	 <img class="help_switch_img" src="image/help/help-bar.gif"><script>
+var help_flag=0;
+if(isIE()){
+	show_hidden_help_top_button(1);
+	var frame_div = top.document.getElementById("formframe_div");
+	frame_div.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+if(get_browser() == "Opera"){
+	window.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+</script><div id="help_space" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_center"><span languageCode="3016">Help Center</span></div>
+<div id="help_button" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_show_hidden"><a href="javascript:void(0)" onClick="show_hidden_help_top_button(help_flag); help_flag++;"><span languageCode="3017">Show/Hide Help Center</span></a></div>
+</div>
+<script language="javascript" type="text/javascript" src="langs.js"></script></body></html>

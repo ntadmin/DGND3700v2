@@ -1,0 +1,190 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><link rel="stylesheet" href="style/form.css">
+<script language=javascript type=text/javascript src=funcs.js></script>
+<script language=javascript type=text/javascript src=ipv6.js></script>
+<script language=javascript type=text/javascript src=ipv6_tunnel.js></script>
+<script language="javascript" type="text/javascript" src="string.js"></script>
+<title>NETGEAR Router WNDR3800 </title><meta http-equiv=content-type content='text/html; charset=UTF-8'>
+<meta content="MSHTML 6.00.2800.1141" name="GENERATOR"></head>
+
+<body onLoad="loadvalue();" bgcolor=#ffffff>
+<form method="POST" action="setup.cgi@post_par#">
+<input type=hidden name=submit_flag value="ipv6_tunnel">
+
+<div class="page_title"><span languageCode = "1203">IPv6</span></div>
+<div class="fix_button">
+<TABLE width=100% border=0 cellpadding=0 cellspacing=2>
+<TR>
+        <TD nowrap colspan=2 align=center>
+	<input class="common_bt" type='button' name='Refresh' value='Status Refresh' onClick='location.href="IPv6_index.htm";' languageCode = "1204">&nbsp;&nbsp;<input class="cancel_bt" type='button' name='Cancel' value='Cancel' onClick='location.href="IPv6_tunnel.htm";' languageCode = "1205">&nbsp;&nbsp;<input class="apply_bt" type='submit' name='Apply' value='Apply' onClick="return check_ipv6_6to4(document.forms[0])"; languageCode = "1206"></TD>
+</TR>
+</TABLE>
+</div>
+<div id="main" class="main_top_button"> 
+<table width="100%" border="0" cellpadding="0" cellspacing="3">
+<tr><td colSpan="2"><h1></h1></td></tr>
+
+
+<script>
+//var internet_basic_type = "1";
+//var internet_ppp_type = "1";
+
+//var ipv6_6to4_relay_ip = "0.0.0.0";
+//var ipv6_ip_assign = "0";
+//var ipv6_interface_type = "@ipv6_interface_type#";
+//var ipv6_interface_id = "0:0:0:0";
+//var ipv6_cone_fitering = "0";
+
+//var ipv6_lan_ip = "";
+
+function loadvalue()
+{
+	var cf = document.forms[0];
+	var i;
+
+	/* Remote 6to4 Relay Router */
+	//var ipv6_6to4_relay_type = "0";
+	if( cf.ipv6_hidden_6to4_relay_type.value == "0" )
+	{
+		cf.remote[0].checked = true;
+	}
+	else if( cf.ipv6_hidden_6to4_relay_type.value == "1" )
+	{
+		cf.remote[1].checked = true;
+	}
+	setRemote();
+	var relay_array = cf.ipv6_hidden_6to4_relay.value.split('.');
+	for( i=0; i<relay_array.length; i++ )
+	{
+		cf.Romte_IP[i].value = relay_array[i];
+	}
+	
+	/* load the LAN Setup items' value */
+	ipv6_load_common(cf);
+}
+</script>
+
+<input type="hidden" name="ipv6_hidden_6to4_relay_type" value="@ipv6_hidden_6to4_relay_type#">
+<input type="hidden" name="ipv6_hidden_6to4_relay" value="@ipv6_hidden_6to4_relay#">
+<input type="hidden" name="ipv6_hidden_enable_interface" value="@ipv6_hidden_enable_interface#">
+<input type="hidden" name="ipv6_hidden_interface_id" value="@ipv6_hidden_interface_id#">
+<input type="hidden" name="ipv6_hidden_filtering" value="@ipv6_hidden_filtering#">
+<input type="hidden" name="ipv6_hidden_ip_assign" value="@ipv6_hidden_ip_assign#">
+<input type="hidden" name="ipv6_hidden_con_type" value="@ipv6_hidden_con_type#">
+<input type="hidden" name="ipv6_hidden_dod_disable" value="@ipv6_hidden_dod_disable#">
+
+<TABLE cellspacing=5 cellPadding=0 width=100% border=0>
+<TR>
+        <TD nowrap>
+        <A tabindex=-1 href="javascript:loadhelp('_IPv6_tunnel','internet')"><B><span languageCode = "1207">Internet Connection Type</span></B></A>
+        </TD>
+        <TD nowrap align=right>
+        <select name="con_type" onChange="change_ipv6(document.forms[0].con_type.value)">
+		<option value="disabled" languageCode = "1208">Disabled</option>
+                <option value="autoDetect" languageCode = "1209">Auto Detect</option>
+		<option value="autoConfig" languageCode = "1210">Auto Config</option>
+                <option value="6to4" selected languageCode = "1211">6to4 Tunnel</option>
+                <option value="bridge" languageCode = "1212">Pass Through</option>
+                <option value="fixed" languageCode = "1213">Fixed</option>
+                <option value="dhcp" languageCode = "1214">DHCP</option>
+                <option value="pppoe" languageCode = "1215">PPPoE</option>
+        </select>
+        </TD>
+</TR>
+<TR><TD colspan=2><img src=liteblue.gif width=100% height=12></TD></TR>
+<TR>
+	<TD nowrap><A tabindex=-1 href="javascript:loadhelp('_IPv6_tunnel','remote_relay')"><B><span languageCode = "1240">Remote 6to4 Relay Router</span></B></A></TD>
+</TR>
+<TR>
+	<TD nowrap colspan=2><input type="radio" name="remote" value="0" onClick="setRemote()"><span languageCode = "1241">Auto</span></TD>
+</TR>
+<TR>
+	<TD nowrap><input type="radio" name="remote" value="1" onClick="setRemote()"><span languageCode = "1242">Static IP Address</span></TD>
+	<TD nowrap align=right>
+	<input type="text" name="Romte_IP"  size="3" autocomplete="off" maxlength="3" onFocus="this.select();" onkeydown="keydown(event,this);" onKeyPress="return getkey('num',event);" onkeyup="keyup(event,this);" >.
+	<input type="text" name="Romte_IP"  size="3" autocomplete="off" maxlength="3" onFocus="this.select();" onkeydown="keydown(event,this);" onKeyPress="return getkey('num',event);" onkeyup="keyup(event,this);" >.
+	<input type="text" name="Romte_IP"  size="3" autocomplete="off" maxlength="3" onFocus="this.select();" onkeydown="keydown(event,this);" onKeyPress="return getkey('num',event);" onkeyup="keyup(event,this);" >.
+	<input type="text" name="Romte_IP"  size="3" autocomplete="off" maxlength="3" onFocus="this.select();" onkeydown="keydown(event,this);" onKeyPress="return getkey('num',event);" onkeyup="keyup(event,this);" >
+</TR>
+<TR><TD colspan=2><img src=liteblue.gif width=100% height=12></TD></TR>
+<TR>
+        <TD nowrap><A tabindex=-1 href="javascript:loadhelp('_IPv6_tunnel','lan_ipaddr')"><B><span languageCode = "1218">LAN Setup</span></B></A></TD>
+</TR>
+<TR>
+        <TD nowrap><A tabindex=-1 href="javascript:loadhelp('_IPv6_tunnel','lan_ipaddr')"><B><span languageCode = "1219">Router's IPv6 Address On LAN</span></B></A></TD>
+</TR>
+<tr><td nowrap colspan=2> 
+<img src="spacer.gif" width="20" height="12" border="0">@ipv6_lan_ip# </td>
+</tr>
+<TR>
+        <TD nowrap><A tabindex=-1 href="javascript:loadhelp('_IPv6_tunnel','lan_ip_assign')"><span languageCode = "1220">IP Address Assignment</span></A></TD>
+</TR>
+<TR>
+        <TD nowrap colspan=2><input type="radio" name="ipv6_lan_ip_assign" value="1"><span languageCode = "1221">Use DHCP Server</span></TD>
+</TR>
+<TR>
+        <TD nowrap colspan=2><input type="radio" name="ipv6_lan_ip_assign" value="0"><span languageCode = "1210">Auto Config</span></TD>
+</TR>
+<TR>
+        <TD nowrap colspan=2>
+        <BR>
+        <input type="checkbox" name="enable_interface" value="" onClick="set_interface();">
+	<A tabindex=-1 href="javascript:loadhelp('_IPv6_auto','interface_id')"><span languageCode = "1222">Use This Interface ID</span></A>
+        </TD>
+</TR>
+<TR>
+        <TD nowrap colspan=2><img src=spacer.gif width=20 height=12 border=0>
+	<input type="text" name="IP_interface" size="3" autocomplete="off" maxlength="4" onFocus="this.select();" onkeydown="keydown(event,this);" onKeyPress="return getkeya(event);" onkeyup="keyup_n(event,this,4);">:
+        <input type="text" name="IP_interface" size="3" autocomplete="off" maxlength="4" onFocus="this.select();" onkeydown="keydown(event,this);" onKeyPress="return getkeya(event);" onkeyup="keyup_n(event,this,4);">:
+        <input type="text" name="IP_interface" size="3" autocomplete="off" maxlength="4" onFocus="this.select();" onkeydown="keydown(event,this);" onKeyPress="return getkeya(event);" onkeyup="keyup_n(event,this,4);">:
+        <input type="text" name="IP_interface" size="3" autocomplete="off" maxlength="4" onFocus="this.select();" onkeydown="keydown(event,this);" onKeyPress="return getkeya(event);" onkeyup="keyup_n(event,this,4);">
+        </TD>
+</TR>
+<TR><TD colspan=2><img src=liteblue.gif width=100% height=12></TD></TR>
+<TR>
+        <TD nowrap>
+        <A tabindex=-1 href="javascript:loadhelp('_IPv6_tunnel','nat')"><B><span languageCode = "1223">IPv6 Filtering</span></B></A>
+        </TD>
+        <TD nowrap align=right>
+        <input type="radio" name="IPv6Filtering" value="Secured"><span languageCode = "1224">Secured</span>&nbsp;
+        <input type="radio" name="IPv6Filtering" value="Open"><span languageCode = "1225">Open</span>&nbsp;&nbsp;
+        </TD>
+</TR>
+<TR><TD colspan=2><img src=liteblue.gif width=100% height=12></TD></TR>
+</TABLE>
+</div>
+<div id="help" style="display: none">
+		<iframe name="help_iframe" id="helpframe" src="_IPv6_tunnel_help.html" allowtransparency="true" width="100%" frameborder="0" >
+		</iframe>
+</div>
+
+<div id=help_switch class="close_help" >
+	 <img class="help_switch_img" src="image/help/help-bar.gif"><script>
+var help_flag=0;
+if(isIE()){
+	show_hidden_help_top_button(1);
+	var frame_div = top.document.getElementById("formframe_div");
+	frame_div.onresize =  function(){
+		if( help_flag == 0 )  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+if(get_browser() == "Opera"){
+	window.onresize =  function(){
+		if( help_flag == 0 )  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+</script>
+<div id="help_space" onclick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_center"><span languageCode = "3016">Help Center</span></div>
+<div id="help_button" onclick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_show_hidden"><a href="javascript:void(0)" onclick="show_hidden_help_top_button(help_flag); help_flag++;"><span languageCode = "3017">Show/Hide Help Center</span></a></div>
+</div>	
+
+<input type="hidden" name="todo" value="save">
+<input type="hidden" name="this_file" value="IPv6_tunnel.htm">
+<input type="hidden" name="next_file" value="IPv6_tunnel.htm">
+</FORM>
+<script language="javascript" type="text/javascript" src="langs.js"></script>
+</BODY>
+</HTML>
+

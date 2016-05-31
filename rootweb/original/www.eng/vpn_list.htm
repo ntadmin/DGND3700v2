@@ -1,0 +1,187 @@
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META http-equiv="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">	
+<meta HTTP-EQUIV="Expires" CONTENT="Mon, 06 Jan 1990 00:00:01 GMT"> 
+
+<meta name="description" content="@model_name#_multilangual">
+<title>NETGEAR Router @model_name#</title>
+<link rel="stylesheet" href="style/form.css">
+<script language="javascript" type="text/javascript" src="funcs.js"></script>
+
+<STYLE TYPE="text/javascript">
+classes.num.all.fontFamily = "Courier";
+classes.num.all.fontSize = "10pt" ;
+</style>
+<script language="javascript" type="text/javascript" src="string.js"></script>
+<script language="javascript" type="text/javascript" src="utility.js"></script>
+<script language="javascript" type="text/javascript" src="linux.js"></script>
+<script language="javascript" type="text/javascript">
+<!-- hide script from old browsers
+
+function initScrn()
+{
+	dataToVisible(document.forms[0]);
+	setChBoxes();
+}
+
+function setChBoxes()
+{
+	var cf = document.forms[0]; 	var i;  var vref;
+	for (i = 0; i < cf.vpn_enable.value.length; i++)
+	{
+		if (vref = eval("cf.vpncb" + i))
+			vref.checked = (cf.vpn_enable.value.charAt(i) == "1" ) ? true : false;
+	}
+}
+
+function saveEnable()
+{
+	var cf = document.forms[0];
+	var form_size = cf.elements.length;
+	cf.vpn_enable.value = "";
+	
+	for (var i = 0; i < form_size; i++)
+	{
+		if (cf.elements[i].type == "checkbox")
+		{
+		    if(cf.elements[i].name.substring(0,5)=="vpncb")
+		        cf.vpn_enable.value+= (cf.elements[i].checked) ? "1" : "0";
+	     }
+	}
+}
+
+function checkData()
+{
+    var cf = document.forms[0];
+	cf.todo.value = "save";
+	saveEnable();
+	dataToHidden(cf); 
+	return true;	
+}
+
+function checkPolicyNum()
+{
+    	var cf = document.forms[0];
+	if(!cf.vpncb7)
+		stdAction(cf,'newfile');
+	else
+		alert(getErrorMsgByVar("gsm_msg_vpn_table_full"));
+	return true;
+}
+
+-->
+</script>
+</head>
+<body bgcolor="#ffffff" onLoad="initScrn();disableForms(@disable_form#);">
+<form method="POST" action="setup.cgi@post_par#">
+<div class="page_title"><span languageCode="10430">VPN Policies</span></div>
+<div class="fix_button">
+<table width="100%" border="0" cellpadding="0" cellspacing="2"><tr><td nowrap colspan="2" align="center">
+<input class="cancel_bt" type="button"  name="back" value="Back" onClick="location.href='setup.cgi?next_file=vpn_list.htm'" languageCode = "115">
+&nbsp;
+<input class="cancel_bt" type="RESET" name="Cancel" value = "Cancel" onClick="setTimeout('initScrn()',250);" languageCode = "19">
+&nbsp;
+<input class="apply_bt" type="SUBMIT" name="Apply" value = "Apply" onClick="return checkData();" languageCode = "18">
+</td></tr></table>
+</div>
+<div id="main" class="main_top_button">
+<table border="0" cellpadding="0" cellspacing="3" width="100%">
+<tr>
+	<td colspan="2">
+		<a href="javascript:loadhelp('_vpnl','table')"><b languageCode="10431">Policy Table</b></a>
+	</td>
+</tr>
+
+<tr>
+	<td colspan="2">
+		<TABLE class="tables" border="0" cellpadding="2" cellspacing="0" width="100%">
+		<tr class="table_header">
+			<td nowrap align="center" width="6%"><span class="thead">&nbsp;</span></td>
+			<td nowrap align="center" width="6%"><span class="thead"># </span>	</td>
+			<td nowrap align="center"><span class="thead" languageCode="210">Enable</span></td>
+			<td nowrap align="center"><span class="thead" languageCode="352">Name</span></td>
+			<td nowrap align="center"><span class="thead" languageCode="442">Type</span></td>
+			<td nowrap align="center"><span class="thead" languageCode="534">Local</span></td>
+			<td nowrap align="center"><span class="thead" languageCode="123">Remote</span></td>
+			<td nowrap align="center"><span class="thead" languageCode="10432">ESP</span></td>
+		</tr>
+@vpn_list#
+
+		</table>
+</td>
+</tr>
+
+<tr>  <!-- NRule -->
+  <td colspan="2" background="liteblue.gif" height="12">&nbsp; </td>
+</tr>
+
+<tr>
+	<td colspan="2" align="center">
+ <input class="edit_bt" type="button" name="Edit" value="Edit" onClick="radioTable(this.form,this.form.ruleSelect,'edit')" languageCode = "94">
+ &nbsp;
+  <input class="delete_bt" type="button" name="Delete" value="Delete" onClick="radioTable(this.form,this.form.ruleSelect,'delete')" languageCode = "95"></td>
+	</td>
+</tr>
+<tr>  <!-- RULE -->
+  <td colspan="2" background="liteblue.gif" height="12">&nbsp; </td>
+</tr>
+
+<tr>
+	<td colspan="2" align="center">
+	<BR>
+		<input class="long_add_bt" type="button" name="add_auto" value=" Add Auto Policy " onClick="checkPolicyNum();self.location.href='setup.cgi?next_file=vpn_auto.htm'" languageCode="10433"> &nbsp;
+		<input class="long_add_bt" type="button" name="add_manual" value="Add Manual Policy" onClick="checkPolicyNum();self.location.href='setup.cgi?next_file=vpn_man.htm'" languageCode="10434">
+	</td>
+</tr>
+
+<!--
+<tr>
+	<td colspan="2" align="center">
+	<BR>
+		<input type="button" name="add_auto" value=" Add Auto Policy " onClick="location.href='vpn_auto.htm'"> &nbsp;
+		<input type="button" name="add_manual" value="Add Manual Policy" onClick="location.href='vpn_man.htm'">
+	</td>
+</tr>
+-->
+
+</table>
+
+<input type="hidden" name="vpn_enable" value="@vpn_enable#">
+<input type="hidden" name="h_ruleSelect" value="@h_ruleSelect#">
+
+<input type="hidden" name="todo" value="save">
+<input type="hidden" name="this_file" value="vpn_list.htm">
+<input type="hidden" name="next_file" value="vpn_list.htm">
+</div>	
+</form>
+<div id="help" style="display: none">
+		<iframe name="help_iframe" id="helpframe" src="h_vpnl.htm" allowtransparency="true" width="100%" frameborder="0">
+		</iframe>
+</div>
+<div id="help_switch" class="close_help">
+	 <img class="help_switch_img" src="image/help/help-bar.gif"><script>
+var help_flag=0;
+if(isIE()){
+	show_hidden_help_top_button(1);
+	var frame_div = top.document.getElementById("formframe_div");
+	frame_div.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+if(get_browser() == "Opera"){
+	window.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+</script><div id="help_space" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_center"><span languageCode="3016">Help Center</span></div>
+<div id="help_button" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_show_hidden"><a href="javascript:void(0)" onClick="show_hidden_help_top_button(help_flag); help_flag++;"><span languageCode="3017">Show/Hide Help Center</span></a></div>
+</div>
+<script language="javascript" type="text/javascript" src="langs.js"></script>
+</body>
+</html>

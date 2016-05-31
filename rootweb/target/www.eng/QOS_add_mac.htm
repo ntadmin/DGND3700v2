@@ -1,0 +1,253 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-Control" content="no-cache"><meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT"><meta name="description" content="@model_name#_multilangual"><title>NETGEAR Router @model_name#</title><script language="javascript" type="text/javascript" src="string.js"></script><link rel="stylesheet" href="style/form.css"><script language="javascript" type="text/javascript" src="funcs.js"></script><!-- link rel="stylesheet" href="form.css" --><style type="text/javascript">
+classes.num.all.fontFamily = "Courier";
+classes.num.all.fontSize = "10pt" ;
+</style><script language="javascript" type="text/javascript" src="utility.js"></script><script language="javascript" type="text/javascript" src="linux.js"></script><script language="javascript" type="text/javascript" src="qos.js"></script><script language="javascript" type="text/javascript">
+<!--
+/* parseAllPolicy() in qos.js will parser these format values */
+var apply_qos_rules = "@apply_qos_adv_rules#";  /* String format. ONLY used in mac page */
+var apply_qos_rules_list="";                    /* sigle array format  []  */
+var apply_qos="";                               /* double-array format [][]*/
+var predef_qos_rules = "@predef_qos_rules#";    /* String format */
+var predef_qos_rule_list="";                    /* sigle array format  []  */
+var predef_qos="";                              /* double-array format [][]*/
+var apply_qos_rules_count=0;
+var predef_qos_rules_count=0;
+var qn = parseInt("@qn#", 10);
+var qos_prio_level = "@qos_prio_level#";
+var ed_mode_flag=0;
+var rad_mac_name = "rad_mac";
+var tab_mac_name = "tb_mac";
+function checkNameBlank()
+{
+ 	var cf = document.forms[0];
+	if(cf.name.value.length< 1)
+	{
+		alert(getErrorMsgByVar("gsm_qos_blnk"));
+		return false;
+	}
+	if(cf.dev_name.value.length< 1)
+	{
+		alert(getErrorMsgByVar("gsm_msg_dev_name_blank"));
+		return false;
+	}
+	return true;
+}
+function prioToPhrase(prio){
+    var str_priorty = new Array("Highest", "High", "Normal", "Low");
+    return str_priorty[prio];
+}
+function updateMacTable(rdname, clickfxn){
+	var body="",header="", footer="";
+	var qospolicy, prio, dev_name="";
+	var mac;
+	var i;
+	var rule;
+    header+="<table border='1' cellpadding='0' cellspacing='0' width='100%'>";
+    header+="<tr>";
+    header+="  <td align='center' width='5%'><span class='thead'>&nbsp;";
+    header+="  <td align='center' width='25%'><span class='thead'>"+getErrorMsgByVar("gsm_msg_qos_policy")+"";
+    header+="  <td align='center' width='15%'><span class='thead'>"+getErrorMsgByVar("gsm_msg_qos_priority")+"";
+    header+="   <td align='center'width='30%'><span class='thead'>"+getErrorMsgByVar("gsm_msg_qos_device_name")+"";
+    header+="   <td align='center'width='25%'><span class='thead'>"+getErrorMsgByVar("gsm_msg_qos_mac_ad")+"";
+    header+="";
+	for(i=0; i<apply_qos.length; i++) {
+	    rule = apply_qos[i];
+	    if(rule[_category] != CATEGORY_MAC) {
+	        continue;
+	    }
+        qospolicy = rule[_name];
+        qospolicy = qospolicy.replace(/</g,"&lt;");
+        qospolicy = qospolicy.replace(/>/g,"&gt;");
+        prio = prioToPhrase(rule[_prio]);
+        dev_name = rule[_dev_name];
+        mac = rule[_src];
+        dev_name = dev_name.replace(/</g,"&lt;");
+        dev_name = dev_name.replace(/>/g,"&gt;");
+        body+="<tr><td align='center'><input type='radio' name='"+rdname+"' value="+i+" onClick='"+clickfxn+"'>";
+        body+="<td align='center'><span class='ttext'>"+qospolicy+"";
+        body+="<td align='center'><span class='ttext'>"+prio+"";
+        body+="<td align='center'><span class='ttext'>"+dev_name+"";
+        body+="<td align='center'><span class='ttext'>"+mac+"";
+        body+="";
+    }
+	return  (header+body+footer);
+}
+function macX2mac()
+{
+    var cf = document.forms[0];
+    mac6to1(cf.mac, cf.mac1, cf.mac2, cf.mac3, cf.mac4, cf.mac5, cf.mac6);
+}
+function mac2macX()
+{
+    var cf = document.forms[0];
+    mac1to6(cf.mac, cf.mac1, cf.mac2, cf.mac3, cf.mac4, cf.mac5, cf.mac6);
+}
+function addmac_click_apply()
+{
+    macX2mac();
+    return click_apply();
+}
+function after_set_del_mac(){
+ 	var cf = document.forms[0];
+	cf.name.value = ""
+	cf.mac.value = ""
+	cf.dev_name.value = "";
+	cf.priority.value = "normal";//normal
+	mac2macX();
+	cf.edit_mac.disabled = true;
+	cf.del_mac.disabled = true;
+}
+function click_update_mac(){
+ 	var cf = document.forms[0];
+	doing_add_mac = false;
+	macX2mac();
+	if(!mac_section_valid())
+		return false;
+    if(!checkNameBlank())
+        return false;
+	apply_qos[selectIdx][_name] = cf.name.value;
+	apply_qos[selectIdx][_src] = cf.mac.value;
+	apply_qos[selectIdx][_dev_name] = cf.dev_name.value;
+	apply_qos[selectIdx][_prio] = cf.priority.selectedIndex;
+	document.getElementById(tab_mac_name).innerHTML = updateMacTable(rad_mac_name, "rad_click_mac(this)");
+	after_set_del_mac();
+}
+function click_del_mac(){
+ 	var cf = document.forms[0];
+	if (selectIdx < 0) {
+        window.location='FW_del_nonselect.htm';
+        return false;
+    }
+	apply_qos.splice(selectIdx, 1);
+	apply_qos_rules_count = apply_qos.length;
+	document.getElementById(tab_mac_name).innerHTML = updateMacTable(rad_mac_name, "rad_click_mac(this)");
+	after_set_del_mac();
+}
+function click_add_mac(){
+ 	var cf = document.forms[0];
+	var new_rule="", name="",srcpart="",dev_name="",prio="";
+	var index;
+	var i;
+	doing_add_mac = true;
+	macX2mac();
+	for(i=0;i<cf.mac.value.length;i++)
+	{
+		var ch = cf.mac.value.substring(i,i+1);
+		if(ch == "f" || ch == "F" || ch == "0" || ch == ":" || ch == "-")
+			continue;
+		else
+			break;
+	}
+	if(i == cf.mac.value.length)
+	{
+		alert(getErrorMsgByVar("gsm_msg_qos_inv_mac_format"));
+		return false;
+	}
+	if(!mac_section_valid())
+		return false;
+    if(!checkNameBlank())
+        return false;
+        
+    if(policy_name_is_exist()) {
+        alert(getErrorMsgByVar("gsm_msg_qos_conflict_predef_name"));
+        return false;
+    }
+	name = cf.name.value;
+	srcpart  = cf.mac.value;
+	dev_name = cf.dev_name.value; //reserve
+	prio = cf.priority.selectedIndex;
+	new_rule = new Array(CATEGORY_MAC, name, srcpart, dev_name, prio);
+	if(apply_qos.length==0 || apply_qos=="")
+		apply_qos = new Array(new_rule);
+	else
+		apply_qos.push(new_rule);
+	apply_qos_rules_count = apply_qos.length;
+	document.getElementById(tab_mac_name).innerHTML = updateMacTable(rad_mac_name, "rad_click_mac(this)");
+}
+function rad_click_mac(selobj){
+	var cf = document.forms[0];
+	selectIdx = parseInt(selobj.value, 10);
+	cf.mac.value = apply_qos[selectIdx][_src];
+	cf.name.value = apply_qos[selectIdx][_name];
+	cf.dev_name.value = apply_qos[selectIdx][_dev_name];
+	cf.priority.selectedIndex = apply_qos[selectIdx][_prio];
+	mac2macX();
+	cf.edit_mac.disabled = false;
+	cf.del_mac.disabled = false;
+}
+function loadSettings()
+{
+	var cf = document.forms[0];
+	cf.edit_mac.disabled = true;
+	cf.del_mac.disabled = true;
+	document.getElementById(tab_mac_name).innerHTML =  updateMacTable(rad_mac_name, "rad_click_mac(this)");
+}
+//-->
+</script></head><body bgcolor="#ffffff" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="parseAllPolicy();loadSettings();">
+<form name="formname" method="POST" action="setup.cgi@post_par#" onSubmit="buttonToDisabled(document.forms[0])">
+<div class="page_title" languageCode = "364">QoS - Priority Rules</div>
+<div class="fix_button">
+<table width="100%" border="0" cellpadding="0" cellspacing="2"><tr><td nowrap colspan="2" align="center">
+<input class="cancel_bt" type="button" name="Cancel" value = "Cancel" onClick="location.href='QOS_list.htm'" languageCode = "19">
+&nbsp;
+<input class="apply_bt" type="submit" name="Apply" value = "Apply" onClick="after_set_del_mac();return addmac_click_apply();" languageCode = "18">
+</td></tr></table>
+</div>
+<div id="main" class="main_top_button">
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td colspan="2" tabindex="-1"><b languageCode = "365">Priority</b></td></tr><tr><td width="50%" size="1" languageCode = "366">QoS Policy for</td>
+ <td width="50%">
+ <input type="text" name="name" size="33" maxlength="32"></td>
+</tr><tr><td width="50%" tabindex="-1" languageCode = "367">Priority Category</td>
+ <td width="50%">
+    <select name="category" size="1" onChange="show_qos_apps();"><option value="applications" languageCode = "368">Applications</option><option value="game" languageCode = "369">Online Gaming</option><option value="port" languageCode = "370">Ethernet LAN Port</option><option value="mac" selected languageCode = "48">MAC Address</option></select></td>
+</tr><tr><td colspan="2" background="liteblue.gif" height="12">&nbsp; </td></tr><tr><td colspan="2" tabindex="-1"><b languageCode = "384">MAC Device List</b></td></tr><tr><td colspan="2"><span id="tb_mac"></span></td>
+    </tr><!--
+       <table border=1 cellpadding=2 cellspacing=0 width=100%>
+    <tr>
+        <td nowrap align=center width=6%>&nbsp; </td>
+        <td nowrap align=center><span class=thead>QoS Policy</span></td>
+        <td nowrap align=center><span class=thead>Priority</span></td>
+        <td nowrap align=center><span class=thead>Device Name</span></td>
+        <td nowrap align=center><span class=thead>MAC Address</span></td>
+   </tr>
+   <tr>
+    <td nowrap align="center"><input type="radio" value="#0" name="MacSelect" onclick="sel('18','Pri_MAC_57A98C','MyNB','00:16:41:57:A9:8C','1')"></td>
+    <td nowrap align=center><span class=thead>Pri_MAC_57A98C</span></td>
+    <td nowrap align=center><span class=ttext>Normal</span></td>
+    <td nowrap align=center><span class=ttext>MyNB</span></td>
+    <td nowrap align=center><span class=ttext>00:16:41:57:A9:8C</span></td>
+   </tr>
+   </table>
+--><tr><td colspan="2" background="liteblue.gif" height="12">&nbsp;</td></tr>
+<!--
+<tr><td width="50%" languageCode="83">MAC Address</td><td><input type="text" class="num" name="mac" value="" size="17" maxlength="17"></td></tr><tr><td width="50%" languageCode="192">Device Name</td><td width="50%"><input type="text" name="dev_name" size="33" maxlength="32"></td></tr><tr><td width="50%" tabindex="-1" languageCode="578">Priority</td>
+-->
+<tr>
+    <td width="50%" languageCode = "48">MAC Address</td>
+    <td><input type="text" name="mac1" class="num" size="3" value="" maxlength="2" > : 
+        <input type="text" name="mac2" class="num" size="3" value="" maxlength="2" > : 
+        <input type="text" name="mac3" class="num" size="3" value="" maxlength="2" > : 
+        <input type="text" name="mac4" class="num" size="3" value="" maxlength="2" > : 
+        <input type="text" name="mac5" class="num" size="3" value="" maxlength="2" > : 
+        <input type="text" name="mac6" class="num" size="3" value="" maxlength="2" >
+    </td>
+</tr>
+<tr><td width="50%" languageCode = "127">Device Name</td><td width=50%><input type=text name=dev_name size=33 maxlength=32></td></tr>
+<tr>
+<td width="50%" tabindex="-1"  languageCode = "365">Priority</td>
+<td width="50%">
+<select name="priority"><option value="highest" languageCode = "377">Highest</option><option value="high" languageCode = "378">High</option><option value="normal" selected languageCode = "379">Normal</option><option value="low" languageCode = "380">Low</option></select></td>
+</tr><tr><!-- RULE --><td colspan="2" background="liteblue.gif" height="12">&nbsp;</td>
+</tr><tr><td colspan="2" align="center">
+    <input class="add_bt" type="button" name="add_mac" value = "Add" onClick="return click_add_mac()" languageCode = "93">
+	&nbsp;
+	<input class="edit_bt" type="button" name="edit_mac" value = "Edit" onClick="return click_update_mac()" languageCode = "94">
+	&nbsp;
+	<input class="delete_bt" type="button" name="del_mac" value = "Delete" onClick="return click_del_mac() " languageCode = "95"><span></span>
+    <input class="common_bt" type="submit" name="refresh" value = "Refresh" onClick="location.reload(); return false;" languageCode = "129"></td></tr><tr><td colspan="2" background="liteblue.gif" height="12">&nbsp;</td></tr></table><tr><td colspan="2" align="center"></td></tr><input type="hidden" name="todo" value="save"><input type="hidden" name="apply_qos_rules" value=""><input type="hidden" name="this_file" value="QOS_add_mac.htm"><input type="hidden" name="next_file" value="QOS_list.htm"><input type="hidden" name="mac" value=""></center>
+</div>
+<input type="hidden" name="SID" value="@SID#">
+</div>
+</form>
+<script language="javascript" type="text/javascript" src="langs.js"></script></body></html>

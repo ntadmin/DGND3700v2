@@ -1,0 +1,26 @@
+body{background-color: #e5e5e5; width: 605px;}
+#form{ width: 802px; height: 480px; position: absolute; top: 0px; left: 0px;}
+
+.adv_icon{float:left; margin-left: 5px; width: 295px; height: 256px; background-image: url(../image/icon/advanced-back.gif); background-repeat: no-repeat;}
+.adv_icon .title{ width: 295px; height: 34px; background-image: url(../image/icon/advanced-title.gif); background-repeat: no-repeat;}
+.adv_icon .title img{margin: 7px 4px auto 4px; float:left;}
+.adv_icon .title b{position:relative; top: 8px; font-family: Arial; font-size: 14px; color: #e5e5e5; text-decoration: underline;}
+
+.adv_icon .title_smallFonts, .adv_icon .title_doubleline { width: 295px; height: 34px; background-image: url(../image/icon/advanced-title.gif); background-repeat: no-repeat; }
+.adv_icon .title_smallFonts img, .adv_icon .title_doubleline img {margin: 7px 4px auto 4px; float:left;}
+.adv_icon .title_smallFonts b{position:relative; top: 2px; font-family: Arial; font-size: 12px; color: #e5e5e5; line-height: 30px; text-decoration: underline;}
+.adv_icon .title_doubleline b{position:relative; top: 2px; font-family: Arial; font-size: 12px; color: #e5e5e5; text-decoration: underline;}
+
+.adv_icon tr td{font:12px arial; color: #404040; line-height: 13px;}
+.adv_icon tr td b{font: bold 12px arial; position:relative; left: 5px; line-height: 13px;}
+.adv_icon img{margin-top:2px; margin-bottom: 2px;}
+.adv_icon .info_div{width: 100%; height:178px;}
+
+.button_div{position:relative; left: 4px; width: 288px; height:40px; background-color: #ffffff;}
+.button{position:relative; top: 9px; float: left; width:180px; height:22px; text-align: center; background: transparent url(../image/button/advanced_home_button.gif) left bottom no-repeat; cursor:pointer; color:#ffffff; font-family: Arial; font-weight: Bold; font-size: 12px;}
+.page_line{ margin-top:10px; margin-bottom: 10px;}
+#disconnect{ position:relative; left: 7px; }
+#show_statictics {position:relative; left: 17px; }
+#disconeect_wifi {position:relative; left: 100px; }
+.reboot_div{ position: relative; width: 100%; height: 40px; }
+.reboot{ position: relative; margin: 9px 57px; width: 180px; height: 22px; background: transparent url(../image/button/advanced_home_button.gif) left bottom no-repeat; color: #f2f2f2; font-family: Arial; font-weight: Bold; font-size: 14px; text-align: center; line-height: 22px; background-color: transparent; border: none; cursor: pointer; padding-bottom: 2px;}

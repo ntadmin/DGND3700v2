@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><HEAD><TITLE>NETGEAR Router @model_name#</TITLE>
+<meta http-equiv="Pragma" CONTENT="no-cache">
+<meta http-equiv="Cache-Control" CONTENT="no-cache">
+<meta http-equiv="Expires" CONTENT="Mon, 06 Jan 1990 00:00:01 GMT">
+<META http-equiv=content-type content="text/html; charset=UTF-8"><LINK href="style/hijack_style.css" type=text/css rel=stylesheet><LINK href="style/hijack_03A_wanInput.css" type=text/css rel=stylesheet>
+<SCRIPT language=javascript src="utility.js" type=text/javascript></SCRIPT>
+<SCRIPT language=javascript src="script/brs_hijack.js" type=text/javascript></SCRIPT>
+<SCRIPT language=javascript src="script/brs_hijack_03A_B_pppoe.js" type=text/javascript></SCRIPT>
+<SCRIPT language=javascript src="script/funcs.js" type=text/javascript></SCRIPT>
+<script language="javascript" type="text/javascript" src="string.js"></script><link rel="stylesheet" href="style/form.css"><script language="javascript" type="text/javascript" src="funcs.js"></script>
+<SCRIPT language=javascript src="language/English.js" type=text/javascript></SCRIPT><script language="javascript" type="text/javascript" src="linux.js"></script>
+<SCRIPT language=javascript type=text/javascript>
+
+function help_me()
+{    
+    parent.is_reenter = 0;
+    PPPoE_helpme(@is_att#);
+}
+
+function check_vlan()
+{
+    var cf = document.forms[0];
+    if(!cf.vlan_enable.checked)
+       	cf.h_vlan_id.disabled=true;
+    else
+        cf.h_vlan_id.disabled=false;
+}
+function checkData()
+{
+    var cf = document.forms[0];
+    var msg = "";
+
+    if(cf.vlan_enable.checked && checkInt(cf.h_vlan_id,"",1,4094,true).length > 0)
+        msg += "VLAN ID " + getErrorMsgByVar("gsm_must_tag_range") + "\n";
+    if (msg.length > 1)	
+    {
+        alert(msg);
+        return false;
+    }
+    dataToHidden(cf);
+    return checkPPPoE();
+}
+
+</SCRIPT>
+
+</HEAD>
+<BODY bgcolor="#ffffff" onLoad="dataToVisible(document.forms[0]);check_vlan();">
+<FORM action="setup.cgi@post_par#" method=post>
+<DIV class=wizard_content_div>
+<DIV class=wizard_words_div>
+<H1><span languageCode = "762">PPPoE DSL Internet Connection Detected</span></H1>
+<P><span languageCode = "758">Enter the required information below.</span></P>
+<DIV class=wanInput_content_div>
+<DIV class=wanInput_left_div id=loginName align=right>ISP <span languageCode = "153">User Name</span></DIV>
+<DIV class=wanInput_Img_div><IMG src="image/ca_text_pic.gif"> <INPUT id=inputName maxLength=64 align=right name="pppoe_username"> </DIV>
+<DIV class=wanInput_left_div id=passwd align=right><span languageCode = "57">Password</span></DIV>
+<DIV class=wanInput_Img_div><IMG src="image/ca_text_pic.gif"> <INPUT id=inputPasswd maxLength=16 align=right value="" name="pppoe_passwd"> </DIV>
+<DIV class=wanInput_left_div id=vlanid align=right><input type="checkbox" name="vlan_enable" onClick="check_vlan()"><span languageCode = "10609">Use VLANID</span></DIV>
+<DIV class=wanInput_Img_div><IMG src="image/ca_text_pic.gif"> <INPUT id=inputVlanID maxLength=4 align=right value="@h_vlan_id#" name="h_vlan_id"></DIV>
+<DIV style="CLEAR: both"></DIV>
+</DIV>
+@hide_genie_helpme_s#
+<P><span languageCode = "">Click <b>Help Me</b> if you do not know or have forgotten your DSL username and password.</span></P>
+@hide_genie_helpme_e#
+</DIV>
+    
+<DIV class=wizard_buttons_div id=allBtns_div align=right>
+@hide_genie_helpme_s#
+<DIV class=buttons_img_div id=btnsContainer_div1 align=center onclick=help_me()><IMG src="image/ca-little-purple-button.gif"> 
+<DIV class=buttons_words_div><span languageCode = "">Help Me</span></DIV></DIV>
+@hide_genie_helpme_e#
+<DIV class=buttons_img_div id=btnsContainer_div align=center onClick=checkData()><IMG src="image/ca-little-purple-button.gif"> 
+<DIV class=buttons_words_div ><span languageCode = "6">Next</span></DIV></DIV></DIV></DIV>
+<input type="hidden" name="todo" value="brs_reset_save">
+<input type="hidden" name="h_vlan_enable" value="@h_vlan_enable#">
+<INPUT type=hidden value="dynamic" name=WANAssign> 
+<input type="hidden" name="this_file" value="BRS_03A_B_NZ_pppoe.html">
+<input type="hidden" name="next_file" value="BRS_04_applySettings.html">
+<input type="hidden" name="SID" value="@SID#">
+</FORM>
+<script language="javascript" type="text/javascript" src="langs.js"></script>
+</BODY></HTML>

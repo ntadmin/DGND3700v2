@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-Control" content="no-cache"><meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT"><meta name="description" content="@model_name#_multilangual"><title>NETGEAR Router @model_name#</title><script language="javascript" type="text/javascript" src="string.js"></script><link rel="stylesheet" href="style/form.css"><script language="javascript" type="text/javascript" src="funcs.js"></script><!-- link rel="stylesheet" href="form.css" --><script language="javascript" type="text/javascript" src="utility.js"></script><script language="javascript" type="text/javascript" src="linux.js"></script><script language="javascript" type="text/javascript">
+<!--
+function init()
+{
+	var cf = document.forms[0];
+	dataToVisible(cf);
+	
+	cf.elements[0].focus();
+}
+function checkData()
+{
+ 	var cf = document.forms[0];
+	dataToHidden(cf);
+	cf.submit();	
+}
+//-->
+</script>
+</head>
+<body bgcolor="#ffffff" onLoad="init();disableForms(@disable_form#);">
+<form name="usb_apd" method="post" action="setup.cgi@post_par#">
+<div class="page_title" languageCode = "487">USB Drive Approved Devices</div>
+<div class="fix_button">
+<table width="100%" border="0" cellpadding="0" cellspacing="2"><tr><td nowrap colspan="2" align="center">
+<input class="common_bt" type="button" name="Refresh" value = "Refresh" onClick="self.location.href='setup.cgi?next_file=usb_apd.htm'" languageCode = "129">
+&nbsp;
+<input class="apply_bt" type="submit" name="Apply" value = "Apply" onClick="return checkData()" languageCode = "18">
+</td></tr></table>
+</div>
+<div id="main" class="main_top_button">
+<table border="0" cellpadding="0" cellspacing="3" width="100%">
+<tr>
+	<td colspan="2">
+	<input type="checkbox" name="allow_approved" value="allow_approved"><span languageCode = "488">Allow only approved devices</span>
+	</td>
+</tr>
+<tr><td colspan="2" height="10"></td></tr>
+<tr>
+	<td class="hlc">
+	<a href="javascript:loadhelp('usb_apd','AppUSBDev')" tabindex="-1">
+	<B languageCode = "489">Approved USB Devices</B>
+	</a>
+	</td>
+	<td class="hrc"></td>
+</tr>
+<tr>
+	<td colspan="2">
+	<TABLE class="tables" border="0" cellpadding="2" cellspacing="0" width="100%">
+	<TR class="table_header">
+		<th class="LL" width="5">&nbsp;</th>
+		<th class="usbLL" languageCode = "480">Volume Name</th>
+		<th class="usbLL" languageCode = "127">Device Name</th>
+		<th class="usbLL" languageCode = "490">Capacity</th>
+	</tr>
+<!-- START | Sample for app_usb_dev>
+	<tr>
+		<td align="center">
+		<input type="radio" name="apd_usb" value="0" onClick="">
+		</td>
+		<td align="center">Pen Drive</td>
+		<td align="center">Flash Disk</td>
+		<td align="center">4GB</td>
+	</tr>
+<END | Sample for app_usb_dev -->
+	@app_usb_dev#
+	</table>
+	</td>
+</tr>
+<tr><td colspan="2" height="10"></td></tr>
+<tr>
+	<td colspan="2" align="center">
+	<input class="delete_bt" type="button" name="Delete" value = "Delete" onClick="radioTable(this.form,this.form.del_devname,'deletead')" languageCode = "95"></td>
+</tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="3" width="100%"><tr>
+<td background="liteblue.gif" height="12">&nbsp;</td></tr></table>
+<table border="0" cellpadding="0" cellspacing="3" width="100%">
+<tr>
+	<td class="hlc">
+	<a href="javascript:loadhelp('usb_apd','AvaUSBDev')" tabindex="-1">
+	<B languageCode = "478">Available USB Devices</B>
+	</a>
+	</td>
+	<td class="hrc"></td>
+</tr>
+<tr>
+	<td colspan="2">
+	<TABLE class="tables" border="0" cellpadding="2" cellspacing="0" width="100%">
+	<TR class="table_header">
+		<th class="LL" width="5">&nbsp;</th>
+		<th class="usbLL" languageCode = "480">Volume Name</th>
+		<th class="usbLL" languageCode = "127">Device Name</th>
+		<th class="usbLL" languageCode = "490">Capacity</th>
+	</tr>
+<!-- START | Sample for ava_usb_dev >
+	<tr>
+		<td align="center">
+		<input type="radio" name="ava_usb" value="0" onClick="">
+		</td>
+		<td align="center">Pen Drive</td>
+		<td align="center">Flash Disk</td>
+		<td align="center">4GB</td>
+	</tr>
+<END | Sample for ava_usb_dev -->
+	@ava_usb_dev#
+	</table>
+	</td>
+</tr>
+<tr><td colspan="2" height="10"></td></tr>
+<tr>
+	<td colspan="2" align="center">
+	<input class="add_bt" type="button" name="Add" value = "Add" onClick="radioTable(this.form,this.form.add_devname,'addad')" languageCode = "93"></td>
+</tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="3" width="100%"><tr>
+<td background="liteblue.gif" height="12">&nbsp;</td></tr></table>
+<input type="hidden" name="h_allow_approved" value="@h_allow_approved#">
+<input type="hidden" name="h_del_devname" value="@h_del_devname#">
+<input type="hidden" name="h_add_devname" value="@h_add_devname#">
+<input type="hidden" name="todo" value="save">
+<input type="hidden" name="this_file" value="usb_apd.htm">
+<input type="hidden" name="next_file" value="usb_apd.htm">
+</div>
+</form>
+<div id="help" style="display: none">
+		<iframe name="help_iframe" id="helpframe" src="usb_apd_h.htm" allowtransparency="true" width="100%" frameborder="0">
+		</iframe>
+</div>
+<div id="help_switch" class="close_help">
+	 <img class="help_switch_img" src="image/help/help-bar.gif"><script>
+var help_flag=0;
+if(isIE()){
+	show_hidden_help_top_button(1);
+	var frame_div = top.document.getElementById("formframe_div");
+	frame_div.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+if(get_browser() == "Opera"){
+	window.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+</script><div id="help_space" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_center"><span languageCode="3016">Help Center</span></div>
+<div id="help_button" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_show_hidden"><a href="javascript:void(0)" onClick="show_hidden_help_top_button(help_flag); help_flag++;"><span languageCode="3017">Show/Hide Help Center</span></a></div>
+</div>
+<script language="javascript" type="text/javascript" src="langs.js"></script>
+</body>
+</html>

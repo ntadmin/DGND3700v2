@@ -1,0 +1,214 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-Control" content="no-cache"><meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT"><meta name="description" content="@model_name#_multilangual"><title>NETGEAR Router @model_name#</title><script language="javascript" type="text/javascript" src="string.js"></script><link rel="stylesheet" href="style/form.css"><script language="javascript" type="text/javascript" src="funcs.js"></script><!-- link rel="stylesheet" href="form.css" --><style type="text/javascript">
+	classes.num.all.fontFamily = "Courier";
+	classes.num.all.fontSize = "10pt" ;
+</style><script language="javascript" type="text/javascript" src="utility.js"></script><script language="javascript" type="text/javascript" src="linux.js"></script><script language="javascript" type="text/javascript">
+<!-- hide
+var get_endis_guestNet="@h_enable_bssid#";
+var get_endis_guestSSIDbro="@h_enable_ssid_bc#";
+var get_endis_allow_guest="@h_allow_access#";
+var get_ssid_wire_iso="@h_ssid_wire_iso#";
+var wl_sectype=parseInt("@h_mssid_security_type#", 10)+1;
+var get_wep_on="@h_mssid_security_type#";
+var get_keep_wep_page="@keep_wep_page#";
+function redirect(secuType)
+{
+	var cf = document.forms[0];
+	dataToHidden(cf);
+	cf.todo.value="redirect";
+	cf.h_mssid_security_type.value = radioSelectedIndex(cf.security_type);
+    cf.submit();
+}
+function checkData()
+{
+    var cf = document.forms[0];
+    var len;
+    if(!showWpsAlert()) return false;
+    msg = checkBlank(cf.ssid,"SSID");
+    if (msg.length > 1)
+        return alertR(msg);
+    if (cf.ssid.value.match( /[^(\x20-\x7E\xA0)]/)) {
+		return alertR(getErrorMsgByVar("gsm_msg_inv_ssid"));
+	}
+    cf.ssid.value = cf.ssid.value.replace(/\xA0/g," ");
+    if ((cf.security_type[2].checked == true) //WPA
+        ||(cf.security_type[3].checked == true) //WPA2
+        ||(cf.security_type[4].checked == true)) //MIX-WPA
+    {
+        if(cf.passphrase.value.length< 8 )
+            return alertR(getErrorMsgByVar("gsm_msg_wls_passphrase_limit"));
+        if(cf.passphrase.value.length > 63)
+	    {
+	        if ( isHex(cf.passphrase.value) == false)
+	        {
+	            alert(getErrorMsgByVar("gsm_msg_wls_wpa_key_must_63"));
+	            cf.passphrase.value = "";
+	            return false;
+	        }
+	    }
+	    if (cf.passphrase.value.match( /[^(\x20-\x7E\xA0)]/))
+	    {
+	        alert(getErrorMsgByVar("gsm_msg_wls_wpa_key_forbid"));
+	        cf.passphrase.focus();
+	        return false;
+	    }
+	    cf.passphrase.value = cf.passphrase.value.replace(/\xA0/g," ");
+	    if((cf.security_type[2].checked == true) && (cf.h_opmode.value != "54"))
+	    {
+	        alert(getErrorMsgByVar("gsm_msg_wls_wpa_work_mode_warn"));
+	    }
+        if((cf.security_type[4].checked == true) && (cf.h_opmode.value != "54"))
+	    {
+	        alert(getErrorMsgByVar("gsm_msg_wls_wpa_work_mode_warn"));
+	    }
+    }
+    cf.h_mssid_security_type.value = radioSelectedIndex(cf.security_type);
+    cf.mwpakey.value = cf.passphrase.value;
+    cf.gssid.value = cf.ssid.value;
+    dataToHidden(cf);
+    return true;
+}
+function ChangeType(secuType)
+{
+     if (secuType == "WPA-PSK")
+     {
+        document.getElementById('wpa-psk').style.display="";
+	    document.getElementById('wpa2-psk').style.display="none";
+	    document.getElementById('wpa-psk+wpa2-psk').style.display="none";
+     }
+     else if(secuType == "WPA2-PSK")
+     {
+        document.getElementById('wpa-psk').style.display="none";
+	    document.getElementById('wpa2-psk').style.display="";
+	    document.getElementById('wpa-psk+wpa2-psk').style.display="none";
+     }
+     else /* "AUTO-PSK" */
+     {
+        document.getElementById('wpa-psk').style.display="none";
+	    document.getElementById('wpa2-psk').style.display="none";
+	    document.getElementById('wpa-psk+wpa2-psk').style.display="";
+     }
+}
+function init()
+{
+    var form=document.forms[0];
+    /* to prevent same keyword in key_fun_tab{}, do transform back */
+    form.passphrase.value = form.mwpakey.value;
+    if( get_endis_guestNet == 1 )
+        form.enable_bssid.checked = true;
+    else
+        form.enable_bssid.checked = false;
+    if( get_endis_guestSSIDbro == 1 )
+        form.enable_ssid_bc.checked = true;
+    else
+        form.enable_ssid_bc.checked = false;
+    if( get_endis_allow_guest == 1 )
+        form.allow_access.checked = true;
+    else
+        form.allow_access.checked = false;
+	if( get_ssid_wire_iso == 1 )
+			form.ssid_wire_iso.checked = true;
+	else
+			form.ssid_wire_iso.checked = false;
+    if( get_keep_wep_page == 1 ){
+        form.security_type[1].checked = true;
+        wl_sectype='2';
+    }else{
+        form.security_type[get_wep_on].checked = true;
+    }
+    if(get_wep_on == 2)
+        ChangeType("WPA-PSK");
+    else if(get_wep_on == 3)
+         ChangeType("WPA2-PSK");
+    else
+         ChangeType("AUTO-PSK");
+}
+function showWpsAlert()
+{
+	var cf = document.forms[0];
+	if(cf.show_wps_alert.value != "0")
+	{
+		alert(getErrorMsgByVar("gsm_msg_wps_in_prog_warn"));
+	    return  false ;
+	}
+	return  true ;
+}
+// done hiding -->
+</script></head><body bgcolor="#ffffff" onLoad="dataToVisible(document.forms[0]);init();">
+<form method="POST" action="setup.cgi@post_par#" onSubmit="buttonToDisabled(document.forms[0])">
+<div class="page_title" languageCode = "605">Guest Network Settings</div>
+<div class="fix_button">
+<table width="100%" border="0" cellpadding="0" cellspacing="2"><tr><td nowrap colspan="2" align="center">
+<input class="cancel_bt" type="button" name="Cancel" value = "Cancel" onclick='location.href="WLG_wireless_guest.htm";' languageCode = "19">
+&nbsp;
+<input class="apply_bt" type="submit" name="Apply" value = "Apply" onClick="return checkData()" languageCode = "18">
+</td></tr></table>
+</div>
+<div id="main" class="main_top_button">
+<div align="center" id="guest_network" style="position:absolute;top:0;left:0;visibility:hidden">
+<table border="0" cellpadding="0" cellspacing="3" width="100%"><tr><td nowrap colspan="2"><a href="javascript:loadhelp('WLG_wireless_guest','network_profiles')" tabindex="-1"><b languageCode = "606">Network Profiles</b></a></td>
+	</tr></table></div>
+	<table width="100%" border="0" cellpadding="0" cellspacing="2"><!--tr>
+			<td colspan="2" background="liteblue.gif" height="12"></td>
+		</tr--><tr><td nowrap colspan="2">
+			<a href="javascript:loadhelp('WLG_wireless_guest','wireless')" tabindex="-1">
+			<b><span languageCode = "320">Wireless Settings</span></b></a>
+			</td>
+		</tr><tr><td nowrap colspan="2"><input type="checkbox" name="enable_bssid" value="@h_enable_bssid#"><span languageCode = "607">Enable Guest Network</span></td>
+		</tr><tr><td nowrap colspan="2"><input type="checkbox" name="enable_ssid_bc" value="@h_enable_ssid_bc#"><span languageCode = "574">Enable SSID Broadcast</span></td>
+		</tr><tr><td nowrap colspan="2"><input type="checkbox" name="allow_access" value="@h_allow_access#"><span languageCode = "419">Allow guest to access My Local Network</span></td>
+		</tr><tr><td nowrap colspan="2"><input type="checkbox" name="ssid_wire_iso" value="@h_ssid_wire_iso#"><span languageCode = "575">Enable Wireless Isolation</span></td>
+		</tr><tr><td class="hlc"><span languageCode = "608">Guest Wireless Network Name (SSID)</span>:</td>
+			<td class="hrc"><input type="text" name="ssid" value="@gssid#" size="20" maxlength="32"></td>
+		</tr></table><table width="100%" border="0" cellpadding="0" cellspacing="2"><tr><td colspan="2" background="liteblue.gif" height="12"></td>
+		</tr><tr><td nowrap colspan="2">
+			<a tabindex="-1" href="javascript:loadhelp('WLG_wireless_guest','security')">
+			<b><span languageCode = "592">Security Options</span></b></a></td>
+		</tr><tr><td nowrap colspan="2"><input type="radio" name="security_type" value="Disable" onClick="redirect('none')"><span languageCode = "174">None</span></td>
+			<td></td>
+		</tr><tr><td nowrap colspan="2">
+			<input type="radio" name="security_type" value="WEP" onClick="redirect('WEP')"><span>WEP</span></td>
+		</tr><tr><td nowrap colspan="2"><input type="radio" name="security_type" value="WPA-PSK" onClick="ChangeType('WPA-PSK')"><span>WPA-PSK [TKIP]</span></td>
+		</tr><tr><td nowrap colspan="2"><input type="radio" name="security_type" value="WPA2-PSK" onClick="ChangeType('WPA2-PSK')"><span>WPA2-PSK [AES]</span></td>
+		</tr><tr><td nowrap colspan="2"><input type="radio" name="security_type" value="AUTO-PSK" onClick="ChangeType('AUTO-PSK')"><span>WPA-PSK [TKIP] + WPA2-PSK [AES]</span></td>
+		</tr><tr><td colspan="2" background="liteblue.gif" height="12">&nbsp;</td>
+        </tr></table><div align="center" id="wpa">
+	<table cellspacing="5" cellpadding="0" width="100%" border="0"><tr><td id="wpa-psk" colspan="2"><a href="javascript:loadhelp('WLG_wireless_guest','wpa-psk')" tabindex="-1"><b><span languageCode = "592">Security Options</span> (WPA-PSK)</b></a>
+		</td>
+		<td id="wpa2-psk" colspan="2"><a href="javascript:loadhelp('WLG_wireless_guest','wpa2-psk')" tabindex="-1"><b><span languageCode = "592">Security Options</span> (WPA2-PSK)</b></a>
+		</td> 
+		<td id="wpa-psk+wpa2-psk" colspan="2"><a href="javascript:loadhelp('WLG_wireless_guest','wpa-psk+wpa2-psk')" tabindex="-1"><b><span languageCode = "592">Security Options</span> (WPA-PSK + WPA2-PSK)</b></a>
+		</td>
+	</tr><tr><td><span languageCode = "600">Passphrase</span>:</td>
+			<td nowrap><input type="text" id="textWpaPwdPhrase" size="20" maxlength="64" name="passphrase" value="@passphrase#" onFocus="document.forms[0].wpa1_press_flag.value=1" onKeyPress="document.forms[0].wpa1_press_flag.value=1">&nbsp;&nbsp;<span class="optiondesc" id="wpaPwdPhrExtText" languageCode = "602">(8-63 characters or 64 hex digits)</span></td>
+		</tr></table></div>
+	<table cellspacing="5" cellpadding="0" width="100%" border="0"><tr><td colspan="2" background="liteblue.gif" height="12"></td>
+		</tr><tr><td nowrap colspan="2" align="center"></td>
+		</tr></table><input type="hidden" name="todo" value="save"><input type="hidden" name="gssid" value="@gssid#"><input type="hidden" name="h_enable_bssid" value="@h_enable_bssid#"><input type="hidden" name="h_enable_ssid_bc" value="@h_enable_ssid_bc#"><input type="hidden" name="h_allow_access" value="@h_allow_access#"><input type="hidden" name="h_ssid_wire_iso" value="@h_ssid_wire_iso#"><input type="hidden" name="h_opmode" value="@h_opmode#"><input type="hidden" name="h_mssid_security_type" value="@h_mssid_security_type#"><input type="hidden" name="mwpakey" value="@mwpakey#"><input type="hidden" name="show_wps_alert" value="@show_wps_alert#"><input type="hidden" name="this_file" value="WLG_wireless_guest2.htm"><input type="hidden" name="next_file" value="WLG_wireless_guest2.htm"><input type="hidden" name="wpa1_press_flag" value="0"><input type="hidden" name="SID" value="@SID#">
+</div>		
+</form>
+<div id="help" style="display: none">
+		<iframe name="help_iframe" id="helpframe" src="WLG_wireless_guest_h.htm" allowtransparency="true" width="100%" frameborder="0">
+		</iframe>
+</div>
+<div id="help_switch" class="close_help">
+	 <img class="help_switch_img" src="image/help/help-bar.gif"><script>
+var help_flag=0;
+if(isIE()){
+	show_hidden_help_top_button(1);
+	var frame_div = top.document.getElementById("formframe_div");
+	frame_div.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+if(get_browser() == "Opera"){
+	window.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+</script><div id="help_space" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_center"><span languageCode="3016">Help Center</span></div>
+<div id="help_button" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_show_hidden"><a href="javascript:void(0)" onClick="show_hidden_help_top_button(help_flag); help_flag++;"><span languageCode="3017">Show/Hide Help Center</span></a></div>
+</div>
+<script language="javascript" type="text/javascript" src="langs.js"></script></body></html>

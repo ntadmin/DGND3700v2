@@ -1,0 +1,71 @@
+BODY, P, TABLE, TD, UL, OL, LI, DD, SELECT
+{
+	font: normal 12px Arial, Helvetica, Geneva, Swiss, SunSans-Regular, sans-serif;
+}
+
+H1 {
+	FONT-WEIGHT: bold; FONT-SIZE: 16px; BACKGROUND: white; COLOR: #09c; FONT-FAMILY: Arial, Helvetica, Geneva, Swiss, SunSans-Regular, sans-serif;
+}
+
+A:link, a:visited{
+	text-decoration: none; background:none; font-weight:bold;
+}
+A:hover{
+	text-decoration: none; background:none;
+}
+
+A.TR_Node  {
+	color: #333333;
+	text-decoration: none;
+	 font-weight:bold;
+}
+A.TR_Node:hover {
+	text-decoration: none; color:#FFFFFF; background-color:#0066FF;
+}
+
+b  {text-decoration: none; color: #000000}
+
+.menu_div
+{
+	position: absolute;
+	top: 0;
+	left: 18;
+	background-color: #f2f2f2;
+	width: 175px;
+	height: 500px;
+	color : #333333;
+	text-align: center;
+	font-size: 9pt;
+	font-family: Arial, Helvetica, Geneva, Swiss, SunSans-Regular, sans-serif;
+	text-decoration: none;
+}
+
+.tl
+{
+	background: White url(tl.gif) no-repeat left;
+	height: 20px;
+}
+
+.tr
+{
+	background: White url(tr.gif) no-repeat right;
+	height: 20px;
+}
+
+.bl
+{
+	background: White url(bl.gif) no-repeat left;
+	height: 20px;
+}
+
+.br
+{
+	background: White url(br.gif) no-repeat right;
+	height: 20px;
+}
+
+a.bk
+{
+	FONT-WEIGHT: bold;
+	color: Black;
+}

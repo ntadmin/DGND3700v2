@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-Control" content="no-cache"><meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT"><meta name="description" content="@model_name#_multilangual"><title>NETGEAR Router @model_name#</title><script language="javascript" type="text/javascript" src="string.js"></script><link rel="stylesheet" href="style/form.css"><script language="javascript" type="text/javascript" src="funcs.js"></script><!-- link rel="stylesheet" href="form.css" --></head><body bgcolor="#ffffff">
+<table width="100%" border="0"><tr><!-- RULE --><td background="liteblue.gif" height="12"></td>
+	</tr><tr><td><b languageCode = "406">System Up Time</b> @sys_up_time#</td>
+	</tr><tr><td>
+		
+		<TABLE class="tables" border="0" cellpadding="2" cellspacing="0" width="100%">
+			<TR class="table_header">
+				<td nowrap width="10%" align="center"><span class="thead" languageCode = "92">Port</span></td>
+				<td nowrap width="10%" align="center"><span class="thead" languageCode = "407">Status</span></td>
+				<td nowrap width="10%" align="center"><span class="thead" languageCode = "408">TxPkts</span></td>
+				<td nowrap width="10%" align="center"><span class="thead" languageCode = "409">RxPkts</span></td>
+				<td nowrap width="10%" align="center"><span class="thead" languageCode = "410">Collisions</span></td>
+				<td nowrap width="10%" align="center"><span class="thead" languageCode = "411">Tx B/s</span></td>
+				<td nowrap width="10%" align="center"><span class="thead" languageCode = "412">Rx B/s</span></td>
+				<td nowrap width="20%" align="center"><span class="thead" languageCode = "413">Up Time</span></td>
+			</tr>
+			@modem_hide_s#
+			<TR class="even_line">
+				<td nowrap width="10%" align="center"><span class="thead">WAN</span></td>
+				<td nowrap width="10%" align="center" class="ttext">@wan_status#</td>
+				<td nowrap width="10%" align="center"><span class="ttext">@tx_pkts_wan#</span></td>
+				<td nowrap width="10%" align="center"><span class="ttext">@rx_pkts_wan#</span></td>
+				<td nowrap width="10%" align="center"><span class="ttext">@collision_wan#</span></td>
+				<td nowrap width="10%" align="center"><span class="ttext">@tx_wan#</span></td>
+				<td nowrap width="10%" align="center"><span class="ttext">@rx_wan#</span></td>
+				<td nowrap width="20%" align="center"><span class="ttext">@stat_wan_up_time#</span></td>
+			</tr>
+			@modem_hide_e#
+			<TR class="odd_line">
+				<td nowrap width="10%" align="center"><span class="thead">LAN</span><span class="thead">1</span></td>
+				<td nowrap width="10%" align="center" class="ttext">@lan1_status#</td>
+				<td nowrap width="10%" align="center" rowspan="4"><span class="ttext">@tx_pkts_lan#</span></td>
+				<td nowrap width="10%" align="center" rowspan="4"><span class="ttext">@rx_pkts_lan#</span></td>
+				<td nowrap width="10%" align="center" rowspan="4"><span class="ttext">@collision_lan#</span></td>
+				<td nowrap width="10%" align="center" rowspan="4"><span class="ttext">@tx_lan#</span></td>
+				<td nowrap width="10%" align="center" rowspan="4"><span class="ttext">@rx_lan#</span></td>
+				<td nowrap width="20%" align="center" rowspan="4"><span class="ttext">@lan_up_time#</span></td>
+			</tr>
+			<TR class="even_line">
+				<td nowrap width="10%" align="center"><span class="thead">LAN</span><span class="thead">2</span></td>
+				<td nowrap width="10%" align="center" class="ttext">@lan2_status#</td>
+			</tr>
+			<TR class="odd_line">
+				<td nowrap width="10%" align="center"><span class="thead">LAN</span><span class="thead">3</span></td>
+				<td nowrap width="10%" align="center" class="ttext">@lan3_status#</td>
+			</tr>
+			<TR class="even_line">
+				<td nowrap width="10%" align="center"><span class="thead">LAN</span><span class="thead">4</span></td>
+				<td nowrap width="10%" align="center" class="ttext">@lan4_status#</td>
+			</tr>
+			@wireless_hide_s#
+			<TR class="odd_line">
+				<td nowrap width="10%" align="center"><span class="thead">WLAN b/g/n</span></td>
+				<td nowrap width="10%" align="center"><span class="ttext">@wlan_speed#</span></td>
+				<td nowrap width="10%" align="center"><span class="ttext">@tx_pkts_wlan#</span></td>
+				<td nowrap width="10%" align="center"><span class="ttext">@rx_pkts_wlan#</span></td>
+				<td nowrap width="10%" align="center"><span class="ttext">@collision_wlan#</span></td>
+				<td nowrap width="10%" align="center"><span class="ttext">@tx_wlan#</span></td>
+				<td nowrap width="10%" align="center"><span class="ttext">@rx_wlan#</span></td>
+				<td nowrap width="20%" align="center"><span class="ttext">@wlan_up_time#</span></td>
+			</tr>
+			<TR class="even_line">
+				<td nowrap width="10%" align="center"><span class="thead">WLAN a/n</span></td>
+				<td nowrap width="10%" align="center"><span class="ttext">@wlan_speed_an#</span></td>
+				<td nowrap width="10%" align="center"><span class="ttext">@tx_pkts_wlan_an#</span></td>
+				<td nowrap width="10%" align="center"><span class="ttext">@rx_pkts_wlan_an#</span></td>
+				<td nowrap width="10%" align="center"><span class="ttext">@collision_wlan_an#</span></td>
+				<td nowrap width="10%" align="center"><span class="ttext">@tx_wlan_an#</span></td>
+				<td nowrap width="10%" align="center"><span class="ttext">@rx_wlan_an#</span></td>
+				<td nowrap width="20%" align="center"><span class="ttext">@wlan_up_time_an#</span></td>
+			</tr>
+			@wireless_hide_e#
+		</table></td>
+	</tr>
+	<tr>
+		<td><br>
+		<TABLE class="tables" border="0" cellpadding="2" cellspacing="0" width="100%">
+			<TR class="table_header">
+				<td nowrap align="center"><span class="thead" languageCode = "716">ADSL Link</span></td>
+				<td nowrap align="center"><span class="thead" languageCode = "717">Downstream</span></td>
+				<td nowrap align="center"><span class="thead" languageCode = "718">Upstream</span></td>
+			</tr>
+			<TR class="even_line">
+				<td nowrap align="center"><span class="thead" languageCode = "719">Link Rate</span></td>
+				<td nowrap align="center"><span class="ttext">@modem_downstream#</span></td>
+				<td nowrap align="center"><span class="ttext">@modem_upstream#</span></td>
+			</tr>
+			<TR class="odd_line">
+				<td nowrap align="center"><span class="thead" languageCode = "720">Line Attenuation</span></td>
+				<td nowrap align="center"><span class="ttext">@modem_ladown#</span></td>
+				<td nowrap align="center"><span class="ttext">@modem_laup#</span></td>
+			</tr>
+			<TR class="even_line">
+				<td nowrap align="center"><span class="thead" languageCode = "721">Noise Margin</span></td>
+				<td nowrap align="center"><span class="ttext">@modem_noisedown#</span></td>
+				<td nowrap align="center"><span class="ttext">@modem_noiseup#</span></td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+	<tr><!-- RULE --><td background="liteblue.gif" height="12"></td></tr>
+</table>
+
+<script language="javascript" type="text/javascript" src="langs.js"></script></body></html>

@@ -1,0 +1,316 @@
+﻿#inady-mt language strings file -- use this file, and it's index strings as a template
+#for other language translations files.  file format must be utf-8.
+
+#consists of index string (default output string), translation string pairs of the general form:
+
+#"default string":"translation string"
+
+#the translation string following the colon, can be the empty string (signifying no 
+#translation for the given string).
+
+#strings are C format string style, many with format specifiers, which must also appear
+#in any non-empty translation string -- missing format specifiers will most likely cause
+#general protection faults on output attempt.
+
+#if there's no translation for a given default/index string, the :"" may be omitted.
+
+#inadyn-mt uses the default string (also hard coded) to index language strings structure.  this
+#sting must remain fixed -- it is an index! -- changing will just result in the corresponding
+#hard coded program string use instead.
+
+#comments must appear on line by themselves
+
+#
+#Begin data
+#
+
+#dyndns.c
+
+#translation in quotes following colon (':')
+"The request for IP server:\n%s\n":""
+"I:INADYN: IP address for alias '%s' needs update to '%s'\n":""
+"DYNDNS my Request:\n%s\n":""
+"I:INADYN: Alias '%s' to IP '%s' updated successfully.\n":""
+"W:INADYN: Error validating DYNDNS svr answer. Check usr,pass,hostname!\n":""
+"W:INADYN: DYNDNS Server response:\n%s\n":""
+"S:INADYN: Started 'inadyn-mt version %s' - dynamic DNS updater.\n":""
+"W:DYNDNS: Error '%s' (0x%x) when talking to IP server\n":""
+"DYNDNS: IP server response: %s\n":""
+"W:DYNDNS: My IP address: %s\n":""
+"I:INADYN: Not an event of interest...\n":""
+"I:INADYN: Attempting ip update...\n":""
+"C:INADYN: WaitForSingleObject failed in update handler.":""
+"I:INADYN: Got mutex...\n":""
+"I:INADYN: Not online, skipping update...\n":""
+"I:INADYN: Update ip returned OK...\n":""
+"C:INADYN: Failed ReleaseMutex.  Low resources?  System is unstable...":""
+"I:INADYN: Update handler released mutex...\n":""
+"I:INADYN: Entered service_event_handler.  Setting return signal...\n":""
+"I:INADYN: Attempting to open log file: %s...\n":""
+"W:INADYN: %s error returned getting command line "\
+"parameters.  One or more command line parameters ignored...\n":""
+"INADYN: IP read from cache file is '%s'. No update required.\n":""
+"DYNDNS: Error '%s' (0x%x) installing OS signal handler\n":""
+"C:INADYN: Failed create mutex.  Low resources?  System is unstable.  Continuing wihtout RAS events trapping...":""
+"I:INADYN: Creating, launching ras thread...\n":""
+"I:INADYN: Launched RAS events trapping...\n":""
+"E:INADYN: RAS events trapping constructor returned NULL.  Continuing without RAS events trapping...\n":""
+"C:INADYN: WaitForSingleObject failed before ip update attempt.  Cannot safely update ip.":""
+"C:INADYN: ReleaseMutex failed after ip update attempt.":""
+"W:'%s' (0x%x) updating the IPs. (it %d)\n":""
+"I:INADYN: STOP command received. Exiting.\n":""
+".":""
+
+#event_trap.c
+
+"I:RASTRP: IsDestinationReachable returned false...":""
+"I:RASTRP: IsDestinationReachable (%s) returning true...\n":""
+"E:RASTRP: Network offline, apparently.":""
+"W:RASTRP: Network offline, apparently.  Error code of zero, %d, assuming really must be offline...\n":""
+"I:RASTRP: IsNetworkAlive returning true...\n":""
+"I:RASTRP: IsNetworkAlive says net is WAN or better.  Returning online true...\n":""
+"I:RASTRP: IsNetworkAlive says not WAN or better...\n":""
+"I:RASTRP: is_destination_reachable returning true.  Returning online true...\n":""
+"I:RASTRP: is_destination_reachable returning false.  Returning online false...\n":""
+"C:RASTRP: WaitForSingleObject failed in is_ras_online.":""
+"E:RASTRP: LoadLibrary failed":""
+"E:RASTRP: GetProcAddress failed":""
+"E:RASTRP: RasEnumConnections failed (error code:  %d) -- Memory corruption?  No RAS connections?  RAS error string follows...\n":""
+"E:RASTRP: RAS enumeration error string (error code %d):  %s...Need:  %d bytes...\n":""
+"E:RASTRP: RAS get error string failed for error code %d...\n":""
+"I:RASTRP: RasEnumConnections failed (error code:  %d), though is Optimistic, returning 'connected' status\n":""
+"I:RASTRP: RAS enumeration returned success...\n":""
+"I:RASTRP: No valid RAS connections enumerated...\n":""
+"I:RASTRP: Connection status query succeeded.  Returning %d, status...\n":""
+"E:RASTRP: Connection status query failed (error code:  %d, %d).  Returning 'not connected', status...\n":""
+"E:RASTRP: RAS status query error string (error:  %d):  %s...\n":""
+"W:RASTRP: Connection (%d) status query failed (error code:  %d).  Is Optimistic, returning 'connected', status...\n":""
+"C:RASTRP: ReleaseMutex failed in is_ras_online.":""
+"W:RASTRP: Connection status query failed, but able to reach %s.  Returning 'connected', status...\n":""
+"I:RASTRP: Entering RAS wait...\n":""
+"I:RASTRP: Returned from RAS wait...\n":""
+"I:RASTRP: RAS thread got quit signal...\n":""
+"C:RASTRP: ReleaseSemaphore failed in wait_for_ras_notifications_thread.":""
+"I:RASTRP: RAS thread got disconnect event...\n":""
+"I:RASTRP: RAS thread got connect event...\n":""
+"C:RASTRP: RAS thread ResetEvent failed.":""
+"I:RASTRP: RAS thread manager could not create RAS thread.  Low resources?...\n":""
+"I:RASTRP: RAS thread manager launched RAS thread...\n":""
+"I:RASTRP: RAS thread manager entering wait for RAS thread...\n":""
+"C:RASTRP: WaitForSingleObject (hRASManSignal) failed in manage_ras_thread.":""
+"I:RASTRP: RAS thread manager raising RAS thread return event...\n":""
+"C:RASTRP: SetEvent failed in manage_ras_thread.":""
+"I:RASTRP: RAS thread manager entering wait for RAS return...\n":""
+"N:RASTRP: WaitForSingleObject (thread handle) failed in manage_ras_thread.  Too fast?":""
+"I:RASTRP: RAS thread manager returning from RAS thread wait.  Cleaning up...\n":""
+"I:RASTRP: RAS thread manager cleaned up.  Signaling we're done...\n":""
+"I:RASTRP: Signaled done...\n":""
+"E:RASTRP: Could not create event: %s.  Possibly caused by system instability, low memory, etcetera.  Reboot machine?  Free some memory?  Try restarting remote access service (Win NT).\n":""
+"E:RASTRP: Could not create event: %s.  Error code: %d...\n":""
+"E:RASTRP: Could not create event: %s.  Error code:  %d, %s...\n":""
+"C:RASTRP: RasConnectionNotifications failed in create_ras_event:  Error code:  %d: %s...\n":""
+"C:RASTRP: RasConnectionNotifications failed in create_ras_event:  Error code:  %d...RasGetErrorStr failed...\n":""
+"C:RASTRP: ResetEvent failed in create_ras_event.":""
+"C:RASTRP: CreateSemaphore failed in create_event_trap_semaphore.":""
+"C:RASTRP: CreateMutex failed in init_event_thread_control.":""
+"C:RASTRP: GetVersionEx failed in init_os_version_info.":""
+"I:RASTRP: OS major version, %d, minor version, %d\n":""
+"I:RASTRP: Entering wait for client init...\n":""
+"W:RASTRP: WaitForSingleObject failed in launch_ras_events.":""
+"I:RASTRP: Returning from wait for client init...\n":""
+"I:RASTRP: Launched ras thread manager thread...\n":""
+"E:RASTRP: Could not launch ras thread manager thread.  Aborting RAS trapping thread.  Low resources?\n":""
+"I:RASTRP: Releasing client init wait...\n":""
+"C:RASTRP: ReleaseSemaphore failed in launch_ras_trap_events.":""
+"I:RASTRP: Released client init wait...\n":""
+"W:RASTRP: ReleaseSemaphore (hClientInitSignal) failed in trap_ras_events.":""
+"W:RASTRP: WaitForSingleObject (hRASInitSignal) failed in trap_ras_events.":""
+"E:RASTRP: Trouble initializing essential RAS events thread related data.  Thread aborted.  Low resources?\n":""
+"I:RASTRP: No RAS thread to kill -- NULL RAS_THREAD_DATA...\n":""
+"I:RASTRP: Destroying ras thread data data structure...\n":""
+"I:RASTRP: No RAS thread to kill...\n":""
+"I:RASTRP: RAS events destroy, signaling RAS thread manager...\n":""
+"C:RASTRP: ReleaseSemaphore failed in destroy_trap_ras_events.":""
+"I:RASTRP: Signaled RAS thread manager.  Entering RAS kill wait...\n":""
+"C:RASTRP: WaitForSingleObject failed in destroy_trap_ras_events.  Too fast?":""
+"I:RASTRP: Returned from RAS kill wait.  RAS wait thread killed...\n":""
+"I:RASTRP: Closing thread structure related handles, freeing structure...\n":""
+
+#get_cmd.c
+
+"W:GETCMD: Invalid option name at position %d ('%s')\n":""
+"W:GETCMD: Warning parsing option %d ('%s'):  No handler\n":""
+"W:GETCMD: Missing option value at position %d ('%s')\n":""
+"W:GETCMD: Error parsing option %d ('%s')\n":""
+
+#inadyn_cmd.c
+
+"Version: %s\n":""
+"W:CMD_OPTS: Cannot open cfg file:%s\n":""
+"I:CMD_OPTS: Using default config file %s\n":""
+
+#ip.c
+
+"W:IP: Error 0x%x resolving host name '%s'\n":""
+"W:IP: Error 0x%x in send()\n":""
+"W:IP: Error 0x%x in recv()\n":""
+
+#main.c
+
+"I:MAIN: Entered inadyn_main...\n":""
+"I:MAIN: Constructing dyndns structure...\n":""
+"I:MAIN: Calling dyn_dns_main...\n":""
+"I:MAIN: Returned from dyn_dns_main...\n":""
+"W:MAIN: Main: Error '%s' (0x%x).\n":""
+"W:MAIN: Main: Error %s (0x%x).\n":""
+"W:MAIN: Main: Error '%s' (0x%x) in dyn_dns_destruct().\n":""
+"I:MAIN: inadyn_main, returning to service dispatcher...\n":""
+
+#os.c
+
+"  Non-zero error code: %d; " \
+                         "related error string:  %s":""
+"  Non-zero error code: %d; unknown failure " \
+                             "getting related error string.\n":""
+"  Non-zero error code: %d; failure (error code: %d: %s) " \
+                              "getting related error string.\n":""
+"  Non-zero error code: %d; failure " \
+                              "(error code: %d) getting related error string.\n":""
+
+#os_unix.c
+
+"OS_UNIX Signal '0x%x' received. But handler not correctly installed.\n":""
+"OS_UNIX Signal '0x%x' received. Sending 'Shutdown cmd'.\n":""
+"OS_UNIX Signal '0x%x' received. Ignored.\n":""
+"DYNDNS: Error (0x%x) installing OS signal handler\n":""
+"E:OS_UNIX: Error changing uid/gid. OS err=0x%x\n":""
+
+#os_win.c
+
+"I:OS_WIN: Signal '0x%x' received. Sending 'Shutdown cmd'.\n":""
+"D:OS_WIN: Signal '0x%x' received. NO ACTION.\n":""
+"I:OS_WIN: Hello!  main() calling set_up_service...\n":""
+"I:OS_WIN: main() returned from set_up_service.  Closing log file...\n":""
+
+#service.c
+
+"E:SERVICE: GetModuleFileName failed.  Could not install service\n":""
+"E:SERVICE: Could not open scm.  Could not install service\n":""
+"E:SERVICE: CreateService failed.  Could not install service\n":""
+"E:SERVICE: Could not open scm.  Could not start service\n":""
+"E:SERVICE: Could not open service.  Could not start service\n":""
+"E:SERVICE: StartService failed.  Could not start service\n":""
+"E:SERVICE: Failed service start.  Could not start service\n":""
+"E:SERVICE: Could not open scm.  Could not delete service\n":""
+"E:SERVICE: DeleteService failed.  Could not delete service\n":""
+"E:SERVICE: Could not open scm.  Could not stop service\n":""
+"E:SERVICE: Could not open service.  Could not delete service\n":""
+"E:SERVICE: ControlService failed.  Could not stop service\n":""
+"E:SERVICE: QueryServiceStatus failed.  Could not stop service\n":""
+"E:SERVICE: LoadLibrary failed in set_service_description.  " \
+                           "Could not load advapi32.dll in set_service_description.  Could not add service " \
+                           "description\n":""
+"E:SERVICE: GetProcAddress failed in set_service_description.  " \
+                             "Could not add service description\n":""
+"E:SERVICE: Could not open scm.  Could not add service description\n":""
+"E:SERVICE: ChangeServiceConfig2 failed.  Could " \
+                                   "not add service description\n":""
+"Attempting service start...":""
+"Attempting service stop...":""
+"E:SERVICE: Could not open scm.  Could not get service handle":""
+"E:SERVICE: Could not open service.  Could not get service handle":""
+
+#service_main.c
+
+"I:SERVICE_MAIN: Non service server arugment at %d:  %s.  " \
+                      "Passing to client...\n":""
+"I:SERVICE_MAIN: Entered ServiceHandler...\n":""
+"I:SERVICE_MAIN: ServiceHandler got stop request (%d).  " \
+                           "Waiting.  Set pending...\n"  :""
+"I:SERVICE_MAIN: ServiceHandler got stop request (%d).  " \
+                           "Asking client to return...\n":""
+"I:SERVICE_MAIN: ServiceHandler got stop request (%d).  " \
+                           "Set pending...\n":""
+"I:SERVICE_MAIN: ServiceHandler got SERVICE_INTERROGATE " \
+                         "(%d)...\n":""
+"I:SERVICE_MAIN: SetServiceStatus returned false in "\
+                           "ServiceHandler.":""
+"E:SERVICE_MAIN: RegCreateKeyEx failed in set_up_registry.  "\
+                             "Attempted key:  %s...  Could not set up registry.":""
+"C:SERVICE_MAIN: Error attempting to set registry "\
+                                 "value name, %s, to %s...":""
+"C:SERVICE_MAIN: Error attempting to close "\
+                               "registry key, %s...":""
+"C:SERVICE_MAIN: Error attempting to open registry...":""
+"C:SERVICE_MAIN: Error attempting to "\
+                             "get registry value, %s...":""
+"C:SERVICE_MAIN: Error attempting to close registry key...":""
+"I:SERVICE_MAIN: Entered service client thread...\n":""
+"I:SERVICE_MAIN: Fixing up client arguments...\n":""
+"I:SERVICE_MAIN: Calling client...\n":""
+"I:SERVICE_MAIN: Service client thread returned from client...\n":""
+"E:SERVICE_MAIN: DuplicateHandle failed in ServiceMain.  " \
+                           "Not fatal.  Possible awkward service shutdown...":""
+"I:SERVICE_MAIN: Entered ServiceMain...\n":""
+"I:SERVICE_MAIN: Initing service_status structure...\n":""
+"I:SERVICE_MAIN: Registering service handler, ServiceHandler...\n":""
+"I:SERVICE_MAIN: RegisterServiceCtrlHandler failed " \
+                           "in ServiceMain.  Not good.  Aborting...":""
+"I:SERVICE_MAIN: Registered handler...\n":""
+"I:SERVICE_MAIN: Setting status SERVICE_RUNNING...\n":""
+"I:SERVICE_MAIN: Set status SERVICE_RUNNING...\n":""
+"I:SERVICE_MAIN: Attempting service client thread launch...\n":""
+"I:SERVICE_MAIN: Service work thread failed launch.  Setting SERVICE_STOPPED...\n":""
+"I:SERVICE_MAIN: SetServiceStatus failed in ServiceMain...":""
+"I:SERVICE_MAIN: Service work thread launched.  " \
+                         "Entering wait for service client thread...\n":""
+"I:SERVICE_MAIN: WaitForSingleObject failed in ServiceMain...":""
+
+"I:SERVICE_MAIN: Returned from wait for service client thread.  " \
+                           "Setting SERVICE_STOPPED...\n":""
+"I:SERVICE_MAIN: set_up_service Stopping service...\n":""
+"I:SERVICE_MAIN: set_up_service returned from stop_service.  " \
+                       "Appears service (%s) stopped okay...\n":""
+"I:SERVICE_MAIN: set_up_service returned from stop_service.  " \
+                       "Appears service (%s) NOT stopped.  Check logging output...\n":""
+"I:SERVICE_MAIN: Calling service uninstall...\n":""
+"I:SERVICE_MAIN: Appears service (%s) uninstalled okay...\n":""
+"I:SERVICE_MAIN: Appears service (%s) NOT uninstalled okay.  " \
+                       "Check logging output...\n":""
+"I:SERVICE_MAIN: Calling service install...\n":""
+"I:SERVICE_MAIN: Appears service (%s) NOT installed okay.  " \
+                       "Check logging output...\n":""
+"I:SERVICE_MAIN: Appears service (%s) installed okay...\n":""
+"I:SERVICE_MAIN: Attempting default registry set up for (%s) ...\n":""
+"I:SERVICE_MAIN: Appears default registry set up (%s) went okay...\n":""
+"I:SERVICE_MAIN: Appears default registry set up (%s) " \
+                           "NOT okay.  Check logging output...\n":""
+"I:SERVICE_MAIN: Appears set service description (%s) okay...\n":""
+"I:SERVICE_MAIN: Appears set service description (%s) NOT okay.  " \
+                           "Check logging output...\n":""
+"I:SERVICE_MAIN: Calling service start, after closing service log...\n":""
+"I:SERVICE_MAIN: Appears service (%s) started okay...\n":""
+"I:SERVICE_MAIN: Appears service (%s) could NOT be started.  " \
+                       "Service server client returning unexpectedly?  Check paramters?.  " \
+                       "Check logging output...\n":""
+"I:SERVICE_MAIN: Hello!  Entered set_up_service service server.  " \
+                     "Appending log...\n":""
+"I:SERVICE_MAIN: A service command failed.  " \
+                             "Aborting program.  Check logging output...\n":""
+"I:SERVICE_MAIN: Calling StartServiceCtrlDispatchter for ServiceMain...\n":""
+"I:SERVICE_MAIN: StartServiceCtrlDispather failed " \
+                               "in set_up_service.":""
+"I:SERVICE_MAIN: Returned from service dispatcher...\n":""
+"I:SERVICE_MAIN: Entering wait for service dispatcher clean up...\n":""
+"I:SERVICE_MAIN: Returned from wait for service dispatcher clean up...\n":""
+"I:SERVICE_MAIN: Exiting set_up_service, returning to client (main())...\n":""
+"C:SERVICE_MAIN: QueryServiceStatus failed in request_stop_if_client_return...\n":""
+"C:SERVICE_MAIN: ControlService failed in request_stop_if_client_return...\n":""
+"I:SERVICE_MAIN: Service client exited.  Stopping service...\n":""
+"I:SERVICE_MAIN: Request for service stop succeded...\n":""
+"C:SERVICE_MAIN: Could not get handle to service in request_stop_if_needed...\n":""
+
+#unicode_util.c
+
+"E:UNICODE_UTIL: WideCharToMultiByte failed in do_utf_16_to_8":""
+"E:UNICODE_UTIL: MultiByteToWideChar failed in do_utf_8_to_16":""

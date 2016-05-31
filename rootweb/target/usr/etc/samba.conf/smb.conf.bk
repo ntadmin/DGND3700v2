@@ -1,0 +1,35 @@
+[global]
+	config file=/etc/samba/smb.conf
+	unix charset = utf8 
+	dos charset = utf8
+	os level = 8
+	workgroup = DG834GVU 
+	server string = Sercomm
+	netbios name = Sercomm DG834GVU 
+	load printers = no
+	max log size = 10
+	security = user
+	encrypt passwords = yes
+	smb passwd file = /etc/samba/smbpasswd
+	socket options = TCP_NODELAY SO_KEEPALIVE SO_SNDBUF=16384 SO_RCVBUF=16384
+	preferred master = yes
+	dns proxy = no 
+	preserve case = yes
+	short preserve case = yes
+	default case = upper
+	case sensitive = no
+	mangled names = yes 
+	null passwords = yes
+	dos filetimes = yes
+	kernel oplocks = no
+	veto files = /.ShareConfFile/quota.user/quota.user~/$AttrDef/$BadClus/$Bitmap/$Boot/$Extend/$LogFile/$MFT/$MFTMirr/$Secure/$UpCase/$Volume/lost+found/System Volume Information/
+	delete veto files = False
+	force directory mode=771
+	force create mode=660
+	create mask=771
+	map system=yes
+	guest ok=no
+	map to guest=no
+	guest account=nobody
+
+

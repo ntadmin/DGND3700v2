@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+  
+<head>
+<meta http-equiv="content-type" content="text/html;charset=ISO-8859-1">
+<meta http-equiv='Pragma' content='no-cache'>
+<meta http-equiv="Cache-Control" content="no-cache">
+
+<meta name="description" content="@model_name#_multilangual">
+<title>NETGEAR Router @model_name#</title>
+<link rel="stylesheet" href="style/form.css">
+<script language="javascript" type="text/javascript" src="funcs.js"></script>
+<script language="javascript" type="text/javascript" src="string.js"></script>
+<script language="javascript" type="text/javascript" src="utility.js"></script>
+<script language="javascript" type="text/javascript" src="linux.js"></script>
+<script language="javascript" type="text/javascript">
+<!-- hide script from old browsers
+
+
+function checkData()
+{
+	var space = /\s/;  // regular expression
+
+    var cf = document.forms[0];
+    var msg = ""; 
+
+	msg+= checkBlank(cf.policyname,"Policy Name");
+	if ( space.test(cf.policyname.value) )
+    	msg+= getErrorMsgByVar("gsm_msg_vpn_policy_space");
+
+	if(cf.preshared_key.value.length < 8 )
+		msg+=getErrorMsgByVar("gsm_msg_vpn_key");
+	//msg+= checkBlank(cf.preshared_key,"Pre-shared Key");
+	if(msg.length > 1 )
+	{
+		alert(msg);
+		return;
+	}
+	parent.goNext('gen');
+}
+
+
+//-->
+</script>
+    
+</head>
+
+<body bgcolor="#ffffff"  leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="parent.setData('gen');">
+<form name="formname" action="setup.cgi" method="POST" >
+<div class="page_title"><span languageCode="10400">VPN Wizard</span></div>
+<div class="fix_button">
+<table width="100%" border="0" cellpadding="0" cellspacing="2"><tr><td nowrap colspan="2" align="center">
+<input class="cancel_bt" type="button"  name="back" value="Back" onClick="location.href='vw_start.htm'" languageCode = "115">
+&nbsp;
+<input class="cancel_bt" type="button" name="Cancel" value = "Cancel" onClick="parent.setData('gen');" languageCode = "19">
+&nbsp;
+<input class="apply_bt" type="button" name="next" value = "Next" onClick="checkData();" languageCode = "6">
+</td></tr></table>
+</div>
+<div id="main" class="main_top_button">
+<table border="0" cellpadding="0" cellspacing="3" width="100%">
+	<tr>
+	  <td colspan="2"><b><span languageCode="10403">Step 1 of 3: Connection Name and Remote IP Type</span></b></td>
+	</tr>
+
+	<tr>  <!-- RULE -->
+	  <td colspan="2" background="liteblue.gif" height="12">&nbsp; </td>
+	</tr>	
+
+	<tr>
+	  <td align="left" width="50%"><span languageCode="10404">What is the new Connection Name?</span></td>
+	  <td width="50%"><input type="text" name="policyname" size="20" maxlength="12" value="@policy_name#"></td>
+	</tr>
+	
+	<tr>
+	  <td align="left" width="50%"><span languageCode="10405">What is the pre-shared key?</span></td>
+	  <td nowrap><input type="text" class="num" name="preshared_key" size="15" maxlength="49" value= "@preshared_key#"></td>
+	</tr>
+	
+	<tr>
+	  <td colspan="2">&nbsp;</td>
+	</tr>
+
+
+
+<tr>
+	<td valign="top" width="50%" align="left"><span languageCode="10406">This VPN tunnel will connect to</span>:</td>
+	<td valign="top" nowrap><input type="radio" name="dest_type" value="gw"><span languageCode="10407"> A remote VPN Gateway</span>
+	    <br><input type="radio" name="dest_type" value="client"><span languageCode="10408"> A remote VPN client (single PC)</span>
+	</td>
+</tr>
+
+	<tr>
+	  <td colspan="2">&nbsp;</td>
+	</tr>
+	
+
+	<tr>  <!-- RULE -->
+	  <td colspan="2" background="liteblue.gif" height="12">&nbsp; </td>
+	</tr>	
+      </table>
+	  
+	  
+	  <input type="hidden" name="h_dest_type" value="@h_dest_type#">
+
+      <input type="hidden" name="todo" value="save">  
+      <input type="hidden" name="this_file" value="vw_gen.htm">
+      <input type="hidden" name="next_file" value="vw_gw01.htm">
+</div>	
+    </form>
+<div id="help" style="display: none">
+		<iframe name="help_iframe" id="helpframe" src="h_vpnwiz.htm" allowtransparency="true" width="100%" frameborder="0">
+		</iframe>
+</div>
+<div id="help_switch" class="close_help">
+	 <img class="help_switch_img" src="image/help/help-bar.gif"><script>
+var help_flag=0;
+if(isIE()){
+	show_hidden_help_top_button(1);
+	var frame_div = top.document.getElementById("formframe_div");
+	frame_div.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+if(get_browser() == "Opera"){
+	window.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+</script><div id="help_space" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_center"><span languageCode="3016">Help Center</span></div>
+<div id="help_button" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_show_hidden"><a href="javascript:void(0)" onClick="show_hidden_help_top_button(help_flag); help_flag++;"><span languageCode="3017">Show/Hide Help Center</span></a></div>
+</div>
+<script language="javascript" type="text/javascript" src="langs.js"></script>
+</body>
+</html>

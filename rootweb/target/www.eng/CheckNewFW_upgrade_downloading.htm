@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-Control" content="no-cache"><meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT"><meta name="description" content="@model_name#_multilangual"><title>NETGEAR Router @model_name#</title><script language="javascript" type="text/javascript" src="string.js"></script><link rel="stylesheet" href="style/form.css"><script language="javascript" type="text/javascript" src="funcs.js"></script><!-- link rel="stylesheet" href="form.css" --><script language="javascript" type="text/javascript" src="utility.js"></script><script language="javascript" type="text/javascript" src="linux.js"></script><script language="javascript" type="text/javascript" src="ajax.js"></script><script language="javascript" type="text/javascript">
+var refresh_time = 2000;
+var xmlHttp;
+function loadhelp(fname,anchname) {
+if ((loadhelp.arguments.length == 1 ) || (anchname == "" ))
+	top.helpframe.location.href=fname+"_h.htm";
+else
+	top.helpframe.location.href=fname+"_h.htm#" + anchname;
+}
+function do_submit()
+{
+    var url="setup.cgi?todo=get_next_page";
+    /* You must add this line, otherwise IE will cache this request and wont send to server */
+    url += "&timestamp=" + new Date().getTime();
+    xmlHttp.open("GET", url, true);
+    xmlHttp.onreadystatechange = updatePage;
+    xmlHttp.send(null);
+    setTimeout('do_submit()', refresh_time);    /* Refresh this page every 8 sec */
+}
+function updatePage() {
+    if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+        var next_page = xmlHttp.responseText;
+        if(next_page.length > 1) { /* We got something from server ... */
+            location.href = next_page;
+        }
+   }
+}
+function wait1()
+{
+    xmlHttp = createRequest();
+    setTimeout('do_submit()', refresh_time);    /* Refresh this page every 2 sec */
+}
+function stop1()
+{
+    var cf = document.forms[0];
+	// bypass CSRF
+	location.href="setup.cgi?todo=downloading_cancel";
+}
+//-->
+</script></head><body bgcolor="#ffffff" onLoad="wait1()">
+<form name="formname" method="POST" action="setup.cgi@post_par#">
+<div class="page_title" languageCode = "110">Firmware Upgrade Assistant</div>
+<div class="fix_button">
+<table width="100%" border="0" cellpadding="0" cellspacing="2"><tr><td nowrap colspan="2" align="center">
+<input class="cancel_bt" type="BUTTON" name="Cancel" value = "Cancel" onClick="stop1();buttonToDisabled(document.forms[0])" languageCode = "19">
+</td></tr></table>
+</div>
+<div id="main" class="main_top_button">
+<table border="0" cellpadding="0" cellspacing="3" width="100%"><tr><td colspan="2" align="center"><b languageCode = "116">The router is downloading the new version now. Please wait...</b></td>
+</tr><tr></tr><tr><!-- RULE --><td colspan="2" background="liteblue.gif" height="12"> &nbsp;</td>
+</tr><tr><td colspan="2" align="center"></td></tr></table><input type="hidden" name="todo" value="upgrade_img"><input type="hidden" name="SID" value="@SID#">
+</div>		
+</form>
+<script language="javascript" type="text/javascript" src="langs.js"></script></body></html>

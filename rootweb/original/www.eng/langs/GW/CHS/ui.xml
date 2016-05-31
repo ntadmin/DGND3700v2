@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tag_msg xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<message>
+<tag_code>6</tag_code>
+<translation> 下一步 </translation>
+<variable>Next</variable>
+</message>
+<message>
+<tag_code>28</tag_code>
+<translation> 是 </translation>
+<variable>Yes</variable>
+</message>
+<message>
+<tag_code>57</tag_code>
+<translation>密码</translation>
+<variable>Password</variable>
+</message>
+<message>
+<tag_code>64</tag_code>
+<translation>我的IP地址</translation>
+<variable>My IP Address</variable>
+</message>
+<message>
+<tag_code>115</tag_code>
+<translation>上一步</translation>
+<variable>Back</variable>
+</message>
+<message>
+<tag_code>153</tag_code>
+<translation>用户名</translation>
+<variable>User Name</variable>
+</message>
+<message>
+<tag_code>158</tag_code>
+<translation>故障</translation>
+<variable>Failure</variable>
+</message>
+<message>
+<tag_code>160</tag_code>
+<translation>这张网页将在几秒钟内自动跳转到相应的页面。</translation>
+<variable>This screen will automatically return to the previous screen in a few seconds...</variable>
+</message>
+<message>
+<tag_code>296</tag_code>
+<translation>重要的更新</translation>
+<variable>Important Update</variable>
+</message>
+<message>
+<tag_code>297</tag_code>
+<translation>为了避免和你的网络提供商的IP地址发生冲突, 路由器的IP地址已经更新到</translation>
+<variable>To avoid a conflict with your Internet Service Provider, your router's IP address has been updated to </variable>
+</message>
+<message>
+<tag_code>319</tag_code>
+<translation>设置向导</translation>
+<variable>Setup Wizard</variable>
+</message>
+<message>
+<tag_code>341</tag_code>
+<translation>ADSL Settings</translation>
+<variable>ADSL Settings</variable>
+</message>
+<message>
+<tag_code>344</tag_code>
+<translation>国家和地区</translation>
+<variable>Country</variable>
+</message>
+<message>
+<tag_code>351</tag_code>
+<translation>无线</translation>
+<variable>Wireless</variable>
+</message>
+<message>
+<tag_code>382</tag_code>
+<translation>协议类型</translation>
+<variable>Connection Type</variable>
+</message>
+<message>
+<tag_code>428</tag_code>
+<translation>子网掩码</translation>
+<variable>Subnet Mask</variable>
+</message>
+<message>
+<tag_code>429</tag_code>
+<translation>缺省网关</translation>
+<variable>Default Gateway</variable>
+</message>
+<message>
+<tag_code>518</tag_code>
+<translation>该过程需要花费一至两分钟时间；请稍候...</translation>
+<variable>This process can take a minute or two; please wait...</variable>
+</message>
+<message>
+<tag_code>542</tag_code>
+<translation>请等待一会...</translation>
+<variable>Please wait a moment...</variable>
+</message>
+<message>
+<tag_code>543</tag_code>
+<translation>检测到动态IP(DHCP)</translation>
+<variable>Dynamic IP (DHCP) detected</variable>
+</message>
+<message>
+<tag_code>545</tag_code>
+<translation>PPPoA Detected</translation>
+<variable>PPPoA Detected</variable>
+</message>
+<message>
+<tag_code>553</tag_code>
+<translation>否。我自己配置路由器。</translation>
+<variable>No. I want to configure the router myself.</variable>
+</message>
+<message>
+<tag_code>731</tag_code>
+<translation>Multiplexing Method</translation>
+<variable>Multiplexing Method</variable>
+</message>
+<message>
+<tag_code>732</tag_code>
+<translation>LLC-BASED</translation>
+<variable>LLC-BASED</variable>
+</message>
+<message>
+<tag_code>744</tag_code>
+<translation>正在配置因特网连接</translation>
+<variable>Configuring the Internet Connection</variable>
+</message>
+<message>
+<tag_code>745</tag_code>
+<translation>您尚未连接到因特网。</translation>
+<variable>You are not yet connected to the Internet.</variable>
+</message>
+<message>
+<tag_code>746</tag_code>
+<translation>需要NETGEAR精灵为您提供帮助吗？</translation>
+<variable>Do you want NETGEAR Genie to help?</variable>
+</message>
+<message>
+<tag_code>747</tag_code>
+<translation>不需要，我想自己配置因特网连接。</translation>
+<variable>No, I want to configure the Internet connection myself.</variable>
+</message>
+<message>
+<tag_code>748</tag_code>
+<translation>我备份过路由器的设置。我想将路由器恢复为这些设置。</translation>
+<variable>I have saved the router settings in a file and I want to restore the router to those settings.</variable>
+</message>
+<message>
+<tag_code>749</tag_code>
+<translation>Select Country</translation>
+<variable>Select Country</variable>
+</message>
+<message>
+<tag_code>750</tag_code>
+<translation>No DSL Cable Is Plugged into the Router ADSL Port</translation>
+<variable>No DSL Cable Is Plugged into the Router ADSL Port</variable>
+</message>
+<message>
+<tag_code>751</tag_code>
+<translation>请务必将电缆牢固插入宽带调制解调器端口及路由器的因特网端口。</translation>
+<variable>Make sure that the cable is securely plugged into both the broadband modem port and the router Internet port.</variable>
+</message>
+<message>
+<tag_code>752</tag_code>
+<translation>After you have checked the DSL cable, click &lt;b&gt;Try again&lt;/b&gt;.</translation>
+<variable>After you have checked the DSL cable, click &lt;b&gt;Try again&lt;/b&gt;.</variable>
+</message>
+<message>
+<tag_code>753</tag_code>
+<translation>重试</translation>
+<variable>Try again</variable>
+</message>
+<message>
+<tag_code>755</tag_code>
+<translation>正在检测因特网连接</translation>
+<variable>Detecting the Internet Connection</variable>
+</message>
+<message>
+<tag_code>756</tag_code>
+<translation>单击“下一步”以继续。</translation>
+<variable>Click "Next" to continue.</variable>
+</message>
+<message>
+<tag_code>758</tag_code>
+<translation>请在下面输入所需的信息。</translation>
+<variable>Enter the required information below.</variable>
+</message>
+<message>
+<tag_code>759</tag_code>
+<translation>ISP用户名和/或密码不正确</translation>
+<variable>Incorrect ISP User name or Password</variable>
+</message>
+<message>
+<tag_code>760</tag_code>
+<translation>请再次输入所需的信息。</translation>
+<variable>Enter the required information again.</variable>
+</message>
+<message>
+<tag_code>761</tag_code>
+<translation>我想自己配置因特网连接</translation>
+<variable>I want to configure the Internet connection myself</variable>
+</message>
+<message>
+<tag_code>762</tag_code>
+<translation>检测到PPPoE因特网连接</translation>
+<variable>PPPoE DSL Internet Connection Detected</variable>
+</message>
+<message>
+<tag_code>763</tag_code>
+<translation>该过程需要花费几分钟时间；请稍候...</translation>
+<variable>This process can take a few minutes; please wait …</variable>
+</message>
+<message>
+<tag_code>764</tag_code>
+<translation>检测因特网连接时遇到问题</translation>
+<variable>Problem Detecting the Internet Connection</variable>
+</message>
+<message>
+<tag_code>765</tag_code>
+<translation>这很可能是由以下原因之一造成的：</translation>
+<variable>This is most likely due to one of the following reasons:</variable>
+</message>
+<message>
+<tag_code>766</tag_code>
+<translation>1.您在执行接线步骤期间没有重启调制解调器。</translation>
+<variable>1.  The modem was not power cycled during the cabling step.</variable>
+</message>
+<message>
+<tag_code>767</tag_code>
+<translation>要解决此问题，请重启调制解调器（先关闭电源，再重新打开）。如果调制解调器带有备用电池，则要重启调制解调器，您可能需要取出电池再重新插入。开关一次电源以后，请等待2分钟，直到调制解调器完全启动为止。</translation>
+<variable>To solve this problem, power cycle the modem (turn it off and on). To power cycle a modem with battery backup, you might need to remove and reinsert its battery. After the power cycle, wait 2 minutes for the modem to completely start up.</variable>
+</message>
+<message>
+<tag_code>768</tag_code>
+<translation>2.黄色的以太网线缆未完全插入，或插入了错误的位置。</translation>
+<variable>2.  The yellow Ethernet cable is not fully inserted, or is inserted in the wrong place.</variable>
+</message>
+<message>
+<tag_code>769</tag_code>
+<translation>要解决此问题，请务必将黄色的以太网线缆牢固插入宽带调制解调器端口及路由器的因特网端口。</translation>
+<variable>To solve this problem, make sure that the yellow Ethernet cable is securely plugged in to the broadband modem port and the router Internet port.</variable>
+</message>
+<message>
+<tag_code>770</tag_code>
+<translation>我刚刚重启调制解调器并等待了2分钟。</translation>
+<variable>I just power cycled the modem and waited for 2 minutes.</variable>
+</message>
+<message>
+<tag_code>771</tag_code>
+<translation>我已纠正以太网线缆问题。</translation>
+<variable>I corrected a problem with the Ethernet cable.</variable>
+</message>
+<message>
+<tag_code>772</tag_code>
+<translation>不存在上述问题。</translation>
+<variable>None of the above.</variable>
+</message>
+<message>
+<tag_code>773</tag_code>
+<translation>检测因特网连接时遇到问题 - IP地址</translation>
+<variable>Problem Detecting the Internet Connection - IP Address</variable>
+</message>
+<message>
+<tag_code>774</tag_code>
+<translation>因特网服务提供商(ISP)是否为您分配了固定（静态）IP地址？这是一种&lt;b&gt;极其罕见&lt;/b&gt;的特殊部署。 </translation>
+<variable>Did your Internet Service Provider (ISP) assign to you a fixed (static) IP address? This is a &lt;b&gt;very rare&lt;/b&gt; special deployment. </variable>
+</message>
+<message>
+<tag_code>775</tag_code>
+<translation>请选择一个选项，然后单击“下一步”继续。</translation>
+<variable>Select an option and click &lt;b&gt;Next&lt;/b&gt; to proceed.</variable>
+</message>
+<message>
+<tag_code>776</tag_code>
+<translation>是的。我的ISP为我分配了固定（静态）IP地址。</translation>
+<variable>Yes. My ISP assigned a fixed (static) IP address to me.</variable>
+</message>
+<message>
+<tag_code>777</tag_code>
+<translation>没有，我未从ISP处获得固定（静态）IP地址。</translation>
+<variable>No, I did not get a fixed (static) IP address from my ISP.</variable>
+</message>
+<message>
+<tag_code>778</tag_code>
+<translation>我不知道。 </translation>
+<variable>I don't know. </variable>
+</message>
+<message>
+<tag_code>779</tag_code>
+<translation>固定因特网IP设置</translation>
+<variable>Fixed Internet IP Settings</variable>
+</message>
+<message>
+<tag_code>780</tag_code>
+<translation>请输入因特网服务提供商分配的固定IP地址，然后单击“下一步”继续。</translation>
+<variable>Enter the fixed IP settings assigned by your Internet Service Provider and click &lt;b&gt;Next&lt;/b&gt; to proceed.</variable>
+</message>
+<message>
+<tag_code>781</tag_code>
+<translation>首选DNS服务器</translation>
+<variable>Preferred DNS Server</variable>
+</message>
+<message>
+<tag_code>782</tag_code>
+<translation>备用DNS服务器</translation>
+<variable>Alternate DNS Server</variable>
+</message>
+<message>
+<tag_code>783</tag_code>
+<translation>检测因特网连接时遇到问题 - MAC地址</translation>
+<variable>Problem Detecting the Internet Connection - MAC Address</variable>
+</message>
+<message>
+<tag_code>784</tag_code>
+<translation>如果您之前使用计算机或另一台路由器连接到因特网服务，则NETGEAR精灵可以使用之前能够正常工作的MAC地址。</translation>
+<variable>If you previously connected to your Internet service with a computer or another router,  NETGEAR Genie can use the same MAC address that worked before.</variable>
+</message>
+<message>
+<tag_code>785</tag_code>
+<translation>MAC地址是一个唯一的编号。您可以在计算机或路由器的产品标签上找到其MAC地址。</translation>
+<variable>A MAC address is a unique number.  You can find the MAC address of the computer or router on its product label.</variable>
+</message>
+<message>
+<tag_code>786</tag_code>
+<translation>请在这里输入MAC地址。</translation>
+<variable>Enter the MAC address here.</variable>
+</message>
+<message>
+<tag_code>787</tag_code>
+<translation>（格式AABBCCDDEEFF）</translation>
+<variable>(format AABBCCDDEEFF)</variable>
+</message>
+<message>
+<tag_code>788</tag_code>
+<translation>恢复路由器设置</translation>
+<variable>Restore Router Settings </variable>
+</message>
+<message>
+<tag_code>789</tag_code>
+<translation>请选择您保存的路由器设置备份文件，然后单击“下一步”继续。</translation>
+<variable>Browse to the router settings backup file you previously saved, and click &lt;b&gt;Next&lt;/b&gt; to proceed.</variable>
+</message>
+<message>
+<tag_code>790</tag_code>
+<translation>正在恢复路由器设置</translation>
+<variable>Restoring Router Settings</variable>
+</message>
+<message>
+<tag_code>791</tag_code>
+<translation>正在应用因特网连接设置</translation>
+<variable>Applying Internet Connection Settings</variable>
+</message>
+<message>
+<tag_code>792</tag_code>
+<translation>正在检查因特网连接；请稍候。</translation>
+<variable>Checking the Internet connection; please wait …</variable>
+</message>
+<message>
+<tag_code>793</tag_code>
+<translation>网络连接问题</translation>
+<variable>Network Connection Issue</variable>
+</message>
+<message>
+<tag_code>794</tag_code>
+<translation>很遗憾，路由器无法使用当前设置连接至因特网。</translation>
+<variable>The router cannot connect to the Internet with the current settings.</variable>
+</message>
+<message>
+<tag_code>795</tag_code>
+<translation>请检查以下项目。</translation>
+<variable>Please review the following items:</variable>
+</message>
+<message>
+<tag_code>796</tag_code>
+<translation>- 确保电缆连接正确。有关说明，请参阅路由器安装指南。</translation>
+<variable>- Check that the cable connections are correct. Refer to the router Installation Guide for instructions.</variable>
+</message>
+<message>
+<tag_code>797</tag_code>
+<translation>- 检查宽带调制解调器是否已正确重启。如果您使用的是带有备用电池的调制解调器，请取出电池再重新插入，以重启调制解调器。</translation>
+<variable>- Check that your broadband modem is power cycled correctly. If you have a battery-backed modem, remove and reinsert the battery to power cycle your modem.</variable>
+</message>
+<message>
+<tag_code>798</tag_code>
+<translation>您希望NETGEAR精灵重试一次吗？</translation>
+<variable>Do you want NETGEAR Genie to try again?</variable>
+</message>
+<message>
+<tag_code>799</tag_code>
+<translation>Please upgrade to a version 4 or higher browser so that you can use this setup tool (and see lots of great sites on the Internet!)</translation>
+<variable>Please upgrade to a version 4 or higher browser so that you can use this setup tool (and see lots of great sites on the Internet!)</variable>
+</message>
+<message>
+<tag_code>800</tag_code>
+<translation>恭喜！</translation>
+<variable>Congratulations!</variable>
+</message>
+<message>
+<tag_code>801</tag_code>
+<translation>您已成功连接至因特网。</translation>
+<variable>You are successfully connected to the Internet.</variable>
+</message>
+<message>
+<tag_code>802</tag_code>
+<translation>该路由器已预设以下唯一的无线网络名称(SSID)和</translation>
+<variable>This router is preset with the following unique wireless network name (SSID) and </variable>
+</message>
+<message>
+<tag_code>803</tag_code>
+<translation>您的路由器已预设WPA2-PSK无线安全设置，以防您的网络遭受未经授权的访问。要加入该无线网络，您必须输入网络密钥（密码）。这些预设设置对于该设备是唯一的，就像序列号一样。如需更改它们，可稍后在路由器Web GUI的“无线设置”屏幕中进行更改。</translation>
+<variable>Your router is preset with WPA2-PSK wireless security to protect your network from unwanted access. To join the wireless network, you must enter the network key (password). These preset settings are unique to this device, like a serial number.  If you want to change them, you can do so later in the Wireless Settings screen on the router web GUI.</variable>
+</message>
+<message>
+<tag_code>804</tag_code>
+<translation>网络密钥（密码）</translation>
+<variable>network key (password)</variable>
+</message>
+<message>
+<tag_code>805</tag_code>
+<translation>Wireless Network Name (SSID)</translation>
+<variable>Wireless Network Name (SSID)</variable>
+</message>
+<message>
+<tag_code>806</tag_code>
+<translation>打印此页</translation>
+<variable>Print this</variable>
+</message>
+<message>
+<tag_code>807</tag_code>
+<translation>带我畅游因特网</translation>
+<variable>Take me to the Internet</variable>
+</message>
+<message>
+<tag_code>808</tag_code>
+<translation>无线安全未在此路由器上启用。NETGEAR强烈建议</translation>
+<variable>Wireless security is not enabled on this router. NETGEAR highly recommends that you</variable>
+</message>
+<message>
+<tag_code>809</tag_code>
+<translation>请单击此处</translation>
+<variable>Click here</variable>
+</message>
+<message>
+<tag_code>810</tag_code>
+<translation>启用无线安全保护你的网络。</translation>
+<variable>to enable wireless security and protect your network.</variable>
+</message>
+<message>
+<tag_code>813</tag_code>
+<translation>路由器固件版本</translation>
+<variable>Router Firmware Version</variable>
+</message>
+<message>
+<tag_code>814</tag_code>
+<translation>继续</translation>
+<variable>Continue</variable>
+</message>
+<message>
+<tag_code>816</tag_code>
+<translation>Auto-Detect</translation>
+<variable>Auto-Detect</variable>
+</message>
+<message>
+<tag_code>817</tag_code>
+<translation>智能设置向导可检测您的因特网连接类型。</translation>
+<variable>The Smart Setup Wizard can detect the type of Internet connection that you have.</variable>
+</message>
+<message>
+<tag_code>818</tag_code>
+<translation>现在是否需要“智能设置向导”检测连接类型？</translation>
+<variable>Do you want the Smart Setup Wizard to try and detect the connection type now?</variable>
+</message>
+<message>
+<tag_code>819</tag_code>
+<translation>UK</translation>
+<variable>UK</variable>
+</message>
+<message>
+<tag_code>820</tag_code>
+<translation>澳大利亚</translation>
+<variable>Australia</variable>
+</message>
+<message>
+<tag_code>821</tag_code>
+<translation>法国</translation>
+<variable>France</variable>
+</message>
+<message>
+<tag_code>822</tag_code>
+<translation>Ireland</translation>
+<variable>Ireland</variable>
+</message>
+<message>
+<tag_code>823</tag_code>
+<translation>意大利</translation>
+<variable>Italy</variable>
+</message>
+<message>
+<tag_code>824</tag_code>
+<translation>新西兰</translation>
+<variable>New Zealand</variable>
+</message>
+<message>
+<tag_code>825</tag_code>
+<translation>新加坡</translation>
+<variable>Singapore</variable>
+</message>
+<message>
+<tag_code>826</tag_code>
+<translation>瑞典</translation>
+<variable>Sweden</variable>
+</message>
+<message>
+<tag_code>827</tag_code>
+<translation>瑞士</translation>
+<variable>Switzerland</variable>
+</message>
+<message>
+<tag_code>828</tag_code>
+<translation>芬兰</translation>
+<variable>Finland</variable>
+</message>
+<message>
+<tag_code>829</tag_code>
+<translation>USA</translation>
+<variable>USA</variable>
+</message>
+<message>
+<tag_code>830</tag_code>
+<translation>德国</translation>
+<variable>Germany</variable>
+</message>
+<message>
+<tag_code>831</tag_code>
+<translation>其它</translation>
+<variable>Other</variable>
+</message>
+<message>
+<tag_code>855</tag_code>
+<translation>该过程需要花费几分钟时间；请稍候...</translation>
+<variable>This process can take up to six minutes; please wait …</variable>
+</message>
+<message>
+<tag_code>10609</tag_code>
+<translation>使用VLANID</translation>
+<variable>Use VLANID</variable>
+</message>
+<message>
+<tag_code>10610</tag_code>
+<translation>因特网服务提供商</translation>
+<variable>Internet Service Provider</variable>
+</message>
+<message>
+<tag_code>10611</tag_code>
+<translation>DT</translation>
+<variable>DT</variable>
+</message>
+</tag_msg>

@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-Control" content="no-cache"><meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT"><meta name="description" content="@model_name#_multilangual"><title>NETGEAR Router @model_name#</title><script language="javascript" type="text/javascript" src="string.js"></script><link rel="stylesheet" href="style/form.css"><script language="javascript" type="text/javascript" src="funcs.js"></script><!-- link rel="stylesheet" href="form.css" --><script language="javascript" type="text/javascript" src="utility.js"></script><script language="javascript" type="text/javascript" src="linux.js"></script><script language="javascript" type="text/javascript">
+<!-- hide script from old browsers
+/* timer refresh automatically */
+var delaytime = 1000;
+var date_str = "@rt_now_datetime#";
+var year, mon, day, hour, min, sec;
+function sendLog()
+{
+    var cf = document.forms[0];
+	if(! is_email_on())
+		return false;
+    cf.log_detail.value = '';
+	stdAction(cf, 'sendlog');
+}
+function clearLog()
+{
+    var cf = document.forms[0];
+    cf.log_detail.value = '';
+    stdAction(cf, 'clearlog')
+}
+function is_email_on()
+{
+    var cf = document.forms[0];
+    if(cf.h_email_notify.value != "enable" )  //  e-mail notification on
+    {    alert(getErrorMsgByVar("gsm_msg_log_en_send_log"));
+         return false;
+    }
+    else
+        return true;
+}
+function checkData()
+{
+ 	var cf = document.forms[0];
+	var msg = "";
+	var syslogType = getRadioCheckedValue(cf.syslog_type);
+	if(syslogType == "sendToIP")
+	    if(badIP(cf.sysLogIPAddr1,cf.sysLogIPAddr2,cf.sysLogIPAddr3,cf.sysLogIPAddr4,254)
+	    	||(parseInt(cf.sysLogIPAddr4.value)==0))
+	    	msg+= "Invalid IP Address, please enter again\n";	
+	if (msg.length > 1)
+	{
+		alert(msg);
+		return false;
+	}
+    	cf.log_detail.value='';
+	stdAction(cf, 'save');
+	dataToHidden(cf);
+	return true;
+}
+//-->
+</script></head><body bgcolor="#ffffff" onLoad="dataToVisible(document.forms[0]);self.focus();fresh_time();">
+<form method="POST" action="setup.cgi@post_par#" onSubmit="this.log_detail.value=''">
+<div class="page_title" languageCode = "195">Logs</div>
+<div class="fix_button">
+<table width="100%" border="0" cellpadding="0" cellspacing="2"><tr><td nowrap colspan="2" align="center">
+<input class="cancel_bt" type="button" name="Cancel" value = "Cancel" onClick="location.href='./FW_log.htm'" languageCode = "19">
+&nbsp;
+<input class="apply_bt" type="button" name="Apply" value = "Apply" onClick="if(checkData()) buttonToDisabled(document.forms[0]);" languageCode = "18">
+</td></tr></table>
+</div>
+<div id="main" class="main_top_button">
+<table border="0" cellpadding="0" cellspacing="3" width="100%"><tr><td colspan="2" align="center">
+ <table border="0" cellspacing="0" cellpadding="0"><tr><td colspan="2"><pre><b><span languageCode = "196">Current Time</span>: <span id="timer"></span></b>
+<textarea name="log_detail" class="smallfix" rows="15" cols="60" wrap="off" readonly tabindex="-1">
+@rt_log#
+</textarea></pre></td>
+  </tr></table></td>
+</tr><tr><!-- RULE --><td colspan="2" background="liteblue.gif" height="12">&nbsp; </td>
+</tr><tr><td colspan="2" align="center" height="35">
+ <input class="common_bt" type="button" name="action_Refresh" value = "Refresh" onClick="location.href='./FW_log.htm'" languageCode = "129">
+ &nbsp;
+ <input class="common_bt" type="button" name="action_Clear" value = "Clear Log" onClick="clearLog();buttonToDisabled(document.forms[0])" languageCode = "204">
+ &nbsp;
+ <input class="common_bt" type="button" name="action_Send" value = "Send Log" onClick="if(sendLog()) buttonToDisabled(document.forms[0])" languageCode = "205"></td>
+</tr><tr><!-- RULE --><td colspan="2" background="liteblue.gif" height="12">&nbsp; </td>
+</tr><tr><td colspan="2"><p><b><a href="javascript:loadhelp('FW_log','contents')" tabindex="-1" languageCode = "197">Include in Log</a></b></p></td>
+</tr><tr><td colspan="2"><input type="checkbox" name="log_asites" value="log_asites"><span languageCode = "198">Attempted access to allowed sites</span></td>
+</tr><tr><td colspan="2"><input type="checkbox" name="log_site" value="log_bsites"><span languageCode = "199">Attempted access to blocked sites and services</span></td>
+</tr><tr><td colspan="2"><input type="checkbox" name="log_conn" value="log_mg"><span languageCode = "200">Connections to the Web-based interface of this Router</span></td>
+</tr><tr><td colspan="2"><input type="checkbox" name="log_router" value="log_op"><span languageCode = "201">Router operation (startup, get time etc)</span></td>
+</tr><tr><td colspan="2"><input type="checkbox" name="log_dosport" value="log_dos"><span languageCode = "202">Known DoS attacks and Port Scans</span></td>
+</tr><tr><td colspan="2"><input type="checkbox" name="log_fwd" value="log_fwd"><span languageCode = "186">Port Forwarding / Port Triggering</span></td>
+</tr><tr><td colspan="2"><input type="checkbox" name="log_wlan" value="log_wlan"><span languageCode = "203">Wireless access</span></td>
+</tr><tr><!-- RULE --><td colspan="2" background="liteblue.gif" height="12">&nbsp; </td>
+</tr>
+<tr>
+	<td colspan="2"> <b><a href="javascript:loadhelp('FW_log','syslog')" tabindex="-1" languageCode = "710">Syslog</a></b></td>
+</tr>
+<tr>
+	<td colspan="2"><input type="radio" name="syslog_type" value="disable"> <span languageCode = "311">Disable</span></td>
+</tr>
+<tr>
+	<td colspan="2"><input type="radio" name="syslog_type" value="broadcast"> <span languageCode = "711">Broadcast on LAN</span></td>
+</tr>
+<tr>
+	<td width="50%"><input type="radio" name="syslog_type" value="sendToIP"> <span languageCode = "712">Send to this Syslog server IP address</span></td>
+	<td align="right" class="num" nowrap><input type="text" name="sysLogIPAddr1" class="num" size="4" maxlength="3" value="">.<input type="text" name="sysLogIPAddr2" class="num" size="4" maxlength="3" value="">.<input type="text" name="sysLogIPAddr3" class="num" size="4" maxlength="3" value="">.<input type="text" name="sysLogIPAddr4" class="num" size="4" maxlength="3" value=""></td>
+</tr>
+<tr>  <!-- RULE -->
+  <td colspan="2" background="liteblue.gif" height="12">&nbsp; </td>
+</tr>
+<tr><td colspan="2" align="center"></td>
+</tr></table>
+<input type="hidden" name="h_log_asites" value="@h_log_asites#">
+<input type="hidden" name="h_log_site" value="@h_log_site#">
+<input type="hidden" name="h_log_conn" value="@h_log_conn#">
+<input type="hidden" name="h_log_router" value="@h_log_router#">
+<input type="hidden" name="h_log_dosport" value="@h_log_dosport#">
+<input type="hidden" name="h_log_fwd" value="@h_log_fwd#">
+<input type="hidden" name="h_log_wlan" value="@h_log_wlan#">
+<!-- ServerEnd --><input type="hidden" name="todo" value="">
+<!-- newfile, clearlog, sendlog -->
+<input type="hidden" name="this_file" value="FW_log.htm">
+<input type="hidden" name="next_file" value="FW_log.htm">
+<input type="hidden" name="h_email_notify" value="@h_email_notify#">
+<input type="hidden" name="email_on" value="@email_on#">
+<input type="hidden" name="h_syslog_type" value="@h_syslog_type#">
+<input type="hidden" name="c4_sysLogIPAddr" value="@c4_sysLogIPAddr#">
+<!-- yes or no --><input type="hidden" name="SID" value="@SID#">
+</div>
+</form>
+<p>
+</p>
+<div id="help" style="display: none">
+		<iframe name="help_iframe" id="helpframe" src="FW_log_h.htm" allowtransparency="true" width="100%" frameborder="0">
+		</iframe>
+</div>
+<div id="help_switch" class="close_help">
+	 <img class="help_switch_img" src="image/help/help-bar.gif"><script>
+var help_flag=0;
+if(isIE()){
+	show_hidden_help_top_button(1);
+	var frame_div = top.document.getElementById("formframe_div");
+	frame_div.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+if(get_browser() == "Opera"){
+	window.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+</script><div id="help_space" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_center"><span languageCode="3016">Help Center</span></div>
+<div id="help_button" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_show_hidden"><a href="javascript:void(0)" onClick="show_hidden_help_top_button(help_flag); help_flag++;"><span languageCode="3017">Show/Hide Help Center</span></a></div>
+</div>
+<script language="javascript" type="text/javascript" src="langs.js"></script></body></html>

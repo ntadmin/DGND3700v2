@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<META http-equiv="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">	
+<meta HTTP-EQUIV="Expires" CONTENT="Mon, 06 Jan 1990 00:00:01 GMT"> 
+<meta name="description" content="@model_name#">
+<meta http-equiv="content-type" content="text/html;charset=ISO-8859-1">
+	
+ 
+	
+ 
+<title>NETGEAR Router @model_name#</title>
+<link rel="stylesheet" href="form.css">
+<script language="javascript" type="text/javascript" src="utility.js"></script>
+<script language="javascript" type="text/javascript" src="linux.js"></script>
+<script language="javascript" type="text/javascript">
+<!-- hide script from old browsers
+function checkData()
+{
+    var cf = document.forms[0];
+    
+    if(cf.set_IP[1].checked)
+    {
+        top.contents.isCa = true;
+        location.href="BAS_basic.htm";
+    }
+    else
+        location.href="wiz_mac.htm";
+    
+}
+//-->
+</script>
+</head>
+<body bgcolor="#ffffff" onload="dataToVisible(document.forms[0]);loadhelp('WIZ_sel');document.forms[0].elements[0].focus()">
+<form name="formname" method="POST" action="setup.cgi@post_par#"> 
+<table border="0" cellpadding="0" cellspacing="4" width="100%">
+<tr>
+<td colspan="2"><h1>Setup Wizard</H1></td>
+</tr>
+			
+<tr>  <!-- RULE -->
+  <td colspan="2" background="liteblue.gif" height="12"> &nbsp;</td>
+</tr>
+<tr>
+	<td colspan="2"><b>No Internet IP address is detected</b></td>
+</tr>
+<tr>
+ <td colspan="2">Setup Wizard couldn't detect an Internet IP address from your Internet Service Provider connection.</td>
+</tr>
+<tr>
+	<td align="left"><input type="radio" name="set_IP" value="disable" checked>Help me troubleshoot.</td>
+</tr>
+<tr>
+	<td align="left"><input type="radio" name="set_IP" value="enable">My Internet Service Provider assigns me a fixed/Static IP address. Fixed/Static IP address is a special deployment from ISP.</td>
+</tr>
+			
+<tr>  <!-- RULE -->
+  <td colspan="2" background="liteblue.gif" height="12"> &nbsp;</td>
+</tr>
+<tr>
+	<td colspan="2" align="center">
+		<input type="Button" name="next" value=" Next " onClick="checkData()">
+	</td></tr>
+</table>
+</form>
+<p></p>
+</body>
+</html>

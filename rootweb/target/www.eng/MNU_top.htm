@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-Control" content="no-cache"><meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT"><meta name="description" content="@model_name#_multilangual"><title>NETGEAR Router @model_name#</title><script language="javascript" type="text/javascript" src="string.js"></script><link rel="stylesheet" href="style/form.css"><script language="javascript" type="text/javascript" src="funcs.js"></script><script language="javascript" type="text/javascript" src="utility.js"></script><script language="javascript" type="text/javascript" src="linux.js"></script><script language="javascript" type="text/javascript">
+function checkData()
+{
+    var cf = document.forms[0];
+    var language_var = getSelected(cf.language_sel);
+
+    if(language_var != cf.h_language_sel.value) {
+        dataToHidden(cf);
+        // can not POST here. id may have been out of date.
+        location.href="setup.cgi?todo=changelanguage&h_language_sel=" + cf.h_language_sel.value;
+    	return true;
+    }
+    else {
+        return false;
+    }
+}
+
+</script></head><body bgcolor="#ffffff" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="dataToVisible(document.forms[0]);">
+<form method="POST" action="setup.cgi">
+<table border="0" cellpadding="3" cellspacing="0" width="100%"><tr><td height="12" colspan="2" background="darkblue.gif" width="100%"></td>
+        </tr><tr><td width="77%" rowspan="4" style="background-repeat:no-repeat" background="@head_image#"></td>
+	</tr><tr><td><b style="FONT-SIZE: 12px;FONT-FAMILY: Arial" languageCode="337">Select Language:</b></td>
+	</tr><tr><td>
+    <select name="language_sel" id="lang_sel">
+	            <option value="Auto">Auto</option>
+	            <option value="English">English</option>
+	            <option value="German">Deutsch</option>
+	            <option value="Chinese">中文</option>
+	            <option value="Korean">한국어</option>
+	            <option value="Russian">Русский</option>
+	            <option value="Spanish">Español</option>
+	            <option value="Polish">Polski</option>
+	            <option value="French">Français</option>
+	            <option value="Italian">Italiano</option>
+	            <option value="Swedish">Svenska</option>
+	            <option value="Danish">Dansk</option>
+	            <option value="Dutch">Nederlands</option>
+	            <option value="Greek">Ελληνικά</option>
+	            <option value="Norwegian">Norsk</option>
+	            <option value="Czech">Čeština</option>
+	            <option value="Slovenian">Slovenščina</option>
+	            <option value="Portuguese">Português</option>
+	            <option value="Hungarian">Magyar</option>
+	            <option value="Romanian">Română</option>
+	            <option value="Finnish">Suomi</option>
+	            <option value="Slovak">Slovenčin</option>
+	            <option value="Turkish">Turkish</option>
+	</select></td>
+	</tr><tr><td height="33%"><img src="spacer.gif" width="25" height="18" border="0" alt=""><input class="common_bt" type="button" name="Language_Apply" value="Apply" onClick="return checkData()" languageCode="18"></td>
+        </tr></table><input type="hidden" name="todo" value="changelanguage"><input type="hidden" name="this_file" value="MNU_top.htm"><input type="hidden" name="next_file" value="index.htm"><input type="hidden" name="SID" value="@SID#"><input type="hidden" name="h_language_sel" value="@h_language_sel#"></form>
+<script language="javascript" type="text/javascript" src="langs.js"></script></body></html>

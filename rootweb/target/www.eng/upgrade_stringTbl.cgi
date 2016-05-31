@@ -1,0 +1,1 @@
+/etc/upgrade_stringTbl.cgi

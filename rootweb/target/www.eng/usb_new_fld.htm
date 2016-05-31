@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-Control" content="no-cache"><meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT"><meta name="description" content="@model_name#_multilangual"><title>NETGEAR Router @model_name#</title><script language="javascript" type="text/javascript" src="string.js"></script><link rel="stylesheet" href="style/form.css"><script language="javascript" type="text/javascript" src="funcs.js"></script><!-- link rel="stylesheet" href="form.css" --><script language="javascript" type="text/javascript" src="utility.js"></script><script language="javascript" type="text/javascript" src="linux.js"></script><script language="javascript" type="text/javascript">
+<!--
+
+var usb_fldact_end = @usb_fldact_end#;
+
+function init()
+{
+	var cf = document.forms[0];
+	dataToVisible(cf);
+	cf.elements[0].focus();
+	if (usb_fldact_end == 1)
+	    end();
+}
+function checkData()
+{
+ 	var cf = document.forms[0];
+	var msg = "";
+    
+    var invalidchar = "\\/:*?\"<>|";
+	// trim start/ending space
+//	cf.folder.value = ignoreSpaces(cf.folder.value);
+//	cf.shareName.value = ignoreSpaces(cf.shareName.value);
+
+	for (var i = 0; i < cf.shareName.value.length; i++) {
+		var ch = cf.shareName.value.charAt(i);
+		if (invalidchar.indexOf(ch) >= 0) {
+			msg += getErrorMsgByVar("gsm_msg_invalid") + " " + getErrorMsgByVar("gsm_msg_share_name");
+		}
+	}
+
+	msg+= checkBlank(cf.folder, getErrorMsgByVar("gsm_msg_share_folder"));
+	msg+= checkBlank(cf.shareName, getErrorMsgByVar("gsm_msg_share_name"));
+	if (msg.length > 1)
+	{
+		alert(msg);
+		return false;
+	}
+	msg+= checkNoBlanks(cf.folder, getErrorMsgByVar("gsm_msg_share_folder"));
+	msg+= checkNoBlanks(cf.shareName, getErrorMsgByVar("gsm_msg_share_name"));
+	if (msg.length > 1)
+	{
+		alert(msg);
+		return false;
+	}
+	dataToHidden(cf);
+	//opener.location.reload();
+	return true;	
+}
+function browseDisk()
+{
+	var cf = document.forms[0];
+	var msg = "";
+	msg+= checkNoBlanks(cf.shareName, getErrorMsgByVar("gsm_msg_share_name"));
+	if (msg.length > 1)
+	{
+		alert(msg);
+		return false;
+	}
+	dataToHidden(cf);
+	cf.todo.value = "browse";
+	cf.next_file.value = "usb_fld_tree.htm";
+	return true;
+}
+function end()
+{
+	opener.location.href = "@usb_opener_htm#";
+	self.close();
+}
+function writeAccessUpdate()
+{
+	var cf = document.forms[0];
+	var accessIndex = cf.readAccess.selectedIndex;
+	if(accessIndex == 1)
+		cf.writeAccess.selectedIndex = 1; //Admin
+	
+}
+function readAccessUpdate()
+{
+	var cf = document.forms[0];
+	var accessIndex = cf.writeAccess.selectedIndex;
+	if(accessIndex == 0)
+		cf.readAccess.selectedIndex = 0; //all-nopassword
+}	
+//-->
+</script>
+</head>
+<body bgcolor="#ffffff" onLoad="init();">
+<form name="usb_new_fld" method="post" action="setup.cgi@post_par2#">
+<div class="page_title" languageCode = "486">Create Network Folder</div>
+<div class="fix_button">
+<table width="100%" border="0" cellpadding="0" cellspacing="2"><tr><td nowrap colspan="2" align="center">
+<input class="apply_bt" type="submit" name="Apply" value = "Apply" onClick="return checkData();" languageCode = "18">
+</td></tr></table>
+</div>
+<div id="main" class="main_top_button">
+<table border="0" cellpadding="0" cellspacing="3" width="100%">
+<tr>
+	<td class="hlc">
+	<b languageCode = "493">USB Device</b>:
+	</td>
+	<td class="hrc">
+	<select name="subDevice" size="1"> 
+	@usb_device_list#
+	</select>
+	</td>
+</tr>
+<tr>
+	<td class="hlc">
+	<b languageCode = "495">Folder</b>:
+	</td>
+	<td class="hrc">
+	<input type="text" name="folder" size="32" maxlength="60" value="@folder#">
+	<input class="common_bt" type="submit" name="browse" value = "Browse" onClick="return browseDisk();" languageCode = "498"></td>
+</tr>
+<tr>
+	<td class="hlc">
+	<b languageCode = "483">Share Name</b>:
+	</td>
+	<td class="hrc">
+	<input type="text" name="shareName" size="32" maxlength="31" value="@shareName#">
+	</td>
+</tr>
+<tr>
+	<td class="hlc">
+	<b languageCode = "484">Read Access</b>:
+	</td>
+	<td class="hrc">
+	<select name="readAccess" size="1" onChange="writeAccessUpdate()"> 
+		<option value="nopassword" languageCode = "496">All - no password</option>
+		<option value="admin" languageCode = "497">admin</option>
+	</select>
+	</td>
+</tr>
+<tr>
+	<td class="hlc">
+	<b languageCode = "485">Write Access</b>:
+	</td>
+	<td class="hrc">
+	<select name="writeAccess" size="1" onChange="readAccessUpdate()"> 
+		<option value="nopassword" languageCode = "496">All - no password</option>
+		<option value="admin" languageCode = "497">admin</option>
+	</select>
+	</td>
+</tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="3" width="100%"><tr>
+<td background="liteblue.gif" height="12">&nbsp;</td></tr></table>
+<table border="0" cellpadding="0" cellspacing="3" width="100%">
+<tr><td align="center">
+<INPUT class="common_bt" type="button" name="close" value = "Close Window" onClick="self.close()" languageCode = "69"></td></tr></table>
+<input type="hidden" name="h_subDevice" value="@h_subDevice#">
+<input type="hidden" name="h_readAccess" value="">
+<input type="hidden" name="h_writeAccess" value="">
+<input type="hidden" name="edit" value="0" >
+<input type="hidden" name="h_ruleSelect" value="">
+<input type="hidden" name="todo" value="save">
+<input type="hidden" name="this_file" value="usb_new_fld.htm">
+<input type="hidden" name="next_file" value="usb_new_fld.htm">
+</div>
+</form>
+<script language="javascript" type="text/javascript" src="langs.js"></script>
+</body>
+</html>

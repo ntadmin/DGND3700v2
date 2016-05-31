@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<error_msg xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<message>
+		<err_code>1</err_code>
+		<translation>nemůže být prázdná</translation>
+		<variable>gsm_msg_blank</variable>
+	</message>
+	<message>
+		<err_code>5</err_code>
+		<translation>obsahuje neplatné číslo.</translation>
+		<variable>gsm_msg_check_invalid</variable>
+	</message>
+	<message>
+		<err_code>8</err_code>
+		<translation>%s is out of range %s ~ %s</translation>
+		<variable>gsm_msg_outofrange</variable>
+	</message>
+	<message>
+		<err_code>16</err_code>
+		<translation>VPI je mimo rozsah [0~255]</translation>
+		<variable>gsm_msg_vpi_out_of_range</variable>
+	</message>
+	<message>
+		<err_code>17</err_code>
+		<translation>VCI je mimo rozsah [32~65535]</translation>
+		<variable>gsm_msg_vci_out_of_range</variable>
+	</message>
+	<message>
+		<err_code>249</err_code>
+		<translation>Please select one ...</translation>
+		<variable>gsm_msg_wiz_no_sel</variable>
+	</message>
+	<message>
+		<err_code>vlan015</err_code>
+		<translation>MUST be within the range of 1 to 4094.</translation>
+		<variable>gsm_must_tag_range</variable>
+	</message>
+	<message>
+		<err_code>13311</err_code>
+		<translation>Nejprve zvolte jednu možnost.</translation>
+		<variable>bh_select_an_option</variable>
+	</message>
+	<message>
+		<err_code>13311</err_code>
+		<translation>Jméno uživatele nemůže být prázdné.</translation>
+		<variable>bh_login_name_null</variable>
+	</message>
+	<message>
+		<err_code>13312</err_code>
+		<translation>Neplatné heslo.</translation>
+		<variable>bh_password_error</variable>
+	</message>
+	<message>
+		<err_code>13313</err_code>
+		<translation>Zadejte dobu necinnosti.[NEL]</translation>
+		<variable>bh_idle_time_null</variable>
+	</message>
+	<message>
+		<err_code>13314</err_code>
+		<translation>Neplatná hodnota doby nečinnosti. Zadejte platné číslo.[NEL]</translation>
+		<variable>bh_invalid_idle_time</variable>
+	</message>
+	<message>
+		<err_code>13315</err_code>
+		<translation>Neplatná adresa IP. Zadejte ji znovu nebo nechte pole prázdné.</translation>
+		<variable>bh_invalid_myip</variable>
+	</message>
+	<message>
+		<err_code>13316</err_code>
+		<translation>Neplatná IP adresa brány. Zadejte ji znovu.</translation>
+		<variable>bh_invalid_gateway</variable>
+	</message>
+	<message>
+		<err_code>13317</err_code>
+		<translation>Počítač nepodporuje tiskárnu.</translation>
+		<variable>bh_not_support_print</variable>
+	</message>
+	<message>
+		<err_code>13318</err_code>
+		<translation>Název souboru nemůže být prázdný.</translation>
+		<variable>bh_filename_null</variable>
+	</message>
+	<message>
+		<err_code>13319</err_code>
+		<translation>Přiřaďte správný soubor. (Formát souboru je *.</translation>
+		<variable>bh_not_correct_file</variable>
+	</message>
+	<message>
+		<err_code>13320</err_code>
+		<translation>Neplatná adresa IP. Zadejte ji znovu.</translation>
+		<variable>bh_invalid_ip</variable>
+	</message>
+	<message>
+		<err_code>13321</err_code>
+		<translation>Neplatná maska podsítě. Zadejte ji znovu.[NEL]</translation>
+		<variable>bh_invalid_mask</variable>
+	</message>
+	<message>
+		<err_code>13322</err_code>
+		<translation>IP adresa LAN a IP adresa WAN nesmí být ve stejné podsíti.[NEL]</translation>
+		<variable>bh_same_lan_wan_subnet</variable>
+	</message>
+	<message>
+		<err_code>13323</err_code>
+		<translation>Název souboru nemůže být prázdný.</translation>
+		<variable>bh_filename_null</variable>
+	</message>
+	<message>
+		<err_code>13324</err_code>
+		<translation>Konfigurace připojení k Internetu vyžaduje zkušenosti se sítěmi. Opravdu chcete pokračovat?</translation>
+		<variable>bh_no_genie_help_confirm</variable>
+	</message>
+	<message>
+		<err_code>13325</err_code>
+		<translation>Varování! [NEL]Obnova nastavení z konfiguračního souboru vymaže všechna stávající nastavení. [NEL]Opravdu to chcete provést?</translation>
+		<variable>bh_ask_for_restore</variable>
+	</message>
+</error_msg>

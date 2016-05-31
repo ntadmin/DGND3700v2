@@ -1,0 +1,632 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-Control" content="no-cache"><meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT"><meta name="description" content="@model_name#_multilangual"><title>NETGEAR Router @model_name#</title><script language="javascript" type="text/javascript" src="string.js"></script><link rel="stylesheet" href="style/form.css"><script language="javascript" type="text/javascript" src="funcs.js"></script><!-- link rel="stylesheet" href="form.css" --><style type="text/javascript">
+	classes.num.all.fontFamily = "Courier";
+	classes.num.all.fontSize = "10pt" ;
+</style><script language="javascript" type="text/javascript" src="utility.js"></script><script language="javascript" type="text/javascript" src="linux.js"></script><script language="javascript" type="text/javascript">
+<!-- hide script from old browsers
+
+
+function redirect(secuType)
+{
+	var cf = document.forms[0];
+	dataToHidden(cf);
+	cf.todo.value="redirect";
+    cf.submit();
+}
+
+var hidesec="@hidesec#";
+var router_ip = "@c4_sysLANIPAddr#";
+
+
+
+function setKeys()
+{
+	var cf = document.forms[0];
+	if (cf.wepenc.selectedIndex == 0){
+		keysize = 10;
+		cf.ascii_key1.size = cf.ascii_key2.size = cf.ascii_key3.size = cf.ascii_key4.size = keysize + 3 ;  // extra for Mac
+		if (cf.ascii_key1.value.length>10)
+			cf.ascii_key1.value = cf.ascii_key1.value.substring(0,10);
+		if (cf.ascii_key2.value.length>10)
+			cf.ascii_key2.value = cf.ascii_key2.value.substring(0,10);
+		if (cf.ascii_key3.value.length>10)
+			cf.ascii_key3.value = cf.ascii_key3.value.substring(0,10);
+		if (cf.ascii_key4.value.length>10)
+			cf.ascii_key4.value = cf.ascii_key4.value.substring(0,10);
+        }else{
+		keysize = 26;
+		cf.ascii_key1.size = cf.ascii_key2.size = cf.ascii_key3.size = cf.ascii_key4.size = keysize + 6; // extra for Mac
+	}
+}
+function  loadData(cf)
+{
+	var profile_idx = @h_ssidSelect#;
+	if(cf.enable_ap.checked)
+    {
+        parent.document.forms[0].h_enable_ap.value = cf.h_enable_ap.value;
+    }
+    else
+    {
+        parent.document.forms[0].h_enable_ap.value = "";
+    }
+    if(cf.ssid_bc.checked)
+    {
+        parent.document.forms[0].h_ssid_bc.value = cf.h_ssid_bc.value;
+    }
+    else
+    {
+        parent.document.forms[0].h_ssid_bc.value = "";
+    }
+
+    if(profile_idx != 1)
+    {
+        if(cf.allow_access.checked)
+        {
+            parent.document.forms[0].h_allow_access.value = cf.h_allow_access.value;
+        }
+        else
+        {
+            parent.document.forms[0].h_allow_access.value = "";
+        }
+    }
+    if(cf.wire_iso.checked)
+    {
+        parent.document.forms[0].h_wire_iso.value = cf.h_wire_iso.value;
+    }
+    else
+    {
+        parent.document.forms[0].h_wire_iso.value = "";
+    }
+
+    parent.document.forms[0].ssid.value = cf.ssid.value;
+    parent.document.forms[0].h_w_channel.value = cf.h_w_channel.value;
+    parent.document.forms[0].h_opmode.value = cf.h_opmode.value;
+    parent.document.forms[0].h_security_type.value = cf.h_security_type.value;
+    parent.document.forms[0].h_ssidSelect.value = cf.h_ssidSelect.value;
+
+    parent.document.forms[0].load_2g_frame.value  = "WLG_2g_wireless3.htm";
+}
+function checkData( save_only )
+{
+    var cf = document.forms[0];
+    var msg = "";
+
+    if(!showWpsAlert())return false;
+    //if(!checkRegion()) return false;
+	if(!check_wds()) return false;
+    msg += checkBlank(cf.ssid,getErrorMsgByVar("gsm_msg_resv_name")+" (SSID)");
+    if (msg.length > 1)
+            return alertR(msg);
+
+    if (cf.ssid.value.match( /[^(\x20-\x7E\xA0)]/ )) {
+		return alertR(getErrorMsgByVar("gsm_msg_inv_ssid"));
+	}
+	cf.ssid.value = cf.ssid.value.replace(/\xA0/g," ");
+
+    dataToHidden(cf);
+	loadData (cf);
+
+    if( save_only == 1)
+            cf.save_only.value="1";
+    else
+            cf.save_only.value="0";
+
+    if ( save_only == 1)
+            return true;
+
+	return true;
+        return confirm(getErrorMsgByVar("gsm_msg_wls_cfm_ssid_apply"));
+
+}
+
+// ---------------------------- Start WEP functions
+var lastkeypressed;
+var keyTooBig = false;
+var mustbeHEX = false;
+var keysize;
+var lastObj;
+
+if (document.layers) document.captureEvents(Event.KEYPRESS);
+document.onkeypress = checkKey;
+
+function checkKey(evt)
+{
+  evt = (evt) ? evt : ((window.event) ? window.event : null)
+  if (evt)
+	    lastkeypressed = (evt.keyCode) ? evt.keyCode : (evt.which ) ? evt.which : null;
+//  window.status = lastkeypressed;
+  if ( (lastkeypressed != 13) && (lastkeypressed != 8) && ( keyTooBig ))
+  {
+  	keyTooBig = false;
+    alert(getErrorMsgByVar("gsm_msg_wls_max_key_length_1") + keysize + getErrorMsgByVar("gsm_msg_wls_max_key_length_2"));
+	chkSize(lastObj); // for NS 6/7
+  	return false;
+  }
+  else if (mustbeHEX)  // not used here, don't know which input is being used
+  {
+    mustbeHEX = false;
+  	if ( ((lastkeypressed > 47) && (lastkeypressed< 58 ))
+	  || ((lastkeypressed > 96) && (lastkeypressed< 103))
+	  || ((lastkeypressed > 64) && (lastkeypressed< 71 ))
+	  || (lastkeypressed ==  8)
+	  || (lastkeypressed == 13) )
+		 return true;   // OK
+  	else return false;
+  }
+  return true;
+}
+
+function check_wds()
+{
+	cf = document.forms[0];
+
+	if (cf.h_wds.value == "enable" && cf.w_channel[0].selected)
+	{
+		alert(getErrorMsgByVar("gsm_msg_wls_no_auto_channel"));
+		cf.w_channel.focus();
+		return false;
+	}
+	return true;
+}
+
+function chkSize(fobj)
+{
+	if(fobj.value.length > keysize)
+		fobj.value = fobj.value.substr(0,keysize);
+}
+
+function keyCheck(fobj)
+{
+  lastObj = fobj;
+  keyTooBig = (fobj.value.length >= keysize ) ? true : false;
+//  mustbeHEX = true;
+}
+
+var idx_number = 2; //parseInt("@h_idxn#");
+var idx_name_all = "802.11G,802.11N";
+var idx_nameArr = idx_name_all.split(",");
+if( idx_nameArr.length!= idx_number)
+        idx_nameArr=Array(idx_number); //prevent error
+if( idx_nameArr.length != idx_number){
+        alert("MAJOR ERROR: nvram pvcn:" + idx_number + "does not match with idx_names:"+ idx_nameArr.length + "!");
+}
+autoNameIDX(); //preven ssidX without a name
+
+function autoNameIDX(){
+       var n;
+       for (n=0 ; n<idx_nameArr.length ; n++ ){
+                if ( idx_nameArr[n].length==0){
+                        idx_nameArr[n] = "UnnamedIf"+(n+1);
+                }
+        }
+}
+
+function show_idx()
+{
+        var cf = document.forms[0];
+        cf.idx_num.options.length=0;//flush out all the items
+
+        for(i=0;i<idx_nameArr.length;i++){
+                cf.idx_num.options[i] = new Option(idx_nameArr[i], (i) +"");
+        }
+}
+
+var ssid_number =parseInt("@h_ssidn#", 10);
+var ssid_name_all = "@ssid_name_all#";
+
+function show_ssid()
+{
+        var cf = document.forms[0];
+        cf.ssid_num.options.length=0;//flush out all the items
+        cf.ssid_num.options.length=0;//flush out all the items
+
+}
+
+function selectSSID(){
+        var cf = document.forms[0];
+        location.href="setup.cgi?this_file=adv_wire_total.htm&next_file=adv_wire_total.htm&ssid_num="+ (cf.ssid_num.selectedIndex+1)+"&idx_num="+(cf.idx_num.selectedIndex);
+        return true;
+}
+
+// "--",Africa,Asia,Australia,Canada,Europe,Israel,Japan,Korea,Mexico,Middle East,South America,USA
+var is_disable = false;
+var StartChannel =  new Array(1, 1, 1,  1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
+var FinishChannel = new Array(11,13,13,13,11,13, 13,13,13,11,13,13,11);
+//var FinishChannel = new Array(11,11,11,11,11,11, 11,11,11,11,11,11,11);
+
+//var msg_selRegion = "11";
+
+var initRegion;
+var notShown = true;  // only shown region change message once
+
+function chgMode(is_init)
+{
+	var cf = document.forms[0];
+
+	chMode();
+	setChannel();
+	if (is_init == 1) {
+	    cf.w_channel.selectedIndex = getSelIndex(cf.w_channel, cf.h_w_channel.value);
+	} else {
+	    cf.w_channel.selectedIndex = getSelIndex(cf.w_channel, cf.w_channel.selectedIndex);
+	}
+}
+function initScrn()
+{
+	var cf = document.forms[0];
+	//initRegion = document.forms[0].WRegion.selectedIndex;
+
+	chgMode(1);
+}
+
+function chgCh()
+{
+    var cf = document.forms[0];
+	setChannel();
+	cf.w_channel.selectedIndex = getSelIndex(cf.w_channel,11);
+}
+
+function setOpMode()
+{
+}
+
+function setChannel()
+{
+    var cf = document.forms[0];
+    var index = parent.document.forms[0].WRegion.selectedIndex;
+    //index = parseInt(index)+1;
+    if(index == 0)
+    {
+    	if(parent.document.forms[0].h_WRegion.value == "Africa")
+    		index =1;
+	    if(parent.document.forms[0].h_WRegion.value == "Asia")
+	    	index =2;
+	    if(parent.document.forms[0].h_WRegion.value == "Australia")
+	    	index =3;
+	    if(parent.document.forms[0].h_WRegion.value == "Canada")
+	    	index =4;
+	    if(parent.document.forms[0].h_WRegion.value == "Europe")
+	    	index =5;
+	    if(parent.document.forms[0].h_WRegion.value == "Israel")
+	    	index =6;
+	    if(parent.document.forms[0].h_WRegion.value == "Japan")
+	    	index =7;
+	    if(parent.document.forms[0].h_WRegion.value == "Korea")
+	    	index =8;
+	    if(parent.document.forms[0].h_WRegion.value == "Mexico")
+	    	index =9;
+	    if(parent.document.forms[0].h_WRegion.value == "Middle East")
+	    	index =10;
+	    if(parent.document.forms[0].h_WRegion.value == "South America")
+	    	index =11;
+	    if(parent.document.forms[0].h_WRegion.value == "United States")
+	    	index =12;
+  	}
+    var chIndex = cf.w_channel.selectedIndex;
+    endChannel = FinishChannel[index];
+		if(FinishChannel[index]==14 && cf.opmode.selectedIndex!=0)
+			cf.w_channel.options.length = endChannel - StartChannel[index];
+		else
+			cf.w_channel.options.length = endChannel - StartChannel[index] + 2;
+		cf.w_channel.options[0].text = getErrorMsgByVar("gsm_msg_wls_auto");
+		cf.w_channel.options[0].value =  0;
+
+		for (var i = StartChannel[index]; i <= FinishChannel[index]; i++)
+		{
+			if (i==14 && cf.opmode.selectedIndex!=0)
+				continue;
+			cf.w_channel.options[i - StartChannel[index] +1].text = (i < 10)? "0" + i : i;
+			cf.w_channel.options[i - StartChannel[index] +1].value =  i;
+		}
+    if(cf.h_ssidSelect.value != '1')
+    {
+        cf.w_channel.disabled = true;
+    }
+   	cf.w_channel.selectedIndex = ((chIndex > -1) && (chIndex < cf.w_channel.options.length)) ? chIndex : 0 ;
+}
+/*
+function checkRegion()
+{
+    var cf = document.forms[0];
+    if(cf.WRegion.selectedIndex == 0)
+    {
+        cf.WRegion.focus();
+        return alertR(getErrorMsgByVar("gsm_msg_wls_inv_region"));
+    }
+        if(cf.WRegion.selectedIndex != initRegion && notShown)
+        {
+                if(!confirm(getErrorMsgByVar("gsm_msg_change_wl_region")))
+                { return false; }
+                else
+				{ notShown = false; }
+        }
+        return true;
+}
+*/
+function chMode()
+{
+	var cf = document.forms[0];
+
+    if(cf.h_ssidSelect.value != '1')
+    {
+        cf.opmode.disabled = true;
+    }
+	if(hidesec != "1") return 0;
+}
+
+function hide_sec(dflag)
+{
+	var cf = document.forms[0];
+	if(hidesec != "1") return 0;
+	cf.security_type[1].disabled=dflag;
+	cf.security_type[2].disabled=dflag;
+	cf.security_type[5].disabled=dflag;
+}
+
+function init_ssid_class()
+{
+    var cf=document.forms[0];
+	var ssid_class = parent.document.forms[0].h_ssid_class.value;
+    var select_ssid_table_obj = document.getElementById("select_ssid_table");
+    var ssid_table_obj = document.getElementById("ssid_table");
+
+    if (ssid_class == "primary") {
+        if (select_ssid_table_obj != null)
+            select_ssid_table_obj.style.display = "none";
+        if (ssid_table_obj != null)
+            ssid_table_obj.style.display = "none";
+    } else {
+        if (select_ssid_table_obj != null)
+            select_ssid_table_obj.style.display = "block";
+        if (ssid_table_obj != null)
+            ssid_table_obj.style.display = "block";
+   }	
+}
+
+function ap_mode_init()
+{
+	var cf=document.forms[0];
+	var wifi_enable = "@h_wl0_on#";
+	var ap_mode = "@h_ap_mode#";
+	if(ap_mode == "enable")	
+			cf.allow_access.disabled = true; 
+	if(wifi_enable == "0")	
+			cf.enable_ap.checked = false; 
+}
+
+function init()
+{
+	var cf = document.forms[0];
+
+	init_ssid_class();
+	initScrn();
+	opmode_changed();
+	ap_mode_init();
+}
+
+function preinit()
+{
+    var cf = document.forms[0];
+    var ssid_class = parent.document.forms[0].h_ssid_class.value;
+    var enable_obj = document.getElementById("enable_this_network");
+    if(ssid_class == "primary"){
+    cf.h_ssidSelect.value = parent.document.forms[0].h_ssidSelect.value;
+    enable_obj.style.display = "none";
+    }
+    else
+    enable_obj.style.display = "block";
+}
+
+//WPS_start
+function close_wps(){
+      var cf = document.forms[0];
+      if (cf.ssid.value==1){
+        if (cf.security_type[1].checked)
+        	return confirm(getErrorMsgByVar("gsm_msg_wls_wep_conflict_wds"));
+        else if (cf.security_type[5].checked)
+        	return confirm(getErrorMsgByVar("gsm_msg_wls_wpax_conflict_wds"));
+        }else
+        	return true;
+}
+//WPS_end
+function loadmenu()
+{
+	//top.contents.location.href="./@menupage#";
+	//return true;
+	if(top.is_advindex_pg == 1)
+		top.load_menu('wps');
+}
+
+function showWpsAlert()
+{
+	var cf = document.forms[0];
+	if(cf.show_wps_alert.value != "0")
+	{
+		alert(getErrorMsgByVar("gsm_msg_wps_in_prog_warn"));
+	    return  false ;
+	}
+	return  true ;
+}
+function ssid_submit()
+{
+    var cf=document.forms[0];
+
+    dataToHidden(cf);
+    cf.todo.value="redirect_wifi_page";
+    cf.secure_sel_submit.value = "0";
+    cf.h_ssid_class.value = parent.document.forms[0].h_ssid_class.value;;
+    cf.submit();
+    return true;
+}
+function security_submit()
+{
+    var cf=document.forms[0];
+
+    dataToHidden(cf);
+    cf.todo.value="redirect_wifi_page";
+    cf.secure_sel_submit.value = "1";
+    cf.h_ssid_class.value = parent.document.forms[0].h_ssid_class.value;;
+    cf.submit();
+    return true;
+}
+
+function opmode_changed()
+{
+    var cf=document.forms[0];
+    var wep_obj = document.getElementById("wep_onoff");
+    var wpa_obj = document.getElementById("wpa_onoff");
+
+    if (cf.opmode.selectedIndex > 0) {
+        if (wep_obj != null)
+            wep_obj.style.display = "none";
+        if (wpa_obj != null)
+            wpa_obj.style.display = "none";
+    } else {
+        if (wep_obj != null)
+            wep_obj.style.display = "block";
+        if (wpa_obj != null)
+            wpa_obj.style.display = "block";
+   }
+   parent.SetCwinHeight("2g_setting");
+}
+
+// -->
+</script></head><body bgcolor="#ffffff" marginheight="0" marginwidth="0" topmargin="0" leftmargin="0" onLoad="preinit();dataToVisible(document.forms[0]);init();document.forms[0].elements[4].focus();loadmenu();">  <!-- loadmenu(); -->
+<form method="POST" action="setup.cgi?@post_par2#" onSubmit="buttonToDisabled(document.forms[0])">
+<table border="0" cellpadding="0" cellspacing="0" width="100%"> <!-- RULE -->
+<tr id="select_ssid_table">
+   <td colspan="2"><p><tabindex="-1"><b><span languageCode = "834">Select the wireless network to configure</span> (2.4GHz b/g/n)</b></p></td>
+</tr>
+<tr>
+<td colspan="2"><div id="ssid_table">
+<TABLE class="tables" border="0" cellpadding="2" cellspacing="0" width="100%">
+<TR class="table_header">
+	<td nowrap width="3%" align="center"><span class="thead">&nbsp;</span></td>
+	<td nowrap width="3%" align="center"><span class="thead" languageCode = "860">Profile</span></td>
+	<td nowrap align="center"><span class="thead" languageCode = "861">SSID</span></td>
+	<td nowrap align="center"><span class="thead" languageCode = "321">Guest Network</span></td>
+	<td nowrap align="center"><span class="thead" languageCode = "13">Security</span></td>
+	<td nowrap align="center"><span class="thead" languageCode = "210">Enable</span></td>
+    <td nowrap align="center"><span class="thead" languageCode = "704">Broadcast SSID</span></td>
+</TR>
+<TR class="even_line" style="display: none">
+	<td nowrap align=center> &nbsp;<input type=RADIO name=ssidSelect value=1 onClick="return ssid_submit();"> &nbsp;</td>
+	<td nowrap align=center><span class=thead>Primary</span></td>
+    <td nowrap align=center><span class=ttext>@ssid1#</span></td>
+    <td nowrap align=center><span class=thead>No</span></td>
+    <td nowrap align=center><span class=ttext>@security1#</span></td>
+    <td nowrap align=center><span class=ttext>@enable_ap1#</span></td>
+    <td nowrap align=center><span class=ttext>@enable_ssid_bc1#</span></td>
+</tr>
+<TR class="odd_line">
+	<td nowrap align=center> &nbsp;<input type=RADIO name=ssidSelect value=2 onClick="return ssid_submit();"> &nbsp;</td>
+	<td nowrap align=center><span class=thead>1</span></td>
+    <td nowrap align=center><span class=ttext>@ssid2#</span></td>
+    <td nowrap align=center class=thead>@allow_access2#</td>
+    <td nowrap align=center class=ttext>@security2#</td>
+    <td nowrap align=center class=ttext>@enable_ap2_status#</td>
+    <td nowrap align=center class=ttext>@enable_ssid_bc2#</td>
+
+</tr>
+<TR class="even_line">
+	<td nowrap align=center> &nbsp;<input type=RADIO name=ssidSelect value=3 onClick="return ssid_submit();"> &nbsp;</td>
+	<td nowrap align=center><span class=thead>2</span></td>
+	<td nowrap align=center><span class=ttext>@ssid3#</span></td>
+    <td nowrap align=center class=thead>@allow_access3#</td>
+    <td nowrap align=center class=ttext>@security3#</td>
+    <td nowrap align=center class=ttext>@enable_ap3#</td>
+    <td nowrap align=center class=ttext>@enable_ssid_bc3#</td>
+
+</tr>
+<TR class="odd_line">
+	<td nowrap align=center> &nbsp;<input type=RADIO name=ssidSelect value=4 onClick="return ssid_submit();"> &nbsp;</td>
+	<td nowrap align=center><span class=thead>3</span></td>
+	<td nowrap align=center><span class=ttext>@ssid4#</span></td>
+    <td nowrap align=center class=thead>@allow_access4#</td>
+	  <td nowrap align=center class=ttext>@security4#</td>
+    <td nowrap align=center class=ttext>@enable_ap4#</td>
+    <td nowrap align=center class=ttext>@enable_ssid_bc4#</td>
+</tr>
+</table>
+</div>
+</td>
+</tr>
+    <tr><td colspan="2" background="liteblue.gif" height="12"></td>
+	</tr><tr><td colspan="2"><a href="javascript:loadWirelessHelp('WLG_wireless','network')" tabindex="-1"><b><span languageCode="572">Wireless Network</span> (2.4GHz b/g/n)</b></a></td>
+	</tr>
+	@wpa28021x_hide_s#
+	<tr><td class="hlc"><span languageCode = "573">Beacon Interval (in ms)</span>:</td>
+		<td class="hrc"><input type="text" name="beaconIn" value="@beaconIn#" size="20" maxlength="32"></td>
+	</tr>
+	@wpa28021x_hide_e#
+<tr><td width="50%" align="left"><span languageCode="8">Name (SSID)</span>:</td>
+		<td width="50%"><input type="text" name="ssid" value="@ssid#" size="33" maxlength="32"></td>
+	</tr><tr><td><span languageCode="10">Channel</span>:</td>
+		<td><select name="w_channel" value="h_w_channel" size="1"></select></td>
+	</tr><tr><td><span languageCode="353">Mode</span>:</td>
+		<td><select name="opmode" size="1" onChange="opmode_changed()"><option value="54" languageCode="589">Up to 54 Mbps</option><option value="145" languageCode="590">Up to 145 Mbps</option><option value="300" languageCode="591">Up to 300 Mbps</option></select></td>
+	</tr>
+	<tr><div id="enable_this_network"><td colspan="2"><input type="checkbox" name="enable_ap" value="enable_ap"><span languageCode="607">Enable Guest Network</span></div></td>
+	</tr>
+	<tr><td colspan="2"><input type="checkbox" name="ssid_bc" value="ssid_bc"><span languageCode="574">Enable SSID Broadcast</span></td>
+	</tr>
+	@allow_accss_hide_s#
+	<tr>
+    <td colspan="2"><input type="checkbox" name="allow_access" value="1"><span languageCode="419">Allow guest to access My Local Network</span></td>
+    </tr>
+    @allow_accss_hide_e#
+	<tr><td colspan="2"><input type="checkbox" name="wire_iso" value="wire_iso"><span languageCode="575">Enable Wireless Isolation</span></td>
+	</tr>
+	<tr><td colspan="2" background="liteblue.gif" height="12"></td>
+	</tr><tr><td colspan="2"><a href="javascript:loadWirelessHelp('WLG_wireless','security')" tabindex="-1"><b languageCode="592">Security Options</b></a></td>
+	</tr><tr><td colspan="2"><input type="radio" name="security_type" value="Disable" onClick="security_submit()"><span languageCode="174">None</span></td>
+	</tr><tr id="wep_onoff"><td colspan="2"><div><input type="radio" name="security_type" value="WEP" onClick="security_submit()"><span languageCode="835">WEP</span></div></td>
+	</tr>
+	@wds_disable_s#
+	<tr id="wpa_onoff"><td colspan="2"><div><input type="radio" name="security_type" value="WPA-PSK" onClick="security_submit()"><span>WPA-PSK [TKIP]</span></div></td>
+	</tr><tr><td colspan="2"><input type="radio" name="security_type" value="WPA2-PSK" onClick="security_submit()"><span>WPA2-PSK [AES]</span></td>
+	</tr><tr><td colspan="2"><input type="radio" name="security_type" value="AUTO-PSK" onClick="security_submit()"><span>WPA-PSK [TKIP] + WPA2-PSK [AES]</span></td>
+	</tr><tr><td colspan="2"><input type="radio" name="security_type" value="WPA-ENTER" onClick="security_submit()"><span languageCode="593">WPA/WPA2 Enterprise</span></td>
+	</tr>
+@wds_disable_e#
+@wds_enable_s#
+	<tr><td colspan="2"><input type="radio" name="security_type" value="WPA-PSK" disabled onClick="security_submit()"><span>WPA-PSK [TKIP]</span></td>
+	</tr><tr><td colspan="2"><input type="radio" name="security_type" value="WPA2-PSK" disabled onClick="security_submit()"><span>WPA2-PSK [AES]</span></td>
+	</tr><tr><td colspan="2"><input type="radio" name="security_type" value="AUTO-PSK" disabled onClick="security_submit()"><span>WPA-PSK [TKIP] + WPA2-PSK [AES]</span></td>
+	</tr><tr><td colspan="2"><input type="radio" name="security_type" value="WPA-ENTER" disabled onClick="security_submit()"><span languageCode="593">WPA/WPA2 Enterprise</span></td>
+	</tr>
+	@wds_enable_e#
+	@wpa28021x_hide_s#
+	<tr>
+	   <td colspan="2"><input type="radio" name="security_type" value="WPA-ENTER" disabled onClick="if(!close_wps()) return false;redirect('WPA-ENTER')"><span languageCode="593">WPA/WPA2 Enterprise</span></td>
+	</tr>
+	<tr><td colspan="2"><input type="radio" name="security_type" value="6" onClick="this.form.next_file.value='adv_wire_total.htm';stdAction(this.form,'newfile')"><span>WPA2-802.1x</span></td>
+	</tr><tr><td colspan="2"><input type="radio" name="security_type" value="7" onClick="this.form.next_file.value='adv_wire_total.htm';stdAction(this.form,'newfile')"><span languageCode="933">Mixed</span> <span>WPA-802.1x+WPA2-802.1x</span></td>
+	</tr>
+	@wpa28021x_hide_e#
+
+	<!-- RULE -->
+	<tr><td colspan="2" background="liteblue.gif" height="12"></td>
+	</tr></table>
+	<input type="hidden" name="h_ssid_class" value="">
+	<input type="hidden" name="h_enable_ap" value="@h_enable_ap#">
+	<input type="hidden" name="h_ssid_bc" value="@h_ssid_bc#">
+	<input type="hidden" name="h_WRegion" value="@h_WRegion#">
+	<input type="hidden" name="h_w_channel" value="@h_w_channel#">
+	<input type="hidden" name="h_opmode" value="@h_opmode#">
+	<input type="hidden" name="h_allow_access" value="@h_allow_access#">
+	<input type="hidden" name="h_wire_iso" value="@h_wire_iso#">
+	<input type="hidden" name="h_security_type" value="@h_security_type#">
+	<input type="hidden" name="h_wds" value="@h_wds_enable#">
+	<input type="hidden" name="h_ssidSelect" value="@h_ssidSelect#">
+	<!-- ServerEnd -->
+	<input type="hidden" name="show_wps_alert" value="@show_wps_alert#">
+	<input type="hidden" name="save_only" value="sss">
+	<input type="hidden" name="todo" value="save">
+	<input type="hidden" name="this_file" value="WLG_2g_wireless3.htm">
+	<input type="hidden" name="next_file" value="WLG_2g_wireless3.htm">
+	<input type="hidden" name="SID" value="@SID#">
+  	<input type="hidden" name="secure_sel_submit" value="0">
+	<input type="hidden" name="nBand" value="24G">
+</form>
+<script language="javascript" type="text/javascript" src="langs.js"></script></body></html>

@@ -1,0 +1,242 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-Control" content="no-cache"><meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT"><meta name="description" content="@model_name#_multilangual"><title>NETGEAR Router @model_name#</title><script language="javascript" type="text/javascript" src="string.js"></script><link rel="stylesheet" href="style/form.css"><script language="javascript" type="text/javascript" src="funcs.js"></script><!-- link rel="stylesheet" href="form.css" --><script language="javascript" type="text/javascript" src="utility.js"></script><script language="javascript" type="text/javascript" src="linux.js"></script><script language="javascript" type="text/javascript">
+<!-- hide script from old browsers
+function ShowResult() {
+	openDataSubWin('./DNS_ddns_st.htm','alwaysRaised,dependent,resizable,scrollbars,width=450,height=150,left=200,top=200');
+}
+function checkData()
+{
+ 	var cf = document.forms[0];
+	var msg = "";
+	var hostname = "";
+    var ddns_name = cf.sysDNSProviderlist.options[cf.sysDNSProviderlist.selectedIndex].value;
+
+    if( ddns_name == "dyndns")
+    {
+        hostname = cf.sysDNSHost.value;
+    	if(cf.sysDNSActive.checked)
+    	{
+    	    msg+= checkBlank(cf.sysDNSHost, getErrorMsgByVar("gsm_msg_ddns_host_name"));
+    	    msg+= checkBlank(cf.sysDNSUser, getErrorMsgByVar("gsm_msg_ddns_user_name"));
+            msg+= checkPrintableStr(cf.sysDNSUser.value);
+    	    msg+= checkBlank(cf.sysDNSPassword, getErrorMsgByVar("gsm_msg_ddns_pw"));
+    	}
+    }
+    else if( ddns_name == "dnsomatic")
+    {
+        hostname = cf.sysDNSOMHost.value;
+        if (cf.sysDNSActive.checked)
+        {
+            msg += checkBlank(cf.sysDNSOMHost, getErrorMsgByVar("gsm_msg_ddns_host_name"));
+            msg += checkBlank(cf.sysDNSOMUser, getErrorMsgByVar("gsm_msg_ddns_user_name"));
+            msg += checkPrintableStr(cf.sysDNSOMUser.value);
+            msg += checkBlank(cf.sysDNSOMPassword, getErrorMsgByVar("gsm_msg_ddns_pw"));
+        }
+    }
+    else if( ddns_name == "noipdns")
+    {
+        hostname = cf.sysNOIPDNSHost.value;
+        if(cf.sysDNSActive.checked)
+        {
+            msg+= checkBlank(cf.sysNOIPDNSHost, getErrorMsgByVar("gsm_msg_ddns_host_name"));
+            msg+= checkBlank(cf.sysNOIPDNSUser, getErrorMsgByVar("gsm_msg_ddns_user_name"));
+	    msg+= checkPrintableStr(cf.sysNOIPDNSUser.value);
+            msg+= checkBlank(cf.sysNOIPDNSPassword, getErrorMsgByVar("gsm_msg_ddns_pw"));
+        }
+    }
+	/* check if DDNS host name has invalid character */
+	if (hostname.length > 0
+	&& isValidStr(hostname.toLowerCase(), ValidStr_ddns, hostname.length) == false) {
+	    msg+= getErrorMsgByVar("gsm_msg_ddns_host_invalid");
+	}
+	if (msg.length > 1) {
+	    alert(msg);
+	    return false;
+	}
+	dataToHidden(cf);
+	return true;
+}
+function service_change()
+{
+	var cf = document.forms[0];
+    var ddns_name = cf.sysDNSProviderlist.options[cf.sysDNSProviderlist.selectedIndex].value;
+
+    if( ddns_name == "dyndns")
+    {
+	show_hide("DYNDNS"        , true);
+	show_hide("NOIPDDNS"      , false);
+        show_hide("DNSOMATIC"     , false);
+    }
+    else if( ddns_name == "noipdns")
+    {
+	show_hide("DYNDNS"        , false);
+        show_hide("NOIPDDNS"      , true);
+        show_hide("DNSOMATIC"     , false);
+    }
+    else if (ddns_name == "dnsomatic")
+    {
+        show_hide("DYNDNS"       , false);
+        show_hide("NOIPDDNS"     , false);
+        show_hide("DNSOMATIC"    , true);
+    }
+    else if(ddns_name == "NETGEAR")
+    {
+		if(cf.sysDNSActive.checked)
+			location.href="setup.cgi?todo=cfg_init&next_file=Netgear_ddns_registration.htm&ddns_enable=enable";
+		else
+			location.href="setup.cgi?todo=cfg_init&next_file=Netgear_ddns_registration.htm&ddns_enable=disable";
+	}
+	return true;
+}
+
+//-->
+</script></head><body bgcolor="#ffffff" onLoad="dataToVisible(document.forms[0]);document.forms[0].elements[0].focus();service_change();" onUnload="closeWin(datSubWinVar);">
+<form method="POST" action="setup.cgi@post_par#" onSubmit="buttonToDisabled(document.forms[0])">
+<div class="page_title" languageCode = "149">Dynamic DNS</div>
+<div class="fix_button">
+<table width="100%" border="0" cellpadding="0" cellspacing="2"><tr><td nowrap colspan="2" align="center">
+<input class="common_bt" type="button" name="Show" value = "Show Status" onClick="ShowResult()" languageCode = "154">
+&nbsp;
+<input class="cancel_bt" type="RESET" name="Cancel" value = "Cancel" onClick="setTimeout('dataToVisible(document.forms[0])',250);" languageCode = "19">
+&nbsp;
+<input class="apply_bt" type="SUBMIT" name="Apply" value = "Apply" onClick="return checkData()" languageCode = "18">
+</td></tr></table>
+</div>
+<div id="main" class="main_top_button">
+<table border="0" cellpadding="0" cellspacing="3" width="100%"><tr><td colspan="2"><input type="checkbox" name="sysDNSActive" value=""><a href="javascript:loadhelp('DNS_ddns','setup')" tabindex="-1"><b languageCode = "150">Use a Dynamic DNS Service</b></a>
+		</td>
+	</tr>
+	<tr><!-- RULE --><td colspan="2" background="liteblue.gif" height="12"></td>
+	</tr><tr><td width="50%" align="left" nowrap><a href="javascript:loadhelp('DNS_ddns','provider')" tabindex="-1"><b languageCode = "151">Service Provider</b></a></td>
+		<td width="50%" align="right">
+		<select name="sysDNSProviderlist" size="1" onchange="service_change()">
+		<option value="NETGEAR">NETGEAR</option>
+		<option value="dyndns" selected>www.DynDNS.org</option>
+	    <option value="noipdns">www.No-IP.com</option>
+            <option value="dnsomatic">DNS-O-Matic</option>
+         </select>
+        </td>
+	</tr>
+
+<!-- DynDNS -->
+ <tr>
+  <td colspan=3>
+   <div ID="DYNDNS" style="display:none">
+    <table border="0" cellpadding="0" cellspacing="3" width="100%">
+     <tr>
+      <td width="50%" align="left" nowrap languageCode="152">Host Name</td>
+      <td width="50%" align="right">
+       <input type="text" name="sysDNSHost" size="32" maxlength="255" style="width:300px;" value="@sysDNSHost#">
+      </td>
+	</tr>
+     <tr>
+      <td width="50%" align="left" languageCode="153">User Name</td>
+      <td width="50%" align="right">
+       <input type="text" name="sysDNSUser" size="32" maxlength="60" style="width:300px;" value="@sysDNSUser#">
+      </td>
+     </tr>
+     <tr>
+      <td width="50%" align="left" languageCode="57">Password</td>
+      <td width="50%" align="right">
+       <input type="password" name="sysDNSPassword" size="32" maxlength="60" style="width:300px;" value="@sysDNSPassword#">
+      </td>
+	</tr>
+    </table>
+   </div>
+  </td>
+	</tr>
+<!--noip-->
+ <tr>
+  <td colspan=3>
+   <div ID="NOIPDDNS" style="display:none">
+    <table border="0" cellpadding="0" cellspacing="3" width="100%">
+     <tr>
+      <td width="50%" align="left" nowrap languageCode="152">Host Name</td>
+      <td width="50%" align="right">
+       <input type="text" name="sysNOIPDNSHost" size="32" maxlength="255" style="width:300px;" value="@sysNOIPDNSHost#">
+      </td>
+        </tr>
+     <tr>
+      <td width="50%" align="left" languageCode="153">User Name</td>
+      <td width="50%" align="right">
+       <input type="text" name="sysNOIPDNSUser" size="32" maxlength="60" style="width:300px;" value="@sysNOIPDNSUser#">
+      </td>
+     </tr>
+     <tr>
+      <td width="50%" align="left" languageCode="57">Password</td>
+      <td width="50%" align="right">
+       <input type="password" name="sysNOIPDNSPassword" size="32" maxlength="60" style="width:300px;" value="@sysNOIPDNSPassword#">
+      </td>
+        </tr>
+    </table>
+   </div>
+  </td>
+  </tr>
+<!-- DNS-O-Matic -->
+ <tr>
+  <td colspan=3>
+   <div ID="DNSOMATIC" style="display:none">
+    <table border="0" cellpadding="0" cellspacing="3" width="100%">
+     <tr>
+      <td width="50%" align="left" nowrap languageCode="152">Host Name</td>
+      <td width="50%" align="right">
+       <input type="text" name="sysDNSOMHost" size="32" maxlength="255" style="width:300px;" value="@sysDNSOMHost#">
+      </td>
+        </tr>
+     <tr>
+      <td width="50%" align="left" languageCode="153">User Name</td>
+      <td width="50%" align="right">
+       <input type="text" name="sysDNSOMUser" size="32" maxlength="60" style="width:300px;" value="@sysDNSOMUser#">
+      </td>
+     </tr>
+     <tr>
+      <td width="50%" align="left" languageCode="57">Password</td>
+      <td width="50%" align="right">
+       <input type="password" name="sysDNSOMPassword" size="32" maxlength="60" style="width:300px;" value="@sysDNSOMPassword#">
+      </td>
+        </tr>
+    </table>
+   </div>
+  </td>
+        </tr>
+
+    <tr><!-- RULE --><td colspan="2" background="liteblue.gif" height="12"></td></tr>
+    <tr><td colspan="2" align="center"></td>
+	</tr>
+   </table>
+<input type="hidden" name="todo" value="save">
+<input type="hidden" name="this_file" value="DNS_ddns.htm">
+<input type="hidden" name="next_file" value="DNS_ddns.htm">
+<!-- ServerStart -->
+<input type="hidden" name="h_sysDNSActive" value="@h_sysDNSActive#">
+<input type="hidden" name="h_sysDNSProviderlist" value="@h_sysDNSProviderlist#">
+<!-- ServerEnd -->
+<input type="hidden" name="SID" value="@SID#">
+</div>
+</form>
+<p></p>
+<div id="help" style="display: none">
+		<iframe name="help_iframe" id="helpframe" src="DNS_ddns_h.htm" allowtransparency="true" width="100%" frameborder="0">
+		</iframe>
+</div>
+<div id="help_switch" class="close_help">
+	 <img class="help_switch_img" src="image/help/help-bar.gif"><script>
+var help_flag=0;
+if(isIE()){
+	show_hidden_help_top_button(1);
+	var frame_div = top.document.getElementById("formframe_div");
+	frame_div.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+if(get_browser() == "Opera"){
+	window.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+</script><div id="help_space" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_center"><span languageCode="3016">Help Center</span></div>
+<div id="help_button" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_show_hidden"><a href="javascript:void(0)" onClick="show_hidden_help_top_button(help_flag); help_flag++;"><span languageCode="3017">Show/Hide Help Center</span></a></div>
+</div>
+<script language="javascript" type="text/javascript" src="langs.js"></script></body></html>

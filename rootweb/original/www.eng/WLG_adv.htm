@@ -1,0 +1,602 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-Control" content="no-cache"><meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT"><meta name="description" content="@model_name#_multilangual"><title>NETGEAR Router @model_name#</title><script language="javascript" type="text/javascript" src="string.js"></script><link rel="stylesheet" href="style/form.css"><script language="javascript" type="text/javascript" src="funcs.js"></script><!-- link rel="stylesheet" href="form.css" --><style type="text/javascript">
+	classes.num.all.fontFamily = "Courier";
+	classes.num.all.fontSize = "10pt" ;
+</style><script language="javascript" type="text/javascript" src="utility.js"></script><script language="javascript" type="text/javascript" src="linux.js"></script><script language="javascript" type="text/javascript">
+<!-- hide script from old browsers
+var NTP_isOK = 0;
+var wps_mode = "@wps_mode#";
+var enable_ap_flag=@ap_mode#;
+
+var DisableFixedIP = false;
+var DisableFixedDNS = false;
+
+function ap_mode_changed()
+{
+    var cf = document.forms[0];
+    if (cf.ap_mode.checked)
+        document.getElementById("APModeSetting").style.display = "block";
+    else
+        document.getElementById("APModeSetting").style.display = "none";
+}
+
+function setIP()
+{
+ 	var cf = document.forms[0];
+	var dflag = cf.APAssign.checked;
+	setDisabled(dflag,cf.APether1,cf.APether2,cf.APether3,cf.APether4,cf.APMask1,cf.APMask2,cf.APMask3,cf.APMask4,cf.APGateway1,cf.APGateway2,cf.APGateway3,cf.APGateway4);
+	DisableFixedIP = dflag;
+}
+
+function setDNS()
+{
+ 	var cf = document.forms[0];
+	if ( cf.APAssign.checked == false && cf.APDNSAssign.checked)
+	{
+		alert(getErrorMsgByVar("gsm_msg_eth_dns_before_ip"));
+		cf.APDNSAssign.checked = false;
+	}
+	var dflag = cf.APDNSAssign.checked;
+	setDisabled(dflag,cf.AP_DAddr1,cf.AP_DAddr2,cf.AP_DAddr3,cf.AP_DAddr4,cf.AP_PDAddr1,cf.AP_PDAddr2,cf.AP_PDAddr3,cf.AP_PDAddr4);
+	DisableFixedDNS = dflag;
+}
+function check_network_name(netName)
+{
+	var i, num;
+	var msg = "";
+    if(netName.length == 0)
+    {
+        msg = getErrorMsgByVar("gsm_msg_dev_name_blank");
+        return msg;
+    }
+	for (num = 0, i = 0; i < netName.length; i++) {
+		var c = netName.charAt(i);
+		if (!((c >= '0' && c <= '9') || (c >= 'a' && c <= 'z')
+			|| (c >= 'A' && c <= 'Z') || c == '-')) {
+			    msg += (c +" ");
+			}
+	}
+	if (msg.length >= 1)
+	{
+		msg = getErrorMsgByVar("gsm_msg_usb_inv_char_network_name") + msg;
+		return msg;
+	}
+
+	return msg;
+}
+
+
+
+function default_turnoff()
+{
+	var cf = document.forms[0];
+	var year = @rt_now_year#;
+	if(year >= 2010)
+		NTP_isOK = 1; //if NTP doesn't work, wifi schedule should gray-out
+
+    // 2.4G Hz
+	if(cf.h_turnoff.value == "enable")
+	{
+		cf.turnoff.checked=true;
+		document.all("turnOff_WS").style.color = "black";
+	}
+	else
+    {
+		cf.turnoff.checked=false;
+		document.all("turnOff_WS").style.color = "gray";
+	}
+	if(cf.h_enable_ap.value=="enable")
+		cf.enable_ap.checked=true;
+	else
+		cf.enable_ap.checked=false;
+	if(NTP_isOK == 1)
+	{
+		dis_turnoff();
+	}
+	else
+	{
+		cf.turnoff.disabled = true;
+		cf.b_add.disabled = true;
+		cf.b_edit.disabled = true;
+		cf.b_del.disabled = true;
+	}
+
+    // 5G Hz
+	if(cf.h_turnoff_an.value == "enable")
+	{
+		cf.turnoff_an.checked=true;
+		document.all("turnOff_WS_an").style.color = "black";
+	}
+	else
+    {
+		cf.turnoff_an.checked=false;
+		document.all("turnOff_WS_an").style.color = "gray";
+	}
+	if(cf.h_enable_ap_an.value=="enable")
+		cf.enable_ap_an.checked=true;
+	else
+		cf.enable_ap_an.checked=false;
+	if(NTP_isOK == 1)
+	{
+		dis_turnoff_an();
+	}
+	else
+	{
+		cf.turnoff_an.disabled = true;
+		cf.b_add_an.disabled = true;
+		cf.b_edit_an.disabled = true;
+		cf.b_del_an.disabled = true;
+	}
+
+}
+
+function dis_turnoff()
+{
+	var cf = document.forms[0];
+	if(cf.enable_ap.checked==false && NTP_isOK == 1)
+	{
+		cf.turnoff.checked = false;
+		cf.turnoff.disabled = true;
+		document.all("turnOff_WS").style.color = "gray";
+		cf.b_add.disabled = true;
+		cf.b_edit.disabled = true;
+		cf.b_del.disabled = true;
+	}
+	if(cf.enable_ap.checked==true && NTP_isOK == 1)
+	{
+		cf.turnoff.disabled = false;
+		document.all("turnOff_WS").style.color = "black";
+		cf.b_add.disabled = false;
+		cf.b_edit.disabled = false;
+		cf.b_del.disabled = false;
+	}
+}
+function dis_turnoff_an()
+{
+	var cf = document.forms[0];
+	if(cf.enable_ap_an.checked==false && NTP_isOK == 1)
+	{
+		cf.turnoff_an.checked = false;
+		cf.turnoff_an.disabled = true;
+		document.all("turnOff_WS_an").style.color = "gray";
+		cf.b_add_an.disabled = true;
+		cf.b_edit_an.disabled = true;
+		cf.b_del_an.disabled = true;
+	}
+	if(cf.enable_ap_an.checked==true && NTP_isOK == 1)
+	{
+		cf.turnoff_an.disabled = false;
+		document.all("turnOff_WS_an").style.color = "black";
+		cf.b_add_an.disabled = false;
+		cf.b_edit_an.disabled = false;
+		cf.b_del_an.disabled = false;
+	}
+}
+function schedule_add(amode)
+{
+    var cf = document.forms[0];
+    if(amode == 0)
+    {
+        cf.nBand.value= "24G";
+        cf.todo.value="schedule_add";
+        cf.submit();
+    }
+    else
+    {
+        cf.nBand.value= "5G";
+        cf.todo.value="schedule_add";
+        cf.submit();
+    }
+     return true ;
+}
+
+function checkData( save_only )
+{
+	var cf = document.forms[0];
+	var msg = "";
+
+	if(!showWpsAlert()) return false;
+	if(checkInt(cf.frag, "", 256, 2346, true).length > 0)
+	{
+		msg += getErrorMsgByVar("gsm_msg_wls_fragm_throd");
+	}
+	if(checkInt(cf.rts, "", 1, 2347, true).length > 0)
+	{
+		msg += 	getErrorMsgByVar("gsm_msg_wls_crts_throd");
+	}
+	if(checkInt(cf.frag_an, "", 256, 2346, true).length > 0)
+	{
+		msg += getErrorMsgByVar("gsm_msg_wls_fragm_throd");
+	}
+	if(checkInt(cf.rts_an, "", 1, 2347, true).length > 0)
+	{
+		msg += 	getErrorMsgByVar("gsm_msg_wls_crts_throd");
+	}
+    if(cf.ap_mode.checked)
+    {
+        var WPethr;
+        var WMask;
+        var fixgw;
+        if (!cf.APAssign.checked)
+        {
+            if(badLANIP(cf.APether1,cf.APether2,cf.APether3,cf.APether4,254)
+            	|| (parseInt(cf.APether4.value, 10)==0))
+            	msg+= getErrorMsgByVar("gsm_msg_eth_inv_ip");
+            if(badMASK(cf.APMask1,cf.APMask2,cf.APMask3,cf.APMask4))
+            	msg+= getErrorMsgByVar("gsm_msg_eth_inv_mask");
+            //Gateway last byte could be zero
+            if(badSubLANIP(cf.APGateway1,cf.APGateway2,cf.APGateway3,cf.APGateway4,254))
+            	msg+= getErrorMsgByVar("gsm_msg_eth_inv_gateway");
+            if (msg.length > 1)
+            {
+            	alert(msg);
+            	return false;
+            }
+            /* check IP setting valid */
+            APether = cf.APether1.value + "." + cf.APether2.value + "." + cf.APether3.value +"." + cf.APether4.value;
+            APMask = cf.APMask1.value + "." + cf.APMask2.value + "." + cf.APMask3.value +"." + cf.APMask4.value;
+            fixgw = cf.APGateway1.value + "." + cf.APGateway2.value + "." + cf.APGateway3.value +"." + cf.APGateway4.value;
+            if(IsGatewayValid(APether, APMask, fixgw) == false){
+            	msg += getErrorMsgByVar("gsm_msg_eth_inv_gateway");
+            }
+        }
+        if(!cf.APDNSAssign.checked)
+        {
+            msg += checkDNSValid(
+        	    cf.AP_DAddr1, cf.AP_DAddr2, cf.AP_DAddr3, cf.AP_DAddr4,
+        	    cf.AP_PDAddr1, cf.AP_PDAddr2, cf.AP_PDAddr3, cf.AP_PDAddr4);
+        }
+        msg += check_network_name(cf.ap_name.value);
+    }
+	
+	if(msg.length > 1)
+	{
+		alert(msg);
+		return false;
+	}
+	//if ((cf.h_wl0_type.value == 1) || (cf.h_wl0_type.value == 5))
+	//	return false;
+    if(cf.h_wl0_on.value == 0)
+    {
+		cf.wsc_config.checked = (cf.h_wsc_config.value == "enable");
+	}
+	if(cf.h_wl1_on.value == 0)
+    {
+		cf.wsc_config_an.checked = (cf.h_wsc_config_an.value == "enable");
+	}
+	dataToHidden(cf);
+	//alertR("LLLLLLLLLLLLLLLLLLLLL");
+	if( save_only == 1)
+		cf.save_only.value = "1";
+	else
+		cf.save_only.value = "0";
+
+	if ( save_only == 1)
+		return true;
+
+	return true;
+}
+
+var idx_number = 2; //parseInt("@h_idxn#");
+var idx_name_all = "802.11G,802.11N";
+var idx_nameArr = idx_name_all.split(",");
+if( idx_nameArr.length!= idx_number)
+	idx_nameArr=Array(idx_number); //prevent error
+if( idx_nameArr.length != idx_number){
+	alert("MAJOR ERROR: nvram pvcn:" + idx_number + "does not match with idx_names:" + idx_nameArr.length + "!");
+}
+autoNameIDX(); //preven ssidX without a name
+
+function autoNameIDX(){
+	var n;
+	for (n=0 ; n<idx_nameArr.length ; n++ ){
+		if ( idx_nameArr[n].length==0){
+			idx_nameArr[n] = "UnnamedIf"+(n+1);
+		}
+	}
+}
+
+function show_idx()
+{
+	var cf = document.forms[0];
+	cf.idx_num.options.length=0;//flush out all the items
+
+	for(i=0;i<idx_nameArr.length;i++){
+		cf.idx_num.options[i] = new Option(idx_nameArr[i], (i) +"");
+	}
+}
+
+function init()
+{
+	var cf = document.forms[0];
+
+	if(cf.h_pin_disable.value == "disable"){
+		document.getElementById("wPIN1").style.color = "black";
+		document.getElementById("wPIN2").style.color = "black";
+	}else{
+		document.getElementById("wPIN1").style.color = "gray";
+		document.getElementById("wPIN2").style.color = "gray";
+	}
+
+	if(wps_mode == "disabled"){
+	document.getElementById("wPIN1").style.color = "gray";
+	document.getElementById("wPIN2").style.color = "gray";
+	cf.pin_disable.disabled = true;
+	cf.wsc_config.disabled = true;
+	cf.wsc_config.checked = false ;
+	cf.wsc_config_an.disabled = true;
+	cf.wsc_config_an.checked = false ;
+	}
+	ap_mode_changed();
+	setIP();
+	setDNS();
+}
+function showWpsAlert()
+{
+	var cf = document.forms[0];
+	if(cf.show_wps_alert.value != "0")
+	{
+		alert(getErrorMsgByVar("gsm_msg_wps_in_prog_warn"));
+	    return  false ;
+	}
+	return  true ;
+}
+function edit_wifi_schedule(amode)
+{
+    var cf = document.forms[0];
+    if(amode == 0)
+    {
+        cf.nBand.value= "24G";
+        radioTable(cf,cf.ruleSelect,'edit');
+    }
+    else
+    {
+        cf.nBand.value= "5G";
+        radioTable(cf,cf.ruleSelect_an,'edit');
+    }
+}
+function  delete_wifi_schedule(amode)
+{
+    var cf = document.forms[0];
+    if(amode == 0)
+    {
+        cf.nBand.value= "24G";
+        radioTable(cf,cf.ruleSelect,'delete') ;
+    }
+    else
+    {
+        cf.nBand.value= "5G";
+        radioTable(cf,cf.ruleSelect_an,'delete')
+    }
+}
+function set2GState()
+{
+    var cf = document.forms[0];
+    if(cf.wsc_config.checked == true)
+    {
+        cf.wsc_config.checked = true;
+        cf.wsc_config_an.checked = true;
+    }
+    if(cf.wsc_config.checked == false)
+    {
+        cf.wsc_config.checked = false;
+        cf.wsc_config_an.checked = false;
+    }
+}
+function set5GState()
+{
+    var cf = document.forms[0];
+    if(cf.wsc_config_an.checked == true)
+    {
+        cf.wsc_config.checked = true;
+        cf.wsc_config_an.checked = true;
+    }
+    if(cf.wsc_config_an.checked == false)
+    {
+        cf.wsc_config.checked = false;
+        cf.wsc_config_an.checked = false;
+    }
+}
+
+function loadmenu()
+{
+//	top.contents.location.href="./@menupage#";
+//	return true;
+	if(top.is_advindex_pg==1)
+    {
+		top.load_menu('ap');
+        top.load_menu('wps');
+    }
+}
+//WPS_end
+// -->
+</script></head><body bgcolor="#ffffff" onLoad="dataToVisible(document.forms[0]);init();document.forms[0].elements[0].focus();default_turnoff();loadmenu();">
+<form method="POST" action="setup.cgi@post_par#" onSubmit="buttonToDisabled(document.forms[0])">
+<div class="page_title" languageCode = "531">Advanced Wireless Settings</div>
+<div class="fix_button">
+<table width="100%" border="0" cellpadding="0" cellspacing="2"><tr><td nowrap colspan="2" align="center">
+<input class="cancel_bt" type="button" value = "Cancel" onclick='location.href="WLG_adv.htm";' languageCode = "19">
+&nbsp;
+<input class="apply_bt" type="SUBMIT" name="Apply" value = "Apply" onClick="return checkData(0);" languageCode = "18">
+</td></tr></table>
+</div>
+<div id="main" class="main_top_button">
+<table border="0" cellpadding="0" cellspacing="3" width="100%"><tr><td colspan="2"><a href="javascript:loadhelp('WLG_adv','settings')" tabindex="-1"><b languageCode = "320">Wireless Settings</b><b> (2.4GHz b/g/n)</b></a></td>
+	</tr><tr><td colspan="2"><input type="checkbox" name="enable_ap" value="enable_ap" onClick="dis_turnoff()"><span languageCode = "561">Enable Wireless Router Radio</span></td>
+	</tr><tr><td class="hlc"><span languageCode = "562">Fragmentation Length (256-2346)</span></td>
+		<td class="hrc"><input type="text" name="frag" size="5" maxlength="4" value="@frag#"></td>
+	</tr><tr><td><span languageCode = "563">CTS/RTS Threshold (1-2347)</span></td>
+		<td align="left"><input type="text" name="rts" size="5" maxlength="4" value="@rts#"></td>
+	</tr><tr><td align="left"><span languageCode = "564">Preamble Mode</span></td>
+		<td align="left"><select name="enable_shortpreamble"><option value="1" selected languageCode = "565">Long Preamble</option><option value="2" languageCode = "566">Short Preamble</option></select></td>
+	</tr>
+	<tr><td colspan="2">
+	   <div ID="turnOff_WS"><input type="checkbox" name="turnoff"><b languageCode = "737">Turn off wireless signal by schedule</b><br/><b languageCode = "738">The wireless signal is scheduled to turn off during the following time period:</b></div></td>
+    </tr><tr><td colspan="2" align="center">
+        <div ID="wifi_sched_rules">
+		<TABLE class="tables" border="0" cellpadding="2" cellspacing="0" width="100%">
+			<TR class="table_header">
+				<td nowrap align="center"><span class="thead" languageCode = "696">Period</span></td>
+				<td nowrap align="center"><span class="thead" languageCode = "250">Start</span></td>
+				<td nowrap align="center"><span class="thead" languageCode = "253">End</span></td>
+				<td nowrap align="center"><span class="thead" languageCode = "848">Recurrence Pattern</span></td>
+			</tr>
+			@schedule_rule#
+		</table>
+	    </div>
+	</td>
+	</tr><tr><td colspan="2" align="center">
+		<table border="0" cellpadding="0" cellspacing="3" width="80%">
+			<tr>
+				<td width="20%"></td>
+				<td nowrap="nowrap"><input class="long_add_bt" type="button" name="b_add" value="Add a new period" languageCode="847" onClick="schedule_add(0)">
+	&nbsp;
+	<input class="edit_bt" type="button" name="b_edit" value="Edit" languageCode="94" onClick="edit_wifi_schedule(0)" >
+	&nbsp;
+	<input class="delete_bt" type="button" name="b_del" value="Delete" languageCode="95" onClick="delete_wifi_schedule(0)"></td>
+			</tr>
+		</table>
+	</td>
+	</tr>
+	<tr><td colspan="2" background="liteblue.gif" height="12"></td>
+	</tr><tr><td colspan="2"><a href="javascript:loadhelp('WLG_adv','settings')" tabindex="-1"><b languageCode = "320">Wireless Settings</b><b> (5GHz a/n)</b></a></td>
+	</tr><tr><td colspan="2"><input type="checkbox" name="enable_ap_an" value="enable_ap_an" onClick="dis_turnoff_an()"><span languageCode="887">Enable Wireless Router Radio</span></td>
+	</tr><tr><td class="hlc"><span languageCode = "562">Fragmentation Length (256-2346)</span></td>
+		<td class="hrc"><input type="text" name="frag_an" size="5" maxlength="4" value="@frag_an#"></td>
+	</tr><tr><td><span languageCode = "563">CTS/RTS Threshold (1-2347)</span></td>
+		<td align="left"><input type="text" name="rts_an" size="5" maxlength="4" value="@rts_an#"></td>
+	</tr><tr><td align="left"><span languageCode = "564">Preamble Mode</span></td>
+		<td align="left"><select name="enable_shortpreamble_an"><option value="1" selected languageCode="565">Long Preamble</option><option value="2" languageCode="566">Short Preamble</option></select></td>
+	</tr>
+	<tr><td colspan="2">
+	   <div ID="turnOff_WS_an"><input type="checkbox" name="turnoff_an"><b languageCode = "737">Turn off wireless signal by schedule</b><br/><b languageCode = "738">The wireless signal is scheduled to turn off during the following time period:</b></div></td>
+    </tr><tr><td colspan="2" align="center">
+        <div ID="wifi_sched_rules">
+		<TABLE class="tables" border="0" cellpadding="2" cellspacing="0" width="100%">
+			<TR class="table_header">
+				<td nowrap align="center"><span class="thead" languageCode = "696">Period</span></td>
+				<td nowrap align="center"><span class="thead" languageCode = "250">Start</span></td>
+				<td nowrap align="center"><span class="thead" languageCode = "253">End</span></td>
+				<td nowrap align="center"><span class="thead" languageCode = "848">Recurrence Pattern</span></td>
+			</tr>
+			@schedule_rule_an#
+		</table>
+	    </div>
+	</td>
+	</tr><tr><td colspan="2" align="center">
+		<table border="0" cellpadding="0" cellspacing="3" width="80%">
+			<tr>
+				<td width="20%"></td>
+				<td nowrap="nowrap"><input class="long_add_bt" type="button" name="b_add_an" value="Add a new period" languageCode="847" onClick="schedule_add(1)">
+	&nbsp;
+	<input class="edit_bt" type="button" name="b_edit_an" value="Edit" languageCode="94" onClick="edit_wifi_schedule(1)" >
+	&nbsp;
+	<input class="delete_bt" type="button" name="b_del_an" value="Delete" languageCode="95" onClick="delete_wifi_schedule(1)"></td>
+			</tr>
+		</table>
+	</td>
+	</tr>
+	<tr><td colspan="2" background="liteblue.gif" height="12"></td></tr>
+	<tr> <td colspan="2"><b><span languageCode="10000"> AP Mode </span></b></td></tr>
+    <tr> <td colspan="2"> <input type="checkbox" name="ap_mode" value="ap_mode" onClick="ap_mode_changed()"><span languageCode="862">Enable AP Mode</span></td></tr>
+	<tr><td colspan="2"> <div id="APModeSetting" style="display:none"><table border="0" cellpadding="0" cellspacing="3" width="80%">
+	    <tr><td nowrap><img src="spacer.gif" width="20" height="12" border="0"><span languageCode="127">Device Name</span></td> <td nowrap align="right"> <input type="text" name="ap_name" size="12" maxlength="12" value="@ap_name#">
+	    </tr><tr><td colspan="2" nowrap><img src="spacer.gif" width="15" height="12" border="0">
+	        <input type="checkbox" name="APAssign" value="dhcp" onClick="setIP();setDNS()"><span>Get IP Address Dynamically</span></td>
+	    </tr><tr><td nowrap><img src="spacer.gif" width="35" height="12" border="0"><span languageCode="37">IP Address</span></td>
+		<td nowrap align="right" class="num">
+			<input type="text" name="APether1" class="num" size="4" value="" maxlength="3" onFocus="if(DisableFixedIP) this.blur()">.<input type="text" name="APether2" class="num" size="4" value="" maxlength="3" onFocus="if(DisableFixedIP) this.blur()">.<input type="text" name="APether3" class="num" size="4" value="" maxlength="3" onFocus="if(DisableFixedIP) this.blur()">.<input type="text" name="APether4" class="num" size="4" value="" maxlength="3" onFocus="if(DisableFixedIP) this.blur()"></td>
+	</tr><tr><td nowrap><img src="spacer.gif" width="35" height="12" border="0"><span languageCode="40">IP Subnet Mask</span></td>
+		<td align="right" class="num">
+			<input type="text" name="APMask1" class="num" size="4" value="" maxlength="3" onFocus="if(DisableFixedIP) this.blur()">.<input type="text" name="APMask2" class="num" size="4" value="" maxlength="3" onFocus="if(DisableFixedIP) this.blur()">.<input type="text" name="APMask3" class="num" size="4" value="" maxlength="3" onFocus="if(DisableFixedIP) this.blur()">.<input type="text" name="APMask4" class="num" size="4" value="" maxlength="3" onFocus="if(DisableFixedIP) this.blur()"></td>
+	</tr><tr><td nowrap><img src="spacer.gif" width="35" height="12" border="0"><span languageCode="41">Gateway</span> <span languageCode="37">IP Address</span></td>
+		<td align="right" class="num">
+			<input type="text" name="APGateway1" class="num" size="4" value="" maxlength="3" onFocus="if(DisableFixedIP) this.blur()">.<input type="text" name="APGateway2" class="num" size="4" value="" maxlength="3" onFocus="if(DisableFixedIP) this.blur()">.<input type="text" name="APGateway3" class="num" size="4" value="" maxlength="3" onFocus="if(DisableFixedIP) this.blur()">.<input type="text" name="APGateway4" class="num" size="4" value="" maxlength="3" onFocus="if(DisableFixedIP) this.blur()"></td>
+	</tr>
+	<tr><td colspan="2"><img src="spacer.gif" width="15" height="12" border="0">
+	    <input type="checkbox" name="APDNSAssign" value="0" onClick="setDNS()"><span>Get DNS Server Address Dynamically</span></td>
+	</tr><tr><td><img src="spacer.gif" width="35" height="12" border="0"><span languageCode="45">Primary DNS</span></td>
+		<td align="right" class="num"><input type="text" name="AP_DAddr1" class="num" size="4" maxlength="3" value="" onFocus="if(DisableFixedDNS) this.blur()">.<input type="text" name="AP_DAddr2" class="num" size="4" maxlength="3" value="" onFocus="if(DisableFixedDNS) this.blur()">.<input type="text" name="AP_DAddr3" class="num" size="4" maxlength="3" value="" onFocus="if(DisableFixedDNS) this.blur()">.<input type="text" name="AP_DAddr4" class="num" size="4" maxlength="3" value="" onFocus="if(DisableFixedDNS) this.blur()"></td>
+	</tr><tr><td><img src="spacer.gif" width="35" height="12" border="0"><span languageCode="46">Secondary DNS</span></td>
+		<td align="right" class="num"><input type="text" name="AP_PDAddr1" class="num" size="4" maxlength="3" value="" onFocus="if(DisableFixedDNS) this.blur()">.<input type="text" name="AP_PDAddr2" class="num" size="4" maxlength="3" value="" onFocus="if(DisableFixedDNS) this.blur()">.<input type="text" name="AP_PDAddr3" class="num" size="4" maxlength="3" value="" onFocus="if(DisableFixedDNS) this.blur()">.<input type="text" name="AP_PDAddr4" class="num" size="4" maxlength="3" value="" onFocus="if(DisableFixedDNS) this.blur()"></td>
+	</tr>
+    </table></div></td></tr>
+	<!--WPS--><!-- RULE --><tr><td colspan="2" background="liteblue.gif" height="12"></td>
+	</tr><td colspan="2"><a href="javascript:loadhelp('WLG_adv','wps')" tabindex="-1"><b languageCode = "14">WPS Settings</b></a></td>
+	<tr><td>
+		<div id="wPIN1"><span languageCode = "15">Router's PIN</span>:</div>
+		</td>
+		<td>
+		<div id="wPIN2"><b><font size="4">@routerPIN#</font></b></div>
+		</td>
+	</tr><tr><td colspan="2"><input type="checkbox" name="pin_disable" value="pin_disable">@router_pin_message#</td>
+	</tr><tr><td colspan="2"><input type="checkbox" name="wsc_config" value="wsc_config" checked onClick="set2GState();"><span languageCode="17">Keep Existing Wireless Settings</span> (2.4GHz b/g/n)</td>
+	</tr><tr><td colspan="2"><input type="checkbox" name="wsc_config_an" value="wsc_config_an" checked onClick="set5GState();"><span languageCode="17">Keep Existing Wireless Settings</span> (5GHz a/n)</td>
+	</tr><!--WPS--><!-- RULE --><tr><td colspan="2" background="liteblue.gif" height="12"></td>
+	</tr><tr><td><a href="javascript:loadhelp('WLG_adv','access')" tabindex="-1"><b languageCode = "554">Wireless Card Access List</b></a></td>
+		<td align="left"><input class="long_common_bt" type="button" name="access" value = "Set Up Access List" onClick="self.location.href='setup.cgi?todo=nbtscan&next_file=WLG_acl.htm';buttonToDisabled(document.forms[0]);" languageCode = "567"></td>
+	</tr><!-- RULE --><tr><td colspan="2" background="liteblue.gif" height="12"></td>
+	</tr><tr><td colspan="2" align="center"></td>
+	</tr></table><!-- ServerStart -->
+
+    <input type="hidden" name="h_enable_ap" value="@enable_ap1#">
+    <input type="hidden" name="h_enable_ap_an" value="@enable_ap1_an#">
+
+    <input type="hidden" name="h_enable_shortpreamble" value="@h_enable_shortpreamble#">
+    <input type="hidden" name="h_enable_shortpreamble_an" value="@h_enable_shortpreamble_an#"><!-- WPS -->
+    <input type="hidden" name="h_pin_disable" value="@h_pin_disable#">
+    <input type="hidden" name="h_wsc_config" value="@h_wsc_config#">
+    <input type="hidden" name="h_wsc_config_an" value="@h_wsc_config_an#">
+    <input type="hidden" name="h_wl0_type" value="@h_wl0_type#">
+    <input type="hidden" name="h_authAlgm" value="@h_authAlgm#">
+    <input type="hidden" name="h_wl0_on" value="@h_wl0_on#">
+    <input type="hidden" name="h_wl1_on" value="@h_wl1_on#">
+    <input type="hidden" name="show_wps_alert" value="@show_wps_alert#">
+    <!-- ServerEnd -->
+    <input type="hidden" name="h_idx_num" value="@h_idx_num#">
+    <input type="hidden" name="h_turnoff" value="@h_turnoff#">
+    <input type="hidden" name="h_turnoff_an" value="@h_turnoff_an#">
+    <input type="hidden" name="save_only" value="sss">
+    <input type="hidden" name="todo" value="save">
+    <input type="hidden" name="this_file" value="WLG_adv.htm">
+    <input type="hidden" name="next_file" value="WLG_adv.htm">
+    <input type="hidden" name="h_ruleSelect" value="@h_ruleSelect#">
+    <input type="hidden" name="h_ruleSelect_an" value="@h_ruleSelect_an#">
+    <input type="hidden" name="nBand" value="">
+    <input type="hidden" name="SID" value="@SID#">
+    <input type="hidden" name="h_ap_mode" value="@h_ap_mode#">
+    <input type="hidden" name="h_APAssign" value="@h_APAssign#">
+    <input type="hidden" name="h_APDNSAssign" value="@h_APDNSAssign#">
+    <input type="hidden" name="c4_APether" value="@c4_APether#">
+    <input type="hidden" name="c4_APMask" value="@c4_APMask#">
+    <input type="hidden" name="c4_APGateway" value="@c4_APGateway#">
+    <input type="hidden" name="c4_AP_DAddr" value="@c4_AP_DAddr#">
+    <input type="hidden" name="c4_AP_PDAddr" value="@c4_AP_PDAddr#">
+</div>
+</form>
+
+<div id="help" style="display: none">
+		<iframe name="help_iframe" id="helpframe" src="WLG_adv_h.htm" allowtransparency="true" width="100%" frameborder="0">
+		</iframe>
+</div>
+<div id="help_switch" class="close_help">
+	 <img class="help_switch_img" src="image/help/help-bar.gif"><script>
+var help_flag=0;
+if(isIE()){
+	show_hidden_help_top_button(1);
+	var frame_div = top.document.getElementById("formframe_div");
+	frame_div.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+if(get_browser() == "Opera"){
+	window.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+</script><div id="help_space" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_center"><span languageCode="3016">Help Center</span></div>
+<div id="help_button" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_show_hidden"><a href="javascript:void(0)" onClick="show_hidden_help_top_button(help_flag); help_flag++;"><span languageCode="3017">Show/Hide Help Center</span></a></div>
+</div>
+<script language="javascript" type="text/javascript" src="langs.js"></script></body></html>

@@ -1,0 +1,26 @@
+#!/bin/sh
+
+#
+# Some of the things in here should really be done before the wan
+# is up, but I haven't yet worked out how to break into that
+#
+
+#
+# 1. Check that, if in use, the ADSL is configured acording to
+#    the spec. If not, reconfigure and stop - the later stuff
+#    will get done next time through.
+#
+wan_mode="$(nvram-util get wan_mode_dsl)"
+if ( "x$wan_mode" == "xpppoa" ]; then
+    adsl_needs="$(/usr/sbin/rc_adsl needs)"
+    if [ "x"$adsl_needs != "xNOTHING" ]; then
+        /usr/sbin/rc_app/rc_adsl $adsl_needs
+        exit
+    fi
+fi
+
+
+#
+# 2. Start up the Dynamic DNS
+#
+/usr/sbin/rc_app/rc_inadyn-mt start

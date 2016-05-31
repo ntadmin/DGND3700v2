@@ -1,0 +1,53 @@
+#!/bin/sh
+# this file appened to rcS as needed
+mkdir /tmp/sysfs
+mount -t sysfs none /sys/
+mount -t usbfs none /proc/bus/usb
+/bin/mkdir /tmp/dev
+/bin/mknod /tmp/dev/ttyUSB0 c 188 0
+chmod 0666 /tmp/dev/ttyUSB0
+/bin/mknod /tmp/dev/ttyUSB1 c 188 1
+chmod 0666 /tmp/dev/ttyUSB1
+/bin/mknod /tmp/dev/ttyUSB2 c 188 2
+chmod 0666 /tmp/dev/ttyUSB2
+/bin/mknod /tmp/dev/ttyUSB3 c 188 3
+chmod 0666 /tmp/dev/ttyUSB3
+/bin/mknod /tmp/dev/ttyUSB4 c 188 4
+chmod 0666 /tmp/dev/ttyUSB4
+/bin/mknod /tmp/dev/ttyUSB5 c 188 5
+chmod 0666 /tmp/dev/ttyUSB5
+/bin/mknod /tmp/dev/ttyUSB6 c 188 6
+chmod 0666 /tmp/dev/ttyUSB6
+/bin/mknod /tmp/dev/ttyUSB7 c 188 7
+chmod 0666 /tmp/dev/ttyUSB7
+/bin/mknod /tmp/dev/ttyUSB8 c 188 8
+chmod 0666 /tmp/dev/ttyUSB8
+/bin/mknod /tmp/dev/ttyUSB9 c 188 9
+chmod 0666 /tmp/dev/ttyUSB9
+/bin/mknod /tmp/dev/ttyUSB10 c 188 10
+chmod 0666 /tmp/dev/ttyUSB10
+/bin/mknod /tmp/dev/ttyHS0 c 249 0
+chmod 0666 /tmp/dev/ttyHS0
+/bin/mknod /tmp/dev/ttyHS1 c 249 1
+chmod 0666 /tmp/dev/ttyHS1
+/bin/mknod /tmp/dev/ttyHS2 c 249 2
+chmod 0666 /tmp/dev/ttyHS2
+/bin/mknod /tmp/dev/ttyHS3 c 249 3
+chmod 0666 /tmp/dev/ttyHS3
+/bin/mknod /tmp/dev/scd0 b 11 0
+/bin/mknod /tmp/dev/scd1 b 11 1
+/bin/mkdir /etc/ppp/peers
+/bin/mkdir /etc/ppp/scripts
+cp /etc/3g /etc/ppp/peers/
+cp /etc/3g.chat /etc/ppp/scripts/
+/bin/mkdir /tmp/ppp
+/bin/mkdir /tmp/ppp/peers
+/bin/mkdir /tmp/ppp/scripts
+/bin/mkdir /var
+/bin/mkdir /var/usbmodem
+/bin/mkdir /var/usbmodem/1
+/bin/touch /var/usbmodem/1/debug_log
+
+
+
+

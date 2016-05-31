@@ -1,0 +1,383 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-Control" content="no-cache"><meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT"><meta name="description" content="@model_name#_multilangual"><title>NETGEAR Router @model_name#</title><script language="javascript" type="text/javascript" src="string.js"></script><link rel="stylesheet" href="style/form.css"><script language="javascript" type="text/javascript" src="funcs.js"></script><!-- link rel="stylesheet" href="form.css" --><style type="text/javascript">
+	classes.num.all.fontFamily = "Courier";
+	classes.num.all.fontSize = "10pt" ;
+</style><script language="javascript" type="text/javascript" src="utility.js"></script><script language="javascript" type="text/javascript" src="linux.js"></script><script language="javascript" type="text/javascript">
+<!-- hide script from old browsers
+function loadcheck()
+{
+	var cf = document.forms[0];
+	if(cf.h_en_nat.value == "enabled"){
+		cf.acc_lan.disabled=true;
+	}
+}
+function set_old()
+{
+	var cf = document.forms[0];
+	if(cf.h_remote_mg_enable.value == "enable")
+	{
+		cf.h_old_remote_mg.value = "enable";
+	}
+	else
+	{
+		cf.h_old_remote_mg.value = "disable";
+	}
+}
+/*
+ * check ip1.ip2.ip3.ip4 in LAN subnet or not
+ * Return error message if it is in LAN subnet
+ */
+function in_lan_subnet(ip1, ip2, ip3, ip4) {
+    var str_lan_ip = "@c4_sysLANIPAddr#";
+    var str_lan_netmask = "@c4_sysLANSubnetMask#";
+    var lan_ip = str_lan_ip.split(".");
+    var lan_netmask = str_lan_netmask.split(".");
+    var lan_ipaddr = (lan_ip[0] << 24) | (lan_ip[1] << 16) | (lan_ip[2] << 8)| (lan_ip[3]);
+    var lan_netmaskaddr = (lan_netmask[0] << 24) | (lan_netmask[1] << 16) | (lan_netmask[2] << 8)| (lan_netmask[3]);
+    var pc_ipaddr = (ip1.value << 24) | (ip2.value << 16) | (ip3.value << 8)| ip4.value;
+    var msg="";
+	if( (pc_ipaddr & lan_netmaskaddr) == (lan_ipaddr & lan_netmaskaddr) ) {
+        msg += ip1.value + "." + ip2.value + "." + ip3.value + "." + ip4.value + " - " + getErrorMsgByVar("gsm_msg_eth_inv_ip");
+    }
+    return msg;
+}
+function checkData()
+{
+ 	var cf = document.forms[0];
+	var msg = "";
+	var s1=getErrorMsgByVar("gsm_msg_eth_inv_ip");
+	var s2=getErrorMsgByVar("gsm_msg_eth_inv_ip");
+	var s3=getErrorMsgByVar("gsm_msg_eth_inv_ip");
+	var minListIP = 0;
+	var cnt_ipx = 0, cnt_ipy = 0;
+	if(cf.rm_access[2].checked)
+	{
+		for(cnt_ipx = 1; cnt_ipx< 11; cnt_ipx ++) {
+			var ip1, ip2, ip3, ip4;
+			eval("ip1 = cf.local_ip" + cnt_ipx + "_1");
+			eval("ip2 = cf.local_ip" + cnt_ipx + "_2");
+			eval("ip3 = cf.local_ip" + cnt_ipx + "_3");
+			eval("ip4 = cf.local_ip" + cnt_ipx + "_4");
+			if(!complete_blankIP(ip1, ip2, ip3, ip4)) {
+				if(badIP2(ip1, ip2, ip3, ip4, 254)) {
+					msg += getErrorMsgByVar("gsm_msg_rmt_inv_ip_in_list")+" "+cnt_ipx;
+				} else {
+					minListIP ++;
+                    msg += in_lan_subnet(ip1, ip2, ip3, ip4);
+				}
+			}
+		}
+        for(cnt_ipx = 1; cnt_ipx< 11; cnt_ipx ++) {
+            var ipx_ip1, ipx_ip2, ipx_ip3, ipx_ip4;
+            eval("ipx_ip1 = cf.local_ip" + cnt_ipx + "_1");
+            eval("ipx_ip2 = cf.local_ip" + cnt_ipx + "_2");
+            eval("ipx_ip3 = cf.local_ip" + cnt_ipx + "_3");
+            eval("ipx_ip4 = cf.local_ip" + cnt_ipx + "_4");
+            for(cnt_ipy = (cnt_ipx + 1); cnt_ipy< 11; cnt_ipy ++) {
+                var ipy_ip1, ipy_ip2, ipy_ip3, ipy_ip4;
+                eval("ipy_ip1 = cf.local_ip" + cnt_ipy + "_1");
+                eval("ipy_ip2 = cf.local_ip" + cnt_ipy + "_2");
+                eval("ipy_ip3 = cf.local_ip" + cnt_ipy + "_3");
+                eval("ipy_ip4 = cf.local_ip" + cnt_ipy + "_4");
+                if(chknewip(ipx_ip1, ipx_ip2, ipx_ip3, ipx_ip4,
+               		ipy_ip1, ipy_ip2, ipy_ip3, ipy_ip4) == false) {
+                   	msg += getErrorMsgByVar("gsm_msg_rmt_setting_list") + cnt_ipx + getErrorMsgByVar("gsm_msg_rmt_setting_and") + cnt_ipy + getErrorMsgByVar("gsm_msg_rmt_setting_same");
+                }
+           }
+        }
+		if(minListIP == 0){
+			msg += getErrorMsgByVar("gsm_msg_rmt_non_set_ip");
+		}
+	}
+	if(cf.rm_access[1].checked)
+	{
+		if(badIP2(cf.start_ip_1, cf.start_ip_2, cf.start_ip_3, cf.start_ip_4, 254)) {
+			msg += s2;
+	    } else {
+            msg += in_lan_subnet(cf.start_ip_1, cf.start_ip_2, cf.start_ip_3, cf.start_ip_4);
+        }
+		if(badIP2(cf.fin_ip_1, cf.fin_ip_2, cf.fin_ip_3, cf.fin_ip_4, 254)) {
+			msg += s3;
+        } else {
+            msg += in_lan_subnet(cf.fin_ip_1, cf.fin_ip_2, cf.fin_ip_3, cf.fin_ip_4);
+        }
+		if(cp_ip(cf.start_ip_1, cf.start_ip_2, cf.start_ip_3, cf.start_ip_4,
+				cf.fin_ip_1, cf.fin_ip_2, cf.fin_ip_3, cf.fin_ip_4))
+			msg += getErrorMsgByVar("gsm_msg_rmt_end_ip_small");
+	}
+	if (cf.rm_access[0].checked) {
+		if(badIP2(cf.local_ip_1, cf.local_ip_2, cf.local_ip_3, cf.local_ip_4, 254)) {
+			msg += s1;
+        } else {
+            msg += in_lan_subnet(cf.local_ip_1, cf.local_ip_2, cf.local_ip_3, cf.local_ip_4);
+        }
+    }
+	if (checkInt(cf.http_rmport, "" , 1024, 65534, true).length > 0)
+	{
+		msg += getErrorMsgByVar("gsm_msg_rmt_port_num");
+	}
+	if(msg.length > 1)
+	{
+		alert(msg);
+		return false;
+	}
+	dataToHidden(cf);
+	return true;
+}
+function en_dis_ip(ip1, ip2, ip3, ip4, en)
+{
+	if(en)
+	{
+		ip1.disabled = false;
+		ip2.disabled = false;
+		ip3.disabled = false;
+		ip4.disabled = false;
+	}
+	else
+	{
+		ip1.disabled = true;
+		ip2.disabled = true;
+		ip3.disabled = true;
+		ip4.disabled = true;
+	}
+}
+function en_dis_single(en)
+{
+	var cf = document.forms[0];
+	en_dis_ip(cf.local_ip_1,cf.local_ip_2,cf.local_ip_3,cf.local_ip_4,en);
+}
+function en_dis_range(en)
+{
+	var cf = document.forms[0];
+	en_dis_ip(cf.start_ip_1, cf.start_ip_2, cf.start_ip_3, cf.start_ip_4, en);
+	en_dis_ip(cf.fin_ip_1, cf.fin_ip_2, cf.fin_ip_3, cf.fin_ip_4, en);
+}
+function en_dis_list(en)
+{
+	var cf = document.forms[0];
+	en_dis_ip(cf.local_ip1_1,cf.local_ip1_2,cf.local_ip1_3,cf.local_ip1_4,en);
+	en_dis_ip(cf.local_ip2_1,cf.local_ip2_2,cf.local_ip2_3,cf.local_ip2_4,en);
+	en_dis_ip(cf.local_ip3_1,cf.local_ip3_2,cf.local_ip3_3,cf.local_ip3_4,en);
+	en_dis_ip(cf.local_ip4_1,cf.local_ip4_2,cf.local_ip4_3,cf.local_ip4_4,en);
+	en_dis_ip(cf.local_ip5_1,cf.local_ip5_2,cf.local_ip5_3,cf.local_ip5_4,en);
+	en_dis_ip(cf.local_ip6_1,cf.local_ip6_2,cf.local_ip6_3,cf.local_ip6_4,en);
+	en_dis_ip(cf.local_ip7_1,cf.local_ip7_2,cf.local_ip7_3,cf.local_ip7_4,en);
+	en_dis_ip(cf.local_ip8_1,cf.local_ip8_2,cf.local_ip8_3,cf.local_ip8_4,en);
+	en_dis_ip(cf.local_ip9_1,cf.local_ip9_2,cf.local_ip9_3,cf.local_ip9_4,en);
+	en_dis_ip(cf.local_ip10_1,cf.local_ip10_2,cf.local_ip10_3,cf.local_ip10_4,en);
+}
+function select_mode()
+{
+	var cf = document.forms[0];
+	//single
+	if(cf.rm_access[0].checked)
+	{
+		en_dis_single(true);
+		en_dis_range(false);
+		en_dis_list(false);
+	}
+	//range
+	else if(cf.rm_access[1].checked)
+	{
+		en_dis_single(false);
+		en_dis_range(true);
+		en_dis_list(false);
+	}
+	//list
+	else if(cf.rm_access[2].checked)
+	{
+		en_dis_single(false);
+		en_dis_range(false);
+		en_dis_list(true);
+	}
+	//everyone
+	else
+	{
+		en_dis_single(false);
+		en_dis_range(false);
+		en_dis_list(false);
+	}
+}
+//-->
+</script></head><body bgcolor="#ffffff" onLoad="dataToVisible(document.forms[0]);select_mode();document.forms[0].elements[0].focus();set_old();">
+<form name="remotemg" action="setup.cgi@post_par#" method="post" onSubmit="buttonToDisabled(document.forms[0])">
+<div class="page_title" languageCode = "220">Remote Management</div>
+<div class="fix_button">
+<table width="100%" border="0" cellpadding="0" cellspacing="2"><tr><td nowrap colspan="2" align="center">
+<input class="cancel_bt" type="RESET" name="Cancel" value = "Cancel" onClick="setTimeout('dataToVisible(document.forms[0])',250)" languageCode = "19">
+&nbsp;
+<input class="apply_bt" type="submit" name="Apply" value = "Apply" onClick="return checkData()" languageCode = "18">
+</td></tr></table>
+</div>
+<div id="main" class="main_top_button">
+<table border="0" cellpadding="0" cellspacing="3" width="100%"><tr><td nowrap colspan="2">
+		<input type="checkbox" name="remote_mg_enable" value="@h_remote_mg_enable#"><a href="javascript:loadhelp('FW_remote','turnon')" tabindex="-1">
+		<b languageCode = "221">Turn Remote Management On</b></a><br><b><font color=red>WARNING: ENABLING THIS IS A BIG SECURITY RISK</red></b></td>
+	</tr><tr><!-- RULE --><td colspan="2" background="liteblue.gif" height="12"></td>
+	</tr><tr><td nowrap colspan="2"><a href="javascript:loadhelp('FW_remote','address')" tabindex="-1"><b languageCode = "222">Remote Management Address</b></a>:</td>
+	</tr><tr><td nowrap colspan="2">@rm_mg_ip#</td>
+	</tr><tr><!-- RULE --><td colspan="2" background="liteblue.gif" height="12"></td>
+	</tr><tr><td valign="top" colspan="2"><a href="javascript:loadhelp('FW_remote','access')" tabindex="-1"><b languageCode = "223">Allow Remote Access By</b></a>:</td>
+	</tr><tr><td nowrap width="50%"><input type="radio" name="rm_access" value="ip_single" onClick="select_mode()"><span languageCode = "224">Only This Computer</span>:</td>
+		<td nowrap width="50%" align="right" class="num"><input type="text" class="num" size="4" maxlength="3" name="local_ip_1" value="">.<input type="text" class="num" size="4" maxlength="3" name="local_ip_2" value="">.<input type="text" class="num" size="4" maxlength="3" name="local_ip_3" value="">.<input type="text" class="num" size="4" maxlength="3" name="local_ip_4" value=""></td>
+	</tr><tr><td colspan="2"></td>
+	</tr><tr><td nowrap><input type="radio" name="rm_access" value="ip_range" onClick="select_mode()">
+		<span languageCode = "103">IP Address Range</span>:</td>
+		<td nowrap align="right"><span languageCode = "226">From</span> <span class="num">
+			<input type="text" class="num" size="4" maxlength="3" name="start_ip_1" value="">.<input type="text" class="num" size="4" maxlength="3" name="start_ip_2" value="">.<input type="text" class="num" size="4" maxlength="3" name="start_ip_3" value="">.<input type="text" class="num" size="4" maxlength="3" name="start_ip_4" value=""></span>
+		</td>
+	</tr><tr><td nowrap></td>
+		<td nowrap align="right"><span languageCode = "104">to</span> <span class="num">
+			<input type="text" class="num" size="4" maxlength="3" name="fin_ip_1" value="">.<input type="text" class="num" size="4" maxlength="3" name="fin_ip_2" value="">.<input type="text" class="num" size="4" maxlength="3" name="fin_ip_3" value="">.<input type="text" class="num" size="4" maxlength="3" name="fin_ip_4" value=""></span>
+		</td>
+	</tr><tr><td colspan="2"></td>
+	</tr>
+	<tr>
+		<td nowrap><input type="radio" name="rm_access"
+			value="ip_list" onClick="select_mode()"><span languageCode = "725">IP Address List</span>:</td>
+		<td nowrap align="right"><span class="num"><input
+			type="text" class="num" size="4" maxlength="3"
+			name="local_ip1_1" value="">.<input type="text"
+			class="num" size="4" maxlength="3" name="local_ip1_2" value="">.<input
+			type="text" class="num" size="4" maxlength="3"
+			name="local_ip1_3" value="">.<input type="text"
+			class="num" size="4" maxlength="3" name="local_ip1_4" value=""></span></td>
+	</tr>
+	<tr>
+		<td nowrap></td>
+		<td nowrap align="right"><span class="num"><input
+			type="text" class="num" size="4" maxlength="3"
+			name="local_ip2_1" value="">.<input type="text"
+			class="num" size="4" maxlength="3" name="local_ip2_2" value="">.<input
+			type="text" class="num" size="4" maxlength="3"
+			name="local_ip2_3" value="">.<input type="text"
+			class="num" size="4" maxlength="3" name="local_ip2_4" value=""></span></td>
+	</tr>
+	<tr>
+		<td nowrap></td>
+		<td nowrap align="right"><span class="num"><input
+			type="text" class="num" size="4" maxlength="3"
+			name="local_ip3_1" value="">.<input type="text"
+			class="num" size="4" maxlength="3" name="local_ip3_2" value="">.<input
+			type="text" class="num" size="4" maxlength="3"
+			name="local_ip3_3" value="">.<input type="text"
+			class="num" size="4" maxlength="3" name="local_ip3_4" value=""></span></td>
+	</tr>
+	<tr>
+		<td nowrap></td>
+		<td nowrap align="right"><span class="num"><input
+			type="text" class="num" size="4" maxlength="3"
+			name="local_ip4_1" value="">.<input type="text"
+			class="num" size="4" maxlength="3" name="local_ip4_2" value="">.<input
+			type="text" class="num" size="4" maxlength="3"
+			name="local_ip4_3" value="">.<input type="text"
+			class="num" size="4" maxlength="3" name="local_ip4_4" value=""></span></td>
+	</tr>
+	<tr>
+		<td nowrap></td>
+		<td nowrap align="right"><span class="num"><input
+			type="text" class="num" size="4" maxlength="3"
+			name="local_ip5_1" value="">.<input type="text"
+			class="num" size="4" maxlength="3" name="local_ip5_2" value="">.<input
+			type="text" class="num" size="4" maxlength="3"
+			name="local_ip5_3" value="">.<input type="text"
+			class="num" size="4" maxlength="3" name="local_ip5_4" value=""></span></td>
+	</tr>
+	<tr>
+		<td nowrap></td>
+		<td nowrap align="right"><span class="num"><input
+			type="text" class="num" size="4" maxlength="3"
+			name="local_ip6_1" value="">.<input type="text"
+			class="num" size="4" maxlength="3" name="local_ip6_2" value="">.<input
+			type="text" class="num" size="4" maxlength="3"
+			name="local_ip6_3" value="">.<input type="text"
+			class="num" size="4" maxlength="3" name="local_ip6_4" value=""></span></td>
+	</tr>
+	<tr>
+		<td nowrap></td>
+		<td nowrap align="right"><span class="num"><input
+			type="text" class="num" size="4" maxlength="3"
+			name="local_ip7_1" value="">.<input type="text"
+			class="num" size="4" maxlength="3" name="local_ip7_2" value="">.<input
+			type="text" class="num" size="4" maxlength="3"
+			name="local_ip7_3" value="">.<input type="text"
+			class="num" size="4" maxlength="3" name="local_ip7_4" value=""></span></td>
+	</tr>
+	<tr>
+		<td nowrap></td>
+		<td nowrap align="right"><span class="num"><input
+			type="text" class="num" size="4" maxlength="3"
+			name="local_ip8_1" value="">.<input type="text"
+			class="num" size="4" maxlength="3" name="local_ip8_2" value="">.<input
+			type="text" class="num" size="4" maxlength="3"
+			name="local_ip8_3" value="">.<input type="text"
+			class="num" size="4" maxlength="3" name="local_ip8_4" value=""></span></td>
+	</tr>
+	<tr>
+		<td nowrap></td>
+		<td nowrap align="right"><span class="num"><input
+			type="text" class="num" size="4" maxlength="3"
+			name="local_ip9_1" value="">.<input type="text"
+			class="num" size="4" maxlength="3" name="local_ip9_2" value="">.<input
+			type="text" class="num" size="4" maxlength="3"
+			name="local_ip9_3" value="">.<input type="text"
+			class="num" size="4" maxlength="3" name="local_ip9_4" value=""></span></td>
+	</tr>
+	<tr>
+		<td nowrap></td>
+		<td nowrap align="right"><span class="num"><input
+			type="text" class="num" size="4" maxlength="3"
+			name="local_ip10_1" value="">.<input type="text"
+			class="num" size="4" maxlength="3" name="local_ip10_2" value="">.<input
+			type="text" class="num" size="4" maxlength="3"
+			name="local_ip10_3" value="">.<input type="text"
+			class="num" size="4" maxlength="3" name="local_ip10_4" value=""></span></td>
+	</tr>
+	<td colspan="2"></td>
+<tr><td nowrap colspan="2"><input type="radio" name="rm_access" value="all" onClick="select_mode()"><span languageCode = "227">Everyone</span></td>
+	</tr>
+	<tr><!-- RULE --><td colspan="2" background="liteblue.gif" height="12"></td>
+	</tr><tr><td nowrap><a href="javascript:loadhelp('FW_remote','port')" tabindex="-1"><b languageCode = "228">Port Number</b></a>:</td>
+		<td nowrap align="right"><input type="text" class="num" name="http_rmport" value="@http_rmport#" size="6" maxlength="5"></td>
+	</tr><tr><!-- RULE --><td colspan="2" background="liteblue.gif" height="12"></td>
+	</tr><tr><td colspan="2" align="center"></td>
+	</tr></table><input type="hidden" name="todo" value="save"><input type="hidden" name="this_file" value="FW_remote.htm"><input type="hidden" name="next_file" value="FW_remote.htm"><input type="hidden" name="c4_local_ip_" value="@c4_local_ip_#"><input type="hidden" name="c4_start_ip_" value="@c4_start_ip_#"><input type="hidden" name="c4_fin_ip_" value="@c4_fin_ip_#">
+	<input 	type="hidden" name="c4_local_ip1_" value="@c4_local_ip1_#"><input
+	type="hidden" name="c4_local_ip2_" value="@c4_local_ip2_#"><input
+	type="hidden" name="c4_local_ip3_" value="@c4_local_ip3_#"><input
+	type="hidden" name="c4_local_ip4_" value="@c4_local_ip4_#"><input
+	type="hidden" name="c4_local_ip5_" value="@c4_local_ip5_#"><input
+	type="hidden" name="c4_local_ip6_" value="@c4_local_ip6_#"><input
+	type="hidden" name="c4_local_ip7_" value="@c4_local_ip7_#"><input
+	type="hidden" name="c4_local_ip8_" value="@c4_local_ip8_#"><input
+	type="hidden" name="c4_local_ip9_" value="@c4_local_ip9_#"><input
+	type="hidden" name="c4_local_ip10_" value="@c4_local_ip10_#">
+    <input type="hidden" name="h_old_remote_mg" value=""><input type="hidden" name="h_remote_mg_enable" value="@h_remote_mg_enable#"><input type="hidden" name="h_rm_access" value="@h_rm_access#"><input type="hidden" name="SID" value="@SID#">
+</div>	
+</form>
+<p></p>
+<div id="help" style="display: none">
+		<iframe name="help_iframe" id="helpframe" src="FW_remote_h.htm" allowtransparency="true" width="100%" frameborder="0">
+		</iframe>
+</div>
+<div id="help_switch" class="close_help">
+	 <img class="help_switch_img" src="image/help/help-bar.gif"><script>
+var help_flag=0;
+if(isIE()){
+	show_hidden_help_top_button(1);
+	var frame_div = top.document.getElementById("formframe_div");
+	frame_div.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+if(get_browser() == "Opera"){
+	window.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+</script><div id="help_space" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_center"><span languageCode="3016">Help Center</span></div>
+<div id="help_button" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_show_hidden"><a href="javascript:void(0)" onClick="show_hidden_help_top_button(help_flag); help_flag++;"><span languageCode="3017">Show/Hide Help Center</span></a></div>
+</div>
+<script language="javascript" type="text/javascript" src="langs.js"></script></body></html>

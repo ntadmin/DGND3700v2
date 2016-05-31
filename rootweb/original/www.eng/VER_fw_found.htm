@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-Control" content="no-cache"><meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT"><meta name="description" content="@model_name#_multilangual"><title>NETGEAR Router @model_name#</title><script language="javascript" type="text/javascript" src="string.js"></script><link rel="stylesheet" href="style/form.css"><script language="javascript" type="text/javascript" src="funcs.js"></script><!-- link rel="stylesheet" href="form.css" --><script language="javascript" type="text/javascript" src="utility.js"></script><script language="javascript" type="text/javascript" src="linux.js"></script><script language="javascript" type="text/javascript">
+<!-- hide script from old browsers
+var animationTimer = null;
+var showit = (document.layers) ? "show" : "visible";
+var hideit = (document.layers) ? "hide" : "hidden";
+var NS4 = (document.layers);
+function setVisible(divID, setto)
+{
+	if (NS4)
+		document.layers[divID].visibility = setto;
+	else if (document.all)
+		document.all(divID).style.visibility = setto;
+	else if (document.getElementById)
+		document.getElementById(divID).style.visibility = setto;
+}
+function stopAnimation()
+{
+	if(animationTimer != null)
+		clearTimeout(animationTimer);
+	setVisible('animation', hideit);
+}
+function checkData()
+{
+    var cf = document.forms[0];
+    cf.submit();
+}
+//-->
+</script></head><body bgcolor="#ffffff" onLoad="document.forms[0].elements[0].focus();stopAnimation()">
+<form method="POST" action="setup.cgi@post_par#">
+<div class="page_title" languageCode = "110">Firmware Upgrade Assistant</div>
+<div class="fix_button">
+<table width="100%" border="0" cellpadding="0" cellspacing="2"><tr><td nowrap colspan="2" align="center">
+<input class="cancel_bt" type="BUTTON" name="no" value = "No" onClick="window.location.href='setup.cgi?next_file=BAS_basic.htm';buttonToDisabled(document.forms[0])" languageCode = "29">
+&nbsp;
+<input class="apply_bt" type="button" name="save" value = "Yes" onClick="checkData();buttonToDisabled(document.forms[0])" languageCode = "28">
+</td></tr></table>
+</div>
+<div id="main" class="main_top_button">
+<table border="0" cellpadding="0" cellspacing="3" width="100%"><tr><td colspan="2" height="25" nowrap><b languageCode = "513">A new version has been found. Do You want to upgrade to the new version now?</b></td>
+	</tr><tr><td width="50%" height="25" languageCode = "453">Current Version</td>
+		<td width="50%">@autoupg_fw_version#</td>
+	</tr><tr><td width="50%" height="25" languageCode = "514">New Firmware Version</td>
+		<td width="50%">@new_fw#</td>
+	</tr><tr><td width="50%" height="25" languageCode = "515">Current GUI Language Version</td>
+		<td width="50%">@gui_version#</td>
+	</tr><tr><td width="50%" height="25" languageCode = "516">New GUI Language Version</td>
+		<td width="50%">@new_gui_fw#</td>
+	</tr><tr></tr><tr><td colspan="2"><b languageCode = "517">Release Notes</b></td>
+	</tr>
+						@release_note#
+	<tr><!-- RULE --><td colspan="2" background="liteblue.gif" height="12"></td>
+	</tr><tr><td colspan="2" align="center"></td>
+	</tr></table><input type="hidden" name="todo" value="upgrade_img"><input type="hidden" name="this_file" value="VER_fw_found.htm"><input type="hidden" name="SID" value="@SID#">
+</div>	
+</form>
+<div align="center" id="animation" style="position: relative; top: 0; left: 0; visibility: hide; visibility: hidden;">
+<br>
+<table border="0" cellpadding="0" cellspacing="0" width="290" height="82"><tr><td align="center"><img src="image/wait30.gif" alt="waiting" /></td></tr></table><span style="background-color:#FFFFFF" languageCode = "518">This process can take a minute or two; please wait...</span>
+</div>
+<script language="javascript" type="text/javascript" src="langs.js"></script></body></html>

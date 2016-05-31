@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tag_msg xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<message>
+<tag_code>6</tag_code>
+<translation>Nästa</translation>
+<variable>Next</variable>
+</message>
+<message>
+<tag_code>28</tag_code>
+<translation>Ja</translation>
+<variable>Yes</variable>
+</message>
+<message>
+<tag_code>57</tag_code>
+<translation>Lösenord</translation>
+<variable>Password</variable>
+</message>
+<message>
+<tag_code>64</tag_code>
+<translation>Min IP-adress</translation>
+<variable>My IP Address</variable>
+</message>
+<message>
+<tag_code>115</tag_code>
+<translation>Tillbaka</translation>
+<variable>Back</variable>
+</message>
+<message>
+<tag_code>153</tag_code>
+<translation>Användarnamn</translation>
+<variable>User Name</variable>
+</message>
+<message>
+<tag_code>158</tag_code>
+<translation>Fel</translation>
+<variable>Failure</variable>
+</message>
+<message>
+<tag_code>160</tag_code>
+<translation>Den här skärmen kommer automatiskt att återgå till föregående skärm om några sekunder ...</translation>
+<variable>This screen will automatically return to the previous screen in a few seconds...</variable>
+</message>
+<message>
+<tag_code>296</tag_code>
+<translation>Viktig uppdatering</translation>
+<variable>Important Update</variable>
+</message>
+<message>
+<tag_code>297</tag_code>
+<translation>För att undvika konflikt med din Internetleverantör har routerns IP-adress uppdaterats till </translation>
+<variable>To avoid a conflict with your Internet Service Provider, your router's IP address has been updated to </variable>
+</message>
+<message>
+<tag_code>319</tag_code>
+<translation>Installationsguiden</translation>
+<variable>Setup Wizard</variable>
+</message>
+<message>
+<tag_code>341</tag_code>
+<translation>ADSL-inställningar</translation>
+<variable>ADSL Settings</variable>
+</message>
+<message>
+<tag_code>344</tag_code>
+<translation>Land</translation>
+<variable>Country</variable>
+</message>
+<message>
+<tag_code>351</tag_code>
+<translation>Trådlöst</translation>
+<variable>Wireless</variable>
+</message>
+<message>
+<tag_code>382</tag_code>
+<translation>Anslutningstyp</translation>
+<variable>Connection Type</variable>
+</message>
+<message>
+<tag_code>428</tag_code>
+<translation>Subnätmask</translation>
+<variable>Subnet Mask</variable>
+</message>
+<message>
+<tag_code>429</tag_code>
+<translation>Standard-gateway</translation>
+<variable>Default Gateway</variable>
+</message>
+<message>
+<tag_code>518</tag_code>
+<translation>Processen kan ta ett par minuter. Vänta...</translation>
+<variable>This process can take a minute or two; please wait...</variable>
+</message>
+<message>
+<tag_code>542</tag_code>
+<translation>Vänta en stund ...</translation>
+<variable>Please wait a moment...</variable>
+</message>
+<message>
+<tag_code>543</tag_code>
+<translation>Dynamisk IP (DHCP) hittades</translation>
+<variable>Dynamic IP (DHCP) detected</variable>
+</message>
+<message>
+<tag_code>545</tag_code>
+<translation>PPPOA hittades</translation>
+<variable>PPPoA Detected</variable>
+</message>
+<message>
+<tag_code>553</tag_code>
+<translation>Nej. Jag vill konfigurera routern själv.</translation>
+<variable>No. I want to configure the router myself.</variable>
+</message>
+<message>
+<tag_code>731</tag_code>
+<translation>Multiplex-metod</translation>
+<variable>Multiplexing Method</variable>
+</message>
+<message>
+<tag_code>732</tag_code>
+<translation>LLC-BASERAD</translation>
+<variable>LLC-BASED</variable>
+</message>
+<message>
+<tag_code>744</tag_code>
+<translation>Konfigurerar internetanslutningen</translation>
+<variable>Configuring the Internet Connection</variable>
+</message>
+<message>
+<tag_code>745</tag_code>
+<translation>Du är inte ansluten till internet än.</translation>
+<variable>You are not yet connected to the Internet.</variable>
+</message>
+<message>
+<tag_code>746</tag_code>
+<translation>Vill du få hjälp av NETGEAR Genie?</translation>
+<variable>Do you want NETGEAR Genie to help?</variable>
+</message>
+<message>
+<tag_code>747</tag_code>
+<translation>Nej, jag vill konfigurera internetanslutningen själv.</translation>
+<variable>No, I want to configure the Internet connection myself.</variable>
+</message>
+<message>
+<tag_code>748</tag_code>
+<translation>Jag har sparat routerinställningarna i en fil och vill återställa routern till de inställningarna.</translation>
+<variable>I have saved the router settings in a file and I want to restore the router to those settings.</variable>
+</message>
+<message>
+<tag_code>749</tag_code>
+<translation>Välj land</translation>
+<variable>Select Country</variable>
+</message>
+<message>
+<tag_code>750</tag_code>
+<translation>No DSL Cable Is Plugged into the Router ADSL Port</translation>
+<variable>No DSL Cable Is Plugged into the Router ADSL Port</variable>
+</message>
+<message>
+<tag_code>751</tag_code>
+<translation>Se till att kabeln är ordentligt ansluten till både bredbandsmodemporten och routerns Internetport.</translation>
+<variable>Make sure that the cable is securely plugged into both the broadband modem port and the router Internet port.</variable>
+</message>
+<message>
+<tag_code>752</tag_code>
+<translation>After you have checked the DSL cable, click &lt;b&gt;Try again&lt;/b&gt;.</translation>
+<variable>After you have checked the DSL cable, click &lt;b&gt;Try again&lt;/b&gt;.</variable>
+</message>
+<message>
+<tag_code>753</tag_code>
+<translation>Försök igen</translation>
+<variable>Try again</variable>
+</message>
+<message>
+<tag_code>755</tag_code>
+<translation>Söker efter internetanslutning</translation>
+<variable>Detecting the Internet Connection</variable>
+</message>
+<message>
+<tag_code>756</tag_code>
+<translation>Klicka på "Nästa" för att fortsätta.</translation>
+<variable>Click "Next" to continue.</variable>
+</message>
+<message>
+<tag_code>758</tag_code>
+<translation>Ange nödvändig information nedan.</translation>
+<variable>Enter the required information below.</variable>
+</message>
+<message>
+<tag_code>759</tag_code>
+<translation>ISP-användarnamnet eller lösenordet stämmer inte</translation>
+<variable>Incorrect ISP User name or Password</variable>
+</message>
+<message>
+<tag_code>760</tag_code>
+<translation>Ange nödvändig information igen.</translation>
+<variable>Enter the required information again.</variable>
+</message>
+<message>
+<tag_code>761</tag_code>
+<translation>Jag vill konfigurera internetanslutningen själv</translation>
+<variable>I want to configure the Internet connection myself</variable>
+</message>
+<message>
+<tag_code>762</tag_code>
+<translation>PPPoE DSL-internetanslutning identifierad</translation>
+<variable>PPPoE DSL Internet Connection Detected</variable>
+</message>
+<message>
+<tag_code>763</tag_code>
+<translation>Processen kan ta några minuter. Vänta ...</translation>
+<variable>This process can take a few minutes; please wait …</variable>
+</message>
+<message>
+<tag_code>764</tag_code>
+<translation>Problem uppstod vid identifiering av din internetanslutning</translation>
+<variable>Problem Detecting the Internet Connection</variable>
+</message>
+<message>
+<tag_code>765</tag_code>
+<translation>Det beror troligen på en av följande orsaker:</translation>
+<variable>This is most likely due to one of the following reasons:</variable>
+</message>
+<message>
+<tag_code>766</tag_code>
+<translation>1.  Modemet startades inte om under anslutningssteget.</translation>
+<variable>1.  The modem was not power cycled during the cabling step.</variable>
+</message>
+<message>
+<tag_code>767</tag_code>
+<translation>Åtgärda genom att starta om modemet (stäng av det och slå på det igen). Om du ska starta om modemet med hjälp av reservbatteriet måste du eventuellt ta ut det och sätta i det på nytt. När omstarten är klar ska du vänta i 2 minuter tills modemet är helt igång.</translation>
+<variable>To solve this problem, power cycle the modem (turn it off and on). To power cycle a modem with battery backup, you might need to remove and reinsert its battery. After the power cycle, wait 2 minutes for the modem to completely start up.</variable>
+</message>
+<message>
+<tag_code>768</tag_code>
+<translation>2.  Den gula Ethernet-kabeln är inte helt isatt, eller är isatt på fel plats.</translation>
+<variable>2.  The yellow Ethernet cable is not fully inserted, or is inserted in the wrong place.</variable>
+</message>
+<message>
+<tag_code>769</tag_code>
+<translation>Åtgärda genom att kontrollera att den gula Ethernet-kabeln är säkert isatt i bredbandsmodemporten och i routerns internetport.</translation>
+<variable>To solve this problem, make sure that the yellow Ethernet cable is securely plugged in to the broadband modem port and the router Internet port.</variable>
+</message>
+<message>
+<tag_code>770</tag_code>
+<translation>Jag har just startat om modemet och väntat i 2 minuter.</translation>
+<variable>I just power cycled the modem and waited for 2 minutes.</variable>
+</message>
+<message>
+<tag_code>771</tag_code>
+<translation>Jag korrigerade ett fel med Ethernet-kabeln.</translation>
+<variable>I corrected a problem with the Ethernet cable.</variable>
+</message>
+<message>
+<tag_code>772</tag_code>
+<translation>Inget av ovanstående.</translation>
+<variable>None of the above.</variable>
+</message>
+<message>
+<tag_code>773</tag_code>
+<translation>Problem uppstod vid identifiering av din internetanslutning – IP-adress</translation>
+<variable>Problem Detecting the Internet Connection - IP Address</variable>
+</message>
+<message>
+<tag_code>774</tag_code>
+<translation>Har din internetleverantör (ISP) tilldelat en fast (statisk) IP-adress till dig? Det här är en &lt;b&gt;mycket sällsynt&lt;/b&gt; och särskild driftsättning. </translation>
+<variable>Did your Internet Service Provider (ISP) assign to you a fixed (static) IP address? This is a &lt;b&gt;very rare&lt;/b&gt; special deployment. </variable>
+</message>
+<message>
+<tag_code>775</tag_code>
+<translation>Välj ett alternativ och gå vidare genom att klicka på &lt;b&gt;Nästa&lt;/b&gt;.</translation>
+<variable>Select an option and click &lt;b&gt;Next&lt;/b&gt; to proceed.</variable>
+</message>
+<message>
+<tag_code>776</tag_code>
+<translation>Ja. Min internetleverantör har tilldelat en fast (statisk) IP-adress till mig.</translation>
+<variable>Yes. My ISP assigned a fixed (static) IP address to me.</variable>
+</message>
+<message>
+<tag_code>777</tag_code>
+<translation>Nej, jag har inte fått en fast (statisk) IP-adress från min Internetleverantör.</translation>
+<variable>No, I did not get a fixed (static) IP address from my ISP.</variable>
+</message>
+<message>
+<tag_code>778</tag_code>
+<translation>Jag vet inte. </translation>
+<variable>I don't know. </variable>
+</message>
+<message>
+<tag_code>779</tag_code>
+<translation>Fasta internet-IP-inställningar</translation>
+<variable>Fixed Internet IP Settings</variable>
+</message>
+<message>
+<tag_code>780</tag_code>
+<translation>Ange de fasta IP-inställningarna som du har tilldelats av din internetleverantör och gå vidare genom att klicka på &lt;b&gt;Nästa&lt;/b&gt;.</translation>
+<variable>Enter the fixed IP settings assigned by your Internet Service Provider and click &lt;b&gt;Next&lt;/b&gt; to proceed.</variable>
+</message>
+<message>
+<tag_code>781</tag_code>
+<translation>Primär DNS-server</translation>
+<variable>Preferred DNS Server</variable>
+</message>
+<message>
+<tag_code>782</tag_code>
+<translation>Alternativ DNS-server</translation>
+<variable>Alternate DNS Server</variable>
+</message>
+<message>
+<tag_code>783</tag_code>
+<translation>Problem uppstod vid identifiering av din internetanslutning – MAC-adress</translation>
+<variable>Problem Detecting the Internet Connection - MAC Address</variable>
+</message>
+<message>
+<tag_code>784</tag_code>
+<translation>Om du har anslutit till internettjänsten tidigare med en dator eller en annan router, kan NETGEAR Genie använda samma MAC-adress som fungerade då.</translation>
+<variable>If you previously connected to your Internet service with a computer or another router,  NETGEAR Genie can use the same MAC address that worked before.</variable>
+</message>
+<message>
+<tag_code>785</tag_code>
+<translation>En MAC-adress är ett unikt nummer.  Du hittar MAC-adressen till datorn eller den tidigare routern på dess produktetikett.</translation>
+<variable>A MAC address is a unique number.  You can find the MAC address of the computer or router on its product label.</variable>
+</message>
+<message>
+<tag_code>786</tag_code>
+<translation>Ange MAC-adressen här.</translation>
+<variable>Enter the MAC address here.</variable>
+</message>
+<message>
+<tag_code>787</tag_code>
+<translation>(format AABBCCDDEEFF)</translation>
+<variable>(format AABBCCDDEEFF)</variable>
+</message>
+<message>
+<tag_code>788</tag_code>
+<translation>Återställ routerinställningarna </translation>
+<variable>Restore Router Settings </variable>
+</message>
+<message>
+<tag_code>789</tag_code>
+<translation>Bläddra till säkerhetskopian av routerinställningarna som du har sparat tidigare och klicka på &lt;b&gt;Nästa&lt;/b&gt;.</translation>
+<variable>Browse to the router settings backup file you previously saved, and click &lt;b&gt;Next&lt;/b&gt; to proceed.</variable>
+</message>
+<message>
+<tag_code>790</tag_code>
+<translation>Återställer routerinställningar</translation>
+<variable>Restoring Router Settings</variable>
+</message>
+<message>
+<tag_code>791</tag_code>
+<translation>Tillämpar inställningar för internetanslutning</translation>
+<variable>Applying Internet Connection Settings</variable>
+</message>
+<message>
+<tag_code>792</tag_code>
+<translation>Bekräftar internetanslutningen. Vänta …</translation>
+<variable>Checking the Internet connection; please wait …</variable>
+</message>
+<message>
+<tag_code>793</tag_code>
+<translation>Problem med nätverksanslutningen</translation>
+<variable>Network Connection Issue</variable>
+</message>
+<message>
+<tag_code>794</tag_code>
+<translation>Routern kan inte ansluta till internet med aktuella inställningar.</translation>
+<variable>The router cannot connect to the Internet with the current settings.</variable>
+</message>
+<message>
+<tag_code>795</tag_code>
+<translation>Kontrollera följande punkter:</translation>
+<variable>Please review the following items:</variable>
+</message>
+<message>
+<tag_code>796</tag_code>
+<translation>- Se till att kablarna är korrekt anslutna. Läs vidare instruktioner i installationshandboken för routern.</translation>
+<variable>- Check that the cable connections are correct. Refer to the router Installation Guide for instructions.</variable>
+</message>
+<message>
+<tag_code>797</tag_code>
+<translation>- Se till att bredbandsmodemet har startats om ordentligt. Om du har ett modem med reservbatteri ska du starta om modemet genom att ta bort batteriet och sätta in det igen.</translation>
+<variable>- Check that your broadband modem is power cycled correctly. If you have a battery-backed modem, remove and reinsert the battery to power cycle your modem.</variable>
+</message>
+<message>
+<tag_code>798</tag_code>
+<translation>Vill du få hjälp av NETGEAR Genie igen?</translation>
+<variable>Do you want NETGEAR Genie to try again?</variable>
+</message>
+<message>
+<tag_code>799</tag_code>
+<translation>Uppgradera till en webbläsare med version 4 eller senare så att du kan använda det här installationsverktyget (och se massor av fina webbplatser på Internet).</translation>
+<variable>Please upgrade to a version 4 or higher browser so that you can use this setup tool (and see lots of great sites on the Internet!)</variable>
+</message>
+<message>
+<tag_code>800</tag_code>
+<translation>Grattis!</translation>
+<variable>Congratulations!</variable>
+</message>
+<message>
+<tag_code>801</tag_code>
+<translation>Du är trådlöst ansluten till Internet.</translation>
+<variable>You are successfully connected to the Internet.</variable>
+</message>
+<message>
+<tag_code>802</tag_code>
+<translation>Den här routern är förinställd med följande unika namn på trådlöst nätverk (SSID) och </translation>
+<variable>This router is preset with the following unique wireless network name (SSID) and </variable>
+</message>
+<message>
+<tag_code>803</tag_code>
+<translation>Din router är förinställd med den trådlösa säkerhetsstandarden WPA2-PSK för att skydda ditt nätverk från oönskad användning. Om du vill ansluta till det trådlösa nätverket måste du ange nätverksnyckeln (lösenordet). De här förinställningarna är unika för enheten, precis som ett serienummer.  Om du vill ändra dem kan du göra det senare på sidan Trådlösa inställningar på routerns webbaserade användargränssnitt.</translation>
+<variable>Your router is preset with WPA2-PSK wireless security to protect your network from unwanted access. To join the wireless network, you must enter the network key (password). These preset settings are unique to this device, like a serial number.  If you want to change them, you can do so later in the Wireless Settings screen on the router web GUI.</variable>
+</message>
+<message>
+<tag_code>804</tag_code>
+<translation>nätverksnyckel (lösenord)</translation>
+<variable>network key (password)</variable>
+</message>
+<message>
+<tag_code>805</tag_code>
+<translation>Namn på trådlöst nätverk (SSID)</translation>
+<variable>Wireless Network Name (SSID)</variable>
+</message>
+<message>
+<tag_code>806</tag_code>
+<translation>Skriv ut det här</translation>
+<variable>Print this</variable>
+</message>
+<message>
+<tag_code>807</tag_code>
+<translation>Koppla upp mig till internet</translation>
+<variable>Take me to the Internet</variable>
+</message>
+<message>
+<tag_code>808</tag_code>
+<translation>Trådlös säkerhet är inte aktiverad på den här routern. NETGEAR rekommenderar att du</translation>
+<variable>Wireless security is not enabled on this router. NETGEAR highly recommends that you</variable>
+</message>
+<message>
+<tag_code>809</tag_code>
+<translation>Klicka här</translation>
+<variable>Click here</variable>
+</message>
+<message>
+<tag_code>810</tag_code>
+<translation>aktiverar trådlös säkerhet och skyddar nätverket.</translation>
+<variable>to enable wireless security and protect your network.</variable>
+</message>
+<message>
+<tag_code>813</tag_code>
+<translation>Version av routerns fasta programvara</translation>
+<variable>Router Firmware Version</variable>
+</message>
+<message>
+<tag_code>814</tag_code>
+<translation>Fortsätt</translation>
+<variable>Continue</variable>
+</message>
+<message>
+<tag_code>816</tag_code>
+<translation>Automatisk avkänning</translation>
+<variable>Auto-Detect</variable>
+</message>
+<message>
+<tag_code>817</tag_code>
+<translation>Installationsguiden söker automatiskt efter din typ av Internet-anslutning.</translation>
+<variable>The Smart Setup Wizard can detect the type of Internet connection that you have.</variable>
+</message>
+<message>
+<tag_code>818</tag_code>
+<translation>Vill du att installationsguiden börjar söka efter anslutningstyp nu?</translation>
+<variable>Do you want the Smart Setup Wizard to try and detect the connection type now?</variable>
+</message>
+<message>
+<tag_code>819</tag_code>
+<translation>UK</translation>
+<variable>UK</variable>
+</message>
+<message>
+<tag_code>820</tag_code>
+<translation>Australien</translation>
+<variable>Australia</variable>
+</message>
+<message>
+<tag_code>821</tag_code>
+<translation>Frankrike</translation>
+<variable>France</variable>
+</message>
+<message>
+<tag_code>822</tag_code>
+<translation>Ireland</translation>
+<variable>Ireland</variable>
+</message>
+<message>
+<tag_code>823</tag_code>
+<translation>Italien</translation>
+<variable>Italy</variable>
+</message>
+<message>
+<tag_code>824</tag_code>
+<translation>Nya Zeeland</translation>
+<variable>New Zealand</variable>
+</message>
+<message>
+<tag_code>825</tag_code>
+<translation>Singapore</translation>
+<variable>Singapore</variable>
+</message>
+<message>
+<tag_code>826</tag_code>
+<translation>Sverige</translation>
+<variable>Sweden</variable>
+</message>
+<message>
+<tag_code>827</tag_code>
+<translation>Schweiz</translation>
+<variable>Switzerland</variable>
+</message>
+<message>
+<tag_code>828</tag_code>
+<translation>Finland</translation>
+<variable>Finland</variable>
+</message>
+<message>
+<tag_code>829</tag_code>
+<translation>USA</translation>
+<variable>USA</variable>
+</message>
+<message>
+<tag_code>830</tag_code>
+<translation>Tyskland</translation>
+<variable>Germany</variable>
+</message>
+<message>
+<tag_code>831</tag_code>
+<translation>Annat</translation>
+<variable>Other</variable>
+</message>
+<message>
+<tag_code>855</tag_code>
+<translation>Det här kan ta upp till sex minuter. Vänta …</translation>
+<variable>This process can take up to six minutes; please wait …</variable>
+</message>
+<message>
+<tag_code>10609</tag_code>
+<translation>Använd VLANID</translation>
+<variable>Use VLANID</variable>
+</message>
+<message>
+<tag_code>10610</tag_code>
+<translation>Internet-leverantör</translation>
+<variable>Internet Service Provider</variable>
+</message>
+<message>
+<tag_code>10611</tag_code>
+<translation>DT</translation>
+<variable>DT</variable>
+</message>
+</tag_msg>

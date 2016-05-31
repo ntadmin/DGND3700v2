@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<error_msg xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<message>
+		<err_code>1</err_code>
+		<translation>nie może być wartością pustą</translation>
+		<variable>gsm_msg_blank</variable>
+	</message>
+	<message>
+		<err_code>5</err_code>
+		<translation>zawiera nieprawidłową liczbę.</translation>
+		<variable>gsm_msg_check_invalid</variable>
+	</message>
+	<message>
+		<err_code>8</err_code>
+		<translation>%s is out of range %s ~ %s</translation>
+		<variable>gsm_msg_outofrange</variable>
+	</message>
+	<message>
+		<err_code>16</err_code>
+		<translation>VPI jest poza zakresem [0~255]</translation>
+		<variable>gsm_msg_vpi_out_of_range</variable>
+	</message>
+	<message>
+		<err_code>17</err_code>
+		<translation>VCI jest poza zakresem [32~65 535]</translation>
+		<variable>gsm_msg_vci_out_of_range</variable>
+	</message>
+	<message>
+		<err_code>249</err_code>
+		<translation>Please select one ...</translation>
+		<variable>gsm_msg_wiz_no_sel</variable>
+	</message>
+	<message>
+		<err_code>vlan015</err_code>
+		<translation>MUST be within the range of 1 to 4094.</translation>
+		<variable>gsm_must_tag_range</variable>
+	</message>
+	<message>
+		<err_code>13311</err_code>
+		<translation>Najpierw wybierz opcję.</translation>
+		<variable>bh_select_an_option</variable>
+	</message>
+	<message>
+		<err_code>13311</err_code>
+		<translation>Nazwa użytkownika nie może być wartością pustą!</translation>
+		<variable>bh_login_name_null</variable>
+	</message>
+	<message>
+		<err_code>13312</err_code>
+		<translation>Nieprawidłowe hasło!</translation>
+		<variable>bh_password_error</variable>
+	</message>
+	<message>
+		<err_code>13313</err_code>
+		<translation>Wprowadź czas bezczynności.[NEL]</translation>
+		<variable>bh_idle_time_null</variable>
+	</message>
+	<message>
+		<err_code>13314</err_code>
+		<translation>Nieprawidłowy czas bezczynności. Wprowadź poprawną wartość liczbową.[NEL]</translation>
+		<variable>bh_invalid_idle_time</variable>
+	</message>
+	<message>
+		<err_code>13315</err_code>
+		<translation>Nieprawidłowa wartość w polu Mój adres IP. Wprowadź inny adres lub nie wypełniaj pola.</translation>
+		<variable>bh_invalid_myip</variable>
+	</message>
+	<message>
+		<err_code>13316</err_code>
+		<translation>Nieprawidłowy adres IP bramy. Wprowadź go ponownie!</translation>
+		<variable>bh_invalid_gateway</variable>
+	</message>
+	<message>
+		<err_code>13317</err_code>
+		<translation>Komputer nie obsługuje drukarki.</translation>
+		<variable>bh_not_support_print</variable>
+	</message>
+	<message>
+		<err_code>13318</err_code>
+		<translation>Nazwa pliku nie może być wartością pustą!</translation>
+		<variable>bh_filename_null</variable>
+	</message>
+	<message>
+		<err_code>13319</err_code>
+		<translation>Wskaż poprawny plik w formacie „*.</translation>
+		<variable>bh_not_correct_file</variable>
+	</message>
+	<message>
+		<err_code>13320</err_code>
+		<translation>Nieprawidłowy adres IP. Wprowadź go ponownie!</translation>
+		<variable>bh_invalid_ip</variable>
+	</message>
+	<message>
+		<err_code>13321</err_code>
+		<translation>Nieprawidłowa maska podsieci. Wprowadź ją ponownie![NEL]</translation>
+		<variable>bh_invalid_mask</variable>
+	</message>
+	<message>
+		<err_code>13322</err_code>
+		<translation>Adresy IP sieci LAN i WAN nie mogą należeć do tej samej podsieci![NEL]</translation>
+		<variable>bh_same_lan_wan_subnet</variable>
+	</message>
+	<message>
+		<err_code>13323</err_code>
+		<translation>Nazwa pliku nie może być wartością pustą!</translation>
+		<variable>bh_filename_null</variable>
+	</message>
+	<message>
+		<err_code>13324</err_code>
+		<translation>Konfigurowanie połączenia internetowego wymaga doświadczenia z sieciami. Czy nadal chcesz zrobić to samodzielnie?</translation>
+		<variable>bh_no_genie_help_confirm</variable>
+	</message>
+	<message>
+		<err_code>13325</err_code>
+		<translation>Ostrzeżenie![NEL]Przywrócenie ustawień z pliku konfiguracyjnego spowoduje wymazanie wszystkich istniejących ustawień.[NEL]Czy na pewno chcesz to zrobić?</translation>
+		<variable>bh_ask_for_restore</variable>
+	</message>
+</error_msg>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<error_msg xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<message>
+		<err_code>1</err_code>
+		<translation>får inte vara tomt</translation>
+		<variable>gsm_msg_blank</variable>
+	</message>
+	<message>
+		<err_code>5</err_code>
+		<translation>innehåller ett ogiltigt nummer.</translation>
+		<variable>gsm_msg_check_invalid</variable>
+	</message>
+	<message>
+		<err_code>8</err_code>
+		<translation>%s is out of range %s ~ %s</translation>
+		<variable>gsm_msg_outofrange</variable>
+	</message>
+	<message>
+		<err_code>16</err_code>
+		<translation>VPI är utanför intervall [0–255]</translation>
+		<variable>gsm_msg_vpi_out_of_range</variable>
+	</message>
+	<message>
+		<err_code>17</err_code>
+		<translation>VCI är utanför intervall [32–65535]</translation>
+		<variable>gsm_msg_vci_out_of_range</variable>
+	</message>
+	<message>
+		<err_code>249</err_code>
+		<translation>Please select one ...</translation>
+		<variable>gsm_msg_wiz_no_sel</variable>
+	</message>
+	<message>
+		<err_code>vlan015</err_code>
+		<translation>MUST be within the range of 1 to 4094.</translation>
+		<variable>gsm_must_tag_range</variable>
+	</message>
+	<message>
+		<err_code>13311</err_code>
+		<translation>Välj ett alternativ först.</translation>
+		<variable>bh_select_an_option</variable>
+	</message>
+	<message>
+		<err_code>13311</err_code>
+		<translation>Fältet för användarnamn får inte vara tomt.</translation>
+		<variable>bh_login_name_null</variable>
+	</message>
+	<message>
+		<err_code>13312</err_code>
+		<translation>Ogiltigt lösenord.</translation>
+		<variable>bh_password_error</variable>
+	</message>
+	<message>
+		<err_code>13313</err_code>
+		<translation>Ange inaktivitetstid.[NEL]</translation>
+		<variable>bh_idle_time_null</variable>
+	</message>
+	<message>
+		<err_code>13314</err_code>
+		<translation>Ogiltig inaktivitetstid. Ange ett korrekt tal.[NEL]</translation>
+		<variable>bh_invalid_idle_time</variable>
+	</message>
+	<message>
+		<err_code>13315</err_code>
+		<translation>Ogiltig IP-adress Ange den igen eller låt den vara tom.</translation>
+		<variable>bh_invalid_myip</variable>
+	</message>
+	<message>
+		<err_code>13316</err_code>
+		<translation>Ogiltig IP-adress för gateway Ange den igen.</translation>
+		<variable>bh_invalid_gateway</variable>
+	</message>
+	<message>
+		<err_code>13317</err_code>
+		<translation>Datorn har inga skrivarfunktioner.</translation>
+		<variable>bh_not_support_print</variable>
+	</message>
+	<message>
+		<err_code>13318</err_code>
+		<translation>Fältet för filnamn får inte vara tomt.</translation>
+		<variable>bh_filename_null</variable>
+	</message>
+	<message>
+		<err_code>13319</err_code>
+		<translation>Tilldela rätt fil. Filformatet är *.</translation>
+		<variable>bh_not_correct_file</variable>
+	</message>
+	<message>
+		<err_code>13320</err_code>
+		<translation>Ogiltig IP-adress Ange den igen.</translation>
+		<variable>bh_invalid_ip</variable>
+	</message>
+	<message>
+		<err_code>13321</err_code>
+		<translation>Ogiltig IP-subnätmask Ange den igen.[NEL]</translation>
+		<variable>bh_invalid_mask</variable>
+	</message>
+	<message>
+		<err_code>13322</err_code>
+		<translation>LAN IP-adressen och WAN IP-adressen får inte vara i samma undernät.[NEL]</translation>
+		<variable>bh_same_lan_wan_subnet</variable>
+	</message>
+	<message>
+		<err_code>13323</err_code>
+		<translation>Fältet för filnamn får inte vara tomt.</translation>
+		<variable>bh_filename_null</variable>
+	</message>
+	<message>
+		<err_code>13324</err_code>
+		<translation>Det krävs erfarenhet av nätverksarbete för att kunna konfigurera internetanslutningen. Är du säker?</translation>
+		<variable>bh_no_genie_help_confirm</variable>
+	</message>
+	<message>
+		<err_code>13325</err_code>
+		<translation>Varning! [NEL]Om du återställer inställningarna från en konfigurationsfil kommer alla nuvarnade inställningar att raderas. [NEL]Vill du fortsätta?</translation>
+		<variable>bh_ask_for_restore</variable>
+	</message>
+</error_msg>

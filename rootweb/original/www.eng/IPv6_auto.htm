@@ -1,0 +1,261 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><link rel="stylesheet" href="style/form.css">
+<script language=javascript type=text/javascript src=funcs.js></script>
+<script language=javascript type=text/javascript src=ipv6.js></script>
+<script language=javascript type=text/javascript src=string.js></script>
+<title>NETGEAR Router WNDR3800 </title><meta http-equiv=content-type content='text/html; charset=UTF-8'>
+<meta content="MSHTML 6.00.2800.1141" name="GENERATOR"></head>
+
+<body onLoad="loadvalue();ip6_mode_init()" bgcolor=#ffffff>
+<form method="POST" action="setup.cgi@post_par#">
+<input type=hidden name=submit_flag value="ipv6_auto">
+
+<div class="page_title"><span languageCode = "1203">IPv6</span></div>
+<div class="fix_button">
+<TABLE width=100% border=0 cellpadding=0 cellspacing=2>
+<TR>
+        <TD nowrap colspan=2 align=center>
+	<input class="common_bt" type='button' name='Refresh' value='Status Refresh' onClick='location.reload();' languageCode = "1204">&nbsp;&nbsp;<input class="cancel_bt" type='button' name='Cancel' value='Cancel' onClick='location.href="IPv6_auto.htm";' languageCode = "1205">&nbsp;&nbsp;<input class="apply_bt" type='submit' name='Apply' value='Apply' onClick="return ipv6_save_common(document.forms[0])"; languageCode = "1206"></TD>
+</TR>
+</TABLE>
+
+</div>
+<div id="main" class="main_top_button"> 
+<table width="100%" border="0" cellpadding="0" cellspacing="3">
+<tr><td colSpan="2"><h1></h1></td></tr>
+
+
+<script>
+var connection_type = "@connection_type#";
+//var ipv6_ip_assign = "0";
+//var ipv6_interface_type = "0";
+//var ipv6_interface_id = "0:0:0:0";
+//var ipv6_cone_fitering = "0";
+
+/*var ipv6_lan_ip = "";
+
+var wan_port_status = "100M/Full";
+var connection_type = "";
+
+var ipv6_wan_ip;
+if(connection_type == "Detecting...")
+	ipv6_wan_ip = "";
+else if(connection_type == "6to4 Tunnel")
+	ipv6_wan_ip = "";*/
+/* to fix bug 26901
+else if(connection_type == "Pass Through")
+	ipv6_wan_ip = "Not Available";*/
+/*else if(connection_type == "Auto Config")
+	ipv6_wan_ip = "";
+else if(connection_type == "DHCP" || connection_type == "")
+	ipv6_wan_ip = "";
+else
+	ipv6_wan_ip = "";
+
+var ipv6_lan_ip;
+if(connection_type == "Pass Through")
+	ipv6_lan_ip = "";
+else
+ 	ipv6_lan_ip = "";
+
+if(connection_type == "Detecting...")
+	setTimeout("location.reload()", 3000);*/
+
+function ip6_mode_init()
+{
+	var cf = document.forms[0];
+	//document.getElementById("auto").style.display = "";
+	ip6_show_detect_result();
+}
+function ip6_show_detect_result()
+{
+	switch (connection_type) {
+		case "dhcp":
+			document.getElementById("detect_result").innerHTML = "DHCP/Auto Config";
+			break;
+		case "6to4":
+			document.getElementById("detect_result").innerHTML = getTagMsgByCode("1211");
+			break;
+		case "bridge":
+			document.getElementById("detect_result").innerHTML = getTagMsgByCode("1212");
+			document.getElementById("wan").style.display = "none";
+			document.getElementById("wan_ip").style.display = "none";
+			document.getElementById("lan_ip").style.display = "none";
+			document.getElementById("lan_setup").style.display = "none";
+			document.getElementById("lan_address").style.display = "none";
+			document.getElementById("ip_assign").style.display = "none";
+			document.getElementById("dhcp_server").style.display = "none";
+			document.getElementById("auto_config").style.display = "none";
+			document.getElementById("enable_interface").style.display = "none";
+			document.getElementById("interface_id").style.display = "none";
+			document.getElementById("liteblue1").style.display = "none";
+			document.getElementById("liteblue2").style.display = "none";
+			document.getElementById("filtering").style.display = "none";
+			document.getElementById("secured_open").style.display = "none";
+			break;
+		case "detecting":
+			document.getElementById("detect_result").innerHTML = getTagMsgByCode("10022");
+			break;
+		case "disconnect":
+			document.getElementById("detect_result").innerHTML = getTagMsgByCode("10024");
+			break;
+		case "stateless":
+			document.getElementById("detect_result").innerHTML = getTagMsgByCode("1210");
+			break;
+		default:
+			document.getElementById("detect_result").innerHTML = "DHCP/Auto Config";
+			break;
+	}
+}
+
+function do_submit()
+{
+	location.href = "setup.cgi?todo=ipv6_wizard&next_file=IPv6_auto.htm";
+}
+function loadvalue()
+{
+	var cf = document.forms[0];
+	if(connection_type == "detecting")
+	{
+		setTimeout('do_submit()',3000);
+	}
+	ipv6_load_common(document.forms[0]);		
+}
+</script>
+
+
+<input type="hidden" name="ipv6_hidden_enable_interface" value="@ipv6_hidden_enable_interface#">
+<input type="hidden" name="ipv6_hidden_interface_id" value="@ipv6_hidden_interface_id#">
+<input type="hidden" name="ipv6_hidden_filtering" value="@ipv6_hidden_filtering#">
+<input type="hidden" name="ipv6_hidden_ip_assign" value="@ipv6_hidden_ip_assign#">
+<input type="hidden" name="ipv6_hidden_con_type" value="@ipv6_hidden_con_type#">
+
+<TABLE cellspacing=5 cellPadding=0 width=100% border=0>
+<TR>
+        <TD nowrap>
+        <A tabindex=-1 href="javascript:loadhelp('_IPv6_auto','internet')"><B><span languageCode = "1207">Internet Connection Type</span></B></A>
+        </TD>
+        <TD nowrap align=right>
+        <select name="con_type" onChange="change_ipv6(document.forms[0].con_type.value)">
+		<option value="disabled" languageCode = "1208">Disabled</option>
+                <option value="autoDetect" selected languageCode = "1209">Auto Detect</option>
+		<option value="autoConfig" languageCode = "1210">Auto Config</option>
+		<option value="6to4" languageCode = "1211">6to4 Tunnel</option>
+                <option value="bridge" languageCode = "1212">Pass Through</option>
+                <option value="fixed" languageCode = "1213">Fixed</option>
+                <option value="dhcp" languageCode = "1214">DHCP</option>
+                <option value="pppoe" languageCode = "1215">PPPoE</option>
+        </select>
+        </TD>
+</TR>
+<TR><TD colspan=2><img src=liteblue.gif width=100% height=12></TD></TR>
+
+<TR>
+	<TD nowrap><A tabindex=-1 href="javascript:loadhelp('_IPv6_auto','wan_type')"><B><span languageCode = "1216">Connection Type</span></B></A></TD>
+	<TD nowrap align=right><label id="detect_result">
+
+	<!--if(wan_port_status != "Link down")
+	{
+		if(connection_type != "")
+			document.write(connection_type);
+		else
+			document.write("DHCP/Auto Config");
+	}
+	else
+		document.write("the Internet port is not connected");-->
+
+	</TD>
+</TR>
+<TR>
+	<TD nowrap><div id="wan" style="display:block"><A tabindex=-1 href="javascript:loadhelp('_IPv6_auto','wan_ipaddr')"><B><span languageCode = "1217">Router's IPv6 Address On WAN</span></B></A></div></TD>
+	
+</TR>
+<tr><td nowrap colspan=2> 
+<div id="wan_ip" style="display:block"><img src="spacer.gif" width="20" height="12" border="0">@ipv6_wan_ip# </div></td>
+</tr>
+<TR><TD colspan=2><img src=liteblue.gif width=100% height=12></TD></TR>
+<TR>
+	<TD nowrap><div id="lan_setup" style="display:block"><A tabindex=-1 href="javascript:loadhelp('_IPv6_auto','lan_ipaddr')"><B><span languageCode = "1218">LAN Setup</span></B></A></div></TD>
+</TR>
+<TR>
+	<TD nowrap><div id="lan_address" style="display:block"><A tabindex=-1 href="javascript:loadhelp('_IPv6_auto','lan_ipaddr')"><B><span languageCode = "1219">Router's IPv6 Address On LAN</span></B></A></div></TD>
+	
+</TR>
+<tr><td nowrap colspan=2> 
+<div id="lan_ip" style="display:block"><img src="spacer.gif" width="20" height="12" border="0">@ipv6_lan_ip# </div></td>
+</tr>
+<TR>
+	<TD nowrap><div id="ip_assign" style="display:block"><A tabindex=-1 href="javascript:loadhelp('_IPv6_auto','lan_ip_assign')"><span languageCode = "1220">IP Address Assignment</span></A></div></TD>
+</TR>
+<TR>
+	<TD nowrap colspan=2><div id="dhcp_server" style="display:block"><input type="radio" name="ipv6_lan_ip_assign" value="1"><span languageCode = "1221">Use DHCP Server</span></div></TD>
+</TR>
+<TR>
+	<TD nowrap colspan=2><div id="auto_config" style="display:block"><input type="radio" name="ipv6_lan_ip_assign" value="0"><span languageCode = "1210">Auto Config</span></div></TD>
+</TR>
+<TR>
+	<TD nowrap colspan=2>
+	<div id="enable_interface" style="display:block">
+	<BR>
+	<input type="checkbox" name="enable_interface" value="" onClick="set_interface();">
+	<A tabindex=-1 href="javascript:loadhelp('_IPv6_auto','interface_id')"><span languageCode = "1222">Use This Interface ID</span></A></div>
+	</TD>
+</TR>
+<TR>
+	<TD nowrap colspan=2><div id="interface_id" style="display:block"><img src=spacer.gif width=20 height=12 border=0>
+	<input type="text" name="IP_interface" size="3" autocomplete="off" maxlength="4" onFocus="this.select();" onkeydown="keydown(event,this);" onKeyPress="return getkeya(event);" onkeyup="keyup_n(event,this,4);">:
+	<input type="text" name="IP_interface" size="3" autocomplete="off" maxlength="4" onFocus="this.select();" onkeydown="keydown(event,this);" onKeyPress="return getkeya(event);" onkeyup="keyup_n(event,this,4);">:
+	<input type="text" name="IP_interface" size="3" autocomplete="off" maxlength="4" onFocus="this.select();" onkeydown="keydown(event,this);" onKeyPress="return getkeya(event);" onkeyup="keyup_n(event,this,4);">:
+	<input type="text" name="IP_interface" size="3" autocomplete="off" maxlength="4" onFocus="this.select();" onkeydown="keydown(event,this);" onKeyPress="return getkeya(event);" onkeyup="keyup_n(event,this,4);"></div>
+	</TD>
+</TR> 
+<TR><TD colspan=2><div id="liteblue1" style="display:block"><img src=liteblue.gif width=100% height=12></div></TD></TR>
+<TR>
+        <TD nowrap>
+	<div id="filtering" style="display:block">
+        <A tabindex=-1 href="javascript:loadhelp('_IPv6_auto','nat')"><B><span languageCode = "1223">IPv6 Filtering</span></B></A></div>
+        </TD>
+        <TD nowrapi align=right>
+	<div id="secured_open" style="display:block">
+        <input type="radio" name="IPv6Filtering" value="Secured"><span languageCode = "1224">Secured</span>&nbsp;
+        <input type="radio" name="IPv6Filtering" value="Open"><span languageCode = "1225">Open</span>&nbsp;&nbsp;
+	</div>
+        </TD>
+</TR>
+<TR><TD colspan=2><div id="liteblue2" style="display:block"><img src=liteblue.gif width=100% height=12></div></TD></TR>
+</TABLE>
+</div>
+<div id="help" style="display: none">
+		<iframe name="help_iframe" id="helpframe" src="_IPv6_auto_help.html" allowtransparency="true" width="100%" frameborder="0" >
+		</iframe>
+</div>
+
+<div id=help_switch class="close_help" >
+	 <img class="help_switch_img" src="image/help/help-bar.gif"><script>
+var help_flag=0;
+if(isIE()){
+	show_hidden_help_top_button(1);
+	var frame_div = top.document.getElementById("formframe_div");
+	frame_div.onresize =  function(){
+		if( help_flag == 0 )  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+if(get_browser() == "Opera"){
+	window.onresize =  function(){
+		if( help_flag == 0 )  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+</script>
+<div id="help_space" onclick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_center"><span languageCode = "3016">Help Center</span></div>
+<div id="help_button" onclick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_show_hidden"><a href="javascript:void(0)" onclick="show_hidden_help_top_button(help_flag); help_flag++;"><span languageCode = "3017">Show/Hide Help Center</span></a></div>
+</div>
+<input type="hidden" name="todo" value="save">
+<input type="hidden" name="this_file" value="IPv6_auto.htm">
+<input type="hidden" name="next_file" value="IPv6_auto.htm">
+
+</FORM>
+<script language=javascript type=text/javascript src=langs.js></script>
+</BODY>
+</HTML>

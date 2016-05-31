@@ -1,0 +1,191 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-Control" content="no-cache"><meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT"><meta name="description" content="@model_name#_multilangual"><title>NETGEAR Router @model_name#</title><script language="javascript" type="text/javascript" src="string.js"></script><link rel="stylesheet" href="style/form.css"><script language="javascript" type="text/javascript" src="funcs.js"></script><!-- link rel="stylesheet" href="form.css" --><script language="javascript" type="text/javascript" src="utility.js"></script><script language="javascript" type="text/javascript" src="linux.js"></script><script language="javascript">
+<!-- hide script from old browsers
+var dev_ip = "@c4_sysLANIPAddr#";
+var dev_mask = "@c4_sysLANSubnetMask#";
+function btnApply() {
+	with (document.forms[0])
+	{
+		var cf = document.forms[0];
+		var div = "\x02";
+		var tri_ip = "", tri_pro = "", op_pro = "";
+		var ipaddr;
+		ptg_add_rule.value = "";
+/*		if (encodeUrl(pt_name.value) == '')
+		{
+			alert(getErrorMsgByVar("gsm_msg_pfw_no_cus_service_name"));
+			return;
+		}
+		pt_name.value = encodeUrl(pt_name.value);
+*/
+        if(cf.pt_name.value==""||cf.pt_name.value.match(/[^(\x20-\x7E\xA0)]/ ))
+        {
+			alert(getErrorMsgByVar("gsm_msg_pfw_no_cus_service_name"));
+		    cf.pt_name.focus();
+		    return false;
+	    }
+        cf.pt_name.value = cf.pt_name.value.replace(/\xA0/g," ");
+		if (src_ip_type.value == '1')
+		{
+			if(badLANIP(cf.src_ip1, cf.src_ip2, cf.src_ip3, cf.src_ip4, 254)
+			||(parseInt(cf.src_ip4.value, 10)==0))
+			{
+				alert(getErrorMsgByVar("gsm_msg_eth_inv_ip"));
+				return false;
+			}
+			ipaddr = cf.src_ip1.value + "." + cf.src_ip2.value + "." + cf.src_ip3.value + "." + cf.src_ip4.value;
+			if(IsLanIpValid(dev_ip, dev_mask, ipaddr) == false)
+			{
+				alert(getErrorMsgByVar("gsm_msg_eth_inv_ip"));
+				return false;
+			}
+		}
+		if ( isValidPort(pt_port.value) == false )
+		{
+			alert(getErrorMsgByVar("gsm_invalid") +" "+ getErrorMsgByVar("gsm_msg_pft_port") + getErrorMsgByVar("gsm_msg_pfw_inv_range"));
+			return false;
+		}
+		if ( isValidPort(in_port_start.value) == false )
+		{
+			alert(getErrorMsgByVar("gsm_msg_pfw_port_start") + getErrorMsgByVar("gsm_msg_pfw_inv_range"));
+			return false;
+		}
+		if ( isValidPort(in_port_end.value) == false )
+		{
+			alert(getErrorMsgByVar("gsm_msg_pfw_port_end") + getErrorMsgByVar("gsm_msg_pfw_inv_range"));
+			return false;
+		}
+		oS = parseInt(in_port_start.value, 10);
+		oE = parseInt(in_port_end.value, 10);
+		if ( oS > oE )
+		{
+			alert(getErrorMsgByVar("gsm_inv_in_port_range"));
+			return false;
+		}
+		dataToHidden(cf);
+		switch(parseInt(h_pt_type.value, 10))
+		{
+			case 1:
+				tri_pro = "TCP";
+				break;
+			case 2:
+				tri_pro = "UDP";
+				break;
+			default:
+				tri_pro = "TCP";
+				break;
+		}
+		switch(parseInt(h_in_port_type.value, 10))
+		{
+			case 0:
+				op_pro = "TCP/UDP";
+				break;
+			case 1:
+				op_pro = "TCP";
+				break;
+			case 2:
+				op_pro = "UDP";
+				break;
+			default:
+				op_pro = "TCP";
+				break;
+		}
+		if (src_ip_type.value == '1')
+			tri_ip = c4_src_ip.value;
+		else
+			tri_ip = "any";
+		ptg_add_rule.value = pt_name.value + div + tri_ip + div + tri_pro + div + parseInt(pt_port.value, 10) + div + op_pro + div + parseInt(in_port_start.value, 10) + "-" + parseInt(in_port_end.value, 10);
+	}
+	return true;
+}
+function setsrcip()
+{
+	with ( document.forms[0] )
+	{
+		if ( src_ip_type.selectedIndex == 1 )
+		{
+			document.getElementById("displaySrcIpInfo").style.display = showit;
+		}
+		else
+		{
+			document.getElementById("displaySrcIpInfo").style.display = hideit;
+		}
+	}
+}
+function init()
+{
+	with (document.forms[0])
+	{
+		dataToVisible(document.forms[0]);
+		setsrcip();
+		
+		document.forms[0].elements[0].focus();
+	}
+}
+// done hiding -->
+</script>
+</head>
+<body onLoad="init();">
+<form method="POST" action="setup.cgi@post_par#" onSubmit="buttonToDisabled(document.forms[0])">
+<div class="page_title" languageCode = "189">Port Triggering</div>
+<div class="fix_button">
+<table width="100%" border="0" cellpadding="0" cellspacing="2"><tr><td nowrap colspan="2" align="center">
+<input class="cancel_bt" type="button" name="Cancel" value = "Cancel" onClick="location.href='./FW_pt.htm'" languageCode = "19">
+&nbsp;
+<input class="apply_bt" type="submit" name="Apply" value = "Apply" onClick="return btnApply()" languageCode = "18">
+</td></tr></table>
+</div>
+<div id="main" class="main_top_button">
+<table border="0" cellpadding="0" cellspacing="3" width="100%"><tr><td colspan="2"><b languageCode = "215">Service</b></td>
+	</tr><tr><td width="50%"><span languageCode = "34">Service Name</span>:</td>
+		<td><input type="text" size="24" name="pt_name" value="@ptg_name#" maxlength="30"></td>
+	</tr><tr><td width="50%"><span languageCode = "212">Service User</span>:</td>
+		<td><select size="1" name="src_ip_type" onChange="setsrcip()"><option value="0" languageCode = "216">Any</option><option value="1" languageCode = "217">Single address</option></select></td>
+	</tr><tr><td width="50%"></td>
+		<td>
+		<div id="displaySrcIpInfo" style="display: none">
+		<input type="text" name="src_ip1" class="num" size="4" maxlength="3" value="">.<input type="text" name="src_ip2" class="num" size="4" maxlength="3" value="">.<input type="text" name="src_ip3" class="num" size="4" maxlength="3" value="">.<input type="text" name="src_ip4" class="num" size="4" maxlength="3" value=""></div>
+		</td>
+	</tr><tr><td width="50%"><span languageCode = "91">Service Type</span>:</td>
+		<td><select name="pt_type" size="1"><option value="1" selected>TCP</option><option value="2">UDP</option></select></td>
+	</tr><tr><td width="50%"><span languageCode = "218">Triggering Port</span>:</td>
+		<td><input type="text" name="pt_port" value="@ptg_triport#" size="13" maxlength="5">(1~65535)</td>
+	</tr></table><table border="0" cellpadding="0" cellspacing="3" width="100%"><tr><td background="liteblue.gif" height="12"></td>
+	</tr></table><table border="0" cellpadding="0" cellspacing="3" width="100%"><tr><td colspan="2"><b languageCode = "219">Required Inbound Connection</b></td>
+	</tr><tr><td width="50%"><span languageCode = "91">Service Type</span>:</td>
+		<td><select name="in_port_type" size="1"><option value="0">TCP/UDP</option><option value="1" selected>TCP</option><option value="2">UDP</option></select></td>
+	</tr><tr><td width="50%"><span languageCode = "98">Starting Port</span>:</td>
+		<td><input type="text" name="in_port_start" value="@ptg_opsp#" size="13" maxlength="5">(1~65535)</td>
+	</tr><tr><td width="50%"><span languageCode = "99">Ending Port</span>:</td>
+		<td><input type="text" name="in_port_end" value="@ptg_opep#" size="13" maxlength="5">(1~65535)</td>
+	</tr></table><table border="0" cellpadding="0" cellspacing="3" width="100%"><tr><td background="liteblue.gif" height="12"></td>
+	</tr><tr><td></td>
+	</tr><tr><td align="center"></td>
+	</tr></table><input type="hidden" name="todo" value="ptg_add"><input type="hidden" name="this_file" value="FW_pt_service.htm"><input type="hidden" name="next_file" value="FW_pt.htm"><input type="hidden" name="edit" value="@edit#"><input type="hidden" name="h_ruleSelect" value="@h_ruleSelect#"><input type="hidden" name="c4_src_ip" value="@c4_src_ip#"><input type="hidden" name="h_src_ip_type" value="@h_src_ip_type#"><input type="hidden" name="h_pt_type" value="@h_pt_type#"><input type="hidden" name="h_in_port_type" value="@h_in_port_type#"><input type="hidden" name="ptg_add_rule" value=""><input type="hidden" name="SID" value="@SID#">
+</div>	
+</form>
+<div id="help" style="display: none">
+		<iframe name="help_iframe" id="helpframe" src="FW_pt_h.htm" allowtransparency="true" width="100%" frameborder="0">
+		</iframe>
+</div>
+<div id="help_switch" class="close_help">
+	 <img class="help_switch_img" src="image/help/help-bar.gif"><script>
+var help_flag=0;
+if(isIE()){
+	show_hidden_help_top_button(1);
+	var frame_div = top.document.getElementById("formframe_div");
+	frame_div.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+if(get_browser() == "Opera"){
+	window.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+</script><div id="help_space" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_center"><span languageCode="3016">Help Center</span></div>
+<div id="help_button" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_show_hidden"><a href="javascript:void(0)" onClick="show_hidden_help_top_button(help_flag); help_flag++;"><span languageCode="3017">Show/Hide Help Center</span></a></div>
+</div>
+<script language="javascript" type="text/javascript" src="langs.js"></script></body></html>

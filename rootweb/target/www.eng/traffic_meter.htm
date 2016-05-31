@@ -1,0 +1,370 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-Control" content="no-cache"><meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT"><meta name="description" content="WNR2500_multilangual"><title>NETGEAR Router @model_name#</title><script language="javascript" type="text/javascript" src="string.js"></script><link rel="stylesheet" href="style/form.css"><script language="javascript" type="text/javascript" src="funcs.js"></script><!-- link rel="stylesheet" href="form.css" --><script language="javascript" type="text/javascript" src="utility.js"></script><script language="javascript" type="text/javascript" src="linux.js"></script><script language="javascript" type="text/javascript">
+<!-- hide script from old browsers
+var report=@tm_report#;
+var left = @tm_left_volumn_height#;
+//var report=[[2344,66,33,77],[1200,33,44,22],[2222,111,122,333],[3333,222,55,66],[4444,666,66,77],["1247979113","1247979062","100G 888M 12K Bytes"]];
+//var left = [1,2,2,3,4,5,5];
+var report_title=["<span languagecode=\"1073\">Today</span>", "<span languagecode=\"1074\">Yesterday</span>", "<span languagecode=\"1075\">This week</span>", "<span languagecode=\"1076\">This month</span>","<span languagecode=\"1077\">Last month</span>"];
+function fmtNum(num)
+{
+     var n = Number(num);
+     /*if the value > 1000,never show the number after '.',netgear spec 1.9*/
+     var cut = n <1000?2:0;
+     return n.toFixed(cut).replace(/(\d)(?=(\d{3})+(\.|$))/g, '$1,');
+}
+function show_statistics()
+{
+		var cf = document.forms[0];
+    var i,j;
+    var start;
+    var limit_by = "@h_tm_type#";
+    var traff_dir= "@h_traff_dir#";
+	var flag = @tm_workable#;/*true:pppoe/pptp;false:dhcp/fix ip*/
+	var start = report[5][0];
+    var curr = report[5][1];
+	var sec = parseInt(left[6]);
+	document.write("<span languagecode=\"1078\">Start Date/Time</span>:" + start + "<br>");
+    document.write("<span languagecode=\"1079\">Current Date/Time</span>:" + curr + "<br>");
+    if (limit_by == "tvolume")
+    {
+    		if(traff_dir == "nolimit")
+    			document.write("<span languagecode=\"1080\">Traffic Volume Left</span>:" + "<span languagecode=\"643\">No limit</span> <br>");
+    		else
+    		{
+        	if(left[2]==0 && left[3]==0 && left[4]==0)
+            	document.write("<span languagecode=\"1080\">Traffic Volume Left</span>:" + left[5] + " Bytes <br>");
+        	else
+            	document.write("<span languagecode=\"1080\">Traffic Volume Left</span>:" + left[2] + " G " + left[3] + " M " + left[4] + " <span languagecode=\"1081\">KBytes</span> <br>");
+        }
+    }
+    else
+    {
+    	if(sec != 0)
+    		sec += 59;/*we show minites left on GUI,it should +1 here*/
+        document.write("<span languagecode=\"10516\">Connection time Left</span>:" + parseInt(sec / 3600) + " <span languagecode=\"1083\">Hours</span> " + parseInt((sec % 3600) / 60) + " <span languagecode=\"1084\">Minutes</span> <br>");
+    }
+    document.write("<table border='1' width='80%' text-align='center'>");
+    document.write("<tr text-align=center>");
+    document.write("<td class='thead'>");
+    document.write("<span languagecode=\"1085\">Period</span>");
+    document.write("</td>");
+    document.write("<td class='thead'>");
+    document.write("<span languagecode=\"70\">Connection Time</span><br> (hh:mm) ");
+    document.write("</td>");
+    document.write("<td colspan=3  class='thead'>");
+    document.write("<span languagecode=\"1086\">Traffic Volume(MBytes)</span><br><table width=100%><tr> <td width=33%  class='thead' languagecode=\"1087\">Upload/Avg</td><td  class='thead' languagecode=\"1088\">Download/Avg</td><td width=33%  class='thead' languagecode=\"1089\">Total/Avg</td></tr></table>");
+    document.write("</td>");
+    document.write("</tr>")
+        ;
+    for (i=0;i<5;i++){
+    document.write("<tr>");
+    document.write("<td  class='thead'>"+report_title[i]);
+    document.write("</td>");
+/*buf = "[[2344,66/33,33/44,77/32],[1200,33/3,44/444,22/422],
+     * [2222,111/332,122/333,333/444],[3333,222/333,55/33,66/22],
+     * [4444,666/33,66/33,77/33]]"*/
+    for(j=0;j<4;j++){
+        var arr = report[i][j].split('/');
+        document.write("<td align='center'>");
+        if ((i == 0 || i == 1) && j > 0){
+            document.write(fmtNum(arr[0]));
+        }
+        else if (j > 0){
+            document.write(fmtNum(arr[0]) + '/' + fmtNum(arr[1]));
+        }else{
+        	if(flag == false)//DHCP,Fix IP
+        	{
+       	//connection time always show grey --:-- when dhcp/fixip
+				document.write("<font color='#E0E0E0'>");
+        		document.write("--:--");
+        		document.write("</font>");
+        	}
+            else
+            	document.write(report[i][j]);
+        }
+        document.write("</td>");
+    }
+    document.write("</tr>");
+    }
+    document.write("</table>");
+}
+function ShowStatus()
+{
+    openDataSubWin('./traffic_status.htm','alwaysRaised,dependent,resizable,scrollbars,width=500,height=350,left=200,top=200');
+}
+function do_tm_reset()
+{
+        var cf = document.forms[0];
+        if (confirm("Restart Counter?")){
+            cf.todo.value="tm_reset";
+            buttonToDisabled(document.forms[0]);
+            cf.submit();
+        }
+}
+function resettime_changed()
+{
+	var cf = document.forms[0];
+	if(cf.hour.value != cf.hour.defaultValue)
+			return true;
+	if(cf.min.value != cf.min.defaultValue)
+			return true;
+	if(cf.ampm.value != "@h_ampm#")
+			return true;
+	if(cf.day.value != "@h_day#")
+			return true;
+    return false;
+}
+function checkData()
+{
+ 	var cf = document.forms[0];
+	var msg = "";
+        if(1)//cf.checkTraffic.checked)
+	{		//999*1024=1022976, 24*31=744
+            if( (cf.tm_type[0].checked==true) && cf.traff_dir.value !="nolimit" )
+            {
+            	if( checkInt(cf.volume_monthly_limit, "", 0, 1022976, true).length > 0)
+					msg += getErrorMsgByVar("gsm_msg_tm_limit_vol");
+            }
+            if(cf.tm_type[1].checked==true)
+            {
+            	if(checkInt(cf.conntime_monthly_limit, "", 0, 744, true).length >0)
+            	msg += getErrorMsgByVar("gsm_msg_tm_limit_time");
+            }
+            
+            if( checkInt(cf.hour, "", 0, 12, true).length > 0)
+				msg += getErrorMsgByVar("gsm_msg_tm_rst_hour");
+            
+            if( checkInt(cf.min, "", 0, 59, true).length > 0)
+				msg += getErrorMsgByVar("gsm_msg_tm_rst_min");
+            
+            if( checkInt(cf.day, "", 1, 31, true).length > 0)
+				msg += getErrorMsgByVar("gsm_msg_tm_rst_day");
+            
+            //if( checkInt(cf.waterMark, "", 0, 100, true).length > 0)
+			//	msg += getErrorMsgByVar("gsm_msg_tm_water_mark");
+
+            //if( checkInt(cf.round_up_volume, "", 0, 100, true).length > 0)
+			//	msg += getErrorMsgByVar("gsm_msg_tm_rd_vol");
+	}
+	if (msg.length > 1)
+	{
+		alert(msg);
+		return false;
+	}
+	if(parseInt(cf.volume_monthly_limit.value) < parseInt(cf.round_up_volume.value))
+		msg +=getErrorMsgByVar("gsm_msg_tm_mon_limit_val_err1");
+	if(cf.tm_type[0].checked==true && cf.traff_dir.value!="nolimit")
+	{
+		if(parseInt(cf.volume_monthly_limit.value) < parseInt(cf.waterMark.value))
+			msg +=getErrorMsgByVar("gsm_msg_tm_mon_limit_val_err2");
+	}
+	if(cf.tm_type[1].checked==true)
+	{
+		if(parseInt(cf.conntime_monthly_limit.value)*60 < parseInt(cf.waterMark.value)){
+			msg +=getErrorMsgByVar("gsm_msg_tm_mon_limit_val_err3");
+	   }
+	}
+	dataToHidden(cf);
+	if (msg.length > 1)
+	{
+		alert(msg);
+		return false;
+	}
+	
+	if(resettime_changed())
+	{
+	    if (!confirm(getErrorMsgByVar("gsm_msg_tm_counter_chg_confm"))){
+         	 return false;
+	    }
+	}
+	parent.topframe.document.forms[0].next_file.value='traffic_meter.htm';
+	return true;
+}
+function disable_form()
+{
+    var cf = document.forms[0];
+    var form_size = cf.elements.length;
+    var flag = @tm_workable#;/*true:pppoe/pptp;false:dhcp/fix ip*/
+    /*
+    for (var i = 0; i < form_size; i++)
+    {
+        cf.elements[i].disabled = !flag;
+    }
+    */
+    if(cf.checkTraffic.checked)
+    {
+        cf.tm_type[0].disabled = false;
+        cf.tm_type[1].disabled = !flag;
+        cf.conntime_monthly_limit.disabled = !flag;
+        cf.round_up_volume.disabled = !flag;
+        if (cf.tm_type[1].checked)
+        {
+            cf.traff_dir.disabled = true;
+            cf.volume_monthly_limit.disabled = true;
+            cf.round_up_volume.disabled = true;
+        }
+        else
+        {
+            cf.traff_dir.disabled = false;
+            if(cf.traff_dir.selectedIndex == 0)
+				cf.volume_monthly_limit.disabled = true;
+			else
+            	cf.volume_monthly_limit.disabled = false;
+            cf.round_up_volume.disabled = !flag;
+        }
+        cf.hour.disabled = false;
+        cf.min.disabled = false;
+        cf.day.disabled = false;
+        cf.ampm.disabled = false;
+        cf.restartCounter.disabled = false;
+        cf.waterMark.disabled = false;
+        cf.checkLed.disabled = false;
+        cf.checkBlock.disabled = false;
+        cf.Refresh.disabled = false;
+        cf.trafficStatus.disabled = false;
+    }
+    else
+    {
+        cf.tm_type[0].disabled = true;
+        cf.tm_type[1].disabled = true;
+        cf.traff_dir.disabled = true;
+        cf.volume_monthly_limit.disabled = true;
+        cf.round_up_volume.disabled = true;
+        cf.conntime_monthly_limit.disabled = true;
+        cf.hour.disabled = true;
+        cf.min.disabled = true;
+        cf.day.disabled = true;
+        cf.ampm.disabled = true;
+        cf.restartCounter.disabled = true;
+        cf.waterMark.disabled = true;
+        cf.checkLed.disabled = true;
+        cf.checkBlock.disabled = true;
+        cf.Refresh.disabled = true;
+        cf.trafficStatus.disabled = true;
+    }
+}
+function change_dir()
+{		
+		var cf = document.forms[0];
+		if(cf.traff_dir.selectedIndex == 0)
+			cf.volume_monthly_limit.disabled=true;
+		else
+			cf.volume_monthly_limit.disabled=false;
+}
+function init()
+{
+		var cf = document.forms[0];
+		if(cf.traff_dir.selectedIndex == 0)
+			cf.volume_monthly_limit.disabled=true;
+}
+
+function tm_op_index_changed()
+{
+    stdAction(document.forms[0], "tm_select_op_index");
+}
+
+//-->
+</script></head><body bgcolor="#ffffff" onLoad="dataToVisible(document.forms[0]);disable_form();init();document.forms[0].elements[0].focus();" onUnload="closeWin(datSubWinVar);">
+<form method="POST" action="setup.cgi@post_par#" onSubmit="buttonToDisabled(document.forms[0])">
+<div class="page_title" languageCode = "331">Traffic Meter</div>
+<div class="fix_button">
+<table width="100%" border="0" cellpadding="0" cellspacing="2"><tr><td nowrap colspan="2" align="center">
+<input class="cancel_bt" type="RESET" name="Cancel" value = "Cancel" onClick="location.href='traffic_meter.htm';" languageCode = "19">
+&nbsp;
+<input class="apply_bt" type="Submit" name="Apply" value = "Apply" onClick="return checkData()" languageCode = "18">
+</td></tr></table>
+</div>
+<div id="main" class="main_top_button">
+<table border="0" cellpadding="0" cellspacing="3" width="100%"><tr><!-- RULE --><td colspan="2"> <b><a href="javascript:loadhelp('traffic_meter','internet')" tabindex="-1">
+  	<span languageCode = "640">Internet Traffic Meter</span></a></b></td>
+</tr>
+
+@3g_hide_s#
+<tr><td colspan="2">
+    <input type="radio" name="tm_op_index" value="2" onClick="tm_op_index_changed();">Show Traffic Meter options for 3G/UMTS Connection
+</td></tr><tr><td colspan="2">
+<input type="radio" name="tm_op_index" value="1" onClick="tm_op_index_changed();">Show Traffic Meter options for ADSL/Ethernet Connection
+</td></tr>
+@3g_hide_e#
+
+<tr><td colspan="2">
+	<input type="checkbox" name="checkTraffic" value="" onClick="javascript:disable_form();"><span languageCode = "641">Enable Traffic Meter</span>
+	</td>
+</tr><tr><td>
+    <table style="margin-left:20px"><tr><td>
+        <input type="radio" name="tm_type" value="tvolume" onClick="disable_form();"><span languageCode = "642">Traffic volume control by</span>
+        <select name="traff_dir" size="1" onchange="change_dir()"><option value="nolimit" languageCode = "643">No limit</option><option value="download" languageCode = "644">Download only</option><option value="both" languageCode = "645">Both directions</option></select></td></tr><tr><td width="90%">
+        &nbsp;&nbsp;&nbsp;&nbsp; <span languageCode = "646">Monthly limit</span>
+        </td><td width="10%" align="right">
+        <input type="text" name="volume_monthly_limit" size="8" maxlength="6" value="@volume_monthly_limit#">(<span languageCode = "647">Mbytes</span>)
+        </td></tr><tr><td>
+        &nbsp;&nbsp;&nbsp;&nbsp; <span languageCode = "648">Round up data volume for each connection by</span>
+        </td><td>
+        <input type="text" name="round_up_volume" size="8" maxlength="3" value="@round_up_volume#">(<span languageCode = "647">Mbytes</span>)
+	</td></tr><tr><td>
+	<input type="radio" name="tm_type" value="conntime" onClick="disable_form();"><span languageCode = "649">Connection time control</span>
+        </td></tr><tr><td>
+        &nbsp;&nbsp;&nbsp;&nbsp; <span languageCode = "646">Monthly limit</span>
+        </td><td>
+        <input type="text" name="conntime_monthly_limit" size="8" maxlength="3" value="@conntime_monthly_limit#">(<span languageCode = "650">Hours</span>)
+	</td></tr></table></td>
+</tr><tr><!-- RULE --><td colspan="2" background="liteblue.gif" height="12">&nbsp; </td>
+</tr><tr><td colspan="2"> <a href="javascript:loadhelp('traffic_meter','counter')" tabindex="-1">
+  	<b languageCode = "651">Traffic Counter</b></a></td>
+</tr><tr><td colspan="2">
+  <span languageCode = "652">Restart traffic counter at</span>
+  <input type="text" name="hour" value="@hour#" size="2" maxlength="2">
+  :<input type="text" name="min" value="@min#" size="2" maxlength="2"><select name="ampm"><option value="am" languageCode = "184">am</option><option value="pm" languageCode = "185">pm</option></select><span languageCode = "653">On the</span>
+   <select name="day" size="1"><option value="1" languageCode = "654">1st</option><option value="2" languageCode = "655">2nd</option><option value="3" languageCode = "656">3rd</option><option value="4" languageCode = "657">4th</option><option value="5" languageCode = "658">5th</option><option value="6" languageCode = "659">6th</option><option value="7" languageCode = "660">7th</option><option value="8" languageCode = "661">8th</option><option value="9" languageCode = "662">9th</option><option value="10" languageCode = "663">10th</option><option value="11" languageCode = "664">11th</option><option value="12" languageCode = "665">12th</option><option value="13" languageCode = "666">13th</option><option value="14" languageCode = "667">14th</option><option value="15" languageCode = "668">15th</option><option value="16" languageCode = "669">16th</option><option value="17" languageCode = "670">17th</option><option value="18" languageCode = "671">18th</option><option value="19" languageCode = "672">19th</option><option value="20" languageCode = "673">20th</option><option value="21" languageCode = "674">21th</option><option value="22" languageCode = "675">22th</option><option value="23" languageCode = "676">23th</option><option value="24" languageCode = "677">24th</option><option value="25" languageCode = "678">25th</option><option value="26" languageCode = "679">26th</option><option value="27" languageCode = "680">27th</option><option value="28" languageCode = "681">28th</option><option value="31" languageCode = "682">Last</option></select><span languageCode = "683">day of each month</span>
+  </td>
+</tr><tr><td colspan="2" align="right">
+    <input class="long_common_bt" type="button" name="restartCounter" value = "Restart Counter Now" onClick="do_tm_reset()" languageCode = "691"></td>
+</tr><tr></tr><tr><!-- RULE --><td colspan="2" background="liteblue.gif" height="12">&nbsp; </td>
+</tr><tr></tr><tr><td colspan="2"> <a href="javascript:loadhelp('traffic_meter','reached')" tabindex="-1"><b languageCode = "684">Traffic Control</b></a><br><span languageCode = "685">Pop up a warning message</span><br>
+  &nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="waterMark" value="@waterMark#" size="8" maxlength="6"><span languageCode = "686">Mbytes/Minutes before the monthly limit is reached</span>
+  <br><span languageCode = "687">When the monthly limit is reached</span><br>
+ &nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" name="checkLed" value=""><span languageCode = "688">Turn the Internet LED to flashing green/amber</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox" name="checkBlock" value=""><span languageCode = "689">Disconnect and disable the Internet connection</span>
+  </td>
+</tr><tr><!-- RULE --><td colspan="2" background="liteblue.gif" height="12">&nbsp; </td>
+</tr><tr><td colspan="2"><a href="javascript:loadhelp('traffic_meter','statistics')" tabindex="-1"><b languageCode = "690">Internet Traffic Statistics</b></a><br></td>
+</tr><tr><td>
+<script>
+show_statistics();
+</script></td>
+</tr><tr><td colspan="2" align="center"><br><input class="common_bt" type="button" name="Refresh" value = "Refresh" onClick="location.href='./traffic_meter.htm'" languageCode = "129">
+&nbsp;
+<input class="common_bt" type="button" name="trafficStatus" value = "Traffic Status" onClick="ShowStatus()" languageCode = "692"></td>
+  
+</tr><tr><!-- RULE --><td colspan="2" background="liteblue.gif" height="12">&nbsp; </td>
+</tr><tr><td colspan="2" align="center"></td></tr></table><input type="hidden" name="todo" value="save"><input type="hidden" name="this_file" value="traffic_meter.htm"><input type="hidden" name="next_file" value="traffic_meter.htm"><input type="hidden" name="h_checkTraffic" value="@h_checkTraffic#"><input type="hidden" name="h_tm_type" value="@h_tm_type#"><input type="hidden" name="h_traff_dir" value="@h_traff_dir#"><input type="hidden" name="h_ampm" value="@h_ampm#"><input type="hidden" name="h_day" value="@h_day#"><input type="hidden" name="h_checkLed" value="@h_checkLed#"><input type="hidden" name="h_checkBlock" value="@h_checkBlock#"><input type="hidden" name="SID" value="@SID#"><input type="hidden" name="h_tm_op_index" value="@h_tm_op_index#">
+</div>	
+</form>
+<p>
+</p>
+<div id="help" style="display: none">
+		<iframe name="help_iframe" id="helpframe" src="traffic_meter_h.htm" allowtransparency="true" width="100%" frameborder="0">
+		</iframe>
+</div>
+<div id="help_switch" class="close_help">
+	 <img class="help_switch_img" src="image/help/help-bar.gif"><script>
+var help_flag=0;
+if(isIE()){
+	show_hidden_help_top_button(1);
+	var frame_div = top.document.getElementById("formframe_div");
+	frame_div.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+if(get_browser() == "Opera"){
+	window.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+</script><div id="help_space" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_center"><span languageCode="3016">Help Center</span></div>
+<div id="help_button" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_show_hidden"><a href="javascript:void(0)" onClick="show_hidden_help_top_button(help_flag); help_flag++;"><span languageCode="3017">Show/Hide Help Center</span></a></div>
+</div>
+<script language="javascript" type="text/javascript" src="langs.js"></script></body></html>

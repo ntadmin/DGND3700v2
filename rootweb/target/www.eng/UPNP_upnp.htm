@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-Control" content="no-cache"><meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT"><meta name="description" content="@model_name#_multilangual"><title>NETGEAR Router @model_name#</title><script language="javascript" type="text/javascript" src="string.js"></script><link rel="stylesheet" href="style/form.css"><script language="javascript" type="text/javascript" src="funcs.js"></script><!-- link rel="stylesheet" href="form.css" --><script language="javascript" src="utility.js"></script><script language="javascript" src="linux.js"></script><script language="javascript" type="text/javascript">
+<!--
+/*
+ * h_value_changed :  2    the value on UPNP_upnp page has been changed except AdverTime.
+ *                    1    the value on UPNP_upnp page hasn't been changed except AdverTime.
+ *                    0    none of the value on UPNP_upnp changed.
+ *                                                                         --- Joe
+ */
+function UPNP_value_changed()
+{
+    var cf = document.forms[0];
+    if(value_enable_disable(cf.h_UPnP.value) == cf.UPnP.checked &&
+       cf.hiddenTimeToLive.value == cf.TimeToLive.value) {
+        if(cf.hiddenAdverTime.value == cf.AdverTime.value)
+            cf.h_value_changed.value = 0;
+        else
+            cf.h_value_changed.value = 1;
+        }
+    else
+        cf.h_value_changed.value = 2;
+}
+function trim(vString)
+{
+	var tString = vString;
+	//trim left spaces
+	if (tString.charAt(0) == " ")
+		tString = trim(tString.substring(1, tString.length));
+	//trim right spaces
+	if (tString.charAt(tString.length-1) == " ")
+		tString = trim(tString.substring(0, tString.length-1))
+	return(tString);
+}
+function isNumOnly(vString)
+{
+	var NUMBERS = "0123456789";
+	var valid = true;
+	for(var i=0;i<vString.length;i++)
+		if(NUMBERS.indexOf(vString.charAt(i))<0)
+			valid = false;
+	return(valid);
+}
+function isNull(vField) {
+	var ret = false
+	vField.value = trim(vField.value)
+	if (vField.value.length == 0)
+		ret = true
+	return(ret)
+}
+function CheckAdverTimeVal(vField)
+{
+	if(isNull(vField) || !isNumOnly(vField.value) || (vField.value >1440 )||(vField.value<= 0 )){
+		alert(vField.name + getErrorMsgByVar("gsm_msg_upnp_advertisement_period_range"))
+		vField.value = vField.form.hiddenAdverTime.value
+		vField.focus()
+		return false
+	}
+	return true
+}
+function CheckTimeToLiveVal(vField)
+{
+	if(isNull(vField) || !isNumOnly(vField.value) || (vField.value > 255 )||(vField.value<= 0 ) ){
+		alert(vField.name + getErrorMsgByVar("gsm_msg_upnp_ttl_range"))
+		vField.value = vField.form.hiddenTimeToLive.value
+		vField.focus()
+		return false
+	}
+	return true
+}
+function finishchech()
+{
+ 	var cf = document.forms[0];
+ 	var msg = "";
+ 	
+	if(isNull(cf.AdverTime) || !isNumOnly(cf.AdverTime.value) || (cf.AdverTime.value >1440 )||(cf.AdverTime.value<= 0 )){
+		msg += getErrorMsgByVar("gsm_msg_upnp_advertisement_period_range");
+		msg += "\n";
+	}
+	
+	if(isNull(cf.TimeToLive) || !isNumOnly(cf.TimeToLive.value) || (cf.TimeToLive.value > 255 )||(cf.TimeToLive.value<= 0 ) ){
+		msg += getErrorMsgByVar("gsm_msg_upnp_ttl_range");
+	}
+
+	if (msg.length > 1)
+	{
+		alert(msg);
+		return false;
+	}
+					
+	UPNP_value_changed();
+	dataToHidden(cf);
+	return true;
+}
+//-->
+</script></head><body bgcolor="#ffffff" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="dataToVisible(document.forms[0]);">
+<form name="formname" method="POST" action="setup.cgi@post_par#" onSubmit="buttonToDisabled(document.forms[0])">
+<div class="page_title">UPnP</div>
+<div class="fix_button">
+<table width="100%" border="0" cellpadding="0" cellspacing="2"><tr><td nowrap colspan="2" align="center">
+<input class="common_bt" type="button" name="Refresh" value = "Refresh" onClick="location.href='./UPNP_upnp.htm'" languageCode = "129">
+&nbsp;
+<input class="cancel_bt" type="RESET" name="Cancel" value = "Cancel" onClick="setTimeout('dataToVisible(document.forms[0])',250)" languageCode = "19">
+&nbsp;
+<input class="apply_bt" type="submit" name="Apply" value = "Apply" onClick="return finishchech()" languageCode = "18">
+</td></tr></table>
+</div>
+<div id="main" class="main_top_button">
+<table border="0" cellpadding="0" cellspacing="3" width="100%"><tr><td nowrap width="46%"><input type="checkbox" name="UPnP" value="UPnP"><b><a href="javascript:loadhelp('UPNP_upnp','turnon')" languageCode = "463">Turn UPnP On</a></b></td>
+		<td nowrap width="54%"></td>
+	</tr><tr><td nowrap width="46%"><b><a href="javascript:loadhelp('UPNP_upnp','adv')" languageCode = "464">Advertisement Period</a></b> <span languageCode = "207">(in minutes)</span></td>
+		<td nowrap width="54%" align="right"><input type="text" class="num" name="AdverTime" size="5" maxlength="4" value="@AdverTime#" onFocus="this.select();"></td>
+	</tr><tr><td nowrap width="46%"><b><a href="javascript:loadhelp('UPNP_upnp','live')" languageCode = "465">Advertisement Time to Live</a></b> <span languageCode = "466">(in hops)</span></td>
+		<td nowrap width="54%" align="right"><input type="text" class="num" name="TimeToLive" size="4" maxlength="3" value="@TimeToLive#" onFocus="this.select();"></td>
+	</tr><tr><!-- RULE --><td colspan="2" background="liteblue.gif" height="12"></td>
+	</tr><tr><td colspan="2"><b><a href="javascript:loadhelp('UPNP_upnp','table')" languageCode = "467">UPnP Portmap Table</a></b></td>
+	</tr><tr><td colspan="2">
+		<TABLE class="tables" border="0" cellpadding="2" cellspacing="0" width="100%">
+		<TR class="table_header"><td width="10%" align="center"><span class="thead" languageCode = "148">Active</span></td>
+				<td width="15%" align="center"><span class="thead" languageCode = "97">Protocol</span></td>
+				<td width="15%" align="center"><span class="thead" languageCode = "468">Int. Port</span></td>
+				<td width="15%" align="center"><span class="thead" languageCode = "469">Ext. Port</span></td>
+				<td width="25%" align="center"><span class="thead" languageCode = "37">IP Address</span></td>
+			</tr>
+			@upnp_port_list#
+		</table></td>
+	</tr><tr><!-- RULE --><td colspan="2" background="liteblue.gif" height="12"></td>
+	</tr><tr><td colspan="2" align="center"></td>
+	</tr></table><input type="hidden" name="todo" value="save"><input type="hidden" name="this_file" value="UPNP_upnp.htm"><input type="hidden" name="next_file" value="UPNP_upnp.htm"><!-- DemoStart
+ 
+<input type="hidden" name="h_UPnP" value="@h_UPnP#">
+ DemoEnd --><!-- ServerStart -->
+ <input type="hidden" name="h_UPnP" value="@h_UPnP#">
+ <input type="hidden" name="hiddenAdverTime" value="@AdverTime#">
+ <input type="hidden" name="hiddenTimeToLive" value="@TimeToLive#"><!-- ServerEnd -->
+ <input type="hidden" name="SID" value="@SID#">
+ <input type="hidden" name="h_value_changed" value="@h_value_changed#">
+</div>
+</form>
+<div id="help" style="display: none">
+		<iframe name="help_iframe" id="helpframe" src="UPNP_upnp_h.htm" allowtransparency="true" width="100%" frameborder="0">
+		</iframe>
+</div>
+<div id="help_switch" class="close_help">
+	 <img class="help_switch_img" src="image/help/help-bar.gif"><script>
+var help_flag=0;
+if(isIE()){
+	show_hidden_help_top_button(1);
+	var frame_div = top.document.getElementById("formframe_div");
+	frame_div.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+if(get_browser() == "Opera"){
+	window.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+</script><div id="help_space" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_center"><span languageCode="3016">Help Center</span></div>
+<div id="help_button" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_show_hidden"><a href="javascript:void(0)" onClick="show_hidden_help_top_button(help_flag); help_flag++;"><span languageCode="3017">Show/Hide Help Center</span></a></div>
+</div>
+<script language="javascript" type="text/javascript" src="langs.js"></script></body></html>

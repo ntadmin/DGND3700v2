@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><HEAD><TITLE>NETGEAR Router @model_name#</TITLE>
+<meta http-equiv="Pragma" CONTENT="no-cache">
+<meta http-equiv="Cache-Control" CONTENT="no-cache">
+<meta http-equiv="Expires" CONTENT="Mon, 06 Jan 1990 00:00:01 GMT">
+<META http-equiv=content-type content="text/html; charset=UTF-8"><LINK href="style/hijack_style.css" type=text/css rel=stylesheet><LINK href="style/hijack_03A_wanInput.css" type=text/css rel=stylesheet>
+<SCRIPT language=javascript src="utility.js" type=text/javascript></SCRIPT>
+<SCRIPT language=javascript src="script/brs_hijack.js" type=text/javascript></SCRIPT>
+<script language="javascript" type="text/javascript" src="string.js"></script><link rel="stylesheet" href="style/form.css"><script language="javascript" type="text/javascript" src="funcs.js"></script>
+<script language="javascript" type="text/javascript" src="linux.js"></script>
+<SCRIPT language=javascript src="language/English.js" type=text/javascript></script>
+<SCRIPT language=javascript type=text/javascript>
+
+function check_vlan()
+{
+    var cf = document.forms[0];
+    if(!cf.vlan_enable.checked)
+       	cf.h_vlan_id.disabled=true;
+    else
+        cf.h_vlan_id.disabled=false;
+}
+function checkData()
+{
+    var cf = document.forms[0];
+    var msg = "";
+
+    if(cf.vlan_enable.checked && checkInt(cf.h_vlan_id,"",1,4094,true).length > 0)
+        msg += "VLAN ID " + getErrorMsgByVar("gsm_must_tag_range") + "\n";
+    if (msg.length > 1)	{
+	alert(msg);
+        return false;
+    }
+    dataToHidden(cf);
+    cf.submit();
+    return true;
+}
+
+</SCRIPT>
+</HEAD>
+<BODY bgcolor="#ffffff" onLoad="dataToVisible(document.forms[0]);check_vlan();">
+<FORM action="setup.cgi@post_par#" method=post>
+<DIV class=wizard_content_div>
+<DIV class=wizard_words_div>
+<H1><span languageCode = "543">Dynamic IP (DHCP) detected</span></H1>
+<P><span languageCode = "756">Click "Next" to continue.</span></P>
+<DIV class=wanInput_content_div>
+
+<DIV class=wanInput_left_div id=vlanid align=right><input type="checkbox" name="vlan_enable" onClick="check_vlan()"><span languageCode = "10609">Use VLANID</span></DIV>
+<DIV class=wanInput_Img_div><IMG src="image/ca_text_pic.gif"> <INPUT id=inputVlanID maxLength=4 align=right value="@h_vlan_id#" name="h_vlan_id"></DIV>
+<DIV style="CLEAR: both"></DIV></DIV></DIV>
+<DIV class=wizard_buttons_div id=allBtns_div align=right>
+<DIV class=buttons_img_div id=btnsContainer_div onclick="checkData();"><IMG src="image/ca-little-purple-button.gif"> 
+<DIV class=buttons_words_div id=btn_text_div align=center><span languageCode = "6">Next</span></DIV></DIV></DIV></DIV>
+<input type="hidden" name="todo" value="brs_reset_save">
+<INPUT type=hidden value="dynamic" name=WANAssign> 
+<INPUT type=hidden name=h_vlan_enable value="@h_vlan_enable#"> 
+<input type="hidden" name="this_file" value="BRS_03A_B_NZ_dhcpc.html">
+<input type="hidden" name="next_file" value="BRS_04_applySettings.html">
+</FORM>
+<script language="javascript" type="text/javascript" src="langs.js"></script>
+</BODY></HTML>

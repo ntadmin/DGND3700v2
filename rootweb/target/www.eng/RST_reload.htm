@@ -1,0 +1,49 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-Control" content="no-cache"><meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT"><meta name="description" content="@model_name#_multilangual"><title>NETGEAR Router @model_name#</title><script language="javascript" type="text/javascript" src="string.js"></script><link rel="stylesheet" href="style/form.css"><script language="javascript" type="text/javascript" src="funcs.js"></script><!-- link rel="stylesheet" href="form.css" --><script language="javascript" type="text/javascript" src="utility.js"></script><script language="javascript" type="text/javascript" src="linux.js"></script><script language="javascript" type="text/javascript">
+<!--
+var pchar = "||||||||"; // progress char
+var maxchars = 8; 
+var delay_time = 500; // msecs
+var charcount = 0; 
+function reloadall() {
+    top.location.href="./index.htm";
+    return;
+}
+function makeStr(strSize, fillChar)
+{
+	var temp = "";
+	for (i=0; i < strSize ; i ++)
+		temp = temp + fillChar;
+	return temp;
+}
+function updateProgress()
+{
+	var cf = document.forms[0];
+
+	if (charcount < maxchars)
+	{
+		charcount ++;
+		cf.progress.value = makeStr(charcount,pchar);
+		setTimeout("updateProgress()",delay_time);
+	}
+	else
+	{ 
+		reloadall();
+	}
+}
+//-->
+</script><style type="text/css">
+TD {
+	FONT-SIZE: 12px; FONT-FAMILY: Arial, Helvetica, Geneva, Swiss, SunSans-Regular, sans-serif
+}
+.prgbar { font-family:Arial; padding:0px; height: 20px; width: 200px; font-weight: bolder; font-size: 10pt; color: #0000FF}
+</style></head><body bgcolor="#ffffff" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="updateProgress()">
+<form>
+<table border="0" cellpadding="0" cellspacing="3" width="100%"><tr></tr><tr><td align="left">
+	 <h1 languageCode = "448">Updating Settings</h1>
+ </td>
+ <td nowrap align="left">&nbsp;</td>
+ <td nowrap><input type="text" name="progress" class="prgbar" value=""></td>
+ <td nowrap align="left">&nbsp;</td>
+</tr><tr><!-- RULE --><!--<td colspan="4" background="liteblue.gif" height="12"> &nbsp;</td>--><td colspan="4" height="12"><hr color="#6C66E0"></td>
+</tr></table></form>
+<script language="javascript" type="text/javascript" src="langs.js"></script></body></html>

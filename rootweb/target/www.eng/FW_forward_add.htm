@@ -1,0 +1,266 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-Control" content="no-cache"><meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT"><meta name="description" content="@model_name#_multilangual"><title>NETGEAR Router @model_name#</title><script language="javascript" type="text/javascript" src="string.js"></script><link rel="stylesheet" href="style/form.css"><script language="javascript" type="text/javascript" src="funcs.js"></script><!-- link rel="stylesheet" href="form.css" --><script language="javascript" type="text/javascript" src="utility.js"></script><script language="javascript" type="text/javascript" src="linux.js"></script><script language="javascript">
+<!-- hide script from old browsers
+var dev_ip = "@c4_sysLANIPAddr#";
+var dev_mask = "@c4_sysLANSubnetMask#";
+function btnApply() {
+	with (document.forms[0])
+	{
+		var cf = document.forms[0];
+		var msg="";
+		if (appname[0].checked == true)
+		{
+			if(badLANIP(cf.pfw_ip1,cf.pfw_ip2,cf.pfw_ip3,cf.pfw_ip4,254)
+			||(parseInt(cf.pfw_ip4.value, 10)==0))
+			{
+				alert(getErrorMsgByVar("gsm_msg_eth_inv_ip"));
+				return;
+			}
+			c4_pfw_ip.value=pfw_ip1.value+"."+pfw_ip2.value+"."+pfw_ip3.value+"."+pfw_ip4.value;
+			if(IsLanIpValid(dev_ip, dev_mask, c4_pfw_ip.value) == false)
+			{
+				alert(getErrorMsgByVar("gsm_msg_eth_inv_ip"));
+				return;
+			}
+			switch(catalogname.selectedIndex)
+			{
+				/* FTP */
+				case 0:
+					h_pfw_name.value = catalogname.value;
+					h_pfw_proto.value = '1,';
+					h_pfw_sport.value = '20,';
+					h_pfw_eport.value = '21,';
+					//srventrycou=1;
+				break;
+				/* HTTP */
+				case 1:
+					h_pfw_name.value = catalogname.value;
+					h_pfw_proto.value = '1,';
+					h_pfw_sport.value = '80,';
+					h_pfw_eport.value = '80,';
+					//srventrycou=1;
+				break;
+				/* ICUII */
+				case 2:
+					h_pfw_name.value = catalogname.value;
+					h_pfw_proto.value = '1,';
+					h_pfw_sport.value = '23566,';
+					h_pfw_eport.value = '23566,';
+					//srventrycou=6;
+				break;
+				/* IP Phone */
+				case 3:
+					h_pfw_name.value = catalogname.value;
+					h_pfw_proto.value = '1,';
+					h_pfw_sport.value = '6670,';
+					h_pfw_eport.value = '6670,';
+					//srventrycou=1;
+				break;
+				/* NetMeeting */
+				case 4:
+					h_pfw_name.value = catalogname.value;
+					h_pfw_proto.value = '1,';
+					h_pfw_sport.value = '1720,';
+					h_pfw_eport.value = '1720,';
+					//srventrycou=2;
+				break;
+				/* News */
+				case 5:
+					h_pfw_name.value = catalogname.value;
+					h_pfw_proto.value = '1,';
+					h_pfw_sport.value = '119,';
+					h_pfw_eport.value = '119,';
+					//srventrycou=1;
+				break;
+				/* PPTP */
+				case 6:
+					h_pfw_name.value = catalogname.value;
+					h_pfw_proto.value = '1,';
+					h_pfw_sport.value = '1723,';
+					h_pfw_eport.value = '1723,';
+					//srventrycou=2;
+				break;
+				/* Quake II & III */
+				case 7:
+					h_pfw_name.value = catalogname.value;
+					h_pfw_proto.value = '0,';
+					h_pfw_sport.value = '27960,';
+					h_pfw_eport.value = '27960,';
+					//srventrycou=1;
+				break;
+				/* Real Audio */
+				case 8:
+					h_pfw_name.value = catalogname.value;
+					h_pfw_proto.value = '0,';
+					h_pfw_sport.value = '6970,';
+					h_pfw_eport.value = '7170,';
+					//srventrycou=3;
+				break;
+				/* Telnet */
+				case 9:
+					h_pfw_name.value = catalogname.value;
+					h_pfw_proto.value = '1,';
+					h_pfw_sport.value = '23,';
+					h_pfw_eport.value = '23,';
+					//srventrycou=1;
+				break;
+				default:
+					alert(getErrorMsgByVar("gsm_msg_pfw_no_app_sel"));
+					return;
+					break;
+			}
+		}
+		else  //User defined
+		{
+			msg += printable_ch_chk(pfw_name.value);
+			if (msg.length > 1)
+			{
+				alert(msg);
+				return;
+			}
+			h_pfw_name.value = pfw_name.value;
+			h_pfw_proto.value = pfw_proto.value + ",";
+			if ( isValidPortFW(pfw_sport.value) == false )
+			{
+				alert(getErrorMsgByVar("gsm_msg_pfw_port_start") + pfw_sport.value + getErrorMsgByVar("gsm_msg_pfw_inv_input"));
+				return;
+			}
+			if ( isValidPortFW(pfw_eport.value) == false )
+			{
+				alert(getErrorMsgByVar("gsm_msg_pfw_port_end") + pfw_eport.value + getErrorMsgByVar("gsm_msg_pfw_inv_input"));
+				return;
+			}
+			oS = parseInt(pfw_sport.value, 10);
+			oE = parseInt(pfw_eport.value, 10);
+			if ( oS > oE )
+			{
+				alert(getErrorMsgByVar("gsm_msg_pfw_port_range") + oS + '-' + oE + getErrorMsgByVar("gsm_msg_pfw_inv_input"));
+				return;
+			}
+			h_pfw_sport.value = oS + ",";
+			h_pfw_eport.value = oE + ",";
+			if(badLANIP(cf.pfw_ip1,cf.pfw_ip2,cf.pfw_ip3,cf.pfw_ip4,254)
+			||(parseInt(cf.pfw_ip4.value, 10)==0))
+			{
+				alert(getErrorMsgByVar("gsm_msg_eth_inv_ip"));
+				return;
+			}
+			c4_pfw_ip.value=pfw_ip1.value+"."+pfw_ip2.value+"."+pfw_ip3.value+"."+pfw_ip4.value;
+			if(IsLanIpValid(dev_ip, dev_mask, c4_pfw_ip.value) == false)
+			{
+				alert(getErrorMsgByVar("gsm_msg_eth_inv_ip"));
+				return;
+			}
+		}// End user defined
+	}
+	cf.submit();
+	return true;
+}
+function clickradio(){
+	with (document.forms[0]) {
+		if (appname[1].checked == true){
+			document.getElementById('SrvInfo').innerHTML =
+			'<table border="0" cellpadding="0" cellspacing="3" width="100%">'+
+				'<tr><td><b>'+getErrorMsgByVar("gsm_msg_pfw_custom_rule")+''+
+			''+
+			'<table border="0" cellpadding="0" cellspacing="3" width="100%">'+
+				'<tr><td width="50%">'+getErrorMsgByVar("gsm_msg_pfw_service_name")+':'+
+					'<td><input type="text" size="24" name="pfw_name" value="@pfw_name#" maxlength="30">'+
+				'<tr><td width="50%">'+getErrorMsgByVar("gsm_msg_pfw_service_type")+':'+
+					'<td><select name="pfw_proto" value="@pfw_proto#" size="1"><option value="1">TCP<option value="2">UDP<option value="0">TCP/UDP'+
+				'<tr><td width="50%">'+getErrorMsgByVar("gsm_msg_pfw_starting_port")+':'+
+					'<td><input type="text" name="pfw_sport" value="@pfw_sport#" size="13" maxlength="5">(1~65534)'+
+				'<tr><td width="50%">'+getErrorMsgByVar("gsm_msg_pfw_ending_port")+':'+
+					'<td><input type="text" name="pfw_eport" value="@pfw_eport#" size="13" maxlength="5">(1~65534)'+
+				'<tr><td width="50%">'+getErrorMsgByVar("gsm_msg_pfw_server_ip_add")+':'+
+					'<td><input type="text" name="pfw_ip1" class="num" size="4" maxlength="3" value="">.<input type="text" name="pfw_ip2" class="num" size="4" maxlength="3" value="">.<input type="text" name="pfw_ip3" class="num" size="4" maxlength="3" value="">.<input type="text" name="pfw_ip4" class="num" size="4" maxlength="3" value="">'+
+				'<tr><td background="liteblue.gif" height="12" colspan="2">'+
+			'';
+			//catalogname.disabled=true;
+		} else {
+			document.getElementById('SrvInfo').innerHTML =
+			'<table border="0" cellpadding="0" cellspacing="3" width="100%">'+
+				'<tr><td><b>'+getErrorMsgByVar("gsm_msg_pfw_preset_pfw_rule")+''+
+			''+
+			'<table border="0" cellpadding="0" cellspacing="3" width="100%">'+
+				'<tr><td width="50%">'+getErrorMsgByVar("gsm_msg_pfw_service_name")+'<td colspan="2">'+getErrorMsgByVar("gsm_msg_pfw_server_ip_add")+''+
+				'<tr><td width="50%"><select name="catalogname" size="1" onChange="">'+
+									'<option value="FTP">FTP'+
+									'<option value="HTTP">HTTP'+
+									'<option value="ICUII">ICUII'+
+									'<option value="IP_Phone">'+getErrorMsgByVar("gsm_msg_pfw_ip_phone")+''+
+									'<option value="NetMeeting">NetMeeting'+
+									'<option value="News">'+getErrorMsgByVar("gsm_msg_pfw_news")+''+
+									'<option value="PPTP">PPTP'+
+									'<option value="Quake_II_III">Quake II &amp; III'+
+									'<option value="Real_Audio">Real Audio'+
+									'<option value="Telnet">Telnet'+
+					'<td colspan="2"><input type="text" name="pfw_ip1" class="num" size="4" maxlength="3" value="">.<input type="text" name="pfw_ip2" class="num" size="4" maxlength="3" value="">.<input type="text" name="pfw_ip3" class="num" size="4" maxlength="3" value="">.<input type="text" name="pfw_ip4" class="num" size="4" maxlength="3" value="">'+
+				'<tr><td background="liteblue.gif" height="12" colspan="3">'+
+			'';
+			//catalogname.disabled=false;
+		}
+	}
+}
+function init()
+{
+	with (document.forms[0])
+	{
+		if(edit.value=="1")
+			appname[1].checked=true;
+		else
+			appname[0].checked=true;
+		clickradio();
+		dataToVisible(document.forms[0]);
+		
+		document.forms[0].elements[0].focus();
+	}
+}
+// done hiding -->
+</script></head><body onLoad="init();">
+<form method="POST" action="setup.cgi@post_par#">
+<div class="page_title" languageCode = "">Port Forwarding Rule</div>
+<div class="fix_button">
+<table width="100%" border="0" cellpadding="0" cellspacing="2"><tr><td nowrap colspan="2" align="center">
+<input class="cancel_bt" type="button" name="Cancel" value = "Cancel" onClick="location.href='./FW_forward.htm'" languageCode = "19">
+&nbsp;
+<input class="apply_bt" type="button" name="Apply" value = "Apply" onClick="if(btnApply()) buttonToDisabled(document.forms[0]);" languageCode = "18">
+</td></tr></table>
+</div>
+<div id="main" class="main_top_button">
+<table border="0" cellpadding="0" cellspacing="3" width="100%"><tr><td width="50%"><input type="radio" name="appname" onClick="clickradio()">Pre-set Port Forwarding Rule</td>
+		<td colspan="2"></td>
+	</tr><tr><td width="50%"><input type="radio" name="appname" onClick="clickradio()">Custom Rule</td>
+		<td colspan="2"></td>
+	</tr><tr><td background="liteblue.gif" height="12" colspan="3"></td>
+	</tr></table><span align="center" id="SrvInfo"></span>
+<table border="0" cellpadding="0" cellspacing="3" width="100%"><tr><td></td>
+	</tr><tr><td align="center"></td>
+	</tr></table><input type="hidden" name="todo" value="pfw_add"><input type="hidden" name="this_file" value="FW_forward_add.htm"><input type="hidden" name="next_file" value="FW_forward.htm"><input type="hidden" name="edit" value="@edit#"><input type="hidden" name="h_ruleSelect" value="@h_ruleSelect#"><input type="hidden" name="h_pfw_name" value=""><input type="hidden" name="h_pfw_proto" value="@pfw_proto#"><input type="hidden" name="h_pfw_sport" value=""><input type="hidden" name="h_pfw_eport" value=""><input type="hidden" name="c4_pfw_ip" value="@c4_pfw_ip#"><input type="hidden" name="SID" value="@SID#">
+</div>	
+</form>
+<div id="help" style="display: none">
+		<iframe name="help_iframe" id="helpframe" src="FW_forward_h.htm" allowtransparency="true" width="100%" frameborder="0">
+		</iframe>
+</div>
+<div id="help_switch" class="close_help">
+	 <img class="help_switch_img" src="image/help/help-bar.gif"><script>
+var help_flag=0;
+if(isIE()){
+	show_hidden_help_top_button(1);
+	var frame_div = top.document.getElementById("formframe_div");
+	frame_div.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+if(get_browser() == "Opera"){
+	window.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+</script><div id="help_space" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_center"><span languageCode="3016">Help Center</span></div>
+<div id="help_button" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_show_hidden"><a href="javascript:void(0)" onClick="show_hidden_help_top_button(help_flag); help_flag++;"><span languageCode="3017">Show/Hide Help Center</span></a></div>
+</div>
+<script language="javascript" type="text/javascript" src="langs.js"></script></body></html>

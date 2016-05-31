@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>NETGEAR Router @model_name# </title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Pragma" CONTENT="no-cache">
+<meta http-equiv="Cache-Control" CONTENT="no-cache">
+<meta http-equiv="Expires" CONTENT="Mon, 06 Jan 1990 00:00:01 GMT">
+<link rel="stylesheet" type="text/css" href="style/hijack_style.css" />
+<script language="javascript" type="text/javascript" src="script/brs_hijack.js"></script>
+<script language="javascript" type="text/javascript" src="language/English.js"></script>
+<script language="javascript" type="text/javascript" src="string.js"></script><link rel="stylesheet" href="style/form.css"><script language="javascript" type="text/javascript" src="funcs.js"></script>
+<SCRIPT language=javascript type=text/javascript>
+var wan_gotIP = "@trigger_wan_up#";
+function check_wanup()
+{
+    /*wait 8 seconds after trigger WAN*/
+    if(wan_gotIP == "TRIGGERED")
+    {
+        setTimeout('location.href="setup.cgi?next_file=BRS_01_checkNet.html&todo=brs_chk_wanup";',8000);
+        return true;
+    }
+    else
+        location.href="setup.cgi?next_file=BRS_01_checkNet.html&todo=brs_chk_wanup";
+}
+</SCRIPT>
+</head>
+<body onload="check_wanup();">
+<div class="wizard_content_div">
+	<div class="wizard_words_div">
+		
+		<div class="waiting_connect_div" align="center">
+			<h1>
+			    <span languageCode = "792">Checking the Internet connection; please wait …</span>
+			</h1>
+		</div>
+		
+		<div class="waiting_img_div" align="center">
+			<img src="image/wait30.gif" alt="waiting" />
+		</div>
+	
+	</div>
+</div>
+</FORM>
+<script language="javascript" type="text/javascript" src="langs.js"></script>
+</body>
+</html>
+ 

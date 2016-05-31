@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<HTML><HEAD><TITLE>NETGEAR Router @model_name#</TITLE>
+<meta http-equiv="Pragma" CONTENT="no-cache">
+<meta http-equiv="Cache-Control" CONTENT="no-cache">
+<meta http-equiv="Expires" CONTENT="Mon, 06 Jan 1990 00:00:01 GMT">
+<META http-equiv=content-type content="text/html; charset=UTF-8">
+<LINK href="style/hijack_style.css" type=text/css rel=stylesheet>
+<SCRIPT language=javascript src="script/brs_hijack.js" type=text/javascript></SCRIPT>
+<SCRIPT language=javascript src="language/English.js" type=text/javascript></SCRIPT>
+<script language="javascript" type="text/javascript" src="string.js"></script>
+<SCRIPT language=javascript type=text/javascript>
+var wan_gotIP = "@if_wan_up#";
+var refresh_times = @refresh_times#;
+var adsl_isp = "@adsl_isp#";
+function check_wanup()
+{
+    if(wan_gotIP == "Up")
+    {
+        /*start ping 10 seconds after wan up*/
+        setTimeout('document.forms[0].submit();',10000);
+        return true;
+    }
+    else if(refresh_times > 10)/*not get ip in 20 seconds*/
+    {
+		/*should not be at&t, goto pppoe enter info page.*/
+		if(adsl_isp != "DT")
+			location.href="BRS_03A_B_pppoe.html";
+		else
+        	location.href="BRS_03A_B_DT_pppoe.html";
+        return true;
+    }
+    else
+        setTimeout('location.href="BRS_04_att_applySettings.html";',2000);
+}
+</SCRIPT>
+</HEAD>
+<BODY onload="check_wanup()">
+<FORM action="setup.cgi@post_par#" method=post>
+<DIV class=wizard_content_div>
+<DIV class=wizard_words_div>
+<H1></H1>
+<P align="center"><b languageCode = "542">please wait a moment...</b></P>
+<DIV class=waiting_img_div id=applySettings_wait align=center><IMG alt=waiting src="image/wait30.gif"> </DIV></DIV></DIV>
+    
+<input type="hidden" name="todo" value="brs_ping">
+<input type="hidden" name="max_refresh_times" value="5">
+<input type="hidden" name="this_file" value="BRS_04_att_applySettings.html">
+<input type="hidden" name="next_file" value="BRS_04_att_applySettings_ping.html">
+<input type="hidden" name="SID" value="@SID#">
+</FORM>
+<script language="javascript" type="text/javascript" src="langs.js"></script>
+</BODY></HTML>

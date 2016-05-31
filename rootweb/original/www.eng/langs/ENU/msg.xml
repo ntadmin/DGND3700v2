@@ -1,0 +1,2393 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<error_msg xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<message>
+		<err_code>1</err_code>
+		<translation>can not be blank</translation>
+		<variable>gsm_msg_blank</variable>
+	</message>
+	<message>
+		<err_code>2</err_code>
+		<translation>Blanks or spaces are not allowed in</translation>
+		<variable>gsm_msg_space</variable>
+	</message>
+	<message>
+		<err_code>3</err_code>
+		<translation>Blanks are not allowed in</translation>
+		<variable>gsm_msg_blank_in</variable>
+	</message>
+	<message>
+		<err_code>4</err_code>
+		<translation>Invalid character or characters in</translation>
+		<variable>gsm_msg_invalid</variable>
+	</message>
+	<message>
+		<err_code>5</err_code>
+		<translation>contains an invalid number.</translation>
+		<variable>gsm_msg_check_invalid</variable>
+	</message>
+	<message>
+		<err_code>8</err_code>
+		<translation>%s is out of range %s ~ %s</translation>
+		<variable>gsm_msg_outofrange</variable>
+	</message>
+	<message>
+		<err_code>9</err_code>
+		<translation>Invalid character or characters in</translation>
+		<variable>gsm_msg_invalid2</variable>
+	</message>
+	<message>
+		<err_code>10</err_code>
+		<translation>First</translation>
+		<variable>gsm_msg_first</variable>
+	</message>
+	<message>
+		<err_code>11</err_code>
+		<translation>Second</translation>
+		<variable>gsm_msg_second</variable>
+	</message>
+	<message>
+		<err_code>12</err_code>
+		<translation>Third</translation>
+		<variable>gsm_msg_third</variable>
+	</message>
+	<message>
+		<err_code>13</err_code>
+		<translation>Fourth</translation>
+		<variable>gsm_msg_fourth</variable>
+	</message>
+	<message>
+		<err_code>14</err_code>
+		<translation>VPI contains an invalid number</translation>
+		<variable>gsm_msg_vpi_invalid</variable>
+	</message>
+	<message>
+		<err_code>15</err_code>
+		<translation>VCI contains an invalid number</translation>
+		<variable>gsm_msg_vci_invalid</variable>
+	</message>
+	<message>
+		<err_code>16</err_code>
+		<translation>VPI is out of range [0~255]</translation>
+		<variable>gsm_msg_vpi_out_of_range</variable>
+	</message>
+	<message>
+		<err_code>17</err_code>
+		<translation>VCI is out of range [32~65535]</translation>
+		<variable>gsm_msg_vci_out_of_range</variable>
+	</message>
+	<message>
+		<err_code>25</err_code>
+		<translation>User Name</translation>
+		<variable>gsm_msg_un</variable>
+	</message>
+	<message>
+		<err_code>26</err_code>
+		<translation>Password</translation>
+		<variable>gsm_msg_pw</variable>
+	</message>
+	<message>
+		<err_code>27</err_code>
+		<translation>Wireless Network Name (SSID)</translation>
+		<variable>gsm_msg_ssid</variable>
+	</message>
+	<message>
+		<err_code>28</err_code>
+		<translation>Please check the user manual and gift box of your wireless client to see whether it supports the WPS function.</translation>
+		<variable>gsm_msg_wlpw</variable>
+	</message>
+	<message>
+		<err_code>29</err_code>
+		<translation> must not be blank.[NEL]</translation>
+		<variable>gsm_msg_username_blank</variable>
+	</message>
+	<message>
+		<err_code>30</err_code>
+		<translation> must not be blank.[NEL]</translation>
+		<variable>gsm_msg_password_blank</variable>
+	</message>
+	<message>
+		<err_code>31</err_code>
+		<translation>user name can only be letter or number!</translation>
+		<variable>gsm_msg_username_only_letterornumber</variable>
+	</message>
+	<message>
+		<err_code>32</err_code>
+		<translation>password can only be letter or number!</translation>
+		<variable>gsm_msg_passwd_only_letterornumber</variable>
+	</message>
+	<message>
+		<err_code>33</err_code>
+		<translation>already exist</translation>
+		<variable>gsm_msg_user_exist</variable>
+	</message>
+	<message>
+		<err_code>34</err_code>
+		<translation>The password you typed does not match. Please enter it again.</translation>
+		<variable>gsm_msg_nomatch_pwd</variable>
+	</message>
+	<message>
+		<err_code>35</err_code>
+		<translation>group name can only be letter or number!</translation>
+		<variable>gsm_msg_groupname_only_letterornumber</variable>
+	</message>
+	<message>
+		<err_code>38</err_code>
+		<translation>Network/Device Name</translation>
+		<variable>gsm_msg_network_name</variable>
+	</message>
+	<message>
+		<err_code>39</err_code>
+		<translation>Workgroup</translation>
+		<variable>gsm_msg_workgroup</variable>
+	</message>
+	<message>
+		<err_code>41</err_code>
+		<translation>Share Folder</translation>
+		<variable>gsm_msg_share_folder</variable>
+	</message>
+	<message>
+		<err_code>42</err_code>
+		<translation>Share Name</translation>
+		<variable>gsm_msg_share_name</variable>
+	</message>
+	<message>
+		<err_code>43</err_code>
+		<translation>Invalid Key.[NEL][NEL]Keys length should be 10 Hex (0~9 and A~F) chars.</translation>
+		<variable>gsm_msg_key64_type</variable>
+	</message>
+	<message>
+		<err_code>44</err_code>
+		<translation>Invalid Key.[NEL][NEL]Keys length should be 26 Hex (0~9 and A~F) chars.</translation>
+		<variable>gsm_msg_key128_type</variable>
+	</message>
+	<message>
+		<err_code>45</err_code>
+		<translation>Invalid Key.[NEL][NEL]Keys length should be 10 Hex (0~9 and A~F) chars.</translation>
+		<variable>gsm_msg_key64_atype</variable>
+	</message>
+	<message>
+		<err_code>46</err_code>
+		<translation>Invalid Key.[NEL][NEL]Keys length should be 26 Hex (0~9 and A~F) chars.</translation>
+		<variable>gsm_msg_key128_atype</variable>
+	</message>
+	<message>
+		<err_code>47</err_code>
+		<translation>WARNING: Selecting the incorrect region may result in a violation of applicable law. [NEL]Do you agree to act in accordance with these settings?</translation>
+		<variable>gsm_msg_change_wl_region</variable>
+	</message>
+	<message>
+		<err_code>48</err_code>
+		<translation>Warning! Restarting will break any existing connections either to the Router (such as this one) or through the Router (for example, LAN users accessing the Internet)</translation>
+		<variable>gsm_msg_restart</variable>
+	</message>
+	<message>
+		<err_code>49</err_code>
+		<translation>DEBUG</translation>
+		<variable>gsm_msg_pub_debug</variable>
+	</message>
+	<message>
+		<err_code>50</err_code>
+		<translation>(Select List) has invalid value</translation>
+		<variable>gsm_msg_pub_inv_sel</variable>
+	</message>
+	<message>
+		<err_code>51</err_code>
+		<translation>Selecting 1st item instead</translation>
+		<variable>gsm_msg_pub_1st_instead</variable>
+	</message>
+	<message>
+		<err_code>54</err_code>
+		<translation>Re-Confirm the password</translation>
+		<variable>gsm_msg_pub_re_cfm_pw</variable>
+	</message>
+	<message>
+		<err_code>55</err_code>
+		<translation>The Ending Port value should be greater than or equal to the Starting Port value.</translation>
+		<variable>gsm_msg_pub_port_range</variable>
+	</message>
+	<message>
+		<err_code>56</err_code>
+		<translation>Did you save this page</translation>
+		<variable>gsm_msg_pub_cfm_save</variable>
+	</message>
+	<message>
+		<err_code>57</err_code>
+		<translation>The wireless security options WPA-PSK (TKIP), WPA2-PSK (AES), WPA-PSK (TKIP) + WPA-PSK (AES) and WPA/WPA2 Enterprise are not available if you enable the wireless repeating function. [NEL]Please change your security option before you enable the wireless repeating function.</translation>
+		<variable>gsm_msg_wds_sec_opt</variable>
+	</message>
+	<message>
+		<err_code>58</err_code>
+		<translation>The wireless repeating function cannot be used with Auto Channel.[NEL]Please change your channel settings before you enable the wireless repeating function.</translation>
+		<variable>gsm_msg_wds_auto_no_rpt</variable>
+	</message>
+	<message>
+		<err_code>61</err_code>
+		<translation>To Apply or Cancel Click Apply to save the new settings to the Router. Click Cancel to disregard any unsaved changes.</translation>
+		<variable>gsm_msg_wds_update_only</variable>
+	</message>
+	<message>
+		<err_code>62</err_code>
+		<translation>Invalid IP address. Please enter it again.</translation>
+		<variable>gsm_msg_wds_inv_ip_range</variable>
+	</message>
+	<message>
+		<err_code>63</err_code>
+		<translation>To operate as Repeater, please setup a new IP address of this device, then you can configure this device via this new IP address in the future.</translation>
+		<variable>gsm_msg_wds_set_new_ip</variable>
+	</message>
+	<message>
+		<err_code>64</err_code>
+		<translation>A PIN is a string of 4 or 8 digits.</translation>
+		<variable>gsm_msg_wds_pin_format</variable>
+	</message>
+	<message>
+		<err_code>65</err_code>
+		<translation>The checksum of the PIN is not correct. Please check the PIN again.[NEL]</translation>
+		<variable>gsm_msg_wds_inv_pin</variable>
+	</message>
+	<message>
+		<err_code>66</err_code>
+		<translation>Insufficient passphrase length. It should be a minimum of 8 characters long.</translation>
+		<variable>gsm_msg_wls_inv_phrase_char</variable>
+	</message>
+	<message>
+		<err_code>67</err_code>
+		<translation>This IP Address should be either in the same subnet with LAN IP Address or in the same subnet with WAN IP Address !</translation>
+		<variable>gsm_msg_wls_inv_radius_ip</variable>
+	</message>
+	<message>
+		<err_code>67</err_code>
+		<translation>The RADIUS server Port must be in the range [1- 65535]!</translation>
+		<variable>gsm_msg_wls_radius_port</variable>
+	</message>
+	<message>
+		<err_code>68</err_code>
+		<translation>Maximum key length is </translation>
+		<variable>gsm_msg_wls_max_key_length_1</variable>
+	</message>
+	<message>
+		<err_code>69</err_code>
+		<translation> characters.</translation>
+		<variable>gsm_msg_wls_max_key_length_2</variable>
+	</message>
+	<message>
+		<err_code>70</err_code>
+		<translation>The wireless repeating function cannot be used with Auto Channel.[NEL]Please change your channel settings before you enable the wireless repeating function.</translation>
+		<variable>gsm_msg_wls_no_auto_channel</variable>
+	</message>
+	<message>
+		<err_code>71</err_code>
+		<translation>Invalid device name.</translation>
+		<variable>gsm_msg_wls_inv_dev_name</variable>
+	</message>
+	<message>
+		<err_code>72</err_code>
+		<translation>Invalid MAC address.</translation>
+		<variable>gsm_msg_wls_inv_mac</variable>
+	</message>
+	<message>
+		<err_code>73</err_code>
+		<translation>Maximum key length is </translation>
+		<variable>gsm_msg_wls_max_pw_1</variable>
+	</message>
+	<message>
+		<err_code>74</err_code>
+		<translation> characters.</translation>
+		<variable>gsm_msg_wls_max_pw_2</variable>
+	</message>
+	<message>
+		<err_code>75</err_code>
+		<translation>WEP security with shared key authentication does not work with WPS. WPS will be inaccessible. Do you want to continue?</translation>
+		<variable>gsm_msg_wls_wep_conflict_wds</variable>
+	</message>
+	<message>
+		<err_code>76</err_code>
+		<translation>WPA/WPA2 Enterprise cannot work with WPS. WPS is going to become inaccessible. Do you want to continue?</translation>
+		<variable>gsm_msg_wls_wpax_conflict_wds</variable>
+	</message>
+	<message>
+		<err_code>77</err_code>
+		<translation>WPA / WPA2 with Radius cannot work with WPS. WPS is going to become inaccessible. Do you want to continue?</translation>
+		<variable>gsm_msg_wls_wpa2x_conflict_wds</variable>
+	</message>
+	<message>
+		<err_code>78</err_code>
+		<translation>WPA / WPA2 with Radius cannot work with WPS. WPS is going to become inaccessible. Do you want to continue?</translation>
+		<variable>gsm_msg_wls_wpa_mix_conflict_wds</variable>
+	</message>
+	<message>
+		<err_code>79</err_code>
+		<translation>WEP security with shared key authentication does not work with WPS. WPS will be inaccessible. Do you want to continue?</translation>
+		<variable>gsm_msg_wls_open_wep_conflict_wds</variable>
+	</message>
+	<message>
+		<err_code>80</err_code>
+		<translation>To Apply or Cancel Click Apply to save the new settings to the Router. Click Cancel to disregard any unsaved changes.</translation>
+		<variable>gsm_msg_wls_cfm_ssid_apply</variable>
+	</message>
+	<message>
+		<err_code>81</err_code>
+		<translation>RADIUS server IP Address:</translation>
+		<variable>gsm_msg_wls_sever_name_ip</variable>
+	</message>
+	<message>
+		<err_code>82</err_code>
+		<translation>Name</translation>
+		<variable>gsm_msg_wls_name</variable>
+	</message>
+	<message>
+		<err_code>83</err_code>
+		<translation>RADIUS server Port:</translation>
+		<variable>unknown_gsm_msg_wls_radius_port</variable>
+	</message>
+	<message>
+		<err_code>84</err_code>
+		<translation>Shared Key</translation>
+		<variable>gsm_msg_wls_shared_key</variable>
+	</message>
+	<message>
+		<err_code>85</err_code>
+		<translation>Insufficient passphrase length. It should be a minimum of 8 characters long.</translation>
+		<variable>gsm_msg_wls_wpa_key_must_8</variable>
+	</message>
+	<message>
+		<err_code>86</err_code>
+		<translation>Auto</translation>
+		<variable>gsm_msg_wls_auto</variable>
+	</message>
+	<message>
+		<err_code>87</err_code>
+		<translation>Please select the correct region for your location.</translation>
+		<variable>gsm_msg_wls_inv_region</variable>
+	</message>
+	<message>
+		<err_code>88</err_code>
+		<translation>A passphrase consists of either 8~63 ASCII characters or exactly 64 hex-digits. A hex digit is one of these characters: 0, 1, 2, ..., 8, 9, A, B, C, D, E, F.</translation>
+		<variable>gsm_msg_wls_passphrase_limit</variable>
+	</message>
+	<message>
+		<err_code>89</err_code>
+		<translation>Fragmentation Length value is outside the range 256-2346.</translation>
+		<variable>gsm_msg_wls_fragm_throd</variable>
+	</message>
+	<message>
+		<err_code>90</err_code>
+		<translation>CTS/RTS Threshold value is outside the range 1-2347.</translation>
+		<variable>gsm_msg_wls_crts_throd</variable>
+	</message>
+	<message>
+		<err_code>91</err_code>
+		<translation>Host Name</translation>
+		<variable>gsm_msg_ddns_host_name</variable>
+	</message>
+	<message>
+		<err_code>92</err_code>
+		<translation>User Name</translation>
+		<variable>gsm_msg_ddns_user_name</variable>
+	</message>
+	<message>
+		<err_code>93</err_code>
+		<translation>Password</translation>
+		<variable>gsm_msg_ddns_pw</variable>
+	</message>
+	<message>
+		<err_code>94</err_code>
+		<translation>Error:Invalid SMTP server address.</translation>
+		<variable>gsm_msg_mail_inv_smtp_server_ad</variable>
+	</message>
+	<message>
+		<err_code>95</err_code>
+		<translation>Error: Invalid e-mail address.</translation>
+		<variable>gsm_msg_mail_inv_email_ad</variable>
+	</message>
+	<message>
+		<err_code>96</err_code>
+		<translation>Invalid IP address. Please enter it again.</translation>
+		<variable>gsm_msg_eth_inv_ip</variable>
+	</message>
+	<message>
+		<err_code>97</err_code>
+		<translation>Invalid subnet mask. Please enter it again.[NEL]</translation>
+		<variable>gsm_msg_eth_inv_mask</variable>
+	</message>
+	<message>
+		<err_code>98</err_code>
+		<translation>Invalid gateway IP address. Please enter it again.</translation>
+		<variable>gsm_msg_eth_inv_gateway</variable>
+	</message>
+	<message>
+		<err_code>99</err_code>
+		<translation>Invalid primary DNS address. Please enter it again.[NEL]</translation>
+		<variable>gsm_msg_eth_inv_prime_dns</variable>
+	</message>
+	<message>
+		<err_code>100</err_code>
+		<translation>Invalid secondary DNS address. Please enter it again.[NEL]</translation>
+		<variable>gsm_msg_eth_inv_sec_dns</variable>
+	</message>
+	<message>
+		<err_code>101</err_code>
+		<translation>Invalid MAC address.</translation>
+		<variable>gsm_msg_eth_inv_mac</variable>
+	</message>
+	<message>
+		<err_code>102</err_code>
+		<translation>No Internet connection detected.</translation>
+		<variable>gsm_msg_eth_warn_nat_allow_all</variable>
+	</message>
+	<message>
+		<err_code>103</err_code>
+		<translation>When the firewall is disabled protections normally provided to your network will be disabled! [NEL][NEL]Turn off the firewall only if you are sure you want to do this.</translation>
+		<variable>gsm_msg_eth_warn_no_fw_prot</variable>
+	</message>
+	<message>
+		<err_code>104</err_code>
+		<translation>keyword</translation>
+		<variable>gsm_msg_kwd_keyword</variable>
+	</message>
+	<message>
+		<err_code>105</err_code>
+		<translation>already exist</translation>
+		<variable>gsm_msg_kwd_keyword_exist</variable>
+	</message>
+	<message>
+		<err_code>106</err_code>
+		<translation>Invalid keyword</translation>
+		<variable>gsm_msg_kwd_no_keyword_sel</variable>
+	</message>
+	<message>
+		<err_code>107</err_code>
+		<translation>The IP address conflicts with the WAN IP subnet. Please enter a different IP address.</translation>
+		<variable>gsm_msg_lan_inv_ip_same_wan</variable>
+	</message>
+	<message>
+		<err_code>109</err_code>
+		<translation>Invalid subnet mask. Please enter it again.[NEL]</translation>
+		<variable>gsm_msg_lan_inv_mask</variable>
+	</message>
+	<message>
+		<err_code>110</err_code>
+		<translation>Invalid DHCP starting IP address. Please enter it again.[NEL]</translation>
+		<variable>gsm_msg_lan_inv_dhcp_strat_ip</variable>
+	</message>
+	<message>
+		<err_code>111</err_code>
+		<translation>Invalid DHCP ending IP address. Please enter it again.[NEL]</translation>
+		<variable>gsm_msg_lan_inv_dhcp_end_ip</variable>
+	</message>
+	<message>
+		<err_code>113</err_code>
+		<translation>Invalid Idletime. Should be less than 99 minutes.</translation>
+		<variable>gsm_msg_pw_inv_idle_range</variable>
+	</message>
+	<message>
+		<err_code>114</err_code>
+		<translation>The password you typed does not match. Please enter it again.</translation>
+		<variable>gsm_msg_pw_not_match_password</variable>
+	</message>
+	<message>
+		<err_code>115</err_code>
+		<translation>Login</translation>
+		<variable>gsm_msg_ppp_login</variable>
+	</message>
+	<message>
+		<err_code>116</err_code>
+		<translation>Invalid Idletime. Should be less than 99 minutes.</translation>
+		<variable>gsm_msg_ppp_idle_time</variable>
+	</message>
+	<message>
+		<err_code>119</err_code>
+		<translation>Invalid IP in list</translation>
+		<variable>gsm_msg_rmt_inv_ip_in_list</variable>
+	</message>
+	<message>
+		<err_code>121</err_code>
+		<translation>IP Address List</translation>
+		<variable>gsm_msg_rmt_setting_list</variable>
+	</message>
+	<message>
+		<err_code>124</err_code>
+		<translation>Invalid IP address. Please enter it again.</translation>
+		<variable>gsm_msg_rmt_non_set_ip</variable>
+	</message>
+	<message>
+		<err_code>125</err_code>
+		<translation>Start IP must be less than End IP.</translation>
+		<variable>gsm_msg_rmt_end_ip_small</variable>
+	</message>
+	<message>
+		<err_code>126</err_code>
+		<translation>Invalid port number. It should be in the range 1024-65534. </translation>
+		<variable>gsm_msg_rmt_port_num</variable>
+	</message>
+	<message>
+		<err_code>128</err_code>
+		<translation>Device Name</translation>
+		<variable>gsm_msg_resv_device_name</variable>
+	</message>
+	<message>
+		<err_code>129</err_code>
+		<translation>Please enter a name for selected Wireless PC Card.</translation>
+		<variable>gsm_msg_resv_enter_name</variable>
+	</message>
+	<message>
+		<err_code>130</err_code>
+		<translation>Name</translation>
+		<variable>gsm_msg_resv_name</variable>
+	</message>
+	<message>
+		<err_code>131</err_code>
+		<translation>Route Name</translation>
+		<variable>gsm_msg_rout_route_name</variable>
+	</message>
+	<message>
+		<err_code>132</err_code>
+		<translation>Metric</translation>
+		<variable>132</variable>
+	</message>
+	<message>
+		<err_code>133</err_code>
+		<translation>Invalid IP address. Please enter it again.</translation>
+		<variable>gsm_msg_rule_inv_lan_ip</variable>
+	</message>
+	<message>
+		<err_code>134</err_code>
+		<translation>Invalid IP address. Please enter it again.</translation>
+		<variable>gsm_msg_rule_inv_wan_start_ip</variable>
+	</message>
+	<message>
+		<err_code>135</err_code>
+		<translation>Invalid IP address. Please enter it again.</translation>
+		<variable>gsm_msg_rule_inv_wan_finish_ip</variable>
+	</message>
+	<message>
+		<err_code>136</err_code>
+		<translation>Start IP must be less than End IP.</translation>
+		<variable>gsm_msg_rule_wan_end_ip_small</variable>
+	</message>
+	<message>
+		<err_code>137</err_code>
+		<translation>Invalid LAN start ip, please enter again</translation>
+		<variable>gsm_msg_rule_inv_lan_start_ip</variable>
+	</message>
+	<message>
+		<err_code>138</err_code>
+		<translation>Invalid LAN finish ip, please enter again</translation>
+		<variable>gsm_msg_rule_inv_lan_finish_ip</variable>
+	</message>
+	<message>
+		<err_code>139</err_code>
+		<translation>LAN start ip must less than finish ip</translation>
+		<variable>gsm_msg_rule_lan_end_ip_small</variable>
+	</message>
+	<message>
+		<err_code>140</err_code>
+		<translation>Invalid destination start ip, please enter again</translation>
+		<variable>gsm_msg_rule_inv_dest_ip</variable>
+	</message>
+	<message>
+		<err_code>141</err_code>
+		<translation>Invalid finish ip, please enter again</translation>
+		<variable>gsm_msg_rule_inv_finish_ip</variable>
+	</message>
+	<message>
+		<err_code>142</err_code>
+		<translation>Invalid time input.</translation>
+		<variable>gsm_msg_sch_inv_start_hr</variable>
+	</message>
+	<message>
+		<err_code>143</err_code>
+		<translation>Invalid time input.</translation>
+		<variable>gsm_msg_sch_inv_start_min</variable>
+	</message>
+	<message>
+		<err_code>144</err_code>
+		<translation>Invalid time input.</translation>
+		<variable>gsm_msg_sch_inv_end_hr</variable>
+	</message>
+	<message>
+		<err_code>145</err_code>
+		<translation>Invalid time input.</translation>
+		<variable>gsm_msg_sch_inv_time</variable>
+	</message>
+	<message>
+		<err_code>146</err_code>
+		<translation>Invalid time input.</translation>
+		<variable>gsm_msg_sch_inv_end_min</variable>
+	</message>
+	<message>
+		<err_code>148</err_code>
+		<translation>Invalid time input.</translation>
+		<variable>gsm_msg_sch_end_time_small</variable>
+	</message>
+	<message>
+		<err_code>149</err_code>
+		<translation>Service Name</translation>
+		<variable>gsm_msg_sev_service_name</variable>
+	</message>
+	<message>
+		<err_code>150</err_code>
+		<translation>Port number is wrong, the range should be 1 ~ 65534.</translation>
+		<variable>gsm_msg_sev_start_port</variable>
+	</message>
+	<message>
+		<err_code>151</err_code>
+		<translation>Port number is wrong, the range should be 1 ~ 65534.</translation>
+		<variable>gsm_msg_sev_finish_port</variable>
+	</message>
+	<message>
+		<err_code>152</err_code>
+		<translation>The Ending Port value should be greater than or equal to the Starting Port value.</translation>
+		<variable>gsm_msg_sev_end_port_small</variable>
+	</message>
+	<message>
+		<err_code>153</err_code>
+		<translation>Invalid device name.</translation>
+		<variable>gsm_msg_sev_inv_char_device_name</variable>
+	</message>
+	<message>
+		<err_code>154</err_code>
+		<translation>File name cannot be blank.</translation>
+		<variable>gsm_msg_bku_no_blank_filename</variable>
+	</message>
+	<message>
+		<err_code>155</err_code>
+		<translation>Warning! [NEL]Restoring settings from a configuration file will erase all of the current settings. [NEL]Are you sure you want to do this?</translation>
+		<variable>gsm_msg_bku_cfm_restore</variable>
+	</message>
+	<message>
+		<err_code>156</err_code>
+		<translation>Please check the LEDs to see if the Router is ready, [NEL]then click OK to re-connect.</translation>
+		<variable>gsm_msg_bku_finish</variable>
+	</message>
+	<message>
+		<err_code>157</err_code>
+		<translation>Please check the LEDs to see if the</translation>
+		<variable>gsm_msg_bku_finish_1</variable>
+	</message>
+	<message>
+		<err_code>158</err_code>
+		<translation>is ready, [NEL]then click OK to re-connect.</translation>
+		<variable>gsm_msg_bku_finish_2</variable>
+	</message>
+	<message>
+		<err_code>159</err_code>
+		<translation>Continue?[NEL]All existing Internet connections will be terminated.</translation>
+		<variable>gsm_msg_bku_cfm_proceed</variable>
+	</message>
+	<message>
+		<err_code>161</err_code>
+		<translation>Internet name can not be blank</translation>
+		<variable>gsm_msg_dig_no_blank_int_name</variable>
+	</message>
+	<message>
+		<err_code>162</err_code>
+		<translation>Invalid Internet name, please enter again</translation>
+		<variable>gsm_msg_dig_inv_int_name</variable>
+	</message>
+	<message>
+		<err_code>163</err_code>
+		<translation>DNS Address must be specified</translation>
+		<variable>gsm_msg_eth_dns_before_ip</variable>
+	</message>
+	<message>
+		<err_code>164</err_code>
+		<translation>Invalid position. Please re-enter new position</translation>
+		<variable>gsm_msg_fw_inv_position</variable>
+	</message>
+	<message>
+		<err_code>165</err_code>
+		<translation>No entry selected. [NEL]Click a radio button to select an entry</translation>
+		<variable>gsm_msg_fw_no_select</variable>
+	</message>
+	<message>
+		<err_code>166</err_code>
+		<translation>ALLOW always</translation>
+		<variable>gsm_msg_fw_allow_always</variable>
+	</message>
+	<message>
+		<err_code>167</err_code>
+		<translation>If you want to send an e-mail notice, turn on e-mail notification on the E-mail screen.</translation>
+		<variable>gsm_msg_log_en_send_log</variable>
+	</message>
+	<message>
+		<err_code>168</err_code>
+		<translation>There is no application is selected</translation>
+		<variable>gsm_msg_pfw_no_app_sel</variable>
+	</message>
+	<message>
+		<err_code>169</err_code>
+		<translation>Invalid service name.</translation>
+		<variable>gsm_msg_pfw_no_cus_service_name</variable>
+	</message>
+	<message>
+		<err_code>170</err_code>
+		<translation>Invalid Starting Port value.</translation>
+		<variable>gsm_msg_pfw_port_start</variable>
+	</message>
+	<message>
+		<err_code>172</err_code>
+		<translation>Invalid Ending Port value.</translation>
+		<variable>gsm_msg_pfw_port_end</variable>
+	</message>
+	<message>
+		<err_code>173</err_code>
+		<translation>Invalid IP address range.</translation>
+		<variable>gsm_msg_pfw_port_range</variable>
+	</message>
+	<message>
+		<err_code>174</err_code>
+		<translation>Custom Rule</translation>
+		<variable>gsm_msg_pfw_custom_rule</variable>
+	</message>
+	<message>
+		<err_code>175</err_code>
+		<translation>Service Name</translation>
+		<variable>gsm_msg_pfw_service_name</variable>
+	</message>
+	<message>
+		<err_code>176</err_code>
+		<translation>Service Type</translation>
+		<variable>gsm_msg_pfw_service_type</variable>
+	</message>
+	<message>
+		<err_code>177</err_code>
+		<translation>Starting Port</translation>
+		<variable>gsm_msg_pfw_starting_port</variable>
+	</message>
+	<message>
+		<err_code>178</err_code>
+		<translation>Ending Port</translation>
+		<variable>gsm_msg_pfw_ending_port</variable>
+	</message>
+	<message>
+		<err_code>179</err_code>
+		<translation>Server IP Address</translation>
+		<variable>gsm_msg_pfw_server_ip_add</variable>
+	</message>
+	<message>
+		<err_code>180</err_code>
+		<translation>Pre-set Port Forwarding Rule</translation>
+		<variable>gsm_msg_pfw_preset_pfw_rule</variable>
+	</message>
+	<message>
+		<err_code>181</err_code>
+		<translation>IP_Phone</translation>
+		<variable>gsm_msg_pfw_ip_phone</variable>
+	</message>
+	<message>
+		<err_code>182</err_code>
+		<translation>News</translation>
+		<variable>gsm_msg_pfw_news</variable>
+	</message>
+	<message>
+		<err_code>183</err_code>
+		<translation>Triggering Port</translation>
+		<variable>gsm_msg_pft_port</variable>
+	</message>
+	<message>
+		<err_code>184</err_code>
+		<translation>Invalid Port triggering timeout, please enter proper numeral.[NEL]</translation>
+		<variable>gsm_msg_pft_timeout</variable>
+	</message>
+	<message>
+		<err_code>185</err_code>
+		<translation>Failure</translation>
+		<variable>gsm_msg_qos_fail_parse_app</variable>
+	</message>
+	<message>
+		<err_code>186</err_code>
+		<translation>You have just modified the policy.[NEL]Before editing policy, you need to click on [Apply] to keep the changes or [Cancel] to restore the original policy settings.</translation>
+		<variable>gsm_msg_qos_apply_or_cancel</variable>
+	</message>
+	<message>
+		<err_code>187</err_code>
+		<translation>, must be in the range 1-65535.[NEL]</translation>
+		<variable>gsm_msg_pfw_inv_range</variable>
+	</message>
+	<message>
+		<err_code>200</err_code>
+		<translation>Duplicate MAC address.</translation>
+		<variable>gsm_msg_qos_mac_conflicts</variable>
+	</message>
+	<message>
+		<err_code>202</err_code>
+		<translation>Invalid MAC address.</translation>
+		<variable>gsm_msg_qos_inv_mac_format</variable>
+	</message>
+	<message>
+		<err_code>205</err_code>
+		<translation>cannot be empty</translation>
+		<variable>gsm_msg_qos_no_rule</variable>
+	</message>
+	<message>
+		<err_code>206</err_code>
+		<translation>Failure</translation>
+		<variable>gsm_msg_qos_fail_parse_app</variable>
+	</message>
+	<message>
+		<err_code>207</err_code>
+		<translation>Failure</translation>
+		<variable>gsm_msg_qos_fail_parse_mac</variable>
+	</message>
+	<message>
+		<err_code>208</err_code>
+		<translation>Failure</translation>
+		<variable>gsm_msg_qos_fail_parse_game</variable>
+	</message>
+	<message>
+		<err_code>216</err_code>
+		<translation>Policy Name already exists</translation>
+		<variable>gsm_msg_qos_conflict_predef_name</variable>
+	</message>
+	<message>
+		<err_code>217</err_code>
+		<translation>Policy Name already exists</translation>
+		<variable>gsm_msg_qos_conflict_policy_name</variable>
+	</message>
+	<message>
+		<err_code>219</err_code>
+		<translation>Failure</translation>
+		<variable>gsm_msg_qos_inv_user_policy</variable>
+	</message>
+	<message>
+		<err_code>220</err_code>
+		<translation>Port conflicts with another rule.</translation>
+		<variable>gsm_msg_qos_exist_port</variable>
+	</message>
+	<message>
+		<err_code>221</err_code>
+		<translation>Invalid Uplink Bandwidth</translation>
+		<variable>gsm_msg_qos_uplink_bandwidth</variable>
+	</message>
+	<message>
+		<err_code>222</err_code>
+		<translation>QoS Policy</translation>
+		<variable>gsm_msg_qos_policy</variable>
+	</message>
+	<message>
+		<err_code>223</err_code>
+		<translation>Priority</translation>
+		<variable>gsm_msg_qos_priority</variable>
+	</message>
+	<message>
+		<err_code>224</err_code>
+		<translation>Description</translation>
+		<variable>gsm_msg_qos_description</variable>
+	</message>
+	<message>
+		<err_code>225</err_code>
+		<translation>application</translation>
+		<variable>gsm_msg_qos_application</variable>
+	</message>
+	<message>
+		<err_code>226</err_code>
+		<translation>Online Gaming</translation>
+		<variable>gsm_msg_qos_on_line_gaming</variable>
+	</message>
+	<message>
+		<err_code>227</err_code>
+		<translation>LAN Port</translation>
+		<variable>gsm_msg_qos_lan_port</variable>
+	</message>
+	<message>
+		<err_code>228</err_code>
+		<translation>None</translation>
+		<variable>gsm_msg_qos_none</variable>
+	</message>
+	<message>
+		<err_code>229</err_code>
+		<translation>Device Name</translation>
+		<variable>gsm_msg_qos_device_name</variable>
+	</message>
+	<message>
+		<err_code>230</err_code>
+		<translation>MAC Address</translation>
+		<variable>gsm_msg_qos_mac_ad</variable>
+	</message>
+	<message>
+		<err_code>231</err_code>
+		<translation>QoS Policy Name</translation>
+		<variable>gsm_msg_qos_policy_name</variable>
+	</message>
+	<message>
+		<err_code>232</err_code>
+		<translation>With your current connection method, this setting has no effect.</translation>
+		<variable>gsm_msg_wan_sec_inv_conn_method</variable>
+	</message>
+	<message>
+		<err_code>233</err_code>
+		<translation>Encapsulation mode on the Basic Settings page must be changed to PPPoE to enable PPPoE Relay.</translation>
+		<variable>gsm_msg_wan_sec_must_pppoe_mode</variable>
+	</message>
+	<message>
+		<err_code>234</err_code>
+		<translation>Invalid MTU value, valid range is 616 to</translation>
+		<variable>gsm_msg_wan_sec_mtu_value</variable>
+	</message>
+	<message>
+		<err_code>235</err_code>
+		<translation>Failure</translation>
+		<variable>gsm_msg_tree_err_geteleid</variable>
+	</message>
+	<message>
+		<err_code>236</err_code>
+		<translation>Failure</translation>
+		<variable>gsm_msg_tree_inv_id_use_ext_id</variable>
+	</message>
+	<message>
+		<err_code>237</err_code>
+		<translation>The file name is null. Locate and select the upgrade file from your hard disk, please.</translation>
+		<variable>gsm_msg_upg_no_file</variable>
+	</message>
+	<message>
+		<err_code>238</err_code>
+		<translation>Please assign the correct file. The file format is *.</translation>
+		<variable>gsm_msg_upg_inv_file_type</variable>
+	</message>
+	<message>
+		<err_code>239</err_code>
+		<translation>The firmware upgrade can contain valuable enhancements.[NEL] Are you sure you want to turn off automatic checking?[NEL] After you turn it off, you can reenable it through the Router Upgrade screen.</translation>
+		<variable>gsm_msg_upg_cfm_fw_upg</variable>
+	</message>
+	<message>
+		<err_code>240</err_code>
+		<translation>cannot be empty</translation>
+		<variable>gsm_msg_upnp_cannot_empty</variable>
+	</message>
+	<message>
+		<err_code>241</err_code>
+		<translation>must be numeric</translation>
+		<variable>gsm_msg_upnp_must_num</variable>
+	</message>
+	<message>
+		<err_code>242</err_code>
+		<translation>Invalid Advertisement Period value. The value must be in the range 1-1440.</translation>
+		<variable>gsm_msg_upnp_advertisement_period_range</variable>
+	</message>
+	<message>
+		<err_code>243</err_code>
+		<translation>Invalid Advertisement Time to Live value. The value must be in the range 1-255.</translation>
+		<variable>gsm_msg_upnp_ttl_range</variable>
+	</message>
+	<message>
+		<err_code>244</err_code>
+		<translation>No entry selected. [NEL]Click a radio button to select an entry</translation>
+		<variable>gsm_msg_usb_no_sel_radio</variable>
+	</message>
+	<message>
+		<err_code>245</err_code>
+		<translation>Not Shared</translation>
+		<variable>gsm_msg_usb_not_shared</variable>
+	</message>
+	<message>
+		<err_code>246</err_code>
+		<translation>Port</translation>
+		<variable>gsm_msg_usb_port</variable>
+	</message>
+	<message>
+		<err_code>247</err_code>
+		<translation>Character is not allowed</translation>
+		<variable>gsm_msg_usb_inv_char_network_name</variable>
+	</message>
+	<message>
+		<err_code>248</err_code>
+		<translation>These items will be all deleted. Are you sure you want to delete them?</translation>
+		<variable>gsm_msg_usb_cfm_delete</variable>
+	</message>
+	<message>
+		<err_code>249</err_code>
+		<translation>Please select one ...</translation>
+		<variable>gsm_msg_wiz_no_sel</variable>
+	</message>
+	<message>
+		<err_code>250</err_code>
+		<translation>A passphrase consists of either 8~63 ASCII characters or exactly 64 hex-digits. A hex digit is one of these characters: 0, 1, 2, ..., 8, 9, A, B, C, D, E, F.</translation>
+		<variable>gsm_msg_wls_wpa_key_must_63</variable>
+	</message>
+	<message>
+		<err_code>251</err_code>
+		<translation>Character is not allowed in passphrase.</translation>
+		<variable>gsm_msg_wls_wpa_key_forbid</variable>
+	</message>
+	<message>
+		<err_code>252</err_code>
+		<translation>IMPORTANT WPA-PSK [TKIP] may only operate at "Up to 54Mbps" rate, not N rate.NETGEAR recommends that you use WPA2-PSK [AES] to get full N rate support.</translation>
+		<variable>gsm_msg_wls_wpa_work_mode_warn</variable>
+	</message>
+	<message>
+		<err_code>253</err_code>
+		<translation>Please enter 1 to 128 characters (octets) in the RADIUS server Shared Secret field!</translation>
+		<variable>gsm_msg_wls_radius_key_val_len</variable>
+	</message>
+	<message>
+		<err_code>254</err_code>
+		<translation>Character is not allowed</translation>
+		<variable>gsm_msg_not_printable</variable>
+	</message>
+	<message>
+		<err_code>255</err_code>
+		<translation>Device name can not be null.</translation>
+		<variable>gsm_msg_dev_name_blank</variable>
+	</message>
+	<message>
+		<err_code>256</err_code>
+		<translation>Invalid device name.</translation>
+		<variable>gsm_msg_dev_name_invalid</variable>
+	</message>
+	<message>
+		<err_code>257</err_code>
+		<translation>Please enter the idle time.[NEL]</translation>
+		<variable>gsm_msg_idle_time_blank</variable>
+	</message>
+	<message>
+		<err_code>258</err_code>
+		<translation>Invalid idle time,please enter proper numeral.</translation>
+		<variable>gsm_msg_idle_time_invalid</variable>
+	</message>
+	<message>
+		<err_code>259</err_code>
+		<translation>Invalid server address. Please enter it again.[NEL]</translation>
+		<variable>gsm_msg_pptp_fqdn</variable>
+	</message>
+	<message>
+		<err_code>260</err_code>
+		<translation>Invalid server address. Please enter it again.[NEL]</translation>
+		<variable>gsm_msg_pptp_server_addr_invalid</variable>
+	</message>
+	<message>
+		<err_code>261</err_code>
+		<translation>Invalid IP address. Please enter it again, or leave it blank.</translation>
+		<variable>gsm_msg_pptp_ip_invalid</variable>
+	</message>
+	<message>
+		<err_code>262</err_code>
+		<translation>Failure</translation>
+		<variable>gsm_msg_qos_rule_fail_parse</variable>
+	</message>
+	<message>
+		<err_code>263</err_code>
+		<translation>Online Gaming</translation>
+		<variable>gsm_msg_qos_gaming</variable>
+	</message>
+	<message>
+		<err_code>264</err_code>
+		<translation>The input data is duplicated with current record,[NEL]continue to overwrite?</translation>
+		<variable>gsm_msg_rev_confirm_overwrite</variable>
+	</message>
+	<message>
+		<err_code>265</err_code>
+		<translation>To re-establish the connection, please click the &lt;Connect&gt; button</translation>
+		<variable>gsm_msg_st_poe_disconnect_warning</variable>
+	</message>
+	<message>
+		<err_code>266</err_code>
+		<translation>Invalid Starting or Ending Port value.</translation>
+		<variable>gsm_msg_blk_serv_port_invalid</variable>
+	</message>
+	<message>
+		<err_code>267</err_code>
+		<translation>Invalid Starting Port value.</translation>
+		<variable>gsm_msg_blk_serv_sport_invalid</variable>
+	</message>
+	<message>
+		<err_code>268</err_code>
+		<translation>Invalid Ending Port value.</translation>
+		<variable>gsm_msg_blk_serv_eport_invalid</variable>
+	</message>
+	<message>
+		<err_code>269</err_code>
+		<translation>The Ending Port value should be greater than or equal to the Starting Port value.</translation>
+		<variable>gsm_msg_blk_serv_port_range_err</variable>
+	</message>
+	<message>
+		<err_code>270</err_code>
+		<translation>Invalid user defined service type.</translation>
+		<variable>gsm_msg_blk_serv_type_invalid</variable>
+	</message>
+	<message>
+		<err_code>271</err_code>
+		<translation>'User Defined' is reserved!</translation>
+		<variable>gsm_msg_blk_serv_resv</variable>
+	</message>
+	<message>
+		<err_code>272</err_code>
+		<translation>Duplicate service detected!</translation>
+		<variable>gsm_msg_blk_serv_dup_detected</variable>
+	</message>
+	<message>
+		<err_code>273</err_code>
+		<translation>Invalid IP address range.</translation>
+		<variable>gsm_msg_blk_serv_ip_rng_err</variable>
+	</message>
+	<message>
+		<err_code>274</err_code>
+		<translation>Traffic Meter is Enabled in 'Connection time control' Mode.[NEL] Can't select DHCP and StaticIP Mode.</translation>
+		<variable>gsm_msg_tm_en_wan_mode_error</variable>
+	</message>
+	<message>
+		<err_code>275</err_code>
+		<translation>Retry Interval is out of range [10~600].</translation>
+		<variable>gsm_msg_tm_intvl_err</variable>
+	</message>
+	<message>
+		<err_code>276</err_code>
+		<translation>The Traffic Meter monthly limit (</translation>
+		<variable>gsm_msg_tm_limnit_sub1</variable>
+	</message>
+	<message>
+		<err_code>277</err_code>
+		<translation>has been reached.</translation>
+		<variable>gsm_msg_tm_limnit_sub2</variable>
+	</message>
+	<message>
+		<err_code>278</err_code>
+		<translation>Your Traffic Meter counter is </translation>
+		<variable>gsm_msg_tm_water_mark_sub1</variable>
+	</message>
+	<message>
+		<err_code>279</err_code>
+		<translation>before the monthly limit is reached.</translation>
+		<variable>gsm_msg_tm_water_mark_sub2</variable>
+	</message>
+	<message>
+		<err_code>280</err_code>
+		<translation>Mbytes</translation>
+		<variable>gsm_msg_mbytes</variable>
+	</message>
+	<message>
+		<err_code>281</err_code>
+		<translation> minutes.</translation>
+		<variable>gsm_msg_minutes</variable>
+	</message>
+	<message>
+		<err_code>282</err_code>
+		<translation>Hours</translation>
+		<variable>gsm_msg_hours</variable>
+	</message>
+	<message>
+		<err_code>283</err_code>
+		<translation>days</translation>
+		<variable>gsm_msg_days</variable>
+	</message>
+	<message>
+		<err_code>284</err_code>
+		<translation>Invalid numeric value for Monthly Limit.[NEL]</translation>
+		<variable>gsm_msg_tm_limit_vol</variable>
+	</message>
+	<message>
+		<err_code>285</err_code>
+		<translation>Invalid numeric value for Monthly Limit.[NEL]</translation>
+		<variable>gsm_msg_tm_limit_time</variable>
+	</message>
+	<message>
+		<err_code>286</err_code>
+		<translation>Hour value in traffic counter reset time is invalid.[NEL]</translation>
+		<variable>gsm_msg_tm_rst_hour</variable>
+	</message>
+	<message>
+		<err_code>287</err_code>
+		<translation>Minute value in traffic counter reset time is invalid.[NEL]</translation>
+		<variable>gsm_msg_tm_rst_min</variable>
+	</message>
+	<message>
+		<err_code>288</err_code>
+		<translation>Traffic meter reset Day of Month</translation>
+		<variable>gsm_msg_tm_rst_day</variable>
+	</message>
+	<message>
+		<err_code>289</err_code>
+		<translation>Invalid numeric value for Watermark at traffic control.[NEL]</translation>
+		<variable>gsm_msg_tm_water_mark</variable>
+	</message>
+	<message>
+		<err_code>290</err_code>
+		<translation>Round-up value should be less than Monthly Limit.[NEL]</translation>
+		<variable>gsm_msg_tm_rd_vol</variable>
+	</message>
+	<message>
+		<err_code>291</err_code>
+		<translation>Round-up value should be less than Monthly Limit.[NEL]</translation>
+		<variable>gsm_msg_tm_mon_limit_val_err1</variable>
+	</message>
+	<message>
+		<err_code>292</err_code>
+		<translation>Watermark value should be less than Monthly Limit.[NEL]</translation>
+		<variable>gsm_msg_tm_mon_limit_val_err2</variable>
+	</message>
+	<message>
+		<err_code>293</err_code>
+		<translation>Watermark value should be less than Monthly Limit.[NEL]</translation>
+		<variable>gsm_msg_tm_mon_limit_val_err3</variable>
+	</message>
+	<message>
+		<err_code>294</err_code>
+		<translation>Restart Counter?</translation>
+		<variable>gsm_msg_tm_counter_chg_confm</variable>
+	</message>
+	<message>
+		<err_code>295</err_code>
+		<translation>Max number of access list item reached.</translation>
+		<variable>gsm_msg_m_accs_client_max_num</variable>
+	</message>
+	<message>
+		<err_code>296</err_code>
+		<translation>WPS process is in progress, please apply the changes later.</translation>
+		<variable>gsm_msg_wps_in_prog_warn</variable>
+	</message>
+	<message>
+		<err_code>297</err_code>
+		<translation>Please enter the base station MAC address.</translation>
+		<variable>gsm_msg_wds_station_mac</variable>
+	</message>
+	<message>
+		<err_code>298</err_code>
+		<translation>Please enter a repeater MAC address.</translation>
+		<variable>gsm_msg_wds_repeater_mac</variable>
+	</message>
+	<message>
+		<err_code>299</err_code>
+		<translation>Port triggering time-out cannot be null.</translation>
+		<variable>gsm_msg_pft_timeout_null</variable>
+	</message>
+	<message>
+		<err_code>300</err_code>
+		<translation>Invalid gateway IP address. Please enter it again.</translation>
+		<variable>gsm_msg_pptp_gw_ip_invalid</variable>
+	</message>
+	<message>
+		<err_code>301</err_code>
+		<translation>Invalid host name.</translation>
+		<variable>gsm_msg_ddns_host_invalid</variable>
+	</message>
+	<message>
+		<err_code>302</err_code>
+		<translation>Invalid secondary DNS address. Please enter it again.[NEL]</translation>
+		<variable>gsm_msg_two_fix_dns_same_err</variable>
+	</message>
+	<message>
+		<err_code>303</err_code>
+		<translation>Invalid character or characters in</translation>
+		<variable>gsm_msg_inc_colon_err</variable>
+	</message>
+	<message>
+		<err_code>304</err_code>
+		<translation>Character is not allowed in SSID.</translation>
+		<variable>gsm_msg_inv_ssid</variable>
+	</message>
+	<message>
+		<err_code>305</err_code>
+		<translation>Max number of access list item reached.</translation>
+		<variable>gsm_msg_wl_acl_tbl_full</variable>
+	</message>
+	<message>
+		<err_code>306</err_code>
+		<translation>Invalid service name, should only contain alphabets, digits, '_' and '-'</translation>
+		<variable>gsm_msg_FW_char_not_alw_sev_nm</variable>
+	</message>
+	<message>
+		<err_code>307</err_code>
+		<translation>The starting port address must be less than 65535.</translation>
+		<variable>gsm_msg_FW_st_port_ad_mst_ls</variable>
+	</message>
+	<message>
+		<err_code>308</err_code>
+		<translation>The ending port address must be less than 65535.</translation>
+		<variable>gsm_msg_FW_nd_port_ad_mst_ls</variable>
+	</message>
+	<message>
+		<err_code>309</err_code>
+		<translation>The starting port address must be bigger than 1.</translation>
+		<variable>gsm_msg_FW_st_port_ad_mst_bg</variable>
+	</message>
+	<message>
+		<err_code>310</err_code>
+		<translation>The ending port address must be bigger than 1.</translation>
+		<variable>gsm_msg_FW_nd_port_ad_mst_bg</variable>
+	</message>
+	<message>
+		<err_code>311</err_code>
+		<translation>The Ending Port value should be greater than or equal to the Starting Port value.</translation>
+		<variable>gsm_msg_FW_st_port_mst_ls_nd_post_ad</variable>
+	</message>
+	<message>
+		<err_code>AQSE07</err_code>
+		<translation>Invalid port settings.</translation>
+		<variable>gsm_msg_inv_port_set</variable>
+	</message>
+	<message>
+		<err_code>ALSE04</err_code>
+		<translation>Invalid DHCP ending and starting IP addresses. Please enter them again.[NEL]</translation>
+		<variable>gsm_msg_lan_inv_dhcp_ip</variable>
+	</message>
+	<message>
+		<err_code>m_defkey</err_code>
+		<translation>[NEL]Default key is required, other keys are optional</translation>
+		<variable>gsm_defkey</variable>
+	</message>
+	<message>
+		<err_code>APPE02</err_code>
+		<translation>The ending port address must be less than 65535.</translation>
+		<variable>gsm_appe02</variable>
+	</message>
+	<message>
+		<err_code>AQSE05</err_code>
+		<translation>The name of the QoS policy cannot be blank.</translation>
+		<variable>gsm_qos_blnk</variable>
+	</message>
+	<message>
+		<err_code>APPE13</err_code>
+		<translation>Invalid </translation>
+		<variable>gsm_invalid</variable>
+	</message>
+	<message>
+		<err_code>APPE14</err_code>
+		<translation>Invalid inbound connection port range.[NEL]</translation>
+		<variable>gsm_inv_in_port_range</variable>
+	</message>
+	<message>
+		<err_code>vlan001</err_code>
+		<translation>All group mappings, except Group1, are erased. Please re-configure the group mapping carefully.[NEL][NEL]Click APPLY on the main VLAN Settings page for the changes to take effect.[NEL][NEL]</translation>
+		<variable>gsm_cleanGroupMsg</variable>
+	</message>
+	<message>
+		<err_code>vlan002</err_code>
+		<translation>Path-Mapping will disable VLAN feature.[NEL][NEL]Please do check the settings on Interface Path-Mapping page to ensure the each 'lan port' or 'wifi ssid' maps to the desired WAN.[NEL][NEL]</translation>
+		<variable>gsm_path_mappingMsg</variable>
+	</message>
+	<message>
+		<err_code>vlan003</err_code>
+		<translation>WARNING!These setting will change the device connection behavior.If you have modified Group Mappings, you may need to change your cable to a different port socket based on your new setting.If the device fail to reconnect back to this Admin page, it is most likely that you have used a wrong port socket.Also, please ensure that your new IP MUST BE under the same subnet as the connected port.You may need to reboot your PC or restart network card to obtain a correct IP.</translation>
+		<variable>gsm_ipWarningMsg</variable>
+	</message>
+	<message>
+		<err_code>vlan004</err_code>
+		<translation>WARNING!These setting will change the device connection behavior.If you have modified Group Mappings, you may need to change your cable to a different port socket based on your new setting.If the device fail to reconnect back to this Admin page, it is most likely that you have used a wrong port socket.Also, please ensure that your new IP MUST BE under the same subnet as the connected port.You may need to reboot your PC or restart network card to obtain a correct IP.</translation>
+		<variable>gsm_groupChangeMsg</variable>
+	</message>
+	<message>
+		<err_code>vlan005</err_code>
+		<translation>All WAN interfaces are removed.[NEL]A GROUP can have only one WAN interface in router mode.</translation>
+		<variable>gsm_cleanWanMsg</variable>
+	</message>
+	<message>
+		<err_code>vlan006</err_code>
+		<translation>GROUP</translation>
+		<variable>gsm_GROUP</variable>
+	</message>
+	<message>
+		<err_code>vlan007</err_code>
+		<translation>VLAN number should NOT &lt; = 1 !</translation>
+		<variable>gsm_inv_vlan_num</variable>
+	</message>
+	<message>
+		<err_code>vlan008</err_code>
+		<translation>tag</translation>
+		<variable>gsm_Tag</variable>
+	</message>
+	<message>
+		<err_code>vlan009</err_code>
+		<translation>Action canceled: only one TAG can be assigned to a group.</translation>
+		<variable>gsm_cancel_one_tag_only</variable>
+	</message>
+	<message>
+		<err_code>vlan010</err_code>
+		<translation>Action canceled: only one VLAN can be assigned to a group.</translation>
+		<variable>gsm_cancel_one_vlan_only</variable>
+	</message>
+	<message>
+		<err_code>vlan011</err_code>
+		<translation>Action canceled: only one WAN can be assigned to a group.</translation>
+		<variable>gsm_cancel_one_wan_only</variable>
+	</message>
+	<message>
+		<err_code>vlan012</err_code>
+		<translation>Group1 must include VLAN1</translation>
+		<variable>gsm_g1_incl_vlan1</variable>
+	</message>
+	<message>
+		<err_code>vlan013</err_code>
+		<translation>The tags shouldn't be similar!</translation>
+		<variable>gsm_same_value</variable>
+	</message>
+	<message>
+		<err_code>vlan015</err_code>
+		<translation>MUST be within the range of 1 to 4094.</translation>
+		<variable>gsm_must_tag_range</variable>
+	</message>
+	<message>
+		<err_code>ARME08</err_code>
+		<translation>The valid range of Poll Interval is between 5 and 86400 seconds.</translation>
+		<variable>gsm_poll_interval_range</variable>
+	</message>	
+	<message>
+		<err_code>SWS059</err_code>
+		<translation>Group Key Update Interval </translation>
+		<variable>gsm_groupKey_update_interval</variable>
+	</message>		
+	<message>
+		<err_code>10101</err_code>
+		<translation>cannot be empty</translation>
+		<variable>10101</variable>
+	</message>
+	<message>
+		<err_code>10201</err_code>
+		<translation>This service is used by the rules function, you can not edit/delete it! Please delete corresponding rules first.</translation>
+		<variable>10201</variable>
+	</message>
+	<message>
+		<err_code>10202</err_code>
+		<translation>Service name cannot be null.</translation>
+		<variable>10202</variable>
+	</message>
+	<message>
+		<err_code>10203</err_code>
+		<translation>Service name already in use.</translation>
+		<variable>10203</variable>
+	</message>
+	<message>
+		<err_code>10204</err_code>
+		<translation>User defined Service is full</translation>
+		<variable>10204</variable>
+	</message>
+	<message>
+		<err_code>10205</err_code>
+		<translation>Rule table is full!</translation>
+		<variable>10205</variable>
+	</message>
+	<message>
+		<err_code>10206</err_code>
+		<translation>The blocked service already exists!</translation>
+		<variable>10206</variable>
+	</message>
+	<message>
+		<err_code>10207</err_code>
+		<translation>Please select an item to delete.</translation>
+		<variable>10207</variable>
+	</message>
+	<message>
+		<err_code>10208</err_code>
+		<translation>Port number is wrong, the range should be 1 ~ 65534.</translation>
+		<variable>10208</variable>
+	</message>
+	<message>
+		<err_code>10209</err_code>
+		<translation>Service port is already used by another service.</translation>
+		<variable>10209</variable>
+	</message>
+	<message>
+		<err_code>10210</err_code>
+		<translation>The router can support only 20 service rules.</translation>
+		<variable>10210</variable>
+	</message>
+	<message>
+		<err_code>10211</err_code>
+		<translation>Outbound rule is full!</translation>
+		<variable>10211</variable>
+	</message>
+	<message>
+		<err_code>10212</err_code>
+		<translation>Inbound rule is full!</translation>
+		<variable>10212</variable>
+	</message>
+	<message>
+		<err_code>10212</err_code>
+		<translation>Inbound rule is full!</translation>
+		<variable>10212</variable>
+	</message>
+	<message>
+		<err_code>10214</err_code>
+		<translation>Character is not allowed in keyword</translation>
+		<variable>10214</variable>
+	</message>
+	<message>
+		<err_code>10216</err_code>
+		<translation>No space to add new keywords</translation>
+		<variable>10216</variable>
+	</message>
+	<message>
+		<err_code>10217</err_code>
+		<translation>Invalid time input.</translation>
+		<variable>10217</variable>
+	</message>
+	<message>
+		<err_code>10218</err_code>
+		<translation>Duplicate service name.</translation>
+		<variable>10218</variable>
+	</message>
+	<message>
+		<err_code>10219</err_code>
+		<translation>Invalid keyword</translation>
+		<variable>10219</variable>
+	</message>
+	<message>
+		<err_code>10701</err_code>
+		<translation>This firmware file is incorrect! Please get the firmware file again and make sure it is the correct firmware for this product.</translation>
+		<variable>10701</variable>
+	</message>
+	<message>
+		<err_code>10702</err_code>
+		<translation>Not enough memory for firmware upgrade</translation>
+		<variable>10702</variable>
+	</message>
+	<message>
+		<err_code>10703</err_code>
+		<translation>Failed to update Firmware</translation>
+		<variable>10703</variable>
+	</message>
+	<message>
+		<err_code>10704</err_code>
+		<translation>Upgrading Router Firmware now. Please Wait</translation>
+		<variable>10704</variable>
+	</message>
+	<message>
+		<err_code>10804</err_code>
+		<translation>Invalid idle time,please enter proper numeral.</translation>
+		<variable>10804</variable>
+	</message>
+	<message>
+		<err_code>11004</err_code>
+		<translation>The IP address should be within the DHCP range. </translation>
+		<variable>11004</variable>
+	</message>
+	<message>
+		<err_code>11006</err_code>
+		<translation>Reserved IP cannot be the same as Router's LAN IP.</translation>
+		<variable>11006</variable>
+	</message>
+	<message>
+		<err_code>11009</err_code>
+		<translation>Invalid subnet mask. Please enter it again.[NEL]</translation>
+		<variable>11009</variable>
+	</message>
+	<message>
+		<err_code>11010</err_code>
+		<translation>Please do ipconfig /release and ipconfig /renew and enter the new IP in the browser in order to access the GUI again if LAN IP subnet will be changed.</translation>
+		<variable>11010</variable>
+	</message>
+	<message>
+		<err_code>11012</err_code>
+		<translation>Duplicate device name.</translation>
+		<variable>11012</variable>
+	</message>
+	<message>
+		<err_code>11013</err_code>
+		<translation>To avoid a conflict with your Internet Service Provider, your router's IP address has been updated to </translation>
+		<variable>11013</variable>
+	</message>
+	<message>
+		<err_code>11101</err_code>
+		<translation>Invalid IP address range.</translation>
+		<variable>11101</variable>
+	</message>
+	<message>
+		<err_code>11102</err_code>
+		<translation>Invalid metric number.</translation>
+		<variable>gsm_msg_rout_metric</variable>
+	</message>
+	<message>
+		<err_code>11103</err_code>
+		<translation>Invalid gateway IP address. Please enter it again.</translation>
+		<variable>11103</variable>
+	</message>
+	<message>
+		<err_code>11104</err_code>
+		<translation>Route name cannot be blank.</translation>
+		<variable>11104</variable>
+	</message>
+	<message>
+		<err_code>11105</err_code>
+		<translation>No more space to add static routes.</translation>
+		<variable>11105</variable>
+	</message>
+	<message>
+		<err_code>11107</err_code>
+		<translation>Duplicate route name.</translation>
+		<variable>11107</variable>
+	</message>
+	<message>
+		<err_code>11108</err_code>
+		<translation>Duplicate route condition.</translation>
+		<variable>11108</variable>
+	</message>
+	<message>
+		<err_code>11109</err_code>
+		<translation>The gateway should be on the same subnet as the WAN interface or the LAN interface.</translation>
+		<variable>11109</variable>
+	</message>
+	<message>
+		<err_code>11901</err_code>
+		<translation>The password you typed does not match. Please enter it again.</translation>
+		<variable>11901</variable>
+	</message>
+	<message>
+		<err_code>11902</err_code>
+		<translation>Maximum password length is 32 characters!</translation>
+		<variable>11902</variable>
+	</message>
+	<message>
+		<err_code>11903</err_code>
+		<translation>The old password is wrong!</translation>
+		<variable>11903</variable>
+	</message>
+	<message>
+		<err_code>11904</err_code>
+		<translation>Invalid Idletime. Should be less than 99 minutes.</translation>
+		<variable>11904</variable>
+	</message>
+	<message>
+		<err_code>11905</err_code>
+		<translation>Invalid password.</translation>
+		<variable>11905</variable>
+	</message>
+	<message>
+		<err_code>11906</err_code>
+		<translation>The old password is wrong!</translation>
+		<variable>11906</variable>
+	</message>
+	<message>
+		<err_code>12001</err_code>
+		<translation>Please enter a name for selected Wireless PC Card.</translation>
+		<variable>12001</variable>
+	</message>
+	<message>
+		<err_code>12002</err_code>
+		<translation>Max number of access list item reached.</translation>
+		<variable>12002</variable>
+	</message>
+	<message>
+		<err_code>12003</err_code>
+		<translation>The login name should not more than 32 characters</translation>
+		<variable>12003</variable>
+	</message>
+	<message>
+		<err_code>12004</err_code>
+		<translation>Service name cannot be null.</translation>
+		<variable>12004</variable>
+	</message>
+	<message>
+		<err_code>12005</err_code>
+		<translation>Invalid MAC address.</translation>
+		<variable>12005</variable>
+	</message>
+	<message>
+		<err_code>12006</err_code>
+		<translation>Invalid MAC address.</translation>
+		<variable>12006</variable>
+	</message>
+	<message>
+		<err_code>12007</err_code>
+		<translation>Invalid MAC address.</translation>
+		<variable>12007</variable>
+	</message>
+	<message>
+		<err_code>12008</err_code>
+		<translation>IP Address should be in range [%s , %s].</translation>
+		<variable>12008</variable>
+	</message>
+	<message>
+		<err_code>12010</err_code>
+		<translation> is not allowed to be a ssid!</translation>
+		<variable>12010</variable>
+	</message>
+	<message>
+		<err_code>12011</err_code>
+		<translation>Duplicate MAC address.</translation>
+		<variable>12011</variable>
+	</message>
+	<message>
+		<err_code>12012</err_code>
+		<translation>The WEP key that you entered is not valid.</translation>
+		<variable>12012</variable>
+	</message>
+	<message>
+		<err_code>12013</err_code>
+		<translation>The SSID is duplicate, please change to another one.</translation>
+		<variable>12013</variable>
+	</message>
+	<message>
+		<err_code>12015</err_code>
+		<translation>Character is not allowed in SSID.</translation>
+		<variable>12015</variable>
+	</message>
+	<message>
+		<err_code>12016</err_code>
+		<translation>Invalid Repeater IP address</translation>
+		<variable>12016</variable>
+	</message>
+	<message>
+		<err_code>12101</err_code>
+		<translation>One or more specified ports are being used by other configurations. Please check your settings for remote management, port forwarding, port triggering, the UPnP Port Mapping table, RIP, and Internet connection type.</translation>
+		<variable>12101</variable>
+	</message>
+	<message>
+		<err_code>12102</err_code>
+		<translation>Port conflicts with another rule.</translation>
+		<variable>12102</variable>
+	</message>
+	<message>
+		<err_code>12302</err_code>
+		<translation>This Share name has already existed, please change to another one.</translation>
+		<variable>12302</variable>
+	</message>
+	<message>
+		<err_code>12303</err_code>
+		<translation>No Disk</translation>
+		<variable>12303</variable>
+	</message>
+	<message>
+		<err_code>12304</err_code>
+		<translation>Volume Name</translation>
+		<variable>12304</variable>
+	</message>
+	<message>
+		<err_code>12305</err_code>
+		<translation>The device(s) cannot be stopped right now. Try stopping the device again later.</translation>
+		<variable>12305</variable>
+	</message>
+	<message>
+		<err_code>12306</err_code>
+		<translation>Now you can remove this device.</translation>
+		<variable>12305</variable>
+	</message>
+	<message>
+		<err_code>12307</err_code>
+		<translation>Notice : To share your files via DLNA/UPnP AV using the Media Server function, at least one shared folders must be Read Access with "All – no password"</translation>
+		<variable>gsm_msg_upnp_no_passwd</variable>
+	</message>
+	<message>
+		<err_code>12401</err_code>
+		<translation>The router can support 20 only port triggering rules.</translation>
+		<variable>12401</variable>
+	</message>
+	<message>
+		<err_code>12402</err_code>
+		<translation>Invalid IP address. Please enter it again.</translation>
+		<variable>12402</variable>
+	</message>
+	<message>
+		<err_code>12403</err_code>
+		<translation>Duplicate service name.</translation>
+		<variable>12403</variable>
+	</message>
+	<message>
+		<err_code>12404</err_code>
+		<translation>Inbound connection port range overlap with other services.</translation>
+		<variable>12404</variable>
+	</message>
+	<message>
+		<err_code>12405</err_code>
+		<translation>Triggering port is already used by another service.</translation>
+		<variable>12405</variable>
+	</message>
+	<message>
+		<err_code>12501</err_code>
+		<translation>The router can support only 20 port forwarding rules.</translation>
+		<variable>12501</variable>
+	</message>
+	<message>
+		<err_code>12502</err_code>
+		<translation>Invalid IP address. Please enter it again.</translation>
+		<variable>12502</variable>
+	</message>
+	<message>
+		<err_code>12503</err_code>
+		<translation>Service name already in use.</translation>
+		<variable>12503</variable>
+	</message>
+	<message>
+		<err_code>12504</err_code>
+		<translation>Service port is already used by another service.</translation>
+		<variable>12504</variable>
+	</message>
+	<message>
+		<err_code>12601</err_code>
+		<translation>VPN Policy Table is full</translation>
+		<variable>12601</variable>
+	</message>
+	<message>
+		<err_code>12602</err_code>
+		<translation>Policy Name already exists</translation>
+		<variable>12602</variable>
+	</message>
+	<message>
+		<err_code>12603</err_code>
+		<translation>Warning! Remote LAN IP range is not supported changed to</translation>
+		<variable>12603</variable>
+	</message>
+	<message>
+		<err_code>12604</err_code>
+		<translation>Error! Data could not be saved.[NEL]Only one VPN policy can use a Dynamic IP address for the[NEL]remote endpoint.[NEL]Multiple policies may be saved,but only one can be enabled</translation>
+		<variable>12604</variable>
+	</message>
+	<message>
+		<err_code>12605</err_code>
+		<translation>Error! Data could not be saved. Only one VPN policy can use a ANY IP address for the Local LAN or Remote LAN.</translation>
+		<variable>12605</variable>
+	</message>
+	<message>
+		<err_code>12606</err_code>
+		<translation>Remote LAN Mask is invalid</translation>
+		<variable>12606</variable>
+	</message>
+	<message>
+		<err_code>12607</err_code>
+		<translation>Local LAN Mask is invalid</translation>
+		<variable>12607</variable>
+	</message>
+	<message>
+		<err_code>13000</err_code>
+		<translation>The specified port(s) are being used by other configurations. Please check your configurations of USB Readyshare, Remote Management, Port forwarding, Port Triggering, UPnP Port Mapping table, RIP, and Internet connection type</translation>
+		<variable>13000</variable>
+	</message>
+	<message>
+		<err_code>13001</err_code>
+		<translation>The specified port(s) are being used by other configurations. Please check your configurations of Remote Management, Port forwarding, Port Triggering, UPnP Port Mapping table, RIP, and Internet connection type</translation>
+		<variable>13001</variable>
+	</message>
+	<message>
+		<err_code>13002</err_code>
+		<translation>The specified port(s) are being used by the system.The configuration will not take effect until the router restarts. Please power off the router and then power it up to restart the router.</translation>
+		<variable>13002</variable>
+	</message>
+	<message>
+		<err_code>13101</err_code>
+		<translation>Dynamic DNS service is not enabled.</translation>
+		<variable>13101</variable>
+	</message>
+	<message>
+		<err_code>13102</err_code>
+		<translation>%s updated successfully at %s.</translation>
+		<variable>13102</variable>
+	</message>
+	<message>
+		<err_code>13103</err_code>
+		<translation>No update action. There is no IP address on the Internet port.</translation>
+		<variable>13103</variable>
+	</message>
+	<message>
+		<err_code>13104</err_code>
+		<translation>Authentication failed. User name or password is not correct.</translation>
+		<variable>13104</variable>
+	</message>
+	<message>
+		<err_code>13105</err_code>
+		<translation>Update failed. Host name is not correct.</translation>
+		<variable>13105</variable>
+	</message>
+	<message>
+		<err_code>13106</err_code>
+		<translation>Update failed at %s.</translation>
+		<variable>13106</variable>
+	</message>
+	<message>
+		<err_code>13107</err_code>
+		<translation>The service provider is not reachable.</translation>
+		<variable>13107</variable>
+	</message>
+	<message>
+		<err_code>13201</err_code>
+		<translation>No Internet Connection Available</translation>
+		<variable>13201</variable>
+	</message>
+	<message>
+		<err_code>13202</err_code>
+		<translation>Gateway does not response the PING or traceroute!</translation>
+		<variable>13202</variable>
+	</message>
+	<message>
+		<err_code>13301</err_code>
+		<translation>The IP address and DHCP server starting IP address must be in the same subnet.[NEL]</translation>
+		<variable>13301</variable>
+	</message>
+	<message>
+		<err_code>13302</err_code>
+		<translation>The router can support only 21 periods.</translation>
+		<variable>13302</variable>
+	</message>
+	<message>
+		<err_code>13303</err_code>
+		<translation>Warning! Local LAN IP range is not supported changed to</translation>
+		<variable>13303</variable>
+	</message>
+	<message>
+		<err_code>13304</err_code>
+		<translation>Please do ipconfig /release and ipconfig /renew and enter the new IP in the browser in order to access the GUI again if LAN IP subnet will be changed.</translation>
+		<variable>13304</variable>
+	</message>
+	<message>
+		<err_code>13305</err_code>
+		<translation>http port via internet should be 80 or in the range [1024 ~ 65534] .</translation>
+		<variable>gsm_msg_usb_http_port</variable>
+	</message>
+	<message>
+		<err_code>13306</err_code>
+		<translation>ftp port via internet should be 21 or in the range [1024 ~ 65534] .</translation>
+		<variable>gsm_msg_usb_ftp_port</variable>
+	</message>
+	<message>
+		<err_code>13307</err_code>
+		<translation>Invalid Media Server Name!</translation>
+		<variable>gsm_msg_invalid_mediaserver_name</variable>
+	</message>
+	<message>
+		<err_code>13309</err_code>
+		<translation>Fragmentation Length value is outside the range 256-2346.</translation>
+		<variable>gsm_msg_wifi_inv_frag</variable>
+	</message>
+	<message>
+		<err_code>13310</err_code>
+		<translation>CTS/RTS Threshold value is outside the range 1-2347.</translation>
+		<variable>gsm_msg_wifi_inv_rts</variable>
+	</message>
+	<message>
+		<err_code>13311</err_code>
+		<translation>Select an option first.</translation>
+		<variable>bh_select_an_option</variable>
+	</message>
+	<message>
+		<err_code>13311</err_code>
+		<translation>User name cannot be blank.</translation>
+		<variable>bh_login_name_null</variable>
+	</message>
+	<message>
+		<err_code>13312</err_code>
+		<translation>Invalid password.</translation>
+		<variable>bh_password_error</variable>
+	</message>
+	<message>
+		<err_code>13313</err_code>
+		<translation>Please enter idle time.[NEL]</translation>
+		<variable>bh_idle_time_null</variable>
+	</message>
+	<message>
+		<err_code>13314</err_code>
+		<translation>Invalid idle time. Please enter a correct number.[NEL]</translation>
+		<variable>bh_invalid_idle_time</variable>
+	</message>
+	<message>
+		<err_code>13315</err_code>
+		<translation>Invalid IP address. Please enter it again, or leave it blank.</translation>
+		<variable>bh_invalid_myip</variable>
+	</message>
+	<message>
+		<err_code>13316</err_code>
+		<translation>Invalid gateway IP address. Please enter it again.</translation>
+		<variable>bh_invalid_gateway</variable>
+	</message>
+	<message>
+		<err_code>13317</err_code>
+		<translation>Computer does not support a printer.</translation>
+		<variable>bh_not_support_print</variable>
+	</message>
+	<message>
+		<err_code>13318</err_code>
+		<translation>File name cannot be blank.</translation>
+		<variable>bh_filename_null</variable>
+	</message>
+	<message>
+		<err_code>13319</err_code>
+		<translation>Please assign the correct file. The file format is *.</translation>
+		<variable>bh_not_correct_file</variable>
+	</message>
+	<message>
+		<err_code>13320</err_code>
+		<translation>Invalid IP address. Please enter it again.</translation>
+		<variable>bh_invalid_ip</variable>
+	</message>
+	<message>
+		<err_code>13321</err_code>
+		<translation>Invalid subnet mask. Please enter it again.[NEL]</translation>
+		<variable>bh_invalid_mask</variable>
+	</message>
+	<message>
+		<err_code>13322</err_code>
+		<translation>The LAN IP address and WAN IP address must not be in the same subnet.</translation>
+		<variable>bh_same_lan_wan_subnet</variable>
+	</message>
+	<message>
+		<err_code>13323</err_code>
+		<translation>File name cannot be blank.</translation>
+		<variable>bh_filename_null</variable>
+	</message>
+	<message>
+		<err_code>13324</err_code>
+		<translation>Configuring the Internet connection requires networking experience. Are you sure?</translation>
+		<variable>bh_no_genie_help_confirm</variable>
+	</message>
+	<message>
+		<err_code>13325</err_code>
+		<translation>Warning! [NEL]Restoring settings from a configuration file will erase all of the current settings. [NEL]Are you sure you want to do this?</translation>
+		<variable>bh_ask_for_restore</variable>
+	</message>
+	<message>
+		<err_code>14001</err_code>
+		<translation>Please select a question.</translation>
+		<variable>gsm_msg_pwd_sec_sel</variable>
+	</message>
+	<message>
+		<err_code>14002</err_code>
+		<translation>Please enter your answer for each question.</translation>
+		<variable>gsm_msg_pwd_sec_ans</variable>
+	</message>
+	<message>
+		<err_code>14003</err_code>
+		<translation>The information you entered does not match what is saved on the router. Please enter it again.</translation>
+		<variable>gsm_msg_rsave_not_match</variable>
+	</message>
+	<message>
+		<err_code>14004</err_code>
+		<translation>Minutes</translation>
+		<variable>gsm_msg_tm_minutes</variable>
+	</message>
+	<message>
+		<err_code>14005</err_code>
+		<translation>WEP security authentication does not work with WPS. WPS will be inaccessible. Do you want to continue?</translation>
+		<variable>gsm_msg_wifi_wep_conflict_wds</variable>
+	</message>
+	<message>
+		<err_code>14006</err_code>
+		<translation>WPA-PSK cannot work with WPS. WPS is going to become inaccessible. Do you want to continue?</translation>
+		<variable>gsm_msg_wifi_wpa_psk_conflict_wds</variable>
+	</message>
+	<message>
+		<err_code>15001</err_code>
+		<translation>NO USB Device Attached</translation>
+		<variable>gsm_msg_hsdpa_nousb</variable>
+	</message>
+    <message>
+		<err_code>15002</err_code>
+		<translation>USB Device Not Supported</translation>
+		<variable>gsm_msg_hsdpa_unsupport</variable>
+	</message>
+    <message>
+		<err_code>15003</err_code>
+		<translation>Initializing Dongle </translation>
+		<variable>gsm_msg_hsdpa_initing</variable>
+	</message>
+    <message>
+		<err_code>15004</err_code>
+		<translation> SIM Card Checking...</translation>
+		<variable>gsm_msg_hsdpa_simchecking</variable>
+	</message>
+    <message>
+		<err_code>15005</err_code>
+		<translation>NO SIM Card</translation>
+		<variable>gsm_msg_hsdpa_nosim</variable>
+	</message>
+    <message>
+		<err_code>15006</err_code>
+		<translation>PIN Checking...</translation>
+		<variable>gsm_msg_hsdpa_pinchecking</variable>
+	</message>
+    <message>
+		<err_code>15007</err_code>
+		<translation> PIN required on SIM</translation>
+		<variable>gsm_msg_hsdpa_pininput</variable>
+	</message>
+    <message>
+		<err_code>15008</err_code>
+		<translation>PIN is ready </translation>
+		<variable>gsm_msg_hsdpa_pinok</variable>
+	</message>
+    <message>
+		<err_code>15009</err_code>
+		<translation> Modem SIM locked</translation>
+		<variable>gsm_msg_hsdpa_pinfail</variable>
+	</message>
+    <message>
+		<err_code>15010</err_code>
+		<translation>Scanning Network...</translation>
+		<variable>gsm_msg_hsdpa_networkscan</variable>
+	</message>
+    <message>
+		<err_code>15011</err_code>
+		<translation>NO Network Coverage</translation>
+		<variable>gsm_msg_hsdpa_nonetwork</variable>
+	</message>
+    <message>
+		<err_code>15012</err_code>
+		<translation>Wireless Broadband Not Connected</translation>
+		<variable>gsm_msg_hsdpa_networkok</variable>
+	</message>
+    <message>
+		<err_code>15013</err_code>
+		<translation>Connecting...</translation>
+		<variable>gsm_msg_hsdpa_connecting</variable>
+	</message>
+    <message>
+		<err_code>15014</err_code>
+		<translation>Connected</translation>
+		<variable>gsm_msg_hsdpa_connected</variable>
+	</message>
+    <message>
+		<err_code>15015</err_code>
+		<translation>Connection Fail</translation>
+		<variable>gsm_msg_hsdpa_connectionfail</variable>
+	</message>
+    <message>
+		<err_code>15016</err_code>
+		<translation>Idle</translation>
+		<variable>gsm_msg_hsdpa_idle</variable>
+	</message>
+    <message>
+		<err_code>15017</err_code>
+		<translation>PUK required on SIM</translation>
+		<variable>gsm_msg_hsdpa_identifying</variable>
+	</message>
+    <message>
+		<err_code>15018</err_code>
+		<translation>PUK required on SIM</translation>
+		<variable>gsm_msg_hsdpa_puk</variable>
+	</message>
+    <message>
+		<err_code>15019</err_code>
+		<translation>Starting</translation>
+		<variable>gsm_msg_hsdpa_starting</variable>
+	</message>
+	<message>
+		<err_code>15122</err_code>
+		<translation>https port via internet should be 80, 443, or in the range [1024 ~ 65534] .</translation>
+		<variable>gsm_msg_https_port</variable>
+	</message>
+	<message>
+		<err_code>15123</err_code>
+		<translation>Login name cannot be blank.</translation>
+		<variable>IPv6_name_blank</variable>
+	</message>
+	<message>
+		<err_code>15124</err_code>
+		<translation>Invalid login name!</translation>
+		<variable>IPv6_name_invalid</variable>
+	</message>
+	<message>
+		<err_code>15125</err_code>
+		<translation>Password cannot be blank.</translation>
+		<variable>IPv6_pwd_blank</variable>
+	</message>
+	<message>
+		<err_code>15126</err_code>
+		<translation>Invalid password.</translation>
+		<variable>IPv6_pwd_invalid</variable>
+	</message>
+	<message>
+		<err_code>15127</err_code>
+		<translation>Invalid service name.</translation>
+		<variable>IPv6_service_name_invalid</variable>
+	</message>
+	<message>
+		<err_code>15128</err_code>
+		<translation>Invalid IP address. Please enter it again.</translation>
+		<variable>IPv6_ip_invalid</variable>
+	</message>
+	<message>
+		<err_code>15129</err_code>
+		<translation>IPv6 Address for the WAN Setup is not valid, only hexdigits are allowed.</translation>
+		<variable>IPv6_wan_ip_invalid</variable>
+	</message>
+	<message>
+		<err_code>15130</err_code>
+		<translation>Prefix Length for the WAN Setup is not valid; it has to be a number between 4 ~ 126</translation>
+		<variable>IPv6_wan_prefix_invalid</variable>
+	</message>
+	<message>
+		<err_code>15131</err_code>
+		<translation>IPv6 Address for the LAN Setup is not valid, only hexdigits are allowed.</translation>
+		<variable>IPv6_lan_ip_invalid</variable>
+	</message>
+	<message>
+		<err_code>15132</err_code>
+		<translation>Prefix Length for the LAN Setup is not valid; it has to be a number between 4 ~ 126</translation>
+		<variable>IPv6_lan_prefix_invalid</variable>
+	</message>
+	<message>
+		<err_code>15133</err_code>
+		<translation>Gateway IPv6 Address is not valid, only hexdigits are allowed.</translation>
+		<variable>IPv6_gw_ip_invalid</variable>
+	</message>
+	<message>
+		<err_code>15134</err_code>
+		<translation>Primary DNS Server setting is the IPv6 address of the primary DNS server; only hex digits are required.</translation>
+		<variable>IPv6_dns_ip_invalid</variable>
+	</message>
+	<message>
+		<err_code>15135</err_code>
+		<translation>Secondary DNS Server setting is the IPv6 address of the secondary DNS server; only hex digits are required.</translation>
+		<variable>IPv6_dns2_ip_invalid</variable>
+	</message>
+	<message>
+		<err_code>15136</err_code>
+		<translation>User Class is not valid; only printable ASCII characters are allowed.</translation>
+		<variable>IPv6_account_invalid</variable>
+	</message>
+	<message>
+		<err_code>15137</err_code>
+		<translation>Invalid domain name.</translation>
+		<variable>IPv6_domain_invalid</variable>
+	</message>
+	<message>
+		<err_code>15138</err_code>
+		<translation>Interface ID is not valid, only hex digits are allowed.</translation>
+		<variable>IPv6_if_id_invalid</variable>
+	</message>
+	<message>
+		<err_code>15139</err_code>
+		<translation>The WAN IPv6 Address and the LAN IPv6 address has to be in different subnet.</translation>
+		<variable>IPv6_lan_wan_conflict</variable>
+	</message>
+	<message>
+		<err_code>15140</err_code>
+		<translation>The WAN IPv6 Address is not valid;</translation>
+		<variable>IPv6_wan_invalid</variable>
+	</message>
+	<message>
+		<err_code>15141</err_code>
+		<translation>The Gateway IPv6 Address is not valid;</translation>
+		<variable>IPv6_gateway_invalid</variable>
+	</message>
+	<message>
+		<err_code>15142</err_code>
+		<translation>The Primary DNS Server is not valid;</translation>
+		<variable>IPv6_dns_invalid</variable>
+	</message>
+	<message>
+		<err_code>15143</err_code>
+		<translation>The Secondary DNS Server is not valid;</translation>
+		<variable>IPv6_dns2_invalid</variable>
+	</message>
+	<message>
+		<err_code>15144</err_code>
+		<translation>The LAN IPv6 Address is not valid</translation>
+		<variable>IPv6_lan_invalid</variable>
+	</message>
+	<message>
+		<err_code>15145</err_code>
+		<translation>6to4 Tunnel requires the IPv4 PPPoE/PPTP connection mode to be \"Always On\", other connection modes (\"Dial on Demand\" and \"Manually Connect\") will become unavailable. Please confirm the change.</translation>
+		<variable>IPv6_6to4</variable>
+	</message>
+	<message>
+		<err_code>15146</err_code>
+		<translation>The WAN IPv6 Address has to be different from the Primary/Secondary DNS Server.</translation>
+		<variable>IPv6_wan_dns_invalid</variable>
+	</message>
+	<message>
+		<err_code>15147</err_code>
+		<translation>The LAN IPv6 Address has to be different from the Primary/Secondary DNS Server.</translation>
+		<variable>IPv6_lan_dns_invalid</variable>
+	</message>
+	<message>
+		<err_code>15148</err_code>
+		<translation>Upgrade failed! Please try again.</translation>
+		<variable>gsm_msg_upg_fail</variable>
+	</message>
+	<message>
+		<err_code>15100</err_code>
+		<translation>Policy name can't have spaces in it</translation>
+		<variable>gsm_msg_vpn_policy_space</variable>
+	</message>
+	<message>
+		<err_code>15101</err_code>
+		<translation>Pre-shared Key must be at least 8 characters</translation>
+		<variable>gsm_msg_vpn_key</variable>
+	</message>
+	<message>
+		<err_code>15102</err_code>
+		<translation>VPN Policy Table is full</translation>
+		<variable>gsm_msg_vpn_table_full</variable>
+	</message>
+	<message>
+		<err_code>15103</err_code>
+		<translation>Ping IP Address is invalid</translation>
+		<variable>gsm_msg_vpn_ping_ip_invalid</variable>
+	</message>
+	<message>
+		<err_code>15104</err_code>
+		<translation>Please enter address of remote endpoint</translation>
+		<variable>gsm_msg_vpn_remote</variable>
+	</message>
+	<message>
+		<err_code>15105</err_code>
+		<translation>Remote LAN start IP Address is invalid</translation>
+		<variable>gsm_msg_vpn_remote_lanIP_invalid</variable>
+	</message>
+	<message>
+		<err_code>15106</err_code>
+		<translation>Remote LAN Mask is invalid</translation>
+		<variable>gsm_msg_vpn_remote_lanMask_invalid</variable>
+	</message>
+	<message>
+		<err_code>15107</err_code>
+		<translation>Remote LAN finish IP Address is invalid</translation>
+		<variable>gsm_msg_vpn_remote_lanIP_finish_invalid</variable>
+	</message>
+	<message>
+		<err_code>15108</err_code>
+		<translation>Remote LAN IP range is invalid</translation>
+		<variable>gsm_msg_vpn_remote_lanIP_range</variable>
+	</message>
+	<message>
+		<err_code>15109</err_code>
+		<translation>Remote VPN Endpoint IP address is invalid</translation>
+		<variable>gsm_msg_vpn_remote_ip_invalid</variable>
+	</message>
+	<message>
+		<err_code>15110</err_code>
+		<translation>Remote ID can not be blank</translation>
+		<variable>gsm_msg_vpn_remote_id_blank</variable>
+	</message>
+	<message>
+		<err_code>15111</err_code>
+		<translation>Warning! Remote LAN IP range is not supported changed to</translation>
+		<variable>gsm_msg_vpn_remote_lanIP</variable>
+	</message>
+	<message>
+		<err_code>15112</err_code>
+		<translation>Local LAN start IP Address is invalid</translation>
+		<variable>gsm_msg_vpn_local_lanIP_invalid</variable>
+	</message>
+	<message>
+		<err_code>15113</err_code>
+		<translation>Local LAN Mask is invalid</translation>
+		<variable>gsm_msg_vpn_local_lanMask_invalid</variable>
+	</message>
+	<message>
+		<err_code>15114</err_code>
+		<translation>Local LAN finish IP Address is invalid</translation>
+		<variable>gsm_msg_vpn_local_lanIP_finish_invalid</variable>
+	</message>
+	<message>
+		<err_code>15115</err_code>
+		<translation>Local LAN IP range is invalid</translation>
+		<variable>gsm_msg_vpn_local_lanIP_range</variable>
+	</message>
+	<message>
+		<err_code>15116</err_code>
+		<translation>Local ID can not be blank</translation>
+		<variable>gsm_msg_vpn_local_id_blank</variable>
+	</message>
+	<message>
+		<err_code>15117</err_code>
+		<translation>Warning! Local LAN IP range is not supported changed to</translation>
+		<variable>gsm_msg_vpn_local_lanIP</variable>
+	</message>
+	<message>
+		<err_code>15118</err_code>
+		<translation>For DH group, 'Auto' is only available when acting as 'Responder'</translation>
+		<variable>gsm_msg_vpn_dh_auto</variable>
+	</message>
+	<message>
+		<err_code>15119</err_code>
+		<translation>For Authentication, 'Auto' is only available when acting as 'Responder'</translation>
+		<variable>gsm_msg_vpn_auth_auto</variable>
+	</message>
+	<message>
+		<err_code>15120</err_code>
+		<translation>Invalid Encryption Key (DES = 8 chars, 3DES = 24 chars)</translation>
+		<variable>gsm_msg_vpn_enc_key</variable>
+	</message>
+	<message>
+		<err_code>15121</err_code>
+		<translation>Invalid Authentication Key (MD5 = 16 chars, SHA-1 = 20 chars)</translation>
+		<variable>gsm_msg_vpn_auth_key</variable>
+	</message>
+</error_msg>

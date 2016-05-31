@@ -1,0 +1,205 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+
+<head>
+<meta http-equiv="content-type" content="text/html;charset=ISO-8859-1">
+<meta http-equiv='Pragma' content='no-cache'>
+<meta http-equiv="Cache-Control" content="no-cache">
+
+<meta name="description" content="@model_name#_multilangual">
+<title>NETGEAR Router @model_name#</title>
+<link rel="stylesheet" href="style/form.css">
+<script language="javascript" type="text/javascript" src="funcs.js"></script>
+<script language="javascript" type="text/javascript" src="string.js"></script>
+<script language="javascript" type="text/javascript" src="utility.js"></script>
+<script language="javascript" type="text/javascript" src="linux.js"></script>
+<script language="javascript" type="text/javascript">
+<!-- hide script from old browsers
+
+var remoteAccess = "";
+if(parent.h_dest_ip_var == "dynamic")
+	remoteAccess = "<span languageCode=\"10449\">Single PC - no Subnet</span>";
+else
+	remoteAccess = "By Subnet";
+
+var remoteAddress = "";
+if(parent.h_rmvpn_type_var == "dyn")
+	remoteAddress = "Client PC";
+else
+	remoteAddress = parent.rmvpn_data_var;
+
+var remoteIP = "";
+if(parent.h_rmvpn_type_var == "dyn")
+	remoteIP = "<span languageCode=\"551\">Dynamic</span>";
+else
+	remoteIP = parent.c4_dest_start_ip_var + ' / ' + parent.c4_dest_mask_var;
+	
+//-->
+</script>
+    
+</head>
+
+<body bgcolor="#ffffff" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="loadhelp('_vpnwiz','VWSum')">
+    <form name="formname" action="setup.cgi@post_par#" method="POST" >
+<div class="page_title"><span languageCode="10400">VPN Wizard</span></div>
+<div class="fix_button">
+<table width="100%" border="0" cellpadding="0" cellspacing="2"><tr><td nowrap colspan="2" align="center">
+<input class="cancel_bt" type="button"  name="back" value="Back" onClick="parent.goBack('sum');" languageCode = "115">
+&nbsp;
+<input class="cancel_bt" type="reset" name="Cancel" value = "Cancel" onClick="location.href='setup.cgi?next_file=vpn_list.htm'" languageCode = "19">
+&nbsp;
+<input class="apply_bt" type="button" name="done" value = "Done" onClick="parent.saveAll();" languageCode="10415">
+</td></tr></table>
+</div>
+<div id="main" class="main_top_button">
+	  <table border="0" cellpadding="0" cellspacing="8" width="100%">
+	<tr>
+	  <td colspan="2"><b><span languageCode="10416">Summary</span></b></td>
+	</tr>
+
+	<tr>  <!-- RULE -->
+	  <td colspan="2" background="liteblue.gif" height="12">&nbsp; </td>
+	</tr>	
+	
+	<tr>
+	  <td nowrap colspan="2"><span languageCode="10417">Please verify your inputs</span>:</td>
+	</tr>
+	<tr>
+	  <td nowrap colspan="2"><img src="spacer.gif" width="1" height="1" alt="" border="0"></td>
+	</tr>
+	
+	<tr>
+	  <td nowrap width="50%">&nbsp;&nbsp;<span languageCode="10418">Connection Name</span>: </td>
+	  <td nowrap><script language="javascript" type="text/javascript">document.write(parent.policyname_var);</script></td>
+	</tr>
+
+	<tr>
+	  <td nowrap width="50%">&nbsp;&nbsp;<span languageCode="10419">Remote VPN Endpoint</span>: </td>
+	  <td nowrap><script language="javascript" type="text/javascript">document.write(remoteAddress);</script></td>
+	</tr>
+
+	<tr>
+	  <td nowrap colspan="2"><img src="spacer.gif" width="1" height="1" alt="" border="0"></td>
+	</tr>
+	
+	<tr>
+	  <td nowrap width="50%">&nbsp;&nbsp;<span languageCode="10420">Remote Client Access</span>: </td>
+	  <td nowrap><script language="javascript" type="text/javascript">document.write(remoteAccess);</script></td>
+	</tr>
+	<tr>
+	  <td nowrap width="50%">&nbsp;&nbsp;<span languageCode="10421">Remote IP</span>: </td>
+	  <td nowrap><script language="javascript" type="text/javascript">document.write(remoteIP);</script></td>
+	</tr>
+
+		<tr>
+		<td nowrap width="50%">&nbsp;&nbsp;<span languageCode="10422">Remote ID</span>: </td>
+		<td nowrap><script language="javascript" type="text/javascript">document.write(parent.remoteid_data_var);</script></td>
+	</tr>
+
+	<tr>
+	  <td nowrap colspan="2"><img src="spacer.gif" width="1" height="1" alt="" border="0"></td>
+	</tr>
+	
+	<tr>
+	  <td nowrap width="50%">&nbsp;&nbsp;<span languageCode="10423">Local Client Access</span>: </td>
+	  <td nowrap>By subnet</td>
+	</tr>
+
+	<tr>
+		<td nowrap width="50%">&nbsp;&nbsp;<span languageCode="10424">Local IP</span>: </td>
+		<td nowrap><script language="javascript" type="text/javascript">document.write(parent.c4_src_start_ip_var); document.write(' / '); document.write(parent.c4_src_mask_var);</script></td>
+	</tr>
+	
+	<tr>
+		<td nowrap width="50%">&nbsp;&nbsp;<span languageCode="10425">Local ID</span>: </td>
+		<td nowrap><script language="javascript" type="text/javascript">document.write(parent.localid_data_var);</script></td>
+	</tr>
+		
+	
+	<tr>
+	  <td nowrap colspan="2">&nbsp;</td>
+	</tr>
+	
+	
+	<tr>
+	  <td nowrap colspan="2">
+	    <span languageCode="10426">You can click</span>&nbsp;<a href="vw_vpnc.htm"><font color=blue><b languageCode="10427">here</b></font></a><span languageCode="10428">
+	    to view the VPNC-recommended parameters.</span>
+	  </td>
+	</tr>
+	
+	
+	<tr>
+	  <td nowrap colspan="2"><span languageCode="10429">Please click <b>"Done"</b> to apply the changes.</span></td>
+	</tr>
+	
+	<tr>  <!-- RULE -->
+	  <td nowrap colspan="2" background="liteblue.gif" height="12">&nbsp; </td>
+	</tr>
+      </table>
+
+	  
+	  
+<input type="hidden" name="policyname" value=""> 
+<input type="hidden" name="h_rmvpn_type" value=""> 
+<input type="hidden" name="rmvpn_data"  value="">	  
+<!--<input type="hidden" name="h_netbios_enable" value="">-->
+<input type="hidden" name="preshared_key" value="">
+
+<input type="hidden" name="h_localid_type" value="">
+<input type="hidden" name="h_remoteid_type" value="">
+<input type="hidden" name="localid_data" value="">
+<input type="hidden" name="remoteid_data" value="">
+
+<input type="hidden" name="h_source_ip" value=""> 
+<input type="hidden" name="c4_src_start_ip" value="">
+<input type="hidden" name="c4_src_finish_ip" value="">
+<input type="hidden" name="c4_src_mask" value="">
+
+<input type="hidden" name="h_dest_ip" value="">
+<input type="hidden" name="c4_dest_start_ip" value="">
+<input type="hidden" name="c4_dest_finish_ip" value="">
+<input type="hidden" name="c4_dest_mask" value="">
+
+<input type="hidden" name="h_direction" value=""> 
+<input type="hidden" name="h_exchangemode" value="">
+<input type="hidden" name="h_dh_group" value="">
+<input type="hidden" name="h_en_algorithm" value="">
+<input type="hidden" name="h_a_algorithm" value="">
+<input type="hidden" name="h_pfs_enable" value="">
+<input type="hidden" name="lifetimesec" value="3600">
+<input type="hidden" name="h_ike_alive" value="Disabled">
+<input type="hidden" name="c4_ping_address" value="">
+  
+<input type="hidden" name="todo" value="save">
+<input type="hidden" name="this_file" value="vw_sum.htm">
+<input type="hidden" name="next_file" value="vpn_list.htm">     
+</div>
+</form>
+<div id="help" style="display: none">
+		<iframe name="help_iframe" id="helpframe" src="h_vpnwiz.htm" allowtransparency="true" width="100%" frameborder="0">
+		</iframe>
+</div>
+<div id="help_switch" class="close_help">
+	 <img class="help_switch_img" src="image/help/help-bar.gif"><script>
+var help_flag=0;
+if(isIE()){
+	show_hidden_help_top_button(1);
+	var frame_div = top.document.getElementById("formframe_div");
+	frame_div.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+if(get_browser() == "Opera"){
+	window.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+</script><div id="help_space" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_center"><span languageCode="3016">Help Center</span></div>
+<div id="help_button" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_show_hidden"><a href="javascript:void(0)" onClick="show_hidden_help_top_button(help_flag); help_flag++;"><span languageCode="3017">Show/Hide Help Center</span></a></div>
+</div>
+<script language="javascript" type="text/javascript" src="langs.js"></script>
+</body>
+</html>

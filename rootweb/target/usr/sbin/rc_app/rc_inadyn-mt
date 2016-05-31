@@ -1,0 +1,91 @@
+args_for_inadyn=""
+ddns_enable="$(/usr/sbin/nvram-util get ddns_enable)"
+
+make_args() {
+    # NB Many people suggest using the '--secure' option, but it doesn't
+    # work ...
+
+    if [ "x"$ddns_enable == "x1" ]; then
+        system=""
+        extra=""
+        ddns_service_provider="$(/usr/sbin/nvram-util get ddns_service_provider)"
+        case $ddns_service_provider in
+          dnsomatic )
+            username="$(/usr/sbin/nvram-util get ddns_dnsom_user_name)"
+            password="$(/usr/sbin/nvram-util get ddns_dnsom_password)"
+            alias="$(/usr/sbin/nvram-util get ddns_dnsom_host_name)"
+            system="default@dnsomatic.com"
+            ;;
+          noip )
+            username="$(/usr/sbin/nvram-util get ddns_noip_user_name)"
+            password="$(/usr/sbin/nvram-util get ddns_noip_password)"
+            alias="$(/usr/sbin/nvram-util get ddns_noip_host_name)"
+            system="default@no-ip.com"
+            ;;
+          dyndns )
+            username="$(/usr/sbin/nvram-util get ddns_user_name)"
+            password="$(/usr/sbin/nvram-util get ddns_password)"
+            alias="$(/usr/sbin/nvram-util get ddns_host_name)"
+            system="dyndns@dyndns.org"
+            ;;
+          NETGEAR )
+            username="$(/usr/sbin/nvram-util get NGR_DDNSEmail)"
+            password="$(/usr/sbin/nvram-util get NGR_DDNSPassword)"
+            alias="$(/usr/sbin/nvram-util get NGR_DDNSHost)"
+            system="default@no-ip.com"
+            ;;
+        esac
+
+        args_for_inadyn="--background --svr_add_cfg /usr/etc/inadyn-mt/extra/servers_additional.cfg --alias $alias"
+        if [ "x"$system != "x" ]; then
+            args_for_inadyn="$args_for_inadyn --dyndns_system $system"
+        fi
+        if [ "x"$extra != "x" ]; then
+            args_for_inadyn="$args_for_inadyn $extra"
+        fi
+        args_for_inadyn="$args_for_inadyn --username $username --password $password --log_file /var/log/inadyn-mt.log"
+    fi
+}
+
+case "$1" in
+    start)
+        make_args
+        if [ "x"$ddns_enable != "x1" ]; then
+            echo "DDNS not enabled so not starting inadyn. (ddns_enable:$ddns_enable)"
+	else
+            PID="$(pidof inadyn-mt)"
+            if [ "x$PID" == "x" ]; then
+	        /usr/sbin/inadyn-mt $args_for_inadyn
+		PID="$(pidof inadyn-mt)"
+		if [ "x${PID}" != "x" ]; then
+		    echo "inadyn-mt started succesfully. ($args_for_inadyn)"
+		else
+		    echo "Error starting inadyn-mt ($args_for_inadyn)"
+		fi
+            else
+                echo "idadyn-mt already started, leaving it alonw"
+            fi
+        fi
+        ;;
+    strop)
+        echo "I'm far too polite."
+        ;;
+    stop)
+        PID="$(pidof inadyn-mt)"
+	if [ "x$PID" != "x" ];then
+	    /bin/kill -9 ${PID} 2>/dev/null
+            echo "inadyn-mt stopped."
+	else
+	    echo "inadyn-mt is already stopped."
+	fi
+        ;;
+    reload|restart)
+        $0 stop
+        $0 start
+        ;;
+    *)
+        echo "Usage: $0 start|stop|restart|reload"
+        exit 1
+        ;;
+esac
+exit 0

@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-Control" content="no-cache"><meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT"><meta name="description" content="@model_name#_multilangual"><title>NETGEAR Router @model_name#</title><script language="javascript" type="text/javascript" src="string.js"></script><link rel="stylesheet" href="style/form.css"><script language="javascript" type="text/javascript" src="funcs.js"></script><!-- link rel="stylesheet" href="form.css" --><script language="JavaScript" type="text/javascript">
+function changepage()
+{
+	var cf = document.forms[0];
+	if (cf.testOK.value == "true")
+		setTimeout("window.location.replace('@ntgr_reg_url#')",10000);
+	else
+		setTimeout("window.location.replace('./BAS_wtest_l.htm')",3500);
+}
+</script></head><body bgcolor="#ffffff" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="self.focus();changepage()">
+<form method="post" action="BAS_wtest_l">
+<div class="page_title" languageCode = "67">Testing Internet Connection</div>
+<div class="fix_button">
+<table width="100%" border="0" cellpadding="0" cellspacing="2"><tr><td nowrap colspan="2" align="center">
+<input class="common_bt" type="button" name="close" value = "Close Window" onClick="self.close()" languageCode = "69">
+</td></tr></table>
+</div>
+<div id="main" class="main_top_button">
+<div align="center"><br><table border="0" cellpadding="0" cellspacing="3" width="100%"><tr><td colspan="2" align="left" languageCode = "68">This page will automatically display the NETGEAR website if a successful Internet connection is detected.</td>
+	</tr></table><br><table width="100%" border="0" cellspacing="1" cellpadding="5"><tr><td nowrap width="50%"><font face="Arial, Helvetica, sans-serif" size="2"><b languageCode = "70">Connection Time</b></font></td>
+		<td nowrap width="50%"><font face="Arial, Helvetica, sans-serif" size="2">@wan_up_time#</font></td>
+	</tr><tr><td nowrap><font face="Arial, Helvetica, sans-serif" size="2"><b languageCode = "71">Connecting to server</b></font></td>
+		<td nowrap><font face="Arial, Helvetica, sans-serif" size="2">@pppoe_link#</font></td>
+	</tr><tr><td nowrap><font face="Arial, Helvetica, sans-serif" size="2"><b languageCode = "72">Negotiation</b></font></td>
+		<td nowrap><font face="Arial, Helvetica, sans-serif" size="2">@poe_lcp#</font></td>
+	</tr><tr><td nowrap><font face="Arial, Helvetica, sans-serif" size="2"><b languageCode = "73">Authentication</b></font></td>
+		<td nowrap><font face="Arial, Helvetica, sans-serif" size="2">@poe_auth#</font></td>
+	</tr><tr><td nowrap><font face="Arial, Helvetica, sans-serif" size="2"><b languageCode = "74">Getting IP address</b></font></td>
+		<td nowrap><font face="Arial, Helvetica, sans-serif" size="2">@status_wan_ip#</font></td>
+	</tr></table><table border="0" cellpadding="0" cellspacing="3" width="100%"><tr><td colspan="2" align="left" languageCode = "75">If connnection fails, check your Login, Password, and other data.</td>
+	</tr><tr><!-- RULE --><td colspan="2" background="liteblue.gif" height="12"></td>
+	</tr><tr><td colspan="2" align="center"></td>
+	</tr></table></div>
+<input type="hidden" name="testOK" value="@testOK#"><input type="hidden" name="SID" value="@SID#">
+</div>
+</form>
+<script language="javascript" type="text/javascript" src="langs.js"></script></body></html>

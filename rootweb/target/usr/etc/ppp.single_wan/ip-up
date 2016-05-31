@@ -1,0 +1,12 @@
+#!/bin/sh
+/usr/sbin/rc ip_assign_chk start
+# If LAN conflict with WAN IP, default gw may disappear so add it manually
+/sbin/route del default
+/sbin/route add default gw $IPREMOTE
+/bin/cp /proc/uptime /tmp/wan_uptime
+/usr/sbin/echo > /tmp/ppp_up
+/usr/sbin/rc service restart
+/bin/cp /usr/etc/ppp/ip-down /etc/ppp/
+if [ -e "/tmp/lan_ip_auto_changed" ] ; then
+	/usr/sbin/rc dnshj restart
+fi

@@ -1,0 +1,18 @@
+mtd:factory	/config/factory	jffs2	defaults	0	0
+
+mtd:scnvram	/config/nvram	jffs2	defaults	0	0
+
+mtd:language_ENU	/config/language_ENU	jffs2	defaults	0	0
+
+mtd:language_CHS	/config/language_CHS	jffs2	defaults	0	0
+
+mtd:language_RUS	/config/language_RUS	jffs2	defaults	0	0
+
+mtd:language_PTB	/config/language_PTB	jffs2	defaults	0	0
+
+mtd:language_DEU	/config/language_DEU	jffs2	defaults	0	0
+
+mtd:xxx	/config/xxx	jffs2	defaults	0	0
+
+mtd:smt	/mnt/smt	jffs2	defaults	0	0
+

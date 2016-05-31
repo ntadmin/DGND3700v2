@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tag_msg xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<message>
+<tag_code>6</tag_code>
+<translation>Ďalej</translation>
+<variable>Next</variable>
+</message>
+<message>
+<tag_code>28</tag_code>
+<translation>Áno</translation>
+<variable>Yes</variable>
+</message>
+<message>
+<tag_code>57</tag_code>
+<translation>Heslo</translation>
+<variable>Password</variable>
+</message>
+<message>
+<tag_code>64</tag_code>
+<translation>Moja adresa IP</translation>
+<variable>My IP Address</variable>
+</message>
+<message>
+<tag_code>115</tag_code>
+<translation>Naspäť</translation>
+<variable>Back</variable>
+</message>
+<message>
+<tag_code>153</tag_code>
+<translation>Meno používateľa</translation>
+<variable>User Name</variable>
+</message>
+<message>
+<tag_code>158</tag_code>
+<translation>Zlyhanie</translation>
+<variable>Failure</variable>
+</message>
+<message>
+<tag_code>160</tag_code>
+<translation>O niekoľko sekúnd sa automaticky opäť zobrazí predchádzajúca obrazovka...</translation>
+<variable>This screen will automatically return to the previous screen in a few seconds...</variable>
+</message>
+<message>
+<tag_code>296</tag_code>
+<translation>Dôležitá aktualizácia</translation>
+<variable>Important Update</variable>
+</message>
+<message>
+<tag_code>297</tag_code>
+<translation>Na zabránenie konfliktu s poskytovateľom internetových služieb sa adresa IP smerovača zmenila na </translation>
+<variable>To avoid a conflict with your Internet Service Provider, your router's IP address has been updated to </variable>
+</message>
+<message>
+<tag_code>319</tag_code>
+<translation>Sprievodca nastavením</translation>
+<variable>Setup Wizard</variable>
+</message>
+<message>
+<tag_code>341</tag_code>
+<translation>Nastavenia ADSL</translation>
+<variable>ADSL Settings</variable>
+</message>
+<message>
+<tag_code>344</tag_code>
+<translation>Krajina</translation>
+<variable>Country</variable>
+</message>
+<message>
+<tag_code>351</tag_code>
+<translation>Bezdrôtové</translation>
+<variable>Wireless</variable>
+</message>
+<message>
+<tag_code>382</tag_code>
+<translation>Typ pripojenia</translation>
+<variable>Connection Type</variable>
+</message>
+<message>
+<tag_code>428</tag_code>
+<translation>Maska podsiete</translation>
+<variable>Subnet Mask</variable>
+</message>
+<message>
+<tag_code>429</tag_code>
+<translation>Predvolená brána</translation>
+<variable>Default Gateway</variable>
+</message>
+<message>
+<tag_code>518</tag_code>
+<translation>Tento proces môže trvať jednu až dve minúty; prosím, čakajte...</translation>
+<variable>This process can take a minute or two; please wait...</variable>
+</message>
+<message>
+<tag_code>542</tag_code>
+<translation>Počkajte chvíľu...</translation>
+<variable>Please wait a moment...</variable>
+</message>
+<message>
+<tag_code>543</tag_code>
+<translation>Zistila sa dynamická adresa IP (DHCP)</translation>
+<variable>Dynamic IP (DHCP) detected</variable>
+</message>
+<message>
+<tag_code>545</tag_code>
+<translation>Zistil sa protokol PPPoA</translation>
+<variable>PPPoA Detected</variable>
+</message>
+<message>
+<tag_code>553</tag_code>
+<translation>Nie. Smerovač chcem nakonfigurovať sám.</translation>
+<variable>No. I want to configure the router myself.</variable>
+</message>
+<message>
+<tag_code>731</tag_code>
+<translation>Metóda multiplexu</translation>
+<variable>Multiplexing Method</variable>
+</message>
+<message>
+<tag_code>732</tag_code>
+<translation>LLC-BASED</translation>
+<variable>LLC-BASED</variable>
+</message>
+<message>
+<tag_code>744</tag_code>
+<translation>Konfiguruje sa internetové pripojenie</translation>
+<variable>Configuring the Internet Connection</variable>
+</message>
+<message>
+<tag_code>745</tag_code>
+<translation>Ešte nie ste pripojení k internetu.</translation>
+<variable>You are not yet connected to the Internet.</variable>
+</message>
+<message>
+<tag_code>746</tag_code>
+<translation>Chcete, aby vám pomohol NETGEAR Genie?</translation>
+<variable>Do you want NETGEAR Genie to help?</variable>
+</message>
+<message>
+<tag_code>747</tag_code>
+<translation>Nie, internetové pripojenie chcem nakonfigurovať sám.</translation>
+<variable>No, I want to configure the Internet connection myself.</variable>
+</message>
+<message>
+<tag_code>748</tag_code>
+<translation>Nastavenie smerovača som uložil do súboru a chcem ich z tohto súboru do smerovača obnoviť.</translation>
+<variable>I have saved the router settings in a file and I want to restore the router to those settings.</variable>
+</message>
+<message>
+<tag_code>749</tag_code>
+<translation>Vyberte krajinu</translation>
+<variable>Select Country</variable>
+</message>
+<message>
+<tag_code>750</tag_code>
+<translation>No DSL Cable Is Plugged into the Router ADSL Port</translation>
+<variable>No DSL Cable Is Plugged into the Router ADSL Port</variable>
+</message>
+<message>
+<tag_code>751</tag_code>
+<translation>Uistite sa, že kábel je pevne pripojený k portu na širokopásmovom modeme a internetovému portu na smerovači.</translation>
+<variable>Make sure that the cable is securely plugged into both the broadband modem port and the router Internet port.</variable>
+</message>
+<message>
+<tag_code>752</tag_code>
+<translation>After you have checked the DSL cable, click &lt;b&gt;Try again&lt;/b&gt;.</translation>
+<variable>After you have checked the DSL cable, click &lt;b&gt;Try again&lt;/b&gt;.</variable>
+</message>
+<message>
+<tag_code>753</tag_code>
+<translation>Skúsiť znova</translation>
+<variable>Try again</variable>
+</message>
+<message>
+<tag_code>755</tag_code>
+<translation>Rozpoznáva sa internetové pripojenie</translation>
+<variable>Detecting the Internet Connection</variable>
+</message>
+<message>
+<tag_code>756</tag_code>
+<translation>Pokračujte kliknutím na položku „Ďalej“.</translation>
+<variable>Click "Next" to continue.</variable>
+</message>
+<message>
+<tag_code>758</tag_code>
+<translation>Nižšie zadajte požadované údaje.</translation>
+<variable>Enter the required information below.</variable>
+</message>
+<message>
+<tag_code>759</tag_code>
+<translation>Nesprávne používateľského meno alebo heslo ISP</translation>
+<variable>Incorrect ISP User name or Password</variable>
+</message>
+<message>
+<tag_code>760</tag_code>
+<translation>Nižšie znovu zadajte požadované údaje.</translation>
+<variable>Enter the required information again.</variable>
+</message>
+<message>
+<tag_code>761</tag_code>
+<translation>Internetové pripojenie chcem nakonfigurovať sám.</translation>
+<variable>I want to configure the Internet connection myself</variable>
+</message>
+<message>
+<tag_code>762</tag_code>
+<translation>Rozpoznalo sa internetové pripojenie typu PPPoE DSL</translation>
+<variable>PPPoE DSL Internet Connection Detected</variable>
+</message>
+<message>
+<tag_code>763</tag_code>
+<translation>Tento proces môže trvať niekoľko minút; prosím, čakajte…</translation>
+<variable>This process can take a few minutes; please wait …</variable>
+</message>
+<message>
+<tag_code>764</tag_code>
+<translation>Nastal problém pri rozpoznávaní internetového pripojenia</translation>
+<variable>Problem Detecting the Internet Connection</variable>
+</message>
+<message>
+<tag_code>765</tag_code>
+<translation>Ide o najpravdepodobnejšiu variantu z nasledujúcich dôvodov:</translation>
+<variable>This is most likely due to one of the following reasons:</variable>
+</message>
+<message>
+<tag_code>766</tag_code>
+<translation>1.  Počas pripájania káblov nedošlo k vypnutiu a následnému zapnutiu napájania.</translation>
+<variable>1.  The modem was not power cycled during the cabling step.</variable>
+</message>
+<message>
+<tag_code>767</tag_code>
+<translation>Ak chcete tento problém vyriešiť, modem vypnite a znovu zapnite. Ak je potrebné vypnúť a znovu zapnúť modem so záložnou batériou, môže byť potrebné batériu vybrať a vložiť späť. Po vypnutí a zapnutí počkajte 2 minúty, aby sa modem úplne naštartoval.</translation>
+<variable>To solve this problem, power cycle the modem (turn it off and on). To power cycle a modem with battery backup, you might need to remove and reinsert its battery. After the power cycle, wait 2 minutes for the modem to completely start up.</variable>
+</message>
+<message>
+<tag_code>768</tag_code>
+<translation>2.  Žltý ethernetový kábel nie je správne pripojený alebo je pripojený na nesprávnom mieste.</translation>
+<variable>2.  The yellow Ethernet cable is not fully inserted, or is inserted in the wrong place.</variable>
+</message>
+<message>
+<tag_code>769</tag_code>
+<translation>Ak chcete tento problém vyriešiť, uistite sa, že žltý ethernetový kábel je pevne pripojený k portu pre širokopásmový modem, ako aj k internetovému portu na smerovači.</translation>
+<variable>To solve this problem, make sure that the yellow Ethernet cable is securely plugged in to the broadband modem port and the router Internet port.</variable>
+</message>
+<message>
+<tag_code>770</tag_code>
+<translation>Práve som modem vypol a zapol a počkal som 2 minúty.</translation>
+<variable>I just power cycled the modem and waited for 2 minutes.</variable>
+</message>
+<message>
+<tag_code>771</tag_code>
+<translation>Vyriešil som problém s ethernetovým káblom.</translation>
+<variable>I corrected a problem with the Ethernet cable.</variable>
+</message>
+<message>
+<tag_code>772</tag_code>
+<translation>Žiadne z vyššie uvedených.</translation>
+<variable>None of the above.</variable>
+</message>
+<message>
+<tag_code>773</tag_code>
+<translation>Nastal problém pri rozpoznávaní internetového pripojenia - adresa IP</translation>
+<variable>Problem Detecting the Internet Connection - IP Address</variable>
+</message>
+<message>
+<tag_code>774</tag_code>
+<translation>Pridelil vám internetový operátor (ISP) fixnú (statickú) IP adresu? Ide o &lt;b&gt;veľmi zriedkavú&lt;/b&gt; špeciálnu požiadavku. </translation>
+<variable>Did your Internet Service Provider (ISP) assign to you a fixed (static) IP address? This is a &lt;b&gt;very rare&lt;/b&gt; special deployment. </variable>
+</message>
+<message>
+<tag_code>775</tag_code>
+<translation>Vyberte niektorú možnosť a pokračujte kliknutím na &lt;b&gt;Ďalej&lt;/b&gt;.</translation>
+<variable>Select an option and click &lt;b&gt;Next&lt;/b&gt; to proceed.</variable>
+</message>
+<message>
+<tag_code>776</tag_code>
+<translation>Áno. ISP mi pridelil fixnú (statickú) IP adresu.</translation>
+<variable>Yes. My ISP assigned a fixed (static) IP address to me.</variable>
+</message>
+<message>
+<tag_code>777</tag_code>
+<translation>Nie, od ISP som nedostal fixnú (statickú) IP adresu.</translation>
+<variable>No, I did not get a fixed (static) IP address from my ISP.</variable>
+</message>
+<message>
+<tag_code>778</tag_code>
+<translation>Neviem. </translation>
+<variable>I don't know. </variable>
+</message>
+<message>
+<tag_code>779</tag_code>
+<translation>Nastavenia fixnej internetovej IP adresy</translation>
+<variable>Fixed Internet IP Settings</variable>
+</message>
+<message>
+<tag_code>780</tag_code>
+<translation>Zadajte nastavenia fixnej IP adresy, ktoré vám pridelil internetový operátor, a pokračujte kliknutím na &lt;b&gt;Ďalej&lt;/b&gt;.</translation>
+<variable>Enter the fixed IP settings assigned by your Internet Service Provider and click &lt;b&gt;Next&lt;/b&gt; to proceed.</variable>
+</message>
+<message>
+<tag_code>781</tag_code>
+<translation>Uprednostnený server DNS</translation>
+<variable>Preferred DNS Server</variable>
+</message>
+<message>
+<tag_code>782</tag_code>
+<translation>Alternatívny server DNS</translation>
+<variable>Alternate DNS Server</variable>
+</message>
+<message>
+<tag_code>783</tag_code>
+<translation>Nastal problém pri rozpoznávaní internetového pripojenia - adresa MAC</translation>
+<variable>Problem Detecting the Internet Connection - MAC Address</variable>
+</message>
+<message>
+<tag_code>784</tag_code>
+<translation>Ak ste sa v minulosti pripájali k službe internetu s počítačom alebo iným smerovačom, aplikácia NETGEAR môže použiť rovnakú MAC adresu ako predtým.</translation>
+<variable>If you previously connected to your Internet service with a computer or another router,  NETGEAR Genie can use the same MAC address that worked before.</variable>
+</message>
+<message>
+<tag_code>785</tag_code>
+<translation>MAC adresa je jedinečné číslo.  MAC adresu počítača alebo smerovača môžete nájsť na produktovom štítku.</translation>
+<variable>A MAC address is a unique number.  You can find the MAC address of the computer or router on its product label.</variable>
+</message>
+<message>
+<tag_code>786</tag_code>
+<translation>Sem zadajte MAC adresu.</translation>
+<variable>Enter the MAC address here.</variable>
+</message>
+<message>
+<tag_code>787</tag_code>
+<translation>(formát AABBCCDDEEFF)</translation>
+<variable>(format AABBCCDDEEFF)</variable>
+</message>
+<message>
+<tag_code>788</tag_code>
+<translation>Obnoviť nastavenia smerovača </translation>
+<variable>Restore Router Settings </variable>
+</message>
+<message>
+<tag_code>789</tag_code>
+<translation>Prejdite na záložný súbor s nastaveniami smerovača, ktorý ste v minulosti uložili, a pokračujte kliknutím na &lt;b&gt;Ďalej&lt;/b&gt;.</translation>
+<variable>Browse to the router settings backup file you previously saved, and click &lt;b&gt;Next&lt;/b&gt; to proceed.</variable>
+</message>
+<message>
+<tag_code>790</tag_code>
+<translation>Obnovujú sa nastavenia smerovača</translation>
+<variable>Restoring Router Settings</variable>
+</message>
+<message>
+<tag_code>791</tag_code>
+<translation>Aplikujú sa nastavenia internetového pripojenia</translation>
+<variable>Applying Internet Connection Settings</variable>
+</message>
+<message>
+<tag_code>792</tag_code>
+<translation>Kontroluje sa pripojenie k internetu; prosím, čakajte …</translation>
+<variable>Checking the Internet connection; please wait …</variable>
+</message>
+<message>
+<tag_code>793</tag_code>
+<translation>Problém s internetovým pripojením</translation>
+<variable>Network Connection Issue</variable>
+</message>
+<message>
+<tag_code>794</tag_code>
+<translation>Smerovač sa nemôže pri zachovaní aktuálnych nastavení pripojiť k internetu.</translation>
+<variable>The router cannot connect to the Internet with the current settings.</variable>
+</message>
+<message>
+<tag_code>795</tag_code>
+<translation>Skontrolujte nasledujúce položky:</translation>
+<variable>Please review the following items:</variable>
+</message>
+<message>
+<tag_code>796</tag_code>
+<translation>- Skontrolujte správnosť káblových zapojení. Pokyny nájdete v používateľskej príručke k smerovaču.</translation>
+<variable>- Check that the cable connections are correct. Refer to the router Installation Guide for instructions.</variable>
+</message>
+<message>
+<tag_code>797</tag_code>
+<translation>- Skontrolujte, či správne prebehlo vypnutie a zapnutie napájania modemu. Ak máte modem so záložnou batériou, vypnutie a zapnutie napájania vykonajte s batériou vybratou zo zariadenia.</translation>
+<variable>- Check that your broadband modem is power cycled correctly. If you have a battery-backed modem, remove and reinsert the battery to power cycle your modem.</variable>
+</message>
+<message>
+<tag_code>798</tag_code>
+<translation>Chcete, aby NETGEAR zopakoval pokus?</translation>
+<variable>Do you want NETGEAR Genie to try again?</variable>
+</message>
+<message>
+<tag_code>799</tag_code>
+<translation>Na používanie tohto inštalačného nástroja (a prezeranie mnohých skvelých lokalít na internete) je potrebné inovovať prehľadávač na verziu 4 alebo novšiu.</translation>
+<variable>Please upgrade to a version 4 or higher browser so that you can use this setup tool (and see lots of great sites on the Internet!)</variable>
+</message>
+<message>
+<tag_code>800</tag_code>
+<translation>Blahoželáme!</translation>
+<variable>Congratulations!</variable>
+</message>
+<message>
+<tag_code>801</tag_code>
+<translation>Úspešne ste sa pripojili k internetu.</translation>
+<variable>You are successfully connected to the Internet.</variable>
+</message>
+<message>
+<tag_code>802</tag_code>
+<translation>Tento smerovač je prednastavený s nasledujúcim jedinečným identifikátorom bezdrôtovej siete (SSID) a </translation>
+<variable>This router is preset with the following unique wireless network name (SSID) and </variable>
+</message>
+<message>
+<tag_code>803</tag_code>
+<translation>Váš smerovač je prednastavený s funkciou zabezpečenia bezdrôtovej siete šifrovaním WPA2-PSK, ktoré vašu sieť chráni pred nepovoleným prístupom. Ak sa chcete pripojiť k tejto bezdrôtovej sieti, musíte zadať sieťový kľúč (heslo). Tieto predkonfigurované nastavenia sú jedinečné pre toto zariadenie, podobne ako sériové číslo.  Ak ich chcete zmeniť, môžete tak urobiť neskôr na obrazovke bezdrôtových nastavení v rámci webového grafického rozhrania smerovača.</translation>
+<variable>Your router is preset with WPA2-PSK wireless security to protect your network from unwanted access. To join the wireless network, you must enter the network key (password). These preset settings are unique to this device, like a serial number.  If you want to change them, you can do so later in the Wireless Settings screen on the router web GUI.</variable>
+</message>
+<message>
+<tag_code>804</tag_code>
+<translation>sieťovým kľúčom (heslom)</translation>
+<variable>network key (password)</variable>
+</message>
+<message>
+<tag_code>805</tag_code>
+<translation>Názov bezdrôtovej siete (SSID)</translation>
+<variable>Wireless Network Name (SSID)</variable>
+</message>
+<message>
+<tag_code>806</tag_code>
+<translation>Vytlačiť</translation>
+<variable>Print this</variable>
+</message>
+<message>
+<tag_code>807</tag_code>
+<translation>Prejsť na internet</translation>
+<variable>Take me to the Internet</variable>
+</message>
+<message>
+<tag_code>808</tag_code>
+<translation>Na tomto smerovači nie je aktívne zabezpečenie bezdrôtovej siete. Spoločnosť NETGEAR vám dôrazne odporúča</translation>
+<variable>Wireless security is not enabled on this router. NETGEAR highly recommends that you</variable>
+</message>
+<message>
+<tag_code>809</tag_code>
+<translation>Kliknutím sem</translation>
+<variable>Click here</variable>
+</message>
+<message>
+<tag_code>810</tag_code>
+<translation>aktivovať zabezpečenie bezdrôtovej siete a chrániť tak svoju sieť.</translation>
+<variable>to enable wireless security and protect your network.</variable>
+</message>
+<message>
+<tag_code>813</tag_code>
+<translation>Verzia firmvéru smerovača</translation>
+<variable>Router Firmware Version</variable>
+</message>
+<message>
+<tag_code>814</tag_code>
+<translation>Pokračovať</translation>
+<variable>Continue</variable>
+</message>
+<message>
+<tag_code>816</tag_code>
+<translation>Automatické rozpoznanie</translation>
+<variable>Auto-Detect</variable>
+</message>
+<message>
+<tag_code>817</tag_code>
+<translation>Inteligentný sprievodca nastavením dokáže rozpoznať typ vášho internetového pripojenia.</translation>
+<variable>The Smart Setup Wizard can detect the type of Internet connection that you have.</variable>
+</message>
+<message>
+<tag_code>818</tag_code>
+<translation>Chcete, aby sa Inteligentný sprievodca nastavením pokúsil rozpoznať typ internetového pripojenia?</translation>
+<variable>Do you want the Smart Setup Wizard to try and detect the connection type now?</variable>
+</message>
+<message>
+<tag_code>819</tag_code>
+<translation>VB</translation>
+<variable>UK</variable>
+</message>
+<message>
+<tag_code>820</tag_code>
+<translation>Austrália</translation>
+<variable>Australia</variable>
+</message>
+<message>
+<tag_code>821</tag_code>
+<translation>Francúzsko</translation>
+<variable>France</variable>
+</message>
+<message>
+<tag_code>822</tag_code>
+<translation>Ireland</translation>
+<variable>Ireland</variable>
+</message>
+<message>
+<tag_code>823</tag_code>
+<translation>Taliansko</translation>
+<variable>Italy</variable>
+</message>
+<message>
+<tag_code>824</tag_code>
+<translation>Nový Zéland</translation>
+<variable>New Zealand</variable>
+</message>
+<message>
+<tag_code>825</tag_code>
+<translation>Singapur</translation>
+<variable>Singapore</variable>
+</message>
+<message>
+<tag_code>826</tag_code>
+<translation>Švédsko</translation>
+<variable>Sweden</variable>
+</message>
+<message>
+<tag_code>827</tag_code>
+<translation>Švajčiarsko</translation>
+<variable>Switzerland</variable>
+</message>
+<message>
+<tag_code>828</tag_code>
+<translation>Fínsko</translation>
+<variable>Finland</variable>
+</message>
+<message>
+<tag_code>829</tag_code>
+<translation>USA</translation>
+<variable>USA</variable>
+</message>
+<message>
+<tag_code>830</tag_code>
+<translation>Nemecko</translation>
+<variable>Germany</variable>
+</message>
+<message>
+<tag_code>831</tag_code>
+<translation>Iné</translation>
+<variable>Other</variable>
+</message>
+<message>
+<tag_code>855</tag_code>
+<translation>Tento proces môže trvať až šesť minút, čakajte prosím</translation>
+<variable>This process can take up to six minutes; please wait …</variable>
+</message>
+<message>
+<tag_code>10609</tag_code>
+<translation>Použiť VLANID</translation>
+<variable>Use VLANID</variable>
+</message>
+<message>
+<tag_code>10610</tag_code>
+<translation>Poskytovateľ internetových služieb</translation>
+<variable>Internet Service Provider</variable>
+</message>
+<message>
+<tag_code>10611</tag_code>
+<translation>DT</translation>
+<variable>DT</variable>
+</message>
+</tag_msg>

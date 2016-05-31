@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-Control" content="no-cache"><meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT"><meta name="description" content="WNR2500_multilangual"><title>NETGEAR Router @model_name#</title><script language="javascript" type="text/javascript" src="string.js"></script><link rel="stylesheet" href="style/form.css"><script language="javascript" type="text/javascript" src="funcs.js"></script><!-- link rel="stylesheet" href="form.css" --><script language="javascript" type="text/javascript" src="linux.js"></script><script language="JavaScript" type="text/javascript">
+    var defaultInterval = 10;
+    var interval = 10;
+    var days =@tm_left_days_height#;
+    var volumn = @tm_left_volumn_height#;
+	function fmtNum(num)
+	{
+	     var n = Number(num);
+	     /*if the value > 1000,never show the number after '.',netgear spec 1.9*/
+	     var cut = n <1000?2:0;
+	     return n.toFixed(cut).replace(/(\d)(?=(\d{3})+(\.|$))/g, '$1,');
+	}
+    function loadInterval()
+    {
+        var tm_interval = @interval#;
+    intervalId = setInterval("getStatisticPage()", tm_interval * 1000);
+    }
+    function setDefaultInterval()
+    {
+        //document.SetIntervalForm.interval.value = defaultInterval ;
+        document.forms[0].interval.value = defaultInterval ;
+        clearInterval(intervalId2) ;
+    }
+    function resetInterval(newInterval)
+    {
+        var cf=document.forms[0];
+        interval = parseInt(newInterval);
+        if ( isNaN(interval) || interval< 10 || interval> 600 )
+        {
+            interval = defaultInterval;
+		alert(getErrorMsgByVar("gsm_msg_tm_intvl_err"));
+        }
+        document.forms[0].interval.value = interval ;
+        clearInterval(intervalId) ;
+        intervalId = setInterval("getStatisticPage()", interval * 1000);
+        cf.todo.value="save";
+        cf.submit();
+    }
+    function stopInterval()
+    {
+        clearInterval(intervalId) ;
+        document.forms[0].interval.value = "" ;
+    }
+    function getStatisticPage()
+    {
+        location.href = "./traffic_status.htm" ;
+    }
+    function GE(id) {
+        if (document.getElementById && document.getElementById(id)) {
+            return document.getElementById(id);
+        } else if (document.all && document.all[id]) {
+            return document.all[id];
+        } else if (document.layers && document.layers[id]) {
+            return document.layers[id];
+        } else {
+            return null;
+        }
+    }
+    var the_data = @tm_left_volumn_height#;
+    var limit_by = "@h_tm_type#";
+    function put_data()
+    {
+        if (limit_by == "tvolume"){
+            return(the_data[2]*1024 + the_data[3] + " " + getErrorMsgByVar("gsm_msg_mbytes"));
+        }else{
+            return(parseInt(the_data[6]/60) + " " + getErrorMsgByVar("gsm_msg_tm_minutes"));
+        }
+    }
+    function put_data_1()
+    {
+        if (limit_by == "tvolume"){
+            return(the_data[1] + " " + getErrorMsgByVar("gsm_msg_mbytes") + ")");
+         }else{
+            return(the_data[7] + " " + getErrorMsgByVar("gsm_msg_hours") + ")");
+        }
+    }
+    function set_counting()
+    {
+        var limit_volumns = volumn[1];
+        var popmsg = "@tm_popmsg#";
+        var traff_dir= "@h_traff_dir#";
+        var limit = getErrorMsgByVar("gsm_msg_tm_limnit_sub1") + put_data_1() + " " + getErrorMsgByVar("gsm_msg_tm_limnit_sub2") + "[" + document.forms[0].h_tm_warning_time.value + "]";
+        var watermark = getErrorMsgByVar("gsm_msg_tm_water_mark_sub1") + " " + put_data() + " " + getErrorMsgByVar("gsm_msg_tm_water_mark_sub2") + "[" + document.forms[0].h_tm_warning_time.value + "]";
+        var time_used = volumn[8];
+        if (volumn[1] == 0) volumn[1] = 1;
+        if (days[1] == 0) days[1] = 1;
+        var height_uv;// = parseInt(150*volumn[0]/volumn[1]);
+        var height_ud = parseInt(150*days[0]/days[1]);
+        if (limit_by == "tvolume")
+            height_uv = volumn[1] != 0?(150*volumn[0]/volumn[1]):150;
+        else
+            height_uv = volumn[7] != 0?(150*time_used/(volumn[7]*3600)):150;
+        if (height_uv > 150)
+            height_uv = 150;
+        if (height_ud > 150)
+            height_ud = 150;
+		GE('used_days').style.display = '';
+		GE('left_days').style.display = '';
+		GE('used_volumn').style.display = '';
+		GE('left_volumn').style.display = '';
+        if (height_ud == 0)
+            GE('used_days').style.display = 'none';
+        else
+            GE('used_days').style.height= height_ud;
+        if (height_ud == 150)
+            GE('left_days').style.display = 'none';
+        else
+            GE('left_days').style.height= 150 -height_ud;
+        GE('days_r').innerHTML = days[0] + '/' + days[1] + '<br> ' + getErrorMsgByVar("gsm_msg_days");
+        if (height_uv == 0)
+            GE('used_volumn').style.display='none';
+        else
+            GE('used_volumn').style.height = height_uv.toFixed();
+        /*below 90% is green, other is red*/
+        if (height_uv >= 135)
+            GE('used_volumn').style.background = '#ff0000';
+        else
+            GE('used_volumn').style.background = '#12f000';
+        if (height_uv == 150)
+            GE('left_volumn').style.display = 'none';
+        else
+            GE('left_volumn').style.height = 150 - height_uv.toFixed();
+        if (limit_by == "tvolume")
+        {
+        		if(traff_dir == "nolimit")
+        			GE('volumn_r').innerHTML = getTagMsgByCode("643");
+        		else
+            	GE('volumn_r').innerHTML = fmtNum(volumn[0]) + '/' + fmtNum(limit_volumns) + '<br> ' + getErrorMsgByVar("gsm_msg_mbytes");
+            
+        }
+        else
+            GE('volumn_r').innerHTML = parseInt(time_used/3600) + ':' + parseInt(time_used % 3600 /60) + '/' + volumn[7] + "<br> " + getErrorMsgByVar("gsm_msg_hours");
+        if (popmsg.length)
+        {
+            if (popmsg == "tm_watermark.htm")
+                alert(watermark);
+            else
+                alert(limit);
+        }
+    }
+</script></head><body bgcolor="#FFFFFF" marginheight="0" marginwidth="0" topmargin="0" leftmargin="0" onLoad="loadInterval();set_counting();document.forms[0].elements[1].focus();">
+<TABLE border="0" cellpadding="0" cellspacing="3" width="100%">
+<TR><!-- RULE --><td colspan="5" background="liteblue.gif" height="12">&nbsp; </td>
+  </tr><tr><!-- RULE --><td colspan="5"> <b languageCode = "692">Traffic Status</b></td>
+</tr><TR><td width="20px"></td>
+<td colspan="2"><span class="thead" languageCode = "693">Counting Period</span></td>
+<td colspan="2"><span class="thead" languageCode = "694">Amount Used</span></td>
+</tr><tr><td width="20px"></td>
+<td>
+<table style="height:150px;background:white;width:30px;border:1px #444 solid;"><tr id="left_days" style="height:60px; width:30px;background:white;display:none"><td></td></tr><tr id="used_days" style="width:30px;background:blue;display:none"><td></td></tr></table></td>
+<td> <div id="days_r"></div></td>
+<td>
+<table style="height:150px;background:white;width:30px;border:1px #444 solid"><tr id="left_volumn" style="height:60px; width:30px;background:white;padding-bottom:-1px;display:none"><td></td></tr><tr id="used_volumn" style="width:30px;background:#12f000;display:none"><td></td></tr></table></td>
+<td> <div id="volumn_r"></div></td>
+</tr><tr></tr></table><form method="POST" action="setup.cgi@post_par2#">
+<input type="hidden" name="Load" value="H"><p></p><div align="CENTER">
+ <table border="0" width="450" height="34" valign="top"><tr><td width="170" align="CENTER"><b><span languageCode = "402">Poll Interval</span> :</b></td>
+	 <td align="CENTER" nowrap>
+	 <input type="text" name="interval" size="4" maxlength="4" value="@interval#"><span languageCode = "403">(secs)</span></td>
+	<td width="80"> </td>
+	<td width="80" align="center" valign="middle"><input class="common_bt" type="BUTTON" name="SetIntvl" value = "Set Interval" width="80" onClick="resetInterval(document.forms[0].interval.value);buttonToDisabled(document.forms[0])" languageCode = "404"></td>
+	<td width="20">&nbsp;  </td>
+  </tr></table></div>
+<table align="center" width="100%"><tr><!-- RULE --><td colspan="5" background="liteblue.gif" height="12">&nbsp; </td>
+  </tr></table>
+<input type="hidden" name="h_tm_warning_time" value="@h_tm_warning_time#"><input type="hidden" name="todo" value="save"><input type="hidden" name="this_file" value="traffic_status.htm"><input type="hidden" name="next_file" value="traffic_status.htm"><input type="hidden" name="SID" value="@SID#"></form>
+<script language="javascript" type="text/javascript" src="langs.js"></script></body></html>

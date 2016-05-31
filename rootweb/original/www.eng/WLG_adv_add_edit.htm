@@ -1,0 +1,261 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<META http-equiv="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+<meta HTTP-EQUIV="Expires" CONTENT="Mon, 06 Jan 1990 00:00:01 GMT">
+<meta name="description" content="DG834 1049">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Wifi Schedule Add</title>
+<!-- link rel="stylesheet" href="form.css" -->
+<script language="javascript" type="text/javascript" src="utility.js"></script>
+<script language="javascript" type="text/javascript" src="linux.js"></script>
+<script language="javascript" type="text/javascript" src="string.js"></script><link rel="stylesheet" href="style/form.css"><script language="javascript" type="text/javascript" src="funcs.js"></script>
+<!-- link rel="stylesheet" href="form.css" -->
+<script language="javascript" type="text/javascript">
+function editload()
+{
+	var cf=document.formname;
+	var stime = "@h_start_time#";
+	var etime = "@h_end_time#";
+	var wday = "@h_cbox_day#";
+	var strlen = wday.length;
+	if(stime != "")
+	{
+		var stime_hour = parseInt(stime.split(":")[0],10);
+		var stime_minute = parseInt(stime.split(":")[1],10)==0?0:1;
+		cf.d_start_time.value = stime_hour*2+stime_minute;
+	}else{
+		cf.d_start_time.value = 0;
+	}
+	if(etime != "")
+	{
+		var etime_hour = parseInt(etime.split(":")[0],10);
+		var etime_minute = parseInt(etime.split(":")[1],10)==0?0:1;
+		/* Dropdown list doesn't include option 48,IE will show NULL,
+		   Firefox will show option 0 */
+		if(etime_hour == 24)
+			cf.d_end_time.value = 0;
+		else
+			cf.d_end_time.value = etime_hour*2+etime_minute;
+	}else{
+		cf.d_end_time.value = 0;
+	}
+  if(strlen>0)
+  {
+  	if(wday == "Daily")
+  	{
+			cf.r_scheType[0].checked = true;
+			selectstatus();
+		}else{
+			var i=0;
+			for(i=0;i<(strlen+1)/5;i++)
+			{
+				weekday_select(wday.substring(i*5,i*5+3));
+			}
+			cf.r_scheType[1].checked = true;
+		}
+	}else{
+		cf.r_scheType[0].checked = true;
+		selectstatus();
+	}
+}
+function weekday_select(day)
+{
+	cf = document.formname;
+	switch(day)
+	{
+		case "Mon":
+			cf.cbox_monday.checked = true;break;
+		case "Tue":
+			cf.cbox_tuesday.checked = true;break;
+		case "Wed":
+			cf.cbox_wednesday.checked = true;break;
+		case "Thu":
+			cf.cbox_thursday.checked = true;break;
+		case "Fri":
+			cf.cbox_friday.checked = true;break;
+		case "Sat":
+			cf.cbox_saturday.checked = true;break;
+		case "Sun":
+			cf.cbox_sunday.checked = true;break;
+	}
+}
+function selectstatus()
+{
+	var cf = document.formname;
+	if(cf.r_scheType[0].checked == true)
+	{
+		cf.cbox_monday.checked = false;
+		cf.cbox_monday.disabled = true;
+		cf.cbox_tuesday.checked = false;
+		cf.cbox_tuesday.disabled = true;
+		cf.cbox_wednesday.checked = false;
+		cf.cbox_wednesday.disabled = true;
+		cf.cbox_thursday.checked = false;
+		cf.cbox_thursday.disabled = true;
+		cf.cbox_friday.checked = false;
+		cf.cbox_friday.disabled = true;
+		cf.cbox_saturday.checked = false;
+		cf.cbox_saturday.disabled = true;
+		cf.cbox_sunday.checked = false;
+		cf.cbox_sunday.disabled = true;
+	}
+	if(cf.r_scheType[1].checked == true)
+	{
+		cf.cbox_monday.disabled = false;
+		cf.cbox_tuesday.disabled = false;
+		cf.cbox_wednesday.disabled = false;
+		cf.cbox_thursday.disabled = false;
+		cf.cbox_friday.disabled = false;
+		cf.cbox_saturday.disabled = false;
+		cf.cbox_sunday.disabled = false;
+	}
+}
+function checkdata()
+{
+	var cf=document.formname;
+	var day="";
+	if(cf.d_start_time.value == cf.d_end_time.value){
+		alert("The Start time can't be equal to the End time");
+		return false;
+	}
+	/*else if((cf.d_start_time.value - cf.d_end_time.value > 0) && cf.d_end_time.value != 0){
+		alert("Invalid time region, please select again.");
+		return false;
+	}*/
+	if(cf.r_scheType[0].checked == true){
+		day+= "Daily";
+	}
+	else
+	{
+		if(cf.cbox_monday.checked == true)
+			day+= "Mon.";
+		if(cf.cbox_tuesday.checked == true){
+			if(day.length>0) day+=",Tue."
+			else day+= "Tue.";
+		}
+		if(cf.cbox_wednesday.checked == true){
+			if(day.length>0) day+=",Wed."
+			else day+= "Wed.";
+		}
+		if(cf.cbox_thursday.checked == true){
+			if(day.length>0) day+=",Thu."
+			else day+= "Thu.";
+		}
+		if(cf.cbox_friday.checked == true){
+			if(day.length>0) day+=",Fri."
+			else day+= "Fri.";
+		}
+		if(cf.cbox_saturday.checked == true){
+			if(day.length>0) day+=",Sat."
+			else day+= "Sat.";
+		}
+		if(cf.cbox_sunday.checked == true){
+			if(day.length>0) day+=",Sun."
+			else day+= "Sun.";
+		}
+	}
+	if(day == "")
+		cf.h_cbox_day.value = "Mon.,Tue.,Wed.,Thu.,Fri.,Sat.,Sun.";
+	else
+		cf.h_cbox_day.value = day;
+	dataToHidden(cf);
+	return true;
+}
+</script>
+</head>
+<body bgcolor="#ffffff" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="editload();">
+	<form name="formname" method="POST" action="setup.cgi@post_par#">
+<div class="page_title" languageCode="852">Add Wifi Schedule</div>
+<div class="fix_button">
+<table width="100%" border="0" cellpadding="0" cellspacing="2"><tr><td nowrap colspan="2" align="center">
+<input class="cancel_bt" type="button" value="Cancel" onClick=" location.href='setup.cgi?next_file=WLG_adv.htm'" languageCode="19">
+&nbsp;
+<input class="apply_bt" type="SUBMIT" name="save" value="Apply" onClick="return checkdata()" languageCode="18">
+</td></tr></table>
+</div>
+<div id="main" class="main_top_button">
+	<table WIDTH="100%" BORDER="0" CELLSPACING="3" CELLPADDING="0">
+		<tr>
+			<td colspan="2"><b languageCode="850">When to turn off wireless signal<b></td>
+		</tr>
+		<tr>
+			<td width="10%"><b languageCode="250">Start</b><b>:</b></td><td nowrap>
+  			<select name="d_start_time" size="1">
+		  		<option value="0">00:00<option value="1">00:30<option value="2">01:00<option value="3">01:30<option value="4">02:00<option value="5">02:30
+		  		<option value="6">03:00<option value="7">03:30<option value="8">04:00<option value="9">04:30<option value="10">05:00<option value="11">05:30
+		  		<option value="12">06:00<option value="13">06:30<option value="14">07:00<option value="15">07:30<option value="16">08:00<option value="17">08:30
+		  		<option value="18">09:00<option value="19">09:30<option value="20">10:00<option value="21">10:30<option value="22">11:00<option value="23">11:30
+		  		<option value="24">12:00<option value="25">12:30<option value="26">13:00<option value="27">13:30<option value="28">14:00<option value="29">14:30
+		  		<option value="30">15:00<option value="31">15:30<option value="32">16:00<option value="33">16:30<option value="34">17:00<option value="35">17:30
+		  		<option value="36">18:00<option value="37">18:30<option value="38">19:00<option value="39">19:30<option value="40">20:00<option value="41">20:30
+		  		<option value="42">21:00<option value="43">21:30<option value="44">22:00<option value="45">22:30<option value="46">23:00<option value="47">23:30
+				</select>
+ 			</td>
+		</tr>
+		</tr>
+		<tr>
+			<td width="10%"><b languageCode="253">End</b><b>:</b></td><td nowrap>
+  			<select name="d_end_time" size="1">
+		  		<option value="0">00:00<option value="1">00:30<option value="2">01:00<option value="3">01:30<option value="4">02:00<option value="5">02:30
+		  		<option value="6">03:00<option value="7">03:30<option value="8">04:00<option value="9">04:30<option value="10">05:00<option value="11">05:30
+		  		<option value="12">06:00<option value="13">06:30<option value="14">07:00<option value="15">07:30<option value="16">08:00<option value="17">08:30
+		  		<option value="18">09:00<option value="19">09:30<option value="20">10:00<option value="21">10:30<option value="22">11:00<option value="23">11:30
+		  		<option value="24">12:00<option value="25">12:30<option value="26">13:00<option value="27">13:30<option value="28">14:00<option value="29">14:30
+		  		<option value="30">15:00<option value="31">15:30<option value="32">16:00<option value="33">16:30<option value="34">17:00<option value="35">17:30
+		  		<option value="36">18:00<option value="37">18:30<option value="38">19:00<option value="39">19:30<option value="40">20:00<option value="41">20:30
+		  		<option value="42">21:00<option value="43">21:30<option value="44">22:00<option value="45">22:30<option value="46">23:00<option value="47">23:30
+				</select>
+ 			</td>
+		</tr>
+		<tr>
+			<td colspan="2" background="liteblue.gif" height="12">&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="2"><b languageCode="848">Recurrence pattern</b></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<table WIDTH="70%" BORDER="0" CELLSPACING="3" CELLPADDING="0">
+					<tr>
+						<td nowrap colspan="2"><input type="radio" name="r_scheType" value="" onClick="selectstatus()"><b languageCode="172">Daily<b></td>
+					</tr>
+					<tr>
+						<td nowrap colspan="2"><input type="radio" name="r_scheType" value="" onClick="selectstatus()"><b languageCode="851">Select Days<b></td>
+					</tr>
+					<tr>
+						<td width="5%"></td>
+						<td width="20%"><input type="checkbox" name="cbox_sunday"><span languageCode="176">Sunday</span></td>
+						<td width="20%"><input type="checkbox" name="cbox_monday"><span languageCode="177">Monday</span></td>
+						<td width="20%"><input type="checkbox" name="cbox_tuesday"><span languageCode="178">Tuesday</span></td>
+						<td width="20%"><input type="checkbox" name="cbox_wednesday"><span languageCode="179">Wednesday</span></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td width="20%"><input type="checkbox" name="cbox_thursday"><span languageCode="180">Thursday</span></td>
+						<td width="20%"><input type="checkbox" name="cbox_friday"><span languageCode="181">Friday</span></td>
+						<td width="20%"><input type="checkbox" name="cbox_saturday"><span languageCode="182">Saturday</span></td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+	<table WIDTH="100%" BORDER="0" CELLSPACING="3" CELLPADDING="0">
+		<tr>
+			<td colspan="2" background="liteblue.gif" height="12">&nbsp;</td>
+		</tr>
+	</table>
+	<input type="hidden" name="todo" value="save">
+	<input type="hidden" name="wifi_edit" value="@wifi_edit#">
+	<input type="hidden" name="h_ruleSelect" value="@h_ruleSelect#">
+	<input type="hidden" name="h_cbox_day" value="@h_cbox_day#">
+    <input type="hidden" name="nBand" value="@nBand#">
+	<input type="hidden" name="this_file" value="WLG_adv_add_edit.htm">
+	<input type="hidden" name="next_file" value="WLG_adv.htm">
+	<input type="hidden" name="SID" value="@SID#">
+</div>	
+</form>
+	<script language="javascript" type="text/javascript" src="langs.js"></script>
+</body>
+</html>

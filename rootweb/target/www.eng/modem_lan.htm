@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-Control" content="no-cache"><meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT"><meta name="description" content="@model_name#_multilangual"><title>NETGEAR Router @model_name#</title><script language="javascript" type="text/javascript" src="string.js"></script><link rel="stylesheet" href="style/form.css"><script language="javascript" type="text/javascript" src="funcs.js"></script><!-- link rel="stylesheet" href="form.css" --><style type="text/javascript">
+	classes.num.all.fontFamily = "Courier";
+	classes.num.all.fontSize = "10pt" ;
+</style><script language="javascript" type="text/javascript" src="utility.js"></script><script language="javascript" type="text/javascript" src="linux.js"></script><script language="javascript" type="text/javascript">
+<!-- hide script from old browsers
+function chgSel(index)
+{
+    document.forms[0].select.value = index;
+    return true;
+}
+function checkData()
+{
+ 	var cf = document.forms[0];
+	var msg = "";
+	if(badLANIP(cf.sysLANIPAddr1,cf.sysLANIPAddr2,cf.sysLANIPAddr3,cf.sysLANIPAddr4,254)
+		||(parseInt(cf.sysLANIPAddr4.value, 10)==0))
+		msg+= getErrorMsgByVar("gsm_msg_eth_inv_ip");
+	if(badIP(cf.sysLANSubnetMask1,cf.sysLANSubnetMask2,cf.sysLANSubnetMask3,cf.sysLANSubnetMask4,255))
+			msg+= getErrorMsgByVar("gsm_msg_eth_inv_mask");
+	if (msg.length > 1)
+	{
+		alert(msg);
+		return false;
+	}
+	dataToHidden(cf);
+	return true;
+}
+//  loadhelp('lanip');
+//-->
+</script></head><body bgcolor="#ffffff" onLoad="dataToVisible(document.forms[0]);document.forms[0].elements[0].focus();" onResize="if(document.layers) return false;">
+<form name="modemLan" method="POST" action="setup.cgi@post_par#">
+<div class="page_title">LAN IP <span languageCode = "305">Setup</span></div>
+<div class="fix_button">
+<table width="100%" border="0" cellpadding="0" cellspacing="2"><tr><td nowrap colspan="2" align="center">
+<input class="cancel_bt" type="button" name="Cancel" value = "Cancel" onClick="location.href='./lan_mo.htm'" languageCode = "19">
+&nbsp;
+<input class="apply_bt" type="SUBMIT" name="Apply" value = "Apply" onClick="return checkData()" languageCode = "18">
+</td></tr></table>
+</div>
+<div id="main" class="main_top_button">
+<table border="0" cellpadding="0" cellspacing="3" width="100%"><tr><td nowrap colspan="2">
+		<p><b><a href="javascript:loadhelp('lanip_mo','tcp')" tabindex="-1">LAN TCP/IP <span languageCode = "305">Setup</span></a></b></p>
+		</td>
+	</tr><tr><td nowrap languageCode = "37">IP Address</td>
+		<td nowrap align="right" class="num"><input type="text" name="sysLANIPAddr1" class="num" size="4" maxlength="3" value="">.<input type="text" name="sysLANIPAddr2" class="num" size="4" maxlength="3" value="">.<input type="text" name="sysLANIPAddr3" class="num" size="4" maxlength="3" value="">.<input type="text" name="sysLANIPAddr4" class="num" size="4" maxlength="3" value=""></td>
+	</tr><tr><td nowrap languageCode = "40">IP Subnet Mask</td>
+		<td nowrap align="right" class="num"><input type="text" name="sysLANSubnetMask1" class="num" size="4" maxlength="3" value="">.<input type="text" name="sysLANSubnetMask2" class="num" size="4" maxlength="3" value="">.<input type="text" name="sysLANSubnetMask3" class="num" size="4" maxlength="3" value="">.<input type="text" name="sysLANSubnetMask4" class="num" size="4" maxlength="3" value=""></td>
+	</tr><tr><!-- RULE --><td colspan="2" background="liteblue.gif" height="12"></td>
+	</tr><tr><td colspan="2" align="center"></td>
+	</tr></table><input type="hidden" name="c4_sysLANIPAddr" value="@c4_sysLANIPAddr#"><input type="hidden" name="c4_sysLANSubnetMask" value="@c4_sysLANSubnetMask#"><input type="hidden" name="todo" value="save"><input type="hidden" name="this_file" value="modem_lan.htm"><input type="hidden" name="next_file" value="modem_lan.htm"><input type="hidden" name="SID" value="@SID#">
+</div>	
+</form>
+<p></p>
+<div id="help" style="display: none">
+		<iframe name="help_iframe" id="helpframe" src="lanip_mo_h.htm" allowtransparency="true" width="100%" frameborder="0">
+		</iframe>
+</div>
+<div id="help_switch" class="close_help">
+	 <img class="help_switch_img" src="image/help/help-bar.gif"><script>
+var help_flag=0;
+if(isIE()){
+	show_hidden_help_top_button(1);
+	var frame_div = top.document.getElementById("formframe_div");
+	frame_div.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+if(get_browser() == "Opera"){
+	window.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+</script><div id="help_space" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_center"><span languageCode="3016">Help Center</span></div>
+<div id="help_button" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_show_hidden"><a href="javascript:void(0)" onClick="show_hidden_help_top_button(help_flag); help_flag++;"><span languageCode="3017">Show/Hide Help Center</span></a></div>
+</div>
+<script language="javascript" type="text/javascript" src="langs.js"></script></body></html>

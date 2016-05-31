@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>NETGEAR Router @model_name# </title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Pragma" CONTENT="no-cache">
+<meta http-equiv="Cache-Control" CONTENT="no-cache">
+<meta http-equiv="Expires" CONTENT="Mon, 06 Jan 1990 00:00:01 GMT">
+<link rel="stylesheet" type="text/css" href="style/hijack_style.css" />
+<script language="javascript" type="text/javascript" src="script/brs_hijack.js"></script>
+<script language="javascript" type="text/javascript" src="language/English.js"></script>
+<script language="javascript" type="text/javascript" src="string.js"></script><link rel="stylesheet" href="style/form.css"><script language="javascript" type="text/javascript" src="funcs.js"></script>
+<SCRIPT language=javascript type=text/javascript>
+
+var wan_gotIP = "@if_wan_up#";
+var refresh_times = @refresh_times#;
+function check_wanup()
+{
+    var cf = document.forms[0];
+ 
+    if(wan_gotIP == "Up")
+    {
+        /*start ping 10 seconds after wan up*/
+        cf.todo.value="brs_chk_lanWanConflict";
+        cf.next_file.value= "BRS_03A_A_noWan_check_ping.html";
+//        setTimeout('document.forms[0].submit();',10000);
+        setTimeout('location.href="setup.cgi?next_file=BRS_03A_A_noWan_check_ping.html&todo=brs_chk_lanWanConflict";', 2000);
+        return true;
+    }
+    else if(refresh_times > 10)
+    {
+        document.forms[0].submit();
+        return true;
+    }
+    else
+        setTimeout('location.href="BRS_03A_A_noWan_check_net.html";',2000);
+}
+
+</SCRIPT>
+</head>
+<body onload="check_wanup();">
+<FORM action="setup.cgi@post_par#" method=post>
+<div class="wizard_content_div">
+	<div class="wizard_words_div">
+<H1><span languageCode = "755">Detecting the Internet Connection</span></H1>
+<P><span languageCode = "763">This process can take a few minutes; please wait …</span></P>
+<DIV class=waiting_img_div align=center><IMG alt=waiting src="image/wait30.gif"> </DIV></DIV>
+</DIV>
+</div>
+<input type="hidden" name="todo" value="save">
+<input type="hidden" name="this_file" value="BRS_03A_A_noWan_check_net.html">
+<input type="hidden" name="next_file" value="BRS_03A_detcInetType.html">
+<input type="hidden" name="SID" value="@SID#">
+</FORM>
+<script language="javascript" type="text/javascript" src="langs.js"></script>
+</body>
+</html>

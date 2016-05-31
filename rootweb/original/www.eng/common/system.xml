@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<system_info>
+    <system_var>
+        <sys_info_code>1</sys_info_code>
+        <description>current system language</description>
+        <value>@language_inuse#</value>
+        <debug_value_1>English</debug_value_1>
+        <debug_value_2>French</debug_value_2>
+        <variable>language</variable>
+        <tag_value>@language_tag#</tag_value>
+    </system_var>
+</system_info>

@@ -1,0 +1,1 @@
+/etc/setup.cgi

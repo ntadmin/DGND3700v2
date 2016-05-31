@@ -1,0 +1,194 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-Control" content="no-cache"><meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT"><meta name="description" content="@model_name#_multilangual"><title>NETGEAR Router @model_name#</title><script language="javascript" type="text/javascript" src="string.js"></script><link rel="stylesheet" href="style/form.css"><script language="javascript" type="text/javascript" src="funcs.js"></script><!-- link rel="stylesheet" href="form.css" --><style type="text/javascript">
+	classes.num.all.fontFamily = "Courier";
+	classes.num.all.fontSize = "10pt" ;
+</style><script language="javascript" type="text/javascript" src="utility.js"></script><script language="javascript" type="text/javascript" src="linux.js"></script><script language="javascript" type="text/javascript">
+<!--
+var DisableFixedIP = false;
+function server_isfqdn()
+{
+	var cf = document.forms[0];
+	var data;
+	if (cf.pptp_serv_ip.value.length > 0){
+		data = cf.pptp_serv_ip.value.match(/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/);
+		if(!data) {
+			cf.myip_1.value = "";
+			cf.myip_2.value = "";
+			cf.myip_3.value = "";
+			cf.myip_4.value = "";
+			cf.mygw_1.value = "";
+			cf.mygw_2.value = "";
+			cf.mygw_3.value = "";
+			cf.mygw_4.value = "";
+			setDisabled(true, cf.mygw_1, cf.mygw_2, cf.mygw_3, cf.mygw_4);
+			return true;
+		}
+	}
+	return false;
+}
+function myip_update()
+{
+	var cf = document.forms[0];
+	var data;
+	if((cf.myip_1.value.length>0)||(cf.myip_2.value.length>0)||(cf.myip_3.value.length>0)||(cf.myip_4.value.length>0)) {
+		if (server_isfqdn()){
+			alert(getErrorMsgByVar("gsm_msg_pptp_fqdn"));
+		}
+		else{
+			setDisabled(false, cf.mygw_1, cf.mygw_2, cf.mygw_3, cf.mygw_4);
+		}
+	}
+	else{
+		setDisabled(true, cf.mygw_1, cf.mygw_2, cf.mygw_3, cf.mygw_4);
+	}
+}
+function goTestApply()
+{
+	var winoptions = "width=640,height=480,menubar=yes,toolbar=yes,status=yes,location=yes,resizable=yes,scrollbars=yes";
+	if(document.forms[0].runtest.value == "yes")
+		window.open('./BAS_wtest_l.htm','test_win',winoptions);
+}
+function loadcheck()
+{
+ 	var cf = document.forms[0];
+	if(isIE()){
+		cf.pptp_username.size="24";
+		cf.pptp_passwd.size="24";
+	}
+	
+	myip_update();
+}
+function checkData()
+{
+ 	var cf = document.forms[0];
+	var msg = "";
+	var wanIp, gwIp;
+	if (checkInt(cf.pptp_idletime, "", 0, 99, true).length > 0)
+	{
+		msg += getErrorMsgByVar("gsm_msg_ppp_idle_time");
+	}
+	if((cf.myip_1.value.length != 0)||(cf.myip_2.value.length != 0)||(cf.myip_3.value.length != 0)||(cf.myip_4.value.length != 0)) {
+		/* If the Server address is a FQDN, My IP address Must be blank */
+		if(server_isfqdn())
+			msg+= getErrorMsgByVar("gsm_msg_pptp_fqdn");
+	}
+	/* The server IP is vaild? */
+	if (cf.pptp_serv_ip.value.length == 0 || isValidStr(cf.pptp_serv_ip.value.toLowerCase(), ValidStr_ddns, cf.pptp_serv_ip.value.length) == false)
+		msg+= getErrorMsgByVar("gsm_msg_pptp_server_addr_invalid");
+	if (cf.myip_1.value.length != 0 || cf.myip_2.value.length != 0
+	|| cf.myip_3.value.length != 0 || cf.myip_4.value.length != 0) {
+		if (badLANIP(cf.myip_1, cf.myip_2, cf.myip_3, cf.myip_4, 254)
+		|| (parseInt(cf.myip_4.value, 10)==0)) {
+			msg+= getErrorMsgByVar("gsm_msg_pptp_ip_invalid");
+		}
+		/* check gateway IP address */
+		if (cf.mygw_1.value.length != 0 || cf.mygw_2.value.length != 0
+		|| cf.mygw_3.value.length != 0 || cf.mygw_4.value.length != 0) {
+			wanIp = cf.myip_1.value + "." + cf.myip_2.value + "." + cf.myip_3.value + "." + cf.myip_4.value;
+			gwIp = cf.mygw_1.value + "." + cf.mygw_2.value + "." + cf.mygw_3.value + "." + cf.mygw_4.value;
+			if (badLANIP(cf.mygw_1, cf.mygw_2, cf.mygw_3, cf.mygw_4, 254)
+			|| (IsGatewayValid(wanIp, "255.255.255.0", gwIp) == false)) {
+				msg+= getErrorMsgByVar("gsm_msg_pptp_gw_ip_invalid");
+			}
+		}
+	}
+	msg += checkBlank(cf.pptp_username, getErrorMsgByVar("gsm_msg_ddns_user_name"));
+	if (msg.length > 1)
+	{
+		alert(msg);
+		return false;
+	}
+	dataToHidden(cf);
+	return true;
+}
+function saveTest()
+{
+ 	var cf = document.forms[0];
+	if(checkData())
+	{
+		cf.todo.value = "saveandtest";
+		cf.next_file.value = "WIZ_pptp.htm";
+		cf.submit();
+	}
+}
+function changetotext() {
+	document.getElementById('pptp_passwd1').style.display="none";
+	document.getElementById('pptp_passwd').style.width = document.getElementById('pptp_username').style.width;
+	document.getElementById('pptp_passwd').style.display="";
+	document.getElementById('pptp_passwd').focus();
+}
+function changetopassword() {
+    document.getElementById('pptp_passwd1').value = document.getElementById('pptp_passwd').value;
+	document.getElementById('pptp_passwd1').style.width = document.getElementById('pptp_username').style.width;
+	document.getElementById('pptp_passwd1').style.display="";
+	document.getElementById('pptp_passwd').style.display="none";
+}
+//-->
+</script></head><body bgcolor="#ffffff" onLoad="dataToVisible(document.forms[0]);loadcheck();document.forms[0].elements[0].focus();goTestApply();">
+<form name="formname" method="POST" action="setup.cgi@post_par#" onSubmit="buttonToDisabled(document.forms[0])">
+<div class="page_title">PPTP</div>
+<div class="fix_button">
+<table width="100%" border="0" cellpadding="0" cellspacing="2"><tr><td nowrap colspan="2" align="center">
+<div id="pppoebuttons">
+<input class="common_bt" type="button" name="Test" value = "Test" onClick="saveTest();buttonToDisabled(document.forms[0])" languageCode = "52">
+&nbsp;
+<input class="cancel_bt" type="RESET" name="Cancel" value = "Cancel" onClick="setTimeout('dataToVisible(document.forms[0])',250)" languageCode = "19">
+&nbsp;
+<input class="apply_bt" type="SUBMIT" name="Apply" value = "Apply" onClick="return checkData()" languageCode = "18">
+</div>
+</td></tr></table>
+</div>
+<div id="main" class="main_top_button">
+<table border="0" cellpadding="0" cellspacing="3" width="99%"><tr><td nowrap width="50%">
+	  	<a href="javascript:loadhelp('WIZ_pptp','login')" tabindex="-1"><b languageCode = "56">Login</b></a>
+	  </td>
+	  <td nowrap width="50%" align="right"><input type="text" name="pptp_username" id="pptp_username" size="20" maxlength="63" value="@pptp_username#" style="width: 150px"></td>
+	</tr><tr><td nowrap width="50%">
+	  	<a href="javascript:loadhelp('WIZ_pptp','password')" tabindex="-1"><b languageCode = "57">Password</b></a>
+	  </td>
+	  <td nowrap width="50%" align="right">
+	  <input type="password" onFocus="changetotext()" name="pptp_passwd1" id="pptp_passwd1" size="20" maxlength="63" value="@pptp_passwd#" style="width: 150px">
+	  <input type="text" onBlur="changetopassword()" name="pptp_passwd" id="pptp_passwd" size="20" maxlength="63" value="@pptp_passwd#" style="display:none;width: 150px"></td>
+	</tr><tr><td nowrap><a href="javascript:loadhelp('WIZ_pptp','idletime')" tabindex="-1" languageCode = "62">Idle Timeout (minutes)</a></td>
+		<td align="right"><input type="text" class="num" name="pptp_idletime" size="3" maxlength="2" value="@pptp_idletime#"></td>
+	</tr><tr><!-- RULE --><td colspan="2" background="liteblue.gif" height="12"></td>
+	</tr><tr><td nowrap width="50%">
+		<a href="javascript:loadhelp('WIZ_pptp','myip')" tabindex="-1">
+		<b languageCode = "64">My IP Address</b></a></td>
+		<td nowrap align="right" class="num">
+		<input type="text" name="myip_1" class="num" size="4" value="" maxlength="3" onFocus="if(DisableFixedIP) this.blur()" onKeyUp="myip_update()">.<input type="text" name="myip_2" class="num" size="4" value="" maxlength="3" onFocus="if(DisableFixedIP) this.blur()" onKeyUp="myip_update()">.<input type="text" name="myip_3" class="num" size="4" value="" maxlength="3" onFocus="if(DisableFixedIP) this.blur()" onKeyUp="myip_update()">.<input type="text" name="myip_4" class="num" size="4" value="" maxlength="3" onFocus="if(DisableFixedIP) this.blur()" onKeyUp="myip_update()"></td>
+	</tr><tr><td><a href="javascript:loadhelp('WIZ_pptp','serverip')" tabindex="-1"><b languageCode = "65">Server Address</b></a></td>
+		<td nowrap width="50%" align="right"><input type="text" name="pptp_serv_ip" size="20" maxlength="63" value="@pptp_serv_ip#"></td>
+	</tr><tr><td nowrap width="50%"><a href="javascript:loadhelp('WIZ_pptp','gwip')" tabindex="-1"><b><span languageCode = "41">Gateway</span>&nbsp;<span languageCode = "37">IP Address</span></b></a></td>
+		<td nowrap align="right" class="num"><input type="text" name="mygw_1" class="num" size="4" maxlength="3" value="">.<input type="text" name="mygw_2" class="num" size="4" maxlength="3" value="">.<input type="text" name="mygw_3" class="num" size="4" maxlength="3" value="">.<input type="text" name="mygw_4" class="num" size="4" maxlength="3" value=""></td>
+	</tr><tr><!-- RULE --><td colspan="2" background="liteblue.gif" height="12"></td>
+	</tr><tr><td nowrap colspan="2" align="center"></td>
+	</tr></table><input type="hidden" name="c4_myip_" value="@c4_myip_#"><input type="hidden" name="c4_mygw_" value="@c4_mygw_#"><input type="hidden" name="runtest" value="@runtest#"><input type="hidden" name="todo" value="save"><input type="hidden" name="WANAssign" value="dynamic"><input type="hidden" name="this_file" value="WIZ_pptp.htm"><input type="hidden" name="next_file" value="RST_status.htm"><input type="hidden" name="SID" value="@SID#">
+</div>	
+</form>
+<p></p>
+<div id="help" style="display: none">
+		<iframe name="help_iframe" id="helpframe" src="WIZ_pptp_h.htm" allowtransparency="true" width="100%" frameborder="0">
+		</iframe>
+</div>
+<div id="help_switch" class="close_help">
+	 <img class="help_switch_img" src="image/help/help-bar.gif"><script>
+var help_flag=0;
+if(isIE()){
+	show_hidden_help_top_button(1);
+	var frame_div = top.document.getElementById("formframe_div");
+	frame_div.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+if(get_browser() == "Opera"){
+	window.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+</script><div id="help_space" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_center"><span languageCode="3016">Help Center</span></div>
+<div id="help_button" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_show_hidden"><a href="javascript:void(0)" onClick="show_hidden_help_top_button(help_flag); help_flag++;"><span languageCode="3017">Show/Hide Help Center</span></a></div>
+</div>
+<script language="javascript" type="text/javascript" src="langs.js"></script></body></html>

@@ -1,0 +1,46 @@
+#!/bin/sh
+
+
+# $0 
+# $1 :pppX
+# $2 :nasX or vpi.vci
+# $3 :strspeed
+# $4 :local ip
+# $5 :remote ip
+# $6 :ipparam
+# $7 :demand_opt
+# $8 :ide_opt
+# $9 :ipparam2 ---> info file path
+# $10 : ipcp state
+# $11 : code string
+# $12 : routing table id
+# $13 : proxy for pppoe server
+# $14 : kill force by SIGTERM
+
+
+pppIF=$1
+nasIF=$2
+baudRate=$3
+localIP=$4
+remoteIP=$5
+wanID=$6
+demandOpt=$7
+idleOpt=$8
+infoFile=$9
+ipcpState=$10
+ipcpCode=$11
+routeTabID=$12
+proxyMode=$13
+userKill=$14
+
+
+echo "ppp down: $pppIF $2 [$demandOpt]" >> /dev/console
+
+if [ "$userKill" != "1" ]; then
+/usr/sbin/rc wan down $wanID
+fi
+
+if [ -e "/tmp/w/ip-down-act_$wanID" ];then
+	/tmp/w/ip-down-act_$wanID "$wanID" "$userKill"
+fi
+

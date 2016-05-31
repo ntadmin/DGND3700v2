@@ -1,0 +1,88 @@
+.title_bar_text {
+	font-family: Arial, Helvetica, Geneva, Swiss, SunSans-Regular, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	font-style: normal;
+	background-color: #5D7BB1;
+	color: #FFFFFF;
+}
+.left_nav_headers {
+	font-family:  Arial, Helvetica, Geneva, Swiss, SunSans-Regular, sans-serif;
+	Letter-spacing: 0; 
+	font-size: 18px;
+	font-weight: normal;
+	COLOR: RGB(153,153,153); 
+	TEXT-DECORATION: none;
+}
+td {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+}
+
+.left_nav_headers_current_state {
+	font-family: Arial, Helvetica, Geneva, Swiss, SunSans-Regular, sans-serif;
+	font-size: 18px;
+	Letter-spacing: 0;
+	font-weight: normal;
+	color: #FFFFFF;
+	TEXT-DECORATION: none;
+}
+h1 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 16pt;
+	font-weight: bold;
+	color: #36019A;
+	line-height: 26px;
+}
+
+p {
+	font-family: Arial, Helvetica, Geneva, Swiss, SunSans-Regular, sans-serif;
+	font-size: 10pt;
+	line-height: 13pt;
+	text-align: left;
+	font-style: normal;
+	padding: 0px;
+	margin-top: 5px;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	margin-left: 2px;
+}
+.InductiveOptions {
+	font-size: 11px;
+	font-family: Arial, Helvetica, Geneva, Swiss, SunSans-Regular, sans-serif;
+	margin: 2px;
+}
+basefont {
+}
+
+.NumberedInstructions {
+	padding-top: 5px;
+	padding-right: 0px;
+	padding-bottom: 5px;
+	padding-left: 0px;
+}
+body {
+	margin: 0px;
+	margin-bottom: 0px;
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+basefont {
+	font-family: Arial, Helvetica, Geneva, Swiss, SunSans-Regular, sans-serif;
+}
+li {
+	font-family: Arial, Helvetica, Geneva, Swiss, SunSans-Regular, sans-serif;
+	font-size: 10pt;
+}
+
+.prgbar { 
+    font-family:Arial, Helvetica, Geneva, Swiss, SunSans-Regular, sans-serif;
+    padding:0px; 
+    height: 30px; 
+    width: 305px; 
+    font-weight: bolder; 
+    font-size: 16pt; 
+    color: #0000FF
+}

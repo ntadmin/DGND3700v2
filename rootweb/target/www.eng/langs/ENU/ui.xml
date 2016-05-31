@@ -1,0 +1,6020 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tag_msg xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<message>
+<tag_code>1</tag_code>
+<translation>Add WPS Client</translation>
+<variable>Add WPS Client</variable>
+</message>
+<message>
+<tag_code>2</tag_code>
+<translation>New and easy way to connect to the wireless router using Wi-Fi Protected Setup (WPS)</translation>
+<variable>New and easy way to connect to the wireless router using Wi-Fi Protected Setup (WPS)</variable>
+</message>
+<message>
+<tag_code>3</tag_code>
+<translation>A wireless client has to support the WPS function if you want to use this wizard to add the client to your WPS-enabled wireless router.</translation>
+<variable>A wireless client has to support the WPS function if you want to use this wizard to add the client to your WPS-enabled wireless router.</variable>
+</message>
+<message>
+<tag_code>4</tag_code>
+<translation>Please check the user manual and gift box of your wireless client to see whether it supports the WPS function.</translation>
+<variable>Please check the user manual and gift box of your wireless client to see whether it supports the WPS function.</variable>
+</message>
+<message>
+<tag_code>5</tag_code>
+<translation>If your wireless client does not support the WPS function, you have to configure your wireless client manually so that it has the same SSID and wireless security settings as this router.</translation>
+<variable>If your wireless client does not support the WPS function, you have to configure your wireless client manually so that it has the same SSID and wireless security settings as this router.</variable>
+</message>
+<message>
+<tag_code>6</tag_code>
+<translation>Next</translation>
+<variable>Next</variable>
+</message>
+<message>
+<tag_code>7</tag_code>
+<translation>Advanced Settings</translation>
+<variable>Advanced Settings</variable>
+</message>
+<message>
+<tag_code>8</tag_code>
+<translation>Name (SSID)</translation>
+<variable>Name (SSID)</variable>
+</message>
+<message>
+<tag_code>9</tag_code>
+<translation>Region</translation>
+<variable>Region</variable>
+</message>
+<message>
+<tag_code>10</tag_code>
+<translation>Channel</translation>
+<variable>Channel</variable>
+</message>
+<message>
+<tag_code>11</tag_code>
+<translation>Wireless AP</translation>
+<variable>Wireless AP</variable>
+</message>
+<message>
+<tag_code>12</tag_code>
+<translation>Broadcast Name</translation>
+<variable>Broadcast Name</variable>
+</message>
+<message>
+<tag_code>13</tag_code>
+<translation>Security</translation>
+<variable>Security</variable>
+</message>
+<message>
+<tag_code>14</tag_code>
+<translation>WPS Settings</translation>
+<variable>WPS Settings</variable>
+</message>
+<message>
+<tag_code>15</tag_code>
+<translation>Router's PIN</translation>
+<variable>Router's PIN</variable>
+</message>
+<message>
+<tag_code>16</tag_code>
+<translation>Disable Router's PIN</translation>
+<variable>Disable Router's PIN</variable>
+</message>
+<message>
+<tag_code>17</tag_code>
+<translation>Keep Existing Wireless Settings</translation>
+<variable>Keep Existing Wireless Settings</variable>
+</message>
+<message>
+<tag_code>18</tag_code>
+<translation>Apply</translation>
+<variable>Apply</variable>
+</message>
+<message>
+<tag_code>19</tag_code>
+<translation>Cancel</translation>
+<variable>Cancel</variable>
+</message>
+<message>
+<tag_code>20</tag_code>
+<translation>Backup Settings</translation>
+<variable>Backup Settings</variable>
+</message>
+<message>
+<tag_code>21</tag_code>
+<translation>Save a copy of current settings</translation>
+<variable>Save a copy of current settings</variable>
+</message>
+<message>
+<tag_code>22</tag_code>
+<translation>Restore saved settings from a file</translation>
+<variable>Restore saved settings from a file</variable>
+</message>
+<message>
+<tag_code>23</tag_code>
+<translation>Revert to factory default settings</translation>
+<variable>Revert to factory default settings</variable>
+</message>
+<message>
+<tag_code>24</tag_code>
+<translation>Restore</translation>
+<variable>Restore</variable>
+</message>
+<message>
+<tag_code>25</tag_code>
+<translation>Erase</translation>
+<variable>Erase</variable>
+</message>
+<message>
+<tag_code>26</tag_code>
+<translation>Loading the factory default settings will erase all the current settings.</translation>
+<variable>Loading the factory default settings will erase all the current settings.</variable>
+</message>
+<message>
+<tag_code>27</tag_code>
+<translation>Are you sure you want to do this?</translation>
+<variable>Are you sure you want to do this?</variable>
+</message>
+<message>
+<tag_code>28</tag_code>
+<translation>Yes</translation>
+<variable>Yes</variable>
+</message>
+<message>
+<tag_code>29</tag_code>
+<translation>No</translation>
+<variable>No</variable>
+</message>
+<message>
+<tag_code>30</tag_code>
+<translation>Loading file ...</translation>
+<variable>Loading file ...</variable>
+</message>
+<message>
+<tag_code>31</tag_code>
+<translation>Basic Settings</translation>
+<variable>Basic Settings</variable>
+</message>
+<message>
+<tag_code>32</tag_code>
+<translation>Does your Internet connection require a login?</translation>
+<variable>Does your Internet connection require a login?</variable>
+</message>
+<message>
+<tag_code>33</tag_code>
+<translation>Account Name</translation>
+<variable>Account Name</variable>
+</message>
+<message>
+<tag_code>34</tag_code>
+<translation>Service Name</translation>
+<variable>Service Name</variable>
+</message>
+<message>
+<tag_code>35</tag_code>
+<translation>Domain Name</translation>
+<variable>Domain Name</variable>
+</message>
+<message>
+<tag_code>36</tag_code>
+<translation>Internet</translation>
+<variable>Internet</variable>
+</message>
+<message>
+<tag_code>37</tag_code>
+<translation>IP Address</translation>
+<variable>IP Address</variable>
+</message>
+<message>
+<tag_code>38</tag_code>
+<translation>Get Dynamically from ISP</translation>
+<variable>Get Dynamically from ISP</variable>
+</message>
+<message>
+<tag_code>39</tag_code>
+<translation>Use Static IP Address</translation>
+<variable>Use Static IP Address</variable>
+</message>
+<message>
+<tag_code>40</tag_code>
+<translation>IP Subnet Mask</translation>
+<variable>IP Subnet Mask</variable>
+</message>
+<message>
+<tag_code>41</tag_code>
+<translation>Gateway</translation>
+<variable>Gateway</variable>
+</message>
+<message>
+<tag_code>42</tag_code>
+<translation>Domain Name Server (DNS) Address</translation>
+<variable>Domain Name Server (DNS) Address</variable>
+</message>
+<message>
+<tag_code>43</tag_code>
+<translation>Get Automatically from ISP</translation>
+<variable>Get Automatically from ISP</variable>
+</message>
+<message>
+<tag_code>44</tag_code>
+<translation>Use These DNS Servers</translation>
+<variable>Use These DNS Servers</variable>
+</message>
+<message>
+<tag_code>45</tag_code>
+<translation>Primary DNS</translation>
+<variable>Primary DNS</variable>
+</message>
+<message>
+<tag_code>46</tag_code>
+<translation>Secondary DNS</translation>
+<variable>Secondary DNS</variable>
+</message>
+<message>
+<tag_code>47</tag_code>
+<translation>Router</translation>
+<variable>Router</variable>
+</message>
+<message>
+<tag_code>48</tag_code>
+<translation>MAC Address</translation>
+<variable>MAC Address</variable>
+</message>
+<message>
+<tag_code>49</tag_code>
+<translation>Use Default Address</translation>
+<variable>Use Default Address</variable>
+</message>
+<message>
+<tag_code>50</tag_code>
+<translation>Use Computer MAC Address</translation>
+<variable>Use Computer MAC Address</variable>
+</message>
+<message>
+<tag_code>51</tag_code>
+<translation>Use This MAC Address</translation>
+<variable>Use This MAC Address</variable>
+</message>
+<message>
+<tag_code>52</tag_code>
+<translation>Test</translation>
+<variable>Test</variable>
+</message>
+<message>
+<tag_code>53</tag_code>
+<translation>Internet Service Provider</translation>
+<variable>Internet Service Provider</variable>
+</message>
+<message>
+<tag_code>54</tag_code>
+<translation>PPTP</translation>
+<variable>PPTP</variable>
+</message>
+<message>
+<tag_code>55</tag_code>
+<translation>PPPoE</translation>
+<variable>PPPoE</variable>
+</message>
+<message>
+<tag_code>56</tag_code>
+<translation>Login</translation>
+<variable>Login</variable>
+</message>
+<message>
+<tag_code>57</tag_code>
+<translation>Password</translation>
+<variable>Password</variable>
+</message>
+<message>
+<tag_code>58</tag_code>
+<translation>Connection Mode</translation>
+<variable>Connection Mode</variable>
+</message>
+<message>
+<tag_code>59</tag_code>
+<translation>Always On</translation>
+<variable>Always On</variable>
+</message>
+<message>
+<tag_code>60</tag_code>
+<translation>Dial on Demand</translation>
+<variable>Dial on Demand</variable>
+</message>
+<message>
+<tag_code>61</tag_code>
+<translation>Manually Connect</translation>
+<variable>Manually Connect</variable>
+</message>
+<message>
+<tag_code>62</tag_code>
+<translation>Idle Timeout (minutes)</translation>
+<variable>Idle Timeout (minutes)</variable>
+</message>
+<message>
+<tag_code>63</tag_code>
+<translation>Router MAC Address</translation>
+<variable>Router MAC Address</variable>
+</message>
+<message>
+<tag_code>64</tag_code>
+<translation>My IP Address</translation>
+<variable>My IP Address</variable>
+</message>
+<message>
+<tag_code>65</tag_code>
+<translation>Server Address</translation>
+<variable>Server Address</variable>
+</message>
+<message>
+<tag_code>66</tag_code>
+<translation>Connection ID/Name</translation>
+<variable>Connection ID/Name</variable>
+</message>
+<message>
+<tag_code>67</tag_code>
+<translation>Testing Internet Connection</translation>
+<variable>Testing Internet Connection</variable>
+</message>
+<message>
+<tag_code>68</tag_code>
+<translation>This page will automatically display the NETGEAR website if a successful Internet connection is detected.</translation>
+<variable>This page will automatically display the NETGEAR website if a successful Internet connection is detected.</variable>
+</message>
+<message>
+<tag_code>69</tag_code>
+<translation>Close Window</translation>
+<variable>Close Window</variable>
+</message>
+<message>
+<tag_code>70</tag_code>
+<translation>Connection Time</translation>
+<variable>Connection Time</variable>
+</message>
+<message>
+<tag_code>71</tag_code>
+<translation>Connecting to server</translation>
+<variable>Connecting to server</variable>
+</message>
+<message>
+<tag_code>72</tag_code>
+<translation>Negotiation</translation>
+<variable>Negotiation</variable>
+</message>
+<message>
+<tag_code>73</tag_code>
+<translation>Authentication</translation>
+<variable>Authentication</variable>
+</message>
+<message>
+<tag_code>74</tag_code>
+<translation>Getting IP address</translation>
+<variable>Getting IP address</variable>
+</message>
+<message>
+<tag_code>75</tag_code>
+<translation>If connnection fails, check your Login, Password, and other data.</translation>
+<variable>If connnection fails, check your Login, Password, and other data.</variable>
+</message>
+<message>
+<tag_code>76</tag_code>
+<translation>Block Sites</translation>
+<variable>Block Sites</variable>
+</message>
+<message>
+<tag_code>77</tag_code>
+<translation>Keyword Blocking</translation>
+<variable>Keyword Blocking</variable>
+</message>
+<message>
+<tag_code>78</tag_code>
+<translation>Never</translation>
+<variable>Never</variable>
+</message>
+<message>
+<tag_code>79</tag_code>
+<translation>Per Schedule</translation>
+<variable>Per Schedule</variable>
+</message>
+<message>
+<tag_code>80</tag_code>
+<translation>Always</translation>
+<variable>Always</variable>
+</message>
+<message>
+<tag_code>81</tag_code>
+<translation>Type keyword or domain name here.</translation>
+<variable>Type keyword or domain name here.</variable>
+</message>
+<message>
+<tag_code>82</tag_code>
+<translation>Block sites containing these keywords or domain names:</translation>
+<variable>Block sites containing these keywords or domain names:</variable>
+</message>
+<message>
+<tag_code>83</tag_code>
+<translation>Allow trusted IP address to visit blocked sites</translation>
+<variable>Allow trusted IP address to visit blocked sites</variable>
+</message>
+<message>
+<tag_code>84</tag_code>
+<translation>Trusted IP Address</translation>
+<variable>Trusted IP Address</variable>
+</message>
+<message>
+<tag_code>85</tag_code>
+<translation>Add Keyword</translation>
+<variable>Add Keyword</variable>
+</message>
+<message>
+<tag_code>86</tag_code>
+<translation>Delete Keyword</translation>
+<variable>Delete Keyword</variable>
+</message>
+<message>
+<tag_code>87</tag_code>
+<translation>Clear List</translation>
+<variable>Clear List</variable>
+</message>
+<message>
+<tag_code>88</tag_code>
+<translation>Block Services</translation>
+<variable>Block Services</variable>
+</message>
+<message>
+<tag_code>89</tag_code>
+<translation>Services Blocking</translation>
+<variable>Services Blocking</variable>
+</message>
+<message>
+<tag_code>90</tag_code>
+<translation>Service Table</translation>
+<variable>Service Table</variable>
+</message>
+<message>
+<tag_code>91</tag_code>
+<translation>Service Type</translation>
+<variable>Service Type</variable>
+</message>
+<message>
+<tag_code>92</tag_code>
+<translation>Port</translation>
+<variable>Port</variable>
+</message>
+<message>
+<tag_code>93</tag_code>
+<translation>Add</translation>
+<variable>Add</variable>
+</message>
+<message>
+<tag_code>94</tag_code>
+<translation>Edit</translation>
+<variable>Edit</variable>
+</message>
+<message>
+<tag_code>95</tag_code>
+<translation>Delete</translation>
+<variable>Delete</variable>
+</message>
+<message>
+<tag_code>96</tag_code>
+<translation>Block Services Setup</translation>
+<variable>Block Services Setup</variable>
+</message>
+<message>
+<tag_code>97</tag_code>
+<translation>Protocol</translation>
+<variable>Protocol</variable>
+</message>
+<message>
+<tag_code>98</tag_code>
+<translation>Starting Port</translation>
+<variable>Starting Port</variable>
+</message>
+<message>
+<tag_code>99</tag_code>
+<translation>Ending Port</translation>
+<variable>Ending Port</variable>
+</message>
+<message>
+<tag_code>100</tag_code>
+<translation>Service Type/User Defined</translation>
+<variable>Service Type/User Defined</variable>
+</message>
+<message>
+<tag_code>101</tag_code>
+<translation>Filter Services For</translation>
+<variable>Filter Services For</variable>
+</message>
+<message>
+<tag_code>102</tag_code>
+<translation>Only This IP Address</translation>
+<variable>Only This IP Address</variable>
+</message>
+<message>
+<tag_code>103</tag_code>
+<translation>IP Address Range</translation>
+<variable>IP Address Range</variable>
+</message>
+<message>
+<tag_code>104</tag_code>
+<translation>to</translation>
+<variable>to</variable>
+</message>
+<message>
+<tag_code>105</tag_code>
+<translation>All IP Addresses</translation>
+<variable>All IP Addresses</variable>
+</message>
+<message>
+<tag_code>106</tag_code>
+<translation>When someone attempts to visit a blocked site</translation>
+<variable>When someone attempts to visit a blocked site</variable>
+</message>
+<message>
+<tag_code>107</tag_code>
+<translation>No Internet connection</translation>
+<variable>No Internet connection</variable>
+</message>
+<message>
+<tag_code>108</tag_code>
+<translation>The router has no Internet connection, it can't download the specified language file from NETGEAR web site. If you haven't set up the router's Internet port, please run the Installation CD, otherwise, please manually connect the router to Internet and try this function again.</translation>
+<variable>The router has no Internet connection, it can't download the specified language file from NETGEAR web site. If you haven't set up the router's Internet port, please run the Installation CD, otherwise, please manually connect the router to Internet and try this function again.</variable>
+</message>
+<message>
+<tag_code>109</tag_code>
+<translation>OK</translation>
+<variable>OK</variable>
+</message>
+<message>
+<tag_code>110</tag_code>
+<translation>Firmware Upgrade Assistant</translation>
+<variable>Firmware Upgrade Assistant</variable>
+</message>
+<message>
+<tag_code>111</tag_code>
+<translation>The router is checking the NETGEAR server to see if updated firmware available for your router. &lt;br&gt; &lt;br&gt; This could take up to 90 seconds, please wait ...</translation>
+<variable>The router is checking the NETGEAR server to see if updated firmware available for your router. &lt;br&gt; &lt;br&gt; This could take up to 90 seconds, please wait ...</variable>
+</message>
+<message>
+<tag_code>112</tag_code>
+<translation>Check for Updated Firmware Upon Log-in </translation>
+<variable>Check for Updated Firmware Upon Log-in </variable>
+</message>
+<message>
+<tag_code>113</tag_code>
+<translation>Firmware Version Check</translation>
+<variable>Firmware Version Check</variable>
+</message>
+<message>
+<tag_code>114</tag_code>
+<translation>No new firmware version available.</translation>
+<variable>No new firmware version available.</variable>
+</message>
+<message>
+<tag_code>115</tag_code>
+<translation>Back</translation>
+<variable>Back</variable>
+</message>
+<message>
+<tag_code>116</tag_code>
+<translation>The router is downloading the new version now. Please wait...</translation>
+<variable>The router is downloading the new version now. Please wait...</variable>
+</message>
+<message>
+<tag_code>117</tag_code>
+<translation>Upgrading Router Firmware now. Please Wait</translation>
+<variable>Upgrading Router Firmware now. Please Wait</variable>
+</message>
+<message>
+<tag_code>118</tag_code>
+<translation>Note: It will take about </translation>
+<variable>Note: It will take about </variable>
+</message>
+<message>
+<tag_code>119</tag_code>
+<translation> minutes for firmware upgrade.&lt;br&gt;Please don't turn off the power or press reset button.</translation>
+<variable> minutes for firmware upgrade.&lt;br&gt;Please don't turn off the power or press reset button.</variable>
+</message>
+<message>
+<tag_code>120</tag_code>
+<translation>Please wait ...</translation>
+<variable>Please wait ...</variable>
+</message>
+<message>
+<tag_code>121</tag_code>
+<translation>GUI Language Update</translation>
+<variable>GUI Language Update</variable>
+</message>
+<message>
+<tag_code>122</tag_code>
+<translation>Downloading and updating the language table, please wait for approximate one minute </translation>
+<variable>Downloading and updating the language table, please wait for approximate one minute </variable>
+</message>
+<message>
+<tag_code>123</tag_code>
+<translation>Remote</translation>
+<variable>Remote</variable>
+</message>
+<message>
+<tag_code>124</tag_code>
+<translation>Folder Name</translation>
+<variable>Folder Name</variable>
+</message>
+<message>
+<tag_code>125</tag_code>
+<translation>Attached Devices</translation>
+<variable>Attached Devices</variable>
+</message>
+<message>
+<tag_code>126</tag_code>
+<translation>Wired Devices</translation>
+<variable>Wired Devices</variable>
+</message>
+<message>
+<tag_code>127</tag_code>
+<translation>Device Name</translation>
+<variable>Device Name</variable>
+</message>
+<message>
+<tag_code>128</tag_code>
+<translation>Wireless Devices (Wireless intruders also show up here)</translation>
+<variable>Wireless Devices (Wireless intruders also show up here)</variable>
+</message>
+<message>
+<tag_code>129</tag_code>
+<translation>Refresh</translation>
+<variable>Refresh</variable>
+</message>
+<message>
+<tag_code>130</tag_code>
+<translation>Diagnostics</translation>
+<variable>Diagnostics</variable>
+</message>
+<message>
+<tag_code>131</tag_code>
+<translation>Ping an IP address</translation>
+<variable>Ping an IP address</variable>
+</message>
+<message>
+<tag_code>132</tag_code>
+<translation>Perform a DNS Lookup</translation>
+<variable>Perform a DNS Lookup</variable>
+</message>
+<message>
+<tag_code>133</tag_code>
+<translation>Internet Name</translation>
+<variable>Internet Name</variable>
+</message>
+<message>
+<tag_code>134</tag_code>
+<translation>Single/Start IP Address</translation>
+<variable>Single/Start IP Address</variable>
+</message>
+<message>
+<tag_code>135</tag_code>
+<translation>Finish IP Address</translation>
+<variable>Finish IP Address</variable>
+</message>
+<message>
+<tag_code>136</tag_code>
+<translation>Server :</translation>
+<variable>Server :</variable>
+</message>
+<message>
+<tag_code>137</tag_code>
+<translation>Display the Routing Table</translation>
+<variable>Display the Routing Table</variable>
+</message>
+<message>
+<tag_code>138</tag_code>
+<translation>Reboot the Router</translation>
+<variable>Reboot the Router</variable>
+</message>
+<message>
+<tag_code>139</tag_code>
+<translation>Ping</translation>
+<variable>Ping</variable>
+</message>
+<message>
+<tag_code>140</tag_code>
+<translation>Lookup</translation>
+<variable>Lookup</variable>
+</message>
+<message>
+<tag_code>141</tag_code>
+<translation>Display</translation>
+<variable>Display</variable>
+</message>
+<message>
+<tag_code>142</tag_code>
+<translation>Reboot</translation>
+<variable>Reboot</variable>
+</message>
+<message>
+<tag_code>143</tag_code>
+<translation>Diagnostics - Ping</translation>
+<variable>Diagnostics - Ping</variable>
+</message>
+<message>
+<tag_code>144</tag_code>
+<translation>Ping Results</translation>
+<variable>Ping Results</variable>
+</message>
+<message>
+<tag_code>145</tag_code>
+<translation>Diagnostics - Routing Table</translation>
+<variable>Diagnostics - Routing Table</variable>
+</message>
+<message>
+<tag_code>146</tag_code>
+<translation>Destination</translation>
+<variable>Destination</variable>
+</message>
+<message>
+<tag_code>147</tag_code>
+<translation>Metric</translation>
+<variable>Metric</variable>
+</message>
+<message>
+<tag_code>148</tag_code>
+<translation>Active</translation>
+<variable>Active</variable>
+</message>
+<message>
+<tag_code>149</tag_code>
+<translation>Dynamic DNS</translation>
+<variable>Dynamic DNS</variable>
+</message>
+<message>
+<tag_code>150</tag_code>
+<translation>Use a Dynamic DNS Service</translation>
+<variable>Use a Dynamic DNS Service</variable>
+</message>
+<message>
+<tag_code>151</tag_code>
+<translation>Service Provider</translation>
+<variable>Service Provider</variable>
+</message>
+<message>
+<tag_code>152</tag_code>
+<translation>Host Name</translation>
+<variable>Host Name</variable>
+</message>
+<message>
+<tag_code>153</tag_code>
+<translation>User Name</translation>
+<variable>User Name</variable>
+</message>
+<message>
+<tag_code>154</tag_code>
+<translation>Show Status</translation>
+<variable>Show Status</variable>
+</message>
+<message>
+<tag_code>155</tag_code>
+<translation>Warning</translation>
+<variable>Warning</variable>
+</message>
+<message>
+<tag_code>156</tag_code>
+<translation>System authentication failed.</translation>
+<variable>System authentication failed.</variable>
+</message>
+<message>
+<tag_code>157</tag_code>
+<translation>Please contact your system administrator for the correct information.</translation>
+<variable>Please contact your system administrator for the correct information.</variable>
+</message>
+<message>
+<tag_code>158</tag_code>
+<translation>Failure</translation>
+<variable>Failure</variable>
+</message>
+<message>
+<tag_code>159</tag_code>
+<translation>Please select a custom service to delete.</translation>
+<variable>Please select a custom service to delete.</variable>
+</message>
+<message>
+<tag_code>160</tag_code>
+<translation>This screen will automatically return to the previous screen in a few seconds...</translation>
+<variable>This screen will automatically return to the previous screen in a few seconds...</variable>
+</message>
+<message>
+<tag_code>161</tag_code>
+<translation>Please select a service to edit.</translation>
+<variable>Please select a service to edit.</variable>
+</message>
+<message>
+<tag_code>162</tag_code>
+<translation>E-mail</translation>
+<variable>E-mail</variable>
+</message>
+<message>
+<tag_code>163</tag_code>
+<translation>Turn E-mail Notification On</translation>
+<variable>Turn E-mail Notification On</variable>
+</message>
+<message>
+<tag_code>164</tag_code>
+<translation>Send alerts and logs through e-mail</translation>
+<variable>Send alerts and logs through e-mail</variable>
+</message>
+<message>
+<tag_code>165</tag_code>
+<translation>Your Outgoing Mail Server</translation>
+<variable>Your Outgoing Mail Server</variable>
+</message>
+<message>
+<tag_code>166</tag_code>
+<translation>Send to This E-mail Address</translation>
+<variable>Send to This E-mail Address</variable>
+</message>
+<message>
+<tag_code>167</tag_code>
+<translation>My mail server requires authentication</translation>
+<variable>My mail server requires authentication</variable>
+</message>
+<message>
+<tag_code>168</tag_code>
+<translation>Send Alert Immediately</translation>
+<variable>Send Alert Immediately</variable>
+</message>
+<message>
+<tag_code>169</tag_code>
+<translation>Send logs according to this schedule</translation>
+<variable>Send logs according to this schedule</variable>
+</message>
+<message>
+<tag_code>170</tag_code>
+<translation>When log is full</translation>
+<variable>When log is full</variable>
+</message>
+<message>
+<tag_code>171</tag_code>
+<translation>Hourly</translation>
+<variable>Hourly</variable>
+</message>
+<message>
+<tag_code>172</tag_code>
+<translation>Daily</translation>
+<variable>Daily</variable>
+</message>
+<message>
+<tag_code>173</tag_code>
+<translation>Weekly</translation>
+<variable>Weekly</variable>
+</message>
+<message>
+<tag_code>174</tag_code>
+<translation>None</translation>
+<variable>None</variable>
+</message>
+<message>
+<tag_code>175</tag_code>
+<translation>Day</translation>
+<variable>Day</variable>
+</message>
+<message>
+<tag_code>176</tag_code>
+<translation>Sunday</translation>
+<variable>Sunday</variable>
+</message>
+<message>
+<tag_code>177</tag_code>
+<translation>Monday</translation>
+<variable>Monday</variable>
+</message>
+<message>
+<tag_code>178</tag_code>
+<translation>Tuesday</translation>
+<variable>Tuesday</variable>
+</message>
+<message>
+<tag_code>179</tag_code>
+<translation>Wednesday</translation>
+<variable>Wednesday</variable>
+</message>
+<message>
+<tag_code>180</tag_code>
+<translation>Thursday</translation>
+<variable>Thursday</variable>
+</message>
+<message>
+<tag_code>181</tag_code>
+<translation>Friday</translation>
+<variable>Friday</variable>
+</message>
+<message>
+<tag_code>182</tag_code>
+<translation>Saturday</translation>
+<variable>Saturday</variable>
+</message>
+<message>
+<tag_code>183</tag_code>
+<translation>Time</translation>
+<variable>Time</variable>
+</message>
+<message>
+<tag_code>184</tag_code>
+<translation>am</translation>
+<variable>am</variable>
+</message>
+<message>
+<tag_code>185</tag_code>
+<translation>pm</translation>
+<variable>pm</variable>
+</message>
+<message>
+<tag_code>186</tag_code>
+<translation>Port Forwarding / Port Triggering</translation>
+<variable>Port Forwarding / Port Triggering</variable>
+</message>
+<message>
+<tag_code>187</tag_code>
+<translation>Please select the service type.</translation>
+<variable>Please select the service type.</variable>
+</message>
+<message>
+<tag_code>188</tag_code>
+<translation>Port Forwarding</translation>
+<variable>Port Forwarding</variable>
+</message>
+<message>
+<tag_code>189</tag_code>
+<translation>Port Triggering</translation>
+<variable>Port Triggering</variable>
+</message>
+<message>
+<tag_code>190</tag_code>
+<translation>Server IP Address</translation>
+<variable>Server IP Address</variable>
+</message>
+<message>
+<tag_code>191</tag_code>
+<translation>NetMeeting</translation>
+<variable>NetMeeting</variable>
+</message>
+<message>
+<tag_code>192</tag_code>
+<translation>Delete Service</translation>
+<variable>Delete Service</variable>
+</message>
+<message>
+<tag_code>193</tag_code>
+<translation>Add Custom Service</translation>
+<variable>Add Custom Service</variable>
+</message>
+<message>
+<tag_code>194</tag_code>
+<translation>Ports - Custom Services</translation>
+<variable>Ports - Custom Services</variable>
+</message>
+<message>
+<tag_code>195</tag_code>
+<translation>Logs</translation>
+<variable>Logs</variable>
+</message>
+<message>
+<tag_code>196</tag_code>
+<translation>Current Time</translation>
+<variable>Current Time</variable>
+</message>
+<message>
+<tag_code>197</tag_code>
+<translation>Include in Log</translation>
+<variable>Include in Log</variable>
+</message>
+<message>
+<tag_code>198</tag_code>
+<translation>Attempted access to allowed sites</translation>
+<variable>Attempted access to allowed sites</variable>
+</message>
+<message>
+<tag_code>199</tag_code>
+<translation>Attempted access to blocked sites and services</translation>
+<variable>Attempted access to blocked sites and services</variable>
+</message>
+<message>
+<tag_code>200</tag_code>
+<translation>Connections to the Web-based interface of this Router</translation>
+<variable>Connections to the Web-based interface of this Router</variable>
+</message>
+<message>
+<tag_code>201</tag_code>
+<translation>Router operation (startup, get time etc)</translation>
+<variable>Router operation (startup, get time etc)</variable>
+</message>
+<message>
+<tag_code>202</tag_code>
+<translation>Known DoS attacks and Port Scans</translation>
+<variable>Known DoS attacks and Port Scans</variable>
+</message>
+<message>
+<tag_code>203</tag_code>
+<translation>Wireless access</translation>
+<variable>Wireless access</variable>
+</message>
+<message>
+<tag_code>204</tag_code>
+<translation>Clear Log</translation>
+<variable>Clear Log</variable>
+</message>
+<message>
+<tag_code>205</tag_code>
+<translation>Send Log</translation>
+<variable>Send Log</variable>
+</message>
+<message>
+<tag_code>206</tag_code>
+<translation>Disable Port Triggering</translation>
+<variable>Disable Port Triggering</variable>
+</message>
+<message>
+<tag_code>207</tag_code>
+<translation>(in minutes)</translation>
+<variable>(in minutes)</variable>
+</message>
+<message>
+<tag_code>208</tag_code>
+<translation>Port Triggering Time-out</translation>
+<variable>Port Triggering Time-out</variable>
+</message>
+<message>
+<tag_code>209</tag_code>
+<translation>Port Triggering Portmap Table</translation>
+<variable>Port Triggering Portmap Table</variable>
+</message>
+<message>
+<tag_code>210</tag_code>
+<translation>Enable</translation>
+<variable>Enable</variable>
+</message>
+<message>
+<tag_code>211</tag_code>
+<translation>Inbound Connection</translation>
+<variable>Inbound Connection</variable>
+</message>
+<message>
+<tag_code>212</tag_code>
+<translation>Service User</translation>
+<variable>Service User</variable>
+</message>
+<message>
+<tag_code>213</tag_code>
+<translation>Add Service</translation>
+<variable>Add Service</variable>
+</message>
+<message>
+<tag_code>214</tag_code>
+<translation>Edit Service</translation>
+<variable>Edit Service</variable>
+</message>
+<message>
+<tag_code>215</tag_code>
+<translation>Service</translation>
+<variable>Service</variable>
+</message>
+<message>
+<tag_code>216</tag_code>
+<translation>Any</translation>
+<variable>Any</variable>
+</message>
+<message>
+<tag_code>217</tag_code>
+<translation>Single address</translation>
+<variable>Single address</variable>
+</message>
+<message>
+<tag_code>218</tag_code>
+<translation>Triggering Port</translation>
+<variable>Triggering Port</variable>
+</message>
+<message>
+<tag_code>219</tag_code>
+<translation>Required Inbound Connection</translation>
+<variable>Required Inbound Connection</variable>
+</message>
+<message>
+<tag_code>220</tag_code>
+<translation>Remote Management</translation>
+<variable>Remote Management</variable>
+</message>
+<message>
+<tag_code>221</tag_code>
+<translation>Turn Remote Management On</translation>
+<variable>Turn Remote Management On</variable>
+</message>
+<message>
+<tag_code>222</tag_code>
+<translation>Remote Management Address</translation>
+<variable>Remote Management Address</variable>
+</message>
+<message>
+<tag_code>223</tag_code>
+<translation>Allow Remote Access By</translation>
+<variable>Allow Remote Access By</variable>
+</message>
+<message>
+<tag_code>224</tag_code>
+<translation>Only This Computer</translation>
+<variable>Only This Computer</variable>
+</message>
+<message>
+<tag_code>225</tag_code>
+<translation>Address Range</translation>
+<variable>Address Range</variable>
+</message>
+<message>
+<tag_code>226</tag_code>
+<translation>From</translation>
+<variable>From</variable>
+</message>
+<message>
+<tag_code>227</tag_code>
+<translation>Everyone</translation>
+<variable>Everyone</variable>
+</message>
+<message>
+<tag_code>228</tag_code>
+<translation>Port Number</translation>
+<variable>Port Number</variable>
+</message>
+<message>
+<tag_code>229</tag_code>
+<translation>Firewall Rules</translation>
+<variable>Firewall Rules</variable>
+</message>
+<message>
+<tag_code>230</tag_code>
+<translation>Outbound Services</translation>
+<variable>Outbound Services</variable>
+</message>
+<message>
+<tag_code>231</tag_code>
+<translation>Action</translation>
+<variable>Action</variable>
+</message>
+<message>
+<tag_code>232</tag_code>
+<translation>WAN Servers</translation>
+<variable>WAN Servers</variable>
+</message>
+<message>
+<tag_code>233</tag_code>
+<translation>LAN Users</translation>
+<variable>LAN Users</variable>
+</message>
+<message>
+<tag_code>234</tag_code>
+<translation>Log</translation>
+<variable>Log</variable>
+</message>
+<message>
+<tag_code>235</tag_code>
+<translation>Default</translation>
+<variable>Default</variable>
+</message>
+<message>
+<tag_code>236</tag_code>
+<translation>ALLOW always</translation>
+<variable>ALLOW always</variable>
+</message>
+<message>
+<tag_code>237</tag_code>
+<translation>LAN Server IP address</translation>
+<variable>LAN Server IP address</variable>
+</message>
+<message>
+<tag_code>238</tag_code>
+<translation>BLOCK always</translation>
+<variable>BLOCK always</variable>
+</message>
+<message>
+<tag_code>239</tag_code>
+<translation>Instant Messaging(IM) Ports</translation>
+<variable>Instant Messaging(IM) Ports</variable>
+</message>
+<message>
+<tag_code>240</tag_code>
+<translation>Port</translation>
+<variable>Port</variable>
+</message>
+<message>
+<tag_code>241</tag_code>
+<translation>Close IM Ports</translation>
+<variable>Close IM Ports</variable>
+</message>
+<message>
+<tag_code>242</tag_code>
+<translation>Open IM Ports(IM ports are open by default)</translation>
+<variable>Open IM Ports(IM ports are open by default)</variable>
+</message>
+<message>
+<tag_code>243</tag_code>
+<translation>Move</translation>
+<variable>Move</variable>
+</message>
+<message>
+<tag_code>244</tag_code>
+<translation>Schedule</translation>
+<variable>Schedule</variable>
+</message>
+<message>
+<tag_code>245</tag_code>
+<translation>Days to Block</translation>
+<variable>Days to Block</variable>
+</message>
+<message>
+<tag_code>246</tag_code>
+<translation>Every Day</translation>
+<variable>Every Day</variable>
+</message>
+<message>
+<tag_code>247</tag_code>
+<translation>Time of day to block:</translation>
+<variable>Time of day to block:</variable>
+</message>
+<message>
+<tag_code>248</tag_code>
+<translation>(use 24-hour clock)</translation>
+<variable>(use 24-hour clock)</variable>
+</message>
+<message>
+<tag_code>249</tag_code>
+<translation>All Day</translation>
+<variable>All Day</variable>
+</message>
+<message>
+<tag_code>250</tag_code>
+<translation>Start</translation>
+<variable>Start</variable>
+</message>
+<message>
+<tag_code>251</tag_code>
+<translation>Hour</translation>
+<variable>Hour</variable>
+</message>
+<message>
+<tag_code>252</tag_code>
+<translation>Minute</translation>
+<variable>Minute</variable>
+</message>
+<message>
+<tag_code>253</tag_code>
+<translation>End</translation>
+<variable>End</variable>
+</message>
+<message>
+<tag_code>254</tag_code>
+<translation>Time Zone</translation>
+<variable>Time Zone</variable>
+</message>
+<message>
+<tag_code>255</tag_code>
+<translation>(GMT-12:00) Eniwetok,Kwajalein</translation>
+<variable>(GMT-12:00) Eniwetok,Kwajalein</variable>
+</message>
+<message>
+<tag_code>256</tag_code>
+<translation>(GMT-11:00) Midway Island, Samoa</translation>
+<variable>(GMT-11:00) Midway Island, Samoa</variable>
+</message>
+<message>
+<tag_code>257</tag_code>
+<translation>(GMT-10:00) Hawaii</translation>
+<variable>(GMT-10:00) Hawaii</variable>
+</message>
+<message>
+<tag_code>258</tag_code>
+<translation>(GMT-09:00) Alaska</translation>
+<variable>(GMT-09:00) Alaska</variable>
+</message>
+<message>
+<tag_code>259</tag_code>
+<translation>(GMT-08:00) Pacific Time (US &amp; Canada); Tijuana</translation>
+<variable>(GMT-08:00) Pacific Time (US &amp;Canada); Tijuana</variable>
+</message>
+<message>
+<tag_code>260</tag_code>
+<translation>(GMT-07:00) Arizona, Chihuahua, La Paz, Mazatlan</translation>
+<variable>(GMT-07:00) Arizona, Chihuahua, La Paz, Mazatlan</variable>
+</message>
+<message>
+<tag_code>261</tag_code>
+<translation>(GMT-07:00) Mountain Time (US &amp; Canada)</translation>
+<variable>(GMT-07:00) Mountain Time (US &amp;Canada)</variable>
+</message>
+<message>
+<tag_code>262</tag_code>
+<translation>(GMT-06:00) Central America, Central Time (US &amp; Canada)</translation>
+<variable>(GMT-06:00) Central America, Central Time (US &amp;Canada)</variable>
+</message>
+<message>
+<tag_code>263</tag_code>
+<translation>(GMT-06:00) Guadalajara, Mexico City, Monterrey, Saskatchewan</translation>
+<variable>(GMT-06:00) Guadalajara, Mexico City, Monterrey, Saskatchewan</variable>
+</message>
+<message>
+<tag_code>264</tag_code>
+<translation>(GMT-05:00) Bogota, Lima, Quito, Eastern Time (US &amp; Canada)</translation>
+<variable>(GMT-05:00) Bogota, Lima, Quito, Eastern Time (US &amp;Canada)</variable>
+</message>
+<message>
+<tag_code>265</tag_code>
+<translation>(GMT-05:00) Indiana (East)</translation>
+<variable>(GMT-05:00) Indiana (East)</variable>
+</message>
+<message>
+<tag_code>266</tag_code>
+<translation>(GMT-04:00) Atlantic Time (Canada), Caracas, La Paz, Santiago</translation>
+<variable>(GMT-04:00) Atlantic Time (Canada), Caracas, La Paz, Santiago</variable>
+</message>
+<message>
+<tag_code>267</tag_code>
+<translation>(GMT-03:00) Brasilia, Buenos Aires, Georgetown, Greenland</translation>
+<variable>(GMT-03:00) Brasilia, Buenos Aires, Georgetown, Greenland</variable>
+</message>
+<message>
+<tag_code>268</tag_code>
+<translation>(GMT-02:00) Mid-Atlantic</translation>
+<variable>(GMT-02:00) Mid-Atlantic</variable>
+</message>
+<message>
+<tag_code>269</tag_code>
+<translation>(GMT-01:00) Azores, Cape Verde Is.</translation>
+<variable>(GMT-01:00) Azores, Cape Verde Is.</variable>
+</message>
+<message>
+<tag_code>270</tag_code>
+<translation>(GMT) Casablanca, Monrovia</translation>
+<variable>(GMT) Casablanca, Monrovia</variable>
+</message>
+<message>
+<tag_code>271</tag_code>
+<translation>(GMT) Greenwich Mean Time: Dublin, Edinburgh, Lisbon, London</translation>
+<variable>(GMT) Greenwich Mean Time: Dublin, Edinburgh, Lisbon, London</variable>
+</message>
+<message>
+<tag_code>272</tag_code>
+<translation>(GMT+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna</translation>
+<variable>(GMT+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna</variable>
+</message>
+<message>
+<tag_code>273</tag_code>
+<translation>(GMT+01:00) Belgrade, Bratislava, Budapest, Ljubljana, Prague</translation>
+<variable>(GMT+01:00) Belgrade, Bratislava, Budapest, Ljubljana, Prague</variable>
+</message>
+<message>
+<tag_code>274</tag_code>
+<translation>(GMT+01:00) Brussels, Copenhagen, Madrid, Paris</translation>
+<variable>(GMT+01:00) Brussels, Copenhagen, Madrid, Paris</variable>
+</message>
+<message>
+<tag_code>275</tag_code>
+<translation>(GMT+01:00) Sarajevo, Skopje, Warsaw, Zagreb, West Central Africa</translation>
+<variable>(GMT+01:00) Sarajevo, Skopje, Warsaw, Zagreb, West Central Africa</variable>
+</message>
+<message>
+<tag_code>276</tag_code>
+<translation>(GMT+02:00) Athens, Beirut, Istanbul, Minsk</translation>
+<variable>(GMT+02:00) Athens, Beirut, Istanbul, Minsk</variable>
+</message>
+<message>
+<tag_code>277</tag_code>
+<translation>(GMT+02:00) Bucharest, Cairo, Harare, Pretoria</translation>
+<variable>(GMT+02:00) Bucharest, Cairo, Harare, Pretoria</variable>
+</message>
+<message>
+<tag_code>278</tag_code>
+<translation>(GMT+02:00) Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius, Jerusalem</translation>
+<variable>(GMT+02:00) Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius, Jerusalem</variable>
+</message>
+<message>
+<tag_code>279</tag_code>
+<translation>(GMT+03:00) Baghdad, Kuwait, Nairobi, Riyadh</translation>
+<variable>(GMT+03:00) Baghdad, Kuwait, Nairobi, Riyadh</variable>
+</message>
+<message>
+<tag_code>280</tag_code>
+<translation>(GMT+03:00) Moscow, St. Petersburg, Volgograd, Tehran</translation>
+<variable>(GMT+03:00) Moscow, St. Petersburg, Volgograd, Tehran</variable>
+</message>
+<message>
+<tag_code>281</tag_code>
+<translation>(GMT+04:00) Abu Dhabi, Muscat, Baku, Tbilisi, Yerevan, Kabul</translation>
+<variable>(GMT+04:00) Abu Dhabi, Muscat, Baku, Tbilisi, Yerevan, Kabul</variable>
+</message>
+<message>
+<tag_code>282</tag_code>
+<translation>(GMT+05:00) Ekaterinburg, Islamabad, Karachi, Tashkent</translation>
+<variable>(GMT+05:00) Ekaterinburg, Islamabad, Karachi, Tashkent</variable>
+</message>
+<message>
+<tag_code>283</tag_code>
+<translation>(GMT+05:30) Chennai, Kolkata, Mumbai, New Delhi</translation>
+<variable>(GMT+05:30) Chennai, Kolkata, Mumbai, New Delhi</variable>
+</message>
+<message>
+<tag_code>284</tag_code>
+<translation>(GMT+06:00) Almaty, Novosibirsk, Astana, Dhaka, Sri Jayawardenepura, Rangoon</translation>
+<variable>(GMT+06:00) Almaty, Novosibirsk, Astana, Dhaka, Sri Jayawardenepura, Rangoon</variable>
+</message>
+<message>
+<tag_code>285</tag_code>
+<translation>(GMT+07:00) Bangkok, Jakarta, Hanoi, Krasnoyarsk</translation>
+<variable>(GMT+07:00) Bangkok, Jakarta, Hanoi, Krasnoyarsk</variable>
+</message>
+<message>
+<tag_code>286</tag_code>
+<translation>(GMT+08:00) Beijing, Chongqing, Hong Kong, Urumqi</translation>
+<variable>(GMT+08:00) Beijing, Chongqing, Hong Kong, Urumqi</variable>
+</message>
+<message>
+<tag_code>287</tag_code>
+<translation>(GMT+08:00) Irkutsk, Ulaan Bataar, Kuala Lumpur, Singapore, Perth, Taipei</translation>
+<variable>(GMT+08:00) Irkutsk, Ulaan Bataar, Kuala Lumpur, Singapore, Perth, Taipei</variable>
+</message>
+<message>
+<tag_code>288</tag_code>
+<translation>(GMT+09:00) Tokyo, Osaka, Sapporo, Seoul, Yakutsk, Adelaide, Darwin</translation>
+<variable>(GMT+09:00) Tokyo, Osaka, Sapporo, Seoul, Yakutsk, Adelaide, Darwin</variable>
+</message>
+<message>
+<tag_code>289</tag_code>
+<translation>(GMT+10:00) Brisbane, Canberra, Melbourne, Sydney</translation>
+<variable>(GMT+10:00) Brisbane, Canberra, Melbourne, Sydney</variable>
+</message>
+<message>
+<tag_code>290</tag_code>
+<translation>(GMT+10:00) Guam, Port Moresby, Hobart, Vladivostok</translation>
+<variable>(GMT+10:00) Guam, Port Moresby, Hobart, Vladivostok</variable>
+</message>
+<message>
+<tag_code>291</tag_code>
+<translation>(GMT+11:00) Magadan, Solomon Is., New Caledonia</translation>
+<variable>(GMT+11:00) Magadan, Solomon Is., New Caledonia</variable>
+</message>
+<message>
+<tag_code>292</tag_code>
+<translation>(GMT+12:00) Fiji, Kamchatka, Auckland, Wellington, Marshall Is.</translation>
+<variable>(GMT+12:00) Fiji, Kamchatka, Auckland, Wellington, Marshall Is.</variable>
+</message>
+<message>
+<tag_code>293</tag_code>
+<translation>(GMT+13:00) Nukualofa</translation>
+<variable>(GMT+13:00) Nukualofa</variable>
+</message>
+<message>
+<tag_code>294</tag_code>
+<translation>Automatically adjust for daylight savings time</translation>
+<variable>Automatically adjust for daylight savings time</variable>
+</message>
+<message>
+<tag_code>295</tag_code>
+<translation>Services</translation>
+<variable>Services</variable>
+</message>
+<message>
+<tag_code>296</tag_code>
+<translation>Important Update</translation>
+<variable>Important Update</variable>
+</message>
+<message>
+<tag_code>297</tag_code>
+<translation>To avoid a conflict with your Internet Service Provider, your router's IP address has been updated to </translation>
+<variable>To avoid a conflict with your Internet Service Provider, your router's IP address has been updated to </variable>
+</message>
+<message>
+<tag_code>298</tag_code>
+<translation>You must now update the IP addresses in your router's configuration settings for each relevant service,such as port forwarding and IP address reservation.</translation>
+<variable>You must now update the IP addresses in your router's configuration settings for each relevant service,such as port forwarding and IP address reservation.</variable>
+</message>
+<message>
+<tag_code>299</tag_code>
+<translation>Checking JavaScript Support</translation>
+<variable>Checking JavaScript Support</variable>
+</message>
+<message>
+<tag_code>300</tag_code>
+<translation>To provide an enhanced user interface, this Router uses JavaScript extensively.</translation>
+<variable>To provide an enhanced user interface, this Router uses JavaScript extensively.</variable>
+</message>
+<message>
+<tag_code>301</tag_code>
+<translation>If this page is not quickly replaced, your Browser does NOT support JavaScript.</translation>
+<variable>If this page is not quickly replaced, your Browser does NOT support JavaScript.</variable>
+</message>
+<message>
+<tag_code>302</tag_code>
+<translation>Please enable JavaScript in your Browser, or use a different Browser.</translation>
+<variable>Please enable JavaScript in your Browser, or use a different Browser.</variable>
+</message>
+<message>
+<tag_code>303</tag_code>
+<translation>Do you want to switch from</translation>
+<variable>Do you want to switch from</variable>
+</message>
+<message>
+<tag_code>304</tag_code>
+<translation>( the current language ) to</translation>
+<variable>( the current language ) to</variable>
+</message>
+<message>
+<tag_code>305</tag_code>
+<translation>Setup</translation>
+<variable>Setup</variable>
+</message>
+<message>
+<tag_code>306</tag_code>
+<translation>RIP Direction</translation>
+<variable>RIP Direction</variable>
+</message>
+<message>
+<tag_code>307</tag_code>
+<translation>Both</translation>
+<variable>Both</variable>
+</message>
+<message>
+<tag_code>308</tag_code>
+<translation>In Only</translation>
+<variable>In Only</variable>
+</message>
+<message>
+<tag_code>309</tag_code>
+<translation>Out Only</translation>
+<variable>Out Only</variable>
+</message>
+<message>
+<tag_code>310</tag_code>
+<translation>RIP Version</translation>
+<variable>RIP Version</variable>
+</message>
+<message>
+<tag_code>311</tag_code>
+<translation>Disable</translation>
+<variable>Disable</variable>
+</message>
+<message>
+<tag_code>312</tag_code>
+<translation>Use Router as DHCP Server</translation>
+<variable>Use Router as DHCP Server</variable>
+</message>
+<message>
+<tag_code>313</tag_code>
+<translation>Address Reservation</translation>
+<variable>Address Reservation</variable>
+</message>
+<message>
+<tag_code>314</tag_code>
+<translation>Address Reservation Table</translation>
+<variable>Address Reservation Table</variable>
+</message>
+<message>
+<tag_code>315</tag_code>
+<translation>Please choose a reserve address to delete.</translation>
+<variable>Please choose a reserve address to delete.</variable>
+</message>
+<message>
+<tag_code>316</tag_code>
+<translation>Please choose a reserve address to edit.</translation>
+<variable>Please choose a reserve address to edit.</variable>
+</message>
+<message>
+<tag_code>317</tag_code>
+<translation>Thank you for using the NETGEAR Web-based Router Configuration Utility.</translation>
+<variable>Thank you for using the NETGEAR Web-based Router Configuration Utility.</variable>
+</message>
+<message>
+<tag_code>318</tag_code>
+<translation>Goodbye</translation>
+<variable>Goodbye</variable>
+</message>
+<message>
+<tag_code>319</tag_code>
+<translation>Setup Wizard</translation>
+<variable>Setup Wizard</variable>
+</message>
+<message>
+<tag_code>320</tag_code>
+<translation>Wireless Settings</translation>
+<variable>Wireless Settings</variable>
+</message>
+<message>
+<tag_code>321</tag_code>
+<translation>Guest Network</translation>
+<variable>Guest Network</variable>
+</message>
+<message>
+<tag_code>322</tag_code>
+<translation>USB Storage</translation>
+<variable>USB Storage</variable>
+</message>
+<message>
+<tag_code>323</tag_code>
+<translation>Content Filtering</translation>
+<variable>Content Filtering</variable>
+</message>
+<message>
+<tag_code>324</tag_code>
+<translation>Maintenance</translation>
+<variable>Maintenance</variable>
+</message>
+<message>
+<tag_code>325</tag_code>
+<translation>Router Status</translation>
+<variable>Router Status</variable>
+</message>
+<message>
+<tag_code>326</tag_code>
+<translation>Set Password</translation>
+<variable>Set Password</variable>
+</message>
+<message>
+<tag_code>327</tag_code>
+<translation>Router Upgrade</translation>
+<variable>Router Upgrade</variable>
+</message>
+<message>
+<tag_code>328</tag_code>
+<translation>Advanced</translation>
+<variable>Advanced</variable>
+</message>
+<message>
+<tag_code>329</tag_code>
+<translation>Wireless Repeating Function</translation>
+<variable>Wireless Repeating Function</variable>
+</message>
+<message>
+<tag_code>330</tag_code>
+<translation>Static Routes</translation>
+<variable>Static Routes</variable>
+</message>
+<message>
+<tag_code>331</tag_code>
+<translation>Traffic Meter</translation>
+<variable>Traffic Meter</variable>
+</message>
+<message>
+<tag_code>332</tag_code>
+<translation>USB Settings</translation>
+<variable>USB Settings</variable>
+</message>
+<message>
+<tag_code>333</tag_code>
+<translation>Web Support</translation>
+<variable>Web Support</variable>
+</message>
+<message>
+<tag_code>334</tag_code>
+<translation>Knowledge Base</translation>
+<variable>Knowledge Base</variable>
+</message>
+<message>
+<tag_code>335</tag_code>
+<translation>Documentation</translation>
+<variable>Documentation</variable>
+</message>
+<message>
+<tag_code>336</tag_code>
+<translation>Logout</translation>
+<variable>Logout</variable>
+</message>
+<message>
+<tag_code>337</tag_code>
+<translation>Select Language</translation>
+<variable>Select Language</variable>
+</message>
+<message>
+<tag_code>338</tag_code>
+<translation>Device Mode</translation>
+<variable>Device Mode</variable>
+</message>
+<message>
+<tag_code>339</tag_code>
+<translation>Router (Modem + Router)</translation>
+<variable>Router (Modem + Router)</variable>
+</message>
+<message>
+<tag_code>340</tag_code>
+<translation>Modem (Modem only)</translation>
+<variable>Modem (Modem only)</variable>
+</message>
+<message>
+<tag_code>341</tag_code>
+<translation>ADSL Settings</translation>
+<variable>ADSL Settings</variable>
+</message>
+<message>
+<tag_code>342</tag_code>
+<translation>Modem Status</translation>
+<variable>Modem Status</variable>
+</message>
+<message>
+<tag_code>343</tag_code>
+<translation>Select the Country and Language</translation>
+<variable>Select the Country and Language</variable>
+</message>
+<message>
+<tag_code>344</tag_code>
+<translation>Country</translation>
+<variable>Country</variable>
+</message>
+<message>
+<tag_code>345</tag_code>
+<translation>Language</translation>
+<variable>Language</variable>
+</message>
+<message>
+<tag_code>346</tag_code>
+<translation>Firmware Version</translation>
+<variable>Firmware Version</variable>
+</message>
+<message>
+<tag_code>347</tag_code>
+<translation>Modem</translation>
+<variable>Modem</variable>
+</message>
+<message>
+<tag_code>348</tag_code>
+<translation>ADSL Firmware Version</translation>
+<variable>ADSL Firmware Version</variable>
+</message>
+<message>
+<tag_code>349</tag_code>
+<translation>DownStream Connection Speed</translation>
+<variable>DownStream Connection Speed</variable>
+</message>
+<message>
+<tag_code>350</tag_code>
+<translation>UpStream Connection Speed</translation>
+<variable>UpStream Connection Speed</variable>
+</message>
+<message>
+<tag_code>351</tag_code>
+<translation>Wireless</translation>
+<variable>Wireless</variable>
+</message>
+<message>
+<tag_code>352</tag_code>
+<translation>Name</translation>
+<variable>Name</variable>
+</message>
+<message>
+<tag_code>353</tag_code>
+<translation>Mode</translation>
+<variable>Mode</variable>
+</message>
+<message>
+<tag_code>354</tag_code>
+<translation>Show Statistics</translation>
+<variable>Show Statistics</variable>
+</message>
+<message>
+<tag_code>355</tag_code>
+<translation>The router has no Internet connection, it can't download the specified language file from NETGEAR web site. Please connect the router to the Internet and try this function again.</translation>
+<variable>The router has no Internet connection, it can't download the specified language file from NETGEAR web site. Please connect the router to the Internet and try this function again.</variable>
+</message>
+<message>
+<tag_code>356</tag_code>
+<translation>No Internet connection is detected. The router cannot check the NETGEAR server for updated firmware. After setting up your Internet connection, go to the Router Upgrade screen to check for updated firmware.</translation>
+<variable>No Internet connection is detected. The router cannot check the NETGEAR server for updated firmware. After setting up your Internet connection, go to the Router Upgrade screen to check for updated firmware.</variable>
+</message>
+<message>
+<tag_code>357</tag_code>
+<translation>No Internet connection detected.</translation>
+<variable>No Internet connection detected.</variable>
+</message>
+<message>
+<tag_code>358</tag_code>
+<translation>Please check the connections to the Internet WAN port and cable/DSL modem.</translation>
+<variable>Please check the connections to the Internet WAN port and cable/DSL modem.</variable>
+</message>
+<message>
+<tag_code>359</tag_code>
+<translation>Retry</translation>
+<variable>Retry</variable>
+</message>
+<message>
+<tag_code>360</tag_code>
+<translation>Re-pack Criteria: 00:30 (30 minutes)</translation>
+<variable>Re-pack Criteria: 00:30 (30 minutes)</variable>
+</message>
+<message>
+<tag_code>361</tag_code>
+<translation>401 Unauthorized</translation>
+<variable>401 Unauthorized</variable>
+</message>
+<message>
+<tag_code>362</tag_code>
+<translation>Old Password</translation>
+<variable>Old Password</variable>
+</message>
+<message>
+<tag_code>363</tag_code>
+<translation>Repeat New Password</translation>
+<variable>Repeat New Password</variable>
+</message>
+<message>
+<tag_code>364</tag_code>
+<translation>QoS - Priority Rules</translation>
+<variable>QoS - Priority Rules</variable>
+</message>
+<message>
+<tag_code>365</tag_code>
+<translation>Priority</translation>
+<variable>Priority</variable>
+</message>
+<message>
+<tag_code>366</tag_code>
+<translation>QoS Policy for</translation>
+<variable>QoS Policy for</variable>
+</message>
+<message>
+<tag_code>367</tag_code>
+<translation>Priority Category</translation>
+<variable>Priority Category</variable>
+</message>
+<message>
+<tag_code>368</tag_code>
+<translation>Applications</translation>
+<variable>Applications</variable>
+</message>
+<message>
+<tag_code>369</tag_code>
+<translation>On-line gaming</translation>
+<variable>On-line gaming</variable>
+</message>
+<message>
+<tag_code>370</tag_code>
+<translation>Ethernet LAN Port</translation>
+<variable>Ethernet LAN Port</variable>
+</message>
+<message>
+<tag_code>371</tag_code>
+<translation>MSN Messenger</translation>
+<variable>MSN Messenger</variable>
+</message>
+<message>
+<tag_code>372</tag_code>
+<translation>Yahoo Messenger</translation>
+<variable>Yahoo Messenger</variable>
+</message>
+<message>
+<tag_code>373</tag_code>
+<translation>IP Phone</translation>
+<variable>IP Phone</variable>
+</message>
+<message>
+<tag_code>374</tag_code>
+<translation>Vonage IP Phone</translation>
+<variable>Vonage IP Phone</variable>
+</message>
+<message>
+<tag_code>375</tag_code>
+<translation>Google Talk</translation>
+<variable>Google Talk</variable>
+</message>
+<message>
+<tag_code>376</tag_code>
+<translation>Add a new application</translation>
+<variable>Add a new application</variable>
+</message>
+<message>
+<tag_code>377</tag_code>
+<translation>Highest</translation>
+<variable>Highest</variable>
+</message>
+<message>
+<tag_code>378</tag_code>
+<translation>High</translation>
+<variable>High</variable>
+</message>
+<message>
+<tag_code>379</tag_code>
+<translation>Normal</translation>
+<variable>Normal</variable>
+</message>
+<message>
+<tag_code>380</tag_code>
+<translation>Low</translation>
+<variable>Low</variable>
+</message>
+<message>
+<tag_code>381</tag_code>
+<translation>Specified Port Range</translation>
+<variable>Specified Port Range</variable>
+</message>
+<message>
+<tag_code>382</tag_code>
+<translation>Connection Type</translation>
+<variable>Connection Type</variable>
+</message>
+<message>
+<tag_code>383</tag_code>
+<translation>Add a new game</translation>
+<variable>Add a new game</variable>
+</message>
+<message>
+<tag_code>384</tag_code>
+<translation>MAC Device List</translation>
+<variable>MAC Device List</variable>
+</message>
+<message>
+<tag_code>385</tag_code>
+<translation>LAN Port</translation>
+<variable>LAN Port</variable>
+</message>
+<message>
+<tag_code>386</tag_code>
+<translation>QoS Priority Rule list</translation>
+<variable>QoS Priority Rule list</variable>
+</message>
+<message>
+<tag_code>387</tag_code>
+<translation>QoS Policy</translation>
+<variable>QoS Policy</variable>
+</message>
+<message>
+<tag_code>388</tag_code>
+<translation>Description</translation>
+<variable>Description</variable>
+</message>
+<message>
+<tag_code>389</tag_code>
+<translation>Add Priority Rule</translation>
+<variable>Add Priority Rule</variable>
+</message>
+<message>
+<tag_code>390</tag_code>
+<translation>Enable WMM (Wi-Fi multimedia) settings</translation>
+<variable>Enable WMM (Wi-Fi multimedia) settings</variable>
+</message>
+<message>
+<tag_code>391</tag_code>
+<translation>Turn Internet Access QoS On</translation>
+<variable>Turn Internet Access QoS On</variable>
+</message>
+<message>
+<tag_code>392</tag_code>
+<translation>Turn Bandwidth Control On</translation>
+<variable>Turn Bandwidth Control On</variable>
+</message>
+<message>
+<tag_code>393</tag_code>
+<translation>Uplink bandwidth</translation>
+<variable>Uplink bandwidth</variable>
+</message>
+<message>
+<tag_code>394</tag_code>
+<translation>Maximum</translation>
+<variable>Maximum</variable>
+</message>
+<message>
+<tag_code>395</tag_code>
+<translation>Check for current Internet uplink bandwidth</translation>
+<variable>Check for current Internet uplink bandwidth</variable>
+</message>
+<message>
+<tag_code>396</tag_code>
+<translation>Check</translation>
+<variable>Check</variable>
+</message>
+<message>
+<tag_code>397</tag_code>
+<translation>Set Up QoS Rule</translation>
+<variable>Set Up QoS Rule</variable>
+</message>
+<message>
+<tag_code>398</tag_code>
+<translation>Uplink band width check Assistant</translation>
+<variable>Uplink band width check Assistant</variable>
+</message>
+<message>
+<tag_code>399</tag_code>
+<translation>Attempting to detect uplink bandwidth . Please Wait</translation>
+<variable>Attempting to detect uplink bandwidth . Please Wait</variable>
+</message>
+<message>
+<tag_code>400</tag_code>
+<translation>Progress</translation>
+<variable>Progress</variable>
+</message>
+<message>
+<tag_code>401</tag_code>
+<translation>Safely Remove USB Device</translation>
+<variable>Safely Remove USB Device</variable>
+</message>
+<message>
+<tag_code>402</tag_code>
+<translation>Poll Interval</translation>
+<variable>Poll Interval</variable>
+</message>
+<message>
+<tag_code>403</tag_code>
+<translation>(secs)</translation>
+<variable>(secs)</variable>
+</message>
+<message>
+<tag_code>404</tag_code>
+<translation>Set Interval</translation>
+<variable>Set Interval</variable>
+</message>
+<message>
+<tag_code>405</tag_code>
+<translation>Stop</translation>
+<variable>Stop</variable>
+</message>
+<message>
+<tag_code>406</tag_code>
+<translation>System Up Time</translation>
+<variable>System Up Time</variable>
+</message>
+<message>
+<tag_code>407</tag_code>
+<translation>Status</translation>
+<variable>Status</variable>
+</message>
+<message>
+<tag_code>408</tag_code>
+<translation>TxPkts</translation>
+<variable>TxPkts</variable>
+</message>
+<message>
+<tag_code>409</tag_code>
+<translation>RxPkts</translation>
+<variable>RxPkts</variable>
+</message>
+<message>
+<tag_code>410</tag_code>
+<translation>Collisions</translation>
+<variable>Collisions</variable>
+</message>
+<message>
+<tag_code>411</tag_code>
+<translation>Tx B/s</translation>
+<variable>Tx B/s</variable>
+</message>
+<message>
+<tag_code>412</tag_code>
+<translation>Rx B/s</translation>
+<variable>Rx B/s</variable>
+</message>
+<message>
+<tag_code>413</tag_code>
+<translation>Up Time</translation>
+<variable>Up Time</variable>
+</message>
+<message>
+<tag_code>414</tag_code>
+<translation>Hardware Version</translation>
+<variable>Hardware Version</variable>
+</message>
+<message>
+<tag_code>415</tag_code>
+<translation>GUI Language Version</translation>
+<variable>GUI Language Version</variable>
+</message>
+<message>
+<tag_code>416</tag_code>
+<translation>Domain Name Server</translation>
+<variable>Domain Name Server</variable>
+</message>
+<message>
+<tag_code>417</tag_code>
+<translation>Wireless isolation</translation>
+<variable>Wireless isolation</variable>
+</message>
+<message>
+<tag_code>418</tag_code>
+<translation>Wi-Fi Protected Setup</translation>
+<variable>Wi-Fi Protected Setup</variable>
+</message>
+<message>
+<tag_code>419</tag_code>
+<translation>Allow guest to access My Local Network</translation>
+<variable>Allow guest to access My Local Network</variable>
+</message>
+<message>
+<tag_code>420</tag_code>
+<translation>Wireless Repeating</translation>
+<variable>Wireless Repeating</variable>
+</message>
+<message>
+<tag_code>421</tag_code>
+<translation>Base Station MAC Address</translation>
+<variable>Base Station MAC Address</variable>
+</message>
+<message>
+<tag_code>422</tag_code>
+<translation>Repeater IP Address</translation>
+<variable>Repeater IP Address</variable>
+</message>
+<message>
+<tag_code>423</tag_code>
+<translation>Repeater MAC Address 1</translation>
+<variable>Repeater MAC Address 1</variable>
+</message>
+<message>
+<tag_code>424</tag_code>
+<translation>Repeater MAC Address 2</translation>
+<variable>Repeater MAC Address 2</variable>
+</message>
+<message>
+<tag_code>425</tag_code>
+<translation>Repeater MAC Address 3</translation>
+<variable>Repeater MAC Address 3</variable>
+</message>
+<message>
+<tag_code>426</tag_code>
+<translation>Repeater MAC Address 4</translation>
+<variable>Repeater MAC Address 4</variable>
+</message>
+<message>
+<tag_code>427</tag_code>
+<translation>Connection Status</translation>
+<variable>Connection Status</variable>
+</message>
+<message>
+<tag_code>428</tag_code>
+<translation>Subnet Mask</translation>
+<variable>Subnet Mask</variable>
+</message>
+<message>
+<tag_code>429</tag_code>
+<translation>Default Gateway</translation>
+<variable>Default Gateway</variable>
+</message>
+<message>
+<tag_code>430</tag_code>
+<translation>Lease Obtained</translation>
+<variable>Lease Obtained</variable>
+</message>
+<message>
+<tag_code>431</tag_code>
+<translation>Lease Expires</translation>
+<variable>Lease Expires</variable>
+</message>
+<message>
+<tag_code>432</tag_code>
+<translation>Release</translation>
+<variable>Release</variable>
+</message>
+<message>
+<tag_code>433</tag_code>
+<translation>Renew</translation>
+<variable>Renew</variable>
+</message>
+<message>
+<tag_code>434</tag_code>
+<translation>Connect</translation>
+<variable>Connect</variable>
+</message>
+<message>
+<tag_code>435</tag_code>
+<translation>Disconnect</translation>
+<variable>Disconnect</variable>
+</message>
+<message>
+<tag_code>436</tag_code>
+<translation>ALLOW by schedule, otherwise Block</translation>
+<variable>ALLOW by schedule, otherwise Block</variable>
+</message>
+<message>
+<tag_code>437</tag_code>
+<translation>BLOCK by schedule, otherwise Allow</translation>
+<variable>BLOCK by schedule, otherwise Allow</variable>
+</message>
+<message>
+<tag_code>438</tag_code>
+<translation>Send to LAN Server</translation>
+<variable>Send to LAN Server</variable>
+</message>
+<message>
+<tag_code>439</tag_code>
+<translation>Match</translation>
+<variable>Match</variable>
+</message>
+<message>
+<tag_code>440</tag_code>
+<translation>Not Match</translation>
+<variable>Not Match</variable>
+</message>
+<message>
+<tag_code>441</tag_code>
+<translation>Service Definition</translation>
+<variable>Service Definition</variable>
+</message>
+<message>
+<tag_code>442</tag_code>
+<translation>Type</translation>
+<variable>Type</variable>
+</message>
+<message>
+<tag_code>443</tag_code>
+<translation>Upload</translation>
+<variable>Upload</variable>
+</message>
+<message>
+<tag_code>444</tag_code>
+<translation>Route Name</translation>
+<variable>Route Name</variable>
+</message>
+<message>
+<tag_code>445</tag_code>
+<translation>Private</translation>
+<variable>Private</variable>
+</message>
+<message>
+<tag_code>446</tag_code>
+<translation>Please select an item for deletion.</translation>
+<variable>Please select an item for deletion.</variable>
+</message>
+<message>
+<tag_code>447</tag_code>
+<translation>Please select an item for editing.</translation>
+<variable>Please select an item for editing.</variable>
+</message>
+<message>
+<tag_code>448</tag_code>
+<translation>Updating Settings</translation>
+<variable>Updating Settings</variable>
+</message>
+<message>
+<tag_code>449</tag_code>
+<translation>Please wait for updating the GUI language</translation>
+<variable>Please wait for updating the GUI language</variable>
+</message>
+<message>
+<tag_code>450</tag_code>
+<translation>The router failed to download the language table you requested. Please try again later.</translation>
+<variable>The router failed to download the language table you requested. Please try again later.</variable>
+</message>
+<message>
+<tag_code>451</tag_code>
+<translation>Warning! The firmware version you are trying to upload is older than the one you had.</translation>
+<variable>Warning! The firmware version you are trying to upload is older than the one you had.</variable>
+</message>
+<message>
+<tag_code>452</tag_code>
+<translation>&lt;br&gt;Do you still want to continue?</translation>
+<variable>&lt;br&gt;Do you still want to continue?</variable>
+</message>
+<message>
+<tag_code>453</tag_code>
+<translation>Current Version</translation>
+<variable>Current Version</variable>
+</message>
+<message>
+<tag_code>454</tag_code>
+<translation>Uploaded Version</translation>
+<variable>Uploaded Version</variable>
+</message>
+<message>
+<tag_code>455</tag_code>
+<translation>This firmware file is incorrect! Please get the firmware file again and make sure it is the correct firmware for this product.</translation>
+<variable>This firmware file is incorrect! Please get the firmware file again and make sure it is the correct firmware for this product.</variable>
+</message>
+<message>
+<tag_code>456</tag_code>
+<translation>Firmware Upgrade</translation>
+<variable>Firmware Upgrade</variable>
+</message>
+<message>
+<tag_code>457</tag_code>
+<translation>Thank you for purchasing NETGEAR's</translation>
+<variable>Thank you for purchasing NETGEAR's</variable>
+</message>
+<message>
+<tag_code>458</tag_code>
+<translation>To take advantage of the Wireless-N features offered by the</translation>
+<variable>To take advantage of the Wireless-N features offered by the</variable>
+</message>
+<message>
+<tag_code>459</tag_code>
+<translation>Do not display this message again.</translation>
+<variable>Do not display this message again.</variable>
+</message>
+<message>
+<tag_code>460</tag_code>
+<translation>Check for new version from the Internet.</translation>
+<variable>Check for new version from the Internet.</variable>
+</message>
+<message>
+<tag_code>461</tag_code>
+<translation>Check for new version upon login</translation>
+<variable>Check for new version upon login</variable>
+</message>
+<message>
+<tag_code>462</tag_code>
+<translation>Locate and select the upgrade file on your hard disk.</translation>
+<variable>Locate and select the upgrade file on your hard disk.</variable>
+</message>
+<message>
+<tag_code>463</tag_code>
+<translation>Turn UPnP On</translation>
+<variable>Turn UPnP On</variable>
+</message>
+<message>
+<tag_code>464</tag_code>
+<translation>Advertisement Period</translation>
+<variable>Advertisement Period</variable>
+</message>
+<message>
+<tag_code>465</tag_code>
+<translation>Advertisement Time to Live</translation>
+<variable>Advertisement Time to Live</variable>
+</message>
+<message>
+<tag_code>466</tag_code>
+<translation>(in hops)</translation>
+<variable>(in hops)</variable>
+</message>
+<message>
+<tag_code>467</tag_code>
+<translation>UPnP Portmap Table</translation>
+<variable>UPnP Portmap Table</variable>
+</message>
+<message>
+<tag_code>468</tag_code>
+<translation>Int. Port</translation>
+<variable>Int. Port</variable>
+</message>
+<message>
+<tag_code>469</tag_code>
+<translation>Ext. Port</translation>
+<variable>Ext. Port</variable>
+</message>
+<message>
+<tag_code>470</tag_code>
+<translation>USB Storage (Advanced Settings)</translation>
+<variable>USB Storage (Advanced Settings)</variable>
+</message>
+<message>
+<tag_code>471</tag_code>
+<translation>Network/Device Name</translation>
+<variable>Network/Device Name</variable>
+</message>
+<message>
+<tag_code>472</tag_code>
+<translation>Workgroup</translation>
+<variable>Workgroup</variable>
+</message>
+<message>
+<tag_code>473</tag_code>
+<translation>Access Method</translation>
+<variable>Access Method</variable>
+</message>
+<message>
+<tag_code>474</tag_code>
+<translation>Link</translation>
+<variable>Link</variable>
+</message>
+<message>
+<tag_code>475</tag_code>
+<translation>Network Connection</translation>
+<variable>Network Connection</variable>
+</message>
+<message>
+<tag_code>476</tag_code>
+<translation>via internet</translation>
+<variable>via internet</variable>
+</message>
+<message>
+<tag_code>477</tag_code>
+<translation>Do you want to unmount all devices?</translation>
+<variable>Do you want to unmount all devices?</variable>
+</message>
+<message>
+<tag_code>478</tag_code>
+<translation>Available USB Devices</translation>
+<variable>Available USB Devices</variable>
+</message>
+<message>
+<tag_code>479</tag_code>
+<translation>Available Network Folders</translation>
+<variable>Available Network Folders</variable>
+</message>
+<message>
+<tag_code>480</tag_code>
+<translation>Volume Name</translation>
+<variable>Volume Name</variable>
+</message>
+<message>
+<tag_code>481</tag_code>
+<translation>Total Space</translation>
+<variable>Total Space</variable>
+</message>
+<message>
+<tag_code>482</tag_code>
+<translation>Free Space</translation>
+<variable>Free Space</variable>
+</message>
+<message>
+<tag_code>483</tag_code>
+<translation>Share Name</translation>
+<variable>Share Name</variable>
+</message>
+<message>
+<tag_code>484</tag_code>
+<translation>Read Access</translation>
+<variable>Read Access</variable>
+</message>
+<message>
+<tag_code>485</tag_code>
+<translation>Write Access</translation>
+<variable>Write Access</variable>
+</message>
+<message>
+<tag_code>486</tag_code>
+<translation>Create Network Folder</translation>
+<variable>Create Network Folder</variable>
+</message>
+<message>
+<tag_code>487</tag_code>
+<translation>USB Drive Approved Devices</translation>
+<variable>USB Drive Approved Devices</variable>
+</message>
+<message>
+<tag_code>488</tag_code>
+<translation>Allow only approved devices</translation>
+<variable>Allow only approved devices</variable>
+</message>
+<message>
+<tag_code>489</tag_code>
+<translation>Approved USB Devices</translation>
+<variable>Approved USB Devices</variable>
+</message>
+<message>
+<tag_code>490</tag_code>
+<translation>Capacity</translation>
+<variable>Capacity</variable>
+</message>
+<message>
+<tag_code>491</tag_code>
+<translation>USB Storage (Basic Settings)</translation>
+<variable>USB Storage (Basic Settings)</variable>
+</message>
+<message>
+<tag_code>492</tag_code>
+<translation>Edit Network Folder</translation>
+<variable>Edit Network Folder</variable>
+</message>
+<message>
+<tag_code>493</tag_code>
+<translation>USB Device</translation>
+<variable>USB Device</variable>
+</message>
+<message>
+<tag_code>494</tag_code>
+<translation>File System</translation>
+<variable>File System</variable>
+</message>
+<message>
+<tag_code>495</tag_code>
+<translation>Folder</translation>
+<variable>Folder</variable>
+</message>
+<message>
+<tag_code>496</tag_code>
+<translation>All - no password</translation>
+<variable>All - no password</variable>
+</message>
+<message>
+<tag_code>497</tag_code>
+<translation>admin</translation>
+<variable>admin</variable>
+</message>
+<message>
+<tag_code>498</tag_code>
+<translation>Browse</translation>
+<variable>Browse</variable>
+</message>
+<message>
+<tag_code>499</tag_code>
+<translation>Browse for Folder</translation>
+<variable>Browse for Folder</variable>
+</message>
+<message>
+<tag_code>500</tag_code>
+<translation>Enable any USB Device connected to the USB port</translation>
+<variable>Enable any USB Device connected to the USB port</variable>
+</message>
+<message>
+<tag_code>501</tag_code>
+<translation>Approved Devices</translation>
+<variable>Approved Devices</variable>
+</message>
+<message>
+<tag_code>502</tag_code>
+<translation>ADD User</translation>
+<variable>ADD User</variable>
+</message>
+<message>
+<tag_code>503</tag_code>
+<translation>User Properties:</translation>
+<variable>User Properties:</variable>
+</message>
+<message>
+<tag_code>504</tag_code>
+<translation>User Password :</translation>
+<variable>User Password :</variable>
+</message>
+<message>
+<tag_code>505</tag_code>
+<translation>Confirm Password</translation>
+<variable>Confirm Password</variable>
+</message>
+<message>
+<tag_code>506</tag_code>
+<translation>User Group :</translation>
+<variable>User Group :</variable>
+</message>
+<message>
+<tag_code>507</tag_code>
+<translation>User Add</translation>
+<variable>User Add</variable>
+</message>
+<message>
+<tag_code>508</tag_code>
+<translation>Clear</translation>
+<variable>Clear</variable>
+</message>
+<message>
+<tag_code>509</tag_code>
+<translation>User Proprity</translation>
+<variable>User Proprity</variable>
+</message>
+<message>
+<tag_code>510</tag_code>
+<translation>User Modify</translation>
+<variable>User Modify</variable>
+</message>
+<message>
+<tag_code>511</tag_code>
+<translation>Attempting to connect to Netgear Server</translation>
+<variable>Attempting to connect to Netgear Server</variable>
+</message>
+<message>
+<tag_code>512</tag_code>
+<translation>Please Connect Internet Port and Retry</translation>
+<variable>Please Connect Internet Port and Retry</variable>
+</message>
+<message>
+<tag_code>513</tag_code>
+<translation>A new version has been found. Do You want to upgrade to the new version now?</translation>
+<variable>A new version has been found. Do You want to upgrade to the new version now?</variable>
+</message>
+<message>
+<tag_code>514</tag_code>
+<translation>New Firmware Version</translation>
+<variable>New Firmware Version</variable>
+</message>
+<message>
+<tag_code>515</tag_code>
+<translation>Current GUI Language Version</translation>
+<variable>Current GUI Language Version</variable>
+</message>
+<message>
+<tag_code>516</tag_code>
+<translation>New GUI Language Version</translation>
+<variable>New GUI Language Version</variable>
+</message>
+<message>
+<tag_code>517</tag_code>
+<translation>Release Notes</translation>
+<variable>Release Notes</variable>
+</message>
+<message>
+<tag_code>518</tag_code>
+<translation>This process can take a minute or two; please wait...</translation>
+<variable>This process can take a minute or two; please wait...</variable>
+</message>
+<message>
+<tag_code>519</tag_code>
+<translation>There is a new GUI text file available:</translation>
+<variable>There is a new GUI text file available:</variable>
+</message>
+<message>
+<tag_code>520</tag_code>
+<translation>Do you want to download and use this new GUI text file?</translation>
+<variable>Do you want to download and use this new GUI text file?</variable>
+</message>
+<message>
+<tag_code>521</tag_code>
+<translation>Disable Port Scan and DoS Protection</translation>
+<variable>Disable Port Scan and DoS Protection</variable>
+</message>
+<message>
+<tag_code>522</tag_code>
+<translation>Default DMZ Server</translation>
+<variable>Default DMZ Server</variable>
+</message>
+<message>
+<tag_code>523</tag_code>
+<translation>Respond to Ping on Internet Port</translation>
+<variable>Respond to Ping on Internet Port</variable>
+</message>
+<message>
+<tag_code>524</tag_code>
+<translation>MTU Size</translation>
+<variable>MTU Size</variable>
+</message>
+<message>
+<tag_code>525</tag_code>
+<translation>(in bytes)</translation>
+<variable>(in bytes)</variable>
+</message>
+<message>
+<tag_code>526</tag_code>
+<translation>NAT Filtering</translation>
+<variable>NAT Filtering</variable>
+</message>
+<message>
+<tag_code>527</tag_code>
+<translation>Secured</translation>
+<variable>Secured</variable>
+</message>
+<message>
+<tag_code>528</tag_code>
+<translation>Open</translation>
+<variable>Open</variable>
+</message>
+<message>
+<tag_code>529</tag_code>
+<translation>Disable SIP ALG</translation>
+<variable>Disable SIP ALG</variable>
+</message>
+<message>
+<tag_code>530</tag_code>
+<translation>Disable IGMP Proxying</translation>
+<variable>Disable IGMP Proxying</variable>
+</message>
+<message>
+<tag_code>531</tag_code>
+<translation>Advanced Wireless Settings</translation>
+<variable>Advanced Wireless Settings</variable>
+</message>
+<message>
+<tag_code>532</tag_code>
+<translation>Enable Wireless Repeating Function</translation>
+<variable>Enable Wireless Repeating Function</variable>
+</message>
+<message>
+<tag_code>533</tag_code>
+<translation>Wireless Point-to-Point Bridge</translation>
+<variable>Wireless Point-to-Point Bridge</variable>
+</message>
+<message>
+<tag_code>534</tag_code>
+<translation>Local</translation>
+<variable>Local</variable>
+</message>
+<message>
+<tag_code>535</tag_code>
+<translation>Wireless Point to Multi-Point Bridge</translation>
+<variable>Wireless Point to Multi-Point Bridge</variable>
+</message>
+<message>
+<tag_code>536</tag_code>
+<translation>Repeater with Wireless Client Association</translation>
+<variable>Repeater with Wireless Client Association</variable>
+</message>
+<message>
+<tag_code>537</tag_code>
+<translation>Save</translation>
+<variable>Save</variable>
+</message>
+<message>
+<tag_code>538</tag_code>
+<translation>You already have a valid Internet connection.</translation>
+<variable>You already have a valid Internet connection.</variable>
+</message>
+<message>
+<tag_code>539</tag_code>
+<translation>Do you still want to continue with the Smart Setup Wizard?</translation>
+<variable>Do you still want to continue with the Smart Setup Wizard?</variable>
+</message>
+<message>
+<tag_code>540</tag_code>
+<translation>Use IP Over ATM (IPoA)</translation>
+<variable>Use IP Over ATM (IPoA)</variable>
+</message>
+<message>
+<tag_code>541</tag_code>
+<translation>Detecting Connection Type on Internet Port</translation>
+<variable>Detecting Connection Type on Internet Port</variable>
+</message>
+<message>
+<tag_code>542</tag_code>
+<translation>Please wait a moment...</translation>
+<variable>Please wait a moment...</variable>
+</message>
+<message>
+<tag_code>543</tag_code>
+<translation>Dynamic IP (DHCP) detected</translation>
+<variable>Dynamic IP (DHCP) detected</variable>
+</message>
+<message>
+<tag_code>544</tag_code>
+<translation>Static (fixed) IP detected</translation>
+<variable>Static (fixed) IP detected</variable>
+</message>
+<message>
+<tag_code>545</tag_code>
+<translation>PPPoA Detected</translation>
+<variable>PPPoA Detected</variable>
+</message>
+<message>
+<tag_code>546</tag_code>
+<translation>PPTP detected</translation>
+<variable>PPTP detected</variable>
+</message>
+<message>
+<tag_code>547</tag_code>
+<translation>Fixed IP Detected &lt;br&gt;or &lt;br&gt;Special Setup Needed</translation>
+<variable>Fixed IP Detected &lt;br&gt;or &lt;br&gt;Special Setup Needed</variable>
+</message>
+<message>
+<tag_code>548</tag_code>
+<translation>or</translation>
+<variable>or</variable>
+</message>
+<message>
+<tag_code>549</tag_code>
+<translation>Do you have a Fixed or Static IP Address Assigned by your ISP?</translation>
+<variable>Do you have a Fixed or Static IP Address Assigned by your ISP?</variable>
+</message>
+<message>
+<tag_code>550</tag_code>
+<translation>Not Sure</translation>
+<variable>Not Sure</variable>
+</message>
+<message>
+<tag_code>551</tag_code>
+<translation>Dynamic</translation>
+<variable>Dynamic</variable>
+</message>
+<message>
+<tag_code>552</tag_code>
+<translation>Static IP (Fixed) Addresses</translation>
+<variable>Static IP (Fixed) Addresses</variable>
+</message>
+<message>
+<tag_code>553</tag_code>
+<translation>No. I want to configure the router myself.</translation>
+<variable>No. I want to configure the router myself.</variable>
+</message>
+<message>
+<tag_code>554</tag_code>
+<translation>Wireless Card Access List</translation>
+<variable>Wireless Card Access List</variable>
+</message>
+<message>
+<tag_code>555</tag_code>
+<translation>Turn Access Control On</translation>
+<variable>Turn Access Control On</variable>
+</message>
+<message>
+<tag_code>556</tag_code>
+<translation>Wireless Card Access Setup</translation>
+<variable>Wireless Card Access Setup</variable>
+</message>
+<message>
+<tag_code>557</tag_code>
+<translation>Available Wireless Cards</translation>
+<variable>Available Wireless Cards</variable>
+</message>
+<message>
+<tag_code>558</tag_code>
+<translation>Wireless Card Entry</translation>
+<variable>Wireless Card Entry</variable>
+</message>
+<message>
+<tag_code>559</tag_code>
+<translation>Edit Wireless Card</translation>
+<variable>Edit Wireless Card</variable>
+</message>
+<message>
+<tag_code>560</tag_code>
+<translation>Accept</translation>
+<variable>Accept</variable>
+</message>
+<message>
+<tag_code>561</tag_code>
+<translation>Enable Wireless Router Radio</translation>
+<variable>Enable Wireless Router Radio</variable>
+</message>
+<message>
+<tag_code>562</tag_code>
+<translation>Fragmentation Length (256-2346)</translation>
+<variable>Fragmentation Length (256-2346)</variable>
+</message>
+<message>
+<tag_code>563</tag_code>
+<translation>CTS/RTS Threshold (1-2347)</translation>
+<variable>CTS/RTS Threshold (1-2347)</variable>
+</message>
+<message>
+<tag_code>564</tag_code>
+<translation>Preamble Mode</translation>
+<variable>Preamble Mode</variable>
+</message>
+<message>
+<tag_code>565</tag_code>
+<translation>Long Preamble</translation>
+<variable>Long Preamble</variable>
+</message>
+<message>
+<tag_code>566</tag_code>
+<translation>Short Preamble</translation>
+<variable>Short Preamble</variable>
+</message>
+<message>
+<tag_code>567</tag_code>
+<translation>Set Up Access List</translation>
+<variable>Set Up Access List</variable>
+</message>
+<message>
+<tag_code>568</tag_code>
+<translation>Disable Wireless Client Association</translation>
+<variable>Disable Wireless Client Association</variable>
+</message>
+<message>
+<tag_code>569</tag_code>
+<translation>Wireless MAC of this router</translation>
+<variable>Wireless MAC of this router</variable>
+</message>
+<message>
+<tag_code>570</tag_code>
+<translation>Wireless Repeater</translation>
+<variable>Wireless Repeater</variable>
+</message>
+<message>
+<tag_code>571</tag_code>
+<translation>Wireless Base Station</translation>
+<variable>Wireless Base Station</variable>
+</message>
+<message>
+<tag_code>572</tag_code>
+<translation>Wireless Network</translation>
+<variable>Wireless Network</variable>
+</message>
+<message>
+<tag_code>573</tag_code>
+<translation>Beacon Interval (in ms)</translation>
+<variable>Beacon Interval (in ms)</variable>
+</message>
+<message>
+<tag_code>574</tag_code>
+<translation>Enable SSID Broadcast</translation>
+<variable>Enable SSID Broadcast</variable>
+</message>
+<message>
+<tag_code>575</tag_code>
+<translation>Enable Wireless Isolation</translation>
+<variable>Enable Wireless Isolation</variable>
+</message>
+<message>
+<tag_code>576</tag_code>
+<translation>Select Region</translation>
+<variable>Select Region</variable>
+</message>
+<message>
+<tag_code>577</tag_code>
+<translation>Africa</translation>
+<variable>Africa</variable>
+</message>
+<message>
+<tag_code>578</tag_code>
+<translation>Asia</translation>
+<variable>Asia</variable>
+</message>
+<message>
+<tag_code>579</tag_code>
+<translation>Australia</translation>
+<variable>Australia</variable>
+</message>
+<message>
+<tag_code>580</tag_code>
+<translation>Canada</translation>
+<variable>Canada</variable>
+</message>
+<message>
+<tag_code>581</tag_code>
+<translation>Europe</translation>
+<variable>Europe</variable>
+</message>
+<message>
+<tag_code>582</tag_code>
+<translation>Israel</translation>
+<variable>Israel</variable>
+</message>
+<message>
+<tag_code>583</tag_code>
+<translation>Japan</translation>
+<variable>Japan</variable>
+</message>
+<message>
+<tag_code>584</tag_code>
+<translation>Korea</translation>
+<variable>Korea</variable>
+</message>
+<message>
+<tag_code>585</tag_code>
+<translation>Mexico</translation>
+<variable>Mexico</variable>
+</message>
+<message>
+<tag_code>586</tag_code>
+<translation>Middle East</translation>
+<variable>Middle East</variable>
+</message>
+<message>
+<tag_code>587</tag_code>
+<translation>South America</translation>
+<variable>South America</variable>
+</message>
+<message>
+<tag_code>588</tag_code>
+<translation>United States</translation>
+<variable>United States</variable>
+</message>
+<message>
+<tag_code>589</tag_code>
+<translation>Up to 54 Mbps</translation>
+<variable>Up to 54 Mbps</variable>
+</message>
+<message>
+<tag_code>590</tag_code>
+<translation>Up to 145 Mbps</translation>
+<variable>Up to 145 Mbps</variable>
+</message>
+<message>
+<tag_code>591</tag_code>
+<translation>Up to 300 Mbps</translation>
+<variable>Up to 300 Mbps</variable>
+</message>
+<message>
+<tag_code>592</tag_code>
+<translation>Security Options</translation>
+<variable>Security Options</variable>
+</message>
+<message>
+<tag_code>593</tag_code>
+<translation>WPA/WPA2 Enterprise</translation>
+<variable>WPA/WPA2 Enterprise</variable>
+</message>
+<message>
+<tag_code>594</tag_code>
+<translation>Security Encryption (WEP)</translation>
+<variable>Security Encryption (WEP)</variable>
+</message>
+<message>
+<tag_code>595</tag_code>
+<translation>Authentication Type</translation>
+<variable>Authentication Type</variable>
+</message>
+<message>
+<tag_code>596</tag_code>
+<translation>Automatic</translation>
+<variable>Automatic</variable>
+</message>
+<message>
+<tag_code>597</tag_code>
+<translation>Shared Key</translation>
+<variable>Shared Key</variable>
+</message>
+<message>
+<tag_code>598</tag_code>
+<translation>Encryption Strength</translation>
+<variable>Encryption Strength</variable>
+</message>
+<message>
+<tag_code>599</tag_code>
+<translation>Key</translation>
+<variable>Key</variable>
+</message>
+<message>
+<tag_code>600</tag_code>
+<translation>Passphrase</translation>
+<variable>Passphrase</variable>
+</message>
+<message>
+<tag_code>601</tag_code>
+<translation>Generate</translation>
+<variable>Generate</variable>
+</message>
+<message>
+<tag_code>602</tag_code>
+<translation>(8-63 characters or 64 hex digits)</translation>
+<variable>(8-63 characters or 64 hex digits)</variable>
+</message>
+<message>
+<tag_code>603</tag_code>
+<translation>Group Key Update Interval</translation>
+<variable>Group Key Update Interval</variable>
+</message>
+<message>
+<tag_code>604</tag_code>
+<translation>Seconds</translation>
+<variable>Seconds</variable>
+</message>
+<message>
+<tag_code>605</tag_code>
+<translation>Guest Network Settings</translation>
+<variable>Guest Network Settings</variable>
+</message>
+<message>
+<tag_code>606</tag_code>
+<translation>Network Profiles</translation>
+<variable>Network Profiles</variable>
+</message>
+<message>
+<tag_code>607</tag_code>
+<translation>Enable Guest Network</translation>
+<variable>Enable Guest Network</variable>
+</message>
+<message>
+<tag_code>608</tag_code>
+<translation>Guest Wireless Network Name (SSID)</translation>
+<variable>Guest Wireless Network Name (SSID)</variable>
+</message>
+<message>
+<tag_code>609</tag_code>
+<translation>Security Encryption (WEP) Key</translation>
+<variable>Security Encryption (WEP) Key</variable>
+</message>
+<message>
+<tag_code>610</tag_code>
+<translation>Select a setup method</translation>
+<variable>Select a setup method</variable>
+</message>
+<message>
+<tag_code>611</tag_code>
+<translation>Push Button (recommended)</translation>
+<variable>Push Button (recommended)</variable>
+</message>
+<message>
+<tag_code>612</tag_code>
+<translation>You can either press the physical push button on the router or click the button (soft push button) in this screen.</translation>
+<variable>You can either press the physical push button on the router or click the button (soft push button) in this screen.</variable>
+</message>
+<message>
+<tag_code>613</tag_code>
+<translation>PIN Number</translation>
+<variable>PIN Number</variable>
+</message>
+<message>
+<tag_code>614</tag_code>
+<translation>WPS procedure has been canceled by user.</translation>
+<variable>WPS procedure has been canceled by user.</variable>
+</message>
+<message>
+<tag_code>615</tag_code>
+<translation>Failed to add a wireless client to the network.</translation>
+<variable>Failed to add a wireless client to the network.</variable>
+</message>
+<message>
+<tag_code>616</tag_code>
+<translation>Click &lt;b&gt;OK&lt;/b&gt; to go back to the Wi-Fi Protected Setup screen.</translation>
+<variable>Click &lt;b&gt;OK&lt;/b&gt; to go back to the Wi-Fi Protected Setup screen.</variable>
+</message>
+<message>
+<tag_code>617</tag_code>
+<translation>Security Risk: detecting more than one client with push button pressed.</translation>
+<variable>Security Risk: detecting more than one client with push button pressed.</variable>
+</message>
+<message>
+<tag_code>618</tag_code>
+<translation>The client's PIN is not correct.</translation>
+<variable>The client's PIN is not correct.</variable>
+</message>
+<message>
+<tag_code>619</tag_code>
+<translation>WPS procedure has timed out.</translation>
+<variable>WPS procedure has timed out.</variable>
+</message>
+<message>
+<tag_code>620</tag_code>
+<translation>This is the security PIN of the WPS client. While connecting, WPS-enabled adapters provide a randomly-generated security PIN.</translation>
+<variable>This is the security PIN of the WPS client. While connecting, WPS-enabled adapters provide a randomly-generated security PIN.</variable>
+</message>
+<message>
+<tag_code>621</tag_code>
+<translation>Please check whether the client supports the WPS function.</translation>
+<variable>Please check whether the client supports the WPS function.</variable>
+</message>
+<message>
+<tag_code>622</tag_code>
+<translation>Success</translation>
+<variable>Success</variable>
+</message>
+<message>
+<tag_code>623</tag_code>
+<translation>The wireless client</translation>
+<variable>The wireless client</variable>
+</message>
+<message>
+<tag_code>624</tag_code>
+<translation>has been added to the network successfully.</translation>
+<variable>has been added to the network successfully.</variable>
+</message>
+<message>
+<tag_code>625</tag_code>
+<translation>Note: The wireless settings have been changed.</translation>
+<variable>Note: The wireless settings have been changed.</variable>
+</message>
+<message>
+<tag_code>626</tag_code>
+<translation>Connecting to New Wireless Client</translation>
+<variable>Connecting to New Wireless Client</variable>
+</message>
+<message>
+<tag_code>627</tag_code>
+<translation>Please click the software or hardware button on the client to start the WPS process...</translation>
+<variable>Please click the software or hardware button on the client to start the WPS process...</variable>
+</message>
+<message>
+<tag_code>628</tag_code>
+<translation>Click &lt;b&gt;OK&lt;/b&gt; to check the new wireless settings...</translation>
+<variable>Click &lt;b&gt;OK&lt;/b&gt; to check the new wireless settings...</variable>
+</message>
+<message>
+<tag_code>629</tag_code>
+<translation>Authenticating the client...</translation>
+<variable>Authenticating the client...</variable>
+</message>
+<message>
+<tag_code>630</tag_code>
+<translation>Collecting the client's information...</translation>
+<variable>Collecting the client's information...</variable>
+</message>
+<message>
+<tag_code>631</tag_code>
+<translation>Sending configuration data to the client...</translation>
+<variable>Sending configuration data to the client...</variable>
+</message>
+<message>
+<tag_code>632</tag_code>
+<translation>The client's PIN is</translation>
+<variable>The client's PIN is</variable>
+</message>
+<message>
+<tag_code>633</tag_code>
+<translation>Please click the software button on the client to start the WPS process...</translation>
+<variable>Please click the software button on the client to start the WPS process...</variable>
+</message>
+<message>
+<tag_code>634</tag_code>
+<translation>Enter Client's PIN</translation>
+<variable>Enter Client's PIN</variable>
+</message>
+<message>
+<tag_code>635</tag_code>
+<translation>&lt;p&gt;The NETGEAR mobile broadband router must be configured after it is connected into your network. You can do this using the Setup Wizard -- where the wizard will attempt to make the connection to the Internet service through your ISP -- or you can configure the router manually. It is recommended that, if you aren't used to setting up Internet connections, you let the Setup Wizard do some of the work for you.</translation>
+<variable>&lt;p&gt;The NETGEAR mobile broadband router must be configured after it is connected into your network. You can do this using the Setup Wizard -- where the wizard will attempt to make the connection to the Internet service through your ISP -- or you can configure the router manually. It is recommended that, if you aren't used to setting up Internet connections, you let the Setup Wizard do some of the work for you.</variable>
+</message>
+<message>
+<tag_code>636</tag_code>
+<translation>The Traffic Meter monthly limit (</translation>
+<variable>The Traffic Meter monthly limit (</variable>
+</message>
+<message>
+<tag_code>637</tag_code>
+<translation>has been reached.</translation>
+<variable>has been reached.</variable>
+</message>
+<message>
+<tag_code>638</tag_code>
+<translation>Your Traffic Meter counter is </translation>
+<variable>Your Traffic Meter counter is </variable>
+</message>
+<message>
+<tag_code>639</tag_code>
+<translation>before the monthly limit is reached.</translation>
+<variable>before the monthly limit is reached.</variable>
+</message>
+<message>
+<tag_code>640</tag_code>
+<translation>Internet Traffic Meter</translation>
+<variable>Internet Traffic Meter</variable>
+</message>
+<message>
+<tag_code>641</tag_code>
+<translation>Enable Traffic Meter</translation>
+<variable>Enable Traffic Meter</variable>
+</message>
+<message>
+<tag_code>642</tag_code>
+<translation>Traffic volume control by</translation>
+<variable>Traffic volume control by</variable>
+</message>
+<message>
+<tag_code>643</tag_code>
+<translation>No limit</translation>
+<variable>No limit</variable>
+</message>
+<message>
+<tag_code>644</tag_code>
+<translation>Download only</translation>
+<variable>Download only</variable>
+</message>
+<message>
+<tag_code>645</tag_code>
+<translation>Both directions</translation>
+<variable>Both directions</variable>
+</message>
+<message>
+<tag_code>646</tag_code>
+<translation>Monthly limit</translation>
+<variable>Monthly limit</variable>
+</message>
+<message>
+<tag_code>647</tag_code>
+<translation>Mbytes</translation>
+<variable>Mbytes</variable>
+</message>
+<message>
+<tag_code>648</tag_code>
+<translation>Round up data volume for each connection by</translation>
+<variable>Round up data volume for each connection by</variable>
+</message>
+<message>
+<tag_code>649</tag_code>
+<translation>Connection time control</translation>
+<variable>Connection time control</variable>
+</message>
+<message>
+<tag_code>650</tag_code>
+<translation>Hours</translation>
+<variable>Hours</variable>
+</message>
+<message>
+<tag_code>651</tag_code>
+<translation>Traffic Counter</translation>
+<variable>Traffic Counter</variable>
+</message>
+<message>
+<tag_code>652</tag_code>
+<translation>Restart traffic counter at</translation>
+<variable>Restart traffic counter at</variable>
+</message>
+<message>
+<tag_code>653</tag_code>
+<translation>On the</translation>
+<variable>On the</variable>
+</message>
+<message>
+<tag_code>654</tag_code>
+<translation>1st</translation>
+<variable>1st</variable>
+</message>
+<message>
+<tag_code>655</tag_code>
+<translation>2nd</translation>
+<variable>2nd</variable>
+</message>
+<message>
+<tag_code>656</tag_code>
+<translation>3rd</translation>
+<variable>3rd</variable>
+</message>
+<message>
+<tag_code>657</tag_code>
+<translation>4th</translation>
+<variable>4th</variable>
+</message>
+<message>
+<tag_code>658</tag_code>
+<translation>5th</translation>
+<variable>5th</variable>
+</message>
+<message>
+<tag_code>659</tag_code>
+<translation>6th</translation>
+<variable>6th</variable>
+</message>
+<message>
+<tag_code>660</tag_code>
+<translation>7th</translation>
+<variable>7th</variable>
+</message>
+<message>
+<tag_code>661</tag_code>
+<translation>8th</translation>
+<variable>8th</variable>
+</message>
+<message>
+<tag_code>662</tag_code>
+<translation>9th</translation>
+<variable>9th</variable>
+</message>
+<message>
+<tag_code>663</tag_code>
+<translation>10th</translation>
+<variable>10th</variable>
+</message>
+<message>
+<tag_code>664</tag_code>
+<translation>11th</translation>
+<variable>11th</variable>
+</message>
+<message>
+<tag_code>665</tag_code>
+<translation>12th</translation>
+<variable>12th</variable>
+</message>
+<message>
+<tag_code>666</tag_code>
+<translation>13th</translation>
+<variable>13th</variable>
+</message>
+<message>
+<tag_code>667</tag_code>
+<translation>14th</translation>
+<variable>14th</variable>
+</message>
+<message>
+<tag_code>668</tag_code>
+<translation>15th</translation>
+<variable>15th</variable>
+</message>
+<message>
+<tag_code>669</tag_code>
+<translation>16th</translation>
+<variable>16th</variable>
+</message>
+<message>
+<tag_code>670</tag_code>
+<translation>17th</translation>
+<variable>17th</variable>
+</message>
+<message>
+<tag_code>671</tag_code>
+<translation>18th</translation>
+<variable>18th</variable>
+</message>
+<message>
+<tag_code>672</tag_code>
+<translation>19th</translation>
+<variable>19th</variable>
+</message>
+<message>
+<tag_code>673</tag_code>
+<translation>20th</translation>
+<variable>20th</variable>
+</message>
+<message>
+<tag_code>674</tag_code>
+<translation>21th</translation>
+<variable>21th</variable>
+</message>
+<message>
+<tag_code>675</tag_code>
+<translation>22th</translation>
+<variable>22th</variable>
+</message>
+<message>
+<tag_code>676</tag_code>
+<translation>23th</translation>
+<variable>23th</variable>
+</message>
+<message>
+<tag_code>677</tag_code>
+<translation>24th</translation>
+<variable>24th</variable>
+</message>
+<message>
+<tag_code>678</tag_code>
+<translation>25th</translation>
+<variable>25th</variable>
+</message>
+<message>
+<tag_code>679</tag_code>
+<translation>26th</translation>
+<variable>26th</variable>
+</message>
+<message>
+<tag_code>680</tag_code>
+<translation>27th</translation>
+<variable>27th</variable>
+</message>
+<message>
+<tag_code>681</tag_code>
+<translation>28th</translation>
+<variable>28th</variable>
+</message>
+<message>
+<tag_code>682</tag_code>
+<translation>Last</translation>
+<variable>Last</variable>
+</message>
+<message>
+<tag_code>683</tag_code>
+<translation>day of each month</translation>
+<variable>day of each month</variable>
+</message>
+<message>
+<tag_code>684</tag_code>
+<translation>Traffic Control</translation>
+<variable>Traffic Control</variable>
+</message>
+<message>
+<tag_code>685</tag_code>
+<translation>Pop up a warning message</translation>
+<variable>Pop up a warning message</variable>
+</message>
+<message>
+<tag_code>686</tag_code>
+<translation>Mbytes/Minutes before the monthly limit is reached</translation>
+<variable>Mbytes/Minutes before the monthly limit is reached</variable>
+</message>
+<message>
+<tag_code>687</tag_code>
+<translation>When the monthly limit is reached</translation>
+<variable>When the monthly limit is reached</variable>
+</message>
+<message>
+<tag_code>688</tag_code>
+<translation>Turn the Internet LED to flashing green/amber</translation>
+<variable>Turn the Internet LED to flashing green/amber</variable>
+</message>
+<message>
+<tag_code>689</tag_code>
+<translation>Disconnect and disable the Internet connection</translation>
+<variable>Disconnect and disable the Internet connection</variable>
+</message>
+<message>
+<tag_code>690</tag_code>
+<translation>Internet Traffic Statistics</translation>
+<variable>Internet Traffic Statistics</variable>
+</message>
+<message>
+<tag_code>691</tag_code>
+<translation>Restart Counter Now</translation>
+<variable>Restart Counter Now</variable>
+</message>
+<message>
+<tag_code>692</tag_code>
+<translation>Traffic Status</translation>
+<variable>Traffic Status</variable>
+</message>
+<message>
+<tag_code>693</tag_code>
+<translation>Counting Period</translation>
+<variable>Counting Period</variable>
+</message>
+<message>
+<tag_code>694</tag_code>
+<translation>Amount Used</translation>
+<variable>Amount Used</variable>
+</message>
+<message>
+<tag_code>695</tag_code>
+<translation> minutes.</translation>
+<variable> minutes.</variable>
+</message>
+<message>
+<tag_code>696</tag_code>
+<translation>Period</translation>
+<variable>Period</variable>
+</message>
+<message>
+<tag_code>697</tag_code>
+<translation>Start Blocking</translation>
+<variable>Start Blocking</variable>
+</message>
+<message>
+<tag_code>698</tag_code>
+<translation>End Blocking</translation>
+<variable>End Blocking</variable>
+</message>
+<message>
+<tag_code>699</tag_code>
+<translation>Be sure to use the Firmware Upgrade Assistant periodically to take advantage of improvements and feature additions NETGEAR offers for this product.&lt;br&gt;&lt;br&gt;</translation>
+<variable>Be sure to use the Firmware Upgrade Assistant periodically to take advantage of improvements and feature additions NETGEAR offers for this product.&lt;br&gt;&lt;br&gt;</variable>
+</message>
+<message>
+<tag_code>700</tag_code>
+<translation>router, use a wireless adapter that displays this logo.</translation>
+<variable>router, use a wireless adapter that displays this logo.</variable>
+</message>
+<message>
+<tag_code>701</tag_code>
+<translation>Delete All</translation>
+<variable>Delete All</variable>
+</message>
+<message>
+<tag_code>702</tag_code>
+<translation>Checking for firmware updates</translation>
+<variable>Checking for firmware updates</variable>
+</message>
+<message>
+<tag_code>703</tag_code>
+<translation>Primary</translation>
+<variable>Primary</variable>
+</message>
+<message>
+<tag_code>704</tag_code>
+<translation>Broadcast SSID</translation>
+<variable>Broadcast SSID</variable>
+</message>
+<message>
+<tag_code>705</tag_code>
+<translation>Enable Your Wireless Network</translation>
+<variable>Enable Your Wireless Network</variable>
+</message>
+<message>
+<tag_code>706</tag_code>
+<translation>WPA Mode:</translation>
+<variable>WPA Mode:</variable>
+</message>
+<message>
+<tag_code>707</tag_code>
+<translation>RADIUS server Shared Secret:</translation>
+<variable>RADIUS server Shared Secret:</variable>
+</message>
+<message>
+<tag_code>708</tag_code>
+<translation>RADIUS server Port:</translation>
+<variable>RADIUS server Port:</variable>
+</message>
+<message>
+<tag_code>709</tag_code>
+<translation>RADIUS server IP Address:</translation>
+<variable>RADIUS server IP Address:</variable>
+</message>
+<message>
+<tag_code>710</tag_code>
+<translation>Syslog</translation>
+<variable>Syslog</variable>
+</message>
+<message>
+<tag_code>711</tag_code>
+<translation>Broadcast on LAN</translation>
+<variable>Broadcast on LAN</variable>
+</message>
+<message>
+<tag_code>712</tag_code>
+<translation>Send to this Syslog server IP address</translation>
+<variable>Send to this Syslog server IP address</variable>
+</message>
+<message>
+<tag_code>713</tag_code>
+<translation>If a DoS attack is detected</translation>
+<variable>If a DoS attack is detected</variable>
+</message>
+<message>
+<tag_code>714</tag_code>
+<translation>If a Port Scan is detected</translation>
+<variable>If a Port Scan is detected</variable>
+</message>
+<message>
+<tag_code>715</tag_code>
+<translation>Inbound Services</translation>
+<variable>Inbound Services</variable>
+</message>
+<message>
+<tag_code>716</tag_code>
+<translation>ADSL Link</translation>
+<variable>ADSL Link</variable>
+</message>
+<message>
+<tag_code>717</tag_code>
+<translation>Downstream</translation>
+<variable>Downstream</variable>
+</message>
+<message>
+<tag_code>718</tag_code>
+<translation>Upstream</translation>
+<variable>Upstream</variable>
+</message>
+<message>
+<tag_code>719</tag_code>
+<translation>Link Rate</translation>
+<variable>Link Rate</variable>
+</message>
+<message>
+<tag_code>720</tag_code>
+<translation>Line Attenuation</translation>
+<variable>Line Attenuation</variable>
+</message>
+<message>
+<tag_code>721</tag_code>
+<translation>Noise Margin</translation>
+<variable>Noise Margin</variable>
+</message>
+<message>
+<tag_code>722</tag_code>
+<translation>Network Type</translation>
+<variable>Network Type</variable>
+</message>
+<message>
+<tag_code>723</tag_code>
+<translation>Gateway IP Address</translation>
+<variable>Gateway IP Address</variable>
+</message>
+<message>
+<tag_code>724</tag_code>
+<translation>Administrator login times out after idle for</translation>
+<variable>Administrator login times out after idle for</variable>
+</message>
+<message>
+<tag_code>725</tag_code>
+<translation>IP Address List</translation>
+<variable>IP Address List</variable>
+</message>
+<message>
+<tag_code>726</tag_code>
+<translation>VLAN Group Settings</translation>
+<variable>VLAN Group Settings</variable>
+</message>
+<message>
+<tag_code>727</tag_code>
+<translation>Port Based VLAN</translation>
+<variable>Port Based VLAN</variable>
+</message>
+<message>
+<tag_code>728</tag_code>
+<translation>tag</translation>
+<variable>tag</variable>
+</message>
+<message>
+<tag_code>729</tag_code>
+<translation>Interface Grouping</translation>
+<variable>Interface Grouping</variable>
+</message>
+<message>
+<tag_code>730</tag_code>
+<translation>Remove</translation>
+<variable>Remove</variable>
+</message>
+<message>
+<tag_code>731</tag_code>
+<translation>Multiplexing Method</translation>
+<variable>Multiplexing Method</variable>
+</message>
+<message>
+<tag_code>732</tag_code>
+<translation>LLC-BASED</translation>
+<variable>LLC-BASED</variable>
+</message>
+<message>
+<tag_code>733</tag_code>
+<translation>VC-BASED</translation>
+<variable>VC-BASED</variable>
+</message>
+<message>
+<tag_code>734</tag_code>
+<translation>PPPoE (PPP over Ethernet)</translation>
+<variable>PPPoE (PPP over Ethernet)</variable>
+</message>
+<message>
+<tag_code>735</tag_code>
+<translation>Failed to add a wireless client to the network in </translation>
+<variable>Failed to add a wireless client to the network in </variable>
+</message>
+<message>
+<tag_code>736</tag_code>
+<translation>Auto</translation>
+<variable>Auto</variable>
+</message>
+<message>
+<tag_code>737</tag_code>
+<translation>Turn off wireless signal by schedule</translation>
+<variable>Turn off wireless signal by schedule</variable>
+</message>
+<message>
+<tag_code>738</tag_code>
+<translation>The wireless signal is scheduled to turn off during the following time period:</translation>
+<variable>The wireless signal is scheduled to turn off during the following time period:</variable>
+</message>
+<message>
+<tag_code>739</tag_code>
+<translation>Encapsulation</translation>
+<variable>Encapsulation</variable>
+</message>
+<message>
+<tag_code>740</tag_code>
+<translation>PPPoA (PPP over ATM)</translation>
+<variable>PPPoA (PPP over ATM)</variable>
+</message>
+<message>
+<tag_code>741</tag_code>
+<translation>NAT (Network Address Translation)</translation>
+<variable>NAT (Network Address Translation)</variable>
+</message>
+<message>
+<tag_code>742</tag_code>
+<translation>Router Update</translation>
+<variable>Router Update</variable>
+</message>
+<message>
+<tag_code>743</tag_code>
+<translation>New Zealand</translation>
+<variable>New Zealand</variable>
+</message>
+<message>
+<tag_code>744</tag_code>
+<translation>Configuring the Internet Connection</translation>
+<variable>Configuring the Internet Connection</variable>
+</message>
+<message>
+<tag_code>745</tag_code>
+<translation>You are not yet connected to the Internet.</translation>
+<variable>You are not yet connected to the Internet.</variable>
+</message>
+<message>
+<tag_code>746</tag_code>
+<translation>Do you want NETGEAR Genie to help?</translation>
+<variable>Do you want NETGEAR Genie to help?</variable>
+</message>
+<message>
+<tag_code>747</tag_code>
+<translation>No, I want to configure the Internet connection myself.</translation>
+<variable>No, I want to configure the Internet connection myself.</variable>
+</message>
+<message>
+<tag_code>748</tag_code>
+<translation>I have saved the router settings in a file and I want to restore the router to those settings.</translation>
+<variable>I have saved the router settings in a file and I want to restore the router to those settings.</variable>
+</message>
+<message>
+<tag_code>749</tag_code>
+<translation>Select Country</translation>
+<variable>Select Country</variable>
+</message>
+<message>
+<tag_code>750</tag_code>
+<translation>No DSL Cable Is Plugged into the Router ADSL Port</translation>
+<variable>No DSL Cable Is Plugged into the Router ADSL Port</variable>
+</message>
+<message>
+<tag_code>751</tag_code>
+<translation>Make sure that the cable is securely plugged into both the broadband modem port and the router Internet port.</translation>
+<variable>Make sure that the cable is securely plugged into both the broadband modem port and the router Internet port.</variable>
+</message>
+<message>
+<tag_code>752</tag_code>
+<translation>After you have checked the DSL cable, click &lt;b&gt;Try again&lt;/b&gt;.</translation>
+<variable>After you have checked the DSL cable, click &lt;b&gt;Try again&lt;/b&gt;.</variable>
+</message>
+<message>
+<tag_code>753</tag_code>
+<translation>Try again</translation>
+<variable>Try again</variable>
+</message>
+<message>
+<tag_code>755</tag_code>
+<translation>Detecting the Internet Connection</translation>
+<variable>Detecting the Internet Connection</variable>
+</message>
+<message>
+<tag_code>756</tag_code>
+<translation>Click "Next" to continue.</translation>
+<variable>Click "Next" to continue.</variable>
+</message>
+<message>
+<tag_code>758</tag_code>
+<translation>Enter the required information below.</translation>
+<variable>Enter the required information below.</variable>
+</message>
+<message>
+<tag_code>759</tag_code>
+<translation>Incorrect ISP User name or Password</translation>
+<variable>Incorrect ISP User name or Password</variable>
+</message>
+<message>
+<tag_code>760</tag_code>
+<translation>Enter the required information again.</translation>
+<variable>Enter the required information again.</variable>
+</message>
+<message>
+<tag_code>761</tag_code>
+<translation>I want to configure the Internet connection myself</translation>
+<variable>I want to configure the Internet connection myself</variable>
+</message>
+<message>
+<tag_code>762</tag_code>
+<translation>PPPoE DSL Internet Connection Detected</translation>
+<variable>PPPoE DSL Internet Connection Detected</variable>
+</message>
+<message>
+<tag_code>763</tag_code>
+<translation>This process can take a few minutes; please wait …</translation>
+<variable>This process can take a few minutes; please wait …</variable>
+</message>
+<message>
+<tag_code>764</tag_code>
+<translation>Problem Detecting the Internet Connection</translation>
+<variable>Problem Detecting the Internet Connection</variable>
+</message>
+<message>
+<tag_code>765</tag_code>
+<translation>This is most likely due to one of the following reasons:</translation>
+<variable>This is most likely due to one of the following reasons:</variable>
+</message>
+<message>
+<tag_code>766</tag_code>
+<translation>1.  The modem was not power cycled during the cabling step.</translation>
+<variable>1.  The modem was not power cycled during the cabling step.</variable>
+</message>
+<message>
+<tag_code>767</tag_code>
+<translation>To solve this problem, power cycle the modem (turn it off and on). To power cycle a modem with battery backup, you might need to remove and reinsert its battery. After the power cycle, wait 2 minutes for the modem to completely start up.</translation>
+<variable>To solve this problem, power cycle the modem (turn it off and on). To power cycle a modem with battery backup, you might need to remove and reinsert its battery. After the power cycle, wait 2 minutes for the modem to completely start up.</variable>
+</message>
+<message>
+<tag_code>768</tag_code>
+<translation>2.  The yellow Ethernet cable is not fully inserted, or is inserted in the wrong place.</translation>
+<variable>2.  The yellow Ethernet cable is not fully inserted, or is inserted in the wrong place.</variable>
+</message>
+<message>
+<tag_code>769</tag_code>
+<translation>To solve this problem, make sure that the yellow Ethernet cable is securely plugged in to the broadband modem port and the router Internet port.</translation>
+<variable>To solve this problem, make sure that the yellow Ethernet cable is securely plugged in to the broadband modem port and the router Internet port.</variable>
+</message>
+<message>
+<tag_code>770</tag_code>
+<translation>I just power cycled the modem and waited for 2 minutes.</translation>
+<variable>I just power cycled the modem and waited for 2 minutes.</variable>
+</message>
+<message>
+<tag_code>771</tag_code>
+<translation>I corrected a problem with the Ethernet cable.</translation>
+<variable>I corrected a problem with the Ethernet cable.</variable>
+</message>
+<message>
+<tag_code>772</tag_code>
+<translation>None of the above.</translation>
+<variable>None of the above.</variable>
+</message>
+<message>
+<tag_code>773</tag_code>
+<translation>Problem Detecting the Internet Connection - IP Address</translation>
+<variable>Problem Detecting the Internet Connection - IP Address</variable>
+</message>
+<message>
+<tag_code>774</tag_code>
+<translation>Did your Internet Service Provider (ISP) assign to you a fixed (static) IP address? This is a &lt;b&gt;very rare&lt;/b&gt; special deployment. </translation>
+<variable>Did your Internet Service Provider (ISP) assign to you a fixed (static) IP address? This is a &lt;b&gt;very rare&lt;/b&gt; special deployment. </variable>
+</message>
+<message>
+<tag_code>775</tag_code>
+<translation>Select an option and click &lt;b&gt;Next&lt;/b&gt; to proceed.</translation>
+<variable>Select an option and click &lt;b&gt;Next&lt;/b&gt; to proceed.</variable>
+</message>
+<message>
+<tag_code>776</tag_code>
+<translation>Yes. My ISP assigned a fixed (static) IP address to me.</translation>
+<variable>Yes. My ISP assigned a fixed (static) IP address to me.</variable>
+</message>
+<message>
+<tag_code>777</tag_code>
+<translation>No, I did not get a fixed (static) IP address from my ISP.</translation>
+<variable>No, I did not get a fixed (static) IP address from my ISP.</variable>
+</message>
+<message>
+<tag_code>778</tag_code>
+<translation>I don't know. </translation>
+<variable>I don't know. </variable>
+</message>
+<message>
+<tag_code>779</tag_code>
+<translation>Fixed Internet IP Settings</translation>
+<variable>Fixed Internet IP Settings</variable>
+</message>
+<message>
+<tag_code>780</tag_code>
+<translation>Enter the fixed IP settings assigned by your Internet Service Provider and click &lt;b&gt;Next&lt;/b&gt; to proceed.</translation>
+<variable>Enter the fixed IP settings assigned by your Internet Service Provider and click &lt;b&gt;Next&lt;/b&gt; to proceed.</variable>
+</message>
+<message>
+<tag_code>781</tag_code>
+<translation>Preferred DNS Server</translation>
+<variable>Preferred DNS Server</variable>
+</message>
+<message>
+<tag_code>782</tag_code>
+<translation>Alternate DNS Server</translation>
+<variable>Alternate DNS Server</variable>
+</message>
+<message>
+<tag_code>783</tag_code>
+<translation>Problem Detecting the Internet Connection - MAC Address</translation>
+<variable>Problem Detecting the Internet Connection - MAC Address</variable>
+</message>
+<message>
+<tag_code>784</tag_code>
+<translation>If you previously connected to your Internet service with a computer or another router,  NETGEAR Genie can use the same MAC address that worked before.</translation>
+<variable>If you previously connected to your Internet service with a computer or another router,  NETGEAR Genie can use the same MAC address that worked before.</variable>
+</message>
+<message>
+<tag_code>785</tag_code>
+<translation>A MAC address is a unique number.  You can find the MAC address of the computer or router on its product label.</translation>
+<variable>A MAC address is a unique number.  You can find the MAC address of the computer or router on its product label.</variable>
+</message>
+<message>
+<tag_code>786</tag_code>
+<translation>Enter the MAC address here.</translation>
+<variable>Enter the MAC address here.</variable>
+</message>
+<message>
+<tag_code>787</tag_code>
+<translation>(format AABBCCDDEEFF)</translation>
+<variable>(format AABBCCDDEEFF)</variable>
+</message>
+<message>
+<tag_code>788</tag_code>
+<translation>Restore Router Settings </translation>
+<variable>Restore Router Settings </variable>
+</message>
+<message>
+<tag_code>789</tag_code>
+<translation>Browse to the router settings backup file you previously saved, and click &lt;b&gt;Next&lt;/b&gt; to proceed.</translation>
+<variable>Browse to the router settings backup file you previously saved, and click &lt;b&gt;Next&lt;/b&gt; to proceed.</variable>
+</message>
+<message>
+<tag_code>790</tag_code>
+<translation>Restoring Router Settings</translation>
+<variable>Restoring Router Settings</variable>
+</message>
+<message>
+<tag_code>791</tag_code>
+<translation>Applying Internet Connection Settings</translation>
+<variable>Applying Internet Connection Settings</variable>
+</message>
+<message>
+<tag_code>792</tag_code>
+<translation>Checking the Internet connection; please wait …</translation>
+<variable>Checking the Internet connection; please wait …</variable>
+</message>
+<message>
+<tag_code>793</tag_code>
+<translation>Network Connection Issue</translation>
+<variable>Network Connection Issue</variable>
+</message>
+<message>
+<tag_code>794</tag_code>
+<translation>The router cannot connect to the Internet with the current settings.</translation>
+<variable>The router cannot connect to the Internet with the current settings.</variable>
+</message>
+<message>
+<tag_code>795</tag_code>
+<translation>Please review the following items:</translation>
+<variable>Please review the following items:</variable>
+</message>
+<message>
+<tag_code>796</tag_code>
+<translation>- Check that the cable connections are correct. Refer to the router Installation Guide for instructions.</translation>
+<variable>- Check that the cable connections are correct. Refer to the router Installation Guide for instructions.</variable>
+</message>
+<message>
+<tag_code>797</tag_code>
+<translation>- Check that your broadband modem is power cycled correctly. If you have a battery-backed modem, remove and reinsert the battery to power cycle your modem.</translation>
+<variable>- Check that your broadband modem is power cycled correctly. If you have a battery-backed modem, remove and reinsert the battery to power cycle your modem.</variable>
+</message>
+<message>
+<tag_code>798</tag_code>
+<translation>Do you want NETGEAR Genie to try again?</translation>
+<variable>Do you want NETGEAR Genie to try again?</variable>
+</message>
+<message>
+<tag_code>799</tag_code>
+<translation>Please upgrade to a version 4 or higher browser so that you can use this setup tool (and see lots of great sites on the Internet!)</translation>
+<variable>Please upgrade to a version 4 or higher browser so that you can use this setup tool (and see lots of great sites on the Internet!)</variable>
+</message>
+<message>
+<tag_code>800</tag_code>
+<translation>Congratulations!</translation>
+<variable>Congratulations!</variable>
+</message>
+<message>
+<tag_code>801</tag_code>
+<translation>You are successfully connected to the Internet.</translation>
+<variable>You are successfully connected to the Internet.</variable>
+</message>
+<message>
+<tag_code>802</tag_code>
+<translation>This router is preset with the following unique wireless network name (SSID) and </translation>
+<variable>This router is preset with the following unique wireless network name (SSID) and </variable>
+</message>
+<message>
+<tag_code>803</tag_code>
+<translation>Your router is preset with WPA2-PSK wireless security to protect your network from unwanted access. To join the wireless network, you must enter the network key (password). These preset settings are unique to this device, like a serial number.  If you want to change them, you can do so later in the Wireless Settings screen on the router web GUI.</translation>
+<variable>Your router is preset with WPA2-PSK wireless security to protect your network from unwanted access. To join the wireless network, you must enter the network key (password). These preset settings are unique to this device, like a serial number.  If you want to change them, you can do so later in the Wireless Settings screen on the router web GUI.</variable>
+</message>
+<message>
+<tag_code>804</tag_code>
+<translation>network key (password)</translation>
+<variable>network key (password)</variable>
+</message>
+<message>
+<tag_code>805</tag_code>
+<translation>Wireless Network Name (SSID)</translation>
+<variable>Wireless Network Name (SSID)</variable>
+</message>
+<message>
+<tag_code>806</tag_code>
+<translation>Print this</translation>
+<variable>Print this</variable>
+</message>
+<message>
+<tag_code>807</tag_code>
+<translation>Take me to the Internet</translation>
+<variable>Take me to the Internet</variable>
+</message>
+<message>
+<tag_code>808</tag_code>
+<translation>Wireless security is not enabled on this router. NETGEAR highly recommends that you</translation>
+<variable>Wireless security is not enabled on this router. NETGEAR highly recommends that you</variable>
+</message>
+<message>
+<tag_code>809</tag_code>
+<translation>Click here</translation>
+<variable>Click here</variable>
+</message>
+<message>
+<tag_code>810</tag_code>
+<translation>to enable wireless security and protect your network.</translation>
+<variable>to enable wireless security and protect your network.</variable>
+</message>
+<message>
+<tag_code>813</tag_code>
+<translation>Router Firmware Version</translation>
+<variable>Router Firmware Version</variable>
+</message>
+<message>
+<tag_code>814</tag_code>
+<translation>Continue</translation>
+<variable>Continue</variable>
+</message>
+<message>
+<tag_code>816</tag_code>
+<translation>Auto-Detect</translation>
+<variable>Auto-Detect</variable>
+</message>
+<message>
+<tag_code>817</tag_code>
+<translation>The Smart Setup Wizard can detect the type of Internet connection that you have.</translation>
+<variable>The Smart Setup Wizard can detect the type of Internet connection that you have.</variable>
+</message>
+<message>
+<tag_code>818</tag_code>
+<translation>Do you want the Smart Setup Wizard to try and detect the connection type now?</translation>
+<variable>Do you want the Smart Setup Wizard to try and detect the connection type now?</variable>
+</message>
+<message>
+<tag_code>819</tag_code>
+<translation>UK</translation>
+<variable>UK</variable>
+</message>
+<message>
+<tag_code>820</tag_code>
+<translation>Australia</translation>
+<variable>Australia</variable>
+</message>
+<message>
+<tag_code>821</tag_code>
+<translation>France</translation>
+<variable>France</variable>
+</message>
+<message>
+<tag_code>822</tag_code>
+<translation>Ireland</translation>
+<variable>Ireland</variable>
+</message>
+<message>
+<tag_code>823</tag_code>
+<translation>Italy</translation>
+<variable>Italy</variable>
+</message>
+<message>
+<tag_code>824</tag_code>
+<translation>New Zealand</translation>
+<variable>New Zealand</variable>
+</message>
+<message>
+<tag_code>825</tag_code>
+<translation>Singapore</translation>
+<variable>Singapore</variable>
+</message>
+<message>
+<tag_code>826</tag_code>
+<translation>Sweden</translation>
+<variable>Sweden</variable>
+</message>
+<message>
+<tag_code>827</tag_code>
+<translation>Switzerland</translation>
+<variable>Switzerland</variable>
+</message>
+<message>
+<tag_code>828</tag_code>
+<translation>Finland</translation>
+<variable>Finland</variable>
+</message>
+<message>
+<tag_code>829</tag_code>
+<translation>USA</translation>
+<variable>USA</variable>
+</message>
+<message>
+<tag_code>830</tag_code>
+<translation>Germany</translation>
+<variable>Germany</variable>
+</message>
+<message>
+<tag_code>831</tag_code>
+<translation>Other</translation>
+<variable>Other</variable>
+</message>
+<message>
+<tag_code>832</tag_code>
+<translation>(GMT-3:30) Newfoundland</translation>
+<variable>(GMT-3:30) Newfoundland</variable>
+</message>
+<message>
+<tag_code>833</tag_code>
+<translation>Region Selection</translation>
+<variable>Region Selection</variable>
+</message>
+<message>
+<tag_code>834</tag_code>
+<translation>Select the wireless network to configure</translation>
+<variable>Select the wireless network to configure</variable>
+</message>
+<message>
+<tag_code>835</tag_code>
+<translation>WEP</translation>
+<variable>WEP</variable>
+</message>
+<message>
+<tag_code>836</tag_code>
+<translation>Media Server (Settings)</translation>
+<variable>Media Server (Settings)</variable>
+</message>
+<message>
+<tag_code>837</tag_code>
+<translation>Enable Media Server</translation>
+<variable>Enable Media Server</variable>
+</message>
+<message>
+<tag_code>838</tag_code>
+<translation>Media Server Name</translation>
+<variable>Media Server Name</variable>
+</message>
+<message>
+<tag_code>839</tag_code>
+<translation>Content Scan</translation>
+<variable>Content Scan</variable>
+</message>
+<message>
+<tag_code>840</tag_code>
+<translation>Automatic (when new files added)</translation>
+<variable>Automatic (when new files added)</variable>
+</message>
+<message>
+<tag_code>841</tag_code>
+<translation>Media Server</translation>
+<variable>Media Server</variable>
+</message>
+<message>
+<tag_code>842</tag_code>
+<translation>Internet Port</translation>
+<variable>Internet Port</variable>
+</message>
+<message>
+<tag_code>843</tag_code>
+<translation>DHCP</translation>
+<variable>DHCP</variable>
+</message>
+<message>
+<tag_code>844</tag_code>
+<translation>Guest Profile</translation>
+<variable>Guest Profile</variable>
+</message>
+<message>
+<tag_code>845</tag_code>
+<translation>(Temporarily)</translation>
+<variable>(Temporarily)</variable>
+</message>
+<message>
+<tag_code>846</tag_code>
+<translation>is managing this device.</translation>
+<variable>is managing this device.</variable>
+</message>
+<message>
+<tag_code>847</tag_code>
+<translation>Add a new period</translation>
+<variable>Add a new period</variable>
+</message>
+<message>
+<tag_code>848</tag_code>
+<translation>Recurrence Pattern</translation>
+<variable>Recurrence Pattern</variable>
+</message>
+<message>
+<tag_code>849</tag_code>
+<translation>Enable automatic internet connection reset at</translation>
+<variable>Enable automatic internet connection reset at</variable>
+</message>
+<message>
+<tag_code>850</tag_code>
+<translation>When to turn off wireless signal</translation>
+<variable>When to turn off wireless signal</variable>
+</message>
+<message>
+<tag_code>851</tag_code>
+<translation>Select Days</translation>
+<variable>Select Days</variable>
+</message>
+<message>
+<tag_code>852</tag_code>
+<translation>Turn off wireless signal by schedule</translation>
+<variable>Turn off wireless signal by schedule</variable>
+</message>
+<message>
+<tag_code>853</tag_code>
+<translation>Configured</translation>
+<variable>Configured</variable>
+</message>
+<message>
+<tag_code>854</tag_code>
+<translation>Not Configured</translation>
+<variable>Not Configured</variable>
+</message>
+<message>
+<tag_code>855</tag_code>
+<translation>This process can take up to six minutes; please wait …</translation>
+<variable>This process can take up to six minutes; please wait …</variable>
+</message>
+<message>
+<tag_code>856</tag_code>
+<translation>WAN Preference</translation>
+<variable>WAN Preference</variable>
+</message>
+<message>
+<tag_code>857</tag_code>
+<translation>Must use DSL WAN</translation>
+<variable>Must use DSL WAN</variable>
+</message>
+<message>
+<tag_code>858</tag_code>
+<translation>Must use Ethernet WAN</translation>
+<variable>Must use Ethernet WAN</variable>
+</message>
+<message>
+<tag_code>859</tag_code>
+<translation>Click here</translation>
+<variable>Click here</variable>
+</message>
+<message>
+<tag_code>860</tag_code>
+<translation>Profile</translation>
+<variable>Profile</variable>
+</message>
+<message>
+<tag_code>861</tag_code>
+<translation>SSID</translation>
+<variable>SSID</variable>
+</message>
+<message>
+<tag_code>862</tag_code>
+<translation>Enable AP Mode</translation>
+<variable>Enable AP Mode</variable>
+</message>
+<message>
+<tag_code>887</tag_code>
+<translation>Enable Wireless Router Radio</translation>
+<variable>Enable Wireless Router Radio</variable>
+</message>
+<message>
+<tag_code>905</tag_code>
+<translation>Wireless Network</translation>
+<variable>Wireless Network</variable>
+</message>
+<message>
+<tag_code>933</tag_code>
+<translation>Mixed</translation>
+<variable>Mixed</variable>
+</message>
+<message>
+<tag_code>1072</tag_code>
+<translation>IPv6</translation>
+<variable>IPv6</variable>
+</message>
+<message>
+	<tag_code>1073</tag_code>
+	<translation>Today</translation>
+	<variable>Today</variable>
+</message>
+<message>
+	<tag_code>1074</tag_code>
+	<translation>Yesterday</translation>
+	<variable>Yesterday</variable>
+</message>
+<message>
+	<tag_code>1075</tag_code>
+	<translation>This week</translation>
+	<variable>This week</variable>
+</message>
+<message>
+	<tag_code>1076</tag_code>
+	<translation>This month</translation>
+	<variable>This month</variable>
+</message>
+<message>
+	<tag_code>1077</tag_code>
+	<translation>Last month</translation>
+	<variable>Last month</variable>
+</message>
+<message>
+	<tag_code>1078</tag_code>
+	<translation>Start Date/Time</translation>
+	<variable>Start Date/Time</variable>
+</message>
+<message>
+	<tag_code>1079</tag_code>
+	<translation>Current Date/Time</translation>
+	<variable>Current Date/Time</variable>
+</message>
+<message>
+	<tag_code>1080</tag_code>
+	<translation>Traffic Volume Left</translation>
+	<variable>Traffic Volume Left</variable>
+</message>
+<message>
+	<tag_code>1081</tag_code>
+	<translation>Kbytes</translation>
+	<variable>KBytes</variable>
+</message>
+<message>
+	<tag_code>1082</tag_code>
+	<translation>Connection Time</translation>
+	<variable>Connection time Left</variable>
+</message>
+<message>
+	<tag_code>1083</tag_code>
+	<translation>Hours</translation>
+	<variable>Hours</variable>
+</message>
+<message>
+	<tag_code>1084</tag_code>
+	<translation>minutes.</translation>
+	<variable>Minutes</variable>
+</message>
+<message>
+	<tag_code>1085</tag_code>
+	<translation>Period</translation>
+	<variable>Period</variable>
+</message>
+<message>
+	<tag_code>1086</tag_code>
+	<translation>Traffic Volume (Mbytes)</translation>
+	<variable>Traffic Volume(Mbytes)</variable>
+</message>
+<message>
+	<tag_code>1087</tag_code>
+	<translation>Upload/Avg</translation>
+	<variable>Upload/Avg</variable>
+</message>
+<message>
+	<tag_code>1088</tag_code>
+	<translation>Download/Avg</translation>
+	<variable>Download/Avg</variable>
+</message>
+<message>
+	<tag_code>1089</tag_code>
+	<translation>Total/Avg</translation>
+	<variable>Total/Avg</variable>
+</message>
+	<message>
+<tag_code>1203</tag_code>
+<translation>IPv6</translation>
+<variable>IPv6</variable>
+</message>
+<message>
+<tag_code>1204</tag_code>
+<translation>Status Refresh</translation>
+<variable>Status Refresh</variable>
+</message>
+<message>
+<tag_code>1205</tag_code>
+<translation>Cancel</translation>
+<variable>Cancel</variable>
+</message>
+<message>
+<tag_code>1206</tag_code>
+<translation>Apply</translation>
+<variable>Apply</variable>
+</message>
+<message>
+<tag_code>1207</tag_code>
+<translation>Internet Connection Type</translation>
+<variable>Internet Connection Type</variable>
+</message>
+<message>
+<tag_code>1208</tag_code>
+<translation>Disabled</translation>
+<variable>Disabled</variable>
+</message>
+<message>
+<tag_code>1209</tag_code>
+<translation>Auto Detect</translation>
+<variable>Auto Detect</variable>
+</message>
+<message>
+<tag_code>1210</tag_code>
+<translation>Auto Config</translation>
+<variable>Auto Config</variable>
+</message>
+<message>
+<tag_code>1211</tag_code>
+<translation>6to4 Tunnel</translation>
+<variable>6to4 Tunnel</variable>
+</message>
+<message>
+<tag_code>1212</tag_code>
+<translation>Pass Through</translation>
+<variable>Pass Through</variable>
+</message>
+<message>
+<tag_code>1213</tag_code>
+<translation>Fixed</translation>
+<variable>Fixed</variable>
+</message>
+<message>
+<tag_code>1214</tag_code>
+<translation>DHCP</translation>
+<variable>DHCP</variable>
+</message>
+<message>
+<tag_code>1215</tag_code>
+<translation>PPPoE</translation>
+<variable>PPPoE</variable>
+</message>
+<message>
+<tag_code>1216</tag_code>
+<translation>Connection Type</translation>
+<variable>Connection Type</variable>
+</message>
+<message>
+<tag_code>1217</tag_code>
+<translation>Router's IPv6 Address On WAN</translation>
+<variable>Router's IPv6 Address On WAN</variable>
+</message>
+<message>
+<tag_code>1218</tag_code>
+<translation>LAN Setup</translation>
+<variable>LAN Setup</variable>
+</message>
+<message>
+<tag_code>1219</tag_code>
+<translation>Router's IPv6 Address On LAN</translation>
+<variable>Router's IPv6 Address On LAN</variable>
+</message>
+<message>
+<tag_code>1220</tag_code>
+<translation>IP Address Assignment</translation>
+<variable>IP Address Assignment</variable>
+</message>
+<message>
+<tag_code>1221</tag_code>
+<translation>Use DHCP Server</translation>
+<variable>Use DHCP Server</variable>
+</message>
+<message>
+<tag_code>1222</tag_code>
+<translation>Use This Interface ID</translation>
+<variable>Use This Interface ID</variable>
+</message>
+<message>
+<tag_code>1223</tag_code>
+<translation>IPv6 Filtering</translation>
+<variable>IPv6 Filtering</variable>
+</message>
+<message>
+<tag_code>1224</tag_code>
+<translation>Secured</translation>
+<variable>Secured</variable>
+</message>
+<message>
+<tag_code>1225</tag_code>
+<translation>Open</translation>
+<variable>Open</variable>
+</message>
+<message>
+<tag_code>1226</tag_code>
+<translation>User Class (if Required)</translation>
+<variable>User Class (if Required)</variable>
+</message>
+<message>
+<tag_code>1227</tag_code>
+<translation>Domain Name</translation>
+<variable>Domain Name</variable>
+</message>
+<message>
+<tag_code>1228</tag_code>
+<translation>WAN Setup</translation>
+<variable>WAN Setup</variable>
+</message>
+<message>
+<tag_code>1229</tag_code>
+<translation>IPv6 Address/Prefix Length</translation>
+<variable>IPv6 Address/Prefix Length</variable>
+</message>
+<message>
+<tag_code>1230</tag_code>
+<translation>Default IPv6 Gateway</translation>
+<variable>Default IPv6 Gateway</variable>
+</message>
+<message>
+<tag_code>1231</tag_code>
+<translation>Primary DNS</translation>
+<variable>Primary DNS</variable>
+</message>
+<message>
+<tag_code>1232</tag_code>
+<translation>Secondary DNS</translation>
+<variable>Secondary DNS</variable>
+</message>
+<message>
+<tag_code>1233</tag_code>
+<translation>Login</translation>
+<variable>Login</variable>
+</message>
+<message>
+<tag_code>1234</tag_code>
+<translation>Password</translation>
+<variable>Password</variable>
+</message>
+<message>
+<tag_code>1235</tag_code>
+<translation>Service Name</translation>
+<variable>Service Name</variable>
+</message>
+<message>
+<tag_code>1236</tag_code>
+<translation>Connection Mode</translation>
+<variable>Connection Mode</variable>
+</message>
+<message>
+<tag_code>1237</tag_code>
+<translation>Always On</translation>
+<variable>Always On</variable>
+</message>
+<message>
+<tag_code>1238</tag_code>
+<translation>Dial on Demand</translation>
+<variable>Dial on Demand</variable>
+</message>
+<message>
+<tag_code>1239</tag_code>
+<translation>Manually Connect</translation>
+<variable>Manually Connect</variable>
+</message>
+<message>
+<tag_code>1240</tag_code>
+<translation>Remote 6to4 Relay Router</translation>
+<variable>Remote 6to4 Relay Router</variable>
+</message>
+<message>
+<tag_code>1241</tag_code>
+<translation>Auto</translation>
+<variable>Auto</variable>
+</message>
+<message>
+<tag_code>1242</tag_code>
+<translation>Static IP Address</translation>
+<variable>Static IP Address</variable>
+</message>
+<message>
+<tag_code>1243</tag_code>
+<translation>Rebooting the router will disrupt active traffic on the network. Are you sure?</translation>
+<variable>Rebooting the router will disrupt active traffic on the network. Are you sure?</variable>
+</message>
+<message>
+		<tag_code>3001</tag_code>
+		<translation>ADVANCED Home</translation>
+		<variable>ADVANCED Home</variable>
+	</message>
+	<message>
+		<tag_code>3002</tag_code>
+		<translation>WPS Wizard</translation>
+		<variable>WPS Wizard</variable>
+	</message>
+	<message>
+		<tag_code>3003</tag_code>
+		<translation>Internet Setup</translation>
+		<variable>Internet Setup</variable>
+	</message>
+	<message>
+		<tag_code>3004</tag_code>
+		<translation>Wireless Setup</translation>
+		<variable>Wireless Setup</variable>
+	</message>
+	<message>
+		<tag_code>3005</tag_code>
+		<translation>WAN Setup</translation>
+		<variable>WAN Setup</variable>
+	</message>
+	<message>
+		<tag_code>3006</tag_code>
+		<translation>LAN Setup</translation>
+		<variable>LAN Setup</variable>
+	</message>
+	<message>
+		<tag_code>3007</tag_code>
+		<translation>QoS Setup</translation>
+		<variable>QoS Setup</variable>
+	</message>
+	<message>
+		<tag_code>3008</tag_code>
+		<translation>Parental Controls</translation>
+		<variable>Parental Controls</variable>
+	</message>
+	<message>
+		<tag_code>3009</tag_code>
+		<translation>Administration</translation>
+		<variable>Administration</variable>
+	</message>
+	<message>
+		<tag_code>3010</tag_code>
+		<translation>Firmware Update</translation>
+		<variable>Firmware Update</variable>
+	</message>
+	<message>
+		<tag_code>3011</tag_code>
+		<translation>Advanced Setup</translation>
+		<variable>Advanced Setup</variable>
+	</message>
+	<message>
+		<tag_code>3012</tag_code>
+		<translation>HELP &amp; SUPPORT</translation>
+		<variable>HELP &amp; SUPPORT</variable>
+	</message>
+	<message>
+		<tag_code>3013</tag_code>
+		<translation>Router FAQ</translation>
+		<variable>Router FAQ</variable>
+	</message>
+	<message>
+		<tag_code>3014</tag_code>
+		<translation>SEARCH HELP</translation>
+		<variable>SEARCH HELP</variable>
+	</message>
+	<message>
+		<tag_code>3015</tag_code>
+		<translation>GO</translation>
+		<variable>GO</variable>
+	</message>
+	<message>
+		<tag_code>3016</tag_code>
+		<translation>Help Center</translation>
+		<variable>Help Center</variable>
+	</message>
+	<message>
+		<tag_code>3017</tag_code>
+		<translation>Show/Hide Help Center</translation>
+		<variable>Show/Hide Help Center</variable>
+	</message>
+	<message>
+		<tag_code>3018</tag_code>
+		<translation>Number of devices</translation>
+		<variable>Number of devices</variable>
+	</message>
+	<message>
+		<tag_code>3019</tag_code>
+		<translation>ReadySHARE</translation>
+		<variable>ReadySHARE</variable>
+	</message>
+	<message>
+		<tag_code>3020</tag_code>
+		<translation>Home</translation>
+		<variable>Home</variable>
+	</message>
+	<message>
+		<tag_code>3021</tag_code>
+		<translation>Router Information</translation>
+		<variable>Router Information</variable>
+	</message>
+	<message>
+		<tag_code>3022</tag_code>
+		<translation>DHCP Server</translation>
+		<variable>DHCP Server</variable>
+	</message>
+	<message>
+		<tag_code>3023</tag_code>
+		<translation>Gateway IP Address</translation>
+		<variable>Gateway IP Address</variable>
+	</message>
+	<message>
+		<tag_code>3024</tag_code>
+		<translation>BASIC</translation>
+		<variable>BASIC</variable>
+	</message>
+	<message>
+		<tag_code>3025</tag_code>
+		<translation>Router Firmware Version</translation>
+		<variable>Router Firmware Version</variable>
+	</message>
+	<message>
+		<tag_code>3026</tag_code>
+		<translation>A new firmware upgrade is available. Click here to get it.</translation>
+		<variable>A new firmware upgrade is available. Click here to get it.</variable>
+	</message>
+	<message>
+		<tag_code>3027</tag_code>
+		<translation>GOOD</translation>
+		<variable>GOOD</variable>
+	</message>
+	<message>
+		<tag_code>3028</tag_code>
+		<translation>Error</translation>
+		<variable>Error</variable>
+	</message>
+	<message>
+		<tag_code>3029</tag_code>
+		<translation>Not Connected</translation>
+		<variable>Not Connected</variable>
+	</message>
+	<message>
+		<tag_code>3030</tag_code>
+		<translation>OFF</translation>
+		<variable>OFF</variable>
+	</message>
+	<message>
+		<tag_code>3031</tag_code>
+		<translation>No Security</translation>
+		<variable>No Security</variable>
+	</message>
+	<message>
+		<tag_code>3032</tag_code>
+		<translation>Internet Port</translation>
+		<variable>Internet Port</variable>
+	</message>
+	<message>
+		<tag_code>3033</tag_code>
+		<translation>North America</translation>
+		<variable>North America</variable>
+	</message>
+	<message>
+		<tag_code>3034</tag_code>
+		<translation>ADSL Setup</translation>
+		<variable>ADSL Setup</variable>
+	</message>
+	<message>
+		<tag_code>3035</tag_code>
+<translation>Active Connection</translation>
+<variable>Active Connection</variable>
+	</message>
+	<message>
+		<tag_code>3036</tag_code>
+		<translation>ReadySHARE Cloud</translation>
+		<variable>ReadySHARE Cloud</variable>
+	</message>
+	<message>
+		<tag_code>3037</tag_code>
+<translation>The ReadySHARE Cloud feature gives you remote access over the Internet to a USB storage device that is connected to your router's USB port.</translation>
+<variable>The ReadySHARE Cloud feature gives you remote access over the Internet to a USB storage device that is connected to your router's USB port.</variable>
+	</message>
+	<message>
+		<tag_code>3038</tag_code>
+		<translation>How to Set Up ReadySHARE Cloud</translation>
+		<variable>How to Set Up ReadySHARE Cloud</variable>
+	</message>
+	<message>
+		<tag_code>3039</tag_code>
+	<translation>Step 1: You need a ReadySHARE Cloud account. If you do not have one,&lt;a href ='https://readyshare.netgear.com/site/index.jsp?pid=4&amp;src=device'&gt;click here&lt;/a&gt; to get one.</translation>
+	<variable>Step 1: You need a ReadySHARE Cloud account. If you do not have one,&lt;a href ='https://readyshare.netgear.com/site/index.jsp?pid=4&amp;src=device'&gt;click here&lt;/a&gt; to get one.</variable>
+	</message>
+	<message>
+		<tag_code>3040</tag_code>
+<translation>Please note</translation>
+<variable>Please note</variable>
+	</message>
+	<message>
+		<tag_code>3041</tag_code>
+<translation>to get it.</translation>
+<variable>to get it.</variable>
+	</message>
+	<message>
+		<tag_code>3046</tag_code>
+		<translation>Start now to enable ReadySHARE Cloud</translation>
+		<variable>Start now to enable ReadySHARE Cloud</variable>
+	</message>
+	<message>
+		<tag_code>3047</tag_code>
+<translation>If you don't have a ReadySHARE Cloud account click here to get one</translation>
+<variable>If you don't have a ReadySHARE Cloud account click here to get one</variable>
+	</message>
+	<message>
+		<tag_code>3048</tag_code>
+<translation>&lt;b&gt;Note:&lt;/b&gt; Internet will be kept active until unregistered.</translation>
+<variable>&lt;b&gt;Note:&lt;/b&gt; Internet will be kept active until unregistered.</variable>
+	</message>
+	<message>
+		<tag_code>3049</tag_code>
+<translation>&lt;b&gt;Note:&lt;/b&gt; Without this client, you can browse your USB device contents but you cannot open files or make changes to them.</translation>
+<variable>&lt;b&gt;Note:&lt;/b&gt; Without this client, you can browse your USB device contents but you cannot open files or make changes to them.</variable>
+	</message>
+	<message>
+		<tag_code>3050</tag_code>
+<translation>Username:</translation>
+<variable>Username:</variable>
+	</message>
+	<message>
+		<tag_code>3051</tag_code>
+		<translation>Register</translation>
+		<variable>Register</variable>
+	</message>
+	<message>
+		<tag_code>3052</tag_code>
+		<translation>Basic</translation>
+		<variable>Basic</variable>
+	</message>
+	<message>
+		<tag_code>3053</tag_code>
+		<translation>ReadySHARE Cloud (Allows you to access ReadySHARE Storage from anywhere.)</translation>
+		<variable>ReadySHARE Cloud (Allows you to access ReadySHARE Storage from anywhere.)</variable>
+	</message>
+	<message>
+		<tag_code>3054</tag_code>
+		<translation>ReadySHARE Printer</translation>
+		<variable>ReadySHARE Printer</variable>
+	</message>
+	<message>
+		<tag_code>3055</tag_code>
+		<translation>ReadySHARE Printing</translation>
+		<variable>ReadySHARE Printing</variable>
+	</message>
+	<message>
+		<tag_code>3056</tag_code>
+		<translation>Print Sharing for Windows PCs and Mac Computers with a USB Printer</translation>
+		<variable>Print Sharing for Windows PCs and Mac Computers with a USB Printer</variable>
+	</message>
+	<message>
+		<tag_code>3057</tag_code>
+		<translation>How It Works?</translation>
+		<variable>How It Works?</variable>
+	</message>
+	<message>
+		<tag_code>3058</tag_code>
+<translation>Step 1: Connect the USB printer to the router’s USB port with a USB printer cable.</translation>
+<variable>Step 1: Connect the USB printer to the router’s USB port with a USB printer cable.</variable>
+	</message>
+	<message>
+		<tag_code>3059</tag_code>
+		<translation>Step 2: Install the USB printer driver software on each computer that will share the printer.</translation>
+		<variable>Step 2: Install the USB printer driver software on each computer that will share the printer.</variable>
+	</message>
+	<message>
+		<tag_code>3060</tag_code>
+		<translation>If you do not have the driver, contact the company that made the printer to locate and download the latest printer driver software.</translation>
+		<variable>If you do not have the driver, contact the company that made the printer to locate and download the latest printer driver software.</variable>
+	</message>
+	<message>
+		<tag_code>3061</tag_code>
+<translation>Step 3: On each computer that will share the printer, download the NETGEAR USB Control Center utility from &lt;a href='http://www.netgear.com/readyshare'&gt;http://www.netgear.com/readyshare&lt;/a&gt;. </translation>
+<variable>Step 3: On each computer that will share the printer, download the NETGEAR USB Control Center utility from &lt;a href='http://www.netgear.com/readyshare'&gt;http://www.netgear.com/readyshare&lt;/a&gt;. </variable>
+	</message>
+	<message>
+		<tag_code>3062</tag_code>
+		<translation>Follow the instructions in the utility to connect to the printer from your computer and print.</translation>
+		<variable>Follow the instructions in the utility to connect to the printer from your computer and print.</variable>
+	</message>
+<message>
+<tag_code>3063</tag_code>
+<translation>Enter Search Item</translation>
+<variable>Enter Search Item</variable>
+</message>
+<message>
+<tag_code>3100</tag_code>
+<translation>Media Server</translation>
+<variable>Media Server</variable>
+</message>
+<message>
+<tag_code>3101</tag_code>
+<translation>Enable Media Server</translation>
+<variable>Enable Media Server</variable>
+</message>
+<message>
+<tag_code>3102</tag_code>
+<translation>Media Server Name</translation>
+<variable>Media Server Name</variable>
+</message>
+<message>
+<tag_code>3103</tag_code>
+<translation>ADVANCED</translation>
+<variable>ADVANCED</variable>
+</message>
+<message>
+<tag_code>3104</tag_code>
+<translation>Online Support</translation>
+<variable>Online Support</variable>
+</message>
+<message>
+<tag_code>3201</tag_code>
+<translation>Enable Password Recovery</translation>
+<variable>Enable Password Recovery</variable>
+</message>
+<message>
+<tag_code>3202</tag_code>
+<translation>Security Question #1</translation>
+<variable>Security Question #1</variable>
+</message>
+<message>
+<tag_code>3203</tag_code>
+<translation>Select a question</translation>
+<variable>Select a question</variable>
+</message>
+<message>
+<tag_code>3204</tag_code>
+<translation>What was the name of the first NETGEAR product you purchased?</translation>
+<variable>What was the name of the first NETGEAR product you purchased?</variable>
+</message>
+<message>
+<tag_code>3205</tag_code>
+<translation>What was the name of the first school you attended?</translation>
+<variable>What was the name of the first school you attended?</variable>
+</message>
+<message>
+<tag_code>3206</tag_code>
+<translation>What is your oldest sister's first name?</translation>
+<variable>What is your oldest sister's first name?</variable>
+</message>
+<message>
+<tag_code>3207</tag_code>
+<translation>What is your oldest brother's first name?</translation>
+<variable>What is your oldest brother's first name?</variable>
+</message>
+<message>
+<tag_code>3208</tag_code>
+<translation>In what city were you born?</translation>
+<variable>In what city were you born?</variable>
+</message>
+<message>
+<tag_code>3209</tag_code>
+<translation>What is your grandmother's first name?</translation>
+<variable>What is your grandmother's first name?</variable>
+</message>
+<message>
+<tag_code>3210</tag_code>
+<translation>What is your grandfather's first name?</translation>
+<variable>What is your grandfather's first name?</variable>
+</message>
+<message>
+<tag_code>3211</tag_code>
+<translation>In what year (YYYY) did you graduate from high school?</translation>
+<variable>In what year (YYYY) did you graduate from high school?</variable>
+</message>
+<message>
+<tag_code>3212</tag_code>
+<translation>What is the name of your first employer?</translation>
+<variable>What is the name of your first employer?</variable>
+</message>
+<message>
+<tag_code>3213</tag_code>
+<translation>Answer</translation>
+<variable>Answer</variable>
+</message>
+<message>
+<tag_code>3214</tag_code>
+<translation>What is your youngest sister's first name?</translation>
+<variable>What is your youngest sister's first name?</variable>
+</message>
+<message>
+<tag_code>3215</tag_code>
+<translation>What is your youngest brother's first name?</translation>
+<variable>What is your youngest brother's first name?</variable>
+</message>
+<message>
+<tag_code>3216</tag_code>
+<translation>What is your father's middle name?</translation>
+<variable>What is your father's middle name?</variable>
+</message>
+<message>
+<tag_code>3217</tag_code>
+<translation>What is your mother's middle name?</translation>
+<variable>What is your mother's middle name?</variable>
+</message>
+<message>
+<tag_code>3218</tag_code>
+<translation>What was the first name of your first manager?</translation>
+<variable>What was the first name of your first manager?</variable>
+</message>
+<message>
+<tag_code>3219</tag_code>
+<translation>In what city was your mother born?</translation>
+<variable>In what city was your mother born?</variable>
+</message>
+<message>
+<tag_code>3220</tag_code>
+<translation>In what city was your father born?</translation>
+<variable>In what city was your father born?</variable>
+</message>
+<message>
+<tag_code>3221</tag_code>
+<translation>What is your best friend's first name?</translation>
+<variable>What is your best friend's first name?</variable>
+</message>
+<message>
+<tag_code>3222</tag_code>
+<translation>*=required information</translation>
+<variable>*=required information</variable>
+</message>
+<message>
+<tag_code>3223</tag_code>
+<translation>Last time password was recovered</translation>
+<variable>Last time password was recovered</variable>
+</message>
+<message>
+<tag_code>3224</tag_code>
+<translation>Access to this resource is denied, your client has not supplied the correct authentication.</translation>
+<variable>Access to this resource is denied, your client has not supplied the correct authentication.</variable>
+</message>
+<message>
+<tag_code>3225</tag_code>
+<translation>We can help you to recover the router’s admin password. Please complete the information below and click &lt;b&gt;Continue&lt;/b&gt;.</translation>
+<variable>We can help you to recover the router’s admin password. Please complete the information below and click &lt;b&gt;Continue&lt;/b&gt;.</variable>
+</message>
+<message>
+<tag_code>3226</tag_code>
+<translation>Enter the router's Serial Number</translation>
+<variable>Enter the router's Serial Number</variable>
+</message>
+<message>
+<tag_code>3227</tag_code>
+<translation>(You can find it on the router product label.)</translation>
+<variable>(You can find it on the router product label.)</variable>
+</message>
+<message>
+<tag_code>3228</tag_code>
+<translation>Router Password Recovery</translation>
+<variable>Router Password Recovery</variable>
+</message>
+<message>
+<tag_code>3229</tag_code>
+<translation>Please complete the answers to the two security questions below and click &lt;b&gt;Continue&lt;/b&gt;.</translation>
+<variable>Please complete the answers to the two security questions below and click &lt;b&gt;Continue&lt;/b&gt;.</variable>
+</message>
+<message>
+<tag_code>3230</tag_code>
+<translation>Exit</translation>
+<variable>Exit</variable>
+</message>
+<message>
+<tag_code>3231</tag_code>
+<translation>Login again</translation>
+<variable>Login again</variable>
+</message>
+<message>
+<tag_code>3232</tag_code>
+<translation>You have successfully recovered the admin password.</translation>
+<variable>You have successfully recovered the admin password.</variable>
+</message>
+<message>
+<tag_code>3233</tag_code>
+<translation>Router Admin Username</translation>
+<variable>Router Admin Username</variable>
+</message>
+<message>
+<tag_code>3234</tag_code>
+<translation>Router Admin Password</translation>
+<variable>Router Admin Password</variable>
+</message>
+<message>
+<tag_code>3235</tag_code>
+<translation>You can now log into the router using username \"admin\" and this recovered password.</translation>
+<variable>You can now log into the router using username \"admin\" and this recovered password.</variable>
+</message>
+<message>
+<tag_code>3236</tag_code>
+<translation>Security Question #2</translation>
+<variable>Security Question #2</variable>
+</message>
+<message>
+<tag_code>9998</tag_code>
+<translation>Enable this wireless Network</translation>
+<variable>Enable this wireless Network</variable>
+</message>
+<message>
+<tag_code>9999</tag_code>
+<translation>Connect automatically at startup</translation>
+<variable>Connect automatically at startup</variable>
+</message>
+<message>
+<tag_code>10000</tag_code>
+<translation>AP Mode</translation>
+<variable>AP Mode</variable>
+</message>
+<message>
+<tag_code>10001</tag_code>
+<translation>Key 1</translation>
+<variable>Key 1</variable>
+</message>
+<message>
+<tag_code>10002</tag_code>
+<translation>Key 2</translation>
+<variable>Key 2</variable>
+</message>
+<message>
+<tag_code>10003</tag_code>
+<translation>Key 3</translation>
+<variable>Key 3</variable>
+</message>
+<message>
+<tag_code>10004</tag_code>
+<translation>Key 4</translation>
+<variable>Key 4 </variable>
+</message>
+<message>
+<tag_code>10005</tag_code>
+<translation>Click &lt;a style=&quot;text-decoration:underline&quot; href=&quot;FW_forward.htm&amp;todo=cfg_init&quot;&gt;here&lt;/a&gt; to setup Inbound Firewall Rules for gaming or other applications</translation>
+<variable>Click &lt;a style=&quot;text-decoration:underline&quot; href=&quot;FW_forward.htm&amp;todo=cfg_init&quot;&gt;here&lt;/a&gt; to setup Inbound Firewall Rules for gaming or other applications</variable>
+</message>
+<message>
+<tag_code>10008</tag_code>
+<translation>You are currently logged in from another device. There can be only one device logged in at a time. If you log in from this device, the other device will be logged out. Do you want to proceed?</translation>
+<variable>You are currently logged in from another device. There can be only one device logged in at a time. If you log in from this device, the other device will be logged out. Do you want to proceed?</variable>
+</message>
+<message>
+<tag_code>10009</tag_code>
+<translation>Exit</translation>
+<variable>Exit</variable>
+</message>
+<message>
+<tag_code>10010</tag_code>
+<translation>On</translation>
+<variable>On</variable>
+</message>
+<message>
+<tag_code>10011</tag_code>
+<translation>Off</translation>
+<variable>Off</variable>
+</message>
+<message>
+<tag_code>10012</tag_code>
+<translation>ON</translation>
+<variable>ON</variable>
+</message>
+<message>
+<tag_code>10013</tag_code>
+<translation>OFF</translation>
+<variable>OFF</variable>
+</message>
+<message>
+<tag_code>10014</tag_code>
+<translation>READY</translation>
+<variable>READY</variable>
+</message>
+<message>
+<tag_code>10015</tag_code>
+<translation>No USB drive</translation>
+<variable>No USB drive</variable>
+</message>
+<message>
+<tag_code>10016</tag_code>
+<translation>NOT ENABLED</translation>
+<variable>NOT ENABLED</variable>
+</message>
+<message>
+<tag_code>10017</tag_code>
+<translation>STATUS</translation>
+<variable>STATUS</variable>
+</message>
+<message>
+<tag_code>10018</tag_code>
+<translation>ENABLED</translation>
+<variable>ENABLED</variable>
+</message>
+<message>
+<tag_code>10019</tag_code>
+<translation>NOT SUPPORTED</translation>
+<variable>NOT SUPPORTED</variable>
+</message>
+<message>
+<tag_code>10020</tag_code>
+<translation>DNS Server</translation>
+<variable>DNS Server</variable>
+</message>
+<message>
+<tag_code>10021</tag_code>
+<translation>Not Available</translation>
+<variable>Not Available</variable>
+</message>
+<message>
+<tag_code>10022</tag_code>
+<translation>Detecting...</translation>
+<variable>Detecting...</variable>
+</message>
+<message>
+<tag_code>10023</tag_code>
+<translation>Connected</translation>
+<variable>Connected</variable>
+</message>
+<message>
+<tag_code>10024</tag_code>
+<translation>the Internet port is not connected</translation>
+<variable>the Internet port is not connected</variable>
+</message>
+<message>
+<tag_code>10025</tag_code>
+<translation>AIM</translation>
+<variable>AIM</variable>
+</message>
+<message>
+<tag_code>10026</tag_code>
+<translation>Netgear EVA</translation>
+<variable>Netgear EVA</variable>
+</message>
+<message>
+<tag_code>10027</tag_code>
+<translation>Counter Strike</translation>
+<variable>Counter Strike</variable>
+</message>
+<message>
+<tag_code>10028</tag_code>
+<translation>Age of Empires</translation>
+<variable>Age of Empires</variable>
+</message>
+<message>
+<tag_code>10029</tag_code>
+<translation>Everquest</translation>
+<variable>Everquest</variable>
+</message>
+<message>
+<tag_code>10030</tag_code>
+<translation>Quake 2</translation>
+<variable>Quake 2</variable>
+</message>
+<message>
+<tag_code>10031</tag_code>
+<translation>Quake 3</translation>
+<variable>Quake 3</variable>
+</message>
+<message>
+<tag_code>10032</tag_code>
+<translation>Unreal Tournament</translation>
+<variable>Unreal Tourment</variable>
+</message>
+<message>
+<tag_code>10033</tag_code>
+<translation>Warcraft</translation>
+<variable>Warcraft</variable>
+</message>
+<message>
+<tag_code>10034</tag_code>
+<translation>Disconnected</translation>
+<variable>Disconnected</variable>
+</message>
+<message>
+<tag_code>10035</tag_code>
+<translation>days</translation>
+<variable>days</variable>
+</message>
+<message>
+<tag_code>10036</tag_code>
+<translation>hours</translation>
+<variable>hours</variable>
+</message>
+<message>
+<tag_code>10037</tag_code>
+<translation>minutes</translation>
+<variable>minutes</variable>
+</message>
+<message>
+<tag_code>10038</tag_code>
+<translation>seconds</translation>
+<variable>seconds</variable>
+</message>
+<message>
+<tag_code>10039</tag_code>
+<translation>Link down</translation>
+<variable>Link down</variable>
+</message>
+<message>
+<tag_code>10040</tag_code>
+<translation>Full</translation>
+<variable>Full</variable>
+</message>
+<message>
+<tag_code>10041</tag_code>
+<translation>Half</translation>
+<variable>Half</variable>
+</message>
+<message>
+<tag_code>10042</tag_code>
+<translation>Enable Guest Network</translation>
+<variable>Enable Guest Network</variable>
+</message>
+<message>
+<tag_code>10043</tag_code>
+<translation>application</translation>
+<variable>application</variable>
+</message>
+<message>
+<tag_code>10044</tag_code>
+<translation>Mon</translation>
+<variable>Mon</variable>
+</message>
+<message>
+<tag_code>10045</tag_code>
+<translation>Tue</translation>
+<variable>Tue</variable>
+</message>
+<message>
+<tag_code>10046</tag_code>
+<translation>Wed</translation>
+<variable>Wed</variable>
+</message>
+<message>
+<tag_code>10047</tag_code>
+<translation>Thu</translation>
+<variable>Thu</variable>
+</message>
+<message>
+<tag_code>10048</tag_code>
+<translation>Fri</translation>
+<variable>Fri</variable>
+</message>
+<message>
+<tag_code>10049</tag_code>
+<translation>Sat</translation>
+<variable>Sat</variable>
+</message>
+<message>
+<tag_code>10050</tag_code>
+<translation>Sun</translation>
+<variable>Sun</variable>
+</message>
+<message>
+<tag_code>10400</tag_code>
+<translation>VPN Wizard</translation>
+<variable>VPN Wizard</variable>
+</message>
+<message>
+<tag_code>10401</tag_code>
+<translation>The Wizard sets most parameters to defaults as proposed by the VPN Consortium (VPNC), and assumes a pre-shared key, which greatly simplifies setup</translation>
+<variable>The Wizard sets most parameters to defaults as proposed by the VPN Consortium (VPNC), and assumes a pre-shared key, which greatly simplifies setup</variable>
+</message>
+<message>
+<tag_code>10402</tag_code>
+<translation>After creating the policies through the VPN Wizard, you can always update the parameters through the VPN setting links on the left menu</translation>
+<variable>After creating the policies through the VPN Wizard, you can always update the parameters through the VPN setting links on the left menu</variable>
+</message>
+<message>
+<tag_code>10403</tag_code>
+<translation>Step 1 of 3: Connection Name and Remote IP Type</translation>
+<variable>Step 1 of 3: Connection Name and Remote IP Type</variable>
+</message>
+<message>
+<tag_code>10404</tag_code>
+<translation>What is the new Connection Name?</translation>
+<variable>What is the new Connection Name?</variable>
+</message>
+<message>
+<tag_code>10405</tag_code>
+<translation>What is the pre-shared key?</translation>
+<variable>What is the pre-shared key?</variable>
+</message>
+<message>
+<tag_code>10406</tag_code>
+<translation>This VPN tunnel will connect to</translation>
+<variable>This VPN tunnel will connect to</variable>
+</message>
+<message>
+<tag_code>10407</tag_code>
+<translation>A remote VPN Gateway</translation>
+<variable>A remote VPN Gateway</variable>
+</message>
+<message>
+<tag_code>10408</tag_code>
+<translation>A remote VPN client (single PC)</translation>
+<variable>A remote VPN client (single PC)</variable>
+</message>
+<message>
+<tag_code>10409</tag_code>
+<translation>Step 2 of 3: Remote IP address or the Internet name</translation>
+<variable>Step 2 of 3: Remote IP address or the Internet name</variable>
+</message>
+<message>
+<tag_code>10410</tag_code>
+<translation>What is the remote WAN's IP address or Internet name?</translation>
+<variable>What is the remote WAN's IP address or Internet name?</variable>
+</message>
+<message>
+<tag_code>10411</tag_code>
+<translation>Step 3 of 3: Secure Connection Remote Accessibility</translation>
+<variable>Step 3 of 3: Secure Connection Remote Accessibility</variable>
+</message>
+<message>
+<tag_code>10412</tag_code>
+<translation>What is the &lt;b&gt;remote&lt;/b&gt; LAN IP address and Subnet Mask?</translation>
+<variable>What is the &lt;b&gt;remote&lt;/b&gt; LAN IP address and Subnet Mask?</variable>
+</message>
+<message>
+<tag_code>10413</tag_code>
+<translation>Step 4 of 4: Secure Connection Local Accessibility</translation>
+<variable>Step 4 of 4: Secure Connection Local Accessibility</variable>
+</message>
+<message>
+<tag_code>10414</tag_code>
+<translation>What is the &lt;b&gt;local&lt;/b&gt; LAN IP address and Subnet Mask?</translation>
+<variable>What is the &lt;b&gt;local&lt;/b&gt; LAN IP address and Subnet Mask?</variable>
+</message>
+<message>
+<tag_code>10415</tag_code>
+<translation>Done</translation>
+<variable>Done</variable>
+</message>
+<message>
+<tag_code>10416</tag_code>
+<translation>Summary</translation>
+<variable>Summary</variable>
+</message>
+<message>
+<tag_code>10417</tag_code>
+<translation>Please verify your inputs</translation>
+<variable>Please verify your inputs</variable>
+</message>
+<message>
+<tag_code>10418</tag_code>
+<translation>Connection Name</translation>
+<variable>Connection Name</variable>
+</message>
+<message>
+<tag_code>10419</tag_code>
+<translation>Remote Endpoint</translation>
+<variable>Remote Endpoint</variable>
+</message>
+<message>
+<tag_code>10420</tag_code>
+<translation>Remote Client Access</translation>
+<variable>Remote Client Access</variable>
+</message>
+<message>
+<tag_code>10421</tag_code>
+<translation>Remote IP</translation>
+<variable>Remote IP</variable>
+</message>
+<message>
+<tag_code>10422</tag_code>
+<translation>Remote ID</translation>
+<variable>Remote ID</variable>
+</message>
+<message>
+<tag_code>10423</tag_code>
+<translation>Local Client Access</translation>
+<variable>Local Client Access</variable>
+</message>
+<message>
+<tag_code>10424</tag_code>
+<translation>Local IP</translation>
+<variable>Local IP</variable>
+</message>
+<message>
+<tag_code>10425</tag_code>
+<translation>Local ID</translation>
+<variable>Local ID</variable>
+</message>
+<message>
+<tag_code>10426</tag_code>
+<translation>You can click</translation>
+<variable>You can click</variable>
+</message>
+<message>
+<tag_code>10427</tag_code>
+<translation>here</translation>
+<variable>here</variable>
+</message>
+<message>
+<tag_code>10428</tag_code>
+<translation>to view the VPNC-recommended parameters</translation>
+<variable>to view the VPNC-recommended parameters</variable>
+</message>
+<message>
+<tag_code>10429</tag_code>
+<translation>Please click &lt;b&gt;"Done"&lt;/b&gt; to apply the changes</translation>
+<variable>Please click &lt;b&gt;"Done"&lt;/b&gt; to apply the changes.</variable>
+</message>
+<message>
+<tag_code>10430</tag_code>
+<translation>VPN Policies</translation>
+<variable>VPN Policies</variable>
+</message>
+<message>
+<tag_code>10431</tag_code>
+<translation>Policy Table</translation>
+<variable>Policy Table</variable>
+</message>
+<message>
+<tag_code>10432</tag_code>
+<translation>ESP</translation>
+<variable>ESP</variable>
+</message>
+<message>
+<tag_code>10433</tag_code>
+<translation>Add Auto Policy</translation>
+<variable>Add Auto Policy</variable>
+</message>
+<message>
+<tag_code>10434</tag_code>
+<translation>Add Manual Policy</translation>
+<variable>Add Manual Policy</variable>
+</message>
+<message>
+<tag_code>10435</tag_code>
+<translation>VPN - Auto Policy</translation>
+<variable>VPN - Auto Policy</variable>
+</message>
+<message>
+<tag_code>10436</tag_code>
+<translation>General</translation>
+<variable>General</variable>
+</message>
+<message>
+<tag_code>10437</tag_code>
+<translation>Policy Name</translation>
+<variable>Policy Name</variable>
+</message>
+<message>
+<tag_code>10438</tag_code>
+<translation>Remote Endpoint</translation>
+<variable>Remote Endpoint</variable>
+</message>
+<message>
+<tag_code>10439</tag_code>
+<translation>Address Type</translation>
+<variable>Address Type</variable>
+</message>
+<message>
+<tag_code>10440</tag_code>
+<translation>Dynamic IP Address</translation>
+<variable>Dynamic IP Address</variable>
+</message>
+<message>
+<tag_code>10441</tag_code>
+<translation>Fixed IP Address</translation>
+<variable>Fixed IP Address</variable>
+</message>
+<message>
+<tag_code>10442</tag_code>
+<translation>Fully Qualified Domain Name</translation>
+<variable>Fully Qualified Domain Name</variable>
+</message>
+<message>
+<tag_code>10443</tag_code>
+<translation>Address Data</translation>
+<variable>Address Data</variable>
+</message>
+<message>
+<tag_code>10444</tag_code>
+<translation>IKE Keep Alive</translation>
+<variable>IKE Keep Alive</variable>
+</message>
+<message>
+<tag_code>10445</tag_code>
+<translation>Ping IP Address</translation>
+<variable>Ping IP Address</variable>
+</message>
+<message>
+<tag_code>10446</tag_code>
+<translation>Local LAN</translation>
+<variable>Local LAN</variable>
+</message>
+<message>
+<tag_code>10447</tag_code>
+<translation>Range address</translation>
+<variable>Range address</variable>
+</message>
+<message>
+<tag_code>10448</tag_code>
+<translation>Subnet address</translation>
+<variable>Subnet address</variable>
+</message>
+<message>
+<tag_code>10449</tag_code>
+<translation>Single PC - no Subnet</translation>
+<variable>Single PC - no Subnet</variable>
+</message>
+<message>
+<tag_code>10450</tag_code>
+<translation>Single/Start IP Address</translation>
+<variable>Single/Start IP Address</variable>
+</message>
+<message>
+<tag_code>10451</tag_code>
+<translation>Finish IP Address</translation>
+<variable>Finish IP Address</variable>
+</message>
+<message>
+<tag_code>10452</tag_code>
+<translation>Remote LAN</translation>
+<variable>Remote LAN</variable>
+</message>
+<message>
+<tag_code>10453</tag_code>
+<translation>IKE</translation>
+<variable>IKE</variable>
+</message>
+<message>
+<tag_code>10454</tag_code>
+<translation>Direction</translation>
+<variable>Direction</variable>
+</message>
+<message>
+<tag_code>10455</tag_code>
+<translation>Responder only</translation>
+<variable>Responder only</variable>
+</message>
+<message>
+<tag_code>10456</tag_code>
+<translation>Initiator and Responder</translation>
+<variable>Initiator and Responder</variable>
+</message>
+<message>
+<tag_code>10457</tag_code>
+<translation>Exchange Mode</translation>
+<variable>Exchange Mode</variable>
+</message>
+<message>
+<tag_code>10458</tag_code>
+<translation>Main Mode</translation>
+<variable>Main Mode</variable>
+</message>
+<message>
+<tag_code>10459</tag_code>
+<translation>Diffie-Hellman (DH) Group</translation>
+<variable>Diffie-Hellman (DH) Group</variable>
+</message>
+<message>
+<tag_code>10460</tag_code>
+<translation>Group 1 (768 Bit)</translation>
+<variable>Group 1 (768 Bit)</variable>
+</message>
+<message>
+<tag_code>10461</tag_code>
+<translation>Group 2 (1024 Bit)</translation>
+<variable>Group 2 (1024 Bit)</variable>
+</message>
+<message>
+<tag_code>10462</tag_code>
+<translation>Group 5 (1536 Bit)</translation>
+<variable>Group 5 (1536 Bit)</variable>
+</message>
+<message>
+<tag_code>10463</tag_code>
+<translation>Local Identity Type</translation>
+<variable>Local Identity Type</variable>
+</message>
+<message>
+<tag_code>10464</tag_code>
+<translation>WAN IP Address</translation>
+<variable>WAN IP Address</variable>
+</message>
+<message>
+<tag_code>10465</tag_code>
+<translation>Fully Qualified Domain Name</translation>
+<variable>Fully Qualified Domain Name</variable>
+</message>
+<message>
+<tag_code>10466</tag_code>
+<translation>Fully Qualified User Name</translation>
+<variable>Fully Qualified User Name</variable>
+</message>
+<message>
+<tag_code>10467</tag_code>
+<translation>Data</translation>
+<variable>Data</variable>
+</message>
+<message>
+<tag_code>10468</tag_code>
+<translation>Remote Identity Type</translation>
+<variable>Remote Identity Type</variable>
+</message>
+<message>
+<tag_code>10469</tag_code>
+<translation>Parameters</translation>
+<variable>Parameters</variable>
+</message>
+<message>
+<tag_code>10470</tag_code>
+<translation>Encryption Algorithm</translation>
+<variable>Encryption Algorithm</variable>
+</message>
+<message>
+<tag_code>10471</tag_code>
+<translation>DES</translation>
+<variable>DES</variable>
+</message>
+<message>
+<tag_code>10472</tag_code>
+<translation>3DES</translation>
+<variable>3DES</variable>
+</message>
+<message>
+<tag_code>10473</tag_code>
+<translation>Authentication Algorithm</translation>
+<variable>Authentication Algorithm</variable>
+</message>
+<message>
+<tag_code>10474</tag_code>
+<translation>MD5</translation>
+<variable>MD5</variable>
+</message>
+<message>
+<tag_code>10475</tag_code>
+<translation>SHA-1</translation>
+<variable>SHA-1</variable>
+</message>
+<message>
+<tag_code>10476</tag_code>
+<translation>Pre-shared Key</translation>
+<variable>Pre-shared Key</variable>
+</message>
+<message>
+<tag_code>10477</tag_code>
+<translation>SA Life Time</translation>
+<variable>SA Life Time</variable>
+</message>
+<message>
+<tag_code>10478</tag_code>
+<translation>Enable PFS (Perfect Forward Security)</translation>
+<variable>Enable PFS (Perfect Forward Security)</variable>
+</message>
+<message>
+<tag_code>10479</tag_code>
+<translation>VPN - Manual Policy</translation>
+<variable>VPN - Manual Policy</variable>
+</message>
+<message>
+<tag_code>10480</tag_code>
+<translation>ESP Configuration</translation>
+<variable>ESP Configuration</variable>
+</message>
+<message>
+<tag_code>10481</tag_code>
+<translation>SPI - Incoming</translation>
+<variable>SPI - Incoming</variable>
+</message>
+<message>
+<tag_code>10482</tag_code>
+<translation>SPI - Outgoing</translation>
+<variable>SPI - Outgoing</variable>
+</message>
+<message>
+<tag_code>10483</tag_code>
+<translation>(DES - 8 chars; 3DES - 24 chars)</translation>
+<variable>(DES - 8 chars; 3DES - 24 chars)</variable>
+</message>
+<message>
+<tag_code>10484</tag_code>
+<translation>(MD5 - 16 chars; SHA-1 - 20 chars)</translation>
+<variable>(MD5 - 16 chars; SHA-1 - 20 chars)</variable>
+</message>
+<message>
+<tag_code>10485</tag_code>
+<translation>VPN Status</translation>
+<variable>VPN Status</variable>
+</message>
+<message>
+<tag_code>10486</tag_code>
+<translation>VPN Status/Log</translation>
+<variable>VPN Status/Log</variable>
+</message>
+<message>
+<tag_code>10487</tag_code>
+<translation>Current VPN Tunnels (SAs)</translation>
+<variable>Current VPN Tunnels (SAs)</variable>
+</message>
+<message>
+<tag_code>10488</tag_code>
+<translation>SPI (In)</translation>
+<variable>SPI (In)</variable>
+</message>
+<message>
+<tag_code>10489</tag_code>
+<translation>SPI (Out)</translation>
+<variable>SPI (Out)</variable>
+</message>
+<message>
+<tag_code>10490</tag_code>
+<translation>Remote Endpoint</translation>
+<variable>Remote Endpoint</variable>
+</message>
+<message>
+<tag_code>10491</tag_code>
+<translation>Action</translation>
+<variable>Action</variable>
+</message>
+<message>
+<tag_code>10492</tag_code>
+<translation>SLifeTime</translation>
+<variable>SLifeTime</variable>
+</message>
+<message>
+<tag_code>10493</tag_code>
+<translation>HLifeTime</translation>
+<variable>HLifeTime</variable>
+</message>
+<message>
+<tag_code>10494</tag_code>
+<translation>(Hex, 3 Characters)</translation>
+<variable>(Hex, 3 Characters)</variable>
+</message>
+<message>
+<tag_code>10495</tag_code>
+<translation>VPN Consortium (VPNC) Recommendation</translation>
+<variable>VPN Consortium (VPNC) Recommendation</variable>
+</message>
+<message>
+<tag_code>10496</tag_code>
+<translation>The following parameters are recommended by the VPNC and used in the VPN Wizard</translation>
+<variable>The following parameters are recommended by the VPNC and used in the VPN Wizard</variable>
+</message>
+<message>
+<tag_code>10497</tag_code>
+<translation>Secure Association</translation>
+<variable>Secure Association</variable>
+</message>
+<message>
+<tag_code>10498</tag_code>
+<translation>Authentication Method</translation>
+<variable>Authentication Method</variable>
+</message>
+<message>
+<tag_code>10499</tag_code>
+<translation>Encryption Protocol</translation>
+<variable>Encryption Protocol</variable>
+</message>
+<message>
+<tag_code>10500</tag_code>
+<translation>Authentication Protocol</translation>
+<variable>Authentication Protocol</variable>
+</message>
+<message>
+<tag_code>10501</tag_code>
+<translation>Key Life</translation>
+<variable>Key Life</variable>
+</message>
+<message>
+<tag_code>10502</tag_code>
+<translation>IKE Life Time</translation>
+<variable>IKE Life Time</variable>
+</message>
+<message>
+<tag_code>10503</tag_code>
+<translation>NETBIOS</translation>
+<variable>NETBIOS</variable>
+</message>
+<message>
+<tag_code>10504</tag_code>
+<translation>ReadySHARE Cloud</translation>
+<variable>ReadySHARE Cloud</variable>
+</message>
+<message>
+<tag_code>10505</tag_code>
+<translation>Registration completed successfully</translation>
+<variable>Registration completed successfully</variable>
+</message>
+<message>
+<tag_code>10506</tag_code>
+<translation>&lt;b&gt;Note:&lt;/b&gt; Internet will be kept active until unregistered.</translation>
+<variable>&lt;b&gt;Note:&lt;/b&gt; Internet will be kept active until unregistered.</variable>
+</message>
+<message>
+<tag_code>10507</tag_code>
+<translation>Registration failed</translation>
+<variable>Registration failed</variable>
+</message>
+<message>
+<tag_code>10508</tag_code>
+<translation>Unregistration completed successfully</translation>
+<variable>Unregistration completed successfully</variable>
+</message>
+<message>
+<tag_code>10509</tag_code>
+<translation>&lt;p&gt;The ReadySHARE Cloud feature gives you remote access over the Internet to a USB storage device that is connected to your router's USB port.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;How to Set Up ReadySHARE Cloud&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;Step 1: You need a ReadySHARE Cloud account. If you do not have one,&lt;a class="linktype" target="_blank" href="https://readyshare.netgear.com/site/index.jsp?pid=4&amp;src=device"&gt;click here&lt;/a&gt; to get one.&lt;/p&gt;
+&lt;p&gt;Step 2: On this page, enter your ReadySHARE Cloud user name and password to register your router and the USB device that is connected to it with your account.&lt;/p&gt;
+&lt;p&gt;Step 3: Log back into &lt;a class="linktype" target="_blank" href="http://readyshare.netgear.com/"&gt;http://readyshare.netgear.com/&lt;/a&gt; with your account. You should see the USB device that is connected to your router.&lt;/p&gt;
+&lt;p&gt;Step 4: The first time, you are asked to download a Windows client, which is used to make a secure connection from your PC to the router's USB device. Log into this client and you can access the USB device from anywhere.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Note:&lt;/b&gt; Without this client, you can browse your USB device contents but you cannot open files or make changes to them&lt;/p&gt;</translation>
+<variable>&lt;p&gt;The ReadySHARE Cloud feature gives you remote access over the Internet to a USB storage device that is connected to your router's USB port.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;How to Set Up ReadySHARE Cloud&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;Step 1: You need a ReadySHARE Cloud account. If you do not have one,&lt;a class="linktype" target="_blank" href="https://readyshare.netgear.com/site/index.jsp?pid=4&amp;src=device"&gt;click here&lt;/a&gt; to get one.&lt;/p&gt;
+&lt;p&gt;Step 2: On this page, enter your ReadySHARE Cloud user name and password to register your router and the USB device that is connected to it with your account.&lt;/p&gt;
+&lt;p&gt;Step 3: Log back into &lt;a class="linktype" target="_blank" href="http://readyshare.netgear.com/"&gt;http://readyshare.netgear.com/&lt;/a&gt; with your account. You should see the USB device that is connected to your router.&lt;/p&gt;
+&lt;p&gt;Step 4: The first time, you are asked to download a Windows client, which is used to make a secure connection from your PC to the router's USB device. Log into this client and you can access the USB device from anywhere.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Note:&lt;/b&gt; Without this client, you can browse your USB device contents but you cannot open files or make changes to them&lt;/p&gt;</variable>
+</message>
+<message>
+<tag_code>10510</tag_code>
+<translation>Start now to enable ReadySHARE Cloud</translation>
+<variable>Start now to enable ReadySHARE Cloud</variable>
+</message>
+<message>
+<tag_code>10511</tag_code>
+<translation>If you don't have a ReadySHARE Cloud account &lt;a href = 'https://readyshare.netgear.com/site/index.jsp?pid=4&amp;src=device'&gt;click here&lt;/a&gt; to get one.</translation>
+<variable>If you don't have a ReadySHARE Cloud account &lt;a href = 'https://readyshare.netgear.com/site/index.jsp?pid=4&amp;src=device'&gt;click here&lt;/a&gt; to get one.</variable>
+</message>
+<message>
+<tag_code>10512</tag_code>
+<translation>ReadySHARE Cloud is registered with user</translation>
+<variable>ReadySHARE Cloud is registered with user</variable>
+</message>
+<message>
+<tag_code>10513</tag_code>
+<translation>You can follow step 2~4 above to access the storage from anywhere</translation>
+<variable>You can follow step 2~4 above to access the storage from anywhere</variable>
+</message>
+<message>
+<tag_code>10514</tag_code>
+<translation>Click &lt;B&gt;Unregister&lt;/B&gt; to register ReadySHARE Cloud with a different user</translation>
+<variable>Click &lt;B&gt;Unregister&lt;/B&gt; to register ReadySHARE Cloud with a different user</variable>
+</message>
+<message>
+<tag_code>10515</tag_code>
+<translation>Unregister</translation>
+<variable>Unregister</variable>
+</message>
+<message>
+<tag_code>10516</tag_code>
+<translation>Connection Time Left</translation>
+<variable>Connection Time Left</variable>
+</message>
+<message>
+<tag_code>10519</tag_code>
+<translation>Upgrade failed! Please try again.</translation>
+<variable>Upgrade failed! Pleas try agian.</variable>
+</message>
+<message>
+<tag_code>10520</tag_code>
+<translation>Rescan media files</translation>
+<variable>Rescan media files</variable>
+</message>
+<message>
+<tag_code>10600</tag_code>
+<translation>T-Online</translation>
+<variable>T-Online</variable>
+</message>
+<message>
+<tag_code>10601</tag_code>
+<translation>Connection identifier</translation>
+<variable>connection identifier</variable>
+</message>
+<message>
+<tag_code>10602</tag_code>
+<translation>T-Online number</translation>
+<variable>T-Online number</variable>
+</message>
+<message>
+<tag_code>10603</tag_code>
+<translation>Co-user suffix</translation>
+<variable>co-user suffix</variable>
+</message>
+<message>
+<tag_code>10604</tag_code>
+<translation>&lt;b&gt;Service Name&lt;/b&gt; (If Required)</translation>
+<variable>&lt;b&gt;Service Name&lt;/b&gt; (If Required)</variable>
+</message>
+<message>
+<tag_code>10605</tag_code>
+<translation>&lt;b&gt;Idle Timeout&lt;/b&gt;(In Minutes)</translation>
+<variable>&lt;b&gt;Idle Timeout&lt;/b&gt;(In Minutes)</variable>
+</message>
+<message>
+<tag_code>10606</tag_code>
+<translation>1und1/</translation>
+<variable>1und1/</variable>
+</message>
+<message>
+<tag_code>10607</tag_code>
+<translation>@online.de</translation>
+<variable>@online.de</variable>
+</message>
+<message>
+<tag_code>10608</tag_code>
+<translation>Enable This Interface</translation>
+<variable>Enable This Interface</variable>
+</message>
+<message>
+<tag_code>10609</tag_code>
+<translation>Use VLANID</translation>
+<variable>Use VLANID</variable>
+</message>
+<message>
+<tag_code>10610</tag_code>
+<translation>Internet Service Provider</translation>
+<variable>Internet Service Provider</variable>
+</message>
+<message>
+<tag_code>10611</tag_code>
+<translation>DT</translation>
+<variable>DT</variable>
+</message>
+</tag_msg>

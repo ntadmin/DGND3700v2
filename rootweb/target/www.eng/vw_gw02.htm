@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+
+<head>
+<meta http-equiv="content-type" content="text/html;charset=ISO-8859-1">
+<meta http-equiv='Pragma' content='no-cache'>
+<meta http-equiv="Cache-Control" content="no-cache">
+
+<meta name="description" content="@model_name#_multilangual">
+<title>NETGEAR Router @model_name#</title>
+<link rel="stylesheet" href="style/form.css">
+<script language="javascript" type="text/javascript" src="funcs.js"></script>
+<script language="javascript" type="text/javascript" src="string.js"></script>
+<script language="javascript" type="text/javascript" src="utility.js"></script>
+<script language="javascript" type="text/javascript" src="linux.js"></script>
+<script language="javascript" type="text/javascript">
+<!-- hide script from old browsers
+function checkValidSubnet(ip1, ip2, ip3, ip4)
+{
+	var group_ip_list = "@group_ip_list#";
+	var group_mask_list = "@group_mask_list#";
+	var groupIPArr = group_ip_list.split(":");
+	var groupMaskArr = group_mask_list.split(":");
+	var ip, mask, target;
+	var addr = ip1.value+"."+ip2.value+"."+ip3.value+"."+ip4.value;
+	target = inet_aton(addr);
+	for(i=0;i<groupIPArr.length;i++)
+	{
+		if(groupIPArr[i].length != 0 && groupMaskArr[i].length != 0)
+		{
+			ip = inet_aton(groupIPArr[i]);
+			mask = inet_aton(groupMaskArr[i]);
+			if((target & mask) == (ip & mask))
+				return true;
+		}
+	}
+	return false;
+}
+function checkData()
+{
+    var cf = document.forms[0];
+    var msg = ""; 
+	if(badIP(cf.dest_start_ip1,cf.dest_start_ip2,cf.dest_start_ip3,cf.dest_start_ip4,254))
+		msg+= getErrorMsgByVar("gsm_msg_vpn_remote_lanIP_invalid")+"\n";
+	if(badIP(cf.dest_mask1,cf.dest_mask2,cf.dest_mask3,cf.dest_mask4,255))
+		msg+= getErrorMsgByVar("gsm_msg_vpn_remote_lanMask_invalid")+"\n";
+	if(checkValidSubnet(cf.dest_start_ip1,cf.dest_start_ip2,cf.dest_start_ip3,cf.dest_start_ip4))
+		msg+=getErrorMsgByVar("gsm_msg_vpn_remote_lanMask_invalid")+"\n";
+	if(msg.length > 1 )
+	{
+		alert(msg);
+		return;
+	}
+	parent.goNext('gw2');
+}
+
+
+
+//-->
+</script>
+
+
+</head>
+  
+<body bgcolor="#ffffff" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="parent.setData('gw2');">
+<form name="formname" action="setup.cgi" method="POST">
+<div class="page_title"><span languageCode="10400">VPN Wizard</span></div>
+<div class="fix_button">
+<table width="100%" border="0" cellpadding="0" cellspacing="2"><tr><td nowrap colspan="2" align="center">
+<input class="cancel_bt" type="button"  name="back" value="Back" onClick="location.href='vw_gw01.htm'" languageCode = "115">
+&nbsp;
+<input class="cancel_bt" type="button" name="Cancel" value = "Cancel" onClick="parent.setData('gw2');" languageCode = "19">
+&nbsp;
+<input class="apply_bt" type="button" name="next" value = "Next" onClick="checkData();" languageCode = "6">
+</td></tr></table>
+</div>
+<div id="main" class="main_top_button">
+<table border="0" cellpadding="0" cellspacing="1" width="100%">
+<tr>
+ <td colspan="2"><b><span languageCode="10411">Step 3 of 3: Secure Connection Remote Accessibility</span></b></td>
+</tr>
+
+<tr>  <!-- RULE -->
+ <td colspan="2" background="liteblue.gif" height="12">&nbsp; </td>
+</tr>
+
+
+
+<tr>
+  <td colspan="2" align="left" nowrap><span languageCode="10412">What is the <b>remote</b> LAN IP address and Subnet Mask?</span></td>
+</tr>
+
+<tr>  <!-- RULE -->
+ <td colspan="2" height="12">&nbsp; </td>
+</tr>
+
+<tr>
+<td align="right" width="50%" nowrap><span languageCode="37">IP Address</span>: &nbsp;</td>
+<td align="left" width="50%" nowrap class="num"><input type="text" class="num" size="4" maxlength="3" name="dest_start_ip1" value="0">.<input type="text" class="num" size="4" maxlength="3" name="dest_start_ip2" value="0">.<input type="text" class="num" size="4" maxlength="3" name="dest_start_ip3" value="0">.<input type="text" class="num" size="4" maxlength="3" name="dest_start_ip4" value="0"></td>   				
+</tr>
+
+<tr>
+<td align="right" width="50%"><span languageCode="428">Subnet Mask</span>: &nbsp; </td>
+<td width="50%" nowrap class="num"><input type="text" class="num" size="4" maxlength="3" name="dest_mask1" value="0">.<input type="text" class="num" size="4" maxlength="3" name="dest_mask2" value="0">.<input type="text" class="num" size="4" maxlength="3" name="dest_mask3" value="0">.<input type="text" class="num" size="4" maxlength="3" name="dest_mask4" value="0"></td>   				
+</tr>
+
+
+
+<tr>
+ <td colspan="2">&nbsp;</td>
+</tr>
+
+
+<tr>  <!-- RULE -->
+ <td colspan="2" background="liteblue.gif" height="12">&nbsp; </td>
+</tr>
+   </table>
+   
+   <input type="hidden" name="c4_dest_start_ip" value="@c4_dest_start_ip#">
+   <input type="hidden" name="c4_dest_mask" value="@c4_dest_mask#">
+   
+   <input type="hidden" name="todo" value="save">
+   <input type="hidden" name="this_file" value="vw_gw02.htm">
+   <input type="hidden" name="next_file" value="vw_sum.htm">
+</div>	
+  </form>
+<div id="help" style="display: none">
+		<iframe name="help_iframe" id="helpframe" src="h_vpnwiz.htm" allowtransparency="true" width="100%" frameborder="0">
+		</iframe>
+</div>
+<div id="help_switch" class="close_help">
+	 <img class="help_switch_img" src="image/help/help-bar.gif"><script>
+var help_flag=0;
+if(isIE()){
+	show_hidden_help_top_button(1);
+	var frame_div = top.document.getElementById("formframe_div");
+	frame_div.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+if(get_browser() == "Opera"){
+	window.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+</script><div id="help_space" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_center"><span languageCode="3016">Help Center</span></div>
+<div id="help_button" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_show_hidden"><a href="javascript:void(0)" onClick="show_hidden_help_top_button(help_flag); help_flag++;"><span languageCode="3017">Show/Hide Help Center</span></a></div>
+</div>
+<script language="javascript" type="text/javascript" src="langs.js"></script>
+</body>
+</html>

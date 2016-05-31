@@ -1,0 +1,265 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-Control" content="no-cache"><meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT"><meta name="description" content="@model_name#_multilangual"><title>NETGEAR Router @model_name#</title><script language="javascript" type="text/javascript" src="string.js"></script><link rel="stylesheet" href="style/form.css"><script language="javascript" type="text/javascript" src="funcs.js"></script><!-- link rel="stylesheet" href="form.css" --><style type="text/javascript">
+	classes.num.all.fontFamily = "Courier";
+	classes.num.all.fontSize = "10pt" ;
+</style><script language="javascript" type="text/javascript" src="utility.js"></script><script language="javascript" type="text/javascript" src="linux.js"></script><script language="javascript" type="text/javascript">
+<!-- hide script from old browsers
+var checkboxNameMonDisabled = false;
+var checkboxNameTueDisabled = false;
+var checkboxNameWedDisabled = false;
+var checkboxNameThuDisabled = false;
+var checkboxNameFriDisabled = false;
+var checkboxNameSatDisabled = false;
+var checkboxNameSunDisabled = false;
+var TimePeriodDisabled = false;
+function BlockPeriodClick(cf) {
+	if(cf.checkboxNamehours.checked) {
+		cf.starthour.disabled = true;
+		cf.startminute.disabled = true;
+		cf.endhour.disabled = true;
+		cf.endminute.disabled = true;
+		TimePeriodDisabled = true;
+	} else {
+		cf.starthour.disabled = false;
+		cf.startminute.disabled = false;
+		cf.endhour.disabled = false;
+		cf.endminute.disabled = false;
+		TimePeriodDisabled = false;
+	}
+	return;
+}
+function BlockAllClickCheck() {
+	var cf = document.forms[0];
+	if(cf.checkboxNameAll.checked) {
+		cf.checkboxNameMon.checked = true;
+		cf.checkboxNameTue.checked = true;
+		cf.checkboxNameWed.checked = true;
+		cf.checkboxNameThu.checked = true;
+		cf.checkboxNameFri.checked = true;
+		cf.checkboxNameSat.checked = true;
+		cf.checkboxNameSun.checked = true;
+		cf.checkboxNameMon.disabled = true;
+		cf.checkboxNameTue.disabled = true;
+		cf.checkboxNameWed.disabled = true;
+		cf.checkboxNameThu.disabled = true;
+		cf.checkboxNameFri.disabled = true;
+		cf.checkboxNameSat.disabled = true;
+		cf.checkboxNameSun.disabled = true;
+		checkboxNameMonDisabled = true;
+		checkboxNameTueDisabled = true;
+		checkboxNameWedDisabled = true;
+		checkboxNameThuDisabled = true;
+		checkboxNameFriDisabled = true;
+		checkboxNameSatDisabled = true;
+		checkboxNameSunDisabled = true;
+	}
+	else {
+		cf.checkboxNameMon.disabled = false;
+		cf.checkboxNameTue.disabled = false;
+		cf.checkboxNameWed.disabled = false;
+		cf.checkboxNameThu.disabled = false;
+		cf.checkboxNameFri.disabled = false;
+		cf.checkboxNameSat.disabled = false;
+		cf.checkboxNameSun.disabled = false;
+		checkboxNameMonDisabled = false;
+		checkboxNameTueDisabled = false;
+		checkboxNameWedDisabled = false;
+		checkboxNameThuDisabled = false;
+		checkboxNameFriDisabled = false;
+		checkboxNameSatDisabled = false;
+		checkboxNameSunDisabled = false;
+	}
+    BlockPeriodClick(cf);
+	return;
+}
+function TimeChk()
+{
+ 	var cf = document.forms[0];
+	if(cf.checkboxNamehours.checked == false){
+	 	var cf = document.forms[0];
+		var s_h = parseInt(cf.starthour.value, 10);
+		var s_m = parseInt(cf.startminute.value, 10);
+		var e_h = parseInt(cf.endhour.value, 10);
+		var e_m = parseInt(cf.endminute.value, 10);
+		if( (s_h== e_h) && (s_m==e_m) )
+			return 1;
+		else
+			return 0;
+	}
+}
+var dev_ip = "@c4_sysLANIPAddr#";
+var dev_mask = "@c4_sysLANSubnetMask#";
+function checkData()
+{
+ 	var cf = document.forms[0];
+	var msg = "";
+	var ntp_ip;
+	if((! cf.checkboxNamehours.checked))
+	{
+		if(isNumeric(cf.starthour,23))
+			msg+= getErrorMsgByVar("gsm_msg_sch_inv_start_hr");
+		if(isNumeric(cf.startminute,59))
+			msg+= getErrorMsgByVar("gsm_msg_sch_inv_start_min");
+		if(isNumeric(cf.endhour,24))
+			msg+= getErrorMsgByVar("gsm_msg_sch_inv_end_hr");
+		if (cf.endhour.value == "24")
+		{
+			if(isNumeric(cf.endminute,00))
+				msg+= getErrorMsgByVar("gsm_msg_sch_inv_time");
+		}
+		else
+		{
+			if(isNumeric(cf.endminute,59))
+				msg+= getErrorMsgByVar("gsm_msg_sch_inv_end_min");
+		}
+	}
+/*
+	if (cf.ts2_ip1.value.length > 0 || cf.ts2_ip2.value.length > 0
+	|| cf.ts2_ip3.value.length > 0 || cf.ts2_ip4.value.length > 0) {
+		ntp_ip = cf.ts2_ip1.value + "." + cf.ts2_ip2.value + "." + cf.ts2_ip3.value + "." + cf.ts2_ip4.value;
+		if (badLANIP(cf.ts2_ip1, cf.ts2_ip2, cf.ts2_ip3, cf.ts2_ip4, 254)
+		|| IsLanIpValid(dev_ip, dev_mask, ntp_ip) == true) {
+	        msg+= getErrorMsgByVar("gsm_msg_sch_inv_ntp_ip");
+	    }
+    }
+*/
+	if(TimeChk())
+		msg+= getErrorMsgByVar("gsm_msg_sch_end_time_small");
+	if (msg.length > 1)
+	{
+		msg = getErrorMsgByVar("gsm_msg_sch_end_time_small");
+		alert(msg);
+		return false;
+	}
+	dataToHidden(cf);
+	return true;
+}
+/* timer refresh automatically */
+var delaytime = 1000;
+var date_str = "@rt_now_datetime#";
+var year, mon, day, hour, min, sec;
+//-->
+</script></head><body bgcolor="#ffffff" onLoad="dataToVisible(document.forms[0]);BlockAllClickCheck();document.forms[0].elements[0].focus();fresh_time();">
+<form method="POST" action="setup.cgi@post_par#" onSubmit="buttonToDisabled(document.forms[0])">
+<div class="page_title" languageCode = "244">Schedule</div>
+<div class="fix_button">
+<table width="100%" border="0" cellpadding="0" cellspacing="2"><tr><td nowrap colspan="2" align="center">
+<input class="cancel_bt" type="RESET" name="Cancel" value = "Cancel" onClick="setTimeout('dataToVisible(document.forms[0]);BlockAllClickCheck();',250)" languageCode = "19">
+&nbsp;
+<input class="apply_bt" type="SUBMIT" name="Apply" value = "Apply" onClick="return checkData()" languageCode = "18">
+</td></tr></table>
+</div>
+<div id="main" class="main_top_button">
+<table border="0" cellpadding="0" cellspacing="3" width="100%"><tr><td colspan="2"><b><a href="javascript:loadhelp('FW_schedule','days')" tabindex="-1" languageCode = "245">Days to Block</a></b>:</td>
+	</tr><tr><td colspan="2"><input type="checkbox" name="checkboxNameAll" value="checkboxNameAll" onClick="BlockAllClickCheck();"><span languageCode = "246">Every Day</span></td>
+	</tr><tr><td colspan="2"><input type="checkbox" name="checkboxNameSun" value="checkboxNameSun" onClick="if(checkboxNameSunDisabled) this.checked = true"><span languageCode = "176">Sunday</span></td>
+	</tr><tr><td colspan="2"><input type="checkbox" name="checkboxNameMon" value="checkboxNameMon" onClick="if(checkboxNameMonDisabled) this.checked = true"><span languageCode = "177">Monday</span></td>
+	</tr><tr><td colspan="2"><input type="checkbox" name="checkboxNameTue" value="checkboxNameTue" onClick="if(checkboxNameTueDisabled) this.checked = true"><span languageCode = "178">Tuesday</span></td>
+	</tr><tr><td colspan="2"><input type="checkbox" name="checkboxNameWed" value="checkboxNameWed" onClick="if(checkboxNameWedDisabled) this.checked = true"><span languageCode = "179">Wednesday</span></td>
+	</tr><tr><td colspan="2"><input type="checkbox" name="checkboxNameThu" value="checkboxNameThu" onClick="if(checkboxNameThuDisabled) this.checked = true"><span languageCode = "180">Thursday</span></td>
+	</tr><tr><td colspan="2"><input type="checkbox" name="checkboxNameFri" value="checkboxNameFri" onClick="if(checkboxNameFriDisabled) this.checked = true"><span languageCode = "181">Friday</span></td>
+	</tr><tr><td colspan="2"><input type="checkbox" name="checkboxNameSat" value="checkboxNameSat" onClick="if(checkboxNameSatDisabled) this.checked = true"><span languageCode = "182">Saturday</span></td>
+	</tr><tr><!-- RULE --><td colspan="2" background="liteblue.gif" height="12"></td>
+	</tr><tr><td colspan="2"><b><a href="javascript:loadhelp('FW_schedule','tod')" tabindex="-1" languageCode = "247">Time of day to block:</a></b> <span languageCode = "248">(use 24-hour clock)</span></td>
+	</tr><tr><td colspan="2"><input type="checkbox" name="checkboxNamehours" value="checkboxValue" onClick="BlockPeriodClick(this.form);"><span languageCode = "249">All Day</span></td>
+	</tr><tr><td width="50%"><span languageCode = "697">Start Blocking</span></td>
+		<td width="50%" nowrap><input type="text" name="starthour" class="num" size="3" maxlength="2" value="@starthour#" onFocus="if(TimePeriodDisabled) this.blur()"><span languageCode = "251">Hour</span> <input type="text" name="startminute" class="num" size="3" maxlength="2" value="@startminute#" onFocus="if(TimePeriodDisabled) this.blur()"><span languageCode = "252">Minute</span></td>
+	</tr><tr><td width="50%"><span languageCode = "698">End Blocking</span></td>
+		<td nowrap><input type="text" name="endhour" class="num" size="3" maxlength="2" value="@endhour#" onFocus="if(TimePeriodDisabled) this.blur()"><span languageCode = "251">Hour</span> <input type="text" name="endminute" class="num" size="3" maxlength="2" value="@endminute#" onFocus="if(TimePeriodDisabled) this.blur()"><span languageCode = "252">Minute</span></td>
+	</tr><tr><!-- RULE --><td colspan="2" background="liteblue.gif" height="12"></td>
+	</tr><tr><td colspan="2"><a href="javascript:loadhelp('FW_schedule','timezone')" tabindex="-1"><b languageCode = "254">Time Zone</b></a></td>
+	</tr><tr><td colspan="2">
+<select name="time_zone" size="1">
+<option value="-12" languageCode = "255">(GMT-12:00) Eniwetok,Kwajalein</option>
+<option value="-11" languageCode = "256">(GMT-11:00) Midway Island, Samoa</option>
+<option value="-10" languageCode = "257">(GMT-10:00) Hawaii</option>
+<option value="-9" languageCode = "258">(GMT-09:00) Alaska</option>
+<option value="-8" languageCode = "259">(GMT-08:00) Pacific Time (US &amp;Canada); Tijuana</option>
+<option value="-7a" languageCode = "260">(GMT-07:00) Arizona, Chihuahua, La Paz, Mazatlan</option>
+<option value="-7b" languageCode = "261">(GMT-07:00) Mountain Time (US &amp;Canada)</option>
+<option value="-6a" languageCode = "262">(GMT-06:00) Central America, Central Time (US &amp;Canada)</option>
+<option value="-6b" languageCode = "263">(GMT-06:00) Guadalajara, Mexico City, Monterrey, Saskatchewan</option>
+<option value="-5a" languageCode = "264">(GMT-05:00) Bogota, Lima, Quito, Eastern Time (US &amp;Canada)</option>
+<option value="-5c" languageCode = "265">(GMT-05:00) Indiana (East)</option>
+<option value="-4a" languageCode = "266">(GMT-04:00) Atlantic Time (Canada), Caracas, La Paz, Santiago</option>
+<option value="-3:30" languageCode = "832">(GMT-03:30) Newfoundland</option>
+<option value="-3b" languageCode = "267">(GMT-03:00) Brasilia, Buenos Aires, Georgetown, Greenland</option>
+<option value="-2" languageCode = "268">(GMT-02:00) Mid-Atlantic</option>
+<option value="-1" languageCode = "269">(GMT-01:00) Azores, Cape Verde Is.</option>
+<option value="GMTa" languageCode = "270">(GMT) Casablanca, Monrovia</option>
+<option value="GMTb" languageCode = "271">(GMT) Greenwich Mean Time: Dublin, Edinburgh, Lisbon, London</option>
+<option value="+1a" languageCode = "272">(GMT+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna</option>
+<option value="+1b" languageCode = "273">(GMT+01:00) Belgrade, Bratislava, Budapest, Ljubljana, Prague</option>
+<option value="+1c" languageCode = "274">(GMT+01:00) Brussels, Copenhagen, Madrid, Paris</option>
+<option value="+1d" languageCode = "275">(GMT+01:00) Sarajevo, Skopje, Warsaw, Zagreb, West Central Africa</option>
+<option value="+2a" languageCode = "276">(GMT+02:00) Athens, Beirut, Istanbul, Minsk</option>
+<option value="+2b" languageCode = "277">(GMT+02:00) Bucharest, Cairo, Harare, Pretoria</option>
+<option value="+2e" languageCode = "278">(GMT+02:00) Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius, Jerusalem</option>
+<option value="+3a" languageCode = "279">(GMT+03:00) Baghdad, Kuwait, Nairobi, Riyadh</option>
+<option value="+3b" languageCode = "280">(GMT+03:00) Moscow, St. Petersburg, Volgograd, Tehran</option>
+<option value="+4b" languageCode = "281">(GMT+04:00) Abu Dhabi, Muscat, Baku, Tbilisi, Yerevan, Kabul</option>
+<option value="+5a" languageCode = "282">(GMT+05:00) Ekaterinburg, Islamabad, Karachi, Tashkent</option>
+<option value="+5:30b" languageCode = "283">(GMT+05:30) Chennai, Kolkata, Mumbai, New Delhi</option>
+<option value="+6b" languageCode = "284">(GMT+06:00) Almaty, Novosibirsk, Astana, Dhaka, Sri Jayawardenepura, Rangoon</option>
+<option value="+7" languageCode = "285">(GMT+07:00) Bangkok, Jakarta, Hanoi, Krasnoyarsk</option>
+<option value="+8a" languageCode = "286">(GMT+08:00) Beijing, Chongqing, Hong Kong, Urumqi</option>
+<option value="+8b" languageCode = "287">(GMT+08:00) Irkutsk, Ulaan Bataar, Kuala Lumpur, Singapore, Perth, Taipei</option>
+<option value="+9a" languageCode = "288">(GMT+09:00) Tokyo, Osaka, Sapporo, Seoul, Yakutsk, Adelaide, Darwin</option>
+<option value="+10b" languageCode = "289">(GMT+10:00) Brisbane, Canberra, Melbourne, Sydney</option>
+<option value="+10c" languageCode = "290">(GMT+10:00) Guam, Port Moresby, Hobart, Vladivostok</option>
+<option value="+11a" languageCode = "291">(GMT+11:00) Magadan, Solomon Is., New Caledonia</option>
+<option value="+12b" languageCode = "292">(GMT+12:00) Fiji, Kamchatka, Auckland, Wellington, Marshall Is.</option>
+<option value="+13" languageCode = "293">(GMT+13:00) Nukualofa</option>
+</select>
+	</td>
+	</tr><tr><td colspan="2"><input type="checkbox" name="adjust" value="adjust"><span languageCode = "294">Automatically adjust for daylight savings time</span></td>
+	</tr><!--
+	<tr>
+		<td nowrap><input type="checkbox" name="use_ntpserver"
+			value="use_ntpserver" tabindex="17"><span>Use
+		this NTP Server</span></td>
+		<td nowrap align="right" class="num"><input
+			type="text" class="num" size="4" maxlength="3" name="ts2_ip1"
+			value="" tabindex="18">.<input type="text" class="num"
+			size="4" maxlength="3" name="ts2_ip2" value="" tabindex="19">.<input
+			type="text" class="num" size="4" maxlength="3" name="ts2_ip3"
+			value="" tabindex="20">.<input type="text" class="num"
+			size="4" maxlength="3" name="ts2_ip4" value="" tabindex="21"></td>
+	</tr>
+--><tr><td colspan="2" align="center"><br><b><span languageCode = "196">Current Time</span>: <span id="timer"></span></b> <br></td>
+	</tr><tr><!-- RULE --><td colspan="2" background="liteblue.gif" height="12"></td>
+	</tr><tr><td colspan="2" align="center"></td>
+	</tr></table><!-- ServerStart
+<input type="hidden" name="h_applyrulesch" value="@h_applyrulesch#">
+--><input type="hidden" name="h_checkboxNameAll" value="@h_checkboxNameAll#"><input type="hidden" name="h_checkboxNameSun" value="@h_checkboxNameSun#"><input type="hidden" name="h_checkboxNameMon" value="@h_checkboxNameMon#"><input type="hidden" name="h_checkboxNameTue" value="@h_checkboxNameTue#"><input type="hidden" name="h_checkboxNameWed" value="@h_checkboxNameWed#"><input type="hidden" name="h_checkboxNameThu" value="@h_checkboxNameThu#"><input type="hidden" name="h_checkboxNameFri" value="@h_checkboxNameFri#"><input type="hidden" name="h_checkboxNameSat" value="@h_checkboxNameSat#"><input type="hidden" name="h_checkboxNamehours" value="@h_checkboxNamehours#"><input type="hidden" name="h_time_zone" value="@h_time_zone#"><input type="hidden" name="h_adjust" value="@h_adjust#"><!--
+	<input type="hidden" name="h_use_ntpserver" value="@h_use_ntpserver#">
+	<input type="hidden" name="c4_ts2_ip" value="@c4_ts2_ip#">
+	--><input type="hidden" name="todo" value="save"><input type="hidden" name="this_file" value="FW_schedule.htm"><input type="hidden" name="next_file" value="FW_schedule.htm"><input type="hidden" name="SID" value="@SID#">
+</div>	
+</form>
+<p></p>
+<div id="help" style="display: none">
+		<iframe name="help_iframe" id="helpframe" src="FW_schedule_h.htm" allowtransparency="true" width="100%" frameborder="0">
+		</iframe>
+</div>
+<div id="help_switch" class="close_help">
+	 <img class="help_switch_img" src="image/help/help-bar.gif"><script>
+var help_flag=0;
+if(isIE()){
+	show_hidden_help_top_button(1);
+	var frame_div = top.document.getElementById("formframe_div");
+	frame_div.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+if(get_browser() == "Opera"){
+	window.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+</script><div id="help_space" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_center"><span languageCode="3016">Help Center</span></div>
+<div id="help_button" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_show_hidden"><a href="javascript:void(0)" onClick="show_hidden_help_top_button(help_flag); help_flag++;"><span languageCode="3017">Show/Hide Help Center</span></a></div>
+</div>
+<script language="javascript" type="text/javascript" src="langs.js"></script></body></html>

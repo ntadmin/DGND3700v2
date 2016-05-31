@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-Control" content="no-cache"><meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT"><meta name="description" content="@model_name#_multilangual"><title>NETGEAR Router @model_name#</title><script language="javascript" type="text/javascript" src="string.js"></script><link rel="stylesheet" href="style/form.css"><script language="javascript" type="text/javascript" src="funcs.js"></script><!-- link rel="stylesheet" href="form.css" --><script language="javascript" type="text/javascript" src="utility.js"></script><script language="javascript" type="text/javascript" src="linux.js"></script><script language="javascript" type="text/javascript">
+<!--
+function init()
+{
+	var cf = document.forms[0];
+	dataToVisible(cf);
+	cf.remove_type[0].checked=true;
+	cf.elements[0].focus();	
+	select_type();
+}
+function checkData()
+{
+	var cf = document.forms[0];
+	dataToHidden(cf);
+//	setTimeout("self.close()",100);
+	return true;	
+}
+function select_type()
+{
+	var i;
+	var cf = document.forms[0];
+	var size = cf.shareFolderSelect.length;
+	if(isNaN(size))
+		size=1;
+	if(cf.remove_type[0].checked){
+		if(size==1)
+			cf.shareFolderSelect.disabled=true;
+		else{
+			for(i=0;i<size;i++)
+				cf.shareFolderSelect[i].disabled=true;
+		}
+			
+	}else{
+		if(size==1)
+			cf.shareFolderSelect.disabled=false;
+		else{
+			for(i=0;i<size;i++)
+				cf.shareFolderSelect[i].disabled=false;
+		}
+	}
+	return true;
+}
+function remove_cancel()
+{
+	setTimeout("self.close()",100);
+	return true;
+}
+function end()
+{
+	opener.location.href = "@usb_opener_htm#";
+}
+//-->
+</script>
+</head>
+<body bgcolor="#ffffff" onLoad="init();disableForms(@disable_form#);" onUnLoad="end();">
+<form name="remove_usb_dev" method="post" action="setup.cgi@post_par2#">
+<div class="page_title" languageCode = "401">Safely Remove USB Device</div>
+<div class="fix_button">
+<table width="100%" border="0" cellpadding="0" cellspacing="2"><tr><td nowrap colspan="2" align="center">
+<input class="cancel_bt" type="button" name="Cancel" value = "Cancel" onClick="return remove_cancel();" languageCode = "19">
+&nbsp;
+<input class="apply_bt" type="submit" name="Apply" value = "Apply" onClick="return checkData();" languageCode = "18">
+</td></tr></table>
+</div>
+<div id="main" class="main_top_button">
+<table border="0" cellpadding="0" cellspacing="3" width="100%">
+ <tr><td nowrap><b languageCode = "477">Do you want to unmount all devices?</b>
+ <tr><td nowrap><input type="radio" name="remove_type" value="all" onClick="select_type()">
+     	&nbsp;  <b languageCode = "28">Yes</b>
+ </td></tr>
+ <tr><td nowrap><input type="radio" name="remove_type" value="one" onClick="select_type()">
+        &nbsp;  <b languageCode = "29">No</b>
+ </td></tr>
+ <tr>
+ 	 <td>
+        <table border="1" cellpadding="0" cellspacing="0" width="20%">
+        <tr>
+                <td class="hd" align="center">&nbsp;</td>
+                <td class="hd" align="center" languageCode = "124">Folder Name</td>
+        </tr>
+        @remove_usb_device_list#
+        </table>
+	 </td>
+ </tr>
+</tr>
+
+<table border="0" cellpadding="0" cellspacing="3" width="100%"><tr>
+<td background="liteblue.gif" height="12">&nbsp;</td></tr></table>
+<!--<input type="hidden" name="h_ruleSelect" value="">-->
+<input type="hidden" name="h_shareFolderSelect" value="@h_shareFolderSelect#">
+<input type="hidden" name="todo" value="usbremove">
+<input type="hidden" name="this_file" value="remove_usb_dev.htm">
+<input type="hidden" name="next_file" value="close_usb_dev.htm">
+</div>
+</form>
+<script language="javascript" type="text/javascript" src="langs.js"></script>
+</body>
+</html>

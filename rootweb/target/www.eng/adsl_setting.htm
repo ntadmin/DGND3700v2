@@ -1,0 +1,297 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-Control" content="no-cache"><meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT"><meta name="description" content="@model_name#_multilangual"><title>NETGEAR Router @model_name#</title><script language="javascript" type="text/javascript" src="string.js"></script><link rel="stylesheet" href="style/form.css"><script language="javascript" type="text/javascript" src="funcs.js"></script><!-- link rel="stylesheet" href="form.css" --><style type="text/javascript">
+	classes.num.all.fontFamily = "Courier";
+	classes.num.all.fontSize = "10pt" ;
+</style><script language="javascript" type="text/javascript" src="utility.js"></script><script language="javascript" type="text/javascript" src="linux.js"></script><script language="javascript" type="text/javascript">
+<!-- hide script from old browsers
+function loadcheck()
+{
+	var wan_num = 1;//parent.basictop.document.forms[0].wan_num.value;
+	
+	if(wan_num > 8)	document.getElementById("multiplexing").style.display="none";
+}
+function checkpvc()
+{
+	var cf = document.forms[0];
+	var pvc_list = "@all_pvc_list#";
+	var r = /PVC:\s*/g;
+	var c;
+	var wan_num = cf.wan_num.value;
+	var vpi = cf.dsl_vpi.value;
+	var vci = cf.dsl_vci.value;
+	if(wan_num>8)
+		return false;
+	c = new RegExp("[^"+wan_num+"]="+vpi+"/"+vci);
+	pvc_list = pvc_list.replace(r,"");
+	return c.test(pvc_list);
+}
+function checkData()
+{
+	var msg = "";
+	var cf = document.forms[0];
+	if(isNumeric(cf.dsl_vpi, 255))
+		msg += getErrorMsgByVar("gsm_msg_vpi_invalid") + "\n";
+	
+	if(checkInt(cf.dsl_vpi, "", 0, 255, true).length > 0)
+		msg += getErrorMsgByVar("gsm_msg_vpi_out_of_range") + "\n";
+	
+	if(isNumeric(cf.dsl_vci, 65535))
+		msg += getErrorMsgByVar("gsm_msg_vci_invalid") + "\n";
+	
+	if(checkInt(cf.dsl_vci, "", 32, 65535, true).length > 0)
+		msg += getErrorMsgByVar("gsm_msg_vci_out_of_range") + "\n";
+//	if(checkpvc())
+//		msg+= "PVC !!!\n";
+	if(msg.length){
+		alert(msg);
+		return false;
+	}
+	dataToHidden(cf);
+	return true;
+}
+function getwannumfromparent()
+{
+	var cf = document.forms[0];
+	cf.h_wan_num.value = parent.basictop.wannum_for_etherpppox;
+	cf.wan_num.value = parent.basictop.wannum_for_etherpppox;
+	return 0;
+}
+//-->
+</script>
+</head>
+<body bgcolor="#ffffff" onLoad="dataToVisible(document.forms[0]);loadcheck();">
+<form name="formname" method="POST" action="setup.cgi@post_par#">
+<div class="page_title" languageCode = "341">ADSL Settings</div>
+<div class="fix_button">
+<table width="100%" border="0" cellpadding="0" cellspacing="2"><tr><td nowrap colspan="2" align="center">
+<input class="cancel_bt" type="RESET" name="Cancel" value = "Cancel" onClick="setTimeout('dataToVisible(document.forms[0])',250)" languageCode = "19">
+&nbsp;
+<input class="apply_bt" type="SUBMIT" name="apply" value = "Apply" onClick="return checkData()" languageCode = "18">
+</td></tr></table>
+</div>
+<div id="main" class="main_top_button">
+<table border="0" cellpadding="0" cellspacing="3" width="100%">
+<tbody id="multiplexing">
+<tr>
+ <td nowrap width="50%" languageCode = "731">Multiplexing Method</TD>
+ <td width="50%" align="right">
+ <SELECT name="dsl_multiplex" size="1">
+ <option value="llc" languageCode = "732">LLC-BASED</option>
+ <option value="vc" languageCode = "733">VC-BASED</option>
+ </SELECT></TD>
+</TR>
+<TR>
+  <td nowrap width="50%">VPI</td>
+  <td nowrap width="50%" align="right"><input type="text" class="num" name="dsl_vpi" value="@dsl_vpi#" size="3" maxlength="3"></td>
+</tr>
+<TR>
+  <td nowrap width="50%">VCI</td>
+  <td nowrap width="50%" align="right"><input type="text" name="dsl_vci" class="num" value="@dsl_vci#" size="5" maxlength="5"></td>
+</tr>
+<tr>
+ <td nowrap width="50%">DSL <span languageCode = "353">Mode</span></TD>
+ <td width="50%" align="right">
+ <SELECT name="dslmode" size="1">
+ <option value="auto" languageCode = "736">Auto</option>
+ <option value="adsl">ADSL</option>
+ <option value="adsl2">ADSL2</option>
+ <option value="adsl2+">ADSL2+</option>
+ </SELECT></TD>
+</TR>
+<tr>
+ <td nowrap width="50%">Target SNR Margin</span></td>
+ <td width="50%" align="right"><select name="dsl_snr" size="1">
+                <option value=200>+100% (+6dB ++Stability)</option>
+                <option value=190>+90%</option>
+                <option value=180>+80%</option>
+                <option value=170>+70%</option>
+                <option value=160>+60%</option>
+                <option value=150>+50% (+3dB +Stability)</option>
+                <option value=140>+40%</option>
+                <option value=130>+30%</option>
+                <option value=120>+20%</option>
+                <option value=110>+10%</option>
+                <option value=100 selected>0% (Default)</option>
+                <option value=90>+10%</option>
+                <option value=80>-20%</option>
+                <option value=70>-30%</option>
+                <option value=60>-40%</option>
+                <option value=50>-50% (-3dB Speed+)</option>
+                <option value=40>-60%</option>
+                <option value=30>-70%</option>
+                <option value=20>-80%</option>
+                <option value=10>-90%</option>
+                <option value=1>-100% (-6dB Speed++)</option>
+                <option value=65526>-110%</option>
+                <option value=65516>-120%</option>
+                <option value=65506>-130%</option>
+                <option value=65496>-140%</option>
+                <option value=65486>-150% (-9dB Speed+++)</option>
+                <option value=65476>-160%</option>
+                <option value=65466>-170%</option>
+                <option value=65456>-180%</option>
+                <option value=65446>-190%</option>
+                <option value=65436>-200% (-12dB Speed++++)</option>
+                </select>
+        </td>
+</tr>
+<tr>  <!-- RULE -->
+  <td colspan="2" background="liteblue.gif" height="12">&nbsp; </td>
+</tr>
+<tr><td width="50%">Phone Line Pair</td><td width="50%" align="right">
+                <select name="dsl_lpair">
+                <option value=i selected>Inner (Default)</option>
+                <option value=o>Outer</option>
+                </select>
+</td></tr>
+
+<tr><td width="50%">Bitswap</td><td width="50%" align="right">
+                <select name="dsl_bitswap">
+                <option value=off>Off</option>
+                <option value=on selected>On (Default)</option>
+                </select>
+</td></tr>
+
+<tr><td width="50%">Sra</td><td width="50%" align="right">
+                <select name="dsl_sra">
+                <option value=off selected>Off (Default)</option>
+                <option value=on>On</option>
+                </select>
+</td></tr>
+
+<tr><td width="50%">Trellis</td><td width="50%" align="right">
+                <select name="dsl_trellis">
+                <option value=off>Off</option>
+                <option value=on selected>On (Default)</option>
+                </select>
+</td></tr>
+<tr><td width="50%">Sesdrop</td><td width="50%" align="right">
+                <select name="dsl_sesdrop">
+                <option value=off selected>Off (Default)</option>
+                <option value=on>On</option>
+                </select>
+</td></tr>
+
+<tr><td width="50%">CoMinMgn</td><td width="50%" align="right">
+                <select name="dsl_CoMinMgn">
+                <option value=off selected>Off (Default)</option>
+                <option value=on>On</option>
+                </select>
+</td></tr>
+
+<tr><td width="50%">i24k</td><td width="50%" align="right">
+                <select name="dsl_i24k">
+                <option value=off>Off</option>
+                <option value=on selected>On (Default)</option>
+                </select>
+</td></tr>
+
+<tr><td width="50%">phyReXmt</td><td width="50%" align="right">
+                <select name="dsl_phyReXmt">
+                <option value=0>Up Off/Down Off</option>
+                <option value=1 selected>Up Off/Down On(Default)</option>
+                <option value=2>Up On/Down Off</option>
+                <option value=3>Up On/Down On</option>
+                </select>
+</td></tr>
+
+<tr><td width="50%">monitorTone</td><td width="50%" align="right">
+                <select name="dsl_monitorTone">
+                <option value=off>Off</option>
+                <option value=on selected>On (Default)</option>
+                </select>
+</td></tr>
+
+<tr><td width="50%">Dynamic D</td><td width="50%" align="right">
+                <select name="dsl_dynamicD">
+                <option value=off>Off</option>
+                <option value=on selected>On (Default)</option>
+                </select>
+</td></tr>
+
+<tr><td width="50%">Dynamic F</td><td width="50%" align="right">
+                <select name="dsl_dynamicF">
+                <option value=off selected>Off (Default)</option>
+                <option value=on>On</option>
+                </select>
+</td></tr>
+
+<tr><td width="50%">SOS</td><td width="50%" align="right">
+                <select name="dsl_SOS">
+                <option value=off>Off</option>
+                <option value=on selected>On (Default)</option>
+                </select>
+</td></tr>
+<tr>  <!-- RULE -->
+  <td colspan="2" background="liteblue.gif" height="12">&nbsp; </td>
+</tr>
+<tr><td width="50%">Restart ADSL</td><td width="50%" align="right">
+                <select name="dsl_restart_now">
+                <option value=0 selected>No (change for future only)</option>
+                <option value=1>Yes (who cares if the kids are on minecraft)</option>
+                </select>
+</td></tr>
+
+<tr>  <!-- RULE -->
+  <td colspan="2" background="liteblue.gif" height="12">&nbsp; </td>
+</tr>
+<tr>
+        <td nowrap colspan=2 align=center>
+        <input class="middle_common_bt" type="button" name="Show Statistics" value="Show Statistics" onClick="window.open('RST_statistics.htm', 'show_statistic', 'width=961,height=400,top=200,left=200,status=yes');" languageCode = "354">
+        <input id="conn_status" class="common_bt" type="button" name="Connection Status" value="Connection Status" onClick="click_status()" languageCode = "427">
+        </td>
+</tr>
+
+</tbody>
+<tr>
+<td colspan="2" align="center"></td>
+</tr>
+</table>
+<input type="hidden" name="h_wan_num" value="">
+<input type="hidden" name="wan_num" value="">
+<input type="hidden" name="h_dsl_multiplex" value="@h_dsl_multiplex#">
+<input type="hidden" name="h_dslmode" value="@h_dslmode#">
+<input type="hidden" name="h_dsl_snr" value="@h_dsl_snr#">
+<input type="hidden" name="h_dsl_lpair" value="@h_dsl_lpair#">
+<input type="hidden" name="h_dsl_bitswap" value="@h_dsl_bitswap#">
+<input type="hidden" name="h_dsl_sra" value="@h_dsl_sra#">
+<input type="hidden" name="h_dsl_sesdrop" value="@h_dsl_sesdrop#">
+<input type="hidden" name="h_dsl_CoMinMgn" value="@h_dsl_CoMinMgn#">
+<input type="hidden" name="h_dsl_i24k" value="@h_dsl_i24k#">
+<input type="hidden" name="h_dsl_phyReXmt" value="@h_dsl_phyReXmt#">
+<input type="hidden" name="h_dsl_monitorTone" value="@h_dsl_monitorTone#">
+<input type="hidden" name="h_dsl_dynamicD" value="@h_dsl_dynamicD#">
+<input type="hidden" name="h_dsl_dynamicF" value="@h_dsl_dynamicF#">
+<input type="hidden" name="h_dsl_SOS" value="@h_dsl_SOS#">
+<input type="hidden" name="todo" value="save">
+<input type="hidden" name="this_file" value="adsl_setting.htm">
+<input type="hidden" name="next_file" value="adsl_setting.htm">
+<input type="hidden" name="SID" value="@SID#">
+</div>
+</form>
+<p></p>
+<div id="help" style="display: none">
+		<iframe name="help_iframe" id="helpframe" src="BAS_dsl_h.htm" allowtransparency="true" width="100%" frameborder="0">
+		</iframe>
+</div>
+<div id="help_switch" class="close_help">
+	 <img class="help_switch_img" src="image/help/help-bar.gif"><script>
+var help_flag=0;
+if(isIE()){
+	show_hidden_help_top_button(1);
+	var frame_div = top.document.getElementById("formframe_div");
+	frame_div.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+if(get_browser() == "Opera"){
+	window.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+</script><div id="help_space" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_center"><span languageCode="3016">Help Center</span></div>
+<div id="help_button" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_show_hidden"><a href="javascript:void(0)" onClick="show_hidden_help_top_button(help_flag); help_flag++;"><span languageCode="3017">Show/Hide Help Center</span></a></div>
+</div>
+<script language="javascript" type="text/javascript" src="langs.js"></script></body></html>

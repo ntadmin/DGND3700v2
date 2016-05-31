@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-Control" content="no-cache"><meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT"><meta name="description" content="@model_name#_multilangual"><title>NETGEAR Router @model_name#</title><script language="javascript" type="text/javascript" src="string.js"></script><link rel="stylesheet" href="style/form.css"><script language="javascript" type="text/javascript" src="funcs.js"></script><!-- link rel="stylesheet" href="form.css" --><style type="text/javascript">
+	classes.num.all.fontFamily = "Courier";
+	classes.num.all.fontSize = "10pt" ;
+</style><script language="javascript" type="text/javascript" src="utility.js"></script><script language="javascript" type="text/javascript" src="linux.js"></script><script language="javascript" type="text/javascript">
+
+<!--
+function checkData()
+{
+
+    var cf = document.forms[0];
+
+	if (cf.h_wl0_type.value==1 || cf.h_wl0_type.value==5)
+	return false;
+	dataToHidden(cf);
+	return true;
+}
+function init()
+{
+	 var cf = document.forms[0];
+
+    if (cf.h_router_pin.value=="disable"){
+        document.all("wPIN1").style.color = "black";
+        document.all("wPIN2").style.color = "black";
+	cf.router_pin.disabled=1;
+    }else{
+        document.all("wPIN1").style.color = "gray";
+        document.all("wPIN2").style.color = "gray";
+    }
+
+     if (cf.h_wl0_type.value==1 || cf.h_wl0_type.value==5 || cf.h_wl0_on.value==0)
+	{
+	  document.all("wPIN1").style.color = "gray";
+          document.all("wPIN2").style.color = "gray";
+	  cf.router_pin.disabled=1;
+	  cf.keep_wifi.disabled=1;
+	}
+}
+
+
+//-->
+</script></head><body bgcolor="#ffffff" onLoad="dataToVisible(document.forms[0]);init();">
+<form method="POST" action="setup.cgi@post_par#" onSubmit="buttonToDisabled(document.forms[0])">
+<div class="page_title" languageCode="7">Advanced WPS Settings</div>
+<div class="fix_button">
+<table width="100%" border="0" cellpadding="0" cellspacing="2"><tr><td nowrap colspan="2" align="center">
+<input class="cancel_bt" type="button" name="cancel" value="Cancel" onClick="location.href='setup.cgi?next_file=adv_wps.htm'; buttonToDisabled(document.forms[0])" languageCode="19">
+&nbsp;
+<input class="apply_bt" type="SUBMIT" name="save" value="Apply" onClick="return checkData();" languageCode="18">
+</td></tr></table>
+</div>
+<div id="main" class="main_top_button">
+<table border="0" cellpadding="0" cellspacing="3" width="100%"><tr><td colspan="3"><input type="radio" name="adv_wlan_type" value="wps" checked onClick="this.form.submit();"><b>WPS
+		(<span languageCode="29">Push 'N' Connect</span>)</b></td>
+	</tr><tr><td colspan="3"><input type="radio" name="adv_wlan_type" value="wds" onClick="location.href='wds.htm'"><b>WDS</b></td>
+	</tr><tr><td colspan="2" background="liteblue.gif" height="12"></td>
+	</tr><tr><td colspan="2"><b>WLAN 1</b></td>
+	</tr><tr><td width="50%" languageCode="8">Name (SSID)</td>
+		<td width="50%">@ssid#</td>
+	</tr><tr><td width="50%" languageCode="9">Region</td>
+		<td width="50%">@h_WRegion#</td>
+	</tr><tr><td width="50%" languageCode="10">Channel</td>
+		<td width="50%">@h_w_channel#</td>
+	</tr><tr><td width="50%" languageCode="11">Wireless AP</td>
+		<td width="50%">@h_enable_ap#</td>
+	</tr><tr><td width="50%" languageCode="12">Broadcast Name</td>
+		<td width="50%">@h_ssid_bc#</td>
+	</tr><tr><td width="50%" languageCode="13">Security</td>
+		<td width="50%">@h_security_wsc#</td>
+	</tr><tr><td colspan="2" background="liteblue.gif" height="12"></td>
+	</tr><!--WPS--><td nowrap><a href="javascript:loadhelp('_wire','access')" tabindex="-1"><b languageCode="14">WPS Settings</b></a></td>
+	<tr><td width="60%">
+		<div id="wPIN1" languageCode="15">Router's PIN</div>
+		:</td>
+		<td width="40%">
+		<div id="wPIN2"><b><font size="4">@routerPIN#</font></b></div>
+		</td>
+	</tr><tr><td nowrap colspan="2"><input type="checkbox" name="router_pin" value="router_pin"><span languageCode="16">Disable
+		Router's PIN</span></td>
+	</tr><tr><td nowrap colspan="2"><input type="checkbox" name="keep_wifi" value="keep_wifi"><span languageCode="17">Keep
+		Existing Wireless Settings</span></td>
+	</tr><!--WPS--><tr><td colspan="2" background="liteblue.gif" height="12"></td>
+	</tr><tr><td colspan="2" align="center"></td>
+	</tr></table><!-- ServerStart --><input type="hidden" name="h_router_pin" value="@h_router_pin#"><input type="hidden" name="h_keep_wifi" value="@h_keep_wifi#"><input type="hidden" name="h_wl0_type" value="@h_wl0_type#"><input type="hidden" name="h_wl0_on" value="@h_wl0_on#"><!-- ServerEnd --><input type="hidden" name="todo" value="save"><input type="hidden" name="this_file" value="adv_wps.htm"><input type="hidden" name="next_file" value="adv_wps.htm"><input type="hidden" name="SID" value="@SID#">
+</div>	
+</form>
+<p></p>
+<div id="help" style="display: none">
+		<iframe name="help_iframe" id="helpframe" src="adv_wps_h.htm" allowtransparency="true" width="100%" frameborder="0">
+		</iframe>
+</div>
+<div id="help_switch" class="close_help">
+	 <img class="help_switch_img" src="image/help/help-bar.gif"><script>
+var help_flag=0;
+if(isIE()){
+	show_hidden_help_top_button(1);
+	var frame_div = top.document.getElementById("formframe_div");
+	frame_div.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+if(get_browser() == "Opera"){
+	window.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+</script><div id="help_space" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_center"><span languageCode="3016">Help Center</span></div>
+<div id="help_button" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_show_hidden"><a href="javascript:void(0)" onClick="show_hidden_help_top_button(help_flag); help_flag++;"><span languageCode="3017">Show/Hide Help Center</span></a></div>
+</div>
+<script language="javascript" type="text/javascript" src="langs.js"></script></body></html>

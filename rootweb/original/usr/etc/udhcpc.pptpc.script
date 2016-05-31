@@ -1,0 +1,63 @@
+#!/bin/sh
+
+# udhcpc script edited by Tim Riker <Tim@Rikers.org>
+
+[ -z "$1" ] && echo "Error: should be called from udhcpc" && exit 1
+
+RESOLV_CONF="/etc/resolv.conf"
+GATEWAY=""
+[ -n "$broadcast" ] && BROADCAST="broadcast $broadcast"
+[ -n "$subnet" ] && NETMASK="netmask $subnet"
+
+case "$1" in
+	deconfig)
+		/sbin/ifconfig $interface 0.0.0.0
+		/bin/rm -f /tmp/wan_uptime
+		/bin/rm /tmp/wan_ipaddr
+		/bin/echo > /etc/resolv.conf
+		/bin/rm -f  /etc/ppp/pptp.dns
+		/bin/rc pptpc stop
+		;;
+
+	renew|bound)
+                # 1. Set WAN DHCP IP and DNS
+		/sbin/ifconfig $interface $ip $BROADCAST $NETMASK
+
+		/bin/rm -f $RESOLV_CONF && /bin/touch $RESOLV_CONF
+		[ -n "$domain" ] && echo search $domain >> $RESOLV_CONF
+		for i in $dns ; do
+			echo adding dns $i > /dev/console
+			echo nameserver $i >> $RESOLV_CONF
+		done
+                # 2. Change LAN IP and restart LAN service if conflict
+                # NOTE: Change LAN IP must before set default gw because 
+                # if conflict, gw will be deleted after LAN IP change.
+		/usr/sbin/rc ip_assign_chk start
+
+		if [ -n "$router" ] ; then
+			echo "deleting routers"
+			while route del default gw 0.0.0.0 dev $interface ; do
+				:
+			done
+
+			for i in $router ; do
+				#route add default gw $i dev $interface
+				if [ "$GATEWAY" = "" ]; then
+					GATEWAY=$i
+					echo $GATEWAY > "/tmp/gateway"
+				fi
+			done
+		fi
+	
+                # Add GW for DNS IPs
+		for i in $dns ; do
+			route add $i gw $GATEWAY
+		done
+
+		# start pptpc (rc pptpc restart)
+		/bin/cp /etc/resolv.conf /etc/ppp/pptp.dns
+		/bin/rc pptpc start
+		;;
+esac
+
+exit 0

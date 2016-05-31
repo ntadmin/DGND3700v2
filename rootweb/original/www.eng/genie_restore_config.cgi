@@ -1,0 +1,1 @@
+/etc/restore_config.cgi

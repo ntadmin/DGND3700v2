@@ -1,0 +1,106 @@
+html, body{ margin: 0; border:none; background-color:transparent; font-family:Arial, Helvetica, sans-serif; font-size:10pt; font-style:normal; font-weight:normal; background-color: #ffffff; }
+
+/*bug 22044*/
+#page_container{ width:980px; margin:0 auto; background:#EEEEEE; overflow:visible; }
+
+#header{ height:97px; width:100%; background:url(../image/top-oneline.gif); overflow:hidden; }
+
+.header_frame{ margin:0 auto 0 30px; padding:0; overflow:hidden }
+
+
+/*bug 22044*/
+.wizard_body_container { height:500px; width:960px; margin:5px auto 0 auto; background:#FFFFFF; }
+
+/*bug 23316 Add the hidden firmware upgrade page in new gui style*/
+.checkfirmware_page_container{ width:750px; margin:0 auto; background:#EEEEEE; overflow:visible; }
+.checkfirmware_body_container { height:410px; width:625px; margin:5px auto 0 auto; background:#FFFFFF; }
+
+/*bug 22044*/
+.wizard_content_div{ height:1000px; width:100%; margin:0; overflow:auto;}
+
+.bottom_margin{ height:5px; width:100%; }
+
+
+
+
+.wizard_words_div{ width:80%; margin:15px 10% -15px 10%; font-family:Arial; font-size:10pt; font-weight:normal; color:#404040; }
+
+.wizard_words_div .waiting_connect_div { height:30px; width:100%; margin:15% 0 0 0; }
+
+.wizard_words_div h1 { font-family:Arial; font-size:12pt; font-weight:bold; color:#9D98FF; line-height:12pt; }
+
+.wizard_words_div .h1_red { font-family:Arial; font-size:12pt; font-weight:bold; color:#FF0000; }
+
+.wizard_words_div .h1_red_large { font-family:Arial; font-size:16pt; font-weight:bold; color:#FF0000; }
+
+.wizard_words_div p{ font-family:Arial; font-size:10pt; font-weight:normal; color:#404040; }
+
+
+.wizard_words_div .left_div{ height:30px; width:40%; margin:3px 0 3px 0; line-height:30px; float:left; }
+
+.wizard_words_div .right_div{ height:30px; width:50%; margin:3px 0 3px 3px; line-height:30px; float:left; font-weight:bold; }
+
+
+.wizard_words_div .radio_div{ height:30px; margin:3px 0 auto 0; line-height:30px; }
+
+
+.wizard_words_div .waiting_img_div { height:40px; width:100%; margin:50px auto }
+
+.wizard_words_div .waiting_img_div img { height:40px; width:40px; margin:0 }
+
+
+.wizard_words_div .input_left_div { height:25px; width:45%; margin:0 0 5px 0; line-height:25px; float:left;}
+
+.wizard_words_div .input_img_div { height:25px; width:50%; line-height:25px; margin:0 0 5px 3%; float:right; position:relative; }
+
+.input_img_div input { height:20px; width:80%; position:absolute; top:2px; left:10%; z-index:99; line-height:20px; font-family:Arial; font-size:10pt; font-weight:bold; color:#6448B7; }
+
+.wizard_words_div img { height:100%; width:100%; }
+
+.wizard_words_div .mac_input { height:20px; width:25%; font-family:Arial; font-size:10pt; font-weight:bold; color:#6448B7;}
+
+
+
+/* according new spec version 4, on 10/2010 */
+/* pppoe pptp l2tp, pppoe_reenter pptp_reenter, l2tp_reenter have the same style, so save it in this file */
+.wizard_words_div .wanInput_content_div2 { width:90%; margin:20px auto; }
+.wizard_words_div .wanInput_content_div { width:60%; margin:20px auto; }
+
+.wanInput_content_div .wanInput_left_div { height:30px; width:30%; margin:30px 0 0 0; line-height:30px; float:left; }
+.wanInput_content_div .wanInput_left1_div { height:30px; width:50%; margin:30px 0 0 0; line-height:30px; float:left; }
+.wanInput_content_div .wanInput_left_wide_div { height:30px; width:60%; margin:30px 0 0 0; line-height:30px; float:left; }
+
+
+.wanInput_content_div .wanInput_Img_div { height:50px; width:65%; line-height:50px; margin:20px 0 0 1%; float:left; position:relative; }
+
+.wanInput_Img_div input { height:20px; width:80%; position:absolute; top:12px; left:10%; z-index:99; line-height:20px; border:hidden; font-family:Arial; font-size:10pt; font-weight:bold; color:#6448B7; }
+
+.wizard_words_div .wanInput_content_wide_div { width:100%; margin:20px auto; }
+.wanInput_content_wide_div .wanInput_left_div { height:30px; width:30%; margin:30px 0 0 0; line-height:30px; float:left; }
+.wanInput_content_wide_div .wanInput_left_wide_div { height:30px; width:60%; margin:30px 0 0 0; line-height:30px; float:left; }
+
+.wanInput_content_wide_div .wanInput_Img_div { height:50px; width:65%; line-height:50px; margin:20px 0 0 1%; float:left; position:relative; }
+
+
+
+.wizard_buttons_div{ height:50px; width:90%; line-height:50px; padding:0; margin:50px auto; }
+
+.wizard_buttons_div .buttons_img_div { height:35px; width:20%; position:relative; top:7px; line-height:35px; cursor:pointer; }
+
+.wizard_buttons_div .buttons_words_div { height:100%; width:100%; position:absolute; top:0; left:0; z-index:99; font-family: Arial; font-weight: Bold; color:#FFFFFF; }
+
+.wizard_buttons_div img { height:100%; width:100%; }
+
+.wizard_buttons_div .buttons_split { height:30px; width:20%; margin:10px 0; float:left; }
+
+
+
+.file_input_div { height:50px; width:100%; margin:50px auto; }
+
+.file_input_style { margin:13px auto; }
+
+.file_input_style_safari { margin:13px auto; background:#DAD9DD; width:50%; }
+
+
+
+

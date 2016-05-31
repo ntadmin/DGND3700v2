@@ -1,0 +1,322 @@
+<html>
+<head>
+<META name="description" content="@model_name#_multilangual">
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<META http-equiv="Content-Style-Type" content="text/css">
+<META http-equiv="Pragma" content="no-cache">
+<META HTTP-equiv="Cache-Control" content="no-cache">
+<META HTTP-EQUIV="Expires" CONTENT="Mon, 06 Jan 1990 00:00:01 GMT">
+
+<title>NETGEAR Router @model_name#</title>
+<script language="javascript" type="text/javascript" src="string.js"></script><link rel="stylesheet" href="style/form.css"><script language="javascript" type="text/javascript" src="funcs.js"></script>
+<!-- link rel="stylesheet" href="form.css" -->
+<STYLE TYPE="text/javascript">
+    classes.num.all.fontFamily = "Courier";
+    classes.num.all.fontSize = "10pt" ;
+</style>
+<!--<script language="javascript" type="text/javascript" src="func.js"></script>
+<script language="javascript" type="text/javascript" src="msg.js"></script>-->
+<script language="javascript" type="text/javascript" src="utility.js"></script>
+<script language="javascript" type="text/javascript" src="md5.js"></script>
+<script language="javascript" type="text/javascript" src="linux.js"></script>
+
+<script language="javascript" type="text/javascript">
+<!-- hide script from old browsers
+
+// "--",Africa,Asia,Australia,Canada,Europe,Israel,Japan,Korea,Mexico,Middle East,South America,USA
+var initRegion;
+var changeMsg = "WARNING: Selecting the incorrect region may result in a violation of applicable law. \nDo you agree to act in accordance with these settings";
+var notShown = true; // only shown region change message once
+var initialized = false;
+var wps_mode = "@wps_mode#";
+var browser_lang = "@browser_lang#";
+function initScrn()
+{
+    var defaultKey;
+    var fm=document.forms[0];
+    var i;
+
+	if(browser_lang == "RU")
+	{
+		setDisabled(true,fm.WRegion);
+	}
+	if(fm.tempSetting.value == 1)
+	{
+		var temp_region = parseInt(fm.tempRegion.value);
+		if (fm.tempRegion.value == "")
+		{
+		    if (parseInt(fm.setRegion.value) == 12)
+			    fm.WRegion.selectedIndex=10;
+		    else if (parseInt(fm.setRegion.value) >= 10 && parseInt(fm.setRegion.value) <= 11)
+			    fm.WRegion.selectedIndex=parseInt(fm.setRegion.value)+1;
+		    else
+			    fm.WRegion.selectedIndex=parseInt(fm.setRegion.value);
+		}
+		else if (temp_region == 12)
+			fm.WRegion.selectedIndex=10;
+		else if (temp_region >= 10 && temp_region <= 11)
+			fm.WRegion.selectedIndex=temp_region+1;
+		else
+			fm.WRegion.selectedIndex=temp_region;
+	}
+
+    initRegion = fm.WRegion.selectedIndex;
+    initialized=true;
+}
+function chgCh(from)
+{
+    if ( from == 2 )
+    {
+        var cf = document.forms[0];
+        cf.only_mode.value = "1";
+        cf.submit();
+    }
+    else
+    {
+        wl2gsetting.setOpMode();
+        wl2gsetting.setChannel();
+        wl5gsetting.setOpMode();
+        wl5gsetting.setChannel();
+    }
+}
+
+function checkRegion()
+{
+    var cf = document.forms[0];
+    if(cf.WRegion.selectedIndex == 0)
+    {
+        cf.WRegion.focus();
+        return alertR("Please select the correct region for your location.");
+    }
+    
+    if(top.netgear_region == "NA")
+    	cf.h_WRegion.value = "United States";
+    if (notShown)
+        notShown = false;
+    else if(cf.WRegion.selectedIndex != initRegion && notShown)
+    {
+        if(!confirm(changeMsg))
+            return false;
+        else notShown = false;
+    }
+    return true;
+}
+function checkData()
+{
+    var cf = document.forms[0];
+    if(cf.show_wps_alert.value != "0")
+    {
+    	wl2gsetting.checkData();
+    	wl5gsetting.checkData();
+	window.location.reload();
+    	return false;
+    }
+    if(!checkRegion()) return false;
+    if(!wl2gsetting.checkData()) return false;
+    if(!wl5gsetting.checkData()) return false;
+    dataToHidden(cf);
+    return true;
+}
+function doCancel()
+{
+	window.location.reload();
+}
+function showWpsAlert()
+{
+    var cf = document.forms[0];
+    if(cf.show_wps_alert.value == "1")
+        alert("WPS process is in progress, please apply the changes later.");
+}
+
+function SetCwinHeight(iframeObj)
+{
+	var pgheight = document.getElementById(iframeObj).contentWindow.document.body.scrollHeight;
+	document.getElementById(iframeObj).height = (pgheight) + "px";
+	if(isIE()) { var main_div = document.getElementById("main"); main_div.style.height = "80%"; }
+/*
+    if (document.getElementById)
+    {
+        if (iframeObj)
+        {
+            if (iframeObj.contentDocument && iframeObj.contentDocument.body.offsetHeight)
+            {
+                iframeObj.height = iframeObj.contentDocument.body.offsetHeight;
+            }
+            else if(document.frames[iframeObj.name].document && document.frames[iframeObj.name].document.body.scrollHeight)
+            {
+                iframeObj.height = document.frames[iframeObj.name].document.body.scrollHeight;
+            }
+        }
+    }
+*/
+}
+function loadmenu()
+{
+//	top.contents.location.href="./@menupage#";
+	return true;
+}
+
+// -->
+</script>
+</head>
+<body bgcolor="#ffffff" marginheight="0" marginwidth="0" topmargin="0" leftmargin="0" onLoad="dataToVisible(document.forms[0]);initScrn();showWpsAlert();">
+<!-- loadmenu(); -->
+<form method="POST" action="setup.cgi@post_par#">
+<input type="hidden" name="h_WRegion" value="@h_WRegion#">
+<input type="hidden" name="h_ssid_class" value="primary">
+<input type="hidden" name="tempSetting" value="0">
+<input type="hidden" name="tempRegion" value="11">
+<input type="hidden" name="setRegion" value="11">
+<input type="hidden" name="h_wds_enable" value="@h_wds_enable#">
+<input type="hidden" name="h_wds_enable_an" value="@h_wds_enable_an#">
+<input type="hidden" name="only_mode" value="0">
+  <input type="hidden" name="show_wps_alert" value="@show_wps_alert#">
+  <input type="hidden" name="h_enable_ap" value="@h_enable_ap#">
+  <input type="hidden" name="h_enable_ap_an" value="@h_enable_ap_an#">
+  <input type="hidden" name="h_ssid_bc" value="@h_ssid_bc#">
+  <input type="hidden" name="h_ssid_bc_an" value="@h_ssid_bc_an#">
+  <input type="hidden" name="h_allow_access" value="@h_allow_access#">
+  <input type="hidden" name="h_allow_access_an" value="@h_allow_access_an#">
+  <input type="hidden" name="h_wire_iso" value="@h_wire_iso#">
+  <input type="hidden" name="h_wire_iso_an" value="@h_wire_iso_an#">
+  <input type="hidden" name="ssid" value="@ssid#">
+  <input type="hidden" name="ssid_an" value="@ssid_an#">
+  <input type="hidden" name="h_w_channel" value="@h_w_channel#">
+  <input type="hidden" name="h_w_channel_an" value="@h_w_channel_an#">
+  <input type="hidden" name="h_opmode" value="@h_opmode#">
+  <input type="hidden" name="h_opmode_an" value="@h_opmode_an#">
+  <input type="hidden" name="h_security_type" value="@h_security_type#">
+  <input type="hidden" name="h_security_type_an" value="@h_security_type_an#">
+  <input type="hidden" name="h_wepenc" value="@h_wepenc#">
+  <input type="hidden" name="h_wepenc_an" value="@h_wepenc_an#">
+  <input type="hidden" name="h_wpae_mode" value="@h_wpae_mode#">
+  <input type="hidden" name="h_wpae_mode_an" value="@h_wpae_mode_an#">
+  <input type="hidden" name="radius_rekey_secs" value="@radius_rekey_secs#">
+  <input type="hidden" name="radius_rekey_secs_an" value="@radius_rekey_secs_an#">
+  <input type="hidden" name="radiusServer" value="@radiusServer#">
+  <input type="hidden" name="radiusServer_an" value="@radiusServer_an#">
+  <input type="hidden" name="textWpaeRadiusPort" value="@textWpaeRadiusPort#">
+  <input type="hidden" name="textWpaeRadiusPort_an" value="@textWpaeRadiusPort_an#">
+  <input type="hidden" name="textWpaeRadiusSecret" value="@textWpaeRadiusSecret#">
+  <input type="hidden" name="textWpaeRadiusSecret_an" value="@textWpaeRadiusSecret_an#">
+  <input type="hidden" name="KEY1" value="@KEY1#">
+  <input type="hidden" name="KEY1_an" value="@KEY1_an#">
+  <input type="hidden" name="KEY2" value="@KEY2#">
+  <input type="hidden" name="KEY2_an" value="@KEY2_an#">
+  <input type="hidden" name="KEY3" value="@KEY3#">
+  <input type="hidden" name="KEY3_an" value="@KEY3_an#">
+  <input type="hidden" name="KEY4" value="@KEY4#">
+  <input type="hidden" name="KEY4_an" value="@KEY4_an#">
+  <input type="hidden" name="h_wep_key_no" value="@h_wep_key_no#">
+  <input type="hidden" name="h_wep_key_no_an" value="@h_wep_key_no_an#">
+  <input type="hidden" name="h_authAlgm" value="@h_authAlgm#">
+  <input type="hidden" name="h_authAlgm_an" value="@h_authAlgm_an#">
+  <input type="hidden" name="passphrase" value="@passphrase#">
+  <input type="hidden" name="passphrase_an" value="@passphrase_an#">
+  <input type="hidden" name="h_ssidSelect" value="1">
+  <input type="hidden" name="h_ssidSelect_an" value="1">
+  <input type="hidden" name="todo" value="save">
+  <input type="hidden" name="load_2g_frame" value="">
+  <input type="hidden" name="load_5g_frame" value="">
+  <input type="hidden" name="this_file" value="WLG_wireless_2.htm">
+  <input type="hidden" name="next_file" value="WLG_wireless_2.htm">
+  <input type="hidden" name="SID" value="@SID#">
+<div class="page_title" languageCode = "320">Wireless Settings</div>
+<div class="fix_button">
+<table width="100%" border="0" cellpadding="0" cellspacing="2"><tr><td nowrap colspan="2" align="center">
+<input class="cancel_bt" type="RESET" name="Cancel" value="Cancel" onClick="doCancel();" languageCode = "19">
+&nbsp;
+<input class="apply_bt" type="SUBMIT" name="Apply" value="Apply" onClick="return checkData();" languageCode = "18">
+</td></tr></table>
+</div>
+<div id="main" class="main_top_button">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+      <td colspan="2"><a href="javascript:loadhelp('WLG_wireless','region')" tabindex="-1"><b languageCode = "833">Region Selection</b> </a></td></tr>
+    <tr>
+      <td nowrap><span languageCode = "9">Region</span>:</td>
+      <td align="left">
+
+
+	<script>
+	if(top.netgear_region == "NA")
+	{
+		document.write('<select name="WRegion" size="1" onChange="chgCh(1)" disabled>');
+		document.write('<option value="0">--- Select Region ---</option>');
+		document.write('<option value="Africa">Africa</option>');
+		document.write('<option value="Asia">Asia</option>');
+		document.write('<option value="Australia">Australia</option>');
+		document.write('<option value="Canada">Canada</option>');
+		document.write('<option value="Europe">Europe</option>');
+		document.write('<option value="Israel">Israel</option>');
+		document.write('<option value="Japan">Japan</option>');
+		document.write('<option value="Korea">Korea</option>');
+		document.write('<option value="Mexico">Mexico</option>');
+		document.write('<option value="Middle East">Middle East</option>');
+		document.write('<option value="South America">South America</option>');
+		document.write('<option selected value="United States" languageCode = "3033">North America</option>');
+		document.write('</select></td></tr>');
+	}
+	else
+	{
+		document.write('<select name="WRegion" size="1" onChange="chgCh(1)">');
+		document.write('<option selected value="0" languageCode = "576">--- Select Region ---</option>');
+		document.write('<option value="Africa" languageCode = "577">Africa</option>');
+		document.write('<option value="Asia" languageCode = "578">Asia</option>');
+		document.write('<option value="Australia" languageCode = "579">Australia</option>');
+		document.write('<option value="Canada" languageCode = "580">Canada</option>');
+		document.write('<option value="Europe" languageCode = "581">Europe</option>');
+		document.write('<option value="Israel" languageCode = "582">Israel</option>');
+		document.write('<option value="Japan" languageCode = "583">Japan</option>');
+		document.write('<option value="Korea" languageCode = "584">Korea</option>');
+		document.write('<option value="Mexico" languageCode = "585">Mexico</option>');
+		document.write('<option value="Middle East" languageCode = "586">Middle East</option>');
+		document.write('<option value="South America" languageCode = "587">South America</option>');
+		document.write('<option value="United States" languageCode = "588">United States</option>');
+		document.write('</select></td></tr>');
+	}
+
+</script>
+
+    <tr>
+      <td colspan="2" align="left">
+      <iframe src="@wifi_page#&todo=wifi_primary_init" id="2g_setting" name="wl2gsetting" onload="SetCwinHeight(this.id)" marginHeight=0 marginWidth=0 scrolling=no width="100%" frameborder="0"></iframe></td></tr>
+    <tr>
+      <td colspan="2" align="left">
+      <iframe src="@wifi_page_an#&todo=wifi_primary_init" id="5g_setting" name="wl5gsetting" onload="SetCwinHeight(this.id)" marginHeight=0 marginWidth=0 scrolling=no width="100%" frameborder="0"></iframe></td></tr>
+    <!--tr>
+      <td colspan="2" background="liteblue.gif" height="12">&nbsp; </td></tr -->
+    <tr>
+      <td colspan="2" align="center"></td></tr>
+  </table>
+  
+</div>
+</form>
+<div id="help" style="display: none">
+		<iframe name="help_iframe" id="helpframe" src="WLG_wireless_h.htm" allowtransparency="true" width="100%" frameborder="0">
+		</iframe>
+</div>
+<div id="help_switch" class="close_help">
+	 <img class="help_switch_img" src="image/help/help-bar.gif"><script>
+var help_flag=0;
+if(isIE()){
+	show_hidden_help_top_button(1);
+	var frame_div = top.document.getElementById("formframe_div");
+	frame_div.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+if(get_browser() == "Opera"){
+	window.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+</script><div id="help_space" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_center"><span languageCode="3016">Help Center</span></div>
+<div id="help_button" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_show_hidden"><a href="javascript:void(0)" onClick="show_hidden_help_top_button(help_flag); help_flag++;"><span languageCode="3017">Show/Hide Help Center</span></a></div>
+</div>
+<script language="javascript" type="text/javascript" src="langs.js"></script>
+</body>
+</html>
+
