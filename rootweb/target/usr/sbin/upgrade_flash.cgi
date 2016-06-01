@@ -1,1 +1,0 @@
-netgear-setup.cgi

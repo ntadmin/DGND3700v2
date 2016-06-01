@@ -1,6 +1,0 @@
-#!/bin/sh
-
-while [ true ]; do
-/sbin/ad_arp_scan group1
-sleep 30
-done

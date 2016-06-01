@@ -1,6 +1,0 @@
-#!/bin/sh
-/bin/cp /proc/uptime /tmp/wan_uptime
-/usr/sbin/echo > /tmp/ppp_up
-/usr/sbin/rc service restart
-/bin/cp /usr/etc/ppp/ip-down /etc/ppp/
-/bin/echo "/usr/sbin/atm_monitor" >>/etc/ppp/ip-down

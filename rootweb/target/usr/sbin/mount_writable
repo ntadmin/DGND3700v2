@@ -1,2 +1,0 @@
-#!/bin/sh
-mount mtd:rootfs / -o remount,rw

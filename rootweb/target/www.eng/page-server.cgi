@@ -1,1 +1,0 @@
-/usr/sbin/page-server.cgi

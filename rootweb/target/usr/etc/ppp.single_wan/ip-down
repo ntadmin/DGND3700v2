@@ -1,9 +1,0 @@
-#!/bin/sh
-/bin/rm /tmp/wan_uptime
-/usr/sbin/echo > /tmp/delete_pptp_route
-/usr/sbin/rc wan_basic stop
-
-if [ -f /etc/ppp/pptp.dns ]; then
-	/bin/cp -f /etc/ppp/pptp.dns /etc/resolv.conf
-fi
-

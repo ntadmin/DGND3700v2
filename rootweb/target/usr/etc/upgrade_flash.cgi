@@ -1,1 +1,0 @@
-/usr/sbin/upgrade_flash.cgi

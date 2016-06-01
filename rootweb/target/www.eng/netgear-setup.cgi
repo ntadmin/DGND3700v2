@@ -1,1 +1,0 @@
-/usr/sbin/netgear-setup.cgi
