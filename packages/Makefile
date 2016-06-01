@@ -20,7 +20,7 @@ inadyn-mt.url=http://sourceforge.net/projects/inadyn-mt/files/latest/download
 inadyn-mt.pkg-dl-name=inadyn-mt-latest.tar.gz
 inadyn-mt.tar-args=xvf
 inadyn-mt.configure-options=--host=mips-linux CC=/opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/mips-linux-gcc --disable-sound ac_cv_func_malloc_0_nonnull=yes ac_cv_func_realloc_0_nonnull=yes --bindir=$(PKG_TARGET_DIR)/usr/sbin --libdir=$(PKG_TARGET_DIR)/usr/lib
-inadyn-mt.make-commane=make
+inadyn-mt.make-command=make
 inadyn-mt.test-compiled-file=src/inadyn-mt
 
 dnsmasq.url=http://www.thekelleys.org.uk/dnsmasq/dnsmasq-2.76.tar.xz
