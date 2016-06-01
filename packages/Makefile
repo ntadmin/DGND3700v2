@@ -10,7 +10,13 @@ include ../Rules.mak
 #
 packages=inadyn-mt dnsmasq
 
-all: $(packages)
+all: target_directories $(packages)
+
+#
+# Set this list to include all possible target directories 
+# Must start with a slash as this is for a root FS ...
+#
+target_dirs=/usr/sbin /usr/lib
 
 #
 # For each package, set the following information up
@@ -69,25 +75,18 @@ packages-all=$(packages:%=%.all)
 packages-configure=$(packages:%=%.configure)
 packages-make=$(packages:%=%.make)
 
+full_path_target_dirs=$(target_dirs:%=$(PKG_TARGET_DIR)%)
 
 #
 # The rules
 #
-.PHONY: all $(packages) $(packages-get) $(packages-all) %.get
+.PHONY: all $(packages) $(packages-get) $(packages-all)
 
 $(packages-all):
 	@echo "Getting $(@:%.all=%) ready for target"
 	@test -e $(PKG_DOWNLOAD_DIR)/$($(@:%.all=%.pkg-dl-name)) || { make $(@:%.all=%.get); }
 	@test -e $(PKG_SRC_DIR)/$(@:%.all=%)/$(CONFIG_DONE_MARKER) || { make $(@:%.all=%.configure); }
 	@test $(PKG_SRC_DIR)/$(@:%.all=%)/$($(@:%.all=%.test-compiled-file)) -nt $(PKG_SRC_DIR)/$(@:%.all=%)/$(CONFIG_DONE_MARKER)  || { make $(@:%.all=%).make; }
-
-
-#inadyn-mt:
-#	@echo "Getting $@ ready for target"
-#	@test -e $(PKG_DOWNLOAD_DIR)/$($(@:%=%.pkg-dl-name)) || { make $@.get; }
-#	@test -e $(PKG_SRC_DIR)/$@/$(CONFIG_DONE_MARKER) || { make $@.configure; }
-#	@test $(PKG_SRC_DIR)/$@/$($@.test-compiled-file) -nt $(PKG_SRC_DIR)/$@/$(CONFIG_DONE_MARKER)  || { make $@.make; }
-#	@test $(PKG_TARGET_DIR)/usr/sbin/$@ -nt $(PKG_SRC_DIR)/$@/src/$@ || { make $@.place; }
 
 $(packages-get):
 	wget $($(@:%.get=%.url)) -O $(PKG_DOWNLOAD_DIR)/$($(@:%.get=%.pkg-dl-name)) $(WGET_EXTRA_ARGS)
@@ -103,3 +102,11 @@ $(packages-make):
 	cp -R $(PKG_CORRECTION_DIR)/$(@:%.make=%)/* $(PKG_SRC_DIR)/$(@:%.make=%)
 	cd $(PKG_SRC_DIR)/$(@:%.make=%); $($(@:%.make=%.make-command))
 
+
+#
+# Making Directories
+#
+target_directories: $(full_path_target_dirs)
+
+$(full_path_target_dirs):
+	@test -e $@ || mkdir -p $@
