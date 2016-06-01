@@ -4,8 +4,8 @@
 # The later lines should hopefullly not need changing
 #
 
-CUSTOM_BASE_DIR=/usr/src/DGND3700v2_newt
-NETGEAR_BASE_DIR=/usr/src/DGND3700v2_newt/DGND3700v2_V1.1.00.26_WW_src_bak
+CUSTOM_BASE_DIR=/usr/src/DGND3700v2/DGND3700v2
+NETGEAR_BASE_DIR=/usr/src/DGND3700v2/DGND3700v2/DGND3700v2_V1.1.00.26_WW_src_bak
 
 #
 # Things not to edit

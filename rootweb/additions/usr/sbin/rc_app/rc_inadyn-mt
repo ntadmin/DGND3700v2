@@ -36,14 +36,14 @@ make_args() {
             ;;
         esac
 
-        args_for_inadyn="--background --svr_add_cfg /usr/etc/inadyn-mt/extra/servers_additional.cfg --alias $alias"
+        args_for_inadyn="--background --svr_add_cfg /usr/etc/inadyn-mt/extra/servers_additional.cfg"
         if [ "x"$system != "x" ]; then
             args_for_inadyn="$args_for_inadyn --dyndns_system $system"
         fi
         if [ "x"$extra != "x" ]; then
             args_for_inadyn="$args_for_inadyn $extra"
         fi
-        args_for_inadyn="$args_for_inadyn --username $username --password $password --log_file /var/log/inadyn-mt.log"
+        args_for_inadyn="$args_for_inadyn --alias $alias --username $username --password $password --log_file /var/log/inadyn-mt.log"
     fi
 }
 
