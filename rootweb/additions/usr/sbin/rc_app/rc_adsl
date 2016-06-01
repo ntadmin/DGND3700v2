@@ -1,3 +1,8 @@
+#!/bin/sh
+if [ -e /usr/etc/log_rc_flag ]; then
+    echo $0 $@ >> /var/log/rc_calls
+fi
+
 args_for_adslctl=""
 
 add_adsl_arg() {

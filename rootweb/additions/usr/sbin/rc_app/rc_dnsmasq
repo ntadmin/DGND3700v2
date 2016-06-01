@@ -1,4 +1,8 @@
-#/bin/sh
+#!/bin/sh
+if [ -e /usr/etc/log_rc_flag ]; then
+    echo $0 $@ >> /var/log/rc_calls
+fi
+
 args_for_dnsmasq=""
 
 get_dnsmasq_args() {
@@ -11,6 +15,18 @@ get_dnsmasq_args() {
     if [ "x$dns2" != "x" ]; then
         args_for_dnsmasq="$args_for_dnsmasq --server=$dns2"
     fi
+
+    dhcp_on="$(nvram-util get dhcp_server_enable)"
+    if [ "x$dhcp_on" == "x1" ]; then
+        dhcp_start="$(nvram-util get dhcp_start_ip)"
+        dhcp_end="$(nvram-util get dhcp_end_ip)"
+        mask="$(nvram-util get lan_netmask)"
+        lease_length="24h"
+
+        if [ "x$dhcp_start" != "x" && "x$dhcp_end" != "x" ]; then
+            args_for_dnsmasq="$args_for_dnsmasq --dhcp-range=$dhcp_start,$dhcp_end,$mask,$lease_length"
+        fi
+    fi
 }
 
 case "$1" in
@@ -21,9 +37,9 @@ case "$1" in
             /usr/sbin/dnsmasq $args_for_dnsmasq
             PID="$(pidof dnsmasq)"
             if [ "x${PID}" != "x" ]; then
-	        echo "dnsmasq started succesfully. ($args_for dnsmasq)"
+	        echo "dnsmasq started succesfully. ( $args_for dnsmasq )"
 	    else
-	        echo "Error starting dnsmasq. ($args_for_dnsmasq)"
+	        echo "Error starting dnsmasq. ( $args_for_dnsmasq )"
 	    fi
         else
             echo "dnsmasq already started, leaving it alone"
