@@ -24,7 +24,7 @@ get_dnsmasq_args() {
         lease_length="24h"
 
         if [ "x$dhcp_start" != "x" && "x$dhcp_end" != "x" ]; then
-            args_for_dnsmasq="$args_for_dnsmasq --dhcp-range=$dhcp_start,$dhcp_end,$mask,$lease_length"
+            args_for_dnsmasq="$args_for_dnsmasq --dhcp-range=$dhcp_start,$dhcp_end,$mask,$lease_length --leasefile-ro --dhcp-script=/usr/sbin/dhcp_lease_update.sh"
         fi
     fi
 }
