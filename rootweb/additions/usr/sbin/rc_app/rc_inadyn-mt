@@ -48,7 +48,7 @@ make_args() {
         if [ "x"$extra != "x" ]; then
             args_for_inadyn="$args_for_inadyn $extra"
         fi
-        args_for_inadyn="$args_for_inadyn --alias $alias --username $username --password $password --log_file /var/log/inadyn-mt.log"
+        args_for_inadyn="$args_for_inadyn --alias $alias --username $username --password $password --log_file /var/log/inadyn-mt.log --cache_dir /var/tmp"
     fi
 }
 
