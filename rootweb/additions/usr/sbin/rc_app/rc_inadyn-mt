@@ -53,6 +53,8 @@ make_args() {
 }
 
 case "$1" in
+    init)
+        ;;
     start)
         make_args
         if [ "x"$ddns_enable != "x1" ]; then

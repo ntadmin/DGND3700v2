@@ -16,11 +16,11 @@ get_dnsmasq_args() {
         args_for_dnsmasq="$args_for_dnsmasq --server=$dns2"
     fi
 
-    dhcp_on="$(nvram-util get dhcp_server_enable)"
+    dhcp_on="$(/usr/sbin/nvram-util get dhcp_server_enable)"
     if [ "x$dhcp_on" == "x1" ]; then
-        dhcp_start="$(nvram-util get dhcp_start_ip)"
-        dhcp_end="$(nvram-util get dhcp_end_ip)"
-        mask="$(nvram-util get lan_netmask)"
+        dhcp_start="$(/usr/sbin/nvram-util get dhcp_start_ip)"
+        dhcp_end="$(/usr/sbin/nvram-util get dhcp_end_ip)"
+        mask="$(/usr/sbin/nvram-util get lan_netmask)"
         lease_length="24h"
 
         if [ "x$dhcp_start" != "x" && "x$dhcp_end" != "x" ]; then
