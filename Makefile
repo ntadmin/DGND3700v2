@@ -26,6 +26,7 @@ kernel:
 	make -C $(NETGEAR_BASE_DIR) kernel SHELL=/bin/bash
 
 source:
+	sed -i '/SUB_VER=/c\SUB_VER=$(CUSTOM_VERSION)' $(NETGEAR_BASE_DIR)/Source/Builds/$(PROJECT).mak
 	make -C $(NETGEAR_BASE_DIR) source SHELL=/bin/bash
 
 source_clean:
