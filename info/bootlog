@@ -1,0 +1,1053 @@
+From openwrt.org, the bootlog for the DGND3700v2 is:
+
+Resetting board...
+HELO
+CPUI
+L1CI
+HELO
+CPUI
+L1CI
+DRAM
+----
+PHYS
+ZQDN
+PHYE
+DINT
+LASY
+USYN
+MSYN
+LMBE
+PASS
+----
+ZBSS
+CODE
+DATA
+L12F
+MAIN
+NAN0
+BTam
+0001
+NAN9
+NAN3
+RFS0
+NAN5
+
+
+CFE version 1.0.38-112.14 for BCM96362 (32bit,SP,BE)
+Build Date: 2011 12 21  18:16:05 CST (sunny@localhost)
+Copyright (C) 2000-2011 Broadcom Corporation.
+
+NAND flash device: name &lt;not identified&gt;, id 0x2075 block 16KB size 32768KB
+External switch id = 53125 
+SC Debug: Setting RGMII TX_CLK DELAY at SWITCH IMP PORT!
+SC Debug: Setting RGMII RX_CLK DELAY at SWITCH IMP PORT!
+Chip ID: BCM6362B0, MIPS: 400MHz, DDR: 333MHz, Bus: 166MHz
+Main Thread: TP0
+Memory Test Passed
+Total Memory: 67108864 bytes (64MB)
+Boot Address: 0xb8000000
+
+Board IP address                  : 192.168.1.1:ffffff00  
+Host IP address                   : 192.168.1.100  
+Gateway IP address                :   
+Run from flash/host (f/h)         : f  
+Default host run file name        : vmlinux  
+Default host flash file name      : bcm963xx_fs_kernel  
+Boot delay (0-9 seconds)          : 1  
+Board Id (0-5)                    : 96362ADVN2xh  
+Number of MAC Addresses (1-32)    : 11  
+Base MAC Address                  : 4c:60:de:**:**:**  
+PSI Size (1-64) KBytes            : 24  
+Enable Backup PSI [0|1]           : 0  
+System Log Size (0-256) KBytes    : 0  
+Main Thread Number [0|1]          : 0  
+
+*** Press any key to stop auto run (1 seconds) ***
+Auto run second count down: 0
+Enter NMRP_main
+Scanning Flash Section 0...
+Scanning Flash Section 1...
+Scanning Flash Section 2...
+Scanning Flash Section 3...
+Scanning Flash Section 4...
+Scanning Flash Section 5...
+Scanning Flash Section 6...
+Scanning Flash Section 7...
+Scanning Flash Section 8...
+Scanning Flash Section 9...
+Scanning Flash Section 10...
+Scanning Flash Section 11...
+Scanning Flash Section 12...
+NMRP:LISTENING
+### No NMRP Server found ###
+Scanning Flash Section 0...
+Scanning Flash Section 1...
+Scanning Flash Section 2...
+Scanning Flash Section 3...
+Scanning Flash Section 4...
+Scanning Flash Section 5...
+Scanning Flash Section 6...
+Scanning Flash Section 7...
+Scanning Flash Section 8...
+Scanning Flash Section 9...
+Scanning Flash Section 10...
+Scanning Flash Section 11...
+Scanning Flash Section 12...
+
+***************************************************
+    Sercomm Boot Version 1...0.6
+
+***************************************************
+0 Block in Flag Section Find Sercomm Sign!
+Entering Firmware : Everything is OK.
+Booting from Primary image (0xb8080000) ...
+Decompression OK!
+Entry at 0x8033ffb0
+Closing network.
+Disabling Switch ports.
+Flushing Receive Buffers...
+0 buffers found.
+Closing DMA Channels.
+Starting program at 0x8033ffb0
+Linux version 2.6.30 (root@BuildServer) (gcc version 4.4.2 (Buildroot 2010.02-git) ) #1 SMP PREEMPT Fri Jun 29 13:48:25 CST 2012
+BCM Flash API. Flash device is not found.
+96362ADVN2xh prom init
+CPU revision is: 0002a070 (Broadcom4350)
+DSL SDRAM reserved: 0x100000
+Determined physical RAM map:
+ memory: 03f00000 @ 00000000 (usable)
+Zone PFN ranges:
+  DMA      0x00000000 -&gt; 0x00001000
+  Normal   0x00001000 -&gt; 0x00003f00
+Movable zone start PFN for each node
+early_node_map[1] active PFN ranges
+    0: 0x00000000 -&gt; 0x00003f00
+On node 0 totalpages: 16128
+free_area_init_node: node 0, pgdat 80416520, node_mem_map 81000000
+  DMA zone: 32 pages used for memmap
+  DMA zone: 0 pages reserved
+  DMA zone: 4064 pages, LIFO batch:0
+  Normal zone: 94 pages used for memmap
+  Normal zone: 11938 pages, LIFO batch:1
+Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 16002
+Kernel command line: root=mtd:rootfs ro rootfstype=jffs2 console=ttyS0,115200
+wait instruction: enabled
+Primary instruction cache 64kB, VIPT, 4-way, linesize 16 bytes.
+Primary data cache 32kB, 2-way, VIPT, cache aliases, linesize 16 bytes
+NR_IRQS:128
+PID hash table entries: 256 (order: 8, 1024 bytes)
+console [ttyS0] enabled
+Dentry cache hash table entries: 8192 (order: 3, 32768 bytes)
+Inode-cache hash table entries: 4096 (order: 2, 16384 bytes)
+Memory: 59276k/64512k available (3296k kernel code, 5216k reserved, 841k data, 160k init, 0k highmem)
+Calibrating delay loop... 399.36 BogoMIPS (lpj=199680)
+Mount-cache hash table entries: 512
+--Kernel Config--
+  SMP=1
+  PREEMPT=1
+  DEBUG_SPINLOCK=0
+  DEBUG_MUTEXES=0
+Broadcom Logger v0.1 Jun 29 2012 13:42:42
+CPU revision is: 0002a070 (Broadcom4350)
+Primary instruction cache 64kB, VIPT, 4-way, linesize 16 bytes.
+Primary data cache 32kB, 2-way, VIPT, cache aliases, linesize 16 bytes
+Calibrating delay loop... 402.43 BogoMIPS (lpj=201216)
+Brought up 2 CPUs
+net_namespace: 1140 bytes
+NET: Registered protocol family 16
+Total Flash size: 0K with -1 sectors
+registering PCI controller with io_map_base unset
+registering PCI controller with io_map_base unset
+bio: create slab &lt;bio-0&gt; at 0
+SCSI subsystem initialized
+usbcore: registered new interface driver usbfs
+usbcore: registered new interface driver hub
+usbcore: registered new device driver usb
+pci 0000:00:00.0: reg 10 32bit mmio: [0x10004000-0x10013fff]
+pci 0000:00:00.0: reg 30 32bit mmio: [0x000000-0x0007ff]
+pci 0000:00:00.0: supports D1 D2
+pci 0000:00:00.0: PME# supported from D0 D3hot D3cold
+pci 0000:00:00.0: PME# disabled
+pci 0000:00:09.0: reg 10 32bit mmio: [0x10002600-0x100026ff]
+pci 0000:00:0a.0: reg 10 32bit mmio: [0x10002500-0x100025ff]
+pci 0000:01:00.0: PME# supported from D0 D3hot
+pci 0000:01:00.0: PME# disabled
+pci 0000:02:00.0: reg 10 64bit mmio: [0x000000-0x003fff]
+pci 0000:02:00.0: supports D1 D2
+pci 0000:02:00.0: PME# supported from D0 D3hot D3cold
+pci 0000:02:00.0: PME# disabled
+pci 0000:01:00.0: PCI bridge, secondary bus 0000:02
+pci 0000:01:00.0:   IO window: disabled
+pci 0000:01:00.0:   MEM window: 0x10f00000-0x10ffffff
+pci 0000:01:00.0:   PREFETCH window: disabled
+PCI: Enabling device 0000:01:00.0 (0000 -&gt; 0002)
+PCI: Setting latency timer of device 0000:01:00.0 to 64
+Rule v1.0 Initialized
+Broadcom IQoS v0.1 Jun 29 2012 13:46:48 initialized
+Broadcom GBPM v0.1 Jun 29 2012 13:46:48 initialized
+NET: Registered protocol family 8
+NET: Registered protocol family 20
+NET: Registered protocol family 2
+IP route cache hash table entries: 1024 (order: 0, 4096 bytes)
+TCP established hash table entries: 2048 (order: 2, 16384 bytes)
+TCP bind hash table entries: 2048 (order: 2, 16384 bytes)
+TCP: Hash tables configured (established 2048 bind 2048)
+TCP reno registered
+NET: Registered protocol family 1
+JFFS2 version 2.2. (NAND) © 2001-2006 Red Hat, Inc.
+fuse init (API version 7.11)
+msgmni has been set to 115
+io scheduler noop registered (default)
+PCI: Setting latency timer of device 0000:01:00.0 to 64
+Driver 'sd' needs updating - please use bus_type methods
+PPP generic driver version 2.4.2
+PPP Deflate Compression module registered
+PPP BSD Compression module registered
+NET: Registered protocol family 24
+bcm963xx_mtd driver v1.0
+Failed to read image tag from flash
+Broadcom DSL NAND controller (BrcmNand Controller)
+--&gt;brcmnand_scan: CS=0, numchips=1, csi=0
+mtd-&gt;oobsize=0, mtd-&gt;eccOobSize=0
+NAND_CS_NAND_XOR=00000000
+Disabling XOR on CS#0
+brcmnand_scan: Calling brcmnand_probe for CS=0
+B4: NandSelect=40000001, nandConfig=03032200, chipSelect=0
+brcmnand_read_id: CS0: dev_id=20752075
+After: NandSelect=40000001, nandConfig=03032200
+Block size=00004000, erase shift=14
+NAND Config: Reg=03032200, chipSize=32 MB, blockSize=16K, erase_shift=e
+busWidth=1, pageSize=512B, page_shift=9, page_mask=000001ff
+timing1 not adjusted: 5363444f
+timing2 not adjusted: 00000fc6
+BrcmNAND mfg 20 75 ST ST_NAND256W3A 32MB on CS0
+
+Found NAND on CS0: ACC=f3000000, cfg=03032200, flashId=20752075, tim1=5363444f, tim2=00000fc6
+BrcmNAND version = 0x0202 32MB @00000000
+B4: NandSelect=40000001, nandConfig=03032200, chipSelect=0
+brcmnand_read_id: CS0: dev_id=20752075
+After: NandSelect=40000001, nandConfig=03032200
+Found NAND flash on Chip Select 0, chipSize=32MB, usable size=32MB, base=0
+brcmnand_scan: Done brcmnand_probe
+brcmnand_scan: B4 nand_select = 40000001
+brcmnand_scan: After nand_select = 40000001
+brcmnand_scan 10
+200 CS=0, chip-&gt;ctrl-&gt;CS[0]=0
+200 chip-&gt;ecclevel=15, acc=f3000000
+page_shift=9, bbt_erase_shift=14, chip_shift=25, phys_erase_shift=14
+brcmnand_scan 220
+Brcm NAND controller version = 2.2 NAND flash size 32MB @1e000000
+brcmnand_scan 230
+brcmnand_scan 40, mtd-&gt;oobsize=16, chip-&gt;ecclayout=00000000
+brcmnand_scan 42, mtd-&gt;oobsize=16, chip-&gt;ecclevel=15, isMLC=0, chip-&gt;cellinfo=0
+brcmnand_scan:  mtd-&gt;oobsize=16
+brcmnand_scan: oobavail=12, eccsize=512, writesize=512
+brcmnand_scan, eccsize=512, writesize=512, eccsteps=1, ecclevel=15, eccbytes=3
+300 CS=0, chip-&gt;ctrl-&gt;CS[0]=0
+500 chip=83a3ed90, CS=0, chip-&gt;ctrl-&gt;CS[0]=0
+--&gt;brcmnand_default_bbt
+brcmnand_default_bbt: bbt_td = bbt_main_descr
+Bad block table Bbt0 found at page 0000ffe0, version 0x01 for chip on CS0
+Bad block table 1tbB found at page 0000ffc0, version 0x01 for chip on CS0
+brcmnandCET: Status -&gt; Deferred
+brcmnand_scan 99
+Creating 14 MTD partitions on "brcmnand.0":
+0x000000080000-0x000001b40000 : "rootfs"
+0x000000000000-0x000000004000 : "nvram"
+0x000001b40000-0x000001b80000 : "language_DEU"
+0x000001dc0000-0x000001ec0000 : "scnvram"
+0x000001ec0000-0x000001f00000 : "factory"
+0x000000080000-0x000001cc0000 : "upgrade"
+0x000001c80000-0x000001cc0000 : "flag"
+0x000001cc0000-0x000001d00000 : "pcbasn"
+0x000001d00000-0x000001d80000 : "xxx"
+0x000001b80000-0x000001bc0000 : "language_PTB"
+0x000001bc0000-0x000001c00000 : "language_RUS"
+0x000001c00000-0x000001c40000 : "language_CHS"
+0x000001c40000-0x000001c80000 : "language_ENU"
+0x000001d80000-0x000001dc0000 : "language_dev"
+usbcore: registered new interface driver usblp
+Initializing USB Mass Storage driver...
+usbcore: registered new interface driver usb-storage
+USB Mass Storage support registered.
+brcmboard: brcm_board_init entry
+kerSysScreenPciDevices: 0x14e4:0x435f:(slot 0) detected
+kerSysScreenPciDevices: 0x14e4:0x6300:(slot 9) detected
+kerSysScreenPciDevices: 0x14e4:0x6300:(slot 10) detected
+kerSysScreenPciDevices: 0x14e4:0x6362:(slot 0) detected
+kerSysScreenPciDevices: 0x14e4:0x4359:(slot 0) detected
+SES: Button Interrupt 0x1 is enabled
+SES: LED GPIO 0xc00f is enabled
+Serial: BCM63XX driver $Revision: 3.00 $
+ttyS0 at MMIO 0xb0000100 (irq = 11) is a BCM63XX
+ttyS1 at MMIO 0xb0000120 (irq = 12) is a BCM63XX
+bcmPktDma_init: Broadcom Packet DMA Library initialized
+Total # RxBds=1808
+bcmPktDmaBds_init: Broadcom Packet DMA BDs initialized
+
+bcmxtmrt: Broadcom BCM6362B0 ATM/PTM Network Device v0.3 Jun 29 2012 13:45:55
+IPSEC SPU: SUCCEEDED 
+GACT probability NOT on
+Mirror/redirect action on
+u32 classifier
+    input device check on 
+    Actions configured 
+Netfilter messages via NETLINK v0.30.
+nf_conntrack version 0.5.0 (1008 buckets, 4032 max)
+ip_tables: (C) 2000-2006 Netfilter Core Team
+TCP cubic registered
+Initializing XFRM netlink socket
+NET: Registered protocol family 10
+IPv6 over IPv4 tunneling driver
+NET: Registered protocol family 17
+NET: Registered protocol family 15
+Ebtables v2.0 registered
+ebt_time registered
+ebt_ftos registered
+ebt_wmm_mark registered
+802.1Q VLAN Support v1.8 Ben Greear &lt;greearb@candelatech.com&gt;
+All bugs added by David S. Miller &lt;davem@redhat.com&gt;
+VFS: Mounted root (jffs2 filesystem) readonly on device 31:0.
+Freeing unused kernel memory: 160k freed
+init started: BusyBox v1.13.4 (2012-06-29 14:02:50 CST)
+starting pid 257, tty '/dev/console': '/usr/etc/rcS'
+cp: cannot create '/dev/pts/0': Operation not permitted
+cp: cannot create '/dev/pts/1': Operation not permitted
+ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+PCI: Enabling device 0000:00:0a.0 (0000 -&gt; 0002)
+PCI: Setting latency timer of device 0000:00:0a.0 to 64
+ehci_hcd 0000:00:0a.0: EHCI Host Controller
+ehci_hcd 0000:00:0a.0: new USB bus registered, assigned bus number 1
+ehci_hcd 0000:00:0a.0: Enabling legacy PCI PM
+ehci_hcd 0000:00:0a.0: irq 18, io mem 0x10002500
+ehci_hcd 0000:00:0a.0: USB f.f started, EHCI 1.00
+usb usb1: configuration #1 chosen from 1 choice
+hub 1-0:1.0: USB hub found
+hub 1-0:1.0: 2 ports detected
+ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+PCI: Enabling device 0000:00:09.0 (0000 -&gt; 0002)
+PCI: Setting latency timer of device 0000:00:09.0 to 64
+ohci_hcd 0000:00:09.0: OHCI Host Controller
+ohci_hcd 0000:00:09.0: new USB bus registered, assigned bus number 2
+ohci_hcd 0000:00:09.0: irq 17, io mem 0x10002600
+usb usb2: configuration #1 chosen from 1 choice
+hub 2-0:1.0: USB hub found
+hub 2-0:1.0: 2 ports detected
+bcm_ingqos: module license 'Proprietary' taints kernel.
+Disabling lock debugging due to kernel taint
+Broadcom Ingress QoS Module  Char Driver v0.1 Jun 29 2012 13:45:09 Registered&lt;243&gt;Broadcom Ingress QoS ver 0.1 initialized
+BPM: tot_mem_size=67108864B (64MB), buf_mem_size=10066329B (9MB), num of buffers=4802, buf size=2096
+Broadcom BPM Module Char Driver v0.1 Jun 29 2012 13:44:49 Registered&lt;244&gt;NBUFF v1.0 Initialized
+ Flow Cache  Char Driver v2.2 Jun 29 2012 13:45:10 Registered&lt;242&gt;Cache v2.2 Jun 29 2012 13:45:10Broadcom Forwarding Assist Processor (FAP) Char Driver v0.1 Jun 29 2012 13:44:51 Registered &lt;241&gt;
+FAP Debug values at 0x00000010 0x00000010
+Enabling SMISBUS PHYS_FAP_BASE[0] is 0x14001000
+FAP Soft Reset Done
+4ke Reset Done
+Allocated FAP0 GSO Buffers (0xA2B98458) : 1048576 bytes @ 0xA2400000
+[FAP0] PSM : addr&lt;0xE0010000&gt;, used &lt;32720&gt;, free &lt;48&gt;, total &lt;32768&gt;
+[FAP0] Flows supported: 128 (dsp 85, psm 43, qsm 0)
+[FAP0] DQM : availableMemory 14068 bytes, nextByteAddress 0xE000490C
+[FAP0] GSO Buffer set to 0xA2400000
+[FAP0] FAP BPM Initialized.
+bcmPktDma_bind: FAP Driver binding successfull
+bcmxtmcfg: bcmxtmcfg_init entry
+adsl: adsl_init entry
+Broadcom BCM6362B0 Ethernet Network Device v0.1 Jun 29 2012 13:45:42
+fapDrv_psmAlloc: fapIdx=0, size: 4000, offset=b10106f0 bytes remaining 7008
+ETH Init: Ch:0 - 200 tx BDs at 0xb10106f0
+ETH Init: Ch:1 - 200 tx BDs at 0xa309c000
+fapDrv_psmAlloc: wastage 8 bytes
+fapDrv_psmAlloc: fapIdx=0, size: 4808, offset=b1011690 bytes remaining 2192
+ETH Init: Ch:0 - 600 rx BDs at 0xb1011690
+ETH Init: Ch:1 - 960 rx BDs at 0xa2bf4000
+dgasp: kerSysRegisterDyingGaspHandler: bcmsw registered 
+eth0: MAC Address: 4C:60:DE:**:**:**
+eth1: MAC Address: 4C:60:DE:**:**:**
+eth2: MAC Address: 4C:60:DE:**:**:**
+eth3: MAC Address: 4C:60:DE:**:**:**
+eth4: MAC Address: 4C:60:DE:**:**:**
+Broadcom 802.1Q VLAN Interface, v0.1
+&lt;main 38&gt;eth4 set switch wan port enable success
+netfilter dnshj choose interested dns queries module loaded !
+ip6_tables: (C) 2000-2006 Netfilter Core Team
+init common module successful
+insert firewall block module success
+fake source dos protect modules is inserted
+netfilter PSD and TCP/UDP Echo/Chargen Attack loaded 
+netfilter tcp syn flood module loaded 
+netfilter clamp total session for one src ip module loaded 
+netfilter other dos module loaded 
+insmod finish
+Note: Loading 6300 MDK (default) driver for 6362 chip 
+Note: Forcing 53115 driver for 53125 
+Switch MDK: num_switches = 2
+Switch MDK: unit = 0; phy_pbmp = 0x0; config_pbmp = 0x10 
+Zeroluo Enable RGMII tx clock delay mode in bcm53115_a0_bmd_init chip/bcm53115_a0/bcm53115_a0_bmd_init.c
+Switch MDK link poll thread: unit=1; phypbmp=0x1f
+Initializing unit 0 in unmanaged mode 
+jffs2_scan_inode_node(): CRC failed on node at 0x000597e8: Read 0xffffffff, calculated 0xaab3f958
+Empty flash at 0x0005982c ends at 0x00059a00
+jffs2_scan_inode_node(): CRC failed on node at 0x000f93c0: Read 0xffffffff, calculated 0xcaf1405e
+=============mount finished 
+RC: wifi_init()
+lan mac: 0x00:0x00:0x00:0x00:0x2a:0xab !!!
+=============rc start 
+=============rc finish 
+rcd: enQ=/usr/sbin/rc_app/rc_start 
+rcd: [run] deQ =/usr/sbin/rc_app/rc_start 
+  PID USER       VSZ STAT COMMAND
+    1 root      1012 S    init       
+    2 root         0 SW&lt;  [kthreadd]
+    3 root         0 SW&lt;  [migration/0]
+    4 root         0 SW   [sirq-high/0]
+    5 root         0 SW   [sirq-timer/0]
+    6 root         0 SW   [sirq-net-tx/0]
+    7 root         0 SW   [sirq-net-rx/0]
+    8 root         0 SW   [sirq-block/0]
+    9 root         0 SW   [sirq-tasklet/0]
+   10 root         0 SW   [sirq-sched/0]
+   11 root         0 SW   [sirq-hrtimer/0]
+   12 root         0 SW   [sirq-rcu/0]
+   13 root         0 SW&lt;  [migration/1]
+   14 root         0 SW   [sirq-high/1]
+   15 root         0 SW   [sirq-timer/1]
+   16 root         0 SW   [sirq-net-tx/1]
+   17 root         0 SW   [sirq-net-rx/1]
+   18 root         0 SW   [sirq-block/1]
+   19 root         0 SW   [sirq-tasklet/1]
+   20 root         0 SW   [sirq-sched/1]
+   21 root         0 SW   [sirq-hrtimer/1]
+   22 root         0 SW   [sirq-rcu/1]
+   23 root         0 SW&lt;  [events/0]
+   24 root         0 SW&lt;  [events/1]
+   25 root         0 SW&lt;  [khelper]
+   28 root         0 SW&lt;  [async/mgr]
+   92 root         0 SW&lt;  [kblockd/0]
+   93 root         0 SW&lt;  [kblockd/1]
+  102 root         0 SW&lt;  [khubd]
+  120 root         0 SW&lt;  [bpm]
+  136 root         0 SW   [pdflush]
+  137 root         0 SW   [pdflush]
+  138 root         0 SWN  [kswapd0]
+  140 root         0 SW&lt;  [crypto/0]
+  141 root         0 SW&lt;  [crypto/1]
+  198 root         0 SW&lt;  [mtdblockd]
+  246 root         0 SW   [board-timer]
+  250 root         0 SW&lt;  [linkwatch]
+  257 root      1024 S    /bin/sh /usr/etc/rcS 
+  305 root         0 SW   [kpAliveWatchdog]
+  311 root         0 SW   [dsl0]
+  320 root         0 SW   [bcmsw]
+  321 root         0 SW   [bcmsw_timer]
+  394 root      1488 S    /usr/sbin/swmdk 
+  396 root      1488 S    /usr/sbin/swmdk 
+  397 root      1488 S    /usr/sbin/swmdk 
+  402 root      1224 S    /sbin/klogd 
+  404 root       800 S    /usr/sbin/cmd_agent_ap 
+rcd: enQ=/usr/sbin/rc_app/rc_syslogd start 
+  406 root         0 SWN  [jffs2_gcd_mtd4]
+  407 root         0 SWN  [jffs2_gcd_mtd3]
+  408 root         0 SWN  [jffs2_gcd_mtd12]
+  409 root         0 SWN  [jffs2_gcd_mtd11]
+  410 root         0 SWN  [jffs2_gcd_mtd10]
+  411 root         0 SWN  [jffs2_gcd_mtd9]
+  412 root         0 SWN  [jffs2_gcd_mtd2]
+  413 root         0 SWN  [jffs2_gcd_mtd8]
+  419 root       884 S    /usr/sbin/ft_tool 
+  425 root       808 S    /usr/sbin/rcd 
+  427 root      2288 R    /usr/sbin/rc_app/rc_start 
+  428 root      1016 R    /bin/ps 
+  430 root       976 S    /sbin/lan_monitor 
+  431 root         0 Z    [sh]
+  432 root         0   []
+  433 root         0   []
+rcd: enQ=/usr/sbin/rc_app/rc_upnp start 
+rcd: enQ=/usr/sbin/rc_app/rc_lan init 
+rcd: enQ=/usr/sbin/rc_app/rc_firewall init 
+wlevt_init@232: opened loopback socket 3
+wlevt is ready for new msg...
+wps_led_idle entering 
+route: SIOCADDRT: No such device
+rcd: enQ=/usr/sbin/rc_app/rc_vlan start 
+/usr/etc/rcS: line 234: can't create /proc/sys/net/ipv4/conf/br0/forwarding: nonexistent directory
+/usr/etc/rcS: line 235: can't create /proc/sys/net/ipv4/conf/wlan0/forwarding: nonexistent directory
+/usr/etc/rcS: line 236: can't create /proc/sys/net/ipv4/conf/wlan0-va0/forwarding: nonexistent directory
+rcd: enQ=/usr/sbin/rc_app/rc_lan start 
+rcd: enQ=/usr/sbin/rc_app/rc_lan reset_switch 
+rcd: enQ=/usr/sbin/rc_app/rc_wlan start 
+rcd: enQ=/usr/sbin/rc_app/rc_wifi_isolation start 
+rcd: enQ=/usr/sbin/rc_app/rc_timezone start 
+rcd: enQ=/usr/sbin/rc_app/rc_sip_alg start 
+rcd: enQ=/usr/sbin/rc_app/rc_dnrd start 
+rcd: enQ=/usr/sbin/rc_app/rc_httpd start 
+rcd: enQ=/usr/sbin/rc_app/rc_printk start 
+rcd: enQ=/usr/sbin/rc_app/rc_ddns init 
+rcd: enQ=/usr/sbin/rc_app/rc_check_conn start 
+rcd: enQ=/usr/sbin/rc_app/rc_wan init 
+rcd: enQ=/usr/sbin/rc_app/rc_route start 
+rcd: enQ=/usr/sbin/rc_app/rc_ripd start 
+rcd: enQ=/usr/sbin/rc_app/rc_potcounter start 
+rcd: enQ=/usr/sbin/rc_app/rc_lltd start 
+rcd: enQ=/usr/sbin/rc_app/rc_upnp start 
+rcd: enQ=/usr/sbin/rc_app/rc_schedule start 
+rcd: enQ=/usr/sbin/rc_app/rc_usb_service init 
+rcd: enQ=/usr/sbin/rc_app/rc_start finished 
+rcd: [run] deQ =/usr/sbin/rc_app/rc_syslogd start 
+rcd: [run] deQ =/usr/sbin/rc_app/rc_upnp start 
+killall: miniupnpd: no process killed
+route: SIOCADDRT: No such device
+rcd: [run] deQ =/usr/sbin/rc_app/rc_lan init 
+rcd: [run] deQ =/usr/sbin/rc_app/rc_firewall init 
+[ firewall_main - 126 ] : before fw_exe
+[ firewall_main - 129 ] : end fw_exe
+rcd: [run] deQ =/usr/sbin/rc_app/rc_vlan start 
+rcd: an error occurred in execvp
+rcd: [run] deQ =/usr/sbin/rc_app/rc_lan start 
+ADDRCONF(NETDEV_UP): eth0: link is not ready
+ADDRCONF(NETDEV_UP): eth1: link is not ready
+ADDRCONF(NETDEV_UP): eth2: link is not ready
+ADDRCONF(NETDEV_UP): eth3: link is not ready
+device eth0 entered promiscuous mode
+device eth1 entered promiscuous mode
+device eth2 entered promiscuous mode
+device eth3 entered promiscuous mode
+killall: udhcpd_1: no process killed
+[ firewall_main - 126 ] : before fw_exe
+rcd: enQ=/usr/sbin/rc_app/rc_schedule restart 
+[ firewall_main - 129 ] : end fw_exe
+rcd: [run] deQ =/usr/sbin/rc_app/rc_lan reset_switch 
+rcd: [run] deQ =/usr/sbin/rc_app/rc_wlan start 
+lan_device[1] = wl [1]lan_device[1] = wl [2]lan_device[1] = wl [3]lan_device[1] = wl [4]/sbin/wl: wl driver adapter not found
+RC: insert wl.ko...
+--SMP support
+wl: dsl_tx_pkt_flush_len=338
+wl: high_wmark_tot=3121
+wl: passivemode=1
+wl: napimode=0
+wl0: allocskbmode=1 currallocskbsz=256
+otp_read_pci: bad crc
+Neither SPROM nor OTP has valid image
+wl:srom/otp not programmed, using main memory mapped srom info(wombo board)
+wl:loading /etc/wlan/bcm6362_vars.bin
+Failed to open srom image from '/etc/wlan/bcm6362_vars.bin'.
+wl:loading /etc/wlan/bcm6362_map.bin
+wl0: Broadcom BCM435f 802.11 Wireless Controller 5.100.138.2001.cpe4.12L04.3
+dgasp: kerSysRegisterDyingGaspHandler: wl0 registered 
+PCI: Enabling device 0000:02:00.0 (0000 -&gt; 0002)
+wl: passivemode=1
+wl: napimode=0
+wl1: allocskbmode=1 currallocskbsz=500
+wl1: Broadcom BCM4359 802.11 Wireless Controller 5.100.138.2001.cpe4.12L04.3
+dgasp: kerSysRegisterDyingGaspHandler: wl1 registered 
+lan_ifnames=eth0 wl0 wl1 wl0.1 wl0.2 wl0.3 wl1.1 wl1.2 wl1.3 
+lan1_ifnames=
+========idx=0
+/sbin/wl -i wl0 phy_watchdog 0
+/sbin/wl -i wl0 up
+/sbin/wl -i wl0 down
+/sbin/wl -i wl0 wds none
+/sbin/wl -i wl0 mbss 0
+/sbin/wl -i wl0 bss -C 0 down
+/sbin/wl -i wl0 bss -C 1 down
+/sbin/wl -i wl0 bss -C 2 down
+/sbin/wl -i wl0 bss -C 3 down
+/sbin/wl  -i wl0 ssid -C 0 "NETGEAR55"
+Setting SSID: "NETGEAR55"
+/sbin/wl  -i wl0 ssid -C 1 "NETGEAR-Guest"
+Setting SSID: "NETGEAR-Guest"
+/sbin/wl  -i wl0 ssid -C 2 "NETGEAR-Guest2"
+Setting SSID: "NETGEAR-Guest2"
+/sbin/wl  -i wl0 ssid -C 3 "NETGEAR-Guest3"
+Setting SSID: "NETGEAR-Guest3"
+/sbin/ifconfig wl0 down 2&gt;/dev/null
+/sbin/ifconfig wl0.1 down 2&gt;/dev/null
+/sbin/ifconfig wl0.2 down 2&gt;/dev/null
+/sbin/ifconfig wl0.3 down 2&gt;/dev/null
+/sbin/ifconfig wl0 hw ether 4C:60:DE:**:**:** 2&gt;/dev/null
+/sbin/wl  -i wl0 cur_etheraddr 4C:60:DE:**:**:**  2&gt;/dev/null
+/sbin/ifconfig wl0.1 hw ether 6a:60:DE:**:**:fb 2&gt;/dev/null
+/sbin/wl  -i wl0.1 cur_etheraddr 6a:60:DE:**:**:fb  2&gt;/dev/null
+/sbin/ifconfig wl0.2 hw ether 6a:60:DE:**:**:f8 2&gt;/dev/null
+/sbin/wl  -i wl0.2 cur_etheraddr 6a:60:DE:**:**:f8  2&gt;/dev/null
+/sbin/ifconfig wl0.3 hw ether 6a:60:DE:**:**:f9 2&gt;/dev/null
+/sbin/wl  -i wl0.3 cur_etheraddr 6a:60:DE:**:**:f9  2&gt;/dev/null
+/sbin/wl -i wl0  ap 1
+/sbin/wl -i wl0 infra 1
+/sbin/wl -i wl0 closed 0
+/sbin/wl -i wl0 country US
+/sbin/wl  -i wl0  band b
+/sbin/wl -i wl0 regulatory 0
+/sbin/wl -i wl0 radar 0 2&gt;/dev/null
+/sbin/wl -i wl0 spect 0 2&gt;/dev/null
+/sbin/wl -i wl0 nmode -1
+/sbin/wl -i wl0 mimo_bw_cap 0
+/sbin/wl -i wl0 wpa_cap -C 0 &gt; /var/wpa_cap0 
+/sbin/wl -i wl0 wpa_cap -C 0 0 2&gt;/dev/null
+/sbin/wl -i wl0 wpa_cap -C 1 &gt; /var/wpa_cap0 
+/sbin/wl -i wl0 wpa_cap -C 1 0 2&gt;/dev/null
+/sbin/wl -i wl0 wpa_cap -C 2 &gt; /var/wpa_cap0 
+/sbin/wl -i wl0 wpa_cap -C 2 0 2&gt;/dev/null
+/sbin/wl -i wl0 wpa_cap -C 3 &gt; /var/wpa_cap0 
+/sbin/wl -i wl0 wpa_cap -C 3 0 2&gt;/dev/null
+/sbin/wl -i wl0 maxassoc 16
+/sbin/wl -i wl0 bss_maxassoc 16
+/sbin/wl -i wl0 gmode Auto
+/sbin/wl -i wl0 gmode_protection_override -1
+/sbin/wl -i wl0 gmode_protection_control 2
+/sbin/wl -i wl0 nmode_protection_override -1
+/sbin/wl -i wl0 protection_control 2
+/sbin/wl -i wl0 protection_control 2
+/sbin/wl -i wl0 rifs_advert 0
+/sbin/wl -i wl0 obss_coex 0
+/sbin/wl -i wl0 stbc_tx -1
+/sbin/wl -i wl0 stbc_rx 1
+/sbin/wl -i wl0 nreqd 0
+/sbin/wl -i wl0 wme 0 2&gt;/dev/null
+/sbin/wl -i wl0 afterburner_override 0 2&gt;/dev/null
+/sbin/wl -i wl0 ampdu 1
+/sbin/wl -i wl0 afterburner_override 0
+/sbin/wl -i wl0 afterburner_override 0
+/sbin/wl -i wl0 wme 1 2&gt;/dev/null
+/sbin/wl -i wl0 wme_noack 0 2&gt;/dev/null
+/sbin/wl -i wl0 wme_apsd 1 2&gt;/dev/null
+/sbin/wl -i wl0 wme_bss_disable 0
+/sbin/wl -i wl0 plcphdr long
+/sbin/wl -i wl0 bands &gt; /var/wl0bands
+/sbin/wl -i wl0 rate 0
+/sbin/wl -i wl0 a_rate 0
+/sbin/wl -i wl0 bg_rate 0 
+/sbin/wl leddc 0x0
+/sbin/wl -i wl0 mrate -1 
+/sbin/wl -i wl0 a_mrate -1 
+/sbin/wl -i wl0 bg_mrate -1 
+/sbin/wl -i wl0 rtsthresh 2347
+/sbin/wl -i wl0 fragthresh 2346
+/sbin/wl -i wl0 dtim 2
+/sbin/wl -i wl0  bi 100
+/sbin/wl -i wl0  bcn_rotate 1
+/sbin/wl -i wl0 frameburst 1
+/sbin/wl -i wl0 ap_isolate 0
+/sbin/wl -i wl0 pwr_percent 100
+/sbin/wl -i wl0 wmf_bss_enable 0
+/sbin/wl -i wl0.1 wmf_bss_enable 0
+/sbin/wl -i wl0.2 wmf_bss_enable 0
+/sbin/wl -i wl0.3 wmf_bss_enable 0
+/sbin/wl -i wl0 chanim_mode 1
+/sbin/wl -i wl0 rxchain_pwrsave_stas_assoc_check 1
+/sbin/wl -i wl0 rxchain_pwrsave_enable 0
+/sbin/wl -i wl0 rxchain_pwrsave_quiet_time 10
+/sbin/wl -i wl0 rxchain_pwrsave_pps 10
+/sbin/wl -i wl0 radio_pwrsave_enable 0
+/sbin/wl: Not Permitted
+/sbin/wl -i wl0 radio_pwrsave_quiet_time 10
+/sbin/wl -i wl0 radio_pwrsave_pps 1
+/sbin/wl -i wl0 radio_pwrsave_level 0
+/sbin/wl -i wl0 mac none
+/sbin/wl -i wl0 macmode 0
+/sbin/wl -i wl0 up
+/sbin/wl -i wl0 autochannel 1
+chanspec 0x2b06 selected 
+/sbin/wl -i wl0 autochannel 2
+/sbin/wl -i wl0 csscantimer 0
+/sbin/wl -i wl0 obss_coex 0
+/sbin/wl -i wl0 rmwep -C 0 0
+/sbin/wl -i wl0 rmwep -C 0 1
+/sbin/wl -i wl0 rmwep -C 0 2
+/sbin/wl -i wl0 rmwep -C 0 3
+/sbin/wl -i wl0 rmwep -C 1 0
+/sbin/wl -i wl0 rmwep -C 1 1
+/sbin/wl -i wl0 rmwep -C 1 2
+/sbin/wl -i wl0 rmwep -C 1 3
+/sbin/wl -i wl0 rmwep -C 2 0
+/sbin/wl -i wl0 rmwep -C 2 1
+/sbin/wl -i wl0 rmwep -C 2 2
+/sbin/wl -i wl0 rmwep -C 2 3
+/sbin/wl -i wl0 rmwep -C 3 0
+/sbin/wl -i wl0 rmwep -C 3 1
+/sbin/wl -i wl0 rmwep -C 3 2
+/sbin/wl -i wl0 rmwep -C 3 3
+/sbin/wl -i wl0  wsec -C 0 4
+/sbin/wl -i wl0 wsec_restrict -C 0 1
+/sbin/wl -i wl0 wpa_auth -C 0 128
+/sbin/wl -i wl0 eap 1
+/sbin/wl -i wl0 auth -C 0 0
+/sbin/wl -i wl0 wdswsec 0
+/sbin/wl -i wl0 wdswsec_enable 0
+/usr/sbin/brctl addif group1 wl0
+device wl0 entered promiscuous mode
+ifconfig: wl1.1: error fetching interface information: Device not found
+ifconfig: wl1.1: error fetching interface information: Device not found
+ifconfig: wl1.2: error fetching interface information: Device not found
+ifconfig: wl1.2: error fetching interface information: Device not found
+ifconfig: wl1.3: error fetching interface information: Device not found
+ifconfig: wl1.3: error fetching interface information: Device not found
+sh: /bin/igd: not found
+setting oob: lan_wps_oob 
+wps_cfg_state = 1, wps_config=ap-er
+wscLedSet: led_action 0, led_blink_type 0, led_event 0, led_status 0
+wscLedSet: led_action 0, led_blink_type 0, led_event 0, led_status 0
+killall: wps_det: no process killed
+issueServiceCmd
+SET dddddd  wps_config=ap-er
+/sbin/wl -i wl0 bss -C 0 up
+/sbin/ifconfig wl0 up
+group1: port 5(wl0) entering learning state
+/sbin/ifconfig wl0.1 down
+/sbin/ifconfig wl0.2 down
+/sbin/ifconfig wl0.3 down
+/sbin/wl -i wl0 lazywds 0
+/sbin/wl -i wl0 wds    
+/sbin/wl -i wl0 wdstimeout 1
+/sbin/wl  -i wl0 phy_watchdog 1
+/sbin/wl  -i wl0 phycal_override_on_traffic 0
+/sbin/wl  -i wl0 fcache 1
+/usr/sbin/sendarp -s group1 -d group1
+setupAll end
+/sbin/wl -i wl0 rxchain_pwrsave_enable 0
+/sbin/wl -i wl1 rxchain_pwrsave_enable 0
+========idx=1
+/sbin/wl -i wl1 phy_watchdog 0
+/sbin/wl -i wl1 up
+/sbin/wl -i wl1 down
+/sbin/wl -i wl1 wds none
+/sbin/wl -i wl1 mbss 0
+/sbin/wl -i wl1 bss -C 0 down
+/sbin/wl -i wl1 bss -C 1 down
+/sbin/wl -i wl1 bss -C 2 down
+/sbin/wl -i wl1 bss -C 3 down
+/sbin/wl  -i wl1 ssid -C 0 "NETGEAR55-5G"
+Setting SSID: "NETGEAR55-5G"
+/sbin/wl  -i wl1 ssid -C 1 "NETGEAR-5G-Guest"
+Setting SSID: "NETGEAR-5G-Guest"
+/sbin/wl  -i wl1 ssid -C 2 "NETGEAR-5G-Guest2"
+Setting SSID: "NETGEAR-5G-Guest2"
+/sbin/wl  -i wl1 ssid -C 3 "NETGEAR-5G-Guest3"
+Setting SSID: "NETGEAR-5G-Guest3"
+/sbin/ifconfig wl1 down 2&gt;/dev/null
+/sbin/ifconfig wl1.1 down 2&gt;/dev/null
+/sbin/ifconfig wl1.2 down 2&gt;/dev/null
+/sbin/ifconfig wl1.3 down 2&gt;/dev/null
+wscLedSet: led_action 0, led_blink_type 0, led_event 0, led_status 0
+/sbin/ifconfig wl1 hw ether 4C:60:DE:**:**:fb 2&gt;/dev/null
+/sbin/wl  -i wl1 cur_etheraddr 4C:60:DE:**:**:fb  2&gt;/dev/null
+/sbin/ifconfig wl1.1 hw ether 72:60:DE:**:**:f8 2&gt;/dev/null
+/sbin/wl  -i wl1.1 cur_etheraddr 72:60:DE:**:**:f8  2&gt;/dev/null
+/sbin/ifconfig wl1.2 hw ether 72:60:DE:**:**:f9 2&gt;/dev/null
+/sbin/wl  -i wl1.2 cur_etheraddr 72:60:DE:**:**:f9  2&gt;/dev/null
+/sbin/ifconfig wl1.3 hw ether 72:60:DE:**:**:** 2&gt;/dev/null
+/sbin/wl  -i wl1.3 cur_etheraddr 72:60:DE:**:**:**  2&gt;/dev/null
+/sbin/wl -i wl1  ap 1
+group1: port 5(wl0) entering forwarding state
+/sbin/wl -i wl1 infra 1
+/sbin/wl -i wl1 closed 0
+/sbin/wl -i wl1 country US
+/sbin/wl  -i wl1  band a
+/sbin/wl -i wl1 regulatory 0
+/sbin/wl -i wl1 radar 0 2&gt;/dev/null
+/sbin/wl -i wl1 spect 0 2&gt;/dev/null
+/sbin/wl -i wl1 nmode -1
+/sbin/wl -i wl1 mimo_bw_cap 1
+/sbin/wl -i wl1 chanspec -c 38 -b 5 -w 40 -s -1
+Chanspec set to 0x1d26
+/sbin/wl -i wl1 wpa_cap -C 0 &gt; /var/wpa_cap1 
+/sbin/wl -i wl1 wpa_cap -C 0 0 2&gt;/dev/null
+/sbin/wl -i wl1 wpa_cap -C 1 &gt; /var/wpa_cap1 
+/sbin/wl -i wl1 wpa_cap -C 1 0 2&gt;/dev/null
+/sbin/wl -i wl1 wpa_cap -C 2 &gt; /var/wpa_cap1 
+/sbin/wl -i wl1 wpa_cap -C 2 0 2&gt;/dev/null
+/sbin/wl -i wl1 wpa_cap -C 3 &gt; /var/wpa_cap1 
+/sbin/wl -i wl1 wpa_cap -C 3 0 2&gt;/dev/null
+/sbin/wl -i wl1 maxassoc 16
+/sbin/wl -i wl1 bss_maxassoc 16
+/sbin/wl -i wl1 nmode_protection_override -1
+/sbin/wl -i wl1 protection_control 2
+/sbin/wl -i wl1 protection_control 2
+/sbin/wl -i wl1 rifs_advert 0
+/sbin/wl -i wl1 obss_coex 0
+/sbin/wl -i wl1 stbc_tx -1
+/sbin/wl -i wl1 stbc_rx 1
+/sbin/wl -i wl1 nreqd 0
+/sbin/wl -i wl1 wme 0 2&gt;/dev/null
+/sbin/wl -i wl1 afterburner_override 0 2&gt;/dev/null
+/sbin/wl -i wl1 ampdu 1
+/sbin/wl -i wl1 afterburner_override 0
+/sbin/wl -i wl1 afterburner_override 0
+/sbin/wl -i wl1 wme 1 2&gt;/dev/null
+/sbin/wl -i wl1 wme_noack 0 2&gt;/dev/null
+/sbin/wl -i wl1 wme_apsd 1 2&gt;/dev/null
+/sbin/wl -i wl1 wme_bss_disable 0
+/sbin/wl -i wl1 bands &gt; /var/wl1bands
+/sbin/wl -i wl1 rate 0
+/sbin/wl -i wl1 a_rate 0
+/sbin/wl -i wl1 bg_rate 0 
+/sbin/wl leddc 0x0
+/sbin/wl -i wl1 mrate -1 
+/sbin/wl -i wl1 a_mrate -1 
+/sbin/wl -i wl1 bg_mrate -1 
+/sbin/wl -i wl1 rtsthresh 2347
+/sbin/wl -i wl1 fragthresh 2346
+/sbin/wl -i wl1 dtim 2
+/sbin/wl -i wl1  bi 100
+/sbin/wl -i wl1  bcn_rotate 1
+/sbin/wl -i wl1 frameburst 1
+/sbin/wl -i wl1 ap_isolate 0
+/sbin/wl -i wl1 pwr_percent 100
+/sbin/wl -i wl1 wmf_bss_enable 0
+/sbin/wl -i wl1.1 wmf_bss_enable 0
+/sbin/wl -i wl1.2 wmf_bss_enable 0
+/sbin/wl -i wl1.3 wmf_bss_enable 0
+/sbin/wl -i wl1 chanim_mode 1
+/sbin/wl -i wl1 rxchain_pwrsave_stas_assoc_check 1
+/sbin/wl -i wl1 rxchain_pwrsave_enable 0
+/sbin/wl -i wl1 rxchain_pwrsave_quiet_time 10
+/sbin/wl -i wl1 rxchain_pwrsave_pps 10
+/sbin/wl -i wl1 radio_pwrsave_enable 0
+/sbin/wl: Not Permitted
+/sbin/wl -i wl1 radio_pwrsave_quiet_time 10
+/sbin/wl -i wl1 radio_pwrsave_pps 1
+/sbin/wl -i wl1 radio_pwrsave_level 0
+/sbin/wl -i wl1 mac none
+/sbin/wl -i wl1 macmode 0
+/sbin/wl -i wl1 up
+/sbin/wl -i wl1 csscantimer 0
+/sbin/wl -i wl1 obss_coex 0
+/sbin/wl -i wl1 rmwep -C 0 0
+/sbin/wl -i wl1 rmwep -C 0 1
+/sbin/wl -i wl1 rmwep -C 0 2
+/sbin/wl -i wl1 rmwep -C 0 3
+/sbin/wl -i wl1 rmwep -C 1 0
+/sbin/wl -i wl1 rmwep -C 1 1
+/sbin/wl -i wl1 rmwep -C 1 2
+/sbin/wl -i wl1 rmwep -C 1 3
+/sbin/wl -i wl1 rmwep -C 2 0
+/sbin/wl -i wl1 rmwep -C 2 1
+/sbin/wl -i wl1 rmwep -C 2 2
+/sbin/wl -i wl1 rmwep -C 2 3
+/sbin/wl -i wl1 rmwep -C 3 0
+/sbin/wl -i wl1 rmwep -C 3 1
+/sbin/wl -i wl1 rmwep -C 3 2
+/sbin/wl -i wl1 rmwep -C 3 3
+/sbin/wl -i wl1  wsec -C 0 4
+/sbin/wl -i wl1 wsec_restrict -C 0 1
+/sbin/wl -i wl1 wpa_auth -C 0 128
+/sbin/wl -i wl1 eap 1
+/sbin/wl -i wl1 auth -C 0 0
+/sbin/wl -i wl1 wdswsec 0
+/sbin/wl -i wl1 wdswsec_enable 0
+/usr/sbin/brctl addif group1 wl1
+device wl1 entered promiscuous mode
+sh: /bin/igd: not found
+setting oob: lan_wps_oob 
+wps_cfg_state = 1, wps_config=ap-er
+wscLedSet: led_action 0, led_blink_type 0, led_event 0, led_status 0
+wscLedSet: led_action 0, led_blink_type 0, led_event 0, led_status 0
+issueServiceCmd
+SET dddddd  wps_config=ap-er
+/sbin/wl -i wl1 bss -C 0 up
+/sbin/ifconfig wl1 up
+group1: port 6(wl1) entering learning state
+/sbin/ifconfig wl1.1 down
+/sbin/ifconfig wl1.2 down
+/sbin/ifconfig wl1.3 down
+/sbin/wl -i wl1 lazywds 0
+/sbin/wl -i wl1 wds    
+/sbin/wl -i wl1 wdstimeout 1
+/sbin/wl  -i wl1 phy_watchdog 1
+/sbin/wl  -i wl1 phycal_override_on_traffic 0
+/sbin/wl  -i wl1 fcache 1
+/usr/sbin/sendarp -s group1 -d group1
+setupAll end
+/sbin/wl -i wl0 rxchain_pwrsave_enable 0
+/sbin/wl -i wl1 rxchain_pwrsave_enable 0
+rcd: [run] deQ =/usr/sbin/rc_app/rc_wifi_isolation start 
+sh: can't create /proc/wifi_isolation: nonexistent directory
+sh: can't create /proc/wifi_isolation: nonexistent directory
+rcd: [run] deQ =/usr/sbin/rc_app/rc_timezone start 
+rcd: [run] deQ =/usr/sbin/rc_app/rc_sip_alg start 
+net/netfilter/nf_conntrack_sip.c: write_proc: file: 8304c1b0, buffer: 1
+, count: 2, data: 00000000
+rcd: [run] deQ =/usr/sbin/rc_app/rc_dnrd start 
+[ dnrd_main - 31 ] : do dnrd for 1 -&gt; 1
+iptables: No chain/target/match by that name.
+iptables: No chain/target/match by that name.
+iptables: No chain/target/match by that name.
+iptables: No chain/target/match by that name.
+Notice: caching turned off
+Warning: Using /etc/hosts will be removed in a future version. Please use only the /etc/dnrd/master file or use -m off.
+group1: port 6(wl1) entering forwarding state
+rcd: [run] deQ =/usr/sbin/rc_app/rc_httpd start 
+[sc_language.c::create_language_file():377] Create link files for &lt;English&gt;
+[sc_language.c::create_language_file():399] Checking MTD &lt;/config/language_ENU/lang&gt; according to its id &lt;ENU&gt;
+[sc_language.c::decompress_language():164] Try to decompress MTD &lt;/config/language_ENU/lang&gt;
+rmmod: cannot unload 'ipt_REJECT': Resource temporarily unavailable
+insmod: cannot insert '/lib/modules/ipt_REJECT.ko': File exists
+rcd: [run] deQ =/usr/sbin/rc_app/rc_printk start 
+rcd: [run] deQ =/usr/sbin/rc_app/rc_ddns init 
+rcd: [run] deQ =/usr/sbin/rc_app/rc_check_conn start 
+rcd: [run] deQ =/usr/sbin/rc_app/rc_wan init 
+[ wan_main - 336 ] : rc wan enter 
+[ start_adsl - 429 ] : adsl_mode = &lt;MMODE&gt;
+rcd: [run] deQ =/usr/sbin/rc_app/rc_route start 
+rcd: [run] deQ =/usr/sbin/rc_app/rc_ripd start 
+rcd: [run] deQ =/usr/sbin/rc_app/rc_potcounter start 
+killall: potcounter: no process killed
+rcd: [run] deQ =/usr/sbin/rc_app/rc_lltd start 
+rcd: [run] deQ =/usr/sbin/rc_app/rc_upnp start 
+killall: miniupnpd: no process killed
+rcd: [run] deQ =/usr/sbin/rc_app/rc_schedule start 
+sh: can't create /proc/net/ipt_condition/schedule: nonexistent directory
+rcd: [run] deQ =/usr/sbin/rc_app/rc_usb_service init 
+[ start_smb_http_en - 156 ] : entering
+[ start_smb_http_en - 168 ] : entering do not start_usb_httpd
+killall: minidlna: no process killed
+#### media server is disable
+rcd: [run] deQ =/usr/sbin/rc_app/rc_start finished 
+rcd: [run] deQ =/usr/sbin/rc_app/rc_schedule restart 
+sh: can't create /proc/net/ipt_condition/schedule: nonexistent directory
+  PID USER       VSZ STAT COMMAND
+    1 root      1012 S    init       
+    2 root         0 RW&lt;  [kthreadd]
+    3 root         0 SW&lt;  [migration/0]
+    4 root         0 SW   [sirq-high/0]
+    5 root         0 SW   [sirq-timer/0]
+    6 root         0 SW   [sirq-net-tx/0]
+    7 root         0 SW   [sirq-net-rx/0]
+    8 root         0 SW   [sirq-block/0]
+    9 root         0 SW   [sirq-tasklet/0]
+   10 root         0 SW   [sirq-sched/0]
+   11 root         0 SW   [sirq-hrtimer/0]
+   12 root         0 SW   [sirq-rcu/0]
+   13 root         0 SW&lt;  [migration/1]
+   14 root         0 SW   [sirq-high/1]
+   15 root         0 SW   [sirq-timer/1]
+   16 root         0 SW   [sirq-net-tx/1]
+   17 root         0 SW   [sirq-net-rx/1]
+   18 root         0 SW   [sirq-block/1]
+   19 root         0 SW   [sirq-tasklet/1]
+   20 root         0 SW   [sirq-sched/1]
+   21 root         0 SW   [sirq-hrtimer/1]
+   22 root         0 SW   [sirq-rcu/1]
+   23 root         0 SW&lt;  [events/0]
+   24 root         0 SW&lt;  [events/1]
+   25 root         0 SW&lt;  [khelper]
+   28 root         0 SW&lt;  [async/mgr]
+   92 root         0 SW&lt;  [kblockd/0]
+   93 root         0 SW&lt;  [kblockd/1]
+  102 root         0 SW&lt;  [khubd]
+  120 root         0 SW&lt;  [bpm]
+  136 root         0 SW   [pdflush]
+  137 root         0 SW   [pdflush]
+  138 root         0 SWN  [kswapd0]
+  140 root         0 SW&lt;  [crypto/0]
+  141 root         0 SW&lt;  [crypto/1]
+  198 root         0 SW&lt;  [mtdblockd]
+  246 root         0 SW   [board-timer]
+  250 root         0 SW&lt;  [linkwatch]
+  257 root      1024 R    /bin/sh /usr/etc/rcS 
+  305 root         0 SW   [kpAliveWatchdog]
+  311 root         0 SW   [dsl0]
+  320 root         0 SW   [bcmsw]
+  321 root         0 SW   [bcmsw_timer]
+  394 root      1492 S    /usr/sbin/swmdk 
+  396 root      1492 S    /usr/sbin/swmdk 
+  397 root      1492 S    /usr/sbin/swmdk 
+  402 root      1228 S    /sbin/klogd 
+  404 root       800 S    /usr/sbin/cmd_agent_ap 
+  406 root         0 SWN  [jffs2_gcd_mtd4]
+  407 root         0 SWN  [jffs2_gcd_mtd3]
+  408 root         0 SWN  [jffs2_gcd_mtd12]
+  409 root         0 SWN  [jffs2_gcd_mtd11]
+  410 root         0 SWN  [jffs2_gcd_mtd10]
+  411 root         0 SWN  [jffs2_gcd_mtd9]
+  412 root         0 SWN  [jffs2_gcd_mtd2]
+  413 root         0 SWN  [jffs2_gcd_mtd8]
+  419 root       884 S    /usr/sbin/ft_tool 
+  425 root       808 S    /usr/sbin/rcd 
+  430 root       992 S    /sbin/lan_monitor 
+  439 root       824 S    /usr/sbin/crond 
+  440 root       912 S    /usr/sbin/multi_pb_app 90 91 92 10 40 
+  441 root       988 S    /usr/sbin/wps_ledctrl 
+  448 root       804 S    /usr/sbin/wlevt 
+  507 root      1232 S    /sbin/syslogd -f /etc/syslog.conf 
+  887 root       872 S    /var/udhcpd_1 /etc/udhcpd.conf1 
+ 1943 root      1292 S    /bin/lld2d group1 
+ 1947 root      1236 S    /usr/sbin/eapd 
+ 1951 root      1284 S    /usr/sbin/nas 
+ 1953 root      2404 S    /bin/wps_monitor 
+ 1968 root       976 S    /usr/sbin/wps_det do_addER_reset 
+ 2334 root      1316 S    /var/dnrd_1 -a 192.168.0.1 -m hosts -c off -g routerl
+ 2427 root      1780 S    /usr/sbin/mini_httpd -d /www -r NETGEAR DGND3700v2 -c
+ 2480 root      1080 S    /bin/wan_monitor 
+ 2513 root       808 S    /usr/sbin/potcounter 
+ 2518 root       944 S    /usr/bin/lld2 group1 
+ 2546 root      1220 S    /usr/sbin/miniupnpd -i ppp1 -a 192.168.0.1 -p 56688 -
+ 2820 root         0 SW   [ telnetDBGD ]
+ 2821 root         0 SW   [ acktelnetDBGD ]
+ 2822 root         0 SW   [checkSBusTimeou]
+ 2824 root         0 DW   [NU INITSOCK]
+ 2825 root      1016 R    /bin/ps 
+
+Please press Enter to activate this console. 
+
+
+
+
+# cat /proc/mounts
+rootfs / rootfs rw 0 0
+mtd:rootfs / jffs2 ro,relatime 0 0
+proc /proc proc rw,relatime 0 0
+sysfs /sys sysfs rw,relatime 0 0
+ramfs /home ramfs rw,relatime 0 0
+ramfs /tmp ramfs rw,relatime 0 0
+ramfs /mnt ramfs rw,relatime 0 0
+ramfs /dev ramfs rw,relatime 0 0
+devpts /dev/pts devpts rw,relatime,mode=600,ptmxmode=000 0 0
+mtd:factory /config/factory jffs2 rw,relatime 0 0
+mtd:scnvram /config/nvram jffs2 rw,relatime 0 0
+mtd:language_ENU /config/language_ENU jffs2 rw,relatime 0 0
+mtd:language_CHS /config/language_CHS jffs2 rw,relatime 0 0
+mtd:language_RUS /config/language_RUS jffs2 rw,relatime 0 0
+mtd:language_PTB /config/language_PTB jffs2 rw,relatime 0 0
+mtd:language_DEU /config/language_DEU jffs2 rw,relatime 0 0
+mtd:xxx /config/xxx jffs2 rw,relatime 0 0
+#
+# cat /proc/cpuinfo
+system type             : 96362ADVN2xh
+processor               : 0
+cpu model               : Broadcom4350 V7.0
+BogoMIPS                : 399.36
+wait instruction        : yes
+microsecond timers      : yes
+tlb_entries             : 32
+extra interrupt vector  : no
+hardware watchpoint     : no
+ASEs implemented        :
+shadow register sets    : 1
+core                    : 0
+VCED exceptions         : not available
+VCEI exceptions         : not available
+
+
+
+
+unaligned exceptions            : 253
+processor               : 1
+cpu model               : Broadcom4350 V7.0
+BogoMIPS                : 402.43
+wait instruction        : yes
+microsecond timers      : yes
+tlb_entries             : 32
+extra interrupt vector  : no
+hardware watchpoint     : no
+ASEs implemented        :
+shadow register sets    : 1
+core                    : 0
+VCED exceptions         : not available
+VCEI exceptions         : not available
+
+
+
+
+unaligned exceptions            : 253
+#
+#
