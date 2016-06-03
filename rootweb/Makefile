@@ -1,3 +1,5 @@
+include ../Rules.mak
+
 CP=cp
 RM=rm
 MV=mv
