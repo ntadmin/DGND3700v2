@@ -6,14 +6,19 @@ fi
 args_for_dnsmasq=""
 
 get_dnsmasq_args() {
-    dns1="$(/usr/sbin/nvram-util get wan_dns1)"
-    dns2="$(/usr/sbin/nvram-util get wan_dns2)"
+    dns_user_set="$(nvram-util get wan_fix_dns)"
+    if [ "x$dns_user_set" == "x1" ]; then
+        dns1="$(/usr/sbin/nvram-util get wan_dns1)"
+        dns2="$(/usr/sbin/nvram-util get wan_dns2)"
 
-    if [ "x$dns1" != "x" ]; then
-        args_for_dnsmasq="$args_for_dnsmasq --server=$dns1"
-    fi
-    if [ "x$dns2" != "x" ]; then
-        args_for_dnsmasq="$args_for_dnsmasq --server=$dns2"
+        if [ "x$dns1" != "x" ]; then
+            args_for_dnsmasq="$args_for_dnsmasq --server=$dns1"
+        fi
+        if [ "x$dns2" != "x" ]; then
+            args_for_dnsmasq="$args_for_dnsmasq --server=$dns2"
+        fi
+    else
+        # Don't yet know where to get the DNS servers provided by the ISP from ...
     fi
 
     dhcp_on="$(/usr/sbin/nvram-util get dhcp_server_enable)"
