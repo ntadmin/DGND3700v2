@@ -27,6 +27,7 @@ kernel:
 
 source:
 	sed -i '/SUB_VER=/c\SUB_VER=$(CUSTOM_VERSION)' $(NETGEAR_BASE_DIR)/Source/Builds/$(PROJECT).mak
+	$(foreach package, $(netgear_packages_not_needed), sed -i '/$(package)/c\# CUSTOM MOD: $(package) not needed for custom build' $(NETGEAR_BASE_DIR)/Source/apps/Makefile; )
 	make -C $(NETGEAR_BASE_DIR) source SHELL=/bin/bash
 
 source_clean:
