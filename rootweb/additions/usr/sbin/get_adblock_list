@@ -1,0 +1,39 @@
+#!/bin/sh
+#
+# Updates /etc/adblocklist to contain the latest information from
+# yoyo for adblocking
+#
+# It expects the fileneame to put the list into as argument one
+if [ $# -lt 1 ]; then
+    echo "Usage: $0 output-filename"
+    exit
+fi
+
+# Where the list comes from
+list_src_url='http://pgl.yoyo.org/adservers/serverlist.php'
+list_src_args='?hostformat=nohtml&showintro=0&mimetype=plaintext'
+
+# the ipaddress where we want to send the requests to, instead of the
+# bannerservers
+
+ad_catcher_ip='0.0.0.0'
+
+# Where to find wget
+wget=/usr/sbin/wget
+
+# Make sure that there is a blank file to start with
+if [ -e $1 ]; then
+   rm -f $1
+fi
+touch $1
+
+# Do the work
+tmpfile=/tmp/adblocklist.pre
+
+$wget -q $list_src_url$list_src_args -O $tmpfile
+
+while read line; do
+    echo $add_catcher_ip $line >> $1
+    done < $tmpfile
+
+rm $tmpfile

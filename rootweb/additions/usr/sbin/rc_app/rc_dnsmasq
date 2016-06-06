@@ -3,6 +3,7 @@ if [ -e /usr/etc/log_rc_flag ]; then
     echo $0 $@ >> /var/log/rc_calls
 fi
 
+adblock_hosts_file=/var/tmp/hosts.adblock
 args_for_dnsmasq=""
 
 get_dnsmasq_args() {
@@ -21,6 +22,8 @@ get_dnsmasq_args() {
         # Don't yet know where to get the DNS servers provided by the ISP from ...
     fi
 
+    args_for_dnsmasq="$args_for_dnsmasq -A $adblock_hosts_file"
+
     dhcp_on="$(/usr/sbin/nvram-util get dhcp_server_enable)"
     if [ "x$dhcp_on" == "x1" ]; then
         dhcp_start="$(/usr/sbin/nvram-util get dhcp_start_ip)"
@@ -37,6 +40,7 @@ get_dnsmasq_args() {
 case "$1" in
     start)
         get_dnsmasq_args
+        /usr/sbin/get_adblock_list $adblock_hosts_file
         PID="$(pidof dnsmasq)"
         if [ "x$PID" == "x" ]; then
             /usr/sbin/dnsmasq $args_for_dnsmasq
