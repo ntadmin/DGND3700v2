@@ -6,11 +6,16 @@ fi
 args_for_adslctl=""
 
 add_adsl_arg() {
-    if [ "x$2" != x ]; then
-        if [ $2 != "(null)" ]; then
-            if [ "x$3" != "x" ]; then
-                if [ $2 != $3 ]; then
-                    args_for_adslctl="$args_for_adslctl $1 $2"
+    if [ "$1" = "--mod" ]; then
+        good=1
+        
+    else
+        if [ "x$2" != x ]; then
+            if [ $2 != "(null)" ]; then
+                if [ "x$3" != "x" ]; then
+                    if [ $2 != $3 ]; then
+                        args_for_adslctl="$args_for_adslctl $1 $2"
+                    fi
                 fi
             fi
         fi
@@ -36,35 +41,58 @@ check_adsl_config() {
     SBSOS="$(/usr/sbin/nvram-util get wan_SOS)"
     SBphyReXmt="$(/usr/sbin/nvram-util get wan_phyReXmt)"
 
-    case $dslMode in
+    SBannexM=0
+    SBannexL=0
+    SBGdmt=0
+    SBGlite=0
+    SBtwo=0
+    SBt1413=0
+    SBtwoplus=0
+    case $SBdslMode in
       GDMT)
-        SBdslmodeargs="dm"
+        SBGdmt=1
+        SBannexM=1
         ;;
       A2MOD)
-        SBdslmodeargs="2m"
+        SBtwo=1
+        SBannexM=1
         ;;
       A2PMOD)
-        SBdslmodeargs="pm"
+        SBtwoplus=1
+        SBannexM=1
         ;;
       *)
-        SBdslmodeargs="dlt2epmM3M5"
+        SBtwo=1
+        SBGdmt=1
+        SBGlite=1
+        SBannexM=1
+        SBannexL=1
+        SBt1413=1
+        SBtwoplus=1
         ;;
     esac
 
     # What is actually set (from Richud's v1 code)
     /usr/sbin/adslctl profile --show > /tmp/profile_show
 
+    ISannexM=0
+    ISannexL=0
+    ISGdmt=0
+    ISGlite=0
+    IStwo=0
+    ISt1413=0
+    IStwoplus=0
+
     for line in $(cat /tmp/profile_show | tr " \t" "#")
     do
       case "$line" in
-        "#G.Dmt#Enabled") mod=${mod}d ;;
-        "#G.lite#Enabled") mod=${mod}l ;;
-        "#T1.413#Enabled") mod=${mod}t ;;
-        "#ADSL2#Enabled") mod=${mod}2 ;;
-        "#AnnexL#Enabled") mod=${mod}e ;;
-        "#ADSL2+#Enabled") mod=${mod}p ;;
-        "#AnnexM#Enabled") mod=${mod}mM3M5 ;;
-        "#VDSL2#Enabled") mod=${mod}v ;;
+        "#G.Dmt#Enabled")  ISGdmt=1 ;;
+        "#G.lite#Enabled") ISGlite=1 ;;
+        "#ADSL2#Enabled")  IStwo=1 ;;
+        "#T1.413#Enabled") ISt1413=1 ;;
+        "#ADSL2+#Enabled") IStwoplus=1 ;;
+        "#AnnexL#Enabled") ISannexL=1 ;;
+        "#AnnexM#Enabled") ISannexM=1 ;;
         *pair) lpair=$(echo $line | sed "s@#\([A-Za-z]\).*@\1@" | tr '[:upper:]' '[:lower:]');;
         "#bitswap#"*) bitswap=$(echo $line | sed "s@.*#\([Onf]*\)@\1@" | tr '[:upper:]' '[:lower:]') ;;
         "#sra#"*) sra=$(echo $line | sed "s@.*#\([Onf]*\)@\1@" | tr '[:upper:]' '[:lower:]') ;;
@@ -84,6 +112,26 @@ check_adsl_config() {
         esac
     done
 
+    mod_good=1
+    if [ $SBtwo != $IStwo ]; then mod_good=0; fi
+    if [ $SBannexL != $IStwo ]; then mod_good=0; fi
+    if [ $SBannexM != $IStwo ]; then mod_good=0; fi
+    if [ $SBt1413 != $ISt1413 ]; then mod_good=0; fi
+    if [ $SBtwoplus != $IStwoplus ]; then mod_good=0; fi
+    if [ $SBGdmt != $ISGdmt ]; then mod_good=0; fi
+    if [ $SBGlite != $ISGlite ]; then mod_good=0; fi
+
+    if [ $mod_good = "0" ]; then
+        $mod=""
+        if [ $SBGdmt = "1"]; then mod=${mod}d; fi
+        if [ $SBGlite = "1"]; then mod=${mod}l; fi
+        if [ $SBtwo = "1"]; then mod=${mod}2; fi
+        if [ $SBt1413 = "1"]; then mod=${mod}t; fi
+        if [ $SBtwoplus = "1"]; then mod=${mod}p; fi
+        if [ $SBannexL = "1"]; then mod=${mod}e; fi
+        if [ $SBannexM = "1"]; then mod=${mod}m; fi
+        args_for_adslctl="$args_for_adslctl --mod $mod"
+    fi
 
     add_adsl_arg "--mod"         $SBdslmodeargs   $mod
     add_adsl_arg "--bitswap"     $SBbitswap       $bitswap

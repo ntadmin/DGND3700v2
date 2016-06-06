@@ -24,7 +24,7 @@ get_dnsmasq_args() {
         fi
     fi
 
-    args_for_dnsmasq="$args_for_dnsmasq --clear_on_reload -A $adblock_hosts_file"
+    args_for_dnsmasq="$args_for_dnsmasq --clear-on-reload -H=$adblock_hosts_file"
 
     dhcp_on="$(/usr/sbin/nvram-util get dhcp_server_enable)"
     if [ "x$dhcp_on" == "x1" ]; then
@@ -33,8 +33,10 @@ get_dnsmasq_args() {
         mask="$(/usr/sbin/nvram-util get lan_netmask)"
         lease_length="24h"
 
-        if [ "x$dhcp_start" != "x" && "x$dhcp_end" != "x" ]; then
-            args_for_dnsmasq="$args_for_dnsmasq --dhcp-range=$dhcp_start,$dhcp_end,$mask,$lease_length --leasefile-ro --dhcp-script=/usr/sbin/dhcp_lease_update.sh"
+        if [ "x$dhcp_start" != "x" ]; then
+            if [ "x$dhcp_end" != "x" ]; then
+                args_for_dnsmasq="$args_for_dnsmasq --dhcp-range=$dhcp_start,$dhcp_end,$mask,$lease_length --leasefile-ro --dhcp-script=/usr/sbin/dhcp_lease_update.sh"
+            fi
         fi
     fi
 }
@@ -42,13 +44,13 @@ get_dnsmasq_args() {
 case "$1" in
     start)
         get_dnsmasq_args
-        /usr/sbin/get_adblock_list $adblock_hosts_file
         PID="$(pidof dnsmasq)"
         if [ "x$PID" == "x" ]; then
             /usr/sbin/dnsmasq $args_for_dnsmasq
             PID="$(pidof dnsmasq)"
             if [ "x${PID}" != "x" ]; then
-	        echo "dnsmasq started succesfully. ( $args_for dnsmasq )"
+	        echo "dnsmasq started succesfully. ( $args_for_dnsmasq )"
+                /usr/sbin/get_adblock_list $adblock_hosts_file
 	    else
 	        echo "Error starting dnsmasq. ( $args_for_dnsmasq )"
 	    fi

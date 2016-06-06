@@ -33,7 +33,7 @@ tmpfile=/tmp/adblocklist.pre
 $wget -q $list_src_url$list_src_args -O $tmpfile
 
 while read line; do
-    echo $add_catcher_ip $line >> $1
+    echo $ad_catcher_ip $line >> $1
     done < $tmpfile
 
 rm $tmpfile
