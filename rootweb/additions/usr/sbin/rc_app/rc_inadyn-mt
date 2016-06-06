@@ -1,39 +1,38 @@
 #!/bin/sh
-#if [ -e /usr/etc/log_rc_flag ]; then
+if [ -e /usr/etc/log_rc_flag ]; then
     echo $0 $@ >> /var/log/rc_calls
-#fi
+fi
 
 args_for_inadyn=""
 ddns_enable="$(/usr/sbin/nvram-util get ddns_enable)"
 
 make_args() {
     # NB Many people suggest using the '--secure' option, but it doesn't
-    # work ...
-
-    if [ "x"$ddns_enable == "x1" ]; then
+    # seem to work ...
+    if [ "x$ddns_enable" = "x1" ]; then
         system=""
         extra=""
         ddns_service_provider="$(/usr/sbin/nvram-util get ddns_service_provider)"
         case $ddns_service_provider in
-          dnsomatic )
+          dnsomatic)
             username="$(/usr/sbin/nvram-util get ddns_dnsom_user_name)"
             password="$(/usr/sbin/nvram-util get ddns_dnsom_password)"
             alias="$(/usr/sbin/nvram-util get ddns_dnsom_host_name)"
             system="default@dnsomatic.com"
             ;;
-          noip )
+          noip)
             username="$(/usr/sbin/nvram-util get ddns_noip_user_name)"
             password="$(/usr/sbin/nvram-util get ddns_noip_password)"
             alias="$(/usr/sbin/nvram-util get ddns_noip_host_name)"
             system="default@no-ip.com"
             ;;
-          dyndns )
+          dyndns)
             username="$(/usr/sbin/nvram-util get ddns_user_name)"
             password="$(/usr/sbin/nvram-util get ddns_password)"
             alias="$(/usr/sbin/nvram-util get ddns_host_name)"
             system="dyndns@dyndns.org"
             ;;
-          NETGEAR )
+          NETGEAR)
             username="$(/usr/sbin/nvram-util get NGR_DDNSEmail)"
             password="$(/usr/sbin/nvram-util get NGR_DDNSPassword)"
             alias="$(/usr/sbin/nvram-util get NGR_DDNSHost)"
@@ -42,10 +41,10 @@ make_args() {
         esac
 
         args_for_inadyn="--background --svr_add_cfg /usr/etc/inadyn-mt/extra/servers_additional.cfg"
-        if [ "x"$system != "x" ]; then
+        if [ "x$system" != "x" ]; then
             args_for_inadyn="$args_for_inadyn --dyndns_system $system"
         fi
-        if [ "x"$extra != "x" ]; then
+        if [ "x$extra" != "x" ]; then
             args_for_inadyn="$args_for_inadyn $extra"
         fi
         args_for_inadyn="$args_for_inadyn --alias $alias --username $username --password $password --log_file /var/log/inadyn-mt.log --cache_dir /var/tmp"
@@ -57,11 +56,11 @@ case "$1" in
         ;;
     start)
         make_args
-        if [ "x"$ddns_enable != "x1" ]; then
+        if [ "x$ddns_enable" != "x1" ]; then
             echo "DDNS not enabled so not starting inadyn. (ddns_enable:$ddns_enable)"
 	else
             PID="$(pidof inadyn-mt)"
-            if [ "x$PID" == "x" ]; then
+            if [ "x$PID" = "x" ]; then
 	        /usr/sbin/inadyn-mt $args_for_inadyn
 		PID="$(pidof inadyn-mt)"
 		if [ "x${PID}" != "x" ]; then
@@ -70,7 +69,7 @@ case "$1" in
 		    echo "Error starting inadyn-mt ($args_for_inadyn)"
 		fi
             else
-                echo "idadyn-mt already started, leaving it alonw"
+                echo "idadyn-mt already started, leaving it alone"
             fi
         fi
         ;;
