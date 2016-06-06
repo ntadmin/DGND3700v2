@@ -14,7 +14,7 @@ root: extrabin packages rootweb
 
 rootweb:
 	make -C rootweb TARGET=target.tar.bz2
-	cp rootweb/target.tar.bz2 $(NETGEAR_BASE_DIR)/Source
+	@cp rootweb/target.tar.bz2 $(NETGEAR_BASE_DIR)/Source
 
 extrabin:
 	make -C extra_binaries
@@ -26,9 +26,10 @@ kernel:
 	make -C $(NETGEAR_BASE_DIR) kernel SHELL=/bin/bash
 
 source:
-	sed -i '/SUB_VER=/c\SUB_VER=$(CUSTOM_VERSION)' $(NETGEAR_BASE_DIR)/Source/Builds/$(PROJECT).mak
-	$(foreach package, $(netgear_packages_not_needed), sed -i '/$(package)/c\# CUSTOM MOD: $(package) not needed for custom build' $(NETGEAR_BASE_DIR)/Source/apps/Makefile; )
+	@sed -i '/SUB_VER=/c\SUB_VER=$(CUSTOM_VERSION)' $(NETGEAR_BASE_DIR)/Source/Builds/$(PROJECT).mak
+	@$(foreach package, $(netgear_packages_not_needed), sed -i '/$(package)/c\# CUSTOM MOD: $(package) not needed for custom build' $(NETGEAR_BASE_DIR)/Source/apps/Makefile; )
 	make -C $(NETGEAR_BASE_DIR) source SHELL=/bin/bash
+	@cp $(NETGEAR_BASE_DIR)/Source/image/$(PROJECT).img .
 
 source_clean:
 	make -C $(NETGEAR_BASE_DIR) source_clean

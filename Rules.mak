@@ -21,7 +21,7 @@ NETGEAR_BASE_DIR=$(CUSTOM_BASE_DIR)/$(NETGEAR_EXTRACT_DIR)
 # the netgear distruibution is not needed because it is supceded
 # by something in the custom packages directory
 #
-netgear_packages_not_needed=noip dnrd udhcp dhcpv6
+netgear_packages_not_needed=noip dnrd udhcp dhcpv6 totd
 
 #
 # Things not to edit
