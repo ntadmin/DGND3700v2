@@ -7,22 +7,24 @@ adblock_hosts_file=/var/tmp/hosts.adblock
 args_for_dnsmasq=""
 
 get_dnsmasq_args() {
+
     dns_user_set="$(nvram-util get wan_fix_dns)"
     if [ "x$dns_user_set" == "x1" ]; then
         dns1="$(/usr/sbin/nvram-util get wan_dns1)"
         dns2="$(/usr/sbin/nvram-util get wan_dns2)"
 
-        if [ "x$dns1" != "x" ]; then
-            args_for_dnsmasq="$args_for_dnsmasq --server=$dns1"
+        if [ "x$dns1" != "x" -o "x$dns2" != "x" ]; then
+            args_for_dnsmasq="$args_for_dnsmasq --no-resolv"
+            if [ "x$dns1" != "x" ]; then
+                args_for_dnsmasq="$args_for_dnsmasq --server=$dns1"
+            fi
+            if [ "x$dns2" != "x" ]; then
+                args_for_dnsmasq="$args_for_dnsmasq --server=$dns2"
+            fi
         fi
-        if [ "x$dns2" != "x" ]; then
-            args_for_dnsmasq="$args_for_dnsmasq --server=$dns2"
-        fi
-    else
-        # Don't yet know where to get the DNS servers provided by the ISP from ...
     fi
 
-    args_for_dnsmasq="$args_for_dnsmasq -A $adblock_hosts_file"
+    args_for_dnsmasq="$args_for_dnsmasq --clear_on_reload -A $adblock_hosts_file"
 
     dhcp_on="$(/usr/sbin/nvram-util get dhcp_server_enable)"
     if [ "x$dhcp_on" == "x1" ]; then

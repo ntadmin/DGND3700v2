@@ -9,7 +9,9 @@ add_adsl_arg() {
     if [ "x$2" != x ]; then
         if [ $2 != "(null)" ]; then
             if [ "x$3" != "x" ]; then
-                args_for_adslctl="$args_for_adslctl $1 $2"
+                if [ $2 != $3 ]; then
+                    args_for_adslctl="$args_for_adslctl $1 $2"
+                fi
             fi
         fi
     fi
@@ -45,7 +47,7 @@ check_adsl_config() {
         SBdslmodeargs="pm"
         ;;
       *)
-        SBdslmodeargs="dl2tepmM3M5"
+        SBdslmodeargs="dlt2epmM3M5"
         ;;
     esac
 
