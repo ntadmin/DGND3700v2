@@ -1,0 +1,13 @@
+#!/bin/sh
+#!/bin/sh
+if [ -e /usr/etc/log_rc_flag ]; then
+    echo "`date` [rc_apps] $0 $@" >> /var/log/rc_calls
+fi
+
+myexec=/var/tmp/MYEXEC$$
+mybase="${0##*/}"
+
+mkdir $myexec
+ln -fs /usr/sbin/rc_app/rc_apps_netgear $myexec/$mybase
+$myexec/$mybase $@
+rm -rf $myexec

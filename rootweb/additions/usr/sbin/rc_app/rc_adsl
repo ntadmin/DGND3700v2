@@ -1,21 +1,16 @@
 #!/bin/sh
 if [ -e /usr/etc/log_rc_flag ]; then
-    echo $0 $@ >> /var/log/rc_calls
+    echo "`date` [rc_adsl] $0 $@">> /var/log/rc_calls
 fi
 
 args_for_adslctl=""
 
 add_adsl_arg() {
-    if [ "$1" = "--mod" ]; then
-        good=1
-        
-    else
-        if [ "x$2" != x ]; then
-            if [ $2 != "(null)" ]; then
-                if [ "x$3" != "x" ]; then
-                    if [ $2 != $3 ]; then
-                        args_for_adslctl="$args_for_adslctl $1 $2"
-                    fi
+    if [ "x$2" != x ]; then
+        if [ $2 != "(null)" ]; then
+            if [ "x$3" != "x" ]; then
+                if [ $2 != $3 ]; then
+                    args_for_adslctl="$args_for_adslctl $1 $2"
                 fi
             fi
         fi
@@ -155,12 +150,12 @@ case "$1" in
     needs)
         check_adsl_config
         if [ "x$args_for_adslctl" != "x" ]; then
-            echo restart
+            echo configure
         else
             echo NOTHING
         fi
         ;;
-    start)
+    configure)
         # This first line is hopefully not needed as it relies on two parameters which we don't know.
         # The first is probaby either "medley" or "reverb", the second a hex number about the tones
         # used for upstream. No idea how to set it
@@ -169,6 +164,8 @@ case "$1" in
         if [ "x$args_for_adslctl" != "x" ]; then
             /usr/sbin/adslctl configure $args_for_adslctl
         fi
+        ;;
+    start)
         /usr/sbin/adslctl connection --up
         ;;
     strop)
@@ -179,10 +176,11 @@ case "$1" in
         ;;
     reload|restart)
         $0 stop
+        $0 configure
         $0 start
         ;;
     *)
-        echo "Usage: $0 needs|start|stop|restart|reload"
+        echo "Usage: $0 needs|configure|start|stop|restart|reload"
         exit 1
         ;;
 esac

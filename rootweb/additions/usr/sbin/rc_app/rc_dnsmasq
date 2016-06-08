@@ -1,6 +1,6 @@
 #!/bin/sh
 if [ -e /usr/etc/log_rc_flag ]; then
-    echo $0 $@ >> /var/log/rc_calls
+    echo "`date` [rc_dnsmasq] $0 $@" >> /var/log/rc_calls
 fi
 
 adblock_hosts_file=/var/tmp/hosts.adblock
@@ -48,11 +48,9 @@ case "$1" in
         PID="$(pidof dnsmasq)"
         if [ "x$PID" != "x" ]; then
             killit=0
-#            time_since_last_start=$(( `/usr/sbin/date +%s` - `/usr/sbin/stat -L --format %Y $last_start_file` ))
-#            if [ $time_since_last_start > 10 ]; then killit=1; fi
             lastargs="$(/usr/sbin/cat $last_start_file)"
-            if [ "x$lastargs" != "x$args_for_dnsmasq"]; then killit=1; fi
-            if [ $killit = 1 ]; then $0 stop; fi
+            if [ "x$lastargs" != "x$args_for_dnsmasq" ]; then killit=1; fi
+            if [ "$killit" = "1" ]; then $0 stop; fi
         fi
 
         PID="$(pidof dnsmasq)"
@@ -60,7 +58,7 @@ case "$1" in
             /usr/sbin/dnsmasq $args_for_dnsmasq
             PID="$(pidof dnsmasq)"
             if [ "x${PID}" != "x" ]; then
-                echo $args_for_dnsmasq > $last_start_file
+                echo "$args_for_dnsmasq" > $last_start_file
 	        echo "dnsmasq started succesfully. ( $args_for_dnsmasq )"
                 /usr/sbin/get_adblock_list $adblock_hosts_file
 	    else
