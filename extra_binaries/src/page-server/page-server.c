@@ -537,7 +537,15 @@ void save_data() {
                     }
                     nv_value = new_ip_value;
                 }
-                else nv_value = cur_value;
+                else {
+                    if (cur_value != NULL) {
+                        cp = strchr(cur_value, ':');
+                        if (cp != NULL) *cp = '\0';
+                        sprintf(new_ip_value, "%s", cur_value);
+                        if (cp != NULL) *cp = ':';
+                        nv_value = new_ip_value;
+                    }
+                }
             }
         }
 
