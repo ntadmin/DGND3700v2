@@ -26,7 +26,7 @@ check_adsl_config() {
     SBtrellis="$(/usr/sbin/nvram-util get wan_trellis)"
     SBsnr="$(/usr/sbin/nvram-util get wan_snr)"
     SBCoMinMgn="$(/usr/sbin/nvram-util get wan_CoMinMgt)"
-    SBik="$(/usr/sbin/nvram-util get wan_i24k)"
+    SBi24k="$(/usr/sbin/nvram-util get wan_i24k)"
     SBsesdrop="$(/usr/sbin/nvram-util get wan_sesdrop)"
     SBmonitorTone="$(/usr/sbin/nvram-util get wan_monitorTone)"
 
@@ -88,56 +88,55 @@ check_adsl_config() {
         "#ADSL2+#Enabled") IStwoplus=1 ;;
         "#AnnexL#Enabled") ISannexL=1 ;;
         "#AnnexM#Enabled") ISannexM=1 ;;
-        *pair) lpair=$(echo $line | sed "s@#\([A-Za-z]\).*@\1@" | tr '[:upper:]' '[:lower:]');;
-        "#bitswap#"*) bitswap=$(echo $line | sed "s@.*#\([Onf]*\)@\1@" | tr '[:upper:]' '[:lower:]') ;;
-        "#sra#"*) sra=$(echo $line | sed "s@.*#\([Onf]*\)@\1@" | tr '[:upper:]' '[:lower:]') ;;
-        "#trellis#"*) trellis=$(echo $line | sed "s@.*#\([Onf]*\)@\1@" | tr '[:upper:]' '[:lower:]') ;;
-        "#sesdrop#"*) sesdrop=$(echo $line | sed "s@.*#\([Onf]*\)@\1@" | tr '[:upper:]' '[:lower:]') ;;
-        "#CoMinMgn#"*) CoMinMgn=$(echo $line | sed "s@.*#\([Onf]*\)@\1@" | tr '[:upper:]' '[:lower:]') ;;
-        "#24k#"*) i24k=$(echo $line | sed "s@.*#\([Onf]*\)@\1@" | tr '[:upper:]' '[:lower:]') ;;
-        "#phyReXmt(Us/Ds)#Off/Off") phyReXmt=0;;
-        "#phyReXmt(Us/Ds)#Off/On") phyReXmt=1;;
-        "#phyReXmt(Us/Ds)#On/Off") phyReXmt=2;;
-        "#phyReXmt(Us/Ds)#On/On") phyReXmt=3;;
-        "#monitorTone:#"*) monitorTone=$(echo $line | sed "s@.*#\([Onf]*\)@\1@" | tr '[:upper:]' '[:lower:]') ;;
-        "#dynamicD:#"*) dynamicD=$(echo $line | sed "s@.*#\([Onf]*\)@\1@" | tr '[:upper:]' '[:lower:]') ;;
-        "#dynamicF:#"*) dynamicF=$(echo $line | sed "s@.*#\([Onf]*\)@\1@" | tr '[:upper:]' '[:lower:]') ;;
-        "#SOS:#"*) SOS=$(echo $line | sed "s@.*#\([Onf]*\)@\1@" | tr '[:upper:]' '[:lower:]') ;;
-        "#Training"*) snr=$(echo $line | sed "s@.*#\([-0-9]*\).*@\1@");[ "$snr" = "-1" ] && snr=100;;
+        *pair) ISlpair=$(echo $line | sed "s@#\([A-Za-z]\).*@\1@" | tr '[:upper:]' '[:lower:]');;
+        "#bitswap#"*) ISbitswap=$(echo $line | sed "s@.*#\([Onf]*\)@\1@" | tr '[:upper:]' '[:lower:]') ;;
+        "#sra#"*) ISsra=$(echo $line | sed "s@.*#\([Onf]*\)@\1@" | tr '[:upper:]' '[:lower:]') ;;
+        "#trellis#"*) IStrellis=$(echo $line | sed "s@.*#\([Onf]*\)@\1@" | tr '[:upper:]' '[:lower:]') ;;
+        "#sesdrop#"*) ISsesdrop=$(echo $line | sed "s@.*#\([Onf]*\)@\1@" | tr '[:upper:]' '[:lower:]') ;;
+        "#CoMinMgn#"*) ISCoMinMgn=$(echo $line | sed "s@.*#\([Onf]*\)@\1@" | tr '[:upper:]' '[:lower:]') ;;
+        "#24k#"*) ISi24k=$(echo $line | sed "s@.*#\([Onf]*\)@\1@" | tr '[:upper:]' '[:lower:]') ;;
+        "#phyReXmt(Us/Ds)#Off/Off") ISphyReXmt=0;;
+        "#phyReXmt(Us/Ds)#Off/On") ISphyReXmt=1;;
+        "#phyReXmt(Us/Ds)#On/Off") ISphyReXmt=2;;
+        "#phyReXmt(Us/Ds)#On/On") ISphyReXmt=3;;
+        "#monitorTone:#"*) ISmonitorTone=$(echo $line | sed "s@.*#\([Onf]*\)@\1@" | tr '[:upper:]' '[:lower:]') ;;
+        "#dynamicD:#"*) ISdynamicD=$(echo $line | sed "s@.*#\([Onf]*\)@\1@" | tr '[:upper:]' '[:lower:]') ;;
+        "#dynamicF:#"*) ISdynamicF=$(echo $line | sed "s@.*#\([Onf]*\)@\1@" | tr '[:upper:]' '[:lower:]') ;;
+        "#SOS:#"*) ISSOS=$(echo $line | sed "s@.*#\([Onf]*\)@\1@" | tr '[:upper:]' '[:lower:]') ;;
+        "#Training"*) ISsnr=$(echo $line | sed "s@.*#\([-0-9]*\).*@\1@");[ "$snr" = "-1" ] && snr=100;;
         esac
     done
 
     mod_good=1
     if [ $SBtwo != $IStwo ]; then mod_good=0; fi
-    if [ $SBannexL != $IStwo ]; then mod_good=0; fi
-    if [ $SBannexM != $IStwo ]; then mod_good=0; fi
+    if [ $SBannexL != $ISannexL ]; then mod_good=0; fi
+    if [ $SBannexM != $ISannexM ]; then mod_good=0; fi
     if [ $SBt1413 != $ISt1413 ]; then mod_good=0; fi
     if [ $SBtwoplus != $IStwoplus ]; then mod_good=0; fi
     if [ $SBGdmt != $ISGdmt ]; then mod_good=0; fi
     if [ $SBGlite != $ISGlite ]; then mod_good=0; fi
 
     if [ $mod_good = "0" ]; then
-        $mod=""
-        if [ $SBGdmt = "1"]; then mod=${mod}d; fi
-        if [ $SBGlite = "1"]; then mod=${mod}l; fi
-        if [ $SBtwo = "1"]; then mod=${mod}2; fi
-        if [ $SBt1413 = "1"]; then mod=${mod}t; fi
-        if [ $SBtwoplus = "1"]; then mod=${mod}p; fi
-        if [ $SBannexL = "1"]; then mod=${mod}e; fi
-        if [ $SBannexM = "1"]; then mod=${mod}m; fi
+        mod=""
+        if [ $SBGdmt = "1" ]; then mod=${mod}d; fi
+        if [ $SBGlite = "1" ]; then mod=${mod}l; fi
+        if [ $SBtwo = "1" ]; then mod=${mod}2; fi
+        if [ $SBt1413 = "1" ]; then mod=${mod}t; fi
+        if [ $SBtwoplus = "1" ]; then mod=${mod}p; fi
+        if [ $SBannexL = "1" ]; then mod=${mod}e; fi
+        if [ $SBannexM = "1" ]; then mod=${mod}m; fi
         args_for_adslctl="$args_for_adslctl --mod $mod"
     fi
 
-    add_adsl_arg "--mod"         $SBdslmodeargs   $mod
-    add_adsl_arg "--bitswap"     $SBbitswap       $bitswap
-    add_adsl_arg "--sra"         $SBsra           $sra
-    add_adsl_arg "--lpair"       $SBlpair         $lpair
-    add_adsl_arg "--snr"         $SBsnr           $snr
-    add_adsl_arg "--trellis"     $SBtrellis       $trellis
-    add_adsl_arg "--i24k"        $SBik            $i24k
-    add_adsl_arg "--CoMinMgn"    $SBCoMinMgn      $CoMinMgn
-    add_adsl_arg "--sesdrop"     $SBsesdrop       $sesdrop
-    add_adsl_arg "--monitorTone" $SBmonitorTone   $monitorTraining
+    add_adsl_arg "--bitswap"     $SBbitswap       $ISbitswap
+    add_adsl_arg "--sra"         $SBsra           $ISsra
+    add_adsl_arg "--lpair"       $SBlpair         $ISlpair
+    add_adsl_arg "--snr"         $SBsnr           $ISsnr
+    add_adsl_arg "--trellis"     $SBtrellis       $IStrellis
+    add_adsl_arg "--i24k"        $SBi24k          $ISi24k
+    add_adsl_arg "--CoMinMgn"    $SBCoMinMgn      $ISCoMinMgn
+    add_adsl_arg "--sesdrop"     $SBsesdrop       $ISsesdrop
+    add_adsl_arg "--monitorTone" $SBmonitorTone   $ISmonitorTone
 
 #TODO : How does one use these????
 #    dynamicD

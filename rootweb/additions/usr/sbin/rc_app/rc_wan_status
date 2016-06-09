@@ -8,7 +8,7 @@ run_netgear_rc_wan() {
     mybase=rc_wan
 
     mkdir $myexec
-    ln -fs /usr/sbin/rc_app/rc_apps_netgear $myexec/$mybase
+    ln -fs /usr/sbin/rc_app/rc_apps $myexec/$mybase
     $myexec/$mybase $@
     rm -rf $myexec
 }
@@ -26,18 +26,18 @@ force_correct_adsl_config() {
 
 case "$1" in
     init)
-        run_netgear_rc_wan
+        run_netgear_rc_wan $@
         force_correct_adsl_config
         ;;
     linkup)
-        run_netgear_rc_wan
+        run_netgear_rc_wan $@
         ;;
     up)
-        run_netgear_rc_wan
+        run_netgear_rc_wan $@
         /usr/sbin/rc_app/rc_wan_up
         ;;
     linkdown)
-        run_netgear_rc_wan
+        run_netgear_rc_wan $@
         ;;
 esac
 
