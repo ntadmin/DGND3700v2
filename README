@@ -3,7 +3,7 @@ This firmware is based on the publically available Netgear firmware for the DGND
 ----------------------------------------------------------------------
 WARNINGS
 
-1. This is onvly for the DGND3700v2. v1 is not supported. Please don't
+1. This is only for the DGND3700v2. v1 is not supported. Please don't
    try.
 
 2. Use this ENTIRELY AT YOUR RISK.
@@ -15,7 +15,7 @@ WARNINGS
 ----------------------------------------------------------------------
 CHANGES from the Netgear version
 
- - Telnet access can be neabled from the web interface.
+ - Telnet access can be enabled from the web interface.
    (Advanced -> Diagnostics -> Enable Telnet Access)
 
  - DDNS is now provided using inadyn-mt, and DNS-O-Matic can be
@@ -23,6 +23,8 @@ CHANGES from the Netgear version
    (Advanced -> Advanced Setup -> Dynamic DNS)
 
  - ADSL can be configured with more detail.
+ 
+ - DNS and DHCP are now provided by dnsmasq
 
  - Port forwarding have started work
 
@@ -45,22 +47,12 @@ There is a lot of chicken and egg stuff here ...
 
  - rootweb/original is only there for reference.
 
- - DDNS and ADSL mods are triggered into action only after the ADSL has
-   started because this is the earliuest 'break in' point I have found
-   in the rc_* set. I use rc_ddns which is called after the ADSL is up
-   and set it to point to the added rc_wanup which (a) checks if ADSL
-   is running the right config and if not tells it to try again. If it
-   is running the right config it then starts inadyn-mt.
-
  - Port forwarding has been modded so that a sdestination start port
    is added to the internal storage array. No idea yet if that is enough
    to trigger the right behaviour. If not, we need to break into the 
    'turn on portforarding' rc, but not quite clear where that is. However ...
 
- - This code is in the process of replacing udchpd and dnsrd with dnsmasq.
-   The plan is to point rc_dnsrd to rc_dnsmasq which will utrn on both DNS
-   and DHCP. As yet it is just set for DNS, haven't added the DHCP or
-   ad-blocking.
-
  - The DNS start trigger may be a good point to correct port forwarding if
    it turns out to be needed.
+   
+ - Ad-blocking started work: a block list is downloaded, but somehow is being ignored.
