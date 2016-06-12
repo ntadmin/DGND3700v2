@@ -1,0 +1,16 @@
+#!/bin/sh
+
+do_rotate() {
+    mv -f "$1" "$1.old" 2>/dev/null
+}
+
+send_sig() {
+    PID="$(pidof $2)"
+    kill -s "$1" $PID
+}
+
+do_rotate page-server.log
+do_rotate inadyn-mt.log
+do_rotate dnsmasq.log
+send_sig USR2 dnsmasq
+

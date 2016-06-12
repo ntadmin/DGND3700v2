@@ -1,16 +1,26 @@
 #!/bin/sh
-if [ -e /usr/etc/log_rc_flag ]; then
-    echo "`date` [rc_dnsmasq] $0 $@" >> /var/log/rc_calls
-fi
 
+rc_log() {
+    if [ -e /usr/etc/log_rc_flag ]; then
+        echo "`date` [rc_dnsmasq] $@" >> /var/log/rc_calls
+    fi
+}
+
+rc_log_echo() {
+    rc_log "$@"
+    echo "$@"
+}
+
+rc_log "$0 $@"
+
+logfile=/var/log/dnsmasq.log
 adblock_hosts_file=/var/tmp/hosts.adblock
 args_for_dnsmasq=""
 last_start_file=/var/tmp/dnsmasq_args
 
 get_dnsmasq_args() {
-
     dns_user_set="$(/usr/sbin/nvram-util get wan_fix_dns)"
-    if [ "x$dns_user_set" == "x1" ]; then
+    if [ "x$dns_user_set" = "x1" ]; then
         dns1="$(/usr/sbin/nvram-util get wan_dns1)"
         dns2="$(/usr/sbin/nvram-util get wan_dns2)"
 
@@ -24,11 +34,10 @@ get_dnsmasq_args() {
             fi
         fi
     fi
-
-    args_for_dnsmasq="$args_for_dnsmasq --clear-on-reload -H=$adblock_hosts_file"
+    args_for_dnsmasq="$args_for_dnsmasq --log-facility=$logfile --clear-on-reload -H=$adblock_hosts_file"
 
     dhcp_on="$(/usr/sbin/nvram-util get dhcp_server_enable)"
-    if [ "x$dhcp_on" == "x1" ]; then
+    if [ "x$dhcp_on" = "x1" ]; then
         dhcp_start="$(/usr/sbin/nvram-util get dhcp_start_ip)"
         dhcp_end="$(/usr/sbin/nvram-util get dhcp_end_ip)"
         mask="$(/usr/sbin/nvram-util get lan_netmask)"
@@ -54,18 +63,18 @@ case "$1" in
         fi
 
         PID="$(pidof dnsmasq)"
-        if [ "x$PID" == "x" ]; then
+        if [ "x$PID" = "x" ]; then
             /usr/sbin/dnsmasq $args_for_dnsmasq
             PID="$(pidof dnsmasq)"
             if [ "x${PID}" != "x" ]; then
                 echo "$args_for_dnsmasq" > $last_start_file
-	        echo "dnsmasq started succesfully. ( $args_for_dnsmasq )"
+	        rc_log_echo "dnsmasq started succesfully. ( $args_for_dnsmasq )"
                 /usr/sbin/get_adblock_list $adblock_hosts_file
 	    else
-	        echo "Error starting dnsmasq. ( $args_for_dnsmasq )"
+	        rc_log_echo "Error starting dnsmasq. ( $args_for_dnsmasq )"
 	    fi
         else
-            echo "dnsmasq already started, leaving it alone"
+            rc_log_echo "dnsmasq already started, leaving it alone"
         fi
         ;;
     strop)
@@ -74,10 +83,11 @@ case "$1" in
     stop)
         PID="$(pidof dnsmasq)"
 	if [ "x$PID" != "x" ];then
-	    /usr/sbin/kill -9 ${PID} 2>/dev/null
-            echo "dnsmasq stopped."
+	    /usr/sbin/kill -9 $PID 2>/dev/null
+            wait $PID
+            rc_log_echo "dnsmasq stopped."
 	else
-	    echo "dnsmasq is already stopped."
+	    rc_log_echo "dnsmasq is already stopped."
 	fi
         ;;
     reload|restart)

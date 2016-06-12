@@ -5,4 +5,5 @@
 /DGND3700*/
 turn_on_ssh_stuff
 *.img
+*.cgi
 
