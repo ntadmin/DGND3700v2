@@ -79,8 +79,8 @@ case "$1" in
     stop)
         PID="$(pidof inadyn-mt)"
 	if [ "x$PID" != "x" ];then
-	    /bin/kill -9 $PID 2>/dev/null
-            wait $PID
+	    /usr/sbin/killall inadyn-mt 2>/dev/null
+            sleep 1
             echo "inadyn-mt stopped."
 	else
 	    echo "inadyn-mt is already stopped."
