@@ -124,19 +124,19 @@ check_adsl_config() {
         if [ $SBt1413 = "1" ]; then mod=${mod}t; fi
         if [ $SBtwoplus = "1" ]; then mod=${mod}p; fi
         if [ $SBannexL = "1" ]; then mod=${mod}e; fi
-        if [ $SBannexM = "1" ]; then mod=${mod}m; fi
+        if [ $SBannexM = "1" ]; then mod=${mod}mM3M5; fi
         args_for_adslctl="$args_for_adslctl --mod $mod"
     fi
 
     add_adsl_arg "--bitswap"     $SBbitswap       $ISbitswap
     add_adsl_arg "--sra"         $SBsra           $ISsra
     add_adsl_arg "--lpair"       $SBlpair         $ISlpair
-    add_adsl_arg "--snr"         $SBsnr           $ISsnr
     add_adsl_arg "--trellis"     $SBtrellis       $IStrellis
     add_adsl_arg "--i24k"        $SBi24k          $ISi24k
     add_adsl_arg "--CoMinMgn"    $SBCoMinMgn      $ISCoMinMgn
     add_adsl_arg "--sesdrop"     $SBsesdrop       $ISsesdrop
     add_adsl_arg "--monitorTone" $SBmonitorTone   $ISmonitorTone
+    add_adsl_arg "--snr"         $SBsnr           $ISsnr
 
 #TODO : How does one use these????
 #    dynamicD

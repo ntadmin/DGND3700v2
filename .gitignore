@@ -4,6 +4,8 @@
 /rootweb/target
 /rootweb/original
 /DGND3700*/
+/.flags
+/netgear-dl
 turn_on_ssh_stuff
 *.img
 *.cgi

@@ -1,5 +1,10 @@
 #!/bin/sh
 
+logfile=/var/log/dnsmasq.log
+adblock_hosts_file=/var/tmp/hosts.adblock
+args_for_dnsmasq=""
+last_start_file=/var/tmp/dnsmasq_args
+
 rc_log() {
     if [ -e /usr/etc/log_rc_flag ]; then
         echo "`date` [rc_dnsmasq] $@" >> /var/log/rc_calls
@@ -11,12 +16,13 @@ rc_log_echo() {
     echo "$@"
 }
 
-rc_log "$0 $@"
+waitall() {
+    for pid in "$@"; do
+        wait "$pid"
+    done
+}
 
-logfile=/var/log/dnsmasq.log
-adblock_hosts_file=/var/tmp/hosts.adblock
-args_for_dnsmasq=""
-last_start_file=/var/tmp/dnsmasq_args
+rc_log "$0 $@"
 
 get_dnsmasq_args() {
     dns_user_set="$(/usr/sbin/nvram-util get wan_fix_dns)"
@@ -83,8 +89,8 @@ case "$1" in
     stop)
         PID="$(pidof dnsmasq)"
 	if [ "x$PID" != "x" ];then
-	    /usr/sbin/kill -9 $PID 2>/dev/null
-            wait $PID
+	    /usr/sbin/killall dnsmasq
+            waitall $PID
             rc_log_echo "dnsmasq stopped."
 	else
 	    rc_log_echo "dnsmasq is already stopped."
