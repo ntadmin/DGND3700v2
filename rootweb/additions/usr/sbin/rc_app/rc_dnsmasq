@@ -90,6 +90,7 @@ case "$1" in
         PID="$(pidof dnsmasq)"
 	if [ "x$PID" != "x" ];then
 	    /usr/sbin/killall dnsmasq
+            sleep 1
             waitall $PID
             rc_log_echo "dnsmasq stopped."
 	else
