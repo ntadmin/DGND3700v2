@@ -136,7 +136,11 @@ check_adsl_config() {
     add_adsl_arg "--CoMinMgn"    $SBCoMinMgn      $ISCoMinMgn
     add_adsl_arg "--sesdrop"     $SBsesdrop       $ISsesdrop
     add_adsl_arg "--monitorTone" $SBmonitorTone   $ISmonitorTone
-    add_adsl_arg "--snr"         $SBsnr           $ISsnr
+
+    snr_good=1
+    if [ "x$SBsnr" != "x$ISsnr" ]; then snr_good=0; fi
+    if [ "x$args_for_adsl" != "x" ]; then snr_good=0; fi
+    if [ $snr_good = "0" ]; then  args_for_adslctl="$args_for_adslctl --snr $SBsnr"; fi
 
 #TODO : How does one use these????
 #    dynamicD
