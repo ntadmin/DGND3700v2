@@ -34,25 +34,15 @@ NOTES
 
 There is a lot of chicken and egg stuff here ...
 
- - Top level Rule.mak needs things set better in it.
+ - Top level Rule.mak needs to auto set the directory it is in.
 
  - I suspect that the building of packages and extra_binaries relies on
    some makefile rules which are only in place after the Netgear stuff
    has been made once. Not sure how much they need.
 
- - rootweb requires the original target.tar.bz2 from Netgear in it as
-   target-orig.tar.bz2. You can't simplty 'use the original' because we
-   replace the original as part of building things in order to
-   delude the netgear 'make source' to include our alterations.
-
- - rootweb/original is only there for reference.
-
  - Port forwarding has been modded so that a sdestination start port
-   is added to the internal storage array. No idea yet if that is enough
-   to trigger the right behaviour. If not, we need to break into the 
-   'turn on portforarding' rc, but not quite clear where that is. However ...
+   is added to the internal storage array. Actually doing this results
+   in the forward not happening. We need to break into the 
+   'turn on portforarding' rc, but not quite clear where that is.
 
- - The DNS start trigger may be a good point to correct port forwarding if
-   it turns out to be needed.
-   
  - Ad-blocking started work: a block list is downloaded, but somehow is being ignored.
