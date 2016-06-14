@@ -1,9 +1,0 @@
-#!/bin/sh
-if [ -e /usr/etc/log_rc_flag ]; then
-    echo "`date` [rc_wan_up] $0 $@" >> /var/log/rc_calls
-fi
-
-# Start up the Dynamic DNS
-/usr/sbin/rc_app/rc_inadyn-mt start
-
-# Other tings we want to happen go here
