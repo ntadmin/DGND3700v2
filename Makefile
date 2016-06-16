@@ -5,7 +5,13 @@
 
 include Rules.mak
 
-.PHONY: root rootweb packages extrabin image
+.PHONY: root rootweb packages extrabin image kernel
+
+#
+# Hopefully this wont change
+#
+KERNEL_FILE=$(NETGEAR_BASE_DIR)/Kernel/bcm963xx/vmlinux.lz
+
 
 all:
 	@echo 'make <kernel/root/rootweb/extrabin/source/image>';
@@ -25,8 +31,7 @@ extrabin:
 packages:
 	make -C packages
 
-kernel: $(NETGEAR_BASE_DIR)/Makefile
-	make -C $(NETGEAR_BASE_DIR) kernel SHELL=/bin/bash
+kernel: $(KERNEL_FILE)
 
 source: $(NETGEAR_BASE_DIR)/Makefile
 	@sed -i '/SUB_VER=/c\SUB_VER=$(CUSTOM_VERSION)' $(NETGEAR_BASE_DIR)/Source/Builds/$(PROJECT).mak
@@ -56,6 +61,7 @@ NETGEAR_FW_ZIPFILE=$(PROJECT)_V$(NETGEAR_VERSION)_$(NETGEAR_REGION)_$(NETGEAR_FW
 NETGEAR_EXTRACT_DIR=$(PROJECT)_V$(NETGEAR_VERSION)_$(NETGEAR_REGION)_src_bak
 NETGEAR_SOURCE_FILE_IN_ZIP=$(PROJECT)_V$(NETGEAR_VERSION)_$(NETGEAR_REGION)_src.tar.bz2
 NETGEAR_TOOLCHAIN_FILE_IN_ZIP=uclibc-crosstools-gcc-4.4.2-1-with-ftw.tar.bz2
+
 
 
 .flags/deps_installed:
@@ -89,6 +95,8 @@ $(NETGEAR_BASE_DIR)/Makefile: $(NETGEAR_DL_DIR)/$(NETGEAR_SOURCE_FILE_IN_ZIP)
 	sed -i 's/\/usr\/lib/..\/..\/..\/target\/lib/' $(NETGEAR_EXTRACT_DIR)/Source/apps/ppp-2.4.1.pppoe4.orig/pppd/Makefile.linux
 	touch $@
 	
+$(KERNEL_FILE): $(NETGEAR_BASE_DIR)/Makefile
+	make -C $(NETGEAR_BASE_DIR) kernel SHELL=/bin/bash
 
 
 
