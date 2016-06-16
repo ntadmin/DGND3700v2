@@ -40,7 +40,7 @@ get_dnsmasq_args() {
             fi
         fi
     fi
-    args_for_dnsmasq="$args_for_dnsmasq --log-facility=$logfile --clear-on-reload -H=$adblock_hosts_file"
+    args_for_dnsmasq="$args_for_dnsmasq --log-facility=$logfile --clear-on-reload --addn-hosts=$adblock_hosts_file"
 
     dhcp_on="$(/usr/sbin/nvram-util get dhcp_server_enable)"
     if [ "x$dhcp_on" = "x1" ]; then
