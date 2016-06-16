@@ -362,6 +362,8 @@ void get_action_page_vars(FILE *fp) {
 
 void core_info_to_render_data() {
     FILE *fp;
+    char *value = NULL;
+    char  empty_string[1] = "";
     char  sid[16];
     char  post_par[32];
 
@@ -384,6 +386,12 @@ void core_info_to_render_data() {
 
     // TODO: There must be a better way of setting this.
     data_for_render_vvpa = addto_var_val_pair_array(data_for_render_vvpa, "model_name", "DGND3700v2");
+
+    // This seems to be logical ...
+    value = get_get_or_post_value("this_file");
+    if (value == NULL) value = get_get_or_post_value("next_file");
+    if (value == NULL) value = empty_string;
+    data_for_render_vvpa = addto_var_val_pair_array(data_for_render_vvpa, "parent_file", value);
 }
 
 void save_data() {
@@ -621,6 +629,7 @@ int main(int argc, char *argv[]) {
     FILE *fp;
     bool  have_data_for_render = false;
     bool  have_data_for_action = false;
+    bool  done_todo = false;
 
     // Initiat debug log if needed
     if (DEBUG_LEVEL > DEBUG_NONE) {
@@ -689,6 +698,13 @@ int main(int argc, char *argv[]) {
             do_pre_save_action(this_file_value);
             save_data();
             do_post_save_action(this_file_value);
+            done_todo = true;
+        }
+
+        // If there is a todo, and we haven't done it, hand off to netgear
+        // Downside: we lose the render. Upside, the action actually happens
+        if (!done_todo) {
+            pass_to_netgear_setup_and_exit();
         }
     }
 
