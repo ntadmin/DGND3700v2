@@ -14,9 +14,10 @@ list_src_url='http://pgl.yoyo.org/adservers/serverlist.php'
 list_src_args='?hostformat=nohtml&showintro=0&mimetype=plaintext'
 
 # the ipaddress where we want to send the requests to, instead of the
-# bannerservers
+# bannerservers. This IP is in a group which should never never used,
+# even for local netrworks, according to RFC 5737
 
-ad_catcher_ip='0.0.0.0'
+ad_catcher_ip='198.51.100.1'
 
 # Where to find wget
 wget=/usr/sbin/wget
