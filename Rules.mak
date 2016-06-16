@@ -8,7 +8,7 @@
 # where this file is in CUSTOM_BASE_DIR
 #
 PROJECT=DGND3700v2
-CUSTOM_VERSION=NEWT16A
+CUSTOM_VERSION=NEWT16B
 CUSTOM_BASE_DIR=/usr/src/DGND3700v2/DGND3700v2
 
 #
@@ -20,6 +20,11 @@ NETGEAR_FW_DATE=20150901
 NETGEAR_DL_BASE=http://www.downloads.netgear.com/files/GPL/
 
 #
+# Set this to reflect where the cross tools are
+#
+CROSS_TOOLS_ROOT=/opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw
+
+#
 # These should set automatically to the directory this file is in
 # and the one the Netgear code has been extracted to. Shouldn't
 # need touching
@@ -27,9 +32,10 @@ NETGEAR_DL_BASE=http://www.downloads.netgear.com/files/GPL/
 NETGEAR_EXTRACT_DIR=$(PROJECT)_V$(NETGEAR_VERSION)_$(NETGEAR_REGION)_src_bak
 NETGEAR_BASE_DIR=$(CUSTOM_BASE_DIR)/$(NETGEAR_EXTRACT_DIR)
 
+
 #
 # Update this to control which of the packages that comes with
-# the netgear distruibution is not needed because it is supceded
+# the netgear distruibution is not needed because it is superceded
 # by something in the custom packages directory
 #
 netgear_packages_not_needed=noip dnrd udhcp dhcpv6 totd
