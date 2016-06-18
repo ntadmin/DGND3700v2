@@ -2,6 +2,7 @@
 
 logfile=/var/log/dnsmasq.log
 adblock_hosts_file=/var/tmp/hosts.adblock
+extra_hosts_file=/var/tmp/hosts.me
 args_for_dnsmasq=""
 last_start_file=/var/tmp/dnsmasq_args
 
@@ -22,6 +23,13 @@ waitall() {
     done
 }
 
+make_extra_hosts_file() {
+    myip="$(/usr/sbin/nvram-util get lan_ipaddr)"
+    if [ "x$myip" != "x" ]; then
+        echo "$myip www.routerlogin.net" > $extra_hosts_file
+    fi
+}
+
 rc_log "$0 $@"
 
 get_dnsmasq_args() {
@@ -40,7 +48,7 @@ get_dnsmasq_args() {
             fi
         fi
     fi
-    args_for_dnsmasq="$args_for_dnsmasq --log-facility=$logfile --clear-on-reload --addn-hosts=$adblock_hosts_file"
+    args_for_dnsmasq="$args_for_dnsmasq --log-facility=$logfile --clear-on-reload --addn-hosts=$adblock_hosts_file --addn-hosts=$extra_hosts_file"
 
     dhcp_on="$(/usr/sbin/nvram-util get dhcp_server_enable)"
     if [ "x$dhcp_on" = "x1" ]; then
@@ -70,6 +78,7 @@ case "$1" in
 
         PID="$(pidof dnsmasq)"
         if [ "x$PID" = "x" ]; then
+            make_extra_hosts_file
             /usr/sbin/dnsmasq $args_for_dnsmasq
             PID="$(pidof dnsmasq)"
             if [ "x${PID}" != "x" ]; then
