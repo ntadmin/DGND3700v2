@@ -35,7 +35,7 @@
 #define DEBUG_ACTION 1
 #define DEBUG_NONE   0
 
-#define DEBUG_LEVEL DEBUG_ACTION
+#define DEBUG_LEVEL DEBUG_TONS
 
 FILE *fp_debug = NULL;
 
@@ -246,6 +246,11 @@ int run_external_prog(char *file_to_run, char **env_for_prog, char **argv_for_pr
 void pass_to_netgear_setup_and_exit() {
     int exit_val = run_external_prog("netgear-setup.cgi", environ, incoming_argv, post_data, false, false);
     exit(exit_val);
+}
+
+void issue_adblock_response_and_exit() {
+//    render_page("adblock-text.htm");
+    exit(0);
 }
 
 var_val_pair_plus_array *get_page_vars(FILE *fp) {
@@ -585,46 +590,43 @@ void create_environment_vars_for_our_scripts() {
     }
 }
 
-void do_pre_save_action(char *file) {
-    char   fn[512];
+int do_action(char *ffn) {
     struct stat sb;
 
-    if (file == NULL) return;
-    sprintf(fn, "save-actions/%s.pre", file);
-    if (DEBUG_LEVEL >= DEBUG_ACTION) mylog("do_pre_save_action - file", fn);
+    if (ffn == NULL) return -1;
 
-    // Check it is executable ...
-    if ((stat(fn, &sb) == 0) && (sb.st_mode & S_IXUSR)) {
+    if ((stat(ffn, &sb) == 0) && (sb.st_mode & S_IXUSR)) {
         create_environment_vars_for_our_scripts();
-        run_external_prog(fn, env_for_our_scripts, NULL, NULL, true, true);
+        return run_external_prog(ffn, env_for_our_scripts, NULL, NULL, true, true);
     }
-    else {
-        if (DEBUG_LEVEL >= DEBUG_ACTION) mylog("do_pre_save_action - call fail", "not executable");
-    }
+
+    if (DEBUG_LEVEL >= DEBUG_ACTION) mylog("do_action - call fail - not executable", ffn);
+    return -1;
 }
 
-void do_post_save_action(char *file) {
+int do_pre_save_action(char *file) {
     char   fn[512];
-    struct stat sb;
 
-    if (file == NULL) return;
+    if (file == NULL) return -1;
+    sprintf(fn, "save-actions/%s.pre", file);
+    if (DEBUG_LEVEL >= DEBUG_ACTION) mylog("do_pre_save_action - file", fn);
+    return do_action(fn);
+}
+
+int do_post_save_action(char *file) {
+    char   fn[512];
+
+    if (file == NULL) return -1;
     sprintf(fn, "save-actions/%s.post", file);
     if (DEBUG_LEVEL >= DEBUG_ACTION) mylog("do_post_save_action - file", fn);
-
-    // Check it is executable ...
-    if ((stat(fn, &sb) == 0) && (sb.st_mode & S_IXUSR)) {
-        create_environment_vars_for_our_scripts();
-        run_external_prog(fn, env_for_our_scripts, NULL, NULL, true, true);
-    }
-    else {
-        if (DEBUG_LEVEL >= DEBUG_ACTION) mylog("do_post_save_action - call fail", "not executable");
-    }
+    return do_action(fn);
 }
 
 int main(int argc, char *argv[]) {
     char *todo_value;
     char *next_file_value = NULL; // The file to render once the actions are complete
     char *this_file_value = NULL; // The file which is triggering the todo action, eg save
+    char *requested_host = NULL;
     char  filename[128];
     FILE *fp;
     bool  have_data_for_render = false;
@@ -648,6 +650,22 @@ int main(int argc, char *argv[]) {
     }
 
     env_vvpa       = parse_argv_type_data_into_vvpa(environ, env_vvpa);
+    requested_host = get_env_value("HTTP_HOST");
+
+    if (requested_host != NULL) {
+        if (DEBUG_LEVEL >= DEBUG_LOTS) mylog("main - checking if redirected ad request", requested_host);
+        // If the requested host contains "routerlogin" that is a real address for us
+        // If not ...
+        if (strstr(requested_host, "routerlogin") == NULL) {
+            // Does it match our IP, if not then we will assume that it is a redirected ad request ...
+            require_variable_in_nvram_cache("lan_ipaddr");
+            if (strcmp(requested_host, get_value_from_nvram_cache("lan_ipaddr"))) {
+                mylog("main - checking if redirected ad request", "IT IS");
+                issue_adblock_response_and_exit();
+            }
+        }
+    }
+
     get_data_vvpa  = parse_post_get_type_data_into_vvpa(get_data, NULL, "&");
     post_data_vvpa = parse_post_get_type_data_into_vvpa(post_data, NULL, "&");
     cookies_vvpa   = parse_post_get_type_data_into_vvpa(get_env_value("HTTP_COOKIE"), NULL, ";");
@@ -673,7 +691,14 @@ int main(int argc, char *argv[]) {
     }
 
     // Do the todo (if we can) before rendering.
-    if (todo_value != NULL) {
+    if (todo_value == NULL) {
+        done_todo = true;
+    }
+    else if (!strcmp(todo_value, "cfg_init") || !strcmp(todo_value, "edit")) {
+        // AFAIK There is nothing to actually do for these
+        done_todo = true;
+    }
+    else {
         // If there is a this_file
         if (this_file_value != NULL) {
             if (strlen(this_file_value) > 80) {
@@ -832,11 +857,12 @@ void render_page_variable_to_stdout(char *pv) {
     }
 
     if (vvpp->has & VVPP_HAS_IP_RANGE) {
+        if (DEBUG_LEVEL >= DEBUG_TONS) mylog("render_page_variable_to_stdout; IP range", cp);
         if (!strcmp(cp, "0/0") || (strlen(cp) == 0)) cp = blank_string;
         else {
             cp2 = strchr(cp, '-');
             if (cp2 != NULL) {
-                if (vvpp->has & VVPP_HAS_IP_END) cp = cp2;
+                if (vvpp->has & VVPP_HAS_IP_END) cp = cp2+1;
                 else {
                     i = cp2 - cp;
                     if (i > 120) i=120;
@@ -850,6 +876,7 @@ void render_page_variable_to_stdout(char *pv) {
         }
     }
     else if (vvpp->has & VVPP_HAS_IP_NUM_PORT) {
+        if (DEBUG_LEVEL >= DEBUG_TONS) mylog("render_page_variable_to_stdout; IP:port", cp);
         cp2 = strchr(cp, ':');
         if (cp2 != NULL) {
             if (vvpp->has & VVPP_HAS_IP_PORT) cp = cp2+1;
@@ -873,8 +900,8 @@ void render_page_variable_to_stdout(char *pv) {
     }
 
     if (cp != NULL) {
-        write(STDOUT_FILENO, cp, strlen(cp));
         if (DEBUG_LEVEL >= DEBUG_LOTS) mylog("render_page_variable_to_stdout final val", cp);
+        write(STDOUT_FILENO, cp, strlen(cp));
     }
     else if (DEBUG_LEVEL > DEBUG_NONE) mylog("render_page failed to resolve variable", pv);
 }
