@@ -85,6 +85,7 @@ case "$1" in
                 echo "$args_for_dnsmasq" > $last_start_file
 	        rc_log_echo "dnsmasq started succesfully. ( $args_for_dnsmasq )"
                 /usr/sbin/get_adblock_list $adblock_hosts_file
+                /usr/sbin/kill -HUP $PID
 	    else
 	        rc_log_echo "Error starting dnsmasq. ( $args_for_dnsmasq )"
 	    fi

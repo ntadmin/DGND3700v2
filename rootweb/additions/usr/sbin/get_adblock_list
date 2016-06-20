@@ -21,7 +21,8 @@ list_src_args='?hostformat=nohtml&showintro=0&mimetype=plaintext'
 # be used, even for local netrworks, according to RFC 5737 such as:
 # 198.51.100.1
 
-ad_catcher_ip="$(/usr/sbin/nvram-util get lan_ipaddr)"
+#ad_catcher_ip="$(/usr/sbin/nvram-util get lan_ipaddr)"
+ad_catcher_ip="198.51.100.1"
 
 # Where to find wget
 wget=/usr/sbin/wget
