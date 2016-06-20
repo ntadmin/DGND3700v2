@@ -8,8 +8,8 @@
 #include "nvram_cache.h"
 
 void mylog(char *, char *);
-#define DEBUG_CORE    0
-#define DEBUG_ACQUIRE 0
+#define DEBUG_CORE    1
+#define DEBUG_ACQUIRE 1
 #define DEBUG_SYNC    1
 
 // Remove this #define to make this code do everything except alter the nvram contents.
@@ -159,10 +159,12 @@ nvram_entry *nvram_cache_want_variable(char *name) {
         }
         cp++;
     }
+    if (ccount > cmax) cmax = ccount;
+
     entry->rows    = rcount;
     entry->columns = cmax;
 
-    if ((rcount == 1) && (ccount == 1)) {
+    if ((entry->rows == 1) && (entry->columns == 1)) {
         if (DEBUG_ACQUIRE) mylog("nvram_cache_want_variable - it's a TEXT", value);
         entry->type = NVRAM_ENTRY_TYPE_TEXT;
     }

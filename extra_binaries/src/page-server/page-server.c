@@ -694,7 +694,7 @@ int main(int argc, char *argv[]) {
     if (todo_value == NULL) {
         done_todo = true;
     }
-    else if (!strcmp(todo_value, "cfg_init") || !strcmp(todo_value, "edit")) {
+    else if (!strcmp(todo_value, "cfg_init") || !strcmp(todo_value, "edit") || !strcmp(todo_value, "newfile")) {
         // AFAIK There is nothing to actually do for these
         done_todo = true;
     }
@@ -858,7 +858,7 @@ void render_page_variable_to_stdout(char *pv) {
 
     if (vvpp->has & VVPP_HAS_IP_RANGE) {
         if (DEBUG_LEVEL >= DEBUG_TONS) mylog("render_page_variable_to_stdout; IP range", cp);
-        if (!strcmp(cp, "0/0") || (strlen(cp) == 0)) cp = blank_string;
+        if ((cp == NULL) || !strcmp(cp, "0/0") || (strlen(cp) == 0)) cp = blank_string;
         else {
             cp2 = strchr(cp, '-');
             if (cp2 != NULL) {
@@ -877,19 +877,22 @@ void render_page_variable_to_stdout(char *pv) {
     }
     else if (vvpp->has & VVPP_HAS_IP_NUM_PORT) {
         if (DEBUG_LEVEL >= DEBUG_TONS) mylog("render_page_variable_to_stdout; IP:port", cp);
-        cp2 = strchr(cp, ':');
-        if (cp2 != NULL) {
-            if (vvpp->has & VVPP_HAS_IP_PORT) cp = cp2+1;
-            else {
-                /* VVPP_HAS_IP_NUM */
-                i = cp2 - cp;
-                if (i > 120) i=120;
-                strncpy(buffer, cp, i);
-                cp = buffer;
-            }
-        }
+        if ((cp == NULL) || (strlen(cp) == 0)) cp = blank_string;
         else {
-            if (vvpp->has & VVPP_HAS_IP_PORT) cp = blank_string;
+            cp2 = strchr(cp, ':');
+            if (cp2 != NULL) {
+                if (vvpp->has & VVPP_HAS_IP_PORT) cp = cp2+1;
+                else {
+                    /* VVPP_HAS_IP_NUM */
+                    i = cp2 - cp;
+                    if (i > 120) i=120;
+                    strncpy(buffer, cp, i);
+                    cp = buffer;
+                }
+            }
+            else {
+                if (vvpp->has & VVPP_HAS_IP_PORT) cp = blank_string;
+            }
         }
     }
 
