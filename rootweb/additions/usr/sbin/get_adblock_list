@@ -14,10 +14,14 @@ list_src_url='http://pgl.yoyo.org/adservers/serverlist.php'
 list_src_args='?hostformat=nohtml&showintro=0&mimetype=plaintext'
 
 # the ipaddress where we want to send the requests to, instead of the
-# bannerservers. This IP is in a group which should never never used,
-# even for local netrworks, according to RFC 5737
+# bannerservers. We send it to our selves and aim to catch it and
+# return a simple message
+#
+# An alternative is to use an IP from a group which should never never
+# be used, even for local netrworks, according to RFC 5737 such as:
+# 198.51.100.1
 
-ad_catcher_ip='198.51.100.1'
+ad_catcher_ip="$(/usr/sbin/nvram-util get lan_ipaddr)"
 
 # Where to find wget
 wget=/usr/sbin/wget
