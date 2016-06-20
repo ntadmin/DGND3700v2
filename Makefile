@@ -19,9 +19,9 @@ all:
 image: kernel root source
 	@cp $(NETGEAR_BASE_DIR)/Source/image/$(PROJECT).img .
 
-root: extrabin packages rootweb
+root: rootweb/target-orig.tar.bz2 extrabin packages rootweb
 
-rootweb: rootweb/target-orig.tar.bz2
+rootweb:
 	make -C rootweb TARGET=target.tar.bz2
 	@cp rootweb/target.tar.bz2 $(NETGEAR_BASE_DIR)/Source
 
@@ -62,10 +62,11 @@ NETGEAR_EXTRACT_DIR=$(PROJECT)_V$(NETGEAR_VERSION)_$(NETGEAR_REGION)_src_bak
 NETGEAR_SOURCE_FILE_IN_ZIP=$(PROJECT)_V$(NETGEAR_VERSION)_$(NETGEAR_REGION)_src.tar.bz2
 NETGEAR_TOOLCHAIN_FILE_IN_ZIP=uclibc-crosstools-gcc-4.4.2-1-with-ftw.tar.bz2
 
-.flags:
-	@test -e $@ || { mkdir $@; }
+.flags/dir_made:
+	@test -e .flags || { mkdir .flags; }
+	@touch $@
 
-.flags/deps_installed: .flags
+.flags/deps_installed: .flags/dir_made
 	sudo aptitude install unzip bison flex build-essential libncurses5-dev gettext zlib1g-dev zip
 	touch $@
 
@@ -86,6 +87,7 @@ $(NETGEAR_DL_DIR)/$(NETGEAR_TOOLCHAIN_FILE_IN_ZIP): $(NETGEAR_DL_DIR)/$(NETGEAR_
 
 rootweb/target-orig.tar.bz2: $(NETGEAR_BASE_DIR)/Makefile
 	@cp $(NETGEAR_EXTRACT_DIR)/Source/target.tar.bz2 $@
+	@touch $@
 
 $(NETGEAR_BASE_DIR)/Makefile: $(NETGEAR_DL_DIR)/$(NETGEAR_SOURCE_FILE_IN_ZIP)
 	tar xvfj  $(NETGEAR_DL_DIR)/$(NETGEAR_SOURCE_FILE_IN_ZIP)
