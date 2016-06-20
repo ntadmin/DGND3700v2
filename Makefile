@@ -5,7 +5,7 @@
 
 include Rules.mak
 
-.PHONY: root rootweb packages extrabin image kernel
+.PHONY: root rootweb packages extrabin image kernel .flags
 
 #
 # Hopefully this wont change
@@ -62,9 +62,10 @@ NETGEAR_EXTRACT_DIR=$(PROJECT)_V$(NETGEAR_VERSION)_$(NETGEAR_REGION)_src_bak
 NETGEAR_SOURCE_FILE_IN_ZIP=$(PROJECT)_V$(NETGEAR_VERSION)_$(NETGEAR_REGION)_src.tar.bz2
 NETGEAR_TOOLCHAIN_FILE_IN_ZIP=uclibc-crosstools-gcc-4.4.2-1-with-ftw.tar.bz2
 
+.flags:
+	@test -e $@ || { mkdir $@; }
 
-
-.flags/deps_installed:
+.flags/deps_installed: .flags
 	sudo aptitude install unzip bison flex build-essential libncurses5-dev gettext zlib1g-dev zip
 	touch $@
 
