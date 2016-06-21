@@ -13,6 +13,14 @@ WARNINGS
    resulting firmware.
 
 ----------------------------------------------------------------------
+VERSION
+
+PLease see Rules.mak for the current version and the release plans on
+github for further information:
+
+https://github.com/ntadmin/DGND3700v2/wiki/Release-Plans
+
+----------------------------------------------------------------------
 CHANGES from the Netgear version
 
  - Telnet access can be enabled from the web interface.
@@ -25,6 +33,8 @@ CHANGES from the Netgear version
  - ADSL can be configured with more detail.
  
  - DNS and DHCP are now provided by dnsmasq
+ 
+ - Ad blocking: DNs server now issues known unfindable IP for ad servers
 
  - Port forwarding have started work
 
@@ -32,17 +42,4 @@ CHANGES from the Netgear version
 ----------------------------------------------------------------------
 NOTES
 
-There is a lot of chicken and egg stuff here ...
-
- - Top level Rule.mak needs to auto set the directory it is in.
-
- - I suspect that the building of packages and extra_binaries relies on
-   some makefile rules which are only in place after the Netgear stuff
-   has been made once. Not sure how much they need.
-
- - Port forwarding has been modded so that a sdestination start port
-   is added to the internal storage array. Actually doing this results
-   in the forward not happening. We need to break into the 
-   'turn on portforarding' rc, but not quite clear where that is.
-
- - Ad-blocking started work: a block list is downloaded, but somehow is being ignored.
+Please see the issues list on github: https://github.com/ntadmin/DGND3700v2/issues
