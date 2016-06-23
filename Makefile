@@ -22,14 +22,23 @@ image: kernel root source
 root: rootweb/target-orig.tar.bz2 extrabin packages rootweb
 
 rootweb:
-	make -C rootweb TARGET=target.tar.bz2
+	@echo ""
+	@echo "<<<<<<< ROOT >>>>>>>"
+	@make -C rootweb TARGET=target.tar.bz2
 	@cp rootweb/target.tar.bz2 $(NETGEAR_BASE_DIR)/Source
+	@echo ""
 
 extrabin:
-	make -C extra_binaries
+	@echo ""
+	@echo "<<<<<<< EXTRA BINARIES >>>>>>>"
+	@make -C extra_binaries
+	@echo ""
 	
 packages:
-	make -C packages
+	@echo ""
+	@echo "<<<<<<< PACKAGES >>>>>>>"
+	@make -C packages
+	@echo ""
 
 kernel: $(KERNEL_FILE)
 
