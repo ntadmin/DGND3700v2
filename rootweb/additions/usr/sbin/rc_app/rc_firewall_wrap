@@ -1,0 +1,38 @@
+#!/bin/sh
+if [ -e /usr/etc/log_rc_flag ]; then
+    echo "`date` [rc_firewall_wrap] $0 $@" >> /var/log/rc_calls
+fi
+
+run_netgear_rc_firewall() {
+    myexec=/var/tmp/MYEXEC$$
+    mybase=rc_firewall
+
+    mkdir $myexec
+    ln -fs /usr/sbin/rc_app/rc_apps $myexec/$mybase
+    $myexec/$mybase $@
+    rm -rf $myexec
+}
+
+force_correct_adsl_config() {
+    wan_mode="$(nvram-util get wan_mode_dsl)"
+    if [ "x$wan_mode" = "xpppoa" ]; then
+        adsl_needs="$(/usr/sbin/rc_app/rc_adsl needs)"
+        if [ "x$adsl_needs" = "xconfigure" ]; then
+            /usr/sbin/rc_app/rc_adsl configure
+            exit
+        fi
+    fi
+}
+
+case "$1" in
+    inbound)
+        /usr/sbin/manage_user_nat restart
+        run_netgear_rc_firewall $@
+        ;;
+    *)
+        run_netgear_rc_firewall $@
+        ;;
+esac
+
+
+exit 0
