@@ -18,13 +18,13 @@ clear_nat() {
 }
 
 getserviceportandprotocol() {
-    service="$(/usr/sbin/nvram-util getarray-grep-row fw_services $1 ,)"
+    service="$(/usr/sbin/nvram-util getarray-grep-row fw_services $1 , )"
     if [ "x$service" = "x" ]; then service="$(/usr/sbin/nvram-util getarray-grep-row fw_services_def $1)"; fi
     if [ "x$service" = "x" ]; then return 1; fi
     inportrange="$(echo $service | /usr/sbin/awk -v FS=',' '{print $3}')"
     inportstart="$(echo $inportrange | /usr/sbin/awk -v FS='-' '{print $1}')"
     inportend="$(echo $inportrange | /usr/sbin/awk -v FS='-' '{print $2}')"
-    if [ "x$inportend" = "x"]; then $inportend = $inportstart; fi
+    if [ "x$inportend" = "x" ]; then $inportend = $inportstart; fi
     protocol="$(echo $service | /usr/sbin/awk -v FS=',' '{print $2}')"
 }
 
@@ -40,7 +40,7 @@ set_nat() {
             dest="$(echo $line | /usr/sbin/awk -v FS=',' '{print $4}')"
             destip="$(echo $dest | /usr/sbin/awk -v FS=':' '{print $1}')"
 	    destport="$(echo $dest | /usr/sbin/awk -v FS=':' '{print $2}')"
-            if [ "x$destport" = "x" ]; then destport = inportstart; fi
+            if [ "x$destport" = "x" ]; then destport="$inportstart"; fi
             while [ $inportstart -le $inportend ]; do
                 $upnp_cmd -e $our_identifier -a $destip $destport $inportstart $protocol
                 inportstart=`expr $inportstart + 1`

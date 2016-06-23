@@ -1,0 +1,295 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-Control" content="no-cache"><meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT"><meta name="description" content="@model_name#_multilangual"><title>NETGEAR Router @model_name#</title><script language="javascript" type="text/javascript" src="string.js"></script><link rel="stylesheet" href="style/form.css"><script language="javascript" type="text/javascript" src="funcs.js"></script><!-- link rel="stylesheet" href="form.css" --><style type="text/javascript">
+	classes.num.all.fontFamily = "Courier";
+	classes.num.all.fontSize = "10pt" ;
+</style><script language="javascript" type="text/javascript" src="utility.js"></script><script language="javascript" type="text/javascript" src="linux.js"></script><script language="javascript" type="text/javascript">
+<!-- hide script from old browsers
+function alert_warning()
+{
+	var msg = "@lan_warning_msg#";
+	if (msg != "") {
+		alert(msg);
+	}
+}
+function loadcheck()
+{
+        var cf = document.forms[0];
+         /*
+        if(cf.h_natEnable.value == "enabled"){
+                cf.acc_lan.disabled=true;
+                cf.acc_port.disabled=true;
+        }
+         */
+	if(cf.h_wds.value == "enable" || cf.h_wds_an.value == "enable"){
+	   if(cf.h_apmode.value == "1"){
+		cf.rip_direction.disabled=true;
+		cf.sysRIPVersion.disabled=true;
+		cf.dhcp_server.disabled=true;
+		cf.sysPoolStartingAddr1.disabled=true;
+		cf.sysPoolStartingAddr2.disabled=true;
+		cf.sysPoolStartingAddr3.disabled=true;
+		cf.sysPoolStartingAddr4.disabled=true;
+		cf.sysPoolFinishAddr1.disabled=true;
+		cf.sysPoolFinishAddr2.disabled=true;
+		cf.sysPoolFinishAddr3.disabled=true;
+		cf.sysPoolFinishAddr4.disabled=true;
+		cf.Add.disabled=true;
+		cf.Edit.disabled=true;
+		cf.Delete.disabled=true;
+	   }
+	}
+}
+function chgSel(index)
+{
+    document.forms[0].select.value = index;
+    return true;
+}
+function ipandmask(lan, wan, mask)
+{
+	if((parseInt(lan, 10)&parseInt(mask, 10)) == (parseInt(wan, 10)&parseInt(mask, 10)))
+		return 1;
+	else
+		return 0;
+}
+function checkwan()
+{
+	var cf = document.forms[0];
+	var str_wan_ip = "@simple_wan_ip#";
+	var str_wan_mask = "@simple_wan_mask#";
+	var arr_wan_ip = str_wan_ip.split(".");
+	var arr_wan_mask = str_wan_mask.split(".");
+	var wan_ip = (arr_wan_ip[0] << 24) | (arr_wan_ip[1] << 16) | (arr_wan_ip[2] << 8) | arr_wan_ip[3];
+	var wan_mask = (arr_wan_mask[0] << 24) | (arr_wan_mask[1] << 16) | (arr_wan_mask[2] << 8) | arr_wan_mask[3];
+	var wanmode = "@wan_dhcp_status#";
+	var str_wan_phy_ip = "@wan_phy_ip#";
+	var str_wan_phy_mask = "@wan_phy_mask#";
+	var arr_wan_phy_ip = str_wan_phy_ip.split(".");
+	var arr_wan_phy_mask = str_wan_phy_mask.split(".");
+	var phy_wan_ip = (arr_wan_phy_ip[0] << 24) | (arr_wan_phy_ip[1] << 16) | (arr_wan_phy_ip[2] << 8) | arr_wan_phy_ip[3];
+	var phy_wan_mask = (arr_wan_phy_mask[0] << 24) | (arr_wan_phy_mask[1] << 16) | (arr_wan_phy_mask[2] << 8) | arr_wan_phy_mask[3];
+    var lan_ip = (cf.sysLANIPAddr1.value << 24) | (cf.sysLANIPAddr2.value << 16) | (cf.sysLANIPAddr3.value << 8) | (cf.sysLANIPAddr4.value);
+    var lan_mask = (cf.sysLANSubnetMask1.value << 24) | (cf.sysLANSubnetMask2.value << 16) | (cf.sysLANSubnetMask3.value << 8) | (cf.sysLANSubnetMask4.value);
+	if(wanmode == "PPTP")
+	{
+	    if( phy_wan_ip &&
+	    (((lan_mask & phy_wan_mask) & lan_ip) == ((lan_mask & phy_wan_mask) & phy_wan_ip))
+	    ) {
+			return 1;
+		}
+	}
+    if( wan_ip &&
+    (((lan_mask & wan_mask) & lan_ip) == ((lan_mask & wan_mask) & wan_ip))
+    ) {
+        return 1;
+    }
+    return 0;
+}
+function covertoip(val1, val2, val3, val4)
+{
+	var ip = parseInt(val1.value) << 24 | parseInt(val2.value) << 16 |
+	parseInt(val3.value) << 8 | parseInt(val4.value);
+	return ip;
+}
+function add_table()
+{
+    var cf = document.forms[0];
+    var cur_entry_num = @rt_list_entry_num#;
+    /* Netgear SPEC. max entry number is 64. */
+    if (cur_entry_num >= 64) {
+        alert(getErrorMsgByVar("gsm_msg_wl_acl_tbl_full"));
+        return false;
+    }
+    cf.next_file.value = 'LAN_reserv_add.htm';
+    stdAction(cf, 'nbtscan');
+    return true;
+}
+function checkData()
+{
+ 	var cf = document.forms[0];
+	var msg = "";
+	var n1=parseInt(cf.sysPoolStartingAddr4.value, 10);
+    if (cf.device_name.value == "")
+		msg+= getErrorMsgByVar("gsm_msg_dev_name_blank");
+	if (cf.device_name.value.match( /[^(\x20-\x7E\xA0)]/ ))
+	{
+		cf.device_name.focus();
+		msg+= getErrorMsgByVar("gsm_msg_dev_name_invalid");
+	}
+    cf.device_name.value = cf.device_name.value.replace(/\xA0/g," ");
+	if(badLANIP(cf.sysLANIPAddr1,cf.sysLANIPAddr2,cf.sysLANIPAddr3,cf.sysLANIPAddr4,254)
+			||(parseInt(cf.sysLANIPAddr4.value, 10)==0)||((parseInt(cf.sysLANIPAddr4.value,10)>=parseInt(cf.sysPoolStartingAddr4.value,10))&&(parseInt(cf.sysLANIPAddr4.value,10)<=parseInt(cf.sysPoolFinishAddr4.value,10))))
+		msg+= getErrorMsgByVar("gsm_msg_wds_inv_ip_range");
+	if(badMASK(cf.sysLANSubnetMask1,cf.sysLANSubnetMask2,cf.sysLANSubnetMask3,cf.sysLANSubnetMask4,255))
+			msg+= getErrorMsgByVar("gsm_msg_lan_inv_mask");
+	if (msg.length > 1)
+	{
+		alert(msg);
+		return false;
+	}
+	if(checkwan())
+		msg+= getErrorMsgByVar("gsm_msg_lan_inv_ip_same_wan");
+	if(cf.dhcp_server.checked)
+	{
+		if(badLANIP(cf.sysPoolStartingAddr1,cf.sysPoolStartingAddr2,cf.sysPoolStartingAddr3,cf.sysPoolStartingAddr4,254)||(n1==0) )
+			msg+= getErrorMsgByVar("gsm_msg_lan_inv_dhcp_strat_ip");
+	    if(badLANIP(cf.sysPoolFinishAddr1,cf.sysPoolFinishAddr2,cf.sysPoolFinishAddr3,cf.sysPoolFinishAddr4,254))
+			msg+= getErrorMsgByVar("gsm_msg_lan_inv_dhcp_end_ip");
+				var mask = covertoip(cf.sysLANSubnetMask1,cf.sysLANSubnetMask2,cf.sysLANSubnetMask3,cf.sysLANSubnetMask4);
+
+		var startip = covertoip(cf.sysPoolStartingAddr1,cf.sysPoolStartingAddr2,cf.sysPoolStartingAddr3,cf.sysPoolStartingAddr4);
+		var endip = covertoip(cf.sysPoolFinishAddr1,cf.sysPoolFinishAddr2,cf.sysPoolFinishAddr3,cf.sysPoolFinishAddr4);
+		var lanip = covertoip(cf.sysLANIPAddr1,cf.sysLANIPAddr2,cf.sysLANIPAddr3,cf.sysLANIPAddr4);
+
+		if(  (startip & mask) != (lanip & mask)
+		    || (endip & mask) != (lanip & mask) )
+		{
+			msg+= getErrorMsgByVar("gsm_msg_lan_inv_dhcp_ip");
+		}
+		
+		if(startip > endip)
+		{
+			msg+= getErrorMsgByVar("gsm_msg_rule_lan_end_ip_small");
+		
+		}
+		
+	}
+	//msg+= checkInt(cf.acc_port, getErrorMsgByVar("gsm_msg_lan_add_mng_port"), 1, 65535, true);
+	if (msg.length > 1)
+	{
+		alert(msg);
+		return false;
+	}
+	parent.topframe.document.forms[0].next_file.value = 'LAN_lan.htm';
+	dataToHidden(cf);
+	return true;
+}
+function dhcp_update(index)
+{
+    var cf = document.forms[0];
+    switch (index) {
+        case 1:
+            cf.sysPoolStartingAddr1.value=cf.sysLANIPAddr1.value;
+            cf.sysPoolFinishAddr1.value=cf.sysLANIPAddr1.value;
+            break;
+        case 2:
+            cf.sysPoolStartingAddr2.value=cf.sysLANIPAddr2.value;
+            cf.sysPoolFinishAddr2.value=cf.sysLANIPAddr2.value;
+            break;
+        case 3:
+            cf.sysPoolStartingAddr3.value=cf.sysLANIPAddr3.value;
+            cf.sysPoolFinishAddr3.value=cf.sysLANIPAddr3.value;
+            break;
+    }
+}
+//-->
+</script></head><body bgcolor="#ffffff" onLoad="dataToVisible(document.forms[0]);alert_warning();loadcheck();document.forms[0].elements[0].focus();" onResize="if(document.layers) return false;">
+<form name="frmLan" method="POST" action="setup.cgi@post_par#" onSubmit="buttonToDisabled(document.forms[0]);">
+<div class="page_title">LAN <span languageCode = "305">Setup</span></div>
+<div class="fix_button">
+<table width="100%" border="0" cellpadding="0" cellspacing="2"><tr><td nowrap colspan="2" align="center">
+<input class="cancel_bt" type="button" name="Cancel" value = "Cancel" onClick="location.href='./LAN_lan.htm'" languageCode = "19">
+&nbsp;
+<input class="apply_bt" type="SUBMIT" name="Apply" value = "Apply" onClick="return checkData()" languageCode = "18">
+</td></tr></table>
+</div>
+<div id="main" class="main_top_button">
+<table border="0" cellpadding="0" cellspacing="3" width="100%"><tr><td nowrap><a href="javascript:loadhelp('LAN_lan','device_name')" tabindex="-1">
+	  <b languageCode = "127">Device Name</b></a></td>
+	  <td width="60%" align="right">
+	  <input type="text" maxlength="12" size="24" name="device_name" value="@device_name#"></td>
+	</tr><tr><!-- RULE --><td colspan="2" background="liteblue.gif" height="12"></td>
+	</tr><tr><td nowrap colspan="2">
+		<p><b><a href="javascript:loadhelp('LAN_lan','tcp')" tabindex="-1">LAN TCP/IP <span languageCode = "305">Setup</span></a></b></p>
+		</td>
+	</tr><tr><td nowrap languageCode = "37">IP Address</td>
+		<td nowrap align="right" class="num"><input type="text" name="sysLANIPAddr1" class="num" size="4" maxlength="3" value="" onChange="dhcp_update(1);">.<input type="text" name="sysLANIPAddr2" class="num" size="4" maxlength="3" value="" onChange="dhcp_update(2);">.<input type="text" name="sysLANIPAddr3" class="num" size="4" maxlength="3" value="" onChange="dhcp_update(3);">.<input type="text" name="sysLANIPAddr4" class="num" size="4" maxlength="3" value=""></td>
+	</tr><tr><td nowrap languageCode = "40">IP Subnet Mask</td>
+		<td nowrap align="right" class="num"><input type="text" name="sysLANSubnetMask1" class="num" size="4" maxlength="3" value="">.<input type="text" name="sysLANSubnetMask2" class="num" size="4" maxlength="3" value="">.<input type="text" name="sysLANSubnetMask3" class="num" size="4" maxlength="3" value="">.<input type="text" name="sysLANSubnetMask4" class="num" size="4" maxlength="3" value=""></td>
+	</tr><tr><td nowrap languageCode = "306">RIP Direction</td>
+		<td align="right"><select name="rip_direction" size="1"><option value="both" languageCode = "307">Both</option><option value="in" languageCode = "308">In Only</option><option value="out" languageCode = "309">Out Only</option></select></td>
+	</tr><tr><td nowrap languageCode = "310">RIP Version</td>
+		<td align="right"><select name="sysRIPVersion" size="1"><option value="disable" languageCode = "311">Disable</option><option value="rip1">RIP_1</option><option value="rip2b">RIP_2B</option><option value="rip2m">RIP_2M</option></select></td>
+	</tr><!--tr>
+		<td nowrap colspan="2"><input type="checkbox" name="acc_lan"
+			value="acc_lan"><b>Access Router
+		Management Interface on additional port</b> <input type="text" class="num"
+			name="acc_port" value="@acc_port#" size="5" maxlength="5"><br>
+		(<span>NAT-disabled mode only</span>)</td>
+	</tr--><tr><td colspan="2" background="liteblue.gif" height="12"></td>
+	</tr><tr><td colspan="2" nowrap><input type="checkbox" name="dhcp_server" value="dhcp_server"><a href="javascript:loadhelp('LAN_lan','dhcp')" tabindex="-1"><b languageCode = "312">Use Router as DHCP Server</b></a></td>
+	</tr><tr><td><span languageCode = "134">Single/Start IP Address</span></td>
+		<td nowrap align="right" class="num"><input type="text" name="sysPoolStartingAddr1" class="num" size="4" maxlength="3" disabled value="">.<input type="text" name="sysPoolStartingAddr2" class="num" size="4" maxlength="3" disabled value="">.<input type="text" name="sysPoolStartingAddr3" class="num" size="4" maxlength="3" disabled value="">.<input type="text" name="sysPoolStartingAddr4" class="num" size="4" maxlength="3" value=""></td>
+	</tr><tr><td><span languageCode = "135">Finish IP Address</span></td>
+		<td nowrap align="right" class="num"><input type="text" name="sysPoolFinishAddr1" class="num" size="4" maxlength="3" disabled value="">.<input type="text" name="sysPoolFinishAddr2" class="num" size="4" maxlength="3" disabled value="">.<input type="text" name="sysPoolFinishAddr3" class="num" size="4" maxlength="3" disabled value="">.<input type="text" name="sysPoolFinishAddr4" class="num" size="4" maxlength="3" value=""></td>
+	</tr><tr><!-- RULE --><td colspan="2" background="liteblue.gif" height="12"></td></tr>
+             <tr><td colspan="2" nowrap><input type="checkbox" name="block_ads" value="block_ads"><b>Block Ads</b></td></tr>
+             <tr><td>IP address for blocked Ad sites (please only change if you really,really need this address for something</td>
+		<td nowrap align="right" class="num"><input type="text" name="adBlockAddr1" class="num" size="4" maxlength="3" disabled value="198">.<input type="text" name="adBlockAddr2" class="num" size="4" maxlength="3" disabled value="51">.<input type="text" name="adBlockAddr3" class="num" size="4" maxlength="3" disabled value="100">.<input type="text" name="adBlockAddr4" class="num" size="4" maxlength="3" value="1"></td></tr>		
+	</tr><tr><!-- RULE --><td colspan="2" background="liteblue.gif" height="12"></td>
+	</tr><tr><td nowrap colspan="2"><a href="javascript:loadhelp('LAN_lan','reserved')" tabindex="-1"><b languageCode = "313">Address Reservation</b></a></td>
+	</tr><tr><td colspan="2">
+		<TABLE class="tables" border="0" cellpadding="2" cellspacing="0" width="100%">
+		<TR class="table_header"><td nowrap align="center" width="6%"><span class="thead">&nbsp;</span></td>
+				<td nowrap align="center" width="6%"><span class="thead">#</span></td>
+				<td nowrap align="center"><span class="thead" languageCode = "37">IP Address</span></td>
+				<td nowrap align="center"><span class="thead" languageCode = "127">Device Name</span></td>
+				<td nowrap align="center"><span class="thead" languageCode = "48">MAC Address</span></td>
+			</tr>
+			@rt_list_reserve#
+		</table></td>
+	</tr><tr><td colspan="2" align="center"><input class="add_bt" type="button" name="Add" value = "Add" onClick="if(add_table()) buttonToDisabled(document.forms[0])" languageCode = "93">
+	&nbsp;
+	<input class="edit_bt" type="button" name="Edit" value = "Edit" onClick="if (radioSelectedIndex(this.form.ruleSelect) &gt; -1) {radioTable(this.form,this.form.ruleSelect,'edit'); buttonToDisabled(document.forms[0]);} else {window.location='LAN_reserv_edit_nonselect.htm'; return false;}" languageCode = "94">
+	&nbsp;
+	<input class="delete_bt" type="button" name="Delete" value = "Delete" onClick="if (!(radioSelectedIndex(this.form.ruleSelect) &gt; -1)) {window.location='LAN_reserv_del_nonselect.htm'; return false;} else {radioTable(this.form,this.form.ruleSelect,'delete'); buttonToDisabled(document.forms[0])}" languageCode = "95"></td>
+	</tr><tr><!-- RULE --><td colspan="2" background="liteblue.gif" height="12"></td>
+	</tr><tr><td colspan="2" align="center"></td>
+	</tr></table>
+        <input type="hidden" name="h_rip_direction" value="@h_rip_direction#">
+        <input type="hidden" name="h_sysRIPVersion" value="@h_sysRIPVersion#">
+        <input type="hidden" name="h_dhcp_server" value="@h_dhcp_server#">
+        <input type="hidden" name="h_block_ads" value="@h_block_ads#">
+        <!--input type="hidden" name="h_acc_lan" value="@h_acc_lan#"-->
+        <input type="hidden" name="c4_sysLANIPAddr" value="@c4_sysLANIPAddr#">
+        <input type="hidden" name="c4_sysLANSubnetMask" value="@c4_sysLANSubnetMask#">
+        <input type="hidden" name="c4_sysPoolStartingAddr" value="@c4_sysPoolStartingAddr#">
+        <input type="hidden" name="c4_sysPoolFinishAddr" value="@c4_sysPoolFinishAddr#">
+        <input type="hidden" name="c4_adBlockAddr" value="@c4_adBlockAddr#">
+        <input type="hidden" name="h_wds" value="@h_wds_enable#">
+        <input type="hidden" name="h_wds_an" value="@h_wds_enable_an#">
+        <input type="hidden" name="h_apmode" value="@h_wds_mode#">
+        <input type="hidden" name="h_ruleSelect" value="">
+        <!--input type="hidden" name="h_natEnable" value="@h_natEnable#"-->
+        <input type="hidden" name="todo" value="save">
+        <input type="hidden" name="this_file" value="LAN_lan.htm">
+        <input type="hidden" name="next_file" value="LAN_lan.htm">
+        <input type="hidden" name="SID" value="@SID#">
+</div>	
+</form>
+<p></p>
+<div id="help" style="display: none">
+		<iframe name="help_iframe" id="helpframe" src="LAN_lan_h.htm" allowtransparency="true" width="100%" frameborder="0">
+		</iframe>
+</div>
+<div id="help_switch" class="close_help">
+	 <img class="help_switch_img" src="image/help/help-bar.gif"><script>
+var help_flag=0;
+if(isIE()){
+	show_hidden_help_top_button(1);
+	var frame_div = top.document.getElementById("formframe_div");
+	frame_div.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+if(get_browser() == "Opera"){
+	window.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+</script><div id="help_space" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_center"><span languageCode="3016">Help Center</span></div>
+<div id="help_button" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_show_hidden"><a href="javascript:void(0)" onClick="show_hidden_help_top_button(help_flag); help_flag++;"><span languageCode="3017">Show/Hide Help Center</span></a></div>
+</div>
+<script language="javascript" type="text/javascript" src="langs.js"></script>
+</body></html>
