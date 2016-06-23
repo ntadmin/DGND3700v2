@@ -1,0 +1,64 @@
+#!/bin/sh
+
+myip="$(nvram-util get lan_ipaddr)"
+pnpport=56688
+our_identifier="UserNat"
+upnp_cmd="/usr/sbin/upnpc -u http://$myip:$pnpport/rootDesc.xml"
+
+inportstart=""
+inportend=""
+protocol=""
+
+clear_nat() {
+    $upnp_cmd -l | /usr/sbin/grep $our_identifier | while IFS= read -r line
+    do
+        pp="$(echo "$line" | /usr/sbin/awk -v FS='-' '{print $1}' | /usr/sbin/awk -v OFS=' ' '{print $3,$2;exit}' )"
+        $upnp_cmd -d $pp 2>&1 > /dev/null
+    done
+}
+
+getserviceportandprotocol() {
+    service="$(/usr/sbin/nvram-util getarray-grep-row fw_services $1 ,)"
+    if [ "x$service" = "x" ]; then service="$(/usr/sbin/nvram-util getarray-grep-row fw_services_def $1)"; fi
+    if [ "x$service" = "x" ]; then return 1; fi
+    inportrange="$(echo $service | /usr/sbin/awk -v FS=',' '{print $3}')"
+    inportstart="$(echo $inportrange | /usr/sbin/awk -v FS='-' '{print $1}')"
+    inportend="$(echo $inportrange | /usr/sbin/awk -v FS='-' '{print $2}')"
+    if [ "x$inportend" = "x"]; then $inportend = $inportstart; fi
+    protocol="$(echo $service | /usr/sbin/awk -v FS=',' '{print $2}')"
+}
+
+set_nat() {
+    /usr/sbin/nvram-util getarray fw_in_rules , | while IFS= read -r line
+    do
+        inportstart=""
+        inportend=""
+        protocol=""
+        service="$(echo $line | /usr/sbin/awk -v FS=',' '{print $2}')"
+        getserviceportandprotocol $service
+        if [ "x$inportstart" != "x" ]; then
+            dest="$(echo $line | /usr/sbin/awk -v FS=',' '{print $4}')"
+            destip="$(echo $dest | /usr/sbin/awk -v FS=':' '{print $1}')"
+	    destport="$(echo $dest | /usr/sbin/awk -v FS=':' '{print $2}')"
+            if [ "x$destport" = "x" ]; then destport = inportstart; fi
+            while [ $inportstart -le $inportend ]; do
+                $upnp_cmd -e $our_identifier -a $destip $destport $inportstart $protocol
+                inportstart=`expr $inportstart + 1`
+                destport=`expr $destport + 1`
+            done
+        fi
+    done
+}
+
+case "$1" in
+  clear)
+    clear_nat
+    ;;
+  set)
+    set_nat
+    ;;
+  *)
+    echo "Usage $0 clear|set"
+    ;;
+esac
+exit 0
