@@ -8,9 +8,9 @@
 #include "nvram_cache.h"
 
 void mylog(char *, char *);
-#define DEBUG_CORE    1
-#define DEBUG_ACQUIRE 1
-#define DEBUG_SYNC    1
+#define DEBUG_CORE    0
+#define DEBUG_ACQUIRE 0
+#define DEBUG_SYNC    0
 
 // Remove this #define to make this code do everything except alter the nvram contents.
 #define REALLY_WRITE_TO_NVRAM
