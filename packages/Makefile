@@ -8,15 +8,15 @@ include ../Rules.mak
 #
 # Set the following headline information
 #
-packages=inadyn-mt dnsmasq
+packages=inadyn-mt dnsmasq miniupnpc
 
-all: target_directories $(packages)
+all: real-all
 
 #
 # Set this list to include all possible target directories 
 # Must start with a slash as this is for a root FS ...
 #
-target_dirs=/usr/sbin /usr/lib
+target_dirs=/usr/sbin /lib
 
 #
 # For each package, set the following information up
@@ -35,23 +35,42 @@ dnsmasq.tar-args=Jxf
 dnsmasq.make-command=make CC="/opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/mips-linux-gcc" CFLAGS="-O3 -W -Wall -march=mips32 -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -fomit-frame-pointer -fno-strict-aliasing -mabi=32 -G 0 -msoft-float -pipe -Wa,-mips32" COPTS="-DNO_INOTIFY -DNO_IPSET -DNO_IPV6 -DNO_DHCP6 -DNO_AUTH"
 dnsmasq.test-compiled-file=src/dnsmasq
 
+miniupnpc.url=http://miniupnp.free.fr/files/download.php?file=miniupnpc-2.0.tar.gz
+miniupnpc.pkg-dl-name=miniupnpc-latest.tar.gz
+miniupnpc.tar-args=xvf
+miniupnpc.make-command=INSTALLPREFIX=$(PKG_SRC_DIR)/miniupnpc/_install make install LIBDIR="/lib" CC="/opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/mips-linux-gcc"
+miniupnpc.test-compiled-file=_install/bin/upnpc
+
+miniupnpd.url=http://miniupnp.free.fr/files/download.php?file=miniupnpd-2.0.tar.gz
+miniupnpd.pkg-dl-name=miniupnpd-latest.tar.gz
+miniupnpd.tar-args=xvf
+miniupnpd.make-command=INSTALLPREFIX=$(PKG_SRC_DIR)/miniupnpc/_install make -f Makefile.linux install LIBDIR="/lib" CC="/opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/mips-linux-gcc"
+miniupnpd.test-compiled-file=_install/bin/miniupnpd
+
+
+
 #
-# For each package, create:
-# 1. a headline rule which must depend on XXX.all and XXX.place
-# 2. a place rule which does all the necessary commands after the
-#    package has been made. Typically putting the executables and
-#    libraries in place.
+# For each package, create a place rule which does all the necessary
+# commands after the package has been made. Typically putting the
+# executables and libraries in place.
 #
-dnsmasq: dnsmasq.all dnsmasq.place
 
 dnsmasq.place:
 	@cp $(PKG_SRC_DIR)/$(@:%.place=%)/src/dnsmasq $(PKG_TARGET_DIR)/usr/sbin
 	@cp $(PKG_SRC_DIR)/$(@:%.place=%)/contrib/wrt/lease_update.sh $(PKG_TARGET_DIR)/usr/sbin/dhcp_lease_update.sh
 
-inadyn-mt: inadyn-mt.all inadyn-mt.place
 
 inadyn-mt.place:
 	@cp $(PKG_SRC_DIR)/$(@:%.place=%)/src/inadyn-mt $(PKG_TARGET_DIR)/usr/sbin
+
+
+miniupnpc.place:
+	@cp $(PKG_SRC_DIR)/$(@:%.place=%)/_install/bin/* $(PKG_TARGET_DIR)/usr/sbin
+	@cp $(PKG_SRC_DIR)/$(@:%.place=%)/_install/lib/*.so* $(PKG_TARGET_DIR)/lib
+
+miniupnpd.place:
+	@cp $(PKG_SRC_DIR)/$(@:%.place=%)/_install/bin/* $(PKG_TARGET_DIR)/usr/sbin
+	@cp $(PKG_SRC_DIR)/$(@:%.place=%)/_install/lib/*.so* $(PKG_TARGET_DIR)/lib
 
 
 
@@ -74,19 +93,25 @@ packages-get=$(packages:%=%.get)
 packages-all=$(packages:%=%.all)
 packages-configure=$(packages:%=%.configure)
 packages-make=$(packages:%=%.make)
+packages-place-wrap=$(packages:%=%.place-wrap)
 
 full_path_target_dirs=$(target_dirs:%=$(PKG_TARGET_DIR)%)
 
 #
 # The rules
 #
-.PHONY: all $(packages) $(packages-get) $(packages-all)
+.PHONY: all real-all $(packages) $(packages-get) $(packages-all)
+
+real-all: target_directories $(packages-all) $(packages-place-wrap)
 
 $(packages-all):
+	@echo "--"
 	@echo "Getting $(@:%.all=%) ready for target"
 	@test -e $(PKG_DOWNLOAD_DIR)/$($(@:%.all=%.pkg-dl-name)) || { make $(@:%.all=%.get); }
 	@test -e $(PKG_SRC_DIR)/$(@:%.all=%)/$(CONFIG_DONE_MARKER) || { make $(@:%.all=%.configure); }
 	@test $(PKG_SRC_DIR)/$(@:%.all=%)/$($(@:%.all=%.test-compiled-file)) -nt $(PKG_SRC_DIR)/$(@:%.all=%)/$(CONFIG_DONE_MARKER)  || { make $(@:%.all=%).make; }
+	@echo "$(@:%.all=%) Ready"
+	@echo ""
 
 $(packages-get):
 	wget $($(@:%.get=%.url)) -O $(PKG_DOWNLOAD_DIR)/$($(@:%.get=%.pkg-dl-name)) $(WGET_EXTRA_ARGS)
@@ -99,8 +124,14 @@ $(packages-configure):
 	touch $(PKG_SRC_DIR)/$(@:%.configure=%)/$(CONFIG_DONE_MARKER)
 
 $(packages-make):
-	cp -R $(PKG_CORRECTION_DIR)/$(@:%.make=%)/* $(PKG_SRC_DIR)/$(@:%.make=%)
+	@test ! -d $(PKG_CORRECTION_DIR)/$(@:%.make=%) || { cp -R $(PKG_CORRECTION_DIR)/$(@:%.make=%)/* $(PKG_SRC_DIR)/$(@:%.make=%); }
 	cd $(PKG_SRC_DIR)/$(@:%.make=%); $($(@:%.make=%.make-command))
+
+$(packages-place-wrap):
+	@echo "--"
+	@echo "Putting in packages target: $(@:%.place-wrap=%)"
+	@make $(@:%.place-wrap=%.place)
+	@echo ""
 
 
 #
