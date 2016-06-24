@@ -13,25 +13,19 @@ run_netgear_rc_firewall() {
     rm -rf $myexec
 }
 
-force_correct_adsl_config() {
-    wan_mode="$(nvram-util get wan_mode_dsl)"
-    if [ "x$wan_mode" = "xpppoa" ]; then
-        adsl_needs="$(/usr/sbin/rc_app/rc_adsl needs)"
-        if [ "x$adsl_needs" = "xconfigure" ]; then
-            /usr/sbin/rc_app/rc_adsl configure
-            exit
-        fi
-    fi
-}
-
 case "$1" in
-    inbound)
-        /usr/sbin/manage_user_nat restart
-        run_netgear_rc_firewall $@
-        ;;
-    *)
-        run_netgear_rc_firewall $@
-        ;;
+  wan)
+    if [ "x$3" = "xup" ]; then /usr/sbin/rc_app/rc_user_nat restart; fi
+    if [ "x$3" = "xdown" ]; then /usr/sbin/rc_app/rc_user_nat stop; fi
+    run_netgear_rc_firewall $@
+    ;;
+  inbound)
+    /usr/sbin/rc_app/rc_user_nat restart
+    run_netgear_rc_firewall $@
+    ;;
+  *)
+    run_netgear_rc_firewall $@
+    ;;
 esac
 
 
