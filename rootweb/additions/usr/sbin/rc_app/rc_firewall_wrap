@@ -14,9 +14,17 @@ run_netgear_rc_firewall() {
 }
 
 case "$1" in
+  init)
+    /usr/sbin/rc_adblock start
+    run_netgear_rc_firewall $@
+    ;;
   wan)
-    if [ "x$3" = "xup" ]; then /usr/sbin/rc_app/rc_user_nat restart; fi
-    if [ "x$3" = "xdown" ]; then /usr/sbin/rc_app/rc_user_nat stop; fi
+    if [ "x$3" = "xup" ]; then
+        /usr/sbin/rc_app/rc_user_nat restart
+    fi
+    if [ "x$3" = "xdown" ]; then
+        /usr/sbin/rc_app/rc_user_nat stop
+    fi
     run_netgear_rc_firewall $@
     ;;
   inbound)

@@ -1,0 +1,71 @@
+#!/bin/sh
+
+if [ -e /usr/etc/log_rc_flag ]; then
+    echo "`date` [rc_adblock] $0 $@">> /var/log/rc_calls
+fi
+
+adblock_enable_default="1"
+adblock_ip_default="198.51.100.1"
+adblock_server_port_default="8105"
+
+router_ip="$(/usr/sbin/nvram-util get lan_ipaddr)"
+adblock_enable="$(/usr/sbin/nvram-util get adblock_enable)"
+adblock_ip="$(/usr/sbin/nvram-util get adblock_ip)"
+adblock_server_port="$(/usr/sbin/nvram-util get adblock_server_port)"
+
+if [ "x$adblock_enable" = "x(null)" ]; then
+    adblock_enable=$adblock_enable_default
+    /usr/sbin/nvram-util set adblock_enable $adblock_enable
+fi
+if [ "x$adblock_ip" = "x(null)" ]; then
+    adblock_ip=$adblock_ip_default
+    /usr/sbin/nvram-util set adblock_ip $adblock_ip
+fi
+if [ "x$adblock_server_port" = "x(null)" ]; then
+    adblock_server_port=$adblock_server_port_default;
+    /usr/sbin/nvram-util set adblock_server_port $adblock_server_port
+fi
+
+if [ "x$adblock_enable" = "x" ];
+    adblock_enable=$adblock_enable_default
+    /usr/sbin/nvram-util set adblock_enable $adblock_enable
+fi
+if [ "x$adblock_ip" = "x" ]; then
+    adblock_ip=$adblock_ip_default
+    /usr/sbin/nvram-util set adblock_ip $adblock_ip
+fi
+if [ "x$adblock_server_port" = "x" ]; then
+    adblock_server_port=$adblock_server_port_default
+    /usr/sbin/nvram-util set adblock_server_port $adblock_server_port
+fi
+
+issue_adblock_cmd() {
+    /usr/sbin/iptables -t nat $1 LOCAL_SERVICE_NAT -p tcp -d $adblock_ip -j DNAT --to-destination $router_ip:$adblock_server_port
+}
+
+
+case "$1" in
+    start)
+        if [ "x$adblock_enable" = "x1" ]; then
+            /usr/sbin/adblockhttpd &
+            issue_adblock_cmd -A
+        fi
+        ;;
+    strop)
+        echo "I'm far too polite."
+        ;;
+    stop)
+        issue_adblock_cmd -D
+        killall adblockhttpd
+        ;;
+    reload|restart)
+        $0 stop
+        sleep 1
+        $0 start
+        ;;
+    *)
+        echo "Usage: $0 start|stop|restart|reload"
+        exit 1
+        ;;
+esac
+exit 0
