@@ -3,6 +3,7 @@
 /packages/target
 /rootweb/target
 /rootweb/original
+/extra_binaries/target
 /DGND3700*/
 /.flags
 /netgear-dl
