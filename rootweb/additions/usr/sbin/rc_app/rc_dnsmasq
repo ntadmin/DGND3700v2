@@ -3,6 +3,7 @@
 logfile=/var/log/dnsmasq.log
 adblock_hosts_file=/var/tmp/hosts.adblock
 extra_hosts_file=/var/tmp/hosts.me
+reserved_file=/var/tmp/dhcp.reserved
 args_for_dnsmasq=""
 last_start_file=/var/tmp/dnsmasq_args
 
@@ -30,6 +31,15 @@ make_extra_hosts_file() {
     fi
 }
 
+make_reserved_file() {
+    rm $reserved_file
+    touch $reserved_file
+    /usr/sbin/nvram-util getarray dhcp_reserved , | while IFS= read -r line
+    do
+        echo $line | /usr/sbin/awk -v FS=',' -v OFS=',' '{print $3,$2,$1; exit}' >> $reserved_file
+    done
+}
+
 rc_log "$0 $@"
 
 get_dnsmasq_args() {
@@ -48,7 +58,7 @@ get_dnsmasq_args() {
             fi
         fi
     fi
-    args_for_dnsmasq="$args_for_dnsmasq --log-facility=$logfile --clear-on-reload --addn-hosts=$adblock_hosts_file --addn-hosts=$extra_hosts_file"
+    args_for_dnsmasq="$args_for_dnsmasq --log-facility=$logfile --clear-on-reload --addn-hosts=$adblock_hosts_file --addn-hosts=$extra_hosts_file --dhcp-hostsfile=$reserved_file"
 
     dhcp_on="$(/usr/sbin/nvram-util get dhcp_server_enable)"
     if [ "x$dhcp_on" = "x1" ]; then
@@ -67,6 +77,8 @@ get_dnsmasq_args() {
 
 case "$1" in
     start)
+        make_reserved_file
+        make_extra_hosts_file
         get_dnsmasq_args
         PID="$(pidof dnsmasq)"
         if [ "x$PID" != "x" ]; then
@@ -78,7 +90,6 @@ case "$1" in
 
         PID="$(pidof dnsmasq)"
         if [ "x$PID" = "x" ]; then
-            make_extra_hosts_file
             /usr/sbin/dnsmasq $args_for_dnsmasq
             PID="$(pidof dnsmasq)"
             if [ "x${PID}" != "x" ]; then
