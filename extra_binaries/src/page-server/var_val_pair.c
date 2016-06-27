@@ -239,6 +239,15 @@ void vvpa_log_to_file(FILE *fp, var_val_pair_array *vvpa, char *line) {
     }
 }
 
+void update_value_in_var_val_pair_array(var_val_pair_array *vvpa, char *var, char *new_value) {
+    int index;
+
+    if (vvpa == NULL) return;
+    index = find_index_of_var_in_vvpa(vvpa, var);
+    if (index == VVPA_NOT_FOUND) return;
+    vvp_update_value(vvpa->vvps[index], new_value);
+}
+
 var_val_pair_array *addto_var_val_pair_array(var_val_pair_array *vvpa, char *var, char *value) {
     if (vvpa == NULL) vvpa = create_var_val_pair_array();
     if (vvpa->num_alloc == vvpa->num_used) {
@@ -301,6 +310,24 @@ int find_index_of_var_in_vvppa(var_val_pair_plus_array *vvppa, char *var) {
     }
 
     return VVPPA_NOT_FOUND;
+}
+
+int find_index_of_var_in_vvpa(var_val_pair_array *vvpa, char *var) {
+    int           i;
+    char         *ref_var;
+    var_val_pair *vvp;
+
+    if ((vvpa == NULL) || (var == NULL)) return VVPA_NOT_FOUND;
+
+    for (i=0; i<vvpa->num_used; i++) {
+        vvp = vvpa->vvps[i];
+        if (vvp != NULL) {
+            ref_var = vvp->var;
+            if ((ref_var != NULL) && (!strcmp(ref_var, var))) return i;
+        }
+    }
+
+    return VVPA_NOT_FOUND;
 }
 
 char *find_var_from_value(var_val_pair_array *vvpa, char *value) {

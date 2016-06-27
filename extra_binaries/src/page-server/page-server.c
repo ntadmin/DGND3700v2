@@ -98,6 +98,46 @@ char *get_env_value(char *var) {
     return find_value_from_var(env_vvpa, var);
 }
 
+void set_post_value(char *var, char* new_value) {
+    update_value_in_var_val_pair_array(post_data_vvpa, var, new_value);
+}
+
+void set_get_value(char *var, char* new_value) {
+    update_value_in_var_val_pair_array(get_data_vvpa, var, new_value);
+}
+
+char *make_query_string() {
+    char *result = NULL;
+    char *cp;
+    var_val_pair *vvp;
+    int i, l;
+
+    if (get_data_vvpa == NULL) return NULL;
+
+    result = malloc(1024);
+    if (result == NULL) return NULL;
+    cp = result;
+
+    for (i=0; i<get_data_vvpa->num_used; i++) {
+        vvp = get_data_vvpa->vvps[i];
+        if ((vvp != NULL ) && (vvp->var != NULL) && (vvp->value != NULL)) {
+            l = strlen(vvp->var);
+            strncpy(cp, vvp->var, l);
+            cp += l;
+            *cp = '=';
+            cp++;
+            l = strlen(vvp->value);
+            strncpy(cp, vvp->value, l);
+            cp += l;
+            *cp = '&';
+            cp++;
+        }
+    }
+    *cp = '\0';
+
+    return result;
+}
+
 char *get_get_or_post_value(char *var) {
     char *h_var;
     char *result;
@@ -115,6 +155,26 @@ char *get_get_or_post_value(char *var) {
     free(h_var);
     return result;
 }
+
+void set_get_or_post_value(char *var, char *new_value) {
+    char *h_var;
+    char *result;
+
+    if (var == NULL) return;
+    h_var = malloc(strlen(var) + PAGE_VAR_HIDDEN_PREFIX_LENGTH + 1);
+    if (h_var == NULL) return;
+    sprintf(h_var, "%s%s", page_var_hidden_prefix, var);
+
+    result = get_get_value(h_var);
+    if (result != NULL) set_get_value(h_var, new_value);
+    result = get_get_value(var);
+    if (result != NULL) set_get_value(var, new_value);
+    result = get_post_value(h_var);
+    if (result != NULL) set_post_value(h_var, new_value);
+    result = get_get_value(h_var);
+    if (result != NULL) set_post_value(h_var, new_value);
+}
+
 
 bool is_hidden_page_var(char *v) {
     if (strncmp(v, page_var_hidden_prefix, PAGE_VAR_HIDDEN_PREFIX_LENGTH) == 0) return true;
@@ -244,7 +304,27 @@ int run_external_prog(char *file_to_run, char **env_for_prog, char **argv_for_pr
 }
 
 void pass_to_netgear_setup_and_exit() {
+    int   l;
+    char *qs = NULL;
+    char* argv0 = NULL;
+
+    qs = make_query_string();
+    if (qs != NULL) {
+        l = strlen(qs);
+        if (l > 0) {
+            setenv("QUERY_STRING", qs, 1);
+            argv0 = malloc(l + 12); // setup.cgi?, \-, one for luck
+            if (argv0 != NULL) {
+                sprintf(argv0, "setup.cgi?%s", qs);
+                incoming_argv[0] = argv0;
+            }
+        }
+    }
+
     int exit_val = run_external_prog("netgear-setup.cgi", environ, incoming_argv, post_data, false, false);
+
+    if (qs != NULL) free(qs);
+    if (argv0 != NULL) free(argv0);
     exit(exit_val);
 }
 
@@ -717,7 +797,7 @@ int main(int argc, char *argv[]) {
         }
 
         // Handle todo actions that must be done before page render.
-        if (DEBUG_LEVEL >= DEBUG_ACTION) mylog("main - action", "considering todo");
+        if (DEBUG_LEVEL >= DEBUG_ACTION) mylog("main - considering todo", todo_value);
         if (have_data_for_action && !strcmp(todo_value, "save")) {
             if (DEBUG_LEVEL >= DEBUG_ACTION) mylog("main - action", "saving data");
             do_pre_save_action(this_file_value);
@@ -726,9 +806,15 @@ int main(int argc, char *argv[]) {
             done_todo = true;
         }
 
-        // If there is a todo, and we haven't done it, hand off to netgear
+        // If there is a todo and we've done it, we need to make sure that the
+        // render doesn't duplicate the action
+        if (done_todo) {
+            set_get_or_post_value("todo", "cfg_init");
+        }
+        // However, if there is a todo, and we haven't done it, hand off to netgear
         // Downside: we lose the render. Upside, the action actually happens
-        if (!done_todo) {
+        else {
+            if (DEBUG_LEVEL >= DEBUG_ACTION) mylog("main - unable to to todo", "passing to netgear renderer");
             pass_to_netgear_setup_and_exit();
         }
     }

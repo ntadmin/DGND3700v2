@@ -71,6 +71,8 @@ var_val_pair_array *parse_post_get_type_data_into_vvpa(char */*data*/, var_val_p
 var_val_pair_array *parse_argv_type_data_into_vvpa(char ** /*argv*/, var_val_pair_array *);
 char               *find_value_from_var(var_val_pair_array *, char * /*var*/);
 char               *find_var_from_value(var_val_pair_array *, char * /*value*/);
+int                 find_index_of_var_in_vvpa(var_val_pair_array *, char * /*var*/);
+void                update_value_in_var_val_pair_array(var_val_pair_array *, char * /* var */, char * /* new_value */);
 
 var_val_pair_plus *addto_var_val_pair_plus_array(var_val_pair_plus_array *, char * /*var*/, char * /*value*/);
 int                find_index_of_var_in_vvppa(var_val_pair_plus_array *, char * /*var*/);
