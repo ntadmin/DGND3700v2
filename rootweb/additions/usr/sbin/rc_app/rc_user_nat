@@ -1,6 +1,6 @@
 #!/bin/sh
 if [ -e /usr/etc/log_rc_flag ]; then
-    echo "`date` [rc_inadyn-mt] $0 $@" >> /var/log/rc_calls
+    echo "`/usr/sbin/date` [rc_inadyn-mt] $0 $@" >> /var/log/rc_calls
 fi
 
 case "$1" in

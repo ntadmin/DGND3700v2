@@ -9,7 +9,7 @@ last_start_file=/var/tmp/dnsmasq_args
 
 rc_log() {
     if [ -e /usr/etc/log_rc_flag ]; then
-        echo "`date` [rc_dnsmasq] $@" >> /var/log/rc_calls
+        echo "`/usr/sbin/date` [rc_dnsmasq] $@" >> /var/log/rc_calls
     fi
 }
 

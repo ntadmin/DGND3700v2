@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [ -e /usr/etc/log_rc_flag ]; then
-    echo "`date` [rc_adblock] $0 $@">> /var/log/rc_calls
+    echo "`/usr/sbin/date` [rc_adblock] $0 $@">> /var/log/rc_calls
 fi
 
 adblock_enable_default="1"
