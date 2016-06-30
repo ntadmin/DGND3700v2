@@ -29,13 +29,7 @@ case "$1" in
         run_netgear_rc_wan $@
         force_correct_adsl_config
         ;;
-    linkup)
-        run_netgear_rc_wan $@
-        ;;
-    up)
-        run_netgear_rc_wan $@
-        ;;
-    linkdown)
+    *)
         run_netgear_rc_wan $@
         ;;
 esac
