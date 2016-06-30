@@ -125,6 +125,9 @@ case "$1" in
     reload)
         PID="$(pidof dnsmasq)"
         if [ "x${PID}" != "x" ]; then
+            make_reserved_file
+            make_extra_hosts_file
+            /usr/sbin/get_adblock_list $adblock_hosts_file
            /usr/sbin/kill -HUP $PID
         fi
         ;;
