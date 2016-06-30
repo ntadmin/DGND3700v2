@@ -15,8 +15,8 @@ run_netgear_rc_firewall() {
 
 case "$1" in
   init)
-    /usr/sbin/rc_app/rc_adblock start
     run_netgear_rc_firewall $@
+    /usr/sbin/rc_app/rc_adblock start
     ;;
   wan)
     if [ "x$3" = "xup" ]; then
