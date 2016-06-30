@@ -118,9 +118,15 @@ case "$1" in
 	    rc_log_echo "dnsmasq is already stopped."
 	fi
         ;;
-    reload|restart)
+    restart)
         $0 stop
         $0 start
+        ;;
+    reload)
+        PID="$(pidof dnsmasq)"
+        if [ "x${PID}" != "x" ]; then
+           /usr/sbin/kill -HUP $PID
+        fi
         ;;
     *)
         echo "Usage: $0 start|stop|restart|reload"

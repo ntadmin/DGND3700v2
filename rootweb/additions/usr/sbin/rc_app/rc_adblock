@@ -48,6 +48,8 @@ case "$1" in
     start)
         if [ "x$adblock_enable" = "x1" ]; then
             /usr/sbin/adblockhttpd &
+            /usr/sbin/get_adblock_list
+            /usr/sbin/rc_app/rc_dnsmasq reload
             issue_adblock_cmd -A
         fi
         ;;

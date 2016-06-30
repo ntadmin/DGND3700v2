@@ -9,29 +9,33 @@ if [ $# -lt 1 ]; then
     exit
 fi
 
-# Where the list comes from
-list_src_url='http://pgl.yoyo.org/adservers/serverlist.php'
-list_src_args='?hostformat=nohtml&showintro=0&mimetype=plaintext'
-
-# the ipaddress where we want to send the requests to, instead of the
-# bannerservers. We send it to our selves and aim to catch it and
-# return a simple message
-#
-# An alternative is to use an IP from a group which should never never
-# be used, even for local netrworks, according to RFC 5737 such as:
-# 198.51.100.1
-
-#ad_catcher_ip="$(/usr/sbin/nvram-util get lan_ipaddr)"
-ad_catcher_ip="198.51.100.1"
-
-# Where to find wget
-wget=/usr/sbin/wget
+adblock_enable="$(/usr/sbin/nvram-util get adblock_enable)"
 
 # Make sure that there is a blank file to start with
 if [ -e $1 ]; then
    rm -f $1
 fi
 touch $1
+
+# Only fill out the list if things enabled
+if [ "x$adblock_enable" != "x1" ]; then
+    exit 0;
+fi
+
+# Where the list comes from
+list_src_url='http://pgl.yoyo.org/adservers/serverlist.php'
+list_src_args='?hostformat=nohtml&showintro=0&mimetype=plaintext'
+
+# the ipaddress where we want to send the requests to, instead of the
+# bannerservers. We send it to a known never used address which
+# iptables catches and reroutes back to us on an unusual port.
+
+ad_catcher_ip="$(/usr/sbin/nvram-util get adblock_ip)"
+
+if [ "x$ad_catcher_ip" = "x" ]; then ad_catcher_ip="198.51.100.1"; fi
+
+# Where to find wget
+wget=/usr/sbin/wget
 
 # Do the work
 tmpfile=/tmp/adblocklist.pre
