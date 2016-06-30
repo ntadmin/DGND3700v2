@@ -127,7 +127,7 @@ var dongle_3g_flag=@3g_is_visiable#;
 
 var is_fuppes = 1;
 
-
+var adblock_flag=1;
 
 
 var from_nowan = "";
@@ -192,6 +192,9 @@ function loadvalue()
 		
 	if(mode_router_flag == 1)
 		document.getElementById("mode").style.display="";
+
+	if(adblock_flag == 1)
+		document.getElementById("adblock").style.display="";
 
     if(dongle_3g_flag ==1) {
         document.getElementById("dongle_3g").style.display="";
@@ -293,7 +296,7 @@ var advanced_open=0;
 </script>
 </a></dt>
 		<dt id="usb_adv" class="sub_back"><a  target="formframe" onclick="click_adv_action('usb_adv');"><b><span languageCode = "7">Advanced Settings</span></b></a></dt>
-		<dt id="media" class="sub_back" style="display: none"><a  target="formframe" onclick="click_adv_action('media');"><b><span languageCode = "841">Media Server</span></b></a></dt>
+		<dt id="media" class="sub_back"><a  target="formframe" onclick="click_adv_action('media');"><b><span languageCode = "841">Media Server</span></b></a></dt>
 	</dl>	
 	</div>
 @usb_hide_e#
@@ -304,7 +307,7 @@ var advanced_open=0;
 		<dt id="parental" class="sub_back"><a  target="formframe" onclick="click_adv_action('parental');"><b><span languageCode = "3008">Parental Controls</span></b></a></dt>
 		<dt id="block_site" class="sub_back" style="display: none"><a  target="formframe" onclick="click_adv_action('block_site');"><b><span languageCode = "76">Block Sites</span></b></a></dt>
 		
-		<dt id="adblock" class="sub_back" style="display: none"><a  target="formframe" onclick="goto_formframe('adblock.htm&todo=cfg_init');"><b><span languageCode = "229">Adblock</span></b></a></dt>
+		<dt id="adblock" class="sub_back" style="display: none"><a  target="formframe" onclick="goto_formframe('adblock.htm&todo=cfg_init');"><b><span>Adblock</span></b></a></dt>
 		<dt id="firewall_rules" class="sub_back" style="display: none"><a  target="formframe" onclick="click_adv_action('firewall_rules');"><b><span languageCode = "229">Firewall Rules</span></b></a></dt>
 		<!--<dt id="block_services" class="sub_back"><a  target="formframe" onclick="click_adv_action('block_services');"><b><span languageCode = "140">Block Services</span></b></a></dt>-->
 		
