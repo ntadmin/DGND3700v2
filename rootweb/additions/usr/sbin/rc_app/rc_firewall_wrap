@@ -15,7 +15,7 @@ run_netgear_rc_firewall() {
 
 case "$1" in
   init)
-    /usr/sbin/rc_adblock start
+    /usr/sbin/rc_app/rc_adblock start
     run_netgear_rc_firewall $@
     ;;
   wan)
