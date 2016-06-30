@@ -34,7 +34,6 @@ case "$1" in
         ;;
     up)
         run_netgear_rc_wan $@
-        /usr/sbin/rc_app/rc_wan_up
         ;;
     linkdown)
         run_netgear_rc_wan $@
