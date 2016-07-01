@@ -23,15 +23,13 @@ if [ "x$adblock_enable" != "x1" ]; then
 fi
 
 # Where the list comes from
-list_src_url='http://pgl.yoyo.org/adservers/serverlist.php'
-list_src_args='?hostformat=nohtml&showintro=0&mimetype=plaintext'
+list_src_url='https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts'
 
 # the ipaddress where we want to send the requests to, instead of the
 # bannerservers. We send it to a known never used address which
 # iptables catches and reroutes back to us on an unusual port.
 
 ad_catcher_ip="$(/usr/sbin/nvram-util get adblock_ip)"
-
 if [ "x$ad_catcher_ip" = "x" ]; then ad_catcher_ip="198.51.100.1"; fi
 
 # Where to find wget
@@ -40,10 +38,11 @@ wget=/usr/sbin/wget
 # Do the work
 tmpfile=/tmp/adblocklist.pre
 
-$wget -q $list_src_url$list_src_args -O $tmpfile
+# Get the source file
+$wget --no-check-certificate -q $list_src_url -O $tmpfile
 
-while read line; do
-    echo $ad_catcher_ip $line >> $1
-    done < $tmpfile
+# Select only the lines beginning with '0.0.0.0' and then replace that with the IP we are using.
+sed -n -e '/^0.0.0.0/p' $tmpfile | sed s/0.0.0.0/$ad_catcher_ip/ > $1
 
+# Clean up
 rm $tmpfile
