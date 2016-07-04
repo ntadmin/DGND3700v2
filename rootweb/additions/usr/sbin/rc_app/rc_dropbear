@@ -1,0 +1,84 @@
+#!/bin/sh
+# Based on code from cilinx on githib, Thanks :-)
+
+dropbear_key_file=/var/tmp/dropbear_ecdsa_host_key
+dropbear_key_nvram=dropbear_scdsa_host_key
+
+rc_log() {
+    if [ -e /usr/etc/log_rc_flag ]; then
+        echo "`/usr/sbin/date` [rc_dropbear] $@" >> /var/log/rc_calls
+    fi
+}
+
+rc_log_echo() {
+    rc_log "$@"
+    echo "$@"
+}
+
+waitall() {
+    for pid in "$@"; do
+        wait "$pid"
+    done
+}
+
+makedropbearkey() {
+    /usr/sbin/dropbearkey -t ecdsa -f $dropbearkeyfile -s 256
+    uu="$(/usr/sbin/uuencode $dropbear_key_file)"
+    /usr/sbin/nvram-util set $dropbear_key_nvram
+}
+
+getdropbearkey() {
+    uu="$(/usr/sbin/nvram-util get $dropbear_key_nvram)"
+    if [ "x$uu" = "x" ]; then
+        makedropbearkey
+    else
+        echo $uu | /usr/sbin/uudecode > $dropbear_key_file
+    fi
+}
+
+rc_log "$0 $@"
+
+case "$1" in
+    start)
+        PID="$(pidof dropbear)"
+        if [ "x$PID" = "x" ]; then
+            if [ ! -f $dropbear_key_file ]; then
+                getdropbearkey
+            fi
+
+            myip="$(/usr/sbin/nvram-util get lan_ipaddr)"
+            args_for_dropbear="-p $(myip):22 -r $dropbear_key_file"
+            /usr/sbin/dropbear $args_for_dropbear
+
+            PID="$(pidof dropbear)"
+            if [ "x${PID}" != "x" ]; then
+	        rc_log_echo "dropbear started succesfully. ( $args_for_dropbear )"
+	    else
+	        rc_log_echo "Error starting dnsmasq. ( $args_for_dropbear )"
+	    fi
+        else
+            rc_log_echo "dropbear already started (pid: $PID), leaving it alone"
+        fi
+        ;;
+    strop)
+        echo "I'm far too polite."
+        ;;
+    stop)
+        PID="$(pidof dropbear)"
+	if [ "x$PID" != "x" ];then
+	    /usr/sbin/killall dropbear
+            rc_log_echo "dropbear stopped."
+	else
+	    rc_log_echo "dropbear is not running."
+	fi
+        ;;
+    reload|restart)
+        $0 stop
+        $0 start
+        ;;
+    *)
+        echo "Usage: $0 start|stop|restart|reload"
+        exit 1
+        ;;
+esac
+exit 0

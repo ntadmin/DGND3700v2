@@ -8,7 +8,7 @@ include ../Rules.mak
 #
 # Set the following headline information
 #
-packages=inadyn-mt dnsmasq miniupnpc
+packages=inadyn-mt dnsmasq miniupnpc dropbear
 
 all: real-all
 
@@ -41,7 +41,18 @@ miniupnpc.tar-args=xvf
 miniupnpc.make-command=INSTALLPREFIX=$(PKG_SRC_DIR)/miniupnpc/_install make install LIBDIR="/lib" CC="/opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/mips-linux-gcc"
 miniupnpc.test-compiled-file=_install/bin/upnpc
 
-miniupnpd.url=http://miniupnp.free.fr/files/download.php?file=miniupnpd-2.0.tar.gz
+dropbear.url=http://matt.ucc.asn.au/dropbear/releases/dropbear-2016.73.tar.bz2
+dropbear.pkg-dl-name=dropbear-latest.tar.bz2
+dropbear.tar-args=jxf
+dropbear.configure-options=--host=mips-linux --disable-zlib CC=/opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/mips-linux-gcc ac_cv_func_malloc_0_nonnull=yes ac_cv_func_realloc_0_nonnull=yes --bindir=$(PKG_TARGET_DIR)/usr/sbin --libdir=$(PKG_TARGET_DIR)/usr/lib
+dropbear.make-command=make PROGRAMS="dropbear dbclient scp" MULTI=1 STATIC=1 SCPPROGRESS=1
+dropbear.test-compiled=dropbearmulti
+
+
+#
+# As yet have been unable to find a recent version that compiles, so this here awaiting inspiration
+#
+miniupnpd.url=http://miniupnp.free.fr/files/download.php?file=miniupnpd-1.6.20120509.tar.gz
 miniupnpd.pkg-dl-name=miniupnpd-latest.tar.gz
 miniupnpd.tar-args=xvf
 miniupnpd.make-command=INSTALLPREFIX=$(PKG_SRC_DIR)/miniupnpc/_install make -f Makefile.linux install LIBDIR="/lib" CC="/opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/mips-linux-gcc"
@@ -72,6 +83,13 @@ miniupnpd.place:
 	@cp $(PKG_SRC_DIR)/$(@:%.place=%)/_install/bin/* $(PKG_TARGET_DIR)/usr/sbin
 	@cp $(PKG_SRC_DIR)/$(@:%.place=%)/_install/lib/*.so* $(PKG_TARGET_DIR)/lib
 
+dropbear.place:
+	@cp $(PKG_SRC_DIR)/$(@:%.place=%)/dropbearmulti $(PKG_TARGET_DIR)/usr/sbin
+	@ln -sf /usr/sbin/dropbearmulti $(PKG_TARGET_DIR)/usr/sbin/dropbear
+	@ln -sf /usr/sbin/dropbearmulti $(PKG_TARGET_DIR)/usr/sbin/dbclient
+	@ln -sf /usr/sbin/dropbearmulti $(PKG_TARGET_DIR)/usr/sbin/dropbearconvert
+	@ln -sf /usr/sbin/dropbearmulti $(PKG_TARGET_DIR)/usr/sbin/dropbearkey
+	@ln -sf /usr/sbin/dropbearmulti $(PKG_TARGET_DIR)/usr/sbin/scp
 
 
 #
