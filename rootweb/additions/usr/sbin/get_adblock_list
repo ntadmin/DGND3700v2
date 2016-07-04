@@ -1,9 +1,10 @@
 #!/bin/sh
 #
-# Updates /etc/adblocklist to contain the latest information from
-# yoyo for adblocking
+# Create a file (set by $1) to contain the latest information from
+# yoyo for adblocking in /etc/hosts format using the IP from
+# ad_catcher_ip in nvram (defaults to 198.168.100.1).
+# If ad_blocking isn't enabled the file will be balnk.
 #
-# It expects the fileneame to put the list into as argument one
 if [ $# -lt 1 ]; then
     echo "Usage: $0 output-filename"
     exit
