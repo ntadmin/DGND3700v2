@@ -34,9 +34,10 @@ CHANGES from the Netgear version
  
  - DNS and DHCP are now provided by dnsmasq
  
- - Ad blocking: DNs server now issues known unfindable IP for ad servers
+ - Ad blocking: Known sites are DNS blocked and a simple "Ad blocked" html 
+   page is returned. (Advanced -> Security -> Adblock)
 
- - Port forwarding have started work
+ - Port forwarding now allows the deetination port to be set.
 
 
 ----------------------------------------------------------------------
