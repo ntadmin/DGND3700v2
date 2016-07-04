@@ -44,7 +44,9 @@ kernel: $(KERNEL_FILE)
 
 source: $(NETGEAR_BASE_DIR)/Makefile
 	@sed -i '/SUB_VER=/c\SUB_VER=$(CUSTOM_VERSION)' $(NETGEAR_BASE_DIR)/Source/Builds/$(PROJECT).mak
-	@$(foreach package, $(netgear_packages_not_needed), sed -i '/$(package)/c\# CUSTOM MOD: $(package) not needed for custom build' $(NETGEAR_BASE_DIR)/Source/apps/Makefile; )
+	@$(foreach package, $(netgear_packages_not_needed), sed -i '/$(package)/c\# CUSTOM MOD: $(package) not needed for custom build' $(NETGEAR_APPS)/Makefile; )
+	@sed -i 's/# CONFIG_UUENCODE is not set/CONFIG_UUENCODE=y/' $(NETGEAR_APPS)/busybox-1.13/.config
+	@sed -i 's/# CONFIG_UUDECODE is not set/CONFIG_UUDECODE=y/' $(NETGEAR_APPS)/busybox-1.13/.config
 	make -C $(NETGEAR_BASE_DIR) source SHELL=/bin/bash
 
 source_clean:
