@@ -2,7 +2,7 @@
 # Based on code from cilinx on githib, Thanks :-)
 
 dropbear_key_file=/var/tmp/dropbear_ecdsa_host_key
-dropbear_key_nvram=dropbear_scdsa_host_key
+dropbear_key_nvram=dropbear_ecdsa_host_key
 
 rc_log() {
     if [ -e /usr/etc/log_rc_flag ]; then
@@ -15,24 +15,18 @@ rc_log_echo() {
     echo "$@"
 }
 
-waitall() {
-    for pid in "$@"; do
-        wait "$pid"
-    done
-}
-
 makedropbearkey() {
-    /usr/sbin/dropbearkey -t ecdsa -f $dropbearkeyfile -s 256
-    uu="$(/usr/sbin/uuencode $dropbear_key_file)"
-    /usr/sbin/nvram-util set $dropbear_key_nvram
+    /usr/sbin/dropbearkey -t ecdsa -f $dropbear_key_file -s 256
+    uu="$(/usr/sbin/uuencode $dropbbear_key_file /dev/stdout | tr '\n' '@' )"
+    /usr/sbin/nvram-util set $dropbear_key_nvram "$uu"
 }
 
 getdropbearkey() {
-    uu="$(/usr/sbin/nvram-util get $dropbear_key_nvram)"
-    if [ "x$uu" = "x" ]; then
+    uu="$(/usr/sbin/nvram-util get $dropbear_key_nvram | /usr/sbin/tr '@' '\n' )"
+    if [ "x$uu" = "x(null)" ]; then
         makedropbearkey
     else
-        echo $uu | /usr/sbin/uudecode > $dropbear_key_file
+        echo "$uu" | /usr/sbin/uudecode -o $dropbear_key_file
     fi
 }
 
@@ -47,7 +41,7 @@ case "$1" in
             fi
 
             myip="$(/usr/sbin/nvram-util get lan_ipaddr)"
-            args_for_dropbear="-p $(myip):22 -r $dropbear_key_file"
+            args_for_dropbear="-p $myip:22 -r $dropbear_key_file"
             /usr/sbin/dropbear $args_for_dropbear
 
             PID="$(pidof dropbear)"
