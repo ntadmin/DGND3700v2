@@ -45,7 +45,7 @@ dropbear.url=http://matt.ucc.asn.au/dropbear/releases/dropbear-2016.73.tar.bz2
 dropbear.pkg-dl-name=dropbear-latest.tar.bz2
 dropbear.tar-args=jxf
 dropbear.configure-options=--host=mips-linux --disable-zlib CC=/opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/mips-linux-gcc ac_cv_func_malloc_0_nonnull=yes ac_cv_func_realloc_0_nonnull=yes --bindir=$(PKG_TARGET_DIR)/usr/sbin --libdir=$(PKG_TARGET_DIR)/usr/lib
-dropbear.make-command=make PROGRAMS="dropbear dbclient scp" MULTI=1 STATIC=1 SCPPROGRESS=1
+dropbear.make-command=make PROGRAMS="dropbear dropbearkey dbclient scp" MULTI=1
 dropbear.test-compiled=dropbearmulti
 
 
@@ -85,11 +85,11 @@ miniupnpd.place:
 
 dropbear.place:
 	@cp $(PKG_SRC_DIR)/$(@:%.place=%)/dropbearmulti $(PKG_TARGET_DIR)/usr/sbin
-	@ln -sf /usr/sbin/dropbearmulti $(PKG_TARGET_DIR)/usr/sbin/dropbear
-	@ln -sf /usr/sbin/dropbearmulti $(PKG_TARGET_DIR)/usr/sbin/dbclient
-	@ln -sf /usr/sbin/dropbearmulti $(PKG_TARGET_DIR)/usr/sbin/dropbearconvert
-	@ln -sf /usr/sbin/dropbearmulti $(PKG_TARGET_DIR)/usr/sbin/dropbearkey
-	@ln -sf /usr/sbin/dropbearmulti $(PKG_TARGET_DIR)/usr/sbin/scp
+	@ln -sf dropbearmulti $(PKG_TARGET_DIR)/usr/sbin/dropbear
+	@ln -sf dropbearmulti $(PKG_TARGET_DIR)/usr/sbin/dbclient
+	@ln -sf dropbearmulti $(PKG_TARGET_DIR)/usr/sbin/dropbearconvert
+	@ln -sf dropbearmulti $(PKG_TARGET_DIR)/usr/sbin/dropbearkey
+	@ln -sf dropbearmulti $(PKG_TARGET_DIR)/usr/sbin/scp
 
 
 #
