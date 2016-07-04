@@ -45,8 +45,6 @@ kernel: $(KERNEL_FILE)
 source: $(NETGEAR_BASE_DIR)/Makefile
 	@sed -i '/SUB_VER=/c\SUB_VER=$(CUSTOM_VERSION)' $(NETGEAR_BASE_DIR)/Source/Builds/$(PROJECT).mak
 	@$(foreach package, $(netgear_packages_not_needed), sed -i '/$(package)/c\# CUSTOM MOD: $(package) not needed for custom build' $(NETGEAR_APPS)/Makefile; )
-	@sed -i 's/# CONFIG_UUENCODE is not set/CONFIG_UUENCODE=y/' $(NETGEAR_APPS)/busybox-1.13/.config
-	@sed -i 's/# CONFIG_UUDECODE is not set/CONFIG_UUDECODE=y/' $(NETGEAR_APPS)/busybox-1.13/.config
 	make -C $(NETGEAR_BASE_DIR) source SHELL=/bin/bash
 
 source_clean:
@@ -107,6 +105,8 @@ $(NETGEAR_BASE_DIR)/Makefile: $(NETGEAR_DL_DIR)/$(NETGEAR_SOURCE_FILE_IN_ZIP)
 	sed -i 's/.\/\$$(FLEX)/flex/' $(NETGEAR_EXTRACT_DIR)/Source/apps/flex-2.5.4/Makefile
 	sed -i '215s/$$/)/' $(NETGEAR_EXTRACT_DIR)/Source/apps/flex-2.5.4/Makefile
 	sed -i 's/\/usr\/lib/..\/..\/..\/target\/lib/' $(NETGEAR_EXTRACT_DIR)/Source/apps/ppp-2.4.1.pppoe4.orig/pppd/Makefile.linux
+	sed -i 's/# CONFIG_UUENCODE is not set/CONFIG_UUENCODE=y/' $(NETGEAR_APPS)/busybox-1.13/.config
+	sed -i 's/# CONFIG_UUDECODE is not set/CONFIG_UUDECODE=y/' $(NETGEAR_APPS)/busybox-1.13/.config
 	touch $@
 	
 $(KERNEL_FILE): $(NETGEAR_BASE_DIR)/Makefile
