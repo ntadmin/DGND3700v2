@@ -1,0 +1,28 @@
+#!/bin/sh
+if [ -e /usr/etc/log_rc_flag ]; then
+    echo "`/usr/sbin/date` [rc_lan_wrap] $0 $@" >> /var/log/rc_calls
+fi
+
+run_netgear_rc_lan() {
+    myexec=/var/tmp/MYEXEC$$
+    mybase=rc_lan
+
+    mkdir $myexec
+    ln -fs /usr/sbin/rc_app/rc_apps $myexec/$mybase
+    $myexec/$mybase $@
+    rm -rf $myexec
+}
+
+case "$1" in
+  init)
+    run_netgear_rc_lan $@
+    /usr/sbin/rc_app/rc_password init
+    /usr/sbin/rc_app/rc_dropbear start
+    ;;
+  *)
+    run_netgear_rc_lan $@
+    ;;
+esac
+
+
+exit 0
