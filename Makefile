@@ -107,6 +107,7 @@ $(NETGEAR_BASE_DIR)/Makefile: $(NETGEAR_DL_DIR)/$(NETGEAR_SOURCE_FILE_IN_ZIP)
 	sed -i 's/\/usr\/lib/..\/..\/..\/target\/lib/' $(NETGEAR_EXTRACT_DIR)/Source/apps/ppp-2.4.1.pppoe4.orig/pppd/Makefile.linux
 	sed -i 's/# CONFIG_UUENCODE is not set/CONFIG_UUENCODE=y/' $(NETGEAR_APPS)/busybox-1.13/.config
 	sed -i 's/# CONFIG_UUDECODE is not set/CONFIG_UUDECODE=y/' $(NETGEAR_APPS)/busybox-1.13/.config
+	sed -i 's/# CONFIG_CHPASSWD is not set/CONFIG_CHPASSWD=y/' $(NETGEAR_APPS)/busybox-1.13/.config
 	touch $@
 	
 $(KERNEL_FILE): $(NETGEAR_BASE_DIR)/Makefile
