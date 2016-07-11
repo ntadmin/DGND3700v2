@@ -27,6 +27,7 @@ force_correct_adsl_config() {
 case "$1" in
     init)
         run_netgear_rc_wan $@
+        /usr/sbin/rc_app/rc_passwords init
         force_correct_adsl_config
         ;;
     *)

@@ -48,7 +48,7 @@ case "$1" in
             if [ "x${PID}" != "x" ]; then
 	        rc_log_echo "dropbear started succesfully. ( $args_for_dropbear )"
 	    else
-	        rc_log_echo "Error starting dnsmasq. ( $args_for_dropbear )"
+	        rc_log_echo "Error starting dropbear. ( $args_for_dropbear )"
 	    fi
         else
             rc_log_echo "dropbear already started (pid: $PID), leaving it alone"

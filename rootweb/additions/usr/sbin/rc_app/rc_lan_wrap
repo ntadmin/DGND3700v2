@@ -14,9 +14,9 @@ run_netgear_rc_lan() {
 }
 
 case "$1" in
-  init)
+  start)
     run_netgear_rc_lan $@
-    /usr/sbin/rc_app/rc_password init
+    /usr/sbin/rc_app/rc_passwords init
     /usr/sbin/rc_app/rc_dropbear start
     ;;
   *)
