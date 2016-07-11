@@ -63,8 +63,15 @@ var_val_pair_plus_array *render_page_vars = NULL;
 
 char **env_for_our_scripts = NULL;
 
-// Some utility functions that are way down below
-void                render_page(char *);
+bool post_netgear_action = false;
+
+// Some functions can't be in front of every function that calls them ...
+void render_page(char *);
+int  do_post_netgear_action(char *);
+
+/*
+ * And now, the code ...
+ */
 
 void cleanup() {
     if (get_data != (char *)NULL) free(get_data);
@@ -303,7 +310,7 @@ int run_external_prog(char *file_to_run, char **env_for_prog, char **argv_for_pr
     return child_exit_status;
 }
 
-void pass_to_netgear_setup_and_exit() {
+void pass_to_netgear_setup_and_exit(char *this_html_file) {
     int   l;
     char *qs = NULL;
     char* argv0 = NULL;
@@ -322,6 +329,10 @@ void pass_to_netgear_setup_and_exit() {
     }
 
     int exit_val = run_external_prog("netgear-setup.cgi", environ, incoming_argv, post_data, false, false);
+
+    if (post_netgear_action) {
+        do_post_netgear_action(this_html_file);
+    }
 
     if (qs != NULL) free(qs);
     if (argv0 != NULL) free(argv0);
@@ -702,6 +713,15 @@ int do_post_save_action(char *file) {
     return do_action(fn);
 }
 
+int do_post_netgear_action(char *file) {
+    char   fn[512];
+
+    if (file == NULL) return -1;
+    sprintf(fn, "post-actions/%s.post", file);
+    if (DEBUG_LEVEL >= DEBUG_ACTION) mylog("do_post_netgar_action - file", fn);
+    return do_action(fn);
+}
+
 int main(int argc, char *argv[]) {
     char *todo_value;
     char *next_file_value = NULL; // The file to render once the actions are complete
@@ -726,7 +746,7 @@ int main(int argc, char *argv[]) {
 
     if (get_data == NULL) {
         if (DEBUG_LEVEL >= DEBUG_NONE) mylog("main - action", "no get data so passing to Netgear setup.cgi");
-        pass_to_netgear_setup_and_exit();
+        pass_to_netgear_setup_and_exit(NULL);
     }
 
     env_vvpa       = parse_argv_type_data_into_vvpa(environ, env_vvpa);
@@ -806,6 +826,11 @@ int main(int argc, char *argv[]) {
             done_todo = true;
         }
 
+        if (!strcmp(todo_value, "save_passwd") && (this_file_value != NULL)) {
+            // We don't do this action, but when it is done we want a trigger
+            post_netgear_action = true;
+        }
+
         // If there is a todo and we've done it, we need to make sure that the
         // render doesn't duplicate the action
         if (done_todo) {
@@ -815,7 +840,7 @@ int main(int argc, char *argv[]) {
         // Downside: we lose the render. Upside, the action actually happens
         else {
             if (DEBUG_LEVEL >= DEBUG_ACTION) mylog("main - unable to to todo", "passing to netgear renderer");
-            pass_to_netgear_setup_and_exit();
+            pass_to_netgear_setup_and_exit(this_file_value);
         }
     }
 
@@ -847,7 +872,7 @@ int main(int argc, char *argv[]) {
     }
 
     if (DEBUG_LEVEL > DEBUG_NONE) mylog("main - action", "nothing for us to do, calling netgear setup.cgi");
-    pass_to_netgear_setup_and_exit();
+    pass_to_netgear_setup_and_exit(this_file_value);
 
     // Shouldn't get to this return, so it is a fail if it gets to it ...
     return -1;
@@ -1009,7 +1034,7 @@ void render_page(char *page) {
     fp = fopen(page, "r");
     if (fp == NULL) {
         if (DEBUG_LEVEL > DEBUG_ACTION) mylog("render_page - failure cant open file", page);
-        pass_to_netgear_setup_and_exit();
+        pass_to_netgear_setup_and_exit(page);
     }
 
     write(STDOUT_FILENO, "Content-Type: text/html\n\n", 25);
