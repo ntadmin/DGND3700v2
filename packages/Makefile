@@ -51,7 +51,7 @@ dropbear.test-compiled=dropbearmulti
 busybox.url=http://www.busybox.net/downloads/busybox-1.25.tar.bz2
 busybox.pkg-dl-name=busybox-latest.tar.bz2
 busybox.tar-args=jxf
-busybox.make-command=make ARCH="mips32" CROSS_COMPILE="/opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/mips-linux-"; make install
+busybox.make-command=make ARCH="mips32" CROSS_COMPILE="/opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/mips-linux-" CFLAGS='-DINIT_SCRIPT=\"/usr/etc/rcS\"'; make install
 busybox.test-compiled-file=_install/bin/busybox
 
 
