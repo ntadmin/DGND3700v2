@@ -7,8 +7,7 @@ OBJS=sendarp.o
 all : $(TARGET)
 	
 install :
-	@echo This sendarp only needed if busybox is upgraded, so currently not installing
-#	$(CP) $(TARGET) $(DESTBIN)
+	$(CP) $(TARGET) $(DESTBIN)
 
 $(TARGET) : $(OBJS)
 	$(CC) -o $@ $^ $(LDFLAGS) $(LIBSNEEDED)
