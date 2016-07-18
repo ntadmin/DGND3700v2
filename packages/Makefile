@@ -8,7 +8,7 @@ include ../Rules.mak
 #
 # Set the following headline information
 #
-packages=inadyn-mt dnsmasq miniupnpc dropbear
+packages=inadyn-mt dnsmasq miniupnpc dropbear busybox
 
 all: real-all
 
@@ -48,6 +48,12 @@ dropbear.configure-options=--host=mips-linux --disable-zlib CC=/opt/toolchains/u
 dropbear.make-command=make PROGRAMS="dropbear dropbearkey dbclient scp" MULTI=1
 dropbear.test-compiled=dropbearmulti
 
+busybox.url=http://www.busybox.net/downloads/busybox-1.25.tar.bz2
+busybox.pkg-dl-name=busybox-latest.tar.bz2
+busybox.tar-args=jxf
+busybox.make-command=make ARCH="mips32" CROSS_COMPILE="/opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/mips-linux-"; make install
+busybox.test-compiled-file=_install/bin/busybox
+
 
 #
 # As yet have been unable to find a recent version that compiles, so this here awaiting inspiration
@@ -66,14 +72,15 @@ miniupnpd.test-compiled-file=_install/bin/miniupnpd
 # executables and libraries in place.
 #
 
+busybox.place:
+	@cp -R $(PKG_SRC_DIR)/$(@:%.place=%)/_install/bin/busybox $(PKG_TARGET_DIR)/usr/sbin/busybox2
+
 dnsmasq.place:
 	@cp $(PKG_SRC_DIR)/$(@:%.place=%)/src/dnsmasq $(PKG_TARGET_DIR)/usr/sbin
 	@cp $(PKG_SRC_DIR)/$(@:%.place=%)/contrib/wrt/lease_update.sh $(PKG_TARGET_DIR)/usr/sbin/dhcp_lease_update.sh
 
-
 inadyn-mt.place:
 	@cp $(PKG_SRC_DIR)/$(@:%.place=%)/src/inadyn-mt $(PKG_TARGET_DIR)/usr/sbin
-
 
 miniupnpc.place:
 	@cp $(PKG_SRC_DIR)/$(@:%.place=%)/_install/bin/* $(PKG_TARGET_DIR)/usr/sbin
@@ -142,7 +149,8 @@ $(packages-configure):
 	touch $(PKG_SRC_DIR)/$(@:%.configure=%)/$(CONFIG_DONE_MARKER)
 
 $(packages-make):
-	@test ! -d $(PKG_CORRECTION_DIR)/$(@:%.make=%) || { cp -R $(PKG_CORRECTION_DIR)/$(@:%.make=%)/* $(PKG_SRC_DIR)/$(@:%.make=%); }
+	@test ! -d $(PKG_CORRECTION_DIR)/$(@:%.make=%) || { cp -Rf $(PKG_CORRECTION_DIR)/$(@:%.make=%)/* $(PKG_SRC_DIR)/$(@:%.make=%); }
+	@test ! -d $(PKG_CORRECTION_DIR)/$(@:%.make=%) || { cp -f $(PKG_CORRECTION_DIR)/$(@:%.make=%)/.* $(PKG_SRC_DIR)/$(@:%.make=%); } || true
 	cd $(PKG_SRC_DIR)/$(@:%.make=%); $($(@:%.make=%.make-command))
 
 $(packages-place-wrap):
