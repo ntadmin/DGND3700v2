@@ -22,6 +22,10 @@ case "$1" in
     if [ "x$3" = "xup" ]; then
         /usr/sbin/rc_app/rc_user_nat restart
     fi
+    if [ "x$3" = "xinit" ]; then
+        /usr/sbin/rc_app/rc_user_nat start
+        /usr/sbin/rc_app/rc_adblock start
+    fi
     if [ "x$3" = "xdown" ]; then
         /usr/sbin/rc_app/rc_user_nat stop
     fi
