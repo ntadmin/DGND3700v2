@@ -47,7 +47,7 @@ issue_adblock_cmd() {
 case "$1" in
     start)
         if [ "x$adblock_enable" = "x1" ]; then
-            /usr/sbin/httpd -u 404 -p $adblock_server_port -h /www.adblock &
+            /usr/sbin/adblockhttpd &
             /usr/sbin/rc_app/rc_dnsmasq reload
             issue_adblock_cmd -A
         fi
@@ -57,7 +57,7 @@ case "$1" in
         ;;
     stop)
         issue_adblock_cmd -D
-        killall httpd
+        killall adblockhttpd
         ;;
     reload|restart)
         $0 stop

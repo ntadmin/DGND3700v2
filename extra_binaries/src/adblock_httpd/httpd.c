@@ -1,15 +1,6 @@
-/* Based on J. David's webserver */
-/* This is a simple webserver.
- * Created November 1999 by J. David Blackstone.
- * Brutalised to a one file returned by Neil Townsend
- */
-/* This program compiles for Sparc Solaris 2.6.
- * To compile for Linux:
- *  1) Comment out the #include <pthread.h> line.
- *  2) Comment out the line that defines the variable newthread.
- *  3) Comment out the two lines that run pthread_create().
- *  4) Uncomment the line that runs accept_request().
- *  5) Remove -lsocket from the Makefile.
+/* This is a simple webserver, which always returns the same file, no matter what you ask for.
+ * Based on a webserver created November 1999 by J. David Blackstone.
+ * Brutalised to this by Neil Townsend
  */
 #include <stdio.h>
 #include <sys/socket.h>
@@ -25,11 +16,11 @@
 #include <stdlib.h>
 
 #define ADBLOCK_PORT 8105
-#define PATH_TO_ONLY_FILE "/www.eng/adblock-text.htm"
+#define PATH_TO_ONLY_FILE "/www.adblock/index.html"
 
 #define ISspace(x) isspace((int)(x))
 
-#define SERVER_STRING "Server: an_httpd/0.0.1\r\n"
+#define SERVER_STRING "Server: ab_httpd/0.0.1\r\n"
 
 void accept_request(int);
 void bad_request(int);
@@ -37,7 +28,6 @@ void cat(int, FILE *);
 void cannot_execute(int);
 void error_die(const char *);
 void execute_cgi(int, const char *, const char *, const char *);
-int get_line(int, char *, int);
 void headers(int, const char *);
 void not_found(int);
 void serve_file(int, const char *);
@@ -51,68 +41,25 @@ void unimplemented(int);
 /**********************************************************************/
 void accept_request(int client)
 {
- char buf[1024];
- int numchars;
- char method[255];
- char url[255];
- size_t i, j;
- int cgi = 0;      /* becomes true if server decides this is a CGI
-                    * program */
- char *query_string = NULL;
+ char  buf[1024];
+ int   numchars;
 
- numchars = get_line(client, buf, sizeof(buf));
- i = 0; j = 0;
- while (!ISspace(buf[j]) && (i < sizeof(method) - 1))
- {
-  method[i] = buf[j];
-  i++; j++;
- }
- method[i] = '\0';
-
- if (strcasecmp(method, "GET") && strcasecmp(method, "POST"))
- {
-  unimplemented(client);
-  return;
+ /* Make sure that they are sending us a request */
+ numchars = recv(client, buf, sizeof(buf), 0);
+ while (numchars > 0) {
+  numchars = recv(client, buf, sizeof(buf), MSG_DONTWAIT);
  }
 
- if (strcasecmp(method, "POST") == 0)
-  cgi = 1;
-
- i = 0;
- while (ISspace(buf[j]) && (j < sizeof(buf)))
-  j++;
- while (!ISspace(buf[j]) && (i < sizeof(url) - 1) && (j < sizeof(buf)))
- {
-  url[i] = buf[j];
-  i++; j++;
- }
- url[i] = '\0';
-
- if (strcasecmp(method, "GET") == 0)
- {
-  query_string = url;
-  while ((*query_string != '?') && (*query_string != '\0'))
-   query_string++;
-  if (*query_string == '?')
-  {
-   cgi = 1;
-   *query_string = '\0';
-   query_string++;
-  }
- }
-
+ /* Send our (rather predicatable) response */
  serve_file(client, PATH_TO_ONLY_FILE);
 
- close(client);
-}
+ /* Read and ignore everything else the client is sending us */
+ usleep(10);
+ do {
+  numchars = recv(client, buf, sizeof(buf), MSG_DONTWAIT);
+ } while (numchars > 0);
 
-/**********************************************************************/
-/* Inform the client that a request it has made has a problem.
- * Parameters: client socket */
-/**********************************************************************/
-void bad_request(int client)
-{
-    serve_file(client, PATH_TO_ONLY_FILE);
+ close(client);
 }
 
 /**********************************************************************/
@@ -135,15 +82,6 @@ void cat(int client, FILE *resource)
 }
 
 /**********************************************************************/
-/* Inform the client that a CGI script could not be executed.
- * Parameter: the client socket descriptor. */
-/**********************************************************************/
-void cannot_execute(int client)
-{
-    serve_file(client, PATH_TO_ONLY_FILE);
-}
-
-/**********************************************************************/
 /* Print out an error message with perror() (for system errors; based
  * on value of errno, which indicates system call errors) and exit the
  * program indicating an error. */
@@ -152,63 +90,6 @@ void error_die(const char *sc)
 {
  perror(sc);
  exit(1);
-}
-
-/**********************************************************************/
-/* Execute a CGI script.  Will need to set environment variables as
- * appropriate.
- * Parameters: client socket descriptor
- *             path to the CGI script */
-/**********************************************************************/
-void execute_cgi(int client, const char *path,
-                 const char *method, const char *query_string)
-{
-    serve_file(client, PATH_TO_ONLY_FILE);
-}
-
-/**********************************************************************/
-/* Get a line from a socket, whether the line ends in a newline,
- * carriage return, or a CRLF combination.  Terminates the string read
- * with a null character.  If no newline indicator is found before the
- * end of the buffer, the string is terminated with a null.  If any of
- * the above three line terminators is read, the last character of the
- * string will be a linefeed and the string will be terminated with a
- * null character.
- * Parameters: the socket descriptor
- *             the buffer to save the data in
- *             the size of the buffer
- * Returns: the number of bytes stored (excluding null) */
-/**********************************************************************/
-int get_line(int sock, char *buf, int size)
-{
- int i = 0;
- char c = '\0';
- int n;
-
- while ((i < size - 1) && (c != '\n'))
- {
-  n = recv(sock, &c, 1, 0);
-  /* DEBUG printf("%02X\n", c); */
-  if (n > 0)
-  {
-   if (c == '\r')
-   {
-    n = recv(sock, &c, 1, MSG_PEEK);
-    /* DEBUG printf("%02X\n", c); */
-    if ((n > 0) && (c == '\n'))
-     recv(sock, &c, 1, 0);
-    else
-     c = '\n';
-   }
-   buf[i] = c;
-   i++;
-  }
-  else
-   c = '\n';
- }
- buf[i] = '\0';
-
- return(i);
 }
 
 /**********************************************************************/
@@ -249,12 +130,6 @@ void not_found(int client)
 void serve_file(int client, const char *filename)
 {
  FILE *resource = NULL;
- int numchars = 1;
- char buf[1024];
-
- buf[0] = 'A'; buf[1] = '\0';
- while ((numchars > 0) && strcmp("\n", buf))  /* read & discard headers */
-  numchars = get_line(client, buf, sizeof(buf));
 
  resource = fopen(filename, "r");
  if (resource == NULL)
@@ -264,6 +139,7 @@ void serve_file(int client, const char *filename)
   headers(client, filename);
   cat(client, resource);
  }
+
  fclose(resource);
 }
 
@@ -331,9 +207,8 @@ int main(void)
                        &client_name_len);
   if (client_sock == -1)
    error_die("accept");
+
   accept_request(client_sock);
-// if (pthread_create(&newthread , NULL, accept_request, client_sock) != 0)
-//   perror("pthread_create");
  }
 
  close(server_sock);
