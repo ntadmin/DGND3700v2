@@ -4,7 +4,7 @@ logfile=/var/log/dnsmasq.log
 adblock_hosts_file=/var/tmp/hosts.adblock
 extra_hosts_file=/var/tmp/hosts.me
 reserved_file=/var/tmp/dhcp.reserved
-args_for_dnsmasq=""
+args_for_dnsmasq="--interface=group1"
 last_start_file=/var/tmp/dnsmasq_args
 
 rc_log() {
