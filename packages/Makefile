@@ -9,6 +9,9 @@ include ../Rules.mak
 # Set the following headline information
 #
 packages=inadyn-mt dnsmasq miniupnpc dropbear busybox
+#
+# Not on the list as make it too big
+# flashrom
 
 all: real-all
 
@@ -44,7 +47,7 @@ miniupnpc.test-compiled-file=_install/bin/upnpc
 dropbear.url=http://matt.ucc.asn.au/dropbear/releases/dropbear-2016.73.tar.bz2
 dropbear.pkg-dl-name=dropbear-latest.tar.bz2
 dropbear.tar-args=jxf
-dropbear.configure-options=--host=mips-linux --disable-zlib CC=/opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/mips-linux-gcc ac_cv_func_malloc_0_nonnull=yes ac_cv_func_realloc_0_nonnull=yes --bindir=$(PKG_TARGET_DIR)/usr/sbin --libdir=$(PKG_TARGET_DIR)/usr/lib
+dropbear.configure-options=--host=mips-linux --disable-zlib CC=/opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/mips-linux-gcc ac_cv_func_malloc_0_nonnull=yes ac_cv_func_realloc_0_nonnull=yes
 dropbear.make-command=make PROGRAMS="dropbear dropbearkey dbclient scp" MULTI=1
 dropbear.test-compiled=dropbearmulti
 
@@ -53,6 +56,12 @@ busybox.pkg-dl-name=busybox-latest.tar.bz2
 busybox.tar-args=jxf
 busybox.make-command=make ARCH="mips32"; make install
 busybox.test-compiled-file=_install/bin/busybox
+
+flashrom.url=http://download.flashrom.org/releases/flashrom-0.9.9.tar.bz2
+flashrom.pkg-dl-name=flashrom-latest.tar.bz2
+flashrom.tar-args=axf
+flashrom.make-command=make CC="/opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/mips-linux-gcc" CONFIG_ENABLE_LIBPCI_PROGRAMMERS=no CONFIG_ENABLE_LIBUSB0_PROGRAMMERS=no CONFIG_ENABLE_LIBUSB1_PROGRAMMERS=no
+flashrom.test-compiled-file=flashrom
 
 
 #
@@ -86,12 +95,12 @@ inadyn-mt.place:
 	@cp $(PKG_SRC_DIR)/$(@:%.place=%)/src/inadyn-mt $(PKG_TARGET_DIR)/usr/sbin
 
 miniupnpc.place:
-	@cp $(PKG_SRC_DIR)/$(@:%.place=%)/_install/bin/* $(PKG_TARGET_DIR)/usr/sbin
-	@cp $(PKG_SRC_DIR)/$(@:%.place=%)/_install/lib/*.so* $(PKG_TARGET_DIR)/lib
+	@cp -R $(PKG_SRC_DIR)/$(@:%.place=%)/_install/bin/* $(PKG_TARGET_DIR)/usr/sbin
+	@cp -R $(PKG_SRC_DIR)/$(@:%.place=%)/_install/lib/*.so* $(PKG_TARGET_DIR)/lib
 
 miniupnpd.place:
-	@cp $(PKG_SRC_DIR)/$(@:%.place=%)/_install/bin/* $(PKG_TARGET_DIR)/usr/sbin
-	@cp $(PKG_SRC_DIR)/$(@:%.place=%)/_install/lib/*.so* $(PKG_TARGET_DIR)/lib
+	@cp --preserve=links $(PKG_SRC_DIR)/$(@:%.place=%)/_install/bin/* $(PKG_TARGET_DIR)/usr/sbin
+	@cp --preserve=links $(PKG_SRC_DIR)/$(@:%.place=%)/_install/lib/*.so* $(PKG_TARGET_DIR)/lib
 
 dropbear.place:
 	@cp $(PKG_SRC_DIR)/$(@:%.place=%)/dropbearmulti $(PKG_TARGET_DIR)/usr/sbin
@@ -100,6 +109,10 @@ dropbear.place:
 	@ln -sf dropbearmulti $(PKG_TARGET_DIR)/usr/sbin/dropbearconvert
 	@ln -sf dropbearmulti $(PKG_TARGET_DIR)/usr/sbin/dropbearkey
 	@ln -sf dropbearmulti $(PKG_TARGET_DIR)/usr/sbin/scp
+
+flashrom.place:
+	@cp $(PKG_SRC_DIR)/$(@:%.place=%)/flashrom $(PKG_TARGET_DIR)/usr/sbin
+
 
 
 #
@@ -148,7 +161,7 @@ $(packages-get):
 	test -e $(PKG_SRC_DIR)/$(@:%.get=%) || { mv $(PKG_SRC_DIR)/$(@:%.get=%)* $(PKG_SRC_DIR)/$(@:%.get=%); }
 
 $(packages-configure):
-	test -z $($(@:%.configure=%.configure-options)) || { cd $(PKG_SRC_DIR)/$(@:%.configure=%); ./configure $($(@:%.configure=%.configure-options)); }
+	test -z "$($(@:%.configure=%.configure-options))" || { cd $(PKG_SRC_DIR)/$(@:%.configure=%); ./configure $($(@:%.configure=%.configure-options)); }
 	touch $(PKG_SRC_DIR)/$(@:%.configure=%)/$(CONFIG_DONE_MARKER)
 
 $(packages-make):
