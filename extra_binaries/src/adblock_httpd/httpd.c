@@ -41,7 +41,7 @@ void unimplemented(int);
 /**********************************************************************/
 void accept_request(int client)
 {
- char  buf[1024];
+ char  buf[32];
  int   numchars;
 
  /* Make sure that they are sending us a request */
