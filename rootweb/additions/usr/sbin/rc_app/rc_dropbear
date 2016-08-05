@@ -17,7 +17,7 @@ rc_log_echo() {
 
 makedropbearkey() {
     /usr/sbin/dropbearkey -t ecdsa -f $dropbear_key_file -s 256
-    uu="$(/usr/sbin/uuencode $dropbbear_key_file /dev/stdout | tr '\n' '@' )"
+    uu="$(/usr/sbin/base64 $dropbbear_key_file | tr '\n' '@' )"
     /usr/sbin/nvram-util set $dropbear_key_nvram "$uu"
 }
 
@@ -26,7 +26,7 @@ getdropbearkey() {
     if [ "x$uu" = "x(null)" ]; then
         makedropbearkey
     else
-        echo "$uu" | /usr/sbin/uudecode -o $dropbear_key_file
+        echo "$uu" | /usr/sbin/base64 -d $dropbear_key_file
     fi
 }
 
