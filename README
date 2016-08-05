@@ -37,7 +37,9 @@ CHANGES from the Netgear version
  - Ad blocking: Known sites are DNS blocked and a simple "Ad blocked" html 
    page is returned. (Advanced -> Security -> Adblock)
 
- - Port forwarding now allows the deetination port to be set.
+ - Port forwarding now allows the destination port to be set.
+ 
+ - Busybox now version 1.24.2 (about 8 years of updates)
 
 
 ----------------------------------------------------------------------
