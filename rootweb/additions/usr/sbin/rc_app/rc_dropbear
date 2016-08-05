@@ -26,7 +26,7 @@ getdropbearkey() {
     if [ "x$uu" = "x(null)" ]; then
         makedropbearkey
     else
-        echo "$uu" | /usr/sbin/base64 -d $dropbear_key_file
+        echo "$uu" | /usr/sbin/base64 -d > $dropbear_key_file
     fi
 }
 
