@@ -1,2 +1,2 @@
 #!/bin/sh
-mount mtd:rootfs / -o remount,rw
+mount -t jffs2 -o remount,rw mtd:rootfs /
