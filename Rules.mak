@@ -8,7 +8,7 @@
 # where this file is in CUSTOM_BASE_DIR
 #
 PROJECT=DGND3700v2
-CUSTOM_VERSION=NEWT16A4
+CUSTOM_VERSION=NEWT16A4.2
 CUSTOM_BASE_DIR=/usr/src/DGND3700v2/DGND3700v2
 
 #
@@ -39,7 +39,7 @@ NETGEAR_APPS=$(NETGEAR_BASE_DIR)/Source/apps
 # the netgear distruibution is not needed because it is superceded
 # by something in the custom packages directory
 #
-netgear_packages_not_needed=noip dnrd udhcp dhcpv6 totd
+netgear_packages_not_needed=noip dnrd udhcp dhcpv6 totd busybox lsof
 
 #
 # Things not to edit
@@ -63,7 +63,7 @@ export CROSS=$(CROSS_TOOLS_ROOT)/usr/bin/mips-linux-
 CC=$(CROSS)gcc
 CP=cp
 
-CFLAGS  = -O2 -s -Wall
+CFLAGS  = -O3 -Os -s -Wall
 CFLAGS += -Werror
 CFLAGS += -DTEST
 

@@ -73,7 +73,10 @@ miniupnpd.test-compiled-file=_install/bin/miniupnpd
 #
 
 busybox.place:
-	@cp -R $(PKG_SRC_DIR)/$(@:%.place=%)/_install/bin/busybox $(PKG_TARGET_DIR)/usr/sbin/busybox2
+	@cp -R $(PKG_SRC_DIR)/$(@:%.place=%)/_install/bin/* $(PKG_TARGET_DIR)/usr/sbin/
+	@cp -R $(PKG_SRC_DIR)/$(@:%.place=%)/_install/sbin/* $(PKG_TARGET_DIR)/usr/sbin/
+	@cp -R $(PKG_SRC_DIR)/$(@:%.place=%)/_install/usr/bin/* $(PKG_TARGET_DIR)/usr/sbin/
+	@cp -R $(PKG_SRC_DIR)/$(@:%.place=%)/_install/usr/sbin/* $(PKG_TARGET_DIR)/usr/sbin/
 
 dnsmasq.place:
 	@cp $(PKG_SRC_DIR)/$(@:%.place=%)/src/dnsmasq $(PKG_TARGET_DIR)/usr/sbin
