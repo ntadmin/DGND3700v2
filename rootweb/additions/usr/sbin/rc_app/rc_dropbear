@@ -17,13 +17,15 @@ rc_log_echo() {
 
 makedropbearkey() {
     /usr/sbin/dropbearkey -t ecdsa -f $dropbear_key_file -s 256
-    uu="$(/usr/sbin/base64 $dropbbear_key_file | tr '\n' '@' )"
+    uu="$(/usr/sbin/base64 $dropbear_key_file | tr '\n' '@' )"
     /usr/sbin/nvram-util set $dropbear_key_nvram "$uu"
 }
 
 getdropbearkey() {
+    rm $dropbear_key_file
     uu="$(/usr/sbin/nvram-util get $dropbear_key_nvram | /usr/sbin/tr '@' '\n' )"
-    if [ "x$uu" = "x(null)" ]; then
+    size=${#uu}
+    if [ $size -lt 64 ]; then
         makedropbearkey
     else
         echo "$uu" | /usr/sbin/base64 -d > $dropbear_key_file
@@ -36,9 +38,7 @@ case "$1" in
     start)
         PID="$(pidof dropbear)"
         if [ "x$PID" = "x" ]; then
-            if [ ! -f $dropbear_key_file ]; then
-                getdropbearkey
-            fi
+            getdropbearkey
 
             myip="$(/usr/sbin/nvram-util get lan_ipaddr)"
             args_for_dropbear="-p $myip:22 -r $dropbear_key_file"
