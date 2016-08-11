@@ -421,6 +421,9 @@ var_val_pair_plus_array *get_page_vars(FILE *fp) {
                 else if (!strcmp(var_rel_p, "httpoptionlistfromarray")) {
                     set_var_val_pair_plus_type(new_vvpp, VVPP_TYPE_OPTION_LIST);
                 }
+                else if (!strcmp(var_rel_p, "listfromarray")) {
+                    set_var_val_pair_plus_type(new_vvpp, VVPP_TYPE_LIST);
+                }
                 else if (!strcmp(var_rel_p, "array_entry")) {
                     set_var_val_pair_plus_type(new_vvpp, VVPP_TYPE_ARRAY_ENTRY);
                 }
@@ -496,8 +499,10 @@ void save_data() {
     int           col;
     int           pv_index;
     int           occur_place;
+    bool          loop_done;
     bool          is_hidden;
     char         *cp;
+    char         *cp2;
     char         *page_var;
     char         *nv_value;
     char         *cur_value;
@@ -665,6 +670,27 @@ void save_data() {
                 if (DEBUG_LEVEL >= DEBUG_TONS) mylog("save_data - array entry to", nv_value);
                 set_array_value_in_nvram_cache(vvpp_entry->value, row, col, nv_value);
                 vars_so_far_vvpa = addto_var_val_pair_array(vars_so_far_vvpa, page_var, nv_value);
+                break;
+            case VVPP_TYPE_LIST:
+                row = 0;
+                cp = nv_value;
+                if (*cp == '\0') loop_done = true;
+                else             loop_done = false;
+                while (!loop_done) {
+                    cp2 = strchr(cp, '\n');
+                    if (cp2 == NULL) {
+                        cp2 = cp + strlen(cp);
+                        loop_done = true;
+                    }
+                    *cp2 = '\0';
+                    if (DEBUG_LEVEL >= DEBUG_TONS) mylog("save data - list to", cp);
+                    set_array_value_in_nvram_cache(vvpp_entry->value, row, col, cp);
+                    row++;
+                    cp = cp2 + 1;
+                }
+                clear_array_rows_this_and_above_in_nvram_cache(vvpp_entry->value, row);
+                vars_so_far_vvpa = addto_var_val_pair_array(vars_so_far_vvpa, page_var, nv_value);
+                break;
             }
         }
     }
@@ -931,6 +957,7 @@ void render_page_variable_to_stdout(char *pv) {
         cp = get_value_from_nvram_cache(vvpp->value);
         break;
     case VVPP_TYPE_OPTION_LIST:
+    case VVPP_TYPE_LIST:
         if (DEBUG_LEVEL >= DEBUG_TONS) mylog("render_page_variable_to_stdout; type", "option list");
         // We are assuming ALL_ROWS here as it must be
         col      = vvpp->column;
@@ -939,11 +966,18 @@ void render_page_variable_to_stdout(char *pv) {
             for (i=0; i<num_rows; i++) {
                 cp = get_array_value_from_nvram_cache(vvpp->value, i, col);
                 if (DEBUG_LEVEL >= DEBUG_TONS) mylog("render_page_variable_to_stdout option", cp);
-                write(STDOUT_FILENO, "<option name=\"", 13);
+                if (vvpp->type == VVPP_TYPE_OPTION_LIST) {
+                    write(STDOUT_FILENO, "<option name=\"", 13);
+                    write(STDOUT_FILENO, "\">", 2);
+                    write(STDOUT_FILENO, cp, strlen(cp));
+                }
                 write(STDOUT_FILENO, cp, strlen(cp));
-                write(STDOUT_FILENO, "\">", 2);
-                write(STDOUT_FILENO, cp, strlen(cp));
-                write(STDOUT_FILENO, "</option>", 9);
+                if (vvpp->type == VVPP_TYPE_OPTION_LIST) {
+                    write(STDOUT_FILENO, "</option>", 9);
+                }
+                else {
+                    write(STDOUT_FILENO, "\n", 1);
+                }
             }
         }
         return;

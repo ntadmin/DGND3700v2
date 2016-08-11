@@ -9,6 +9,7 @@ typedef struct nvram_entry {
     char ***data;
     int   type;
     int   rows;
+    int   rows_avail;
     int   columns;
     bool  changed;
     } nvram_entry;
@@ -30,4 +31,5 @@ char *get_value_from_nvram_cache(char * /* name */);
 
 void set_value_in_nvram_cache(char * /* name */, char * /* value */);
 void set_array_value_in_nvram_cache(char * /* name */, int /* row */, int /* column */, char * /* value */);
+void clear_array_rows_this_and_above_in_nvram_cache(char * /* name */, int /* row */);
 void sync_nvram_cache_back_to_nvram();

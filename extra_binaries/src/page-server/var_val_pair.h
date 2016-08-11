@@ -51,6 +51,7 @@ typedef struct var_val_pair_plus_array {
 #define VVPP_TYPE_OPTS         1
 #define VVPP_TYPE_OPTION_LIST  2
 #define VVPP_TYPE_ARRAY_ENTRY  3
+#define VVPP_TYPE_LIST         4
 
 var_val_pair            *create_var_val_pair(char * /*var*/, char * /*value*/);
 var_val_pair_array      *create_var_val_pair_array();

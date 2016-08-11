@@ -1,0 +1,1156 @@
+Archive member included because of file (symbol)
+
+libbb/lib.a(appletlib.o)      /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/lib/crt1.o (main)
+libbb/lib.a(ptr_to_globals.o)
+                              libbb/lib.a(appletlib.o) (bb_errno)
+libbb/lib.a(xfunc_die.o)      libbb/lib.a(appletlib.o) (xfunc_die)
+libbb/lib.a(default_error_retval.o)
+                              libbb/lib.a(xfunc_die.o) (xfunc_error_retval)
+miscutils/lib.a(flash_eraseall.o)
+                              libbb/lib.a(appletlib.o) (flash_eraseall_main)
+libbb/lib.a(error_msg_and_die.o)
+                              miscutils/lib.a(flash_eraseall.o) (bb_error_msg_and_die)
+libbb/lib.a(getopt32.o)       miscutils/lib.a(flash_eraseall.o) (getopt32)
+libbb/lib.a(llist.o)          libbb/lib.a(getopt32.o) (llist_add_to_end)
+libbb/lib.a(perror_msg_and_die.o)
+                              miscutils/lib.a(flash_eraseall.o) (bb_perror_msg_and_die)
+libbb/lib.a(verror_msg.o)     libbb/lib.a(error_msg_and_die.o) (bb_verror_msg)
+libbb/lib.a(xatonum.o)        libbb/lib.a(getopt32.o) (xatoi_u)
+libbb/lib.a(xfuncs_printf.o)  miscutils/lib.a(flash_eraseall.o) (xopen)
+libbb/lib.a(copyfd.o)         libbb/lib.a(xfuncs_printf.o) (bb_copyfd_eof)
+libbb/lib.a(error_msg.o)      libbb/lib.a(xfuncs_printf.o) (bb_error_msg)
+libbb/lib.a(full_write.o)     libbb/lib.a(verror_msg.o) (full_write)
+libbb/lib.a(messages.o)       libbb/lib.a(xfuncs_printf.o) (bb_msg_memory_exhausted)
+libbb/lib.a(perror_msg.o)     libbb/lib.a(xfuncs_printf.o) (bb_perror_msg)
+libbb/lib.a(read.o)           libbb/lib.a(copyfd.o) (safe_read)
+libbb/lib.a(safe_poll.o)      libbb/lib.a(read.o) (safe_poll)
+libbb/lib.a(safe_write.o)     libbb/lib.a(full_write.o) (safe_write)
+/opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/libgcc.a(_udivdi3.o)
+                              miscutils/lib.a(flash_eraseall.o) (__udivdi3)
+
+Allocating common symbols
+Common symbol       size              file
+
+bb_common_bufsiz1   0x1001            libbb/lib.a(messages.o)
+die_jmp             0xf0              libbb/lib.a(xfunc_die.o)
+applet_name         0x4               libbb/lib.a(appletlib.o)
+opt_complementary   0x4               libbb/lib.a(getopt32.o)
+bb_errno            0x4               libbb/lib.a(ptr_to_globals.o)
+option_mask32       0x4               libbb/lib.a(getopt32.o)
+die_sleep           0x4               libbb/lib.a(xfunc_die.o)
+ptr_to_globals      0x4               libbb/lib.a(ptr_to_globals.o)
+
+Discarded input sections
+
+ .data          0x0000000000000000       0x10 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/lib/crt1.o
+ .bss           0x0000000000000000        0x0 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/lib/crt1.o
+ .reginfo       0x0000000000000000       0x18 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/lib/crt1.o
+ .text          0x0000000000000000        0x0 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/lib/crti.o
+ .data          0x0000000000000000        0x0 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/lib/crti.o
+ .bss           0x0000000000000000        0x0 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/lib/crti.o
+ .reginfo       0x0000000000000000       0x18 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/lib/crti.o
+ .pdr           0x0000000000000000       0x40 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/lib/crti.o
+ .data          0x0000000000000000        0x0 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/crtbegin.o
+ .reginfo       0x0000000000000000       0x18 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/crtbegin.o
+ .sdata         0x0000000000000000        0x4 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/crtbegin.o
+ .reginfo       0x0000000000000000       0x18 applets/built-in.o
+ .text          0x0000000000000000        0x0 applets/built-in.o
+ .data          0x0000000000000000        0x0 applets/built-in.o
+ .bss           0x0000000000000000        0x0 applets/built-in.o
+ .text          0x0000000000000000        0x0 libbb/lib.a(appletlib.o)
+ .data          0x0000000000000000        0x0 libbb/lib.a(appletlib.o)
+ .bss           0x0000000000000000        0x0 libbb/lib.a(appletlib.o)
+ .reginfo       0x0000000000000000       0x18 libbb/lib.a(appletlib.o)
+ .pdr           0x0000000000000000       0x80 libbb/lib.a(appletlib.o)
+ .text.find_applet_by_name
+                0x0000000000000000       0x3c libbb/lib.a(appletlib.o)
+ .data.rel.ro.applet_main
+                0x0000000000000000        0x4 libbb/lib.a(appletlib.o)
+ .rodata.applet_nameofs
+                0x0000000000000000        0x2 libbb/lib.a(appletlib.o)
+ .text          0x0000000000000000        0x0 libbb/lib.a(ptr_to_globals.o)
+ .data          0x0000000000000000        0x0 libbb/lib.a(ptr_to_globals.o)
+ .bss           0x0000000000000000        0x0 libbb/lib.a(ptr_to_globals.o)
+ .reginfo       0x0000000000000000       0x18 libbb/lib.a(ptr_to_globals.o)
+ .text          0x0000000000000000        0x0 libbb/lib.a(xfunc_die.o)
+ .data          0x0000000000000000        0x0 libbb/lib.a(xfunc_die.o)
+ .bss           0x0000000000000000        0x0 libbb/lib.a(xfunc_die.o)
+ .reginfo       0x0000000000000000       0x18 libbb/lib.a(xfunc_die.o)
+ .pdr           0x0000000000000000       0x20 libbb/lib.a(xfunc_die.o)
+ .text          0x0000000000000000        0x0 libbb/lib.a(default_error_retval.o)
+ .data          0x0000000000000000        0x0 libbb/lib.a(default_error_retval.o)
+ .bss           0x0000000000000000        0x0 libbb/lib.a(default_error_retval.o)
+ .reginfo       0x0000000000000000       0x18 libbb/lib.a(default_error_retval.o)
+ .text          0x0000000000000000        0x0 miscutils/lib.a(flash_eraseall.o)
+ .data          0x0000000000000000        0x0 miscutils/lib.a(flash_eraseall.o)
+ .bss           0x0000000000000000        0x0 miscutils/lib.a(flash_eraseall.o)
+ .reginfo       0x0000000000000000       0x18 miscutils/lib.a(flash_eraseall.o)
+ .pdr           0x0000000000000000       0x40 miscutils/lib.a(flash_eraseall.o)
+ .text          0x0000000000000000        0x0 libbb/lib.a(error_msg_and_die.o)
+ .data          0x0000000000000000        0x0 libbb/lib.a(error_msg_and_die.o)
+ .bss           0x0000000000000000        0x0 libbb/lib.a(error_msg_and_die.o)
+ .reginfo       0x0000000000000000       0x18 libbb/lib.a(error_msg_and_die.o)
+ .pdr           0x0000000000000000       0x20 libbb/lib.a(error_msg_and_die.o)
+ .text          0x0000000000000000        0x0 libbb/lib.a(getopt32.o)
+ .data          0x0000000000000000        0x0 libbb/lib.a(getopt32.o)
+ .bss           0x0000000000000000        0x0 libbb/lib.a(getopt32.o)
+ .reginfo       0x0000000000000000       0x18 libbb/lib.a(getopt32.o)
+ .pdr           0x0000000000000000       0x20 libbb/lib.a(getopt32.o)
+ .rodata.str1.4
+                0x0000000000000000        0x4 libbb/lib.a(getopt32.o)
+ .data.rel.ro.local.bb_argv_dash
+                0x0000000000000000        0x8 libbb/lib.a(getopt32.o)
+ .text          0x0000000000000000        0x0 libbb/lib.a(llist.o)
+ .data          0x0000000000000000        0x0 libbb/lib.a(llist.o)
+ .bss           0x0000000000000000        0x0 libbb/lib.a(llist.o)
+ .reginfo       0x0000000000000000       0x18 libbb/lib.a(llist.o)
+ .pdr           0x0000000000000000       0xc0 libbb/lib.a(llist.o)
+ .text.llist_unlink
+                0x0000000000000000       0x50 libbb/lib.a(llist.o)
+ .text.llist_rev
+                0x0000000000000000       0x24 libbb/lib.a(llist.o)
+ .text.llist_pop
+                0x0000000000000000       0x60 libbb/lib.a(llist.o)
+ .text.llist_free
+                0x0000000000000000       0x48 libbb/lib.a(llist.o)
+ .text.llist_add_to
+                0x0000000000000000       0x48 libbb/lib.a(llist.o)
+ .text          0x0000000000000000        0x0 libbb/lib.a(perror_msg_and_die.o)
+ .data          0x0000000000000000        0x0 libbb/lib.a(perror_msg_and_die.o)
+ .bss           0x0000000000000000        0x0 libbb/lib.a(perror_msg_and_die.o)
+ .reginfo       0x0000000000000000       0x18 libbb/lib.a(perror_msg_and_die.o)
+ .pdr           0x0000000000000000       0x40 libbb/lib.a(perror_msg_and_die.o)
+ .rodata.str1.4
+                0x0000000000000000        0x4 libbb/lib.a(perror_msg_and_die.o)
+ .text.bb_simple_perror_msg_and_die
+                0x0000000000000000       0x18 libbb/lib.a(perror_msg_and_die.o)
+ .text          0x0000000000000000        0x0 libbb/lib.a(verror_msg.o)
+ .data          0x0000000000000000        0x0 libbb/lib.a(verror_msg.o)
+ .bss           0x0000000000000000        0x0 libbb/lib.a(verror_msg.o)
+ .reginfo       0x0000000000000000       0x18 libbb/lib.a(verror_msg.o)
+ .pdr           0x0000000000000000       0x20 libbb/lib.a(verror_msg.o)
+ .text          0x0000000000000000        0x0 libbb/lib.a(xatonum.o)
+ .data          0x0000000000000000        0x0 libbb/lib.a(xatonum.o)
+ .bss           0x0000000000000000        0x0 libbb/lib.a(xatonum.o)
+ .reginfo       0x0000000000000000       0x18 libbb/lib.a(xatonum.o)
+ .pdr           0x0000000000000000      0x3c0 libbb/lib.a(xatonum.o)
+ .text.xstrtol_range_sfx
+                0x0000000000000000       0xd0 libbb/lib.a(xatonum.o)
+ .text.xatol    0x0000000000000000       0x2c libbb/lib.a(xatonum.o)
+ .text.xatol_sfx
+                0x0000000000000000       0x2c libbb/lib.a(xatonum.o)
+ .text.xatol_range
+                0x0000000000000000       0x28 libbb/lib.a(xatonum.o)
+ .text.xatol_range_sfx
+                0x0000000000000000       0x2c libbb/lib.a(xatonum.o)
+ .text.xstrtol_range
+                0x0000000000000000       0x1c libbb/lib.a(xatonum.o)
+ .text.xatoul_sfx
+                0x0000000000000000       0x28 libbb/lib.a(xatonum.o)
+ .text.xatoul   0x0000000000000000        0x8 libbb/lib.a(xatonum.o)
+ .text.xatou16  0x0000000000000000       0x24 libbb/lib.a(xatonum.o)
+ .text.xatoul_range_sfx
+                0x0000000000000000       0x2c libbb/lib.a(xatonum.o)
+ .text.xstrtoul
+                0x0000000000000000       0x24 libbb/lib.a(xatonum.o)
+ .text.xstrtoul_sfx
+                0x0000000000000000       0x24 libbb/lib.a(xatonum.o)
+ .text.xstrtoul_range
+                0x0000000000000000       0x1c libbb/lib.a(xatonum.o)
+ .text.xstrtoull_range_sfx
+                0x0000000000000000      0x208 libbb/lib.a(xatonum.o)
+ .text.xstrtoll_range_sfx
+                0x0000000000000000      0x130 libbb/lib.a(xatonum.o)
+ .text.xatoll   0x0000000000000000       0x3c libbb/lib.a(xatonum.o)
+ .text.xatoll_sfx
+                0x0000000000000000       0x3c libbb/lib.a(xatonum.o)
+ .text.xatoll_range
+                0x0000000000000000       0x30 libbb/lib.a(xatonum.o)
+ .text.xatoll_range_sfx
+                0x0000000000000000        0x8 libbb/lib.a(xatonum.o)
+ .text.xstrtoll_range
+                0x0000000000000000       0x2c libbb/lib.a(xatonum.o)
+ .text.xatoull_sfx
+                0x0000000000000000       0x38 libbb/lib.a(xatonum.o)
+ .text.xatoull  0x0000000000000000        0x8 libbb/lib.a(xatonum.o)
+ .text.xatoull_range
+                0x0000000000000000       0x30 libbb/lib.a(xatonum.o)
+ .text.xatoull_range_sfx
+                0x0000000000000000        0x8 libbb/lib.a(xatonum.o)
+ .text.xstrtoull
+                0x0000000000000000       0x34 libbb/lib.a(xatonum.o)
+ .text.xstrtoull_sfx
+                0x0000000000000000       0x34 libbb/lib.a(xatonum.o)
+ .text.xstrtoull_range
+                0x0000000000000000       0x2c libbb/lib.a(xatonum.o)
+ .text          0x0000000000000000        0x0 libbb/lib.a(xfuncs_printf.o)
+ .data          0x0000000000000000        0x0 libbb/lib.a(xfuncs_printf.o)
+ .bss           0x0000000000000000        0x0 libbb/lib.a(xfuncs_printf.o)
+ .reginfo       0x0000000000000000       0x18 libbb/lib.a(xfuncs_printf.o)
+ .pdr           0x0000000000000000      0x540 libbb/lib.a(xfuncs_printf.o)
+ .text.bb_xioctl
+                0x0000000000000000       0x44 libbb/lib.a(xfuncs_printf.o)
+ .text.bb_ioctl_or_warn
+                0x0000000000000000       0x4c libbb/lib.a(xfuncs_printf.o)
+ .text.ioctl_or_perror
+                0x0000000000000000       0x84 libbb/lib.a(xfuncs_printf.o)
+ .text.ioctl_or_perror_and_die
+                0x0000000000000000       0x84 libbb/lib.a(xfuncs_printf.o)
+ .text.selinux_or_die
+                0x0000000000000000       0x1c libbb/lib.a(xfuncs_printf.o)
+ .text.xstat    0x0000000000000000       0x50 libbb/lib.a(xfuncs_printf.o)
+ .text.xsendto  0x0000000000000000       0x50 libbb/lib.a(xfuncs_printf.o)
+ .text.xlisten  0x0000000000000000       0x44 libbb/lib.a(xfuncs_printf.o)
+ .text.xbind    0x0000000000000000       0x44 libbb/lib.a(xfuncs_printf.o)
+ .text.xsocket  0x0000000000000000       0x44 libbb/lib.a(xfuncs_printf.o)
+ .text.xopendir
+                0x0000000000000000       0x48 libbb/lib.a(xfuncs_printf.o)
+ .text.warn_opendir
+                0x0000000000000000       0x50 libbb/lib.a(xfuncs_printf.o)
+ .text.xchroot  0x0000000000000000       0x48 libbb/lib.a(xfuncs_printf.o)
+ .text.xchdir   0x0000000000000000       0x48 libbb/lib.a(xfuncs_printf.o)
+ .text.xsetuid  0x0000000000000000       0x44 libbb/lib.a(xfuncs_printf.o)
+ .text.xsetgid  0x0000000000000000       0x44 libbb/lib.a(xfuncs_printf.o)
+ .text.xsetenv  0x0000000000000000       0x44 libbb/lib.a(xfuncs_printf.o)
+ .text.xasprintf
+                0x0000000000000000       0x64 libbb/lib.a(xfuncs_printf.o)
+ .text.xfflush_stdout
+                0x0000000000000000       0x48 libbb/lib.a(xfuncs_printf.o)
+ .text.xprint_and_close_file
+                0x0000000000000000       0x84 libbb/lib.a(xfuncs_printf.o)
+ .text.bb_putchar
+                0x0000000000000000       0x4c libbb/lib.a(xfuncs_printf.o)
+ .text.die_if_ferror
+                0x0000000000000000       0x48 libbb/lib.a(xfuncs_printf.o)
+ .text.die_if_ferror_stdout
+                0x0000000000000000       0x1c libbb/lib.a(xfuncs_printf.o)
+ .text.xlseek   0x0000000000000000       0x70 libbb/lib.a(xfuncs_printf.o)
+ .text.xwrite   0x0000000000000000       0x50 libbb/lib.a(xfuncs_printf.o)
+ .text.xdup2    0x0000000000000000       0x4c libbb/lib.a(xfuncs_printf.o)
+ .text.xmove_fd
+                0x0000000000000000       0x54 libbb/lib.a(xfuncs_printf.o)
+ .text.xpipe    0x0000000000000000       0x44 libbb/lib.a(xfuncs_printf.o)
+ .text.rename_or_warn
+                0x0000000000000000       0x60 libbb/lib.a(xfuncs_printf.o)
+ .text.xrename  0x0000000000000000       0x58 libbb/lib.a(xfuncs_printf.o)
+ .text.xunlink  0x0000000000000000       0x48 libbb/lib.a(xfuncs_printf.o)
+ .text.open3_or_warn
+                0x0000000000000000       0x58 libbb/lib.a(xfuncs_printf.o)
+ .text.open_or_warn
+                0x0000000000000000        0x8 libbb/lib.a(xfuncs_printf.o)
+ .text.xfopen   0x0000000000000000       0x50 libbb/lib.a(xfuncs_printf.o)
+ .text.xstrdup  0x0000000000000000       0x50 libbb/lib.a(xfuncs_printf.o)
+ .text.xstrndup
+                0x0000000000000000       0x78 libbb/lib.a(xfuncs_printf.o)
+ .text.xzalloc  0x0000000000000000       0x50 libbb/lib.a(xfuncs_printf.o)
+ .text.malloc_or_warn
+                0x0000000000000000       0x5c libbb/lib.a(xfuncs_printf.o)
+ .text          0x0000000000000000        0x0 libbb/lib.a(copyfd.o)
+ .data          0x0000000000000000        0x0 libbb/lib.a(copyfd.o)
+ .bss           0x0000000000000000        0x0 libbb/lib.a(copyfd.o)
+ .reginfo       0x0000000000000000       0x18 libbb/lib.a(copyfd.o)
+ .pdr           0x0000000000000000       0x80 libbb/lib.a(copyfd.o)
+ .text.bb_full_fd_action
+                0x0000000000000000      0x138 libbb/lib.a(copyfd.o)
+ .text.bb_copyfd_eof
+                0x0000000000000000        0x8 libbb/lib.a(copyfd.o)
+ .text.bb_copyfd_size
+                0x0000000000000000       0x18 libbb/lib.a(copyfd.o)
+ .rodata.str1.4
+                0x0000000000000000        0xc libbb/lib.a(copyfd.o)
+ .text.bb_copyfd_exact_size
+                0x0000000000000000       0x54 libbb/lib.a(copyfd.o)
+ .text          0x0000000000000000        0x0 libbb/lib.a(error_msg.o)
+ .data          0x0000000000000000        0x0 libbb/lib.a(error_msg.o)
+ .bss           0x0000000000000000        0x0 libbb/lib.a(error_msg.o)
+ .reginfo       0x0000000000000000       0x18 libbb/lib.a(error_msg.o)
+ .pdr           0x0000000000000000       0x20 libbb/lib.a(error_msg.o)
+ .text.bb_error_msg
+                0x0000000000000000       0x3c libbb/lib.a(error_msg.o)
+ .text          0x0000000000000000        0x0 libbb/lib.a(full_write.o)
+ .data          0x0000000000000000        0x0 libbb/lib.a(full_write.o)
+ .bss           0x0000000000000000        0x0 libbb/lib.a(full_write.o)
+ .reginfo       0x0000000000000000       0x18 libbb/lib.a(full_write.o)
+ .pdr           0x0000000000000000       0x20 libbb/lib.a(full_write.o)
+ .text          0x0000000000000000        0x0 libbb/lib.a(messages.o)
+ .data          0x0000000000000000        0x0 libbb/lib.a(messages.o)
+ .bss           0x0000000000000000        0x0 libbb/lib.a(messages.o)
+ .reginfo       0x0000000000000000       0x18 libbb/lib.a(messages.o)
+ .rodata.bb_banner
+                0x0000000000000000       0x2a libbb/lib.a(messages.o)
+ .rodata.bb_msg_invalid_date
+                0x0000000000000000       0x12 libbb/lib.a(messages.o)
+ .rodata.bb_msg_write_error
+                0x0000000000000000        0xc libbb/lib.a(messages.o)
+ .rodata.bb_msg_read_error
+                0x0000000000000000        0xb libbb/lib.a(messages.o)
+ .rodata.bb_msg_unknown
+                0x0000000000000000        0xa libbb/lib.a(messages.o)
+ .rodata.bb_msg_can_not_create_raw_socket
+                0x0000000000000000       0x18 libbb/lib.a(messages.o)
+ .rodata.bb_msg_perm_denied_are_you_root
+                0x0000000000000000       0x23 libbb/lib.a(messages.o)
+ .rodata.bb_msg_requires_arg
+                0x0000000000000000       0x18 libbb/lib.a(messages.o)
+ .rodata.bb_msg_invalid_arg
+                0x0000000000000000       0x1e libbb/lib.a(messages.o)
+ .rodata.bb_msg_standard_input
+                0x0000000000000000        0xf libbb/lib.a(messages.o)
+ .rodata.bb_msg_standard_output
+                0x0000000000000000       0x10 libbb/lib.a(messages.o)
+ .rodata.bb_str_default
+                0x0000000000000000        0x8 libbb/lib.a(messages.o)
+ .rodata.bb_hexdigits_upcase
+                0x0000000000000000       0x11 libbb/lib.a(messages.o)
+ .rodata.bb_path_passwd_file
+                0x0000000000000000        0xc libbb/lib.a(messages.o)
+ .rodata.bb_path_shadow_file
+                0x0000000000000000        0xc libbb/lib.a(messages.o)
+ .rodata.bb_path_group_file
+                0x0000000000000000        0xb libbb/lib.a(messages.o)
+ .rodata.bb_path_gshadow_file
+                0x0000000000000000        0xd libbb/lib.a(messages.o)
+ .rodata.bb_path_motd_file
+                0x0000000000000000        0xa libbb/lib.a(messages.o)
+ .rodata.bb_dev_null
+                0x0000000000000000        0xa libbb/lib.a(messages.o)
+ .rodata.bb_busybox_exec_path
+                0x0000000000000000        0x1 libbb/lib.a(messages.o)
+ .rodata.bb_default_login_shell
+                0x0000000000000000        0x9 libbb/lib.a(messages.o)
+ .rodata.bb_PATH_root_path
+                0x0000000000000000       0x23 libbb/lib.a(messages.o)
+ .rodata.const_int_1
+                0x0000000000000000        0x4 libbb/lib.a(messages.o)
+ .rodata.const_int_0
+                0x0000000000000000        0x4 libbb/lib.a(messages.o)
+ .rodata.bb_path_wtmp_file
+                0x0000000000000000        0xe libbb/lib.a(messages.o)
+ COMMON         0x0000000000000000     0x1001 libbb/lib.a(messages.o)
+ .text          0x0000000000000000        0x0 libbb/lib.a(perror_msg.o)
+ .data          0x0000000000000000        0x0 libbb/lib.a(perror_msg.o)
+ .bss           0x0000000000000000        0x0 libbb/lib.a(perror_msg.o)
+ .reginfo       0x0000000000000000       0x18 libbb/lib.a(perror_msg.o)
+ .pdr           0x0000000000000000       0x40 libbb/lib.a(perror_msg.o)
+ .text.bb_perror_msg
+                0x0000000000000000       0x7c libbb/lib.a(perror_msg.o)
+ .rodata.str1.4
+                0x0000000000000000        0x4 libbb/lib.a(perror_msg.o)
+ .text.bb_simple_perror_msg
+                0x0000000000000000       0x10 libbb/lib.a(perror_msg.o)
+ .text          0x0000000000000000        0x0 libbb/lib.a(read.o)
+ .data          0x0000000000000000        0x0 libbb/lib.a(read.o)
+ .bss           0x0000000000000000        0x0 libbb/lib.a(read.o)
+ .reginfo       0x0000000000000000       0x18 libbb/lib.a(read.o)
+ .pdr           0x0000000000000000      0x1a0 libbb/lib.a(read.o)
+ .text.open_zipped
+                0x0000000000000000       0x14 libbb/lib.a(read.o)
+ .text.safe_read
+                0x0000000000000000       0x88 libbb/lib.a(read.o)
+ .text.full_read
+                0x0000000000000000       0x80 libbb/lib.a(read.o)
+ .text.xmalloc_read
+                0x0000000000000000      0x168 libbb/lib.a(read.o)
+ .rodata.str1.4
+                0x0000000000000000       0x34 libbb/lib.a(read.o)
+ .text.xmalloc_open_zipped_read_close
+                0x0000000000000000       0x94 libbb/lib.a(read.o)
+ .text.xmalloc_open_read_close
+                0x0000000000000000       0x70 libbb/lib.a(read.o)
+ .text.xmalloc_xopen_read_close
+                0x0000000000000000       0x40 libbb/lib.a(read.o)
+ .text.read_close
+                0x0000000000000000       0x50 libbb/lib.a(read.o)
+ .text.open_read_close
+                0x0000000000000000       0x60 libbb/lib.a(read.o)
+ .text.xread    0x0000000000000000       0x48 libbb/lib.a(read.o)
+ .text.xread_char
+                0x0000000000000000       0x24 libbb/lib.a(read.o)
+ .text.nonblock_safe_read
+                0x0000000000000000       0xbc libbb/lib.a(read.o)
+ .text.xmalloc_reads
+                0x0000000000000000      0x180 libbb/lib.a(read.o)
+ .text          0x0000000000000000        0x0 libbb/lib.a(safe_poll.o)
+ .data          0x0000000000000000        0x0 libbb/lib.a(safe_poll.o)
+ .bss           0x0000000000000000        0x0 libbb/lib.a(safe_poll.o)
+ .reginfo       0x0000000000000000       0x18 libbb/lib.a(safe_poll.o)
+ .pdr           0x0000000000000000       0x20 libbb/lib.a(safe_poll.o)
+ .rodata.str1.4
+                0x0000000000000000        0x8 libbb/lib.a(safe_poll.o)
+ .text.safe_poll
+                0x0000000000000000       0xbc libbb/lib.a(safe_poll.o)
+ .text          0x0000000000000000        0x0 libbb/lib.a(safe_write.o)
+ .data          0x0000000000000000        0x0 libbb/lib.a(safe_write.o)
+ .bss           0x0000000000000000        0x0 libbb/lib.a(safe_write.o)
+ .reginfo       0x0000000000000000       0x18 libbb/lib.a(safe_write.o)
+ .pdr           0x0000000000000000       0x20 libbb/lib.a(safe_write.o)
+ .data          0x0000000000000000        0x0 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/libgcc.a(_udivdi3.o)
+ .bss           0x0000000000000000        0x0 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/libgcc.a(_udivdi3.o)
+ .reginfo       0x0000000000000000       0x18 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/libgcc.a(_udivdi3.o)
+ .pdr           0x0000000000000000       0x20 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/libgcc.a(_udivdi3.o)
+ .data          0x0000000000000000        0x0 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/crtend.o
+ .bss           0x0000000000000000        0x0 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/crtend.o
+ .reginfo       0x0000000000000000       0x18 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/crtend.o
+ .text          0x0000000000000000        0x0 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/lib/crtn.o
+ .data          0x0000000000000000        0x0 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/lib/crtn.o
+ .bss           0x0000000000000000        0x0 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/lib/crtn.o
+ .reginfo       0x0000000000000000       0x18 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/lib/crtn.o
+ .pdr           0x0000000000000000       0x40 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/lib/crtn.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/lib/crt1.o
+LOAD /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/lib/crti.o
+LOAD /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/crtbegin.o
+START GROUP
+LOAD applets/built-in.o
+LOAD archival/lib.a
+LOAD archival/libunarchive/lib.a
+LOAD console-tools/lib.a
+LOAD coreutils/lib.a
+LOAD coreutils/libcoreutils/lib.a
+LOAD debianutils/lib.a
+LOAD e2fsprogs/lib.a
+LOAD editors/lib.a
+LOAD findutils/lib.a
+LOAD init/lib.a
+LOAD libbb/lib.a
+LOAD libpwdgrp/lib.a
+LOAD loginutils/lib.a
+LOAD mailutils/lib.a
+LOAD miscutils/lib.a
+LOAD modutils/lib.a
+LOAD networking/lib.a
+LOAD networking/libiproute/lib.a
+LOAD networking/udhcp/lib.a
+LOAD printutils/lib.a
+LOAD procps/lib.a
+LOAD runit/lib.a
+LOAD selinux/lib.a
+LOAD shell/lib.a
+LOAD sysklogd/lib.a
+LOAD util-linux/lib.a
+LOAD util-linux/volume_id/lib.a
+LOAD archival/built-in.o
+LOAD archival/libunarchive/built-in.o
+LOAD console-tools/built-in.o
+LOAD coreutils/built-in.o
+LOAD coreutils/libcoreutils/built-in.o
+LOAD debianutils/built-in.o
+LOAD e2fsprogs/built-in.o
+LOAD editors/built-in.o
+LOAD findutils/built-in.o
+LOAD init/built-in.o
+LOAD libbb/built-in.o
+LOAD libpwdgrp/built-in.o
+LOAD loginutils/built-in.o
+LOAD mailutils/built-in.o
+LOAD miscutils/built-in.o
+LOAD modutils/built-in.o
+LOAD networking/built-in.o
+LOAD networking/libiproute/built-in.o
+LOAD networking/udhcp/built-in.o
+LOAD printutils/built-in.o
+LOAD procps/built-in.o
+LOAD runit/built-in.o
+LOAD selinux/built-in.o
+LOAD shell/built-in.o
+LOAD sysklogd/built-in.o
+LOAD util-linux/built-in.o
+LOAD util-linux/volume_id/built-in.o
+END GROUP
+LOAD /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/libgcc.a
+LOAD /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/libgcc_eh.a
+LOAD /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/lib/libc.so
+START GROUP
+LOAD /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/lib/libc.so.0
+LOAD /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/lib/uclibc_nonshared.a
+END GROUP
+LOAD /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/libgcc.a
+LOAD /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/libgcc_eh.a
+LOAD /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/crtend.o
+LOAD /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/lib/crtn.o
+                0x0000000000400000                PROVIDE (__executable_start, 0x400000)
+                0x0000000000400114                . = (0x400000 + SIZEOF_HEADERS)
+
+.interp         0x0000000000400114       0x14
+ *(SORT(.interp))
+ .interp        0x0000000000400114       0x14 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/lib/crt1.o
+
+.reginfo
+ *(SORT(.reginfo))
+
+.note.gnu.build-id
+ *(SORT(.note.gnu.build-id))
+
+.dynamic        0x0000000000400128       0xc0
+ *(SORT(.dynamic))
+ .dynamic       0x0000000000400128       0xc0 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/lib/crt1.o
+                0x0000000000400128                _DYNAMIC
+
+.hash           0x00000000004001e8      0x240
+ *(SORT(.hash))
+ .hash          0x00000000004001e8      0x240 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/lib/crt1.o
+
+.gnu.hash
+ *(SORT(.gnu.hash))
+
+.dynsym         0x0000000000400428      0x4b0
+ *(SORT(.dynsym))
+ .dynsym        0x0000000000400428      0x4b0 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/lib/crt1.o
+
+.dynstr         0x00000000004008d8      0x251
+ *(SORT(.dynstr))
+ .dynstr        0x00000000004008d8      0x251 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/lib/crt1.o
+
+.gnu.version    0x0000000000400b2a        0x0 load address 0x0000000000400b29
+ *(SORT(.gnu.version))
+ .gnu.version   0x0000000000000000        0x0 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/lib/crt1.o
+
+.gnu.version_d  0x0000000000400b2c        0x0 load address 0x0000000000400b29
+ *(SORT(.gnu.version_d))
+ .gnu.version_d
+                0x0000000000000000        0x0 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/lib/crt1.o
+
+.gnu.version_r  0x0000000000400b2c        0x0 load address 0x0000000000400b29
+ *(SORT(.gnu.version_r))
+ .gnu.version_r
+                0x0000000000000000        0x0 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/lib/crt1.o
+
+.rel.dyn        0x0000000000400b2c        0x0 load address 0x0000000000400b29
+ *(SORT(.rel.init))
+ *(SORT(.rel.text) SORT(.rel.text.*) SORT(.rel.gnu.linkonce.t.*))
+ *(SORT(.rel.fini))
+ *(SORT(.rel.rodata) SORT(.rel.rodata.*) SORT(.rel.gnu.linkonce.r.*))
+ *(SORT(.rel.data.rel.ro*) SORT(.rel.gnu.linkonce.d.rel.ro.*))
+ *(SORT(.rel.data) SORT(.rel.data.*) SORT(.rel.gnu.linkonce.d.*))
+ *(SORT(.rel.tdata) SORT(.rel.tdata.*) SORT(.rel.gnu.linkonce.td.*))
+ *(SORT(.rel.tbss) SORT(.rel.tbss.*) SORT(.rel.gnu.linkonce.tb.*))
+ *(SORT(.rel.ctors))
+ *(SORT(.rel.dtors))
+ *(SORT(.rel.got))
+ *(SORT(.rel.dyn))
+ .rel.dyn       0x0000000000000000        0x0 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/lib/crt1.o
+ *(SORT(.rel.sdata) SORT(.rel.sdata.*) SORT(.rel.gnu.linkonce.s.*))
+ *(SORT(.rel.sbss) SORT(.rel.sbss.*) SORT(.rel.gnu.linkonce.sb.*))
+ *(SORT(.rel.sdata2) SORT(.rel.sdata2.*) SORT(.rel.gnu.linkonce.s2.*))
+ *(SORT(.rel.sbss2) SORT(.rel.sbss2.*) SORT(.rel.gnu.linkonce.sb2.*))
+ *(SORT(.rel.bss) SORT(.rel.bss.*) SORT(.rel.gnu.linkonce.b.*))
+ .rel.bss       0x0000000000000000        0x0 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/lib/crt1.o
+                0x0000000000400b2c                PROVIDE (__rel_iplt_start, .)
+ *(SORT(.rel.iplt))
+                0x0000000000400b2c                PROVIDE (__rel_iplt_end, .)
+                0x0000000000400b2c                PROVIDE (__rela_iplt_start, .)
+                0x0000000000400b2c                PROVIDE (__rela_iplt_end, .)
+
+.rela.dyn       0x0000000000400b29        0x0
+ *(SORT(.rela.init))
+ *(SORT(.rela.text) SORT(.rela.text.*) SORT(.rela.gnu.linkonce.t.*))
+ *(SORT(.rela.fini))
+ *(SORT(.rela.rodata) SORT(.rela.rodata.*) SORT(.rela.gnu.linkonce.r.*))
+ *(SORT(.rela.data) SORT(.rela.data.*) SORT(.rela.gnu.linkonce.d.*))
+ *(SORT(.rela.tdata) SORT(.rela.tdata.*) SORT(.rela.gnu.linkonce.td.*))
+ *(SORT(.rela.tbss) SORT(.rela.tbss.*) SORT(.rela.gnu.linkonce.tb.*))
+ *(SORT(.rela.ctors))
+ *(SORT(.rela.dtors))
+ *(SORT(.rela.got))
+ *(SORT(.rela.sdata) SORT(.rela.sdata.*) SORT(.rela.gnu.linkonce.s.*))
+ *(SORT(.rela.sbss) SORT(.rela.sbss.*) SORT(.rela.gnu.linkonce.sb.*))
+ *(SORT(.rela.sdata2) SORT(.rela.sdata2.*) SORT(.rela.gnu.linkonce.s2.*))
+ *(SORT(.rela.sbss2) SORT(.rela.sbss2.*) SORT(.rela.gnu.linkonce.sb2.*))
+ *(SORT(.rela.bss) SORT(.rela.bss.*) SORT(.rela.gnu.linkonce.b.*))
+                0x0000000000400b29                PROVIDE (__rel_iplt_start, .)
+                0x0000000000400b29                PROVIDE (__rel_iplt_end, .)
+                0x0000000000400b29                PROVIDE (__rela_iplt_start, .)
+ *(SORT(.rela.iplt))
+                0x0000000000400b29                PROVIDE (__rela_iplt_end, .)
+
+.rel.plt        0x0000000000400b2c        0x0 load address 0x0000000000400b29
+ *(SORT(.rel.plt))
+ .rel.plt       0x0000000000000000        0x0 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/lib/crt1.o
+
+.rela.plt
+ *(SORT(.rela.plt))
+
+.init           0x0000000000400b2c       0x6c
+ *(SORT(.init))
+ .init          0x0000000000400b2c       0x1c /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/lib/crti.o
+                0x0000000000400b2c                _init
+ .init          0x0000000000400b48        0xc /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/lib/crtn.o
+ .init          0x0000000000400b54       0x24 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/crtbegin.o
+ .init          0x0000000000400b78       0x20 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/crtend.o
+
+.plt            0x0000000000400b98        0x0
+ *(SORT(.plt))
+ .plt           0x0000000000000000        0x0 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/lib/crt1.o
+
+.iplt
+ *(SORT(.iplt))
+
+.text           0x0000000000400ba0     0x1988
+                0x0000000000400ba0                _ftext = .
+ *(SORT(.text.unlikely) SORT(.text.*_unlikely))
+ *(SORT(.text) SORT(.stub) SORT(.text.*) SORT(.gnu.linkonce.t.*))
+ .text          0x0000000000400ba0       0x60 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/lib/crt1.o
+                0x0000000000400ba0                __start
+ .text          0x0000000000400c00      0x120 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/crtbegin.o
+ .text          0x0000000000400d20      0x440 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/libgcc.a(_udivdi3.o)
+                0x0000000000400d20                __udivdi3
+ .text          0x0000000000401160       0x50 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/crtend.o
+ .text.bb_show_usage
+                0x00000000004011b0       0x18 libbb/lib.a(appletlib.o)
+                0x00000000004011b0                bb_show_usage
+ .text.lbb_prepare
+                0x00000000004011c8       0x7c libbb/lib.a(appletlib.o)
+                0x00000000004011c8                lbb_prepare
+ .text.main     0x0000000000401244       0x54 libbb/lib.a(appletlib.o)
+                0x0000000000401244                main
+ .text.xfunc_die
+                0x0000000000401298       0x68 libbb/lib.a(xfunc_die.o)
+                0x0000000000401298                xfunc_die
+ .text.show_progress
+                0x0000000000401300       0x94 miscutils/lib.a(flash_eraseall.o)
+ .text.flash_eraseall_main
+                0x0000000000401394      0x4f8 miscutils/lib.a(flash_eraseall.o)
+                0x0000000000401394                flash_eraseall_main
+ .text.bb_error_msg_and_die
+                0x000000000040188c       0x40 libbb/lib.a(error_msg_and_die.o)
+                0x000000000040188c                bb_error_msg_and_die
+ .text.getopt32
+                0x00000000004018cc      0x590 libbb/lib.a(getopt32.o)
+                0x00000000004018cc                getopt32
+ .text.llist_add_to_end
+                0x0000000000401e5c       0x64 libbb/lib.a(llist.o)
+                0x0000000000401e5c                llist_add_to_end
+ .text.bb_perror_msg_and_die
+                0x0000000000401ec0       0x7c libbb/lib.a(perror_msg_and_die.o)
+                0x0000000000401ec0                bb_perror_msg_and_die
+ .text.bb_verror_msg
+                0x0000000000401f3c      0x20c libbb/lib.a(verror_msg.o)
+                0x0000000000401f3c                bb_verror_msg
+ .text.xstrtoul_range_sfx
+                0x0000000000402148      0x194 libbb/lib.a(xatonum.o)
+                0x0000000000402148                xstrtoul_range_sfx
+ .text.xatoul_range
+                0x00000000004022dc       0x28 libbb/lib.a(xatonum.o)
+                0x00000000004022dc                xatoul_range
+ .text.xatoi_u  0x0000000000402304       0x10 libbb/lib.a(xatonum.o)
+                0x0000000000402304                xatoi_u
+ .text.xopen3   0x0000000000402314       0x50 libbb/lib.a(xfuncs_printf.o)
+                0x0000000000402314                xopen3
+ .text.xopen    0x0000000000402364        0x8 libbb/lib.a(xfuncs_printf.o)
+                0x0000000000402364                xopen
+ .text.xrealloc
+                0x000000000040236c       0x54 libbb/lib.a(xfuncs_printf.o)
+                0x000000000040236c                xrealloc
+ .text.xmalloc  0x00000000004023c0       0x54 libbb/lib.a(xfuncs_printf.o)
+                0x00000000004023c0                xmalloc
+ .text.full_write
+                0x0000000000402414       0x8c libbb/lib.a(full_write.o)
+                0x0000000000402414                full_write
+ .text.safe_write
+                0x00000000004024a0       0x88 libbb/lib.a(safe_write.o)
+                0x00000000004024a0                safe_write
+ *(SORT(.gnu.warning))
+ *(SORT(.mips16.fn.*))
+ *(SORT(.mips16.call.*))
+
+.MIPS.stubs     0x0000000000402528      0x350
+ .MIPS.stubs    0x0000000000402528      0x350 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/lib/crt1.o
+                0x0000000000402528                longjmp
+                0x0000000000402538                chroot
+                0x0000000000402548                strcpy
+                0x0000000000402558                ioctl
+                0x0000000000402568                printf
+                0x0000000000402578                strerror
+                0x0000000000402588                memmove
+                0x0000000000402598                memcpy
+                0x00000000004025a8                dup2
+                0x00000000004025b8                malloc
+                0x00000000004025c8                sleep
+                0x00000000004025d8                strtoul
+                0x00000000004025e8                socket
+                0x00000000004025f8                isspace
+                0x0000000000402608                fflush
+                0x0000000000402618                lseek
+                0x0000000000402628                pipe
+                0x0000000000402638                rename
+                0x0000000000402648                write
+                0x0000000000402658                fstat
+                0x0000000000402668                bind
+                0x0000000000402678                chdir
+                0x0000000000402688                ferror
+                0x0000000000402698                setgid
+                0x00000000004026a8                read
+                0x00000000004026b8                unlink
+                0x00000000004026c8                setenv
+                0x00000000004026d8                sendto
+                0x00000000004026e8                realloc
+                0x00000000004026f8                listen
+                0x0000000000402708                __uClibc_main
+                0x0000000000402718                strdup
+                0x0000000000402728                strtoull
+                0x0000000000402738                fopen
+                0x0000000000402748                getopt
+                0x0000000000402758                memset
+                0x0000000000402768                fclose
+                0x0000000000402778                opendir
+                0x0000000000402788                poll
+                0x0000000000402798                strcmp
+                0x00000000004027a8                fputc
+                0x00000000004027b8                stat
+                0x00000000004027c8                __errno_location
+                0x00000000004027d8                exit
+                0x00000000004027e8                fileno
+                0x00000000004027f8                strlen
+                0x0000000000402808                open
+                0x0000000000402818                vasprintf
+                0x0000000000402828                setuid
+                0x0000000000402838                close
+                0x0000000000402848                free
+                0x0000000000402858                __fputc_unlocked
+
+.fini           0x0000000000402878       0x4c
+ *(SORT(.fini))
+ .fini          0x0000000000402878       0x1c /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/lib/crti.o
+                0x0000000000402878                _fini
+ .fini          0x0000000000402894        0xc /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/lib/crtn.o
+ .fini          0x00000000004028a0       0x24 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/crtbegin.o
+                0x00000000004028c4                PROVIDE (__etext, .)
+                0x00000000004028c4                PROVIDE (_etext, .)
+                0x00000000004028c4                PROVIDE (etext, .)
+
+.rodata         0x00000000004028c4      0x2c5
+ *(SORT(.rodata) SORT(.rodata.*) SORT(.gnu.linkonce.r.*))
+ .rodata.str1.4
+                0x00000000004028c4        0x7 libbb/lib.a(appletlib.o)
+                                          0x8 (size before relaxing)
+ *fill*         0x00000000004028cb        0x1 00
+ .rodata.str1.4
+                0x00000000004028cc      0x103 miscutils/lib.a(flash_eraseall.o)
+                                        0x104 (size before relaxing)
+ *fill*         0x00000000004029cf        0x1 00
+ .rodata.str1.4
+                0x00000000004029d0        0x2 libbb/lib.a(verror_msg.o)
+                                          0x8 (size before relaxing)
+ *fill*         0x00000000004029d2        0x2 00
+ .rodata.str1.4
+                0x00000000004029d4       0x61 libbb/lib.a(xatonum.o)
+                                         0x64 (size before relaxing)
+ *fill*         0x0000000000402a35        0x3 00
+ .rodata.str1.4
+                0x0000000000402a38      0x130 libbb/lib.a(xfuncs_printf.o)
+ .rodata.applet_names
+                0x0000000000402b68       0x10 libbb/lib.a(appletlib.o)
+                0x0000000000402b68                applet_names
+ .rodata.bb_msg_memory_exhausted
+                0x0000000000402b78       0x11 libbb/lib.a(messages.o)
+                0x0000000000402b78                bb_msg_memory_exhausted
+
+.rodata1
+ *(SORT(.rodata1))
+
+.sdata2
+ *(SORT(.sdata2) SORT(.sdata2.*) SORT(.gnu.linkonce.s2.*))
+
+.sbss2
+ *(SORT(.sbss2) SORT(.sbss2.*) SORT(.gnu.linkonce.sb2.*))
+
+.eh_frame_hdr   0x0000000000402b8c       0x14
+ *(SORT(.eh_frame_hdr))
+ .eh_frame_hdr  0x0000000000402b8c       0x14 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/libgcc.a(_udivdi3.o)
+
+.eh_frame
+ *(SORT(.eh_frame))
+
+.gcc_except_table
+ *(SORT(.gcc_except_table) SORT(.gcc_except_table.*))
+                0x0000000000402ba0                . = (ALIGN (0x10000) - ((0x10000 - .) & 0xffff))
+                0x0000000000412ba0                . = (0x10000 DATA_SEGMENT_ALIGN 0x1000)
+
+.eh_frame       0x0000000000412ba0       0x24
+ *(SORT(.eh_frame))
+ .eh_frame      0x0000000000412ba0        0x0 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/crtbegin.o
+ .eh_frame      0x0000000000412ba0       0x20 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/libgcc.a(_udivdi3.o)
+ .eh_frame      0x0000000000412bc0        0x4 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/crtend.o
+
+.gcc_except_table
+ *(SORT(.gcc_except_table) SORT(.gcc_except_table.*))
+
+.tdata
+ *(SORT(.tdata) SORT(.tdata.*) SORT(.gnu.linkonce.td.*))
+
+.tbss
+ *(SORT(.tbss) SORT(.tbss.*) SORT(.gnu.linkonce.tb.*))
+ *(SORT(.tcommon))
+
+.preinit_array  0x0000000000412bc4        0x0
+                0x0000000000412bc4                PROVIDE (__preinit_array_start, .)
+ *(SORT(.preinit_array))
+                0x0000000000412bc4                PROVIDE (__preinit_array_end, .)
+
+.init_array     0x0000000000412bc4        0x0
+                0x0000000000412bc4                PROVIDE (__init_array_start, .)
+ *(SORT(.init_array.*))
+ *(SORT(.init_array))
+                0x0000000000412bc4                PROVIDE (__init_array_end, .)
+
+.fini_array     0x0000000000412bc4        0x0
+                0x0000000000412bc4                PROVIDE (__fini_array_start, .)
+ *(SORT(.fini_array))
+ *(SORT(.fini_array.*))
+                0x0000000000412bc4                PROVIDE (__fini_array_end, .)
+
+.ctors          0x0000000000412bc4        0x8
+ *crtbegin.o(SORT(.ctors))
+ .ctors         0x0000000000412bc4        0x4 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/crtbegin.o
+ *crtbegin?.o(SORT(.ctors))
+ *(SORT(EXCLUDE_FILE(*crtend?.o *crtend.o) .ctors))
+ *(SORT(.ctors.*))
+ *(SORT(.ctors))
+ .ctors         0x0000000000412bc8        0x4 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/crtend.o
+
+.dtors          0x0000000000412bcc        0x8
+ *crtbegin.o(SORT(.dtors))
+ .dtors         0x0000000000412bcc        0x4 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/crtbegin.o
+ *crtbegin?.o(SORT(.dtors))
+ *(SORT(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors))
+ *(SORT(.dtors.*))
+ *(SORT(.dtors))
+ .dtors         0x0000000000412bd0        0x4 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/crtend.o
+                0x0000000000412bd0                __DTOR_END__
+
+.jcr            0x0000000000412bd4        0x4
+ *(SORT(.jcr))
+ .jcr           0x0000000000412bd4        0x0 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/crtbegin.o
+ .jcr           0x0000000000412bd4        0x4 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/crtend.o
+
+.data.rel.ro
+ *(SORT(.data.rel.ro.local*) SORT(.gnu.linkonce.d.rel.ro.local.*))
+ *(SORT(.data.rel.ro*) SORT(.gnu.linkonce.d.rel.ro.*))
+                0x0000000000412bd8                . = (. DATA_SEGMENT_RELRO_END 0x0)
+
+.data           0x0000000000412bd8        0xd
+                0x0000000000412bd8                _fdata = .
+ *(SORT(.data) SORT(.data.*) SORT(.gnu.linkonce.d.*))
+ .data.xfunc_error_retval
+                0x0000000000412bd8        0x4 libbb/lib.a(default_error_retval.o)
+                0x0000000000412bd8                xfunc_error_retval
+ .data.target_endian
+                0x0000000000412bdc        0x4 miscutils/lib.a(flash_eraseall.o)
+                0x0000000000412bdc                target_endian
+ .data.rel.local.msg_eol
+                0x0000000000412be0        0x4 libbb/lib.a(verror_msg.o)
+                0x0000000000412be0                msg_eol
+ .data.logmode  0x0000000000412be4        0x1 libbb/lib.a(verror_msg.o)
+                0x0000000000412be4                logmode
+
+.rld_map        0x0000000000412be8        0x4
+ .rld_map       0x0000000000412be8        0x4 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/lib/crt1.o
+                0x0000000000412be8                __RLD_MAP
+
+.data1
+ *(SORT(.data1))
+
+.got.plt        0x0000000000412bec        0x0
+ *(SORT(.got.plt))
+ .got.plt       0x0000000000000000        0x0 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/lib/crt1.o
+                0x0000000000412bec                . = .
+                0x000000000041abe0                _gp = (ALIGN (0x10) + 0x7ff0)
+
+.got            0x0000000000412bf0      0x114
+ *(SORT(.got))
+ .got           0x0000000000412bf0      0x114 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/lib/crt1.o
+                0x0000000000412bf0                _GLOBAL_OFFSET_TABLE_
+
+.sdata
+ *(SORT(.sdata) SORT(.sdata.*) SORT(.gnu.linkonce.s.*))
+
+.lit8
+ *(SORT(.lit8))
+
+.lit4
+ *(SORT(.lit4))
+                0x0000000000412d04                _edata = .
+                0x0000000000412d04                PROVIDE (edata, .)
+                0x0000000000412d04                __bss_start = .
+                0x0000000000412d04                _fbss = .
+
+.sbss           0x0000000000412d04       0x18
+ *(SORT(.dynsbss))
+ *(SORT(.sbss) SORT(.sbss.*) SORT(.gnu.linkonce.sb.*))
+ *(SORT(.scommon))
+ .scommon       0x0000000000412d04        0x4 libbb/lib.a(appletlib.o)
+                0x0000000000412d04                applet_name
+ .scommon       0x0000000000412d08        0x8 libbb/lib.a(ptr_to_globals.o)
+                0x0000000000412d08                bb_errno
+                0x0000000000412d0c                ptr_to_globals
+ .scommon       0x0000000000412d10        0x4 libbb/lib.a(xfunc_die.o)
+                0x0000000000412d10                die_sleep
+ .scommon       0x0000000000412d14        0x8 libbb/lib.a(getopt32.o)
+                0x0000000000412d14                opt_complementary
+                0x0000000000412d18                option_mask32
+
+.bss            0x0000000000412d20      0x110
+ *(SORT(.dynbss))
+ .dynbss        0x0000000000000000        0x0 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/lib/crt1.o
+ *(SORT(.bss) SORT(.bss.*) SORT(.gnu.linkonce.b.*))
+ .bss           0x0000000000412d20       0x20 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/crtbegin.o
+ *(SORT(COMMON))
+ COMMON         0x0000000000412d40       0xf0 libbb/lib.a(xfunc_die.o)
+                0x0000000000412d40                die_jmp
+                0x0000000000412e30                . = ALIGN ((. != 0x0)?0x4:0x1)
+                0x0000000000412e30                . = ALIGN (0x4)
+                0x0000000000412e30                . = ALIGN (0x4)
+                0x0000000000412e30                _end = .
+                0x0000000000412e30                PROVIDE (end, .)
+                0x0000000000412e30                . = DATA_SEGMENT_END (.)
+
+.stab
+ *(SORT(.stab))
+
+.stabstr
+ *(SORT(.stabstr))
+
+.stab.excl
+ *(SORT(.stab.excl))
+
+.stab.exclstr
+ *(SORT(.stab.exclstr))
+
+.stab.index
+ *(SORT(.stab.index))
+
+.stab.indexstr
+ *(SORT(.stab.indexstr))
+
+.pdr            0x0000000000000000        0x0
+ .pdr           0x0000000000000000        0x0 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/lib/crt1.o
+ .pdr           0x0000000000000000        0x0 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/crtbegin.o
+ .pdr           0x0000000000000000        0x0 applets/built-in.o
+ .pdr           0x0000000000000000        0x0 libbb/lib.a(ptr_to_globals.o)
+ .pdr           0x0000000000000000        0x0 libbb/lib.a(default_error_retval.o)
+ .pdr           0x0000000000000000        0x0 libbb/lib.a(messages.o)
+ .pdr           0x0000000000000000        0x0 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/crtend.o
+
+.comment        0x0000000000000000       0x34
+ *(SORT(.comment))
+ .comment       0x0000000000000000       0x11 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/lib/crti.o
+                                         0x12 (size before relaxing)
+ .comment       0x0000000000000011       0x23 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/crtbegin.o
+                                         0x24 (size before relaxing)
+ .comment       0x0000000000000000       0x24 applets/built-in.o
+ .comment       0x0000000000000000       0x24 libbb/lib.a(appletlib.o)
+ .comment       0x0000000000000000       0x24 libbb/lib.a(ptr_to_globals.o)
+ .comment       0x0000000000000000       0x24 libbb/lib.a(xfunc_die.o)
+ .comment       0x0000000000000000       0x24 libbb/lib.a(default_error_retval.o)
+ .comment       0x0000000000000000       0x24 miscutils/lib.a(flash_eraseall.o)
+ .comment       0x0000000000000000       0x24 libbb/lib.a(error_msg_and_die.o)
+ .comment       0x0000000000000000       0x24 libbb/lib.a(getopt32.o)
+ .comment       0x0000000000000000       0x24 libbb/lib.a(llist.o)
+ .comment       0x0000000000000000       0x24 libbb/lib.a(perror_msg_and_die.o)
+ .comment       0x0000000000000000       0x24 libbb/lib.a(verror_msg.o)
+ .comment       0x0000000000000000       0x24 libbb/lib.a(xatonum.o)
+ .comment       0x0000000000000000       0x24 libbb/lib.a(xfuncs_printf.o)
+ .comment       0x0000000000000000       0x24 libbb/lib.a(copyfd.o)
+ .comment       0x0000000000000000       0x24 libbb/lib.a(error_msg.o)
+ .comment       0x0000000000000000       0x24 libbb/lib.a(full_write.o)
+ .comment       0x0000000000000000       0x24 libbb/lib.a(messages.o)
+ .comment       0x0000000000000000       0x24 libbb/lib.a(perror_msg.o)
+ .comment       0x0000000000000000       0x24 libbb/lib.a(read.o)
+ .comment       0x0000000000000000       0x24 libbb/lib.a(safe_poll.o)
+ .comment       0x0000000000000000       0x24 libbb/lib.a(safe_write.o)
+ .comment       0x0000000000000000       0x24 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/libgcc.a(_udivdi3.o)
+ .comment       0x0000000000000000       0x24 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/crtend.o
+ .comment       0x0000000000000000       0x12 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/lib/crtn.o
+
+.debug
+ *(SORT(.debug))
+
+.line
+ *(SORT(.line))
+
+.debug_srcinfo
+ *(SORT(.debug_srcinfo))
+
+.debug_sfnames
+ *(SORT(.debug_sfnames))
+
+.debug_aranges  0x0000000000000000       0x20
+ *(SORT(.debug_aranges))
+ .debug_aranges
+                0x0000000000000000       0x20 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/libgcc.a(_udivdi3.o)
+
+.debug_pubnames
+                0x0000000000000000       0x20
+ *(SORT(.debug_pubnames))
+ .debug_pubnames
+                0x0000000000000000       0x20 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/libgcc.a(_udivdi3.o)
+
+.debug_info     0x0000000000000000      0x5b6
+ *(SORT(.debug_info) SORT(.gnu.linkonce.wi.*))
+ .debug_info    0x0000000000000000      0x5b6 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/libgcc.a(_udivdi3.o)
+
+.debug_abbrev   0x0000000000000000      0x163
+ *(SORT(.debug_abbrev))
+ .debug_abbrev  0x0000000000000000      0x163 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/libgcc.a(_udivdi3.o)
+
+.debug_line     0x0000000000000000       0xd7
+ *(SORT(.debug_line))
+ .debug_line    0x0000000000000000       0xd7 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/libgcc.a(_udivdi3.o)
+
+.debug_frame    0x0000000000000000       0x20
+ *(SORT(.debug_frame))
+ .debug_frame   0x0000000000000000       0x20 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/libgcc.a(_udivdi3.o)
+
+.debug_str      0x0000000000000000      0x177
+ *(SORT(.debug_str))
+ .debug_str     0x0000000000000000      0x177 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/libgcc.a(_udivdi3.o)
+                                        0x1cb (size before relaxing)
+
+.debug_loc      0x0000000000000000      0x645
+ *(SORT(.debug_loc))
+ .debug_loc     0x0000000000000000      0x645 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/libgcc.a(_udivdi3.o)
+
+.debug_macinfo
+ *(SORT(.debug_macinfo))
+
+.debug_weaknames
+ *(SORT(.debug_weaknames))
+
+.debug_funcnames
+ *(SORT(.debug_funcnames))
+
+.debug_typenames
+ *(SORT(.debug_typenames))
+
+.debug_varnames
+ *(SORT(.debug_varnames))
+
+.debug_pubtypes
+ *(SORT(.debug_pubtypes))
+
+.debug_ranges   0x0000000000000000       0x68
+ *(SORT(.debug_ranges))
+ .debug_ranges  0x0000000000000000       0x68 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/libgcc.a(_udivdi3.o)
+
+.gnu.attributes
+                0x0000000000000000       0x10
+ *(SORT(.gnu.attributes))
+ .gnu.attributes
+                0x0000000000000000       0x10 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/crtbegin.o
+ .gnu.attributes
+                0x0000000000000010       0x10 applets/built-in.o
+ .gnu.attributes
+                0x0000000000000020       0x10 libbb/lib.a(appletlib.o)
+ .gnu.attributes
+                0x0000000000000030       0x10 libbb/lib.a(ptr_to_globals.o)
+ .gnu.attributes
+                0x0000000000000040       0x10 libbb/lib.a(xfunc_die.o)
+ .gnu.attributes
+                0x0000000000000050       0x10 libbb/lib.a(default_error_retval.o)
+ .gnu.attributes
+                0x0000000000000060       0x10 miscutils/lib.a(flash_eraseall.o)
+ .gnu.attributes
+                0x0000000000000070       0x10 libbb/lib.a(error_msg_and_die.o)
+ .gnu.attributes
+                0x0000000000000080       0x10 libbb/lib.a(getopt32.o)
+ .gnu.attributes
+                0x0000000000000090       0x10 libbb/lib.a(llist.o)
+ .gnu.attributes
+                0x00000000000000a0       0x10 libbb/lib.a(perror_msg_and_die.o)
+ .gnu.attributes
+                0x00000000000000b0       0x10 libbb/lib.a(verror_msg.o)
+ .gnu.attributes
+                0x00000000000000c0       0x10 libbb/lib.a(xatonum.o)
+ .gnu.attributes
+                0x00000000000000d0       0x10 libbb/lib.a(xfuncs_printf.o)
+ .gnu.attributes
+                0x00000000000000e0       0x10 libbb/lib.a(copyfd.o)
+ .gnu.attributes
+                0x00000000000000f0       0x10 libbb/lib.a(error_msg.o)
+ .gnu.attributes
+                0x0000000000000100       0x10 libbb/lib.a(full_write.o)
+ .gnu.attributes
+                0x0000000000000110       0x10 libbb/lib.a(messages.o)
+ .gnu.attributes
+                0x0000000000000120       0x10 libbb/lib.a(perror_msg.o)
+ .gnu.attributes
+                0x0000000000000130       0x10 libbb/lib.a(read.o)
+ .gnu.attributes
+                0x0000000000000140       0x10 libbb/lib.a(safe_poll.o)
+ .gnu.attributes
+                0x0000000000000150       0x10 libbb/lib.a(safe_write.o)
+ .gnu.attributes
+                0x0000000000000160       0x10 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/libgcc.a(_udivdi3.o)
+ .gnu.attributes
+                0x0000000000000170       0x10 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/crtend.o
+
+.gptab.sdata
+ *(SORT(.gptab.data))
+ *(SORT(.gptab.sdata))
+
+.gptab.sbss
+ *(SORT(.gptab.bss))
+ *(SORT(.gptab.sbss))
+
+.mdebug.abi32   0x0000000000000180        0x0
+ *(SORT(.mdebug.abi32))
+ .mdebug.abi32  0x0000000000000180        0x0 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/lib/crti.o
+ .mdebug.abi32  0x0000000000000180        0x0 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/crtbegin.o
+ .mdebug.abi32  0x0000000000000180        0x0 applets/built-in.o
+ .mdebug.abi32  0x0000000000000180        0x0 libbb/lib.a(appletlib.o)
+ .mdebug.abi32  0x0000000000000180        0x0 libbb/lib.a(ptr_to_globals.o)
+ .mdebug.abi32  0x0000000000000180        0x0 libbb/lib.a(xfunc_die.o)
+ .mdebug.abi32  0x0000000000000180        0x0 libbb/lib.a(default_error_retval.o)
+ .mdebug.abi32  0x0000000000000180        0x0 miscutils/lib.a(flash_eraseall.o)
+ .mdebug.abi32  0x0000000000000180        0x0 libbb/lib.a(error_msg_and_die.o)
+ .mdebug.abi32  0x0000000000000180        0x0 libbb/lib.a(getopt32.o)
+ .mdebug.abi32  0x0000000000000180        0x0 libbb/lib.a(llist.o)
+ .mdebug.abi32  0x0000000000000180        0x0 libbb/lib.a(perror_msg_and_die.o)
+ .mdebug.abi32  0x0000000000000180        0x0 libbb/lib.a(verror_msg.o)
+ .mdebug.abi32  0x0000000000000180        0x0 libbb/lib.a(xatonum.o)
+ .mdebug.abi32  0x0000000000000180        0x0 libbb/lib.a(xfuncs_printf.o)
+ .mdebug.abi32  0x0000000000000180        0x0 libbb/lib.a(copyfd.o)
+ .mdebug.abi32  0x0000000000000180        0x0 libbb/lib.a(error_msg.o)
+ .mdebug.abi32  0x0000000000000180        0x0 libbb/lib.a(full_write.o)
+ .mdebug.abi32  0x0000000000000180        0x0 libbb/lib.a(messages.o)
+ .mdebug.abi32  0x0000000000000180        0x0 libbb/lib.a(perror_msg.o)
+ .mdebug.abi32  0x0000000000000180        0x0 libbb/lib.a(read.o)
+ .mdebug.abi32  0x0000000000000180        0x0 libbb/lib.a(safe_poll.o)
+ .mdebug.abi32  0x0000000000000180        0x0 libbb/lib.a(safe_write.o)
+ .mdebug.abi32  0x0000000000000180        0x0 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/libgcc.a(_udivdi3.o)
+ .mdebug.abi32  0x0000000000000180        0x0 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/../lib/gcc/mips-linux-uclibc/4.4.2/crtend.o
+ .mdebug.abi32  0x0000000000000180        0x0 /opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/lib/crtn.o
+
+.mdebug.abiN32
+ *(SORT(.mdebug.abiN32))
+
+.mdebug.abi64
+ *(SORT(.mdebug.abi64))
+
+.mdebug.abiO64
+ *(SORT(.mdebug.abiO64))
+
+.mdebug.eabi32
+ *(SORT(.mdebug.eabi32))
+
+.mdebug.eabi64
+ *(SORT(.mdebug.eabi64))
+
+.gcc_compiled_long32
+ *(SORT(.gcc_compiled_long32))
+
+.gcc_compiled_long64
+ *(SORT(.gcc_compiled_long64))
+
+/DISCARD/
+ *(SORT(.note.GNU-stack))
+ *(SORT(.gnu_debuglink))
+ *(SORT(.gnu.lto_*))
+OUTPUT(busybox_unstripped elf32-tradbigmips)

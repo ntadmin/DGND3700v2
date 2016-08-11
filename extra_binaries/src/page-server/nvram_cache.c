@@ -161,8 +161,9 @@ nvram_entry *nvram_cache_want_variable(char *name) {
     }
     if (ccount > cmax) cmax = ccount;
 
-    entry->rows    = rcount;
-    entry->columns = cmax;
+    entry->rows       = rcount;
+    entry->rows_avail = rcount;
+    entry->columns    = cmax;
 
     if ((entry->rows == 1) && (entry->columns == 1)) {
         if (DEBUG_ACQUIRE) mylog("nvram_cache_want_variable - it's a TEXT", value);
@@ -171,7 +172,7 @@ nvram_entry *nvram_cache_want_variable(char *name) {
     else {
         if (DEBUG_ACQUIRE) mylog("nvram_cache_want_variable - it's an ARRAY", value);
         entry->type = NVRAM_ENTRY_TYPE_ARRAY;
-        entry->data = calloc(entry->rows, sizeof(char **));
+        entry->data = calloc(entry->rows_avail, sizeof(char **));
         cp          = value;
         for (i=0; i<entry->rows; i++) {
             if (DEBUG_ACQUIRE) mylog("nvram_cache_want_variable - row start", "***");
@@ -300,6 +301,20 @@ void set_value_in_nvram_cache(char *name, char *value) {
     entry->changed = true;
 }
 
+void clear_array_rows_this_and_above_in_nvram_cache(char *name, int row) {
+    nvram_entry *entry;
+
+    if (nc == NULL) return;
+
+    entry = nvram_cache_want_variable(name);
+    if (entry == NULL) return;
+    if (entry->type != NVRAM_ENTRY_TYPE_ARRAY) return;
+    if (row < 0) return;
+    if (row >= entry->rows) return;
+
+    entry->rows = row;
+}
+
 void set_array_value_in_nvram_cache(char *name, int row, int column, char *value) {
     nvram_entry *entry;
 
@@ -309,8 +324,12 @@ void set_array_value_in_nvram_cache(char *name, int row, int column, char *value
     if (entry == NULL) return;
     if (entry->type != NVRAM_ENTRY_TYPE_ARRAY) return;
     if ((row < 0) || (column < 0)) return;
-    if (row >= entry->rows) return;
     if (column >= entry->columns) return;
+
+    if (row >= entry->rows_avail) {
+        entry->rows_avail += 5;
+        entry->data = realloc(entry->data, entry->rows_avail*sizeof(char **));
+    }
 
     if (DEBUG_SYNC) {
         char log_space[50];
