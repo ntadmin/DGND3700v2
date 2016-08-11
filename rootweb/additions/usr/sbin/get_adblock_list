@@ -42,6 +42,9 @@ tmpfile=/tmp/adblocklist.pre
 # Get the source file
 $wget --no-check-certificate -q $list_src_url -O $tmpfile
 
+# Remove hosts we want to let through from the ban list
+sed -i '/awin1.com/d' $tmpfile
+
 # Select only the lines beginning with '0.0.0.0' and then replace that with the IP we are using.
 sed -n -e '/^0.0.0.0/p' $tmpfile | sed s/0.0.0.0/$ad_catcher_ip/ > $1
 
