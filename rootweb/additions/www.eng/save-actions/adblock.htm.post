@@ -1,2 +1,2 @@
 #!/bin/sh
-/usr/sbin/rc_app/rc_adblock start
+/usr/sbin/rc_app/rc_adblock restart

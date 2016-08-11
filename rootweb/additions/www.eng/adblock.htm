@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-Control" content="no-cache"><meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT"><meta name="description" content="@model_name#_multilangual"><title>NETGEAR Router @model_name#</title><script language="javascript" type="text/javascript" src="string.js"></script><link rel="stylesheet" href="style/form.css"><script language="javascript" type="text/javascript" src="funcs.js"></script><!-- link rel="stylesheet" href="form.css" --><script language="javascript" type="text/javascript" src="utility.js"></script><script language="javascript" type="text/javascript" src="linux.js"></script><script language="javascript" type="text/javascript">
+<!-- hide script from old browsers
+function checkData()
+{
+    var re = new RegExp(/^((?:(?:(?:\w[\.\-\+]?)*)\w)+)((?:(?:(?:\w[\.\-\+]?){0,62})\w)+)\.(\w{2,6})$/); 
+    var cf = document.forms[0];
+    var site_list = cf.adblock_sites.value.sites.split("\n");
+    for (var i=0; i<site_list.length; ++i) {
+        if (!site_list[i].match(re))) {
+            alert("Invalid domain name: "+site_list[i]);
+            return false;
+        }
+    }
+    return true;
+}
+//-->
+</script></head><body bgcolor="#ffffff" onLoad="dataToVisible(document.forms[0]);document.forms[0].elements[0].focus();service_change();" onUnload="closeWin(datSubWinVar);">
+<form method="POST" action="setup.cgi@post_par#" onSubmit="buttonToDisabled(document.forms[0])">
+<div class="page_title" languageCode = "149">Dynamic DNS</div>
+<div class="fix_button">
+<table width="100%" border="0" cellpadding="0" cellspacing="2"><tr><td nowrap colspan="2" align="center">
+<input class="apply_bt" type="SUBMIT" name="Apply" value = "Apply" onClick="return checkData()" languageCode = "18">
+</td></tr></table>
+</div>
+<div id="main" class="main_top_button">
+<table border="0" cellpadding="0" cellspacing="3" width="100%">
+
+    <tr><!-- RULE --><td colspan="2" background="liteblue.gif" height="12"></td></tr>
+
+    <tr><td colspan="2" nowrap><input type="checkbox" name="block_ads" value="block_ads"><b>Block Ads</b></td></tr>
+    <tr><td>IP address for blocked Ad sites (please only change if you really,really need this address for something)</td>
+        <td nowrap align="right" class="num"><input type="text" name="adBlockAddr1" class="num" size="4" maxlength="3" value="198">.<input type="text" name="adBlockAddr2" class="num" size="4" maxlength="3" value="51">.<input type="text" name="adBlockAddr3" class="num" size="4" maxlength="3" value="100">.<input type="text" name="adBlockAddr4" class="num" size="4" maxlength="3" value="1"></td></tr>
+
+    <tr><!-- RULE --><td colspan="2" background="liteblue.gif" height="12"></td></tr>
+
+    <tr><td colspan="2" nowrap>Ad sites to allow access to even when adblock is on. One address per line please.</td></tr>
+    <tr><td colspan="2" align="center"><textarea name="adblock_allow" class="smallfix" rows="15" cols="60" wrap="off" tabindex="-1">@adblock_allow_sites#</textarea></td></tr>
+
+    <tr><!-- RULE --><td colspan="2" background="liteblue.gif" height="12"></td></tr>
+
+    <tr><td colspan="2" align="center"></td></tr>
+   </table>
+<input type="hidden" name="todo" value="save">
+<input type="hidden" name="this_file" value="adblock.htm">
+<input type="hidden" name="next_file" value="adblock.htm">
+<input type="hidden" name="h_block_ads" value="@h_block_ads#">
+<input type="hidden" name="c4_block_ads_IPAddr" value="@c4_block_ads_IPAddr#">
+<input type="hidden" name="SID" value="@SID#">
+</div>
+</form>
+<p></p>
+<div id="help" style="display: none">
+		<iframe name="help_iframe" id="helpframe" src="DNS_ddns_h.htm" allowtransparency="true" width="100%" frameborder="0">
+		</iframe>
+</div>
+<div id="help_switch" class="close_help">
+	 <img class="help_switch_img" src="image/help/help-bar.gif"><script>
+var help_flag=0;
+if(isIE()){
+	show_hidden_help_top_button(1);
+	var frame_div = top.document.getElementById("formframe_div");
+	frame_div.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+if(get_browser() == "Opera"){
+	window.onresize =  function(){
+		if(help_flag == 0)  show_hidden_help_top_button(1);
+		else{show_hidden_help_top_button(--help_flag);help_flag++;}
+};}
+</script><div id="help_space" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_center"><span languageCode="3016">Help Center</span></div>
+<div id="help_button" onClick="show_hidden_help_top_button(help_flag); help_flag++;"></div>
+<div id="help_show_hidden"><a href="javascript:void(0)" onClick="show_hidden_help_top_button(help_flag); help_flag++;"><span languageCode="3017">Show/Hide Help Center</span></a></div>
+</div>
+<script language="javascript" type="text/javascript" src="langs.js"></script></body></html>
