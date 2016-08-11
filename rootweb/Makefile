@@ -42,4 +42,5 @@ version:
 	@echo "ParentalControlSupported=1" >> $(NETGEAR_TARGET_DIR)/www.eng/currentsetting.htm
 	@echo "SOAPVersion=1.13" >> $(NETGEAR_TARGET_DIR)/www.eng/currentsetting.htm
 	@echo "ReadyShareSupportedLevel=5" >> $(NETGEAR_TARGET_DIR)/www.eng/currentsetting.htm
+	@date >> $(NETGEAR_TARGET_DIR)/usr/etc/image_date
 
