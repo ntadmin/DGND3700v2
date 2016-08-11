@@ -6,12 +6,15 @@
 include ../Rules.mak
 
 #
-# Set the following headline information
+# Set the following headline information: which packages
 #
 packages=inadyn-mt dnsmasq miniupnpc dropbear busybox
+
 #
-# Not on the list as make it too big
-# flashrom
+# Not on the list:
+#
+# flashrom - too big, not actually needed for the moment
+# ppp - not resolved how to get all the makfiles in place yet
 
 all: real-all
 
@@ -62,6 +65,11 @@ flashrom.pkg-dl-name=flashrom-latest.tar.bz2
 flashrom.tar-args=axf
 flashrom.make-command=make CC="/opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/mips-linux-gcc" CONFIG_ENABLE_LIBPCI_PROGRAMMERS=no CONFIG_ENABLE_LIBUSB0_PROGRAMMERS=no CONFIG_ENABLE_LIBUSB1_PROGRAMMERS=no
 flashrom.test-compiled-file=flashrom
+
+ppp.url=https://download.samba.org/pub/ppp/ppp-2.4.7.tar.gz
+ppp.pkg-dl-name=ppp-latest.tar.gz
+ppp.tar-args=axf
+ppp.make-command=CC="/opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/mips-linux-gcc" LD="/opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/mips-linux-ld" STRIP="/opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/mips-linux-strip" PLUGINS="minconn.so passprompt.so pppoatm.so pppoe/pppoe.so pppoatm.d"; cd pppd; make -e -C plugins --file=Makefile.linux
 
 
 #
@@ -161,13 +169,15 @@ $(packages-get):
 	test -e $(PKG_SRC_DIR)/$(@:%.get=%) || { mv $(PKG_SRC_DIR)/$(@:%.get=%)* $(PKG_SRC_DIR)/$(@:%.get=%); }
 
 $(packages-configure):
-	test -z "$($(@:%.configure=%.configure-options))" || { cd $(PKG_SRC_DIR)/$(@:%.configure=%); ./configure $($(@:%.configure=%.configure-options)); }
-	touch $(PKG_SRC_DIR)/$(@:%.configure=%)/$(CONFIG_DONE_MARKER)
+	@echo Configuring $(%.configure=%) if needed
+	@test -z "$($(@:%.configure=%.configure-options))" || { cd $(PKG_SRC_DIR)/$(@:%.configure=%); ./configure $($(@:%.configure=%.configure-options)); }
+	@touch $(PKG_SRC_DIR)/$(@:%.configure=%)/$(CONFIG_DONE_MARKER)
 
 $(packages-make):
+	@echo Making $(%.make=%) if needed
 	@test ! -d $(PKG_CORRECTION_DIR)/$(@:%.make=%) || { cp -Rf $(PKG_CORRECTION_DIR)/$(@:%.make=%)/* $(PKG_SRC_DIR)/$(@:%.make=%); }
 	@test ! -d $(PKG_CORRECTION_DIR)/$(@:%.make=%) || { cp -f $(PKG_CORRECTION_DIR)/$(@:%.make=%)/.* $(PKG_SRC_DIR)/$(@:%.make=%); } || true
-	cd $(PKG_SRC_DIR)/$(@:%.make=%); $($(@:%.make=%.make-command))
+	@cd $(PKG_SRC_DIR)/$(@:%.make=%); $($(@:%.make=%.make-command))
 
 $(packages-place-wrap):
 	@echo "--"
@@ -180,6 +190,5 @@ $(packages-place-wrap):
 # Making Directories
 #
 target_directories: $(full_path_target_dirs)
-
-$(full_path_target_dirs):
-	@test -e $@ || mkdir -p $@
+	@rm -rf $(PKG_TARGET_DIR)
+	mkdir -p $(full_path_target_dirs)
