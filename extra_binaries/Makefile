@@ -9,8 +9,8 @@ DESTLIB=$(DESTBASE)/lib
 .PHONY: target
 
 all: target
-	$(foreach dir, $(DIRECTORIES_TO_MAKE), make -C $(dir);)
-	$(foreach dir, $(DIRECTORIES_TO_MAKE), make -C $(dir) install DESTBIN=$(DESTBIN) DESTLIB=$(DESTLIB);)
+	$(foreach dir, $(DIRECTORIES_TO_MAKE), make -C $(dir) || exit;)
+	$(foreach dir, $(DIRECTORIES_TO_MAKE), make -C $(dir) install DESTBIN=$(DESTBIN) DESTLIB=$(DESTLIB) || exit;)
 	@rm $(DESTBIN)/../bin/flash_eraseall
 	@mv $(DESTBIN)/../../bin/busybox $(DESTBIN)/flash_eraseall
 	@rmdir  $(DESTBIN)/../bin/
