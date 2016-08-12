@@ -1,3 +1,12 @@
+This is intentionally left here out of gratitude to the people listed who
+created busybox, which allowed Netgear to add in their extra applet,
+which could then be cut down to a very honed piece of code ...
+
+Thanks :-)
+Neil
+
+
+
 List of the authors of code contained in BusyBox.
 
 If you have code in BusyBox, you should be listed here.  If you should be
