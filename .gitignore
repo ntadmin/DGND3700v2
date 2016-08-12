@@ -12,4 +12,6 @@ turn_on_ssh_stuff
 *.cgi
 *.o
 *.bz2
+*.a
+*.old
 
