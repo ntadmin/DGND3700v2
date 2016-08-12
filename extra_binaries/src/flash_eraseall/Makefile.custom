@@ -26,16 +26,6 @@ endif
 install: $(srctree)/applets/install.sh busybox busybox.links
 	$(Q)DO_INSTALL_LIBS="$(strip $(LIBBUSYBOX_SONAME) $(DO_INSTALL_LIBS))" \
 		$(SHELL) $< $(CONFIG_PREFIX) $(INSTALL_OPTS)
-ifeq ($(strip $(CONFIG_FEATURE_SUID)),y)
-	@echo
-	@echo
-	@echo --------------------------------------------------
-	@echo You will probably need to make your busybox binary
-	@echo setuid root to ensure all configured applets will
-	@echo work properly.
-	@echo --------------------------------------------------
-	@echo
-endif
 
 uninstall: busybox.links
 	rm -f $(CONFIG_PREFIX)/bin/busybox
