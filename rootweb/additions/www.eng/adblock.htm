@@ -7,17 +7,18 @@ function checkData()
     var cf = document.forms[0];
     var site_list = cf.adblock_sites.value.sites.split("\n");
     for (var i=0; i<site_list.length; ++i) {
-        if (!site_list[i].match(re))) {
+        if ((site_list[i].length > 0) && !site_list[i].match(re)) {
             alert("Invalid domain name: "+site_list[i]);
             return false;
         }
     }
+    dataToHidden(cf);
     return true;
 }
 //-->
 </script></head><body bgcolor="#ffffff" onLoad="dataToVisible(document.forms[0]);document.forms[0].elements[0].focus();service_change();" onUnload="closeWin(datSubWinVar);">
-<form method="POST" action="setup.cgi@post_par#" onSubmit="buttonToDisabled(document.forms[0])">
-<div class="page_title" languageCode = "149">Dynamic DNS</div>
+<form method="POST" action="setup.cgi@post_par#">
+<div class="page_title">Adblocking</div>
 <div class="fix_button">
 <table width="100%" border="0" cellpadding="0" cellspacing="2"><tr><td nowrap colspan="2" align="center">
 <input class="apply_bt" type="SUBMIT" name="Apply" value = "Apply" onClick="return checkData()" languageCode = "18">
@@ -35,7 +36,7 @@ function checkData()
     <tr><!-- RULE --><td colspan="2" background="liteblue.gif" height="12"></td></tr>
 
     <tr><td colspan="2" nowrap>Ad sites to allow access to even when adblock is on. One address per line please.</td></tr>
-    <tr><td colspan="2" align="center"><textarea name="adblock_allow" class="smallfix" rows="15" cols="60" wrap="off" tabindex="-1">@adblock_allow_sites#</textarea></td></tr>
+    <tr><td colspan="2" align="center"><textarea name="adblock_allow_sites" class="smallfix" rows="15" cols="60" wrap="off" tabindex="-1">@adblock_allow_sites#</textarea></td></tr>
 
     <tr><!-- RULE --><td colspan="2" background="liteblue.gif" height="12"></td></tr>
 
@@ -45,7 +46,7 @@ function checkData()
 <input type="hidden" name="this_file" value="adblock.htm">
 <input type="hidden" name="next_file" value="adblock.htm">
 <input type="hidden" name="h_block_ads" value="@h_block_ads#">
-<input type="hidden" name="c4_block_ads_IPAddr" value="@c4_block_ads_IPAddr#">
+<input type="hidden" name="c4_adblock_IPAddr" value="@c4_adblock_IPAddr#">
 <input type="hidden" name="SID" value="@SID#">
 </div>
 </form>
