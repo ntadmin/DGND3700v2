@@ -35,7 +35,7 @@
 #define DEBUG_ACTION 1
 #define DEBUG_NONE   0
 
-#define DEBUG_LEVEL DEBUG_ACTION
+#define DEBUG_LEVEL DEBUG_TONS
 
 FILE *fp_debug = NULL;
 
@@ -47,14 +47,12 @@ char    *page_var_hidden_prefix = "h_";
 #define  PAGE_VAR_HIDDEN_PREFIX_LENGTH 2
 
 // Actual data for processing
-char *cookies;
 char *get_data = NULL;
 char *post_data = NULL;
 char **incoming_argv = NULL;
 
 var_val_pair_array *post_data_vvpa       = NULL;
 var_val_pair_array *get_data_vvpa        = NULL;
-var_val_pair_array *cookies_vvpa         = NULL;
 var_val_pair_array *data_for_render_vvpa = NULL;
 var_val_pair_array *env_vvpa             = NULL;
 
@@ -79,7 +77,6 @@ void cleanup() {
     free_var_val_pair_array(post_data_vvpa);
     free_var_val_pair_array(get_data_vvpa);
     free_var_val_pair_array(data_for_render_vvpa);
-    free_var_val_pair_array(cookies_vvpa);
     free_var_val_pair_plus_array(action_page_vars);
     free_var_val_pair_plus_array(render_page_vars);
     free_var_val_pair_array(env_vvpa);
@@ -339,14 +336,10 @@ void pass_to_netgear_setup_and_exit(char *this_html_file) {
     exit(exit_val);
 }
 
-void issue_adblock_response_and_exit() {
-//    render_page("adblock-text.htm");
-    exit(0);
-}
-
 var_val_pair_plus_array *get_page_vars(FILE *fp) {
     int   l;
     int   tmp1, tmp2;
+    int   nv_type = NVRAM_ENTRY_TYPE_UNKNOWN;
     char  line[128];
     char  page_var[128];
     char  nv_var[128];
@@ -371,22 +364,23 @@ var_val_pair_plus_array *get_page_vars(FILE *fp) {
         if (*pv == '@') pv++;
         if (is_hidden_page_var(pv)) pv += 2;
         // Trim the "#" at the end
-        l = strlen(pv);
-        l--;
-        if (*(pv+l) == '#') *(pv+l) = 0;
+        l = strlen(pv) - 1;
+        if (*(pv+l) == '#') *(pv+l) = '\0';
 
         new_vvpp = addto_var_val_pair_plus_array(result, pv, nv_var);
 
         if ((strlen(pv) > 0) && (strcmp(nv_var, "UNDEFINED") != 0)) {
-            require_variable_in_nvram_cache(nv_var);
+            if (DEBUG_LEVEL >= DEBUG_TONS) mylog("get_page_vars entry", nv_var);
 
             var_rel_p = &var_rel_act[0];
             colon_pos = strchr(var_rel_p, ':');
 
+            if (DEBUG_LEVEL >= DEBUG_TONS) mylog("get_page_vars processing type", nv_var);
             while (var_rel_p != NULL) {
                 if (colon_pos != NULL) *colon_pos = '\0';
 
                 if (*var_rel_p == '#') {
+                    if (DEBUG_LEVEL >= DEBUG_TONS) mylog("get_page_vars type", "Has RC info");
                     var_rel_p++;
                     tmp1 = tmp2 = 0;
                     if (!strncmp(var_rel_p, "ALLR,", 5)) {
@@ -406,6 +400,7 @@ var_val_pair_plus_array *get_page_vars(FILE *fp) {
                     add_var_val_pair_plus_attribute(new_vvpp, VVPP_HAS_RC_INFO, tmp1, tmp2);
                 }
                 else if (*var_rel_p == '@') {
+                    if (DEBUG_LEVEL >= DEBUG_TONS) mylog("get_page_vars type", "Has IP info");
                     var_rel_p++;
                     if      (!strncmp(var_rel_p, "ipstart", 7)) add_var_val_pair_plus_attribute(new_vvpp, VVPP_HAS_IP_START, 0, 0);
                     else if (!strncmp(var_rel_p, "ipend", 5))   add_var_val_pair_plus_attribute(new_vvpp, VVPP_HAS_IP_END, 0, 0);
@@ -413,22 +408,33 @@ var_val_pair_plus_array *get_page_vars(FILE *fp) {
                     else if (!strncmp(var_rel_p, "ipport", 6))  add_var_val_pair_plus_attribute(new_vvpp, VVPP_HAS_IP_PORT, 0, 0);
                 }
                 else if (!strcmp(var_rel_p, "text")) {
+                    if (DEBUG_LEVEL >= DEBUG_TONS) mylog("get_page_vars type", "Text");
                     set_var_val_pair_plus_type(new_vvpp, VVPP_TYPE_TEXT);
+                    nv_type = NVRAM_ENTRY_TYPE_TEXT;
                 }
                 else if (!strcmp(var_rel_p, "opts")) {
+                    if (DEBUG_LEVEL >= DEBUG_TONS) mylog("get_page_vars type", "Option list");
                     set_var_val_pair_plus_type(new_vvpp, VVPP_TYPE_OPTS);
+                    nv_type = NVRAM_ENTRY_TYPE_TEXT;
                 }
                 else if (!strcmp(var_rel_p, "httpoptionlistfromarray")) {
+                    if (DEBUG_LEVEL >= DEBUG_TONS) mylog("get_page_vars type", "HTTP Option list from array");
                     set_var_val_pair_plus_type(new_vvpp, VVPP_TYPE_OPTION_LIST);
+                    nv_type = NVRAM_ENTRY_TYPE_ARRAY;
                 }
                 else if (!strcmp(var_rel_p, "listfromarray")) {
+                    if (DEBUG_LEVEL >= DEBUG_TONS) mylog("get_page_vars type", "List from array");
                     set_var_val_pair_plus_type(new_vvpp, VVPP_TYPE_LIST);
+                    nv_type = NVRAM_ENTRY_TYPE_ARRAY;
                 }
                 else if (!strcmp(var_rel_p, "array_entry")) {
+                    if (DEBUG_LEVEL >= DEBUG_TONS) mylog("get_page_vars type", "Array entry");
                     set_var_val_pair_plus_type(new_vvpp, VVPP_TYPE_ARRAY_ENTRY);
+                    nv_type = NVRAM_ENTRY_TYPE_ARRAY;
                 }
                 else {
                     // In the absence of all the above, this is a translation list
+                    if (DEBUG_LEVEL >= DEBUG_TONS) mylog("get_page_vars type", "Has translation table");
                     phrase = strtok(var_rel_p, ";");
                     while (phrase != NULL) {
                         extra_vvpa = parse_var_equals_val_into_vvpa(phrase, extra_vvpa);
@@ -443,37 +449,85 @@ var_val_pair_plus_array *get_page_vars(FILE *fp) {
                 }
                 else var_rel_p = NULL;
             }
+            if (require_variable_in_nvram_cache(nv_var, nv_type)) {
+                if (DEBUG_LEVEL >= DEBUG_LOTS) mylog("get_page_vars ensured in cache", nv_var);
+            }
+            else {
+                if (DEBUG_LEVEL >= DEBUG_ACTION) mylog("get_page_vars failed to get in cache", nv_var);
+            }
         }
     }
 
+    if (DEBUG_LEVEL >= DEBUG_LOTS) mylog("get_page_vars", "completed");
     return result;
 }
 
 void get_render_page_vars(FILE *fp) {
     render_page_vars = get_page_vars(fp);
-    if (DEBUG_LEVEL >= DEBUG_TONS) vvppa_log_to_file(fp_debug, render_page_vars, "get_render_page_vars entry: %s\n");
+    if (DEBUG_LEVEL >= DEBUG_TONS) {
+        if (DEBUG_LEVEL >= DEBUG_TONS) mylog("get_render_page_vars", "Dumping acquired vars for your pleasure ...");
+        vvppa_log_to_file(fp_debug, render_page_vars, "get_render_page_vars entry: %s\n");
+        if (DEBUG_LEVEL >= DEBUG_TONS) mylog("get_render_page_vars", "Dumping done");
+    }
 }
 
 void get_action_page_vars(FILE *fp) {
     action_page_vars = get_page_vars(fp);
-    if (DEBUG_LEVEL >= DEBUG_TONS) vvppa_log_to_file(fp_debug, action_page_vars, "get_action_page_vars entry: %s\n");
+    if (DEBUG_LEVEL >= DEBUG_TONS) {
+        if (DEBUG_LEVEL >= DEBUG_TONS) mylog("get_action_page_vars", "Dumping acquired vars for your pleasure ...");
+        vvppa_log_to_file(fp_debug, action_page_vars, "get_action_page_vars entry: %s\n");
+        if (DEBUG_LEVEL >= DEBUG_TONS) mylog("get_action_page_vars", "Dumping done");
+    }
 }
 
 void core_info_to_render_data() {
     FILE *fp;
     char *value = NULL;
     char  empty_string[1] = "";
-    char  sid[16];
-    char  post_par[32];
+    char  sid[20];
+    char  post_par[128];
+
+    if (DEBUG_LEVEL >= DEBUG_ACTION) mylog("core_info_to_render_data", "starting");
 
     // Add the session ID and model number to the list as they will be wanted
     sid[0] = '\0';
 
+    if (DEBUG_LEVEL >= DEBUG_TONS) mylog("core_info_to_render_data", "seeking session if from /tmp/SessionFile");
     fp = fopen("/tmp/SessionFile", "r");
-    if (fp != NULL) fgets(sid, 16, fp);
+    if (fp != NULL) {
+        if (DEBUG_LEVEL >= DEBUG_LOTS) mylog("core_info_to_render_data", "reading file");
+        fgets(sid, 16, fp);
+        if (DEBUG_LEVEL >= DEBUG_LOTS) mylog("core_info_to_render_data: file says", sid);
+    }
 
     if (strlen(sid) < 5) { // That wasn't real ....
-        sprintf(sid, get_get_value("id"));
+        if (DEBUG_LEVEL >= DEBUG_LOTS) mylog("core_info_to_render_data", "clearly drivel, trying POST info");
+        value = get_post_value("SID");
+        if (value == NULL) {
+            if (DEBUG_LEVEL >= DEBUG_LOTS) mylog("core_info_to_render_data", "No id in POST");
+        }
+        else {
+            if (strlen(value) > 19) {
+                if (DEBUG_LEVEL >= DEBUG_LOTS) mylog("core_info_to_render_data: POST id too long, shortening", value);
+            }
+            sprintf(sid, value);
+            if (DEBUG_LEVEL >= DEBUG_LOTS) mylog("core_info_to_render_data: POST says", sid);
+        }
+    }
+
+    if (strlen(sid) < 5) { // That wasn't real ....
+        if (DEBUG_LEVEL >= DEBUG_LOTS) mylog("core_info_to_render_data", "clearly drivel, trying GET info");
+        value = get_get_value("id");
+        if (value == NULL) {
+            if (DEBUG_LEVEL >= DEBUG_LOTS) mylog("core_info_to_render_data", "No id in GET");
+        }
+        else {
+            if (strlen(value) > 19) {
+                if (DEBUG_LEVEL >= DEBUG_LOTS) mylog("core_info_to_render_data: GET id too long, shortening", value);
+            }
+            sprintf(sid, value);
+            if (DEBUG_LEVEL >= DEBUG_LOTS) mylog("core_info_to_render_data: GET says", sid);
+        }
     }
 
     // This was my best guess for this one, but it seems to be wrong
@@ -491,6 +545,8 @@ void core_info_to_render_data() {
     if (value == NULL) value = get_get_or_post_value("next_file");
     if (value == NULL) value = empty_string;
     data_for_render_vvpa = addto_var_val_pair_array(data_for_render_vvpa, "parent_file", value);
+
+    if (DEBUG_LEVEL >= DEBUG_LOTS) mylog("core_info_to_render_data", "done");
 }
 
 void save_data() {
@@ -532,7 +588,13 @@ void save_data() {
         nv_value   = NULL;
         cur_value  = NULL;
         pv_index   = find_index_of_var_in_vvppa(action_page_vars, page_var);
-        if (pv_index != VVPPA_NOT_FOUND) vvpp_entry = action_page_vars->vvpps[pv_index];
+        if (pv_index != VVPPA_NOT_FOUND) {
+            if (DEBUG_LEVEL >= DEBUG_LOTS) mylog("save_data - post variable is on action list", page_var);
+            vvpp_entry = action_page_vars->vvpps[pv_index];
+        }
+        else {
+            if (DEBUG_LEVEL >= DEBUG_LOTS) mylog("save_data - post variable is NOT on action list", page_var);
+        }
 
         if (vvpp_entry != NULL) {
             // Has this one already been supplied by the page? If so, hidden one seems to trumpt visible one ...
@@ -677,16 +739,18 @@ void save_data() {
                 if (*cp == '\0') loop_done = true;
                 else             loop_done = false;
                 while (!loop_done) {
-                    cp2 = strchr(cp, '\n');
+                    cp2 = strstr(cp, "\\\n");
                     if (cp2 == NULL) {
                         cp2 = cp + strlen(cp);
                         loop_done = true;
                     }
-                    *cp2 = '\0';
+                    else {
+                        *cp2 = '\0';
+                    }
                     if (DEBUG_LEVEL >= DEBUG_TONS) mylog("save data - list to", cp);
                     set_array_value_in_nvram_cache(vvpp_entry->value, row, col, cp);
                     row++;
-                    cp = cp2 + 1;
+                    cp = cp2 + 2;
                 }
                 clear_array_rows_this_and_above_in_nvram_cache(vvpp_entry->value, row);
                 vars_so_far_vvpa = addto_var_val_pair_array(vars_so_far_vvpa, page_var, nv_value);
@@ -752,7 +816,6 @@ int main(int argc, char *argv[]) {
     char *todo_value;
     char *next_file_value = NULL; // The file to render once the actions are complete
     char *this_file_value = NULL; // The file which is triggering the todo action, eg save
-    char *requested_host = NULL;
     char  filename[128];
     FILE *fp;
     bool  have_data_for_render = false;
@@ -776,25 +839,8 @@ int main(int argc, char *argv[]) {
     }
 
     env_vvpa       = parse_argv_type_data_into_vvpa(environ, env_vvpa);
-    requested_host = get_env_value("HTTP_HOST");
-
-    if (requested_host != NULL) {
-        if (DEBUG_LEVEL >= DEBUG_LOTS) mylog("main - checking if redirected ad request", requested_host);
-        // If the requested host contains "routerlogin" that is a real address for us
-        // If not ...
-        if (strstr(requested_host, "routerlogin") == NULL) {
-            // Does it match our IP, if not then we will assume that it is a redirected ad request ...
-            require_variable_in_nvram_cache("lan_ipaddr");
-            if (strcmp(requested_host, get_value_from_nvram_cache("lan_ipaddr"))) {
-                mylog("main - checking if redirected ad request", "IT IS");
-                issue_adblock_response_and_exit();
-            }
-        }
-    }
-
     get_data_vvpa  = parse_post_get_type_data_into_vvpa(get_data, NULL, "&");
     post_data_vvpa = parse_post_get_type_data_into_vvpa(post_data, NULL, "&");
-    cookies_vvpa   = parse_post_get_type_data_into_vvpa(get_env_value("HTTP_COOKIE"), NULL, ";");
 
     todo_value      = get_get_or_post_value("todo");
     next_file_value = get_get_or_post_value("next_file");
@@ -803,7 +849,6 @@ int main(int argc, char *argv[]) {
     if (DEBUG_LEVEL >= DEBUG_TONS) {
         vvpa_log_to_file(fp_debug, get_data_vvpa, "main - get data incoming : %s=%s\n");
         vvpa_log_to_file(fp_debug, post_data_vvpa, "main - post data incoming : %s=%s\n");
-        vvpa_log_to_file(fp_debug, cookies_vvpa, "main - cookie data incoming : %s=%s\n");
         vvpa_log_to_file(fp_debug, env_vvpa, "main - environment incoming : %s=%s\n");
     }
 

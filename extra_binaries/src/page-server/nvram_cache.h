@@ -1,5 +1,6 @@
-#define NVRAM_ENTRY_TYPE_TEXT  0
-#define NVRAM_ENTRY_TYPE_ARRAY 1
+#define NVRAM_ENTRY_TYPE_UNKNOWN -1
+#define NVRAM_ENTRY_TYPE_TEXT     0
+#define NVRAM_ENTRY_TYPE_ARRAY    1
 
 #define NVRAM_POS_QUERY_FAILED -1
 
@@ -8,7 +9,7 @@ typedef struct nvram_entry {
     char *value;
     char ***data;
     int   type;
-    int   rows;
+    int   rows_used;
     int   rows_avail;
     int   columns;
     bool  changed;
@@ -23,7 +24,7 @@ typedef struct nvram_cache {
 
 void free_nvram_cache();
 
-void require_variable_in_nvram_cache(char * /* name */);
+bool require_variable_in_nvram_cache(char * /* name */, int type);
 
 char *get_array_value_from_nvram_cache(char * /* name */, int /* row */, int /* column */);
 int   get_array_num_rows_from_nvram_cache(char * /* name */);

@@ -9,6 +9,11 @@
 #include <ctype.h> // isspace
 #include "var_val_pair.h"
 
+// define these as needed
+#define DEBUG_ON  1
+#define DEBUG_OFF 0
+#define DEBUG_LOGGING DEBUG_ON
+
 char *my_strchrdup(char *src, char eow) {
     int  l;
     char *res;
@@ -161,7 +166,19 @@ void vvpp_log_to_file(FILE *fp, var_val_pair_plus *vvpp, char *line) {
     char buffer[256];
     char num[7];
 
+    if (DEBUG_LOGGING == DEBUG_ON) {
+        fprintf(fp, "vvpp_log_to_file - starting up\n");
+        fprintf(fp, "vvpp_log_to_file - vvpp: %s\n", (vvpp == NULL ? "NULL" : "non-NULL"));
+    }
+
+    if (vvpp == NULL) {
+        fprintf(fp, "vvpp_log_to_file: NULL struct sent, nothing doing");
+        return;
+    }
+
     sprintf(buffer, "@%s# %s ", vvpp->var, vvpp->value);
+
+    if (DEBUG_LOGGING == DEBUG_ON) fprintf(fp, "vvpp_log_to_file - vars: %s\n", buffer);
 
     switch(vvpp->type) {
     case VVPP_TYPE_TEXT:
@@ -175,6 +192,9 @@ void vvpp_log_to_file(FILE *fp, var_val_pair_plus *vvpp, char *line) {
         break;
     case VVPP_TYPE_ARRAY_ENTRY:
         strcat(buffer, "array_entry");
+        break;
+    case VVPP_TYPE_LIST:
+        strcat(buffer, "listfromarray");
         break;
     }
 
@@ -215,7 +235,10 @@ void vvpp_log_to_file(FILE *fp, var_val_pair_plus *vvpp, char *line) {
 
 void vvppa_log_to_file(FILE *fp, var_val_pair_plus_array *vvppa, char *line) {
     int i;
+
+    fprintf(fp, "vvppa_log_to_file - starting up\n");
     for (i=0; i<vvppa->num_used; i++) {
+        fprintf(fp, "vvppa_log_to_file - entry %d\n", i);
         vvpp_log_to_file(fp, vvppa->vvpps[i], line);
     }
 }
@@ -227,7 +250,10 @@ void vvpa_log_to_file(FILE *fp, var_val_pair_array *vvpa, char *line) {
     char         *null_string = "NULL";
     int           i;
 
-    if (vvpa == NULL) return;
+    if (vvpa == NULL) {
+        fprintf(fp, line, "array sent", "NULL");
+        return;
+    }
 
     for (i=0; i<vvpa->num_used; i++) {
         vvp   = vvpa->vvps[i];
@@ -262,12 +288,14 @@ var_val_pair_array *addto_var_val_pair_array(var_val_pair_array *vvpa, char *var
 var_val_pair_plus *addto_var_val_pair_plus_array(var_val_pair_plus_array *vvppa, char *var, char *value) {
     var_val_pair_plus *new_vvpp;
 
-    new_vvpp = create_var_val_pair_plus(var, value);
+    if (vvppa == NULL) return NULL;
 
-    if (vvppa == NULL) vvppa = create_var_val_pair_plus_array();
+    new_vvpp = create_var_val_pair_plus(var, value);
+    if (new_vvpp == NULL) return NULL;
+
     if (vvppa->num_alloc == vvppa->num_used) {
         vvppa->num_alloc += 10;
-        vvppa->vvpps          = (var_val_pair_plus **)realloc(vvppa->vvpps, vvppa->num_alloc*sizeof(var_val_pair_plus *));
+        vvppa->vvpps = (var_val_pair_plus **)realloc(vvppa->vvpps, vvppa->num_alloc*sizeof(var_val_pair_plus *));
     }
     vvppa->vvpps[vvppa->num_used] = new_vvpp;
     vvppa->num_used++;
@@ -441,24 +469,25 @@ var_val_pair *parse_var(char *s) {
     vlen  = strlen(s);
     value = calloc(vlen, sizeof(char));
 
-
     // Get the variable name
     vname = s;
     while(*s && (*s != '=')) s++;
     if(!*s) return NULL;
-    *(s++) = '\0';
+    *s = '\0';
 
-    // Trim spaces at beginning and end (important for var, not done for value.
+    // Trim spaces at beginning (important for var, not done for value).
     while (isspace(*vname)) vname++;
-    if (s != vname) {
-        s2 = s-1;
-        while (isspace(*s2)) {
-            *s2 = '\0';
-            s2--;
-        }
+    if (vname == s) return NULL; // There is no variable name, just space!
+
+    // And end (ditto)
+    s2 = s-1;
+    while (isspace(*s2)) {
+        *s2 = '\0';
+        s2--;
     }
 
     // Create space for the value
+    s++;
     vcount = 0;
     for(val=s; *val; val++) {
         switch( *val ) {
@@ -474,20 +503,23 @@ var_val_pair *parse_var(char *s) {
             c = *val;
         }
 
-        if ((c == '\\') || (c == '\'') || (c == '\n')) {
-            value[vcount] = '\\';
+        // Simply drop this control character, otherwise record
+        if (!(c == '\r')) {
+            if ((c == '\\') || (c == '\'') || (c == '\n')) {
+                value[vcount] = '\\';
+                vcount++;
+                if (vcount == vlen) {
+                    value = realloc(value, vlen+20);
+                    vlen += 20;
+                }
+            }
+
+            value[vcount] = c;
             vcount++;
             if (vcount == vlen) {
                 value = realloc(value, vlen+20);
                 vlen += 20;
             }
-        }
-
-        value[vcount] = c;
-        vcount++;
-        if (vcount == vlen) {
-            value = realloc(value, vlen+20);
-            vlen += 20;
         }
     }
     value[vcount] = 0;
@@ -500,7 +532,7 @@ var_val_pair_array *parse_var_equals_val_into_vvpa(char *s, var_val_pair_array *
     var_val_pair *vvp = parse_var(s);
     if (vvp != NULL) {
         vvpa = addto_var_val_pair_array(vvpa, vvp->var, vvp->value);
-        free(vvp);
+        free_var_val_pair(vvp);
     }
     return vvpa;
 }
@@ -509,6 +541,7 @@ var_val_pair_array *parse_argv_type_data_into_vvpa(char **argv, var_val_pair_arr
     int   i;
     char *phrase;
     char *phrase_copy;
+
     if (argv != NULL) {
         i=0;
         while (argv[i] != NULL) {
