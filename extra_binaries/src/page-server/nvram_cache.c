@@ -100,6 +100,9 @@ nvram_entry *nvram_cache_create_entry(char *name, char *value) {
     entry->value   = my_strdup(value);
     entry->name    = my_strdup(name);
     entry->changed = false;
+    entry->rows_used  = 0;
+    entry->rows_avail = 0;
+    entry->columns    = 0;
 
     return entry;
 }
@@ -180,6 +183,9 @@ nvram_entry *nvram_cache_want_variable(char *name) {
 
     if (strlen(value) < 1) {
         if (DEBUG_ACQUIRE) mylog("nvram_cache_want_variable - it's zero length, so unknown type", value);
+        entry->rows_used  = 0;
+        entry->rows_avail = 0;
+        entry->columns    = 0;
         entry->type = NVRAM_ENTRY_TYPE_UNKNOWN;
     }
     else if ((rcount == 1) && (cmax == 1)) {
@@ -299,6 +305,8 @@ char *get_array_value_from_nvram_cache(char *name, int row, int column) {
     if ((row < 0) || (column < 0)) return NULL;
     if (row >= entry->rows_used) return NULL;
     if (column >= entry->columns) return NULL;
+    if (entry->data == NULL) return NULL;
+    if (entry->data[row] == NULL) return NULL;
     return entry->data[row][column];
 }
 

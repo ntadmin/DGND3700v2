@@ -194,6 +194,7 @@ void get_post_data() {
         sscanf(lengthstr, "%ld", &length);
         post_data = calloc(length+2, sizeof(char)); // for luck
         fgets(post_data, length+1, stdin);
+        if (DEBUG_LEVEL >= DEBUG_TONS) mylog("get_post_data - POST data got", post_data);
     }
 }
 
@@ -1003,25 +1004,34 @@ void render_page_variable_to_stdout(char *pv) {
         break;
     case VVPP_TYPE_OPTION_LIST:
     case VVPP_TYPE_LIST:
-        if (DEBUG_LEVEL >= DEBUG_TONS) mylog("render_page_variable_to_stdout; type", "option list");
+        if (DEBUG_LEVEL >= DEBUG_TONS) mylog("render_page_variable_to_stdout; type", "option_list or list");
         // We are assuming ALL_ROWS here as it must be
         col      = vvpp->column;
         num_rows = get_array_num_rows_from_nvram_cache(vvpp->value);
+        if (DEBUG_LEVEL >= DEBUG_TONS) {
+            sprintf(buffer, "%d", num_rows);
+            mylog("render_page_variable_to_stdout; num entries", buffer);
+        }
         if (num_rows != NVRAM_POS_QUERY_FAILED) {
             for (i=0; i<num_rows; i++) {
                 cp = get_array_value_from_nvram_cache(vvpp->value, i, col);
-                if (DEBUG_LEVEL >= DEBUG_TONS) mylog("render_page_variable_to_stdout option", cp);
-                if (vvpp->type == VVPP_TYPE_OPTION_LIST) {
-                    write(STDOUT_FILENO, "<option name=\"", 13);
-                    write(STDOUT_FILENO, "\">", 2);
+                if (cp != NULL) {
+                    if (DEBUG_LEVEL >= DEBUG_TONS) mylog("render_page_variable_to_stdout list entry", cp);
+                    if (vvpp->type == VVPP_TYPE_OPTION_LIST) {
+                        write(STDOUT_FILENO, "<option name=\"", 13);
+                        write(STDOUT_FILENO, "\">", 2);
+                        write(STDOUT_FILENO, cp, strlen(cp));
+                    }
                     write(STDOUT_FILENO, cp, strlen(cp));
-                }
-                write(STDOUT_FILENO, cp, strlen(cp));
-                if (vvpp->type == VVPP_TYPE_OPTION_LIST) {
-                    write(STDOUT_FILENO, "</option>", 9);
+                    if (vvpp->type == VVPP_TYPE_OPTION_LIST) {
+                        write(STDOUT_FILENO, "</option>", 9);
+                    }
+                    else {
+                        write(STDOUT_FILENO, "\n", 1);
+                    }
                 }
                 else {
-                    write(STDOUT_FILENO, "\n", 1);
+                    if (DEBUG_LEVEL >= DEBUG_TONS) mylog ("render_page_variable_to_stdout list entry", "NULL");
                 }
             }
         }

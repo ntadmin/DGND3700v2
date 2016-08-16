@@ -503,8 +503,8 @@ var_val_pair *parse_var(char *s) {
             c = *val;
         }
 
-        // Simply drop this control character, otherwise record
-        if (!(c == '\r')) {
+        // Simply drop this control character, otherwise record the data, with preceding '\' if needed
+        if (c != '\r') {
             if ((c == '\\') || (c == '\'') || (c == '\n')) {
                 value[vcount] = '\\';
                 vcount++;
