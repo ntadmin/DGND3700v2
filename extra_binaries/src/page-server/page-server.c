@@ -740,7 +740,7 @@ void save_data() {
                 if (*cp == '\0') loop_done = true;
                 else             loop_done = false;
                 while (!loop_done) {
-                    cp2 = strstr(cp, "\\\n");
+                    cp2 = strchr(cp, '\n');
                     if (cp2 == NULL) {
                         cp2 = cp + strlen(cp);
                         loop_done = true;
@@ -750,8 +750,11 @@ void save_data() {
                     }
                     if (DEBUG_LEVEL >= DEBUG_TONS) mylog("save data - list to", cp);
                     set_array_value_in_nvram_cache(vvpp_entry->value, row, col, cp);
+                    if (!loop_done) {
+                        *cp2 = '\n';
+                    }
                     row++;
-                    cp = cp2 + 2;
+                    cp = cp2 + 1;
                 }
                 clear_array_rows_this_and_above_in_nvram_cache(vvpp_entry->value, row);
                 vars_so_far_vvpa = addto_var_val_pair_array(vars_so_far_vvpa, page_var, nv_value);

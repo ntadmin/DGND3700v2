@@ -490,21 +490,22 @@ var_val_pair *parse_var(char *s) {
     s++;
     vcount = 0;
     for(val=s; *val; val++) {
-        switch( *val ) {
-        case '%':
-            buf[0]=*(++val); buf[1]=*(++val);
-            buf[2]='\0';
-            sscanf(buf,"%2x",&c);
-            break;
-        case '+':
-            c = ' ';
-            break;
-        default:
-            c = *val;
-        }
+        // If the char isn't on the discard list, process it
+        if (*val != '\r') {
+            switch( *val ) {
+            case '%':
+                buf[0]=*(++val); buf[1]=*(++val);
+                buf[2]='\0';
+                sscanf(buf,"%2x",&c);
+                break;
+            case '+':
+                c = ' ';
+                break;
+            default:
+                c = *val;
+            }
 
-        // Simply drop this control character, otherwise record the data, with preceding '\' if needed
-        if (c != '\r') {
+/*
             if ((c == '\\') || (c == '\'') || (c == '\n')) {
                 value[vcount] = '\\';
                 vcount++;
@@ -513,7 +514,7 @@ var_val_pair *parse_var(char *s) {
                     vlen += 20;
                 }
             }
-
+*/
             value[vcount] = c;
             vcount++;
             if (vcount == vlen) {
