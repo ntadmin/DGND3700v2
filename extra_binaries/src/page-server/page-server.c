@@ -1034,8 +1034,8 @@ void render_page_variable_to_stdout(char *pv) {
                     if (DEBUG_LEVEL >= DEBUG_TONS) mylog("render_page_variable_to_stdout list entry", cp);
                     if (vvpp->type == VVPP_TYPE_OPTION_LIST) {
                         write(STDOUT_FILENO, "<option name=\"", 13);
-                        write(STDOUT_FILENO, "\">", 2);
                         write(STDOUT_FILENO, cp, strlen(cp));
+                        write(STDOUT_FILENO, "\">", 2);
                     }
                     write(STDOUT_FILENO, cp, strlen(cp));
                     if (vvpp->type == VVPP_TYPE_OPTION_LIST) {
