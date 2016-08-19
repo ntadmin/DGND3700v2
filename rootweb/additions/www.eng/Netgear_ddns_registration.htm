@@ -274,10 +274,10 @@ function service_change()
 		location.href="setup.cgi?next_file=Netgear_ddns_registration.htm";
 	else
 	{
-		if(cf.NGR_DDNSActive.checked)
-			location.href="setup.cgi?next_file=DNS_ddns.htm&ddns_enable=enable&ddns_service_provider="+ddns_name;
-		else
-			location.href="setup.cgi?next_file=DNS_ddns.htm&ddns_enable=disable&ddns_service_provider="+ddns_name;
+                if(cf.NGR_DDNSActive.checked)
+                        location.href="setup.cgi?next_file=DNS_ddns.htm&ddns_enable=enable&ddns_service_provider="+ddns_name;
+                else
+                        location.href="setup.cgi?next_file=DNS_ddns.htm&ddns_enable=disable&ddns_service_provider="+ddns_name;
 	}
 	return true;
 }

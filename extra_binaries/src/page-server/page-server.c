@@ -35,7 +35,7 @@
 #define DEBUG_ACTION 1
 #define DEBUG_NONE   0
 
-#define DEBUG_LEVEL DEBUG_TONS
+#define DEBUG_LEVEL DEBUG_ACTION
 
 FILE *fp_debug = NULL;
 
@@ -993,6 +993,18 @@ void render_page_variable_to_stdout(char *pv) {
     }
 
     vvpp = render_page_vars->vvpps[vvppa_i];
+
+    // 1a. It is always possible the the stored variable name is sent in other information ...
+    if (vvpp->value != NULL) {
+        cp = get_get_or_post_value(vvpp->value);
+        if (cp == NULL) cp = find_value_from_var(data_for_render_vvpa, vvpp->value);
+        if (cp != NULL) {
+            if (DEBUG_LEVEL >= DEBUG_LOTS) mylog("render_page_variable_to_stdout was in core or post or get; value", cp);
+            write(STDOUT_FILENO, cp, strlen(cp));
+            return;
+        }
+    }
+
 
     // 2. Based on it's type and HAS attrbiutes, get the value to STDOUT ...
     cp = NULL;

@@ -12,7 +12,7 @@
 // define these as needed
 #define DEBUG_ON  1
 #define DEBUG_OFF 0
-#define DEBUG_LOGGING DEBUG_ON
+#define DEBUG_LOGGING DEBUG_OFF
 
 char *my_strchrdup(char *src, char eow) {
     int  l;

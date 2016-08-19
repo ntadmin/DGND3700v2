@@ -192,7 +192,7 @@ function service_change()
 		location.href="setup.cgi?next_file=Netgear_ddns_registration.htm";
 	else
 	{
-		if(cf.NGR_DDNSActive.checked)
+ 		if(cf.NGR_DDNSActive.checked)
 			location.href="setup.cgi?next_file=DNS_ddns.htm&ddns_enable=enable&ddns_service_provider="+ddns_name;
 		else
 			location.href="setup.cgi?next_file=DNS_ddns.htm&ddns_enable=disable&ddns_service_provider="+ddns_name;
@@ -224,7 +224,7 @@ function service_change()
 		<td width="50%" align="left">
 		<select name="NGR_DDNSProviderlist" size="1" onchange="service_change()">
 		<option value="NETGEAR" selected>NETGEAR</option>
-		<option value="www.DynDNS.org">www.DynDNS.org</option>
+		<option value="dyndns">www.DynDNS.org</option>
 	    <option value="noipdns">www.No-IP.com</option>
 	    <option value="dnsomatic">DNS-O-Matic</option>
 		</select></td>
