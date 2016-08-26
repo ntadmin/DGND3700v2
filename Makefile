@@ -19,6 +19,9 @@ all:
 image: kernel root source
 	@cp $(NETGEAR_BASE_DIR)/Source/image/$(PROJECT).img .
 
+openwrt: openwrt-source
+	@cp $(NETGEAR_BASE_DIR)/Source/image/$(PROJECT).img $(PROJECT)-ow.img
+
 root: rootweb/target-orig.tar.bz2 extrabin packages rootweb
 
 rootweb:
@@ -46,6 +49,10 @@ source: $(NETGEAR_BASE_DIR)/Makefile
 	@sed -i '/SUB_VER=/c\SUB_VER=$(CUSTOM_VERSION)' $(NETGEAR_BASE_DIR)/Source/Builds/$(PROJECT).mak
 	@$(foreach package, $(netgear_packages_not_needed), sed -i '/$(package)/c\# CUSTOM MOD: $(package) not needed for custom build' $(NETGEAR_APPS)/Makefile; )
 	make -C $(NETGEAR_BASE_DIR) source SHELL=/bin/bash
+
+openwrt-source: $(NETGEAR_BASE_DIR)/Makefile
+	cp openwrt/rootfs.img $(NETGEAR_BASE_DIR)/Source/image
+	make -C $(NETGEAR_BASE_DIR)/Source img
 
 source_clean:
 	make -C $(NETGEAR_BASE_DIR) source_clean
