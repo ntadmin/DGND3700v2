@@ -11,6 +11,7 @@ void mylog(char *, char *);
 #define DEBUG_CORE    0
 #define DEBUG_ACQUIRE 0
 #define DEBUG_SYNC    0
+#define DEBUG_GET     0
 
 // Remove this #define to make this code do everything except alter the nvram contents.
 #define REALLY_WRITE_TO_NVRAM
@@ -296,17 +297,50 @@ int get_array_num_rows_from_nvram_cache(char *name) {
 char *get_array_value_from_nvram_cache(char *name, int row, int column) {
     nvram_entry *entry;
 
+    if (DEBUG_GET) {
+        char log_space[50];
+        sprintf(log_space, "%s(R%d,C%d)", name, row, column);
+        mylog("get_array_value_from_nvram_cache - request for", log_space);
+    }
+
     if (nc == NULL) create_nvram_cache();
-    if (nc == NULL) return NULL;
+    if (nc == NULL) {
+        if (DEBUG_GET) mylog("get_array_value_from_nvram_cache - FAIL", "No cache");
+        return NULL;
+    }
 
     entry = nvram_cache_want_variable(name);
-    if (entry == NULL) return NULL;
-    if (entry->type != NVRAM_ENTRY_TYPE_ARRAY) return NULL;
-    if ((row < 0) || (column < 0)) return NULL;
-    if (row >= entry->rows_used) return NULL;
-    if (column >= entry->columns) return NULL;
-    if (entry->data == NULL) return NULL;
-    if (entry->data[row] == NULL) return NULL;
+    if (entry == NULL) {
+        if (DEBUG_GET) mylog("get_array_value_from_nvram_cache - FAIL", "No entry");
+        return NULL;
+    }
+    if (entry->type != NVRAM_ENTRY_TYPE_ARRAY) {
+        if (DEBUG_GET) mylog("get_array_value_from_nvram_cache - FAIL", "Not array");
+        return NULL;
+    }
+    if ((row < 0) || (column < 0)) {
+        if (DEBUG_GET) mylog("get_array_value_from_nvram_cache - FAIL", "row or column sub zero");
+        return NULL;
+    }
+    if (row >= entry->rows_used) {
+        if (DEBUG_GET) mylog("get_array_value_from_nvram_cache - FAIL", "row too high");
+        return NULL;
+    }
+    if (column >= entry->columns) {
+        if (DEBUG_GET) mylog("get_array_value_from_nvram_cache - FAIL", "column too high");
+        return NULL;
+    }
+    if (entry->data == NULL) {
+        if (DEBUG_GET) mylog("get_array_value_from_nvram_cache - FAIL", "no data");
+        return NULL;
+    }
+    if (entry->data[row] == NULL) {
+        if (DEBUG_GET) mylog("get_array_value_from_nvram_cache - FAIL", "no row in data");
+        return NULL;
+    }
+
+    if (DEBUG_GET) mylog("get_array_value_from_nvram_cahce - SUCCESS", entry->data[row][column]);
+
     return entry->data[row][column];
 }
 
@@ -429,7 +463,7 @@ void set_array_value_in_nvram_cache(char *name, int row, int column, char *value
         entry->changed = true;
     }
 
-    if (row > entry->rows_used) entry->rows_used = row;
+    if (row >= entry->rows_used) entry->rows_used = row + 1;
 
     if (DEBUG_SYNC) mylog("set_array_value_in_nvram_cache -  stored", entry->data[row][column]);
 }
