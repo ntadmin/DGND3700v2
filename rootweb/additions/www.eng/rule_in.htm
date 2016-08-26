@@ -79,7 +79,11 @@ function setwan()
 			@service_option_list# @service_option_list_def#
 		</select></td>
 	</tr><tr><td languageCode = "231">Action</td>
-		<td nowrap align="right"><select name="fwin_action" onChange="setlan()"><option value="2" languageCode = "236">ALLOW always</option><option value="3" languageCode = "436">ALLOW by schedule, otherwise Block</option><option value="0" languageCode = "238">BLOCK always</option><option value="1" languageCode = "437">BLOCK by schedule, otherwise Allow</option></select></td>
+	<td nowrap align="right"><select name="fwin_action" onChange="setlan()"><option value="2" languageCode = "236">ALLOW always</option><option value="3" languageCode = "436">ALLOW by schedule, otherwise Block</option><option value="0" languageCode = "238">BLOCK always</option><option value="1" languageCode = "437">BLOCK by schedule, otherwise Allow</option></select></td>
+
+        </tr><tr><td>Rule active</td>
+        <td nowrap align="right"><select name="fwin_enable"><option select value="enable">Yes</option><option value="disable">No</option></select></td>
+
 	</tr><tr><!-- RULE --><td colspan="2" height="12"></td>
 	</tr><tr><td nowrap languageCode = "438">Send to LAN Server</td>
 		 <td nowrap align="right" class="num"><input type="text" class="num" size="4" name="lan_start_ip1" value="192" maxlength="3" onFocus="if (this.disabled) this.blur()">.<input type="text" class="num" size="4" maxlength="3" name="lan_start_ip2" value="168" onFocus="if (this.disabled) this.blur()">.<input type="text" class="num" size="4" maxlength="3" name="lan_start_ip3" value="0" onFocus="if (this.disabled) this.blur()">.<input type="text" class="num" size="4" maxlength="3" name="lan_start_ip4" value="1" onFocus="if (this.disabled) this.blur()"></td>
@@ -100,6 +104,7 @@ function setwan()
 	</tr></table><!-- DemoStart
 <input type="hidden" name="h_service_list" value="@h_service_list#">
 <input type="hidden" name="h_fwin_action" value="@h_fwin_action#">
+<input type="hidden" name="h_fwin_enable" value="@h_fwin_enable#">
 <input type="hidden" name="h_fwin_waniptype" value="@h_fwin_waniptype#">
 <input type="hidden" name="h_fwin_logging" value="@h_fwin_logging#">
 <input type="hidden" name="c4_wan_start_ip" value="111.22.33.44">
@@ -118,7 +123,7 @@ function setwan()
  <input type="hidden" name="edit" value="@edit#">
  <input type="hidden" name="todo" value="save">
  <input type="hidden" name="this_file" value="rule_in.htm">
- <input type="hidden" name="next_file" value="rule_in.htm">
+ <input type="hidden" name="next_file" value="FW_forward.htm">
  <input type="hidden" name="SID" value="@SID#">
 </div>
 </form>
