@@ -35,9 +35,19 @@
 #define DEBUG_ACTION 1
 #define DEBUG_NONE   0
 
-#define DEBUG_LEVEL DEBUG_ACTION
+#define DEBUG_LEVEL DEBUG_TONS
+
+#define ACTION_UNKNOWN   0
+#define ACTION_NONE      1
+#define ACTION_OTHER     2
+#define ACTION_CFG_INIT  4
+#define ACTION_NEWFILE   8
+#define ACTION_EDIT     16
+#define ACTION_SAVE     32
+#define ACTION_SAVE_PWD 64
 
 FILE *fp_debug = NULL;
+int   fd_debug = 0;
 
 // Enviroment variables en masse for passing on.
 extern char **environ;
@@ -110,34 +120,91 @@ void set_get_value(char *var, char* new_value) {
     update_value_in_var_val_pair_array(get_data_vvpa, var, new_value);
 }
 
-char *make_query_string() {
+bool ends_with(char *haystack, char *end_string) {
+    int l_h;
+    int l_q;
+
+    if (haystack == NULL)  return false;
+    if (end_string == NULL) return false;
+
+    l_h = strlen(haystack);
+    l_q = strlen(end_string);
+
+    if (l_q > l_h) return false;
+    if (l_q == 0) return true;
+
+    while (l_q >= 0) {
+        if (haystack[l_h] != end_string[l_q]) return false;
+        l_h--;
+        l_q--;
+    }
+
+    return true;
+}
+
+char *make_query_string(char *this_file, char *next_file) {
     char *result = NULL;
     char *cp;
     var_val_pair *vvp;
+//    var_val_pair_plus *vvpp;
     int i, l;
 
-    if (get_data_vvpa == NULL) return NULL;
-
-    result = malloc(1024);
+    result = malloc(1024); // YUK
     if (result == NULL) return NULL;
-    cp = result;
 
-    for (i=0; i<get_data_vvpa->num_used; i++) {
-        vvp = get_data_vvpa->vvps[i];
-        if ((vvp != NULL ) && (vvp->var != NULL) && (vvp->value != NULL)) {
-            l = strlen(vvp->var);
-            strncpy(cp, vvp->var, l);
-            cp += l;
-            *cp = '=';
-            cp++;
-            l = strlen(vvp->value);
-            strncpy(cp, vvp->value, l);
-            cp += l;
-            *cp = '&';
-            cp++;
-        }
-    }
+    cp = result;
     *cp = '\0';
+
+    if (get_data_vvpa == NULL) return result;
+
+//    if ((action_todo != action_done) || (action_todo == ACTION_NONE)) {
+        *cp = '?';
+        cp++;
+        for (i=0; i<get_data_vvpa->num_used; i++) {
+            vvp = get_data_vvpa->vvps[i];
+            if ((vvp != NULL ) && (vvp->var != NULL) && (vvp->value != NULL)) {
+                l = strlen(vvp->var);
+                strncpy(cp, vvp->var, l);
+                cp += l;
+                *cp = '=';
+                cp++;
+                l = strlen(vvp->value);
+                strncpy(cp, vvp->value, l);
+                cp += l;
+                *cp = '&';
+                cp++;
+            }
+        }
+        if (cp != result) {
+            // Drop the final '&' and terminate the string
+            cp--;
+            *cp = '\0';
+        }
+
+/*    }
+    else {
+        i = find_index_of_var_in_vvppa(render_page_vars, "post_par");
+        if (i != VVPPA_NOT_FOUND) {
+            vvpp = render_page_vars->vvpps[i];
+            if (vvpp != NULL) {
+                strcat(cp, get_value_from_nvram_cache(vvpp->value));
+                strcat(cp, "&");
+            }
+            else strcat(cp, "?");
+        }
+        else strcat(cp, "?");
+
+        strcat(cp, "this_file=");
+        if (this_file != NULL) {
+            strcat(cp, this_file);
+        }
+        strcat(cp, "&next_file=");
+        if (next_file != NULL) {
+            strcat(cp, next_file);
+        }
+
+        strcat(cp, "&todo=cfg_init");
+    }*/
 
     return result;
 }
@@ -199,17 +266,23 @@ void get_post_data() {
 }
 
 int run_external_prog(char *file_to_run, char **env_for_prog, char **argv_for_prog, char *input_to_prog, bool output_to_log, bool child_stderr_to_log) {
+    //
+    // NOTE: The cmd thing doesn't work and is ignored when push comes to shove. But the pipe work that
+    // goes with the options matters, so left in until we can handle the options better ...
+    //
+    int   count;
+    int   fd_for_stdout_passthrough = STDOUT_FILENO;
+    int   fd_for_stderr_passthrough = STDERR_FILENO;
     int   pipe_to_child[2];
-    int   pipe_from_child[2];
+    int   pipe_from_child_stdout[2];
+    int   pipe_from_child_stderr[2];
     int   child_exit_status = -1;
     int   wait_res;
-    char *cmd;
     char  buf;
     char  msg_buffer[256];
     bool  need_to_free_argv = false;
     bool  need_to_free_env  = false;
-    bool  need_to_free_cmd = false;;
-    bool  pass_output_through = false;
+    bool  pass_stderr_through = false;
 
     if (DEBUG_LEVEL >= DEBUG_ACTION) mylog("run_external_prog - action calling", file_to_run);
 
@@ -223,29 +296,17 @@ int run_external_prog(char *file_to_run, char **env_for_prog, char **argv_for_pr
     }
 
     if (output_to_log) {
-        cmd = malloc(strlen(file_to_run) + 11 /* " >>  2>&1\0" and one for luck*/ + strlen(DEBUG_FILE));
-        if (cmd == NULL) {
-            mylog("run_external_prog - memory fail", "trying to create a string for command (Log output and error)");
-        }
-        need_to_free_cmd = true;
-        sprintf(cmd, "%s >> %s", file_to_run, DEBUG_FILE);
-        if (child_stderr_to_log) strcat(cmd, " 2>&1");
-    }
-    else if (child_stderr_to_log) {
-        cmd = malloc(strlen(file_to_run) + 7 /* " 2>> \0" and one for luck*/ + strlen(DEBUG_FILE));
-        if (cmd == NULL) {
-            mylog("run_external_prog - memory fail", "trying to create a string for command (Log error)");
-        }
-        need_to_free_cmd = true;
-        sprintf(cmd, "%s 2>> %s", file_to_run, DEBUG_FILE);
-    }
-    else {
-        cmd = file_to_run;
-        pass_output_through = true;
+        fd_for_stdout_passthrough = fd_debug;
     }
 
+    if (child_stderr_to_log) {
+        pass_stderr_through = true;
+        fd_for_stderr_passthrough = fd_debug;
+    }
+
+    pipe(pipe_from_child_stdout);
     if (input_to_prog)       pipe(pipe_to_child);
-    if (pass_output_through) pipe(pipe_from_child);
+    if (pass_stderr_through) pipe(pipe_from_child_stderr);
 
     pid_t child_pid = fork();
     if (child_pid == 0) {
@@ -255,13 +316,25 @@ int run_external_prog(char *file_to_run, char **env_for_prog, char **argv_for_pr
             dup2(pipe_to_child[0], STDIN_FILENO);
             close(pipe_to_child[1]); // close child's write end (parent writes to this one)
         }
+
         // Set up stdout to be caught if we're passing it through
-        if (pass_output_through) {
-            dup2(pipe_from_child[1], STDOUT_FILENO);
-            close(pipe_from_child[0]); // close child's read end
+        dup2(pipe_from_child_stdout[1], STDOUT_FILENO);
+        close(pipe_from_child_stdout[0]); // close child's read end
+
+        // Set up stderr to be caught if we're passing it through
+        if (pass_stderr_through) {
+            dup2(pipe_from_child_stderr[1], STDERR_FILENO);
+            close(pipe_from_child_stderr[0]); // close child's read end
         }
 
-        if (DEBUG_LEVEL >= DEBUG_ACTION) mylog("run_external_prog - child calling prog now", cmd);
+        if (DEBUG_LEVEL >= DEBUG_ACTION) mylog("run_external_prog - child calling prog now", file_to_run);
+        if ((DEBUG_LEVEL >= DEBUG_LOTS) && (argv_for_prog != NULL)) {
+            int i=0;
+            while (argv_for_prog[i] != NULL) {
+                mylog("run_external_prog argument to command", argv_for_prog[i]);
+                i++;
+            }
+        }
         execve(file_to_run, argv_for_prog, env_for_prog);
 
         // If we get here, something has gone wrong: report and close the pipes to enure EOF sending etc.
@@ -269,8 +342,9 @@ int run_external_prog(char *file_to_run, char **env_for_prog, char **argv_for_pr
             sprintf(msg_buffer, "prog call failed errno: %d", errno);
             mylog("run_external_prog - child failed", msg_buffer);
         }
+        close(pipe_from_child_stdout[1]);
         if (input_to_prog)       close(pipe_to_child[0]);
-        if (pass_output_through) close(pipe_from_child[1]);
+        if (pass_stderr_through) close(pipe_from_child_stderr[1]);
         exit(child_exit_status);
     }
     else {
@@ -283,17 +357,47 @@ int run_external_prog(char *file_to_run, char **env_for_prog, char **argv_for_pr
             write(pipe_to_child[1], input_to_prog, strlen(input_to_prog)); // Send the stdin stuff
             close(pipe_to_child[1]); // Done so send EOF
         }
-        if (pass_output_through) close(pipe_from_child[1]); // Close the write end, we read this one.
+        close(pipe_from_child_stdout[1]); // Close the write end, we read this one.
+        if (pass_stderr_through) close(pipe_from_child_stderr[1]); // Close the write end, we read this one.
 
         if (DEBUG_LEVEL >= DEBUG_LOTS) mylog("run_external_prog - parent", "waiting for child");
 
         // Get all the data from them and dump it to STDOUT or log depending ...
-        if (pass_output_through) {
-            while(read(pipe_from_child[0], &buf, 1) > 0) {
-                write(STDOUT_FILENO, &buf, 1);
+        if (DEBUG_LEVEL >= DEBUG_ACTION) {
+            if (output_to_log) mylog("run_external_prog - parent", "stdout start");
+            fflush(fp_debug);
+        }
+
+        count = 0;
+        while(read(pipe_from_child_stdout[0], &buf, 1) > 0) {
+            count++;
+            write(fd_for_stdout_passthrough, &buf, 1);
+        }
+        write(fd_for_stdout_passthrough, "\n", 1);
+        close(pipe_from_child_stdout[0]);
+
+        if (DEBUG_LEVEL >= DEBUG_ACTION) {
+            if (output_to_log) mylog("run_external_prog - parent", "stdout end");
+            sprintf(msg_buffer, "%d", count);
+            mylog("run_external_prog - parent - stdout passed through byte count (not counting final CR)", msg_buffer);
+        }
+
+        if (pass_stderr_through) {
+            if (DEBUG_LEVEL >= DEBUG_ACTION) mylog("run_external_prog", "stderr output start");
+            if (DEBUG_LEVEL >= DEBUG_ACTION) fflush(fp_debug);
+
+            count = 0;
+            while (read(pipe_from_child_stderr[0], &buf, 1) > 0) {
+                count++;
+                write(fd_debug, &buf, 1);
             }
-            write(STDOUT_FILENO, "\n", 1);
-            close(pipe_from_child[0]);
+            close(pipe_from_child_stderr[0]);
+
+            if (DEBUG_LEVEL >= DEBUG_ACTION) mylog("run_external_prog", "stderr output end");
+            if (DEBUG_LEVEL >= DEBUG_ACTION) {
+                sprintf(msg_buffer, "%d", count);
+                mylog("run_external_prog - parent - stderr logged byte count", msg_buffer);
+            }
         }
 
         // When child done, stop.
@@ -304,36 +408,36 @@ int run_external_prog(char *file_to_run, char **env_for_prog, char **argv_for_pr
 
     if (need_to_free_argv) free(argv_for_prog);
     if (need_to_free_env)  free(env_for_prog);
-    if (need_to_free_cmd)  free(cmd);
     return child_exit_status;
 }
 
-void pass_to_netgear_setup_and_exit(char *this_html_file) {
-    int   l;
+void pass_to_netgear_setup_and_exit(char *this_html_file, char *next_html_file) {
+    char  empty_string[1] = "";
+    char  content_length[10];
     char *qs = NULL;
-    char* argv0 = NULL;
+    char *post_data_to_use = NULL;
 
-    qs = make_query_string();
-    if (qs != NULL) {
-        l = strlen(qs);
-        if (l > 0) {
-            setenv("QUERY_STRING", qs, 1);
-            argv0 = malloc(l + 12); // setup.cgi?, \-, one for luck
-            if (argv0 != NULL) {
-                sprintf(argv0, "setup.cgi?%s", qs);
-                incoming_argv[0] = argv0;
-            }
-        }
+    qs = make_query_string(this_html_file, next_html_file);
+
+    if (qs == NULL) {
+        mylog("pass_to_netgear_and_exit - FAIL", "No memory (qs)");
+        exit(0);
     }
 
-    int exit_val = run_external_prog("netgear-setup.cgi", environ, incoming_argv, post_data, false, false);
+//    setenv("QUERY_STRING", qs, 1);
+
+    post_data_to_use = post_data;
+    if (post_data_to_use == NULL) post_data_to_use = empty_string;
+    sprintf(content_length, "%d", strlen(post_data_to_use));
+    setenv("CONTENT_LENGTH", content_length, 1);
+
+    int exit_val = run_external_prog("netgear-setup.cgi", environ, incoming_argv, post_data_to_use, false, true);
 
     if (post_netgear_action) {
         do_post_netgear_action(this_html_file);
     }
 
-    if (qs != NULL) free(qs);
-    if (argv0 != NULL) free(argv0);
+    free(qs);
     exit(exit_val);
 }
 
@@ -824,12 +928,18 @@ int main(int argc, char *argv[]) {
     FILE *fp;
     bool  have_data_for_render = false;
     bool  have_data_for_action = false;
-    bool  done_todo = false;
+    int   action_done = ACTION_NONE;
+    int   action_todo = ACTION_UNKNOWN;
+
 
     // Initiat debug log if needed
     if (DEBUG_LEVEL > DEBUG_NONE) {
         fp_debug = fopen(DEBUG_FILE, "a");
+        fd_debug = fileno(fp_debug);
         if (DEBUG_LEVEL >= DEBUG_LOTS) mylog("main - start", "opened log file");
+    }
+    else {
+        fd_debug = STDERR_FILENO;
     }
 
     // Get the data and process the get info as it should tell us what we are doing ...
@@ -839,10 +949,9 @@ int main(int argc, char *argv[]) {
 
     if (get_data == NULL) {
         if (DEBUG_LEVEL >= DEBUG_NONE) mylog("main - action", "no get data so passing to Netgear setup.cgi");
-        pass_to_netgear_setup_and_exit(NULL);
+        pass_to_netgear_setup_and_exit(NULL, NULL);
     }
 
-    env_vvpa       = parse_argv_type_data_into_vvpa(environ, env_vvpa);
     get_data_vvpa  = parse_post_get_type_data_into_vvpa(get_data, NULL, "&");
     post_data_vvpa = parse_post_get_type_data_into_vvpa(post_data, NULL, "&");
 
@@ -853,6 +962,15 @@ int main(int argc, char *argv[]) {
     if (DEBUG_LEVEL >= DEBUG_TONS) {
         vvpa_log_to_file(fp_debug, get_data_vvpa, "main - get data incoming : %s=%s\n");
         vvpa_log_to_file(fp_debug, post_data_vvpa, "main - post data incoming : %s=%s\n");
+    }
+
+    if (ends_with(next_file_value, ".xml") || ends_with(this_file_value, ".xml")) {
+        if (DEBUG_LEVEL >= DEBUG_NONE) mylog("main - action", "request for xml file so passing to Netgear setup.cgi");
+        pass_to_netgear_setup_and_exit(this_file_value, next_file_value);
+    }
+
+    env_vvpa       = parse_argv_type_data_into_vvpa(environ, env_vvpa);
+    if (DEBUG_LEVEL >= DEBUG_TONS) {
         vvpa_log_to_file(fp_debug, env_vvpa, "main - environment incoming : %s=%s\n");
     }
 
@@ -866,14 +984,28 @@ int main(int argc, char *argv[]) {
     }
 
     // Do the todo (if we can) before rendering.
-    if (todo_value == NULL) {
-        done_todo = true;
+    if (DEBUG_LEVEL >= DEBUG_ACTION) mylog("main - considering todo", todo_value==NULL?"NULL":todo_value);
+
+    // Parse the todo information
+    if      (todo_value == NULL)                 action_todo = ACTION_NONE;
+    else if (!strcmp(todo_value, "cfg_init"))    action_todo = ACTION_CFG_INIT;
+    else if (!strcmp(todo_value, "edit"))        action_todo = ACTION_EDIT;
+    else if (!strcmp(todo_value, "newfile"))     action_todo = ACTION_NEWFILE;
+    else if (!strcmp(todo_value, "save_passwd")) action_todo = ACTION_SAVE_PWD;
+    else if (!strcmp(todo_value, "save"))        action_todo = ACTION_SAVE;
+    else                                         action_todo = ACTION_OTHER;
+
+    if (action_todo == ACTION_NONE) {
+        // This one's easy, and is simply here for clarity and completeness
+        action_done = ACTION_NONE;
     }
-    else if (!strcmp(todo_value, "cfg_init") || !strcmp(todo_value, "edit") || !strcmp(todo_value, "newfile")) {
-        // AFAIK There is nothing to actually do for these
-        done_todo = true;
+    else if ((action_todo == ACTION_NEWFILE) || (action_todo == ACTION_EDIT) || (action_todo == ACTION_CFG_INIT)) {
+        // AFAIK There is nothing to actually do for these other than render, so we have effectively done it.
+        action_done = action_todo;
     }
-    else {
+    else if (action_todo != ACTION_OTHER) {
+        // ACTION_SAVE, ACTION_SAVE_PWD
+
         // If there is a this_file
         if (this_file_value != NULL) {
             if (strlen(this_file_value) > 80) {
@@ -892,32 +1024,29 @@ int main(int argc, char *argv[]) {
         }
 
         // Handle todo actions that must be done before page render.
-        if (DEBUG_LEVEL >= DEBUG_ACTION) mylog("main - considering todo", todo_value);
-        if (have_data_for_action && !strcmp(todo_value, "save")) {
+        if (have_data_for_action && (action_todo == ACTION_SAVE)) {
             if (DEBUG_LEVEL >= DEBUG_ACTION) mylog("main - action", "saving data");
             do_pre_save_action(this_file_value);
             save_data();
+            action_done = ACTION_SAVE;
             do_post_save_action(this_file_value);
-            done_todo = true;
         }
 
-        if (!strcmp(todo_value, "save_passwd") && (this_file_value != NULL)) {
-            // We don't do this action, but when it is done we want a trigger
+        if ((action_todo == ACTION_SAVE_PWD) && (this_file_value != NULL)) {
+            // We don't do this action now (netgear does), but when it is done we want a trigger
             post_netgear_action = true;
         }
-
-        // If there is a todo and we've done it, we need to make sure that the
-        // render doesn't duplicate the action
-        if (done_todo) {
-            set_get_or_post_value("todo", "cfg_init");
-        }
-        // However, if there is a todo, and we haven't done it, hand off to netgear
-        // Downside: we lose the render. Upside, the action actually happens
-        else {
-            if (DEBUG_LEVEL >= DEBUG_ACTION) mylog("main - unable to to todo", "passing to netgear renderer");
-            pass_to_netgear_setup_and_exit(this_file_value);
-        }
     }
+
+    // However, if there is a todo, and we haven't done it, hand off to netgear
+    // Downside: we lose the render. Upside, the action actually happens.
+    // But we can trigger a post_netgear_action if we need to.
+    if (action_todo != action_done) {
+        if (DEBUG_LEVEL >= DEBUG_ACTION) mylog("main - unable to do todo", "passing to netgear renderer");
+        pass_to_netgear_setup_and_exit(this_file_value, next_file_value);
+    }
+
+    // And Render ...
 
     // Get page vars if possible: the relationship betwwen vars in html and vars in nvram.
     if (next_file_value != NULL) {
@@ -946,8 +1075,11 @@ int main(int argc, char *argv[]) {
         exit(0);
     }
 
-    if (DEBUG_LEVEL > DEBUG_NONE) mylog("main - action", "nothing for us to do, calling netgear setup.cgi");
-    pass_to_netgear_setup_and_exit(this_file_value);
+    if (DEBUG_LEVEL > DEBUG_NONE) mylog("main - action", "unable to render, calling netgear setup.cgi");
+//    if ((action_todo == action_done) && (action_todo != ACTION_NONE) && (next_file_value != NULL)) {
+//        pass_to_netgear_setup_and_exit(NULL, next_file_value);
+//    }
+    pass_to_netgear_setup_and_exit(this_file_value, next_file_value);
 
     // Shouldn't get to this return, so it is a fail if it gets to it ...
     return -1;
@@ -1137,8 +1269,9 @@ void render_page(char *page) {
     // We know we have the data, so open the 'html' source
     fp = fopen(page, "r");
     if (fp == NULL) {
+        // This should never happen ...
         if (DEBUG_LEVEL > DEBUG_ACTION) mylog("render_page - failure cant open file", page);
-        pass_to_netgear_setup_and_exit(page);
+        pass_to_netgear_setup_and_exit(NULL, page);
     }
 
     write(STDOUT_FILENO, "Content-Type: text/html\n\n", 25);
