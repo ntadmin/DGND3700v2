@@ -1,6 +1,6 @@
 #!/bin/sh
 
-myip="$(nvram-util get lan_ipaddr)"
+myip="$(/usr/sbin/nvram-util get lan_ipaddr)"
 pnpport=56688
 our_identifier="UserNat"
 upnp_cmd="/usr/sbin/upnpc -u http://$myip:$pnpport/rootDesc.xml"
@@ -43,8 +43,8 @@ set_nat() {
             if [ "x$destport" = "x" ]; then destport="$inportstart"; fi
             while [ $inportstart -le $inportend ]; do
                 $upnp_cmd -e $our_identifier -a $destip $destport $inportstart $protocol
-                inportstart=`expr $inportstart + 1`
-                destport=`expr $destport + 1`
+                inportstart=$(/usr/sbin/expr $inportstart + 1)
+                destport=$(/usr/sbin/expr $destport + 1)
             done
         fi
     done
