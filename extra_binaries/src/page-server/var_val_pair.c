@@ -265,13 +265,27 @@ void vvpa_log_to_file(FILE *fp, var_val_pair_array *vvpa, char *line) {
     }
 }
 
-void update_value_in_var_val_pair_array(var_val_pair_array *vvpa, char *var, char *new_value) {
+var_val_pair_array *update_or_add_value_in_var_val_pair_array(var_val_pair_array *vvpa, char *var, char *new_value, bool add_if_missing) {
     int index;
 
-    if (vvpa == NULL) return;
+    if (vvpa == NULL) return NULL;
+
     index = find_index_of_var_in_vvpa(vvpa, var);
-    if (index == VVPA_NOT_FOUND) return;
+    if (index == VVPA_NOT_FOUND) {
+        if (add_if_missing) {
+            return addto_var_val_pair_array(vvpa, var, new_value);
+        }
+        else {
+            return vvpa;
+        }
+    }
+
     vvp_update_value(vvpa->vvps[index], new_value);
+    return vvpa;
+}
+
+void update_value_in_var_val_pair_array(var_val_pair_array *vvpa, char *var, char *new_value) {
+    update_or_add_value_in_var_val_pair_array(vvpa, var, new_value, false);
 }
 
 var_val_pair_array *addto_var_val_pair_array(var_val_pair_array *vvpa, char *var, char *value) {

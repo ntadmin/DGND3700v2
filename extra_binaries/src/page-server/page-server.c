@@ -35,7 +35,7 @@
 #define DEBUG_ACTION 1
 #define DEBUG_NONE   0
 
-#define DEBUG_LEVEL DEBUG_TONS
+#define DEBUG_LEVEL DEBUG_LOTS
 
 #define ACTION_UNKNOWN   0
 #define ACTION_NONE      1
@@ -81,6 +81,32 @@ int  do_post_netgear_action(char *);
  * And now, the code ...
  */
 
+/*
+ * Logging
+ */
+
+void mylog(char *source, char *comment) {
+    fprintf(fp_debug, "%s: %s\n", source, comment);
+    fflush(fp_debug);
+}
+
+void initiate_logging() {
+    // Whatever the level of debug, force stderr to the log file
+    freopen(DEBUG_FILE, "a", stderr);
+
+    // And no matter the debug, we open the log file
+    fp_debug = fopen(DEBUG_FILE, "a");
+    if (DEBUG_LEVEL >= DEBUG_LOTS) mylog("initiate_logging", "opened log file");
+
+    fd_debug = fileno(fp_debug);
+
+    if (DEBUG_LEVEL >= DEBUG_LOTS) fprintf(stderr, "initiate_logging: test of stderr into log file\n");
+}
+
+/*
+ * Data management
+ */
+
 void cleanup() {
     if (get_data != (char *)NULL) free(get_data);
     if (post_data != (char *)NULL) free(post_data);
@@ -93,11 +119,6 @@ void cleanup() {
     free_nvram_cache();
     if (fp_debug != NULL) fclose(fp_debug);
     if (env_for_our_scripts != NULL) free_env(env_for_our_scripts);
-}
-
-void mylog(char *source, char *comment) {
-    fprintf(fp_debug, "%s: %s\n", source, comment);
-    fflush(fp_debug);
 }
 
 char *get_post_value(char *var) {
@@ -113,100 +134,11 @@ char *get_env_value(char *var) {
 }
 
 void set_post_value(char *var, char* new_value) {
-    update_value_in_var_val_pair_array(post_data_vvpa, var, new_value);
+    post_data_vvpa = update_or_add_value_in_var_val_pair_array(post_data_vvpa, var, new_value, true);
 }
 
 void set_get_value(char *var, char* new_value) {
-    update_value_in_var_val_pair_array(get_data_vvpa, var, new_value);
-}
-
-bool ends_with(char *haystack, char *end_string) {
-    int l_h;
-    int l_q;
-
-    if (haystack == NULL)  return false;
-    if (end_string == NULL) return false;
-
-    l_h = strlen(haystack);
-    l_q = strlen(end_string);
-
-    if (l_q > l_h) return false;
-    if (l_q == 0) return true;
-
-    while (l_q >= 0) {
-        if (haystack[l_h] != end_string[l_q]) return false;
-        l_h--;
-        l_q--;
-    }
-
-    return true;
-}
-
-char *make_query_string(char *this_file, char *next_file) {
-    char *result = NULL;
-    char *cp;
-    var_val_pair *vvp;
-//    var_val_pair_plus *vvpp;
-    int i, l;
-
-    result = malloc(1024); // YUK
-    if (result == NULL) return NULL;
-
-    cp = result;
-    *cp = '\0';
-
-    if (get_data_vvpa == NULL) return result;
-
-//    if ((action_todo != action_done) || (action_todo == ACTION_NONE)) {
-        *cp = '?';
-        cp++;
-        for (i=0; i<get_data_vvpa->num_used; i++) {
-            vvp = get_data_vvpa->vvps[i];
-            if ((vvp != NULL ) && (vvp->var != NULL) && (vvp->value != NULL)) {
-                l = strlen(vvp->var);
-                strncpy(cp, vvp->var, l);
-                cp += l;
-                *cp = '=';
-                cp++;
-                l = strlen(vvp->value);
-                strncpy(cp, vvp->value, l);
-                cp += l;
-                *cp = '&';
-                cp++;
-            }
-        }
-        if (cp != result) {
-            // Drop the final '&' and terminate the string
-            cp--;
-            *cp = '\0';
-        }
-
-/*    }
-    else {
-        i = find_index_of_var_in_vvppa(render_page_vars, "post_par");
-        if (i != VVPPA_NOT_FOUND) {
-            vvpp = render_page_vars->vvpps[i];
-            if (vvpp != NULL) {
-                strcat(cp, get_value_from_nvram_cache(vvpp->value));
-                strcat(cp, "&");
-            }
-            else strcat(cp, "?");
-        }
-        else strcat(cp, "?");
-
-        strcat(cp, "this_file=");
-        if (this_file != NULL) {
-            strcat(cp, this_file);
-        }
-        strcat(cp, "&next_file=");
-        if (next_file != NULL) {
-            strcat(cp, next_file);
-        }
-
-        strcat(cp, "&todo=cfg_init");
-    }*/
-
-    return result;
+    get_data_vvpa = update_or_add_value_in_var_val_pair_array(get_data_vvpa, var, new_value, true);
 }
 
 char *get_get_or_post_value(char *var) {
@@ -246,12 +178,6 @@ void set_get_or_post_value(char *var, char *new_value) {
     if (result != NULL) set_post_value(h_var, new_value);
 }
 
-
-bool is_hidden_page_var(char *v) {
-    if (strncmp(v, page_var_hidden_prefix, PAGE_VAR_HIDDEN_PREFIX_LENGTH) == 0) return true;
-    return false;
-}
-
 void get_post_data() {
     char *lengthstr;
     long  length;
@@ -265,11 +191,81 @@ void get_post_data() {
     }
 }
 
+/*
+ * String work
+ */
+
+bool ends_with(char *haystack, char *end_string) {
+    int l_h;
+    int l_q;
+
+    if (haystack == NULL)  return false;
+    if (end_string == NULL) return false;
+
+    l_h = strlen(haystack);
+    l_q = strlen(end_string);
+
+    if (l_q > l_h) return false;
+    if (l_q == 0) return true;
+
+    while (l_q >= 0) {
+        if (haystack[l_h] != end_string[l_q]) return false;
+        l_h--;
+        l_q--;
+    }
+
+    return true;
+}
+
+char *make_query_string(char *this_file, char *next_file) {
+    char *result = NULL;
+    char *cp;
+    var_val_pair *vvp;
+//    var_val_pair_plus *vvpp;
+    int i, l;
+
+    result = malloc(1024); // YUK
+    if (result == NULL) return NULL;
+
+    cp = result;
+    *cp = '\0';
+
+    if (get_data_vvpa == NULL) return result;
+
+    for (i=0; i<get_data_vvpa->num_used; i++) {
+        vvp = get_data_vvpa->vvps[i];
+        if ((vvp != NULL ) && (vvp->var != NULL) && (vvp->value != NULL)) {
+            l = strlen(vvp->var);
+            strncpy(cp, vvp->var, l);
+            cp += l;
+            *cp = '=';
+            cp++;
+            l = strlen(vvp->value);
+            strncpy(cp, vvp->value, l);
+            cp += l;
+            *cp = '&';
+            cp++;
+        }
+    }
+    if (cp != result) {
+        // Drop the final '&' and terminate the string
+        cp--;
+        *cp = '\0';
+    }
+
+    return result;
+}
+
+bool is_hidden_page_var(char *v) {
+    if (strncmp(v, page_var_hidden_prefix, PAGE_VAR_HIDDEN_PREFIX_LENGTH) == 0) return true;
+    return false;
+}
+
+/*
+ * Enagaging with other programs
+ */
+
 int run_external_prog(char *file_to_run, char **env_for_prog, char **argv_for_prog, char *input_to_prog, bool output_to_log, bool child_stderr_to_log) {
-    //
-    // NOTE: The cmd thing doesn't work and is ignored when push comes to shove. But the pipe work that
-    // goes with the options matters, so left in until we can handle the options better ...
-    //
     int   count;
     int   fd_for_stdout_passthrough = STDOUT_FILENO;
     int   fd_for_stderr_passthrough = STDERR_FILENO;
@@ -334,6 +330,7 @@ int run_external_prog(char *file_to_run, char **env_for_prog, char **argv_for_pr
                 mylog("run_external_prog argument to command", argv_for_prog[i]);
                 i++;
             }
+            mylog("run_external_prog QUERY_STRING in environment", getenv("QUERY_STRING"));
         }
         execve(file_to_run, argv_for_prog, env_for_prog);
 
@@ -411,8 +408,7 @@ int run_external_prog(char *file_to_run, char **env_for_prog, char **argv_for_pr
     return child_exit_status;
 }
 
-void pass_to_netgear_setup_and_exit(char *this_html_file, char *next_html_file) {
-    char  empty_string[1] = "";
+void pass_to_netgear_setup_and_exit(char *this_html_file, char *next_html_file, bool send_post_data) {
     char  content_length[10];
     char *qs = NULL;
     char *post_data_to_use = NULL;
@@ -424,12 +420,18 @@ void pass_to_netgear_setup_and_exit(char *this_html_file, char *next_html_file) 
         exit(0);
     }
 
-//    setenv("QUERY_STRING", qs, 1);
+    setenv("QUERY_STRING", qs, 1);
 
-    post_data_to_use = post_data;
-    if (post_data_to_use == NULL) post_data_to_use = empty_string;
-    sprintf(content_length, "%d", strlen(post_data_to_use));
-    setenv("CONTENT_LENGTH", content_length, 1);
+    if (send_post_data) post_data_to_use = post_data;
+
+    if (post_data_to_use == NULL) {
+        setenv("REQUEST_METHOD", "GET", 1);
+    }
+    else {
+        sprintf(content_length, "%d", strlen(post_data_to_use));
+        setenv("CONTENT_LENGTH", content_length, 1);
+        setenv("REQUEST_METHOD", "POST", 1);
+    }
 
     int exit_val = run_external_prog("netgear-setup.cgi", environ, incoming_argv, post_data_to_use, false, true);
 
@@ -440,6 +442,16 @@ void pass_to_netgear_setup_and_exit(char *this_html_file, char *next_html_file) 
     free(qs);
     exit(exit_val);
 }
+
+void create_environment_vars_for_our_scripts() {
+    if (env_for_our_scripts == NULL) {
+        env_for_our_scripts = vvpas_into_environment_variables(environ, post_data_vvpa, get_data_vvpa);
+    }
+}
+
+/*
+ * Processing incoming data
+ */
 
 var_val_pair_plus_array *get_page_vars(FILE *fp) {
     int   l;
@@ -653,6 +665,10 @@ void core_info_to_render_data() {
 
     if (DEBUG_LEVEL >= DEBUG_LOTS) mylog("core_info_to_render_data", "done");
 }
+
+/*
+ * Actions
+ */
 
 void save_data() {
     int           i;
@@ -873,12 +889,6 @@ void save_data() {
     if (DEBUG_LEVEL >= DEBUG_ACTION) mylog("save_data - going through data", "done");
 }
 
-void create_environment_vars_for_our_scripts() {
-    if (env_for_our_scripts == NULL) {
-        env_for_our_scripts = vvpas_into_environment_variables(environ, post_data_vvpa, get_data_vvpa);
-    }
-}
-
 int do_action(char *ffn) {
     struct stat sb;
 
@@ -932,15 +942,8 @@ int main(int argc, char *argv[]) {
     int   action_todo = ACTION_UNKNOWN;
 
 
-    // Initiat debug log if needed
-    if (DEBUG_LEVEL > DEBUG_NONE) {
-        fp_debug = fopen(DEBUG_FILE, "a");
-        fd_debug = fileno(fp_debug);
-        if (DEBUG_LEVEL >= DEBUG_LOTS) mylog("main - start", "opened log file");
-    }
-    else {
-        fd_debug = STDERR_FILENO;
-    }
+    // Initiate debug log if needed
+    initiate_logging();
 
     // Get the data and process the get info as it should tell us what we are doing ...
     incoming_argv = argv;
@@ -949,7 +952,7 @@ int main(int argc, char *argv[]) {
 
     if (get_data == NULL) {
         if (DEBUG_LEVEL >= DEBUG_NONE) mylog("main - action", "no get data so passing to Netgear setup.cgi");
-        pass_to_netgear_setup_and_exit(NULL, NULL);
+        pass_to_netgear_setup_and_exit(NULL, NULL, false);
     }
 
     get_data_vvpa  = parse_post_get_type_data_into_vvpa(get_data, NULL, "&");
@@ -966,7 +969,7 @@ int main(int argc, char *argv[]) {
 
     if (ends_with(next_file_value, ".xml") || ends_with(this_file_value, ".xml")) {
         if (DEBUG_LEVEL >= DEBUG_NONE) mylog("main - action", "request for xml file so passing to Netgear setup.cgi");
-        pass_to_netgear_setup_and_exit(this_file_value, next_file_value);
+        pass_to_netgear_setup_and_exit(this_file_value, next_file_value, false);
     }
 
     env_vvpa       = parse_argv_type_data_into_vvpa(environ, env_vvpa);
@@ -995,17 +998,8 @@ int main(int argc, char *argv[]) {
     else if (!strcmp(todo_value, "save"))        action_todo = ACTION_SAVE;
     else                                         action_todo = ACTION_OTHER;
 
-    if (action_todo == ACTION_NONE) {
-        // This one's easy, and is simply here for clarity and completeness
-        action_done = ACTION_NONE;
-    }
-    else if ((action_todo == ACTION_NEWFILE) || (action_todo == ACTION_EDIT) || (action_todo == ACTION_CFG_INIT)) {
-        // AFAIK There is nothing to actually do for these other than render, so we have effectively done it.
-        action_done = action_todo;
-    }
-    else if (action_todo != ACTION_OTHER) {
-        // ACTION_SAVE, ACTION_SAVE_PWD
-
+    // Handle (postive) actions that we can do and must do before render
+    if ((action_todo == ACTION_SAVE) || (action_todo == ACTION_SAVE_PWD)) {
         // If there is a this_file
         if (this_file_value != NULL) {
             if (strlen(this_file_value) > 80) {
@@ -1038,14 +1032,6 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    // However, if there is a todo, and we haven't done it, hand off to netgear
-    // Downside: we lose the render. Upside, the action actually happens.
-    // But we can trigger a post_netgear_action if we need to.
-    if (action_todo != action_done) {
-        if (DEBUG_LEVEL >= DEBUG_ACTION) mylog("main - unable to do todo", "passing to netgear renderer");
-        pass_to_netgear_setup_and_exit(this_file_value, next_file_value);
-    }
-
     // And Render ...
 
     // Get page vars if possible: the relationship betwwen vars in html and vars in nvram.
@@ -1075,11 +1061,18 @@ int main(int argc, char *argv[]) {
         exit(0);
     }
 
-    if (DEBUG_LEVEL > DEBUG_NONE) mylog("main - action", "unable to render, calling netgear setup.cgi");
-//    if ((action_todo == action_done) && (action_todo != ACTION_NONE) && (next_file_value != NULL)) {
-//        pass_to_netgear_setup_and_exit(NULL, next_file_value);
-//    }
-    pass_to_netgear_setup_and_exit(this_file_value, next_file_value);
+    // IF we've got here, it means we need to hand over to netgear in some way or other ...
+
+    if (DEBUG_LEVEL >= DEBUG_ACTION) mylog("main - action", "unable to render, calling netgear setup.cgi");
+    if ((action_todo == action_done) && (action_todo != ACTION_NONE)) {
+        if (DEBUG_LEVEL >= DEBUG_LOTS) mylog("main - this is a netgear render following an action we have done", "setting todo and next_file");
+        set_get_value("todo", "cfg_init");
+        set_get_value("next_file", next_file_value);
+        pass_to_netgear_setup_and_exit(this_file_value, next_file_value, false);
+    }
+
+    if (DEBUG_LEVEL >= DEBUG_LOTS) mylog("main - we have done just about nothing", "passing on to netgear");
+    pass_to_netgear_setup_and_exit(this_file_value, next_file_value, true);
 
     // Shouldn't get to this return, so it is a fail if it gets to it ...
     return -1;
@@ -1271,7 +1264,7 @@ void render_page(char *page) {
     if (fp == NULL) {
         // This should never happen ...
         if (DEBUG_LEVEL > DEBUG_ACTION) mylog("render_page - failure cant open file", page);
-        pass_to_netgear_setup_and_exit(NULL, page);
+        pass_to_netgear_setup_and_exit(NULL, page, true);
     }
 
     write(STDOUT_FILENO, "Content-Type: text/html\n\n", 25);
