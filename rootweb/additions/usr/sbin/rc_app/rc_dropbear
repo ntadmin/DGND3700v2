@@ -1,5 +1,6 @@
 #!/bin/sh
 # Based on code from cilinx on githib, Thanks :-)
+PATH=/usr/sbin
 
 dropbear_key_file=/var/tmp/dropbear_ecdsa_host_key
 dropbear_key_nvram=dropbear_ecdsa_host_key

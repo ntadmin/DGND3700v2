@@ -1,4 +1,5 @@
 #!/bin/sh
+PATH=/usr/sbin
 
 if [ -e /usr/etc/log_rc_flag ]; then
     echo "`/usr/sbin/date` [rc_adblock] $0 $@">> /var/log/rc_calls

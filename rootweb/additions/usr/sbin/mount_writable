@@ -1,2 +1,3 @@
 #!/bin/sh
+PATH=/usr/sbin
 mount -t jffs2 -o remount,rw mtd:rootfs /

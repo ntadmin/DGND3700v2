@@ -1,4 +1,5 @@
 #!/bin/sh
+PATH=/usr/sbin
 
 do_rotate() {
     mv -f "$1" "$1.old" 2>/dev/null

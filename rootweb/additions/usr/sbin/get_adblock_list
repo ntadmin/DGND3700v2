@@ -5,6 +5,8 @@
 # ad_catcher_ip in nvram (defaults to 198.168.100.1).
 # If ad_blocking isn't enabled the file will be balnk.
 #
+PATH=/usr/sbin
+
 if [ $# -lt 1 ]; then
     echo "Usage: $0 output-filename"
     exit
@@ -43,8 +45,10 @@ tmpfile=/tmp/adblocklist.pre
 $wget --no-check-certificate -q $list_src_url -O $tmpfile
 
 # Remove hosts we want to let through from the ban list
-for line in "$(/usr/sbin/nvram-util getarray adblock_allow)"; do
-    sed -i '/$line/d' $tmpfile
+for line in "$(/usr/sbin/nvram-util getarray adblock_allow '\n')"; do
+    if [ "x$line" != "x" ]; then
+        sed -i '/$line/d' $tmpfile
+    fi
 done
 
 # Select only the lines beginning with '0.0.0.0' and then replace that with the IP we are using.

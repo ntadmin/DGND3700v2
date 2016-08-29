@@ -1,4 +1,5 @@
 #!/bin/sh
+PATH=/usr/sbin
 
 logfile=/var/log/dnsmasq.log
 adblock_hosts_file=/var/tmp/hosts.adblock

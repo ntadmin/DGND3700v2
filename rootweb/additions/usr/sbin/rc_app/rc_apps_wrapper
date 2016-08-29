@@ -1,5 +1,4 @@
 #!/bin/sh
-#!/bin/sh
 if [ -e /usr/etc/log_rc_flag ]; then
     echo "`/usr/sbin/date` [rc_apps] $0 $@" >> /var/log/rc_calls
 fi

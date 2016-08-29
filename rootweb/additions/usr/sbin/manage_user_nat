@@ -1,4 +1,5 @@
 #!/bin/sh
+PATH=/usr/sbin
 
 myip="$(/usr/sbin/nvram-util get lan_ipaddr)"
 pnpport=56688
