@@ -80,7 +80,7 @@ case "$1" in
         make_reserved_file
         make_extra_hosts_file
         get_dnsmasq_args
-        PID="$(pidof dnsmasq)"
+        PID="$(/usr/sbin/pidof dnsmasq)"
         if [ "x$PID" != "x" ]; then
             killit=0
             lastargs="$(/usr/sbin/cat $last_start_file)"
@@ -88,10 +88,10 @@ case "$1" in
             if [ "$killit" = "1" ]; then $0 stop; fi
         fi
 
-        PID="$(pidof dnsmasq)"
+        PID="$(/usr/sbin/pidof dnsmasq)"
         if [ "x$PID" = "x" ]; then
             /usr/sbin/dnsmasq $args_for_dnsmasq
-            PID="$(pidof dnsmasq)"
+            PID="$(/usr/sbin/pidof dnsmasq)"
             if [ "x${PID}" != "x" ]; then
                 echo "$args_for_dnsmasq" > $last_start_file
 	        rc_log_echo "dnsmasq started succesfully. ( $args_for_dnsmasq )"
@@ -108,7 +108,7 @@ case "$1" in
         echo "I'm far too polite."
         ;;
     stop)
-        PID="$(pidof dnsmasq)"
+        PID="$(/usr/sbin/pidof dnsmasq)"
 	if [ "x$PID" != "x" ];then
 	    /usr/sbin/killall dnsmasq
             sleep 1
@@ -123,7 +123,7 @@ case "$1" in
         $0 start
         ;;
     reload)
-        PID="$(pidof dnsmasq)"
+        PID="$(/usr/sbin/pidof dnsmasq)"
         if [ "x${PID}" != "x" ]; then
             make_reserved_file
             make_extra_hosts_file

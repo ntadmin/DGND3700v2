@@ -59,10 +59,10 @@ case "$1" in
         if [ "x$ddns_enable" != "x1" ]; then
             echo "DDNS not enabled so not starting inadyn. (ddns_enable:$ddns_enable)"
 	else
-            PID="$(pidof inadyn-mt)"
+            PID="$(/usr/sbin/pidof inadyn-mt)"
             if [ "x$PID" = "x" ]; then
 	        /usr/sbin/inadyn-mt $args_for_inadyn
-		PID="$(pidof inadyn-mt)"
+		PID="$(/usr/sbin/pidof inadyn-mt)"
 		if [ "x${PID}" != "x" ]; then
 		    echo "inadyn-mt started succesfully. ($args_for_inadyn)"
 		else
@@ -77,7 +77,7 @@ case "$1" in
         echo "I'm far too polite."
         ;;
     stop)
-        PID="$(pidof inadyn-mt)"
+        PID="$(/usr/sbin/pidof inadyn-mt)"
 	if [ "x$PID" != "x" ];then
 	    /usr/sbin/killall inadyn-mt 2>/dev/null
             sleep 1

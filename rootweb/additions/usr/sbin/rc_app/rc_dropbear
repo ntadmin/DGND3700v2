@@ -36,7 +36,7 @@ rc_log "$0 $@"
 
 case "$1" in
     start)
-        PID="$(pidof dropbear)"
+        PID="$(/usr/sbin/pidof dropbear)"
         if [ "x$PID" = "x" ]; then
             getdropbearkey
 
@@ -44,7 +44,7 @@ case "$1" in
             args_for_dropbear="-p $myip:22 -r $dropbear_key_file"
             /usr/sbin/dropbear $args_for_dropbear
 
-            PID="$(pidof dropbear)"
+            PID="$(/usr/sbin/pidof dropbear)"
             if [ "x${PID}" != "x" ]; then
 	        rc_log_echo "dropbear started succesfully. ( $args_for_dropbear )"
 	    else
@@ -58,7 +58,7 @@ case "$1" in
         echo "I'm far too polite."
         ;;
     stop)
-        PID="$(pidof dropbear)"
+        PID="$(/usr/sbin/pidof dropbear)"
 	if [ "x$PID" != "x" ];then
 	    /usr/sbin/killall dropbear
             rc_log_echo "dropbear stopped."
