@@ -8,10 +8,11 @@
 #include "nvram_cache.h"
 
 void mylog(char *, char *);
-#define DEBUG_CORE    0
-#define DEBUG_ACQUIRE 0
-#define DEBUG_SYNC    0
-#define DEBUG_GET     0
+#define DEBUG_CORE    1
+#define DEBUG_ACQUIRE 1
+#define DEBUG_SYNC    1
+#define DEBUG_GET     1
+#define DEBUG_SET     1
 
 // Remove this #define to make this code do everything except alter the nvram contents.
 #define REALLY_WRITE_TO_NVRAM
@@ -178,15 +179,8 @@ nvram_entry *nvram_cache_want_variable(char *name) {
     }
     if (ccount > cmax) cmax = ccount;
 
-    entry->rows_used  = rcount;
-    entry->rows_avail = rcount;
-    entry->columns    = cmax;
-
     if (strlen(value) < 1) {
         if (DEBUG_ACQUIRE) mylog("nvram_cache_want_variable - it's zero length, so unknown type", value);
-        entry->rows_used  = 0;
-        entry->rows_avail = 0;
-        entry->columns    = 0;
         entry->type = NVRAM_ENTRY_TYPE_UNKNOWN;
     }
     else if ((rcount == 1) && (cmax == 1)) {
@@ -195,6 +189,9 @@ nvram_entry *nvram_cache_want_variable(char *name) {
     }
     else {
         if (DEBUG_ACQUIRE) mylog("nvram_cache_want_variable - it's an ARRAY", value);
+        entry->rows_used  = rcount;
+        entry->rows_avail = rcount;
+        entry->columns    = cmax;
         entry->type = NVRAM_ENTRY_TYPE_ARRAY;
         entry->data = calloc(entry->rows_avail, sizeof(char **));
         cp          = value;
@@ -225,13 +222,27 @@ bool require_variable_in_nvram_cache(char *name, int type) {
         if (DEBUG_ACQUIRE) mylog("nvram_cache_want_variable - fail", "No entry found or created");
         return false;
     }
-    if (entry->type == NVRAM_ENTRY_TYPE_UNKNOWN) {
-        if (DEBUG_ACQUIRE) mylog("nvram_cache_want_variable", "Setting unknown nv type to the one requested");
-        entry->type = type;
-    }
+
     if (entry->type != type) {
-        if (DEBUG_ACQUIRE) mylog("nvram_cache_want_variable - fail", "type wanted and nv type clash");
-        return false;
+        // OK, it didn't match, but there are a couple of exceptions to cater for ...
+        switch (entry->type) {
+        // If it is of unknown type, we can make it the type we want.
+        case NVRAM_ENTRY_TYPE_UNKNOWN:
+            entry->type = type;
+            break;
+        case NVRAM_ENTRY_TYPE_TEXT:
+            // An array with 1 row and 1 column looks like a text, so it will have been misclassified up to this point.
+            if (type == NVRAM_ENTRY_TYPE_ARRAY) {
+                entry->type = NVRAM_ENTRY_TYPE_ARRAY;
+                set_array_value_in_nvram_entry(entry, 0, 0, entry->value);
+            }
+        }
+
+        // If it still doesn't match ...
+        if (entry->type != type) {
+            if (DEBUG_ACQUIRE) mylog("nvram_cache_want_variable - fail", "type wanted and nv type clash");
+            return false;
+        }
     }
     return true;
 }
@@ -389,36 +400,43 @@ void clear_array_rows_this_and_above_in_nvram_cache(char *name, int row) {
     entry->rows_used = row;
 }
 
-void set_array_value_in_nvram_cache(char *name, int row, int column, char *value) {
+void set_array_value_in_nvram_entry(nvram_entry *entry, int row, int column, char *value) {
     int i, j;
     int cmax, rmax;
-    nvram_entry *entry;
 
-    if (nc == NULL) {
-        if (DEBUG_SYNC) mylog("set_array_value_in_nvram_cache FAILED", "Cache not initialised");
-        return;
-        }
-
-    entry = nvram_cache_want_variable(name);
     if (entry == NULL) return;
     if (entry->type == NVRAM_ENTRY_TYPE_UNKNOWN) {
-        if (DEBUG_SYNC) mylog("set_array_value_in_nvram_cache", "Entry unknown type so setting to ARRAY with no data");
+        if (DEBUG_SET) mylog("set_array_value_in_nvram_entry", "Entry unknown type so setting to ARRAY with no data");
         entry->type = NVRAM_ENTRY_TYPE_ARRAY;
         entry->rows_avail = entry->rows_used = entry->columns = 0;
     }
 
     if (entry->type != NVRAM_ENTRY_TYPE_ARRAY) {
-        if (DEBUG_SYNC) mylog("set_array_value_in_nvram_cache FAILED", "Not of type array");
+        if (DEBUG_SET) mylog("set_array_value_in_nvram_entry FAILED", "Not of type array");
         return;
     }
     if ((row < 0) || (column < 0)) {
-        if (DEBUG_SYNC) mylog("set_array_value_in_nvram_cache FAILED", "row or column invalid");
+        if (DEBUG_SET) mylog("set_array_value_in_nvram_entry FAILED", "row or column invalid");
         return;
     }
 
-    if (column >= entry->columns) {
-        if (DEBUG_SYNC) mylog("set_array_value_in_nvram_cache", "Need more columns - adding them");
-        cmax = column + 1;
+    // Determine the required max size for this entry before then reallocating rows and columns ...
+    if (row >= entry->rows_avail) rmax = row + 5;
+    else                          rmax = entry->rows_avail;
+    if (column >= entry->columns) cmax = column + 1;
+    else                          cmax = entry->columns;
+
+    if (rmax != entry->rows_avail) {
+        if (DEBUG_SET) mylog("set_array_value_in_nvram_entry", "Need more rows - adding them");
+        entry->data = realloc(entry->data, rmax*sizeof(char **));
+        for (i=entry->rows_avail; i<rmax; i++) {
+            entry->data[i] = calloc(entry->columns, sizeof(char *));
+        }
+        // We don't update entry->rows_avail here because we want to know the old value in case we have to add columns as well
+    }
+
+    if (cmax != entry->columns) {
+        if (DEBUG_SET) mylog("set_array_value_in_nvram_entry", "Need more columns - adding them");
         for (i=0; i<entry->rows_avail; i++) {
             entry->data[i] = realloc(entry->data[i], cmax*sizeof(char *));
             for (j=entry->columns; j<cmax; j++) {
@@ -428,22 +446,15 @@ void set_array_value_in_nvram_cache(char *name, int row, int column, char *value
         entry->columns = cmax;
     }
 
-    if (row >= entry->rows_avail) {
-        if (DEBUG_SYNC) mylog("set_array_value_in_nvram_cache", "Need more rows - adding them");
-        rmax = row + 5;
-        entry->data = realloc(entry->data, rmax*sizeof(char **));
-        for (i=entry->rows_avail; i<rmax; i++) {
-            entry->data[i] = calloc(entry->columns, sizeof(char *));
-        }
-        entry->rows_avail = rmax;
-    }
+    // Now columns filled out if needed, admit to the updated (if) max rows avail
+    entry->rows_avail = rmax;
 
-    if (DEBUG_SYNC) {
+    if (DEBUG_SET) {
         char log_space[50];
-        sprintf(log_space, "%s(R%d,C%d)", name, row, column);
-        mylog("set_array_value_in_nvram_cache - setting", log_space);
-        mylog("set_array_value_in_nvram_cache -    from", entry->data[row][column]);
-        mylog("set_array_value_in_nvram_cache - to (in)", value);
+        sprintf(log_space, "%s(R%d,C%d)", entry->name, row, column);
+        mylog("set_array_value_in_nvram_entry - setting", log_space);
+        mylog("set_array_value_in_nvram_entry -    from", entry->data[row][column]);
+        mylog("set_array_value_in_nvram_entry - to (in)", value);
     }
 
     if (value == NULL) {
@@ -465,7 +476,18 @@ void set_array_value_in_nvram_cache(char *name, int row, int column, char *value
 
     if (row >= entry->rows_used) entry->rows_used = row + 1;
 
-    if (DEBUG_SYNC) mylog("set_array_value_in_nvram_cache -  stored", entry->data[row][column]);
+    if (DEBUG_SYNC) mylog("set_array_value_in_nvram_entry -  stored", entry->data[row][column]);
+}
+
+void set_array_value_in_nvram_cache(char *name, int row, int column, char *value) {
+    nvram_entry *entry;
+
+    if (nc == NULL) {
+        if (DEBUG_SET) mylog("set_array_value_in_nvram_cache FAILED", "Cache not initialised");
+        return;
+        }
+    entry = nvram_cache_want_variable(name);
+    set_array_value_in_nvram_entry(entry, row, column, value);
 }
 
 void sync_nvram_cache_back_to_nvram() {

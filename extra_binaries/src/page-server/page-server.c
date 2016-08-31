@@ -35,7 +35,7 @@
 #define DEBUG_ACTION 1
 #define DEBUG_NONE   0
 
-#define DEBUG_LEVEL DEBUG_LOTS
+#define DEBUG_LEVEL DEBUG_TONS
 
 #define ACTION_UNKNOWN   0
 #define ACTION_NONE      1
