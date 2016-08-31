@@ -17,10 +17,13 @@
 
 #define ADBLOCK_PORT 8105
 #define PATH_TO_ONLY_FILE "/www.adblock/index.html"
+#define LOG_FILE "/var/log/adblockhttpd.log"
 
 #define ISspace(x) isspace((int)(x))
 
 #define SERVER_STRING "Server: ab_httpd/0.0.1\r\n"
+
+FILE *fp_log = NULL;
 
 void accept_request(int);
 void bad_request(int);
@@ -29,10 +32,14 @@ void cannot_execute(int);
 void error_die(const char *);
 void execute_cgi(int, const char *, const char *, const char *);
 void headers(int, const char *);
-void not_found(int);
 void serve_file(int, const char *);
 int startup(u_short *);
-void unimplemented(int);
+
+
+void mylog(const char *msg1, const char *msg2) {
+ fprintf(fp_log, "%s: %s\n", msg1, msg2);
+ fflush(fp_log);
+}
 
 /**********************************************************************/
 /* A request has caused a call to accept() on the server port to
@@ -88,6 +95,7 @@ void cat(int client, FILE *resource)
 /**********************************************************************/
 void error_die(const char *sc)
 {
+ mylog("DIE", sc);
  perror(sc);
  exit(1);
 }
@@ -113,14 +121,6 @@ void headers(int client, const char *filename)
 }
 
 /**********************************************************************/
-/* Give a client a 404 not found status message. */
-/**********************************************************************/
-void not_found(int client)
-{
-    serve_file(client, PATH_TO_ONLY_FILE);
-}
-
-/**********************************************************************/
 /* Send a regular file to the client.  Use headers, and report
  * errors to client if they occur.
  * Parameters: a pointer to a file structure produced from the socket
@@ -131,10 +131,8 @@ void serve_file(int client, const char *filename)
 {
  FILE *resource = NULL;
 
- resource = fopen(filename, "r");
- if (resource == NULL)
-  not_found(client);
- else
+ resource = fopen(PATH_TO_ONLY_FILE, "r");
+ if (resource != NULL)
  {
   headers(client, filename);
   cat(client, resource);
@@ -178,27 +176,23 @@ int startup(u_short *port)
 }
 
 /**********************************************************************/
-/* Inform the client that the requested web method has not been
- * implemented.
- * Parameter: the client socket */
-/**********************************************************************/
-void unimplemented(int client)
-{
-    serve_file(client, PATH_TO_ONLY_FILE);
-}
-
-/**********************************************************************/
 
 int main(void)
 {
- int server_sock = -1;
- u_short port = ADBLOCK_PORT;
- int client_sock = -1;
+ int                server_sock = -1;
+ u_short            port = ADBLOCK_PORT;
+ int                client_sock = -1;
  struct sockaddr_in client_name;
- socklen_t client_name_len = sizeof(client_name);
+ socklen_t          client_name_len = sizeof(client_name);
+
+ fp_log = fopen(LOG_FILE, "a");
+ if (fp_log == NULL) {
+  fp_log = stderr;
+  mylog("adblockhttpd startup", "Couldn't open log file");
+ }
 
  server_sock = startup(&port);
- printf("httpd running on port %d\n", port);
+ mylog("adblockhttpd startup", "httpd running");
 
  while (1)
  {
