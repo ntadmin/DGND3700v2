@@ -48,25 +48,25 @@ void mylog(const char *msg1, const char *msg2) {
 /**********************************************************************/
 void accept_request(int client)
 {
- char  buf[32];
- int   numchars;
+  char  buf[32];
+  int   numchars;
 
- /* Make sure that they are sending us a request */
- numchars = recv(client, buf, sizeof(buf), 0);
- while (numchars > 0) {
-  numchars = recv(client, buf, sizeof(buf), MSG_DONTWAIT);
- }
+  /* Make sure that they are sending us a request */
+  numchars = recv(client, buf, sizeof(buf), 0);
+  while (numchars > 0) {
+   numchars = recv(client, buf, sizeof(buf), MSG_DONTWAIT);
+  }
 
- /* Send our (rather predicatable) response */
- serve_file(client, PATH_TO_ONLY_FILE);
+  /* Send our (rather predicatable) response */
+  serve_file(client, PATH_TO_ONLY_FILE);
 
- /* Read and ignore everything else the client is sending us */
- usleep(10);
- do {
-  numchars = recv(client, buf, sizeof(buf), MSG_DONTWAIT);
- } while (numchars > 0);
+  /* Read and ignore everything else the client is sending us */
+  usleep(10);
+  do {
+   numchars = recv(client, buf, sizeof(buf), MSG_DONTWAIT);
+  } while (numchars > 0);
 
- close(client);
+  close(client);
 }
 
 /**********************************************************************/
@@ -97,7 +97,7 @@ void error_die(const char *sc)
 {
  mylog("DIE", sc);
  perror(sc);
- exit(1);
+ exit(EXIT_FAILURE);
 }
 
 /**********************************************************************/
