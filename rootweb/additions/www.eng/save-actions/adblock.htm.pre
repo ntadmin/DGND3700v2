@@ -1,2 +1,2 @@
 #!/bin/sh
-/usr/sbin/rc_app/rc_adblock stop
+/usr/sbin/rc adblock stop
