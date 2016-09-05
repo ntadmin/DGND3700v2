@@ -62,4 +62,4 @@ case "$1" in
     echo "Usage $0 clear|set"
     ;;
 esac
-exit 0
+
