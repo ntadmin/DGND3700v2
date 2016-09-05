@@ -14,6 +14,7 @@
 #include <sys/stat.h>
 #include <sys/wait.h>
 #include <stdlib.h>
+#include <errno.h>
 
 #define ADBLOCK_PORT 8105
 #define PATH_TO_ONLY_FILE "/www.adblock/index.html"
@@ -33,8 +34,9 @@ void error_die(const char *);
 void execute_cgi(int, const char *, const char *, const char *);
 void headers(int, const char *);
 void serve_file(int, const char *);
-int startup(u_short *);
+int  startup(u_short *);
 
+int  server_sock = -1;
 
 void mylog(const char *msg1, const char *msg2) {
  fprintf(fp_log, "%s: %s\n", msg1, msg2);
@@ -95,6 +97,9 @@ void cat(int client, FILE *resource)
 /**********************************************************************/
 void error_die(const char *sc)
 {
+ char errnostr[128];
+ if (server_sock != -1) close(server_sock);
+ sprintf(errnostr, "%s (errno %d)", sc, errno);
  mylog("DIE", sc);
  perror(sc);
  exit(EXIT_FAILURE);
@@ -141,6 +146,14 @@ void serve_file(int client, const char *filename)
  fclose(resource);
 }
 
+/**********************************************************************
+ * This function catches kill signals and closes the socket down
+ * nicely
+ **********************************************************************/
+void handle_kill(int sig) {
+ error_die("killed");
+}
+
 /**********************************************************************/
 /* This function starts the process of listening for web connections
  * on a specified port.  If the port is 0, then dynamically allocate a
@@ -179,11 +192,13 @@ int startup(u_short *port)
 
 int main(void)
 {
- int                server_sock = -1;
  u_short            port = ADBLOCK_PORT;
  int                client_sock = -1;
  struct sockaddr_in client_name;
  socklen_t          client_name_len = sizeof(client_name);
+
+ signal(SIGTERM, handle_kill);
+ signal(SIGKILL, handle_kill);
 
  fp_log = fopen(LOG_FILE, "a");
  if (fp_log == NULL) {
