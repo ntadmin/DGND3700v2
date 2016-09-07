@@ -1,6 +1,7 @@
 #!/bin/sh
 
 # Start ddns if DDNS is enabled.
-if [ "x"$sysDNSActive == "xenable" ]; then
-    /usr/sbin/rc_app/rc_ddns start
+$active="$(/usr/sbin/nvram-util get ddns_enable)"
+if [ "x"$active == "x1" ]; then
+    /usr/sbin/rc ddns start
 fi

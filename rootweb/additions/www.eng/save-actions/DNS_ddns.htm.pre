@@ -1,2 +1,2 @@
 #!/bin/sh
-/usr/sbin/rc_app/rc_ddns stop
+/usr/sbin/rc ddns stop
