@@ -678,6 +678,7 @@ void save_data() {
     int           occur_place;
     bool          loop_done;
     bool          is_hidden;
+    bool          win_cr_removed = false;
     char         *cp;
     char         *cp2;
     char         *page_var;
@@ -868,10 +869,16 @@ void save_data() {
                     else {
                         *cp2 = '\0';
                     }
+                    if (*(cp2-1) == '\r') {
+                        *(cp2-1) = '\0';
+                        win_cr_removed = true;
+                    }
+                    else win_cr_removed = false;
                     if (DEBUG_LEVEL >= DEBUG_TONS) mylog("save data - list to", cp);
                     set_array_value_in_nvram_cache(vvpp_entry->value, row, col, cp);
                     if (!loop_done) {
                         *cp2 = '\n';
+                        if (win_cr_removed) *(cp2-1) = '\r';
                     }
                     row++;
                     cp = cp2 + 1;
