@@ -98,10 +98,10 @@ void cat(int client, FILE *resource)
 void error_die(const char *sc)
 {
  char errnostr[128];
- if (server_sock != -1) close(server_sock);
  sprintf(errnostr, "%s (errno %d)", sc, errno);
- mylog("DIE", sc);
+ mylog("DIE", errnostr);
  perror(sc);
+ if (server_sock != -1) close(server_sock);
  exit(EXIT_FAILURE);
 }
 
