@@ -1,6 +1,12 @@
 #!/bin/sh
+PATH=/usr/sbin
+
+mylog() {
+    echo "`/usr/sbin/date` [rc_inadyn-mt] $@" >> /var/log/rc_calls
+}
+
 if [ -e /usr/etc/log_rc_flag ]; then
-    echo "`/usr/sbin/date` [rc_inadyn-mt] $0 $@" >> /var/log/rc_calls
+    mylog "Called:" $0 $@
 fi
 
 args_for_inadyn=""
@@ -57,33 +63,33 @@ case "$1" in
     start)
         make_args
         if [ "x$ddns_enable" != "x1" ]; then
-            echo "DDNS not enabled so not starting inadyn. (ddns_enable:$ddns_enable)"
+            mylog "DDNS not enabled so not starting inadyn. (ddns_enable:$ddns_enable)"
 	else
             PID="$(/usr/sbin/pidof inadyn-mt)"
             if [ "x$PID" = "x" ]; then
 	        /usr/sbin/inadyn-mt $args_for_inadyn
 		PID="$(/usr/sbin/pidof inadyn-mt)"
 		if [ "x${PID}" != "x" ]; then
-		    echo "inadyn-mt started succesfully. ($args_for_inadyn)"
+		    mylog "inadyn-mt started succesfully. ($args_for_inadyn)"
 		else
-		    echo "Error starting inadyn-mt ($args_for_inadyn)"
+		    mylog "Error starting inadyn-mt ($args_for_inadyn)"
 		fi
             else
-                echo "idadyn-mt already started, leaving it alone"
+                mylog "idadyn-mt already started, leaving it alone"
             fi
         fi
         ;;
     strop)
-        echo "I'm far too polite."
+        mylog "I'm far too polite."
         ;;
     stop)
         PID="$(/usr/sbin/pidof inadyn-mt)"
 	if [ "x$PID" != "x" ];then
 	    /usr/sbin/killall inadyn-mt 2>/dev/null
             sleep 1
-            echo "inadyn-mt stopped."
+            mylog "inadyn-mt stopped."
 	else
-	    echo "inadyn-mt is already stopped."
+	    mylog "inadyn-mt is already stopped."
 	fi
         ;;
     reload|restart)

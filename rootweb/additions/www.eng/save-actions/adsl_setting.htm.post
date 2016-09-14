@@ -2,7 +2,7 @@
 
 # Configure and restart DSL or just configure it?
 if [ "x$dsl_restart_now" == "x1" ]; then
-    /usr/sbin/rc_app/rc_adsl restart
+    /usr/sbin/rc adsl restart
 fi
 
 # If no need to restart, the changes will be pulled from the

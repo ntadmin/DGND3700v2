@@ -1,2 +1,2 @@
 #!/bin/sh
-/usr/sbin/rc_app/rc_user_nat restart
+/usr/sbin/rc user_nat restart
