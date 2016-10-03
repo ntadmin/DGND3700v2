@@ -45,7 +45,8 @@ tmpfile=/tmp/adblocklist.pre
 $wget --no-check-certificate -q $list_src_url -O $tmpfile
 
 # Remove hosts we want to let through from the ban list
-for line in "$(/usr/sbin/nvram-util getarray adblock_allow '\n')"; do
+list="$(/usr/sbin/nvram-util getarray adblock_allow ' ')"
+for line in $list; do
     if [ "x$line" != "x" ]; then
         sed -i "/$line/d" $tmpfile
     fi
