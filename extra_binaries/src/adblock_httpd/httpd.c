@@ -17,9 +17,10 @@
 #include <errno.h>
 #include <stdbool.h>
 
-#define ADBLOCK_PORT 8105
-#define PATH_TO_ONLY_FILE "/www.adblock/index.html"
-#define LOG_FILE "/var/log/adblockhttpd.log"
+#define ADBLOCK_PORT         8105
+#define LOG_FILE             "/var/log/adblockhttpd.log"
+#define HTTP_HEADER          "HTTP/1.0 200 OK\r\nServer: ab_httpd/0.0.1\r\nContent-Type: text/html\r\n\r\n"
+#define HTTP_ADBLOCK_MESSAGE "<!DOCTYPE html PUBLIC '-//W3C//DTD HTML 4.01//EN' 'http://www.w3.org/TR/html4/strict.dtd'><html lang='en'><head><meta http-equiv='content-type' content='text/html; charset=utf-8'><title>Ad blocked</title></head><body>Ad blocked :-)</body></html>"
 
 #define HEADER_TIMEOUT  0.2
 
@@ -35,8 +36,7 @@ void cat(int, FILE *);
 void cannot_execute(int);
 void error_die(const char *);
 void execute_cgi(int, const char *, const char *, const char *);
-void headers(int, const char *);
-void serve_file(int, const char *);
+void serve_file(int);
 int  startup(u_short *);
 
 int  server_sock = -1;
@@ -84,8 +84,9 @@ void accept_request(int client)
   do {
     numchars = recv(client, buf, 1, MSG_DONTWAIT);
     if ((numchars < 0) && (errno != EAGAIN)) { // Better not fail on "Try Again!"
-     mylogerr("recv FAIL");
-     loop_done = true;
+     mylogerr("recv FAIL closing connection, errno");
+     close(client);
+     return;
     }
     else if (numchars == 1) {
 //     mylogchar(buf[0]);
@@ -108,7 +109,7 @@ void accept_request(int client)
 
   /* Send our (rather predicatable) response */
   mylog("Got (or not) header", "sending response");
-  serve_file(client, PATH_TO_ONLY_FILE);
+  serve_file(client);
 
   /* Read and ignore everything else the client is sending us */
   usleep(10);
@@ -159,44 +160,20 @@ void error_die(const char *sc)
 }
 
 /**********************************************************************/
-/* Return the informational HTTP headers about a file. */
-/* Parameters: the socket to print the headers on
- *             the name of the file */
-/**********************************************************************/
-void headers(int client, const char *filename)
-{
- char buf[1024];
- (void)filename;  /* could use filename to determine file type */
-
- strcpy(buf, "HTTP/1.0 200 OK\r\n");
- send(client, buf, strlen(buf), 0);
- strcpy(buf, SERVER_STRING);
- send(client, buf, strlen(buf), 0);
- sprintf(buf, "Content-Type: text/html\r\n");
- send(client, buf, strlen(buf), 0);
- strcpy(buf, "\r\n");
- send(client, buf, strlen(buf), 0);
-}
-
-/**********************************************************************/
 /* Send a regular file to the client.  Use headers, and report
  * errors to client if they occur.
  * Parameters: a pointer to a file structure produced from the socket
  *              file descriptor
  *             the name of the file to serve */
 /**********************************************************************/
-void serve_file(int client, const char *filename)
+void serve_file(int client)
 {
- FILE *resource = NULL;
-
- resource = fopen(PATH_TO_ONLY_FILE, "r");
- if (resource != NULL)
- {
-  headers(client, filename);
-  cat(client, resource);
- }
-
- fclose(resource);
+ mylogchar('H');
+ send(client, HTTP_HEADER, strlen(HTTP_HEADER), 0);
+ mylogchar('P');
+ send(client, HTTP_ADBLOCK_MESSAGE, strlen(HTTP_ADBLOCK_MESSAGE), 0);
+ mylogchar('X');
+ mylogchar('\n');
 }
 
 /**********************************************************************
