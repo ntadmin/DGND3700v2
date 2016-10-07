@@ -1,4 +1,4 @@
-/* This is a simple webserver, which always returns the same file, no matter what you ask for.
+/* This is a simple webserver, which always returns the same http, no matter what you ask for.
  * Based on a webserver created November 1999 by J. David Blackstone.
  * Brutalised to this by Neil Townsend
  */
@@ -17,10 +17,10 @@
 #include <errno.h>
 #include <stdbool.h>
 
-#define ADBLOCK_PORT         8105
-#define LOG_FILE             "/var/log/adblockhttpd.log"
-#define HTTP_HEADER          "HTTP/1.0 200 OK\r\nServer: ab_httpd/0.0.1\r\nContent-Type: text/html\r\n\r\n"
-#define HTTP_ADBLOCK_MESSAGE "<!DOCTYPE html PUBLIC '-//W3C//DTD HTML 4.01//EN' 'http://www.w3.org/TR/html4/strict.dtd'><html lang='en'><head><meta http-equiv='content-type' content='text/html; charset=utf-8'><title>Ad blocked</title></head><body>Ad blocked :-)</body></html>"
+#define ADBLOCK_PORT 8105
+#define LOG_FILE     "/var/log/adblockhttpd.log"
+#define HTTP_HEADER  "HTTP/1.0 200 OK\r\nServer: ab_httpd/0.0.1\r\nContent-Type: text/html\r\n\r\n"
+#define HTTP_MESSAGE "<!DOCTYPE html PUBLIC '-//W3C//DTD HTML 4.01//EN' 'http://www.w3.org/TR/html4/strict.dtd'><html lang='en'><head><meta http-equiv='content-type' content='text/html; charset=utf-8'><title>Ad blocked</title></head><body>Ad blocked :-)</body></html>"
 
 #define HEADER_TIMEOUT  0.2
 
@@ -171,7 +171,7 @@ void serve_file(int client)
  mylogchar('H');
  send(client, HTTP_HEADER, strlen(HTTP_HEADER), 0);
  mylogchar('P');
- send(client, HTTP_ADBLOCK_MESSAGE, strlen(HTTP_ADBLOCK_MESSAGE), 0);
+ send(client, HTTP_MESSAGE, strlen(HTTP_MESSAGE), 0);
  mylogchar('X');
  mylogchar('\n');
 }
