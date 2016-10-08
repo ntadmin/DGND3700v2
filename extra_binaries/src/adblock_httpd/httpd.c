@@ -168,10 +168,26 @@ void error_die(const char *sc)
 /**********************************************************************/
 void serve_file(int client)
 {
+ int ls, lc;
+
  mylogchar('H');
- send(client, HTTP_HEADER, strlen(HTTP_HEADER), 0);
+ ls = strlen(HTTP_HEADER);
+ lc = send(client, HTTP_HEADER, ls, 0);
+ if (ls != lc) {
+  mylogerr("Header send failed or incomplete, closing connection. Errno:");
+  close(client);
+  return;
+ }
+
  mylogchar('P');
- send(client, HTTP_MESSAGE, strlen(HTTP_MESSAGE), 0);
+ ls = strlen(HTTP_MESSAGE);
+ lc = send(client, HTTP_MESSAGE, strlen(HTTP_MESSAGE), 0);
+ if (ls != lc) {
+  mylogerr("Message send failed or incomplete, closing connection. Errno:");
+  close(client);
+  return;
+ }
+
  mylogchar('X');
  mylogchar('\n');
 }
