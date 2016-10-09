@@ -28,6 +28,12 @@
 
 #define SERVER_STRING "Server: ab_httpd/0.0.1\r\n"
 
+#define DEBUG_NONE      0
+#define DEBUG_LITTLE    1
+#define DEBUG_LOTS      2
+#define DEBUG_EXCESSIVE 3
+#define DEBUG_LEVEL     DEBUG_NONE
+
 FILE *fp_log = NULL;
 
 void accept_request(int);
@@ -74,7 +80,7 @@ void accept_request(int client)
   time_t now_time;
 
   sprintf(buf, "%d", client);
-  mylog("handling request on client socket", buf);
+  if (DEBUG_LEVEL >= DEBUG_LITTLE) mylog("handling request on client socket", buf);
 
   /* Make sure that they are sending us a request */
   last_was_r  = false;
@@ -84,12 +90,12 @@ void accept_request(int client)
   do {
     numchars = recv(client, buf, 1, MSG_DONTWAIT);
     if ((numchars < 0) && (errno != EAGAIN)) { // Better not fail on "Try Again!"
-     mylogerr("recv FAIL closing connection, errno");
+     if (DEBUG_LEVEL >= DEBUG_LITTLE) mylogerr("recv FAIL closing connection, errno");
      close(client);
      return;
     }
     else if (numchars == 1) {
-//     mylogchar(buf[0]);
+     if (DEBUG_LEVEL >= DEBUG_EXCESSIVE) mylogchar(buf[0]);
      if (last_was_r && (buf[0] == '\n')) {
       if (last_was_rn) loop_done   = true;
       else             last_was_rn = true;
@@ -102,13 +108,13 @@ void accept_request(int client)
     }
     time(&now_time);
     if (difftime(now_time, start_time) > HEADER_TIMEOUT) {
-     mylog("Header Timeout", "(probably HTTPS)");
+     if (DEBUG_LEVEL >= DEBUG_LOTS) mylog("Header Timeout", "(probably HTTPS)");
      loop_done = true;
     }
    } while (!loop_done);
 
   /* Send our (rather predicatable) response */
-  mylog("Got (or not) header", "sending response");
+  if (DEBUG_LEVEL >= DEBUG_LOTS) mylog("Got (or not) header", "sending response");
   serve_file(client);
 
   /* Read and ignore everything else the client is sending us */
@@ -117,12 +123,12 @@ void accept_request(int client)
    buf[0] = '\0';
    numchars = recv(client, buf, max_recv, MSG_DONTWAIT);
    if (numchars > 0) buf[numchars]='\0';
-//   mylog("incomingf", buf);
+   if (DEBUG_LEVEL >= DEBUG_EXCESSIVE) mylog("incomingf", buf);
   } while (numchars > 0);
 
-  mylog("All done", "closing client");
+  if (DEBUG_LEVEL >= DEBUG_LOTS) mylog("All done", "closing client");
   close(client);
-  mylog("Client closed", "back to waiting");
+  if (DEBUG_LEVEL >= DEBUG_LOTS) mylog("Client closed", "back to waiting");
 }
 
 /**********************************************************************/
@@ -153,7 +159,7 @@ void error_die(const char *sc)
 {
  char errnostr[128];
  sprintf(errnostr, "%s (errno %d)", sc, errno);
- mylog("DIE", errnostr);
+ if (DEBUG_LEVEL >= DEBUG_LITTLE) mylog("DIE", errnostr);
  perror(sc);
  if (server_sock != -1) close(server_sock);
  exit(EXIT_FAILURE);
@@ -170,26 +176,28 @@ void serve_file(int client)
 {
  int ls, lc;
 
- mylogchar('H');
+ if (DEBUG_LEVEL >= DEBUG_LOTS) mylogchar('H');
  ls = strlen(HTTP_HEADER);
  lc = send(client, HTTP_HEADER, ls, 0);
  if (ls != lc) {
-  mylogerr("Header send failed or incomplete, closing connection. Errno:");
+  if (DEBUG_LEVEL >= DEBUG_LOTS) mylogerr("Header send failed or incomplete, closing connection. Errno:");
   close(client);
   return;
  }
 
- mylogchar('P');
+ if (DEBUG_LEVEL >= DEBUG_LOTS) mylogchar('P');
  ls = strlen(HTTP_MESSAGE);
  lc = send(client, HTTP_MESSAGE, strlen(HTTP_MESSAGE), 0);
  if (ls != lc) {
-  mylogerr("Message send failed or incomplete, closing connection. Errno:");
+  if (DEBUG_LEVEL >= DEBUG_LOTS) mylogerr("Message send failed or incomplete, closing connection. Errno:");
   close(client);
   return;
  }
 
- mylogchar('X');
- mylogchar('\n');
+ if (DEBUG_LEVEL >= DEBUG_LOTS) {
+  mylogchar('X');
+  mylogchar('\n');
+ }
 }
 
 /**********************************************************************
@@ -198,7 +206,7 @@ void serve_file(int client)
  **********************************************************************/
 void handle_kill(int sig) {
  if (server_sock != -1) close(server_sock);
- mylogerr("killed by external signal");
+ if (DEBUG_LEVEL >= DEBUG_LITTLE) mylogerr("killed by external signal");
 }
 
 /**********************************************************************/
@@ -257,7 +265,7 @@ int main(void)
  fp_log = fopen(LOG_FILE, "a");
  if (fp_log == NULL) {
   fp_log = stderr;
-  mylog("adblockhttpd startup", "Couldn't open log file");
+  if (DEBUG_LEVEL >= DEBUG_LITTLE) mylog("adblockhttpd startup", "Couldn't open log file");
  }
 
  if (daemon(1, 0) != 0) {
@@ -265,11 +273,11 @@ int main(void)
  }
 
  server_sock = startup(&port);
- mylog("adblockhttpd startup", "httpd running");
+ if (DEBUG_LEVEL >= DEBUG_LITTLE) mylog("adblockhttpd startup", "httpd running");
 
  while (1)
  {
-  mylog("main loop", "waiting");
+  if (DEBUG_LEVEL >= DEBUG_LOTS) mylog("main loop", "waiting");
   client_sock = accept(server_sock, NULL, NULL);
   if (client_sock == -1)
    error_die("accept");
