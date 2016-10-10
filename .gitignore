@@ -4,6 +4,7 @@
 /rootweb/target
 /rootweb/original
 /extra_binaries/target
+/extra_binaries/src/adblock_httpd/adblockhttpd
 /DGND3700*/
 /.flags
 /netgear-dl
