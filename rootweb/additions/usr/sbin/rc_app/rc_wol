@@ -16,7 +16,7 @@ wol_lan_port="9"
 wol_lan_mac="$(/usr/sbin/nvram-util get wol_mac)"
 wol_wan_port="9"
 
-lan_interface="$(/usr/sbin/nvram-util get lan_if"
+lan_interface="$(/usr/sbin/nvram-util get lan_if)"
 
 issue_arp_on_cmd() {
     /usr/sbin/arp -i $lan_interface -s $wol_lan_ip $wol_lan_mac
