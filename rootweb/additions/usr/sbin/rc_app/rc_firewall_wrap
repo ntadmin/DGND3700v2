@@ -21,18 +21,22 @@ case "$1" in
   wan)
     if [ "x$3" = "xup" ]; then
         /usr/sbin/rc_app/rc_user_nat restart
+        /usr/sbin/rc_app/rc_wol restart
     fi
     if [ "x$3" = "xinit" ]; then
         /usr/sbin/rc_app/rc_user_nat start
+        /usr/sbin/rc_app/rc_wol start
         /usr/sbin/rc_app/rc_adblock start
     fi
     if [ "x$3" = "xdown" ]; then
         /usr/sbin/rc_app/rc_user_nat stop
+        /usr/sbin/rc_app/rc_wol stop
     fi
     run_netgear_rc_firewall $@
     ;;
   inbound)
     /usr/sbin/rc_app/rc_user_nat restart
+    /usr/sbin/rc_app/rc_wol restart
     run_netgear_rc_firewall $@
     ;;
   *)
