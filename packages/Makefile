@@ -8,7 +8,7 @@ include ../Rules.mak
 #
 # Set the following headline information: which packages
 #
-packages=inadyn-mt dnsmasq miniupnpc dropbear busybox
+packages=inadyn-mt dnsmasq miniupnpc dropbear busybox strace
 
 #
 # Not on the list:
@@ -28,6 +28,13 @@ target_dirs=/usr/sbin /lib
 # For each package, set the following information up
 # Only set .configure-options if there is a configure to execute in the package
 #
+strace.url=http://downloads.sourceforge.net/project/strace/strace/4.14/strace-4.14.tar.xz
+strace.pkg-dl-name=strace-latest.tar.xz
+strace.tar-args=Jxf
+strace.configure-options=--host=mips-linux CC=/opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/mips-linux-gcc --disable-sound ac_cv_func_malloc_0_nonnull=yes ac_cv_func_realloc_0_nonnull=yes --bindir=$(PKG_TARGET_DIR)/usr/sbin --libdir=$(PKG_TARGET_DIR)/usr/lib
+strace.make-command=make
+strace.test-compiled-file=strace
+
 inadyn-mt.url=http://sourceforge.net/projects/inadyn-mt/files/latest/download
 inadyn-mt.pkg-dl-name=inadyn-mt-latest.tar.gz
 inadyn-mt.tar-args=xvf
@@ -88,6 +95,9 @@ miniupnpd.test-compiled-file=_install/bin/miniupnpd
 # commands after the package has been made. Typically putting the
 # executables and libraries in place.
 #
+
+strace.place:
+	@cp $(PKG_SRC_DIR)/$(@:%.place=%)/strace $(PKG_TARGET_DIR)/usr/sbin
 
 busybox.place:
 	@cp -R $(PKG_SRC_DIR)/$(@:%.place=%)/_install/bin/* $(PKG_TARGET_DIR)/usr/sbin/
