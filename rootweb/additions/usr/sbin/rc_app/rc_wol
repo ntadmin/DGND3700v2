@@ -26,11 +26,21 @@ issue_arp_off_cmd() {
     /usr/sbin/arp -i $lan_interface -d $wol_lan_ip
 }
 
+issue_upnp_on_cmd() {
+    $upnp_cmd -e $our_identifier -a $wol_lan_ip $1 $1 udp
+}
+
+issue_upnp_off_cmd() {
+    $upnp_cmd -d $1 udp
+}
+
 case "$1" in
     start)
         if [ "x$wol_enable" = "x1" ]; then
             issue_arp_on_cmd
-            $upnp_cmd -e $our_identifier -a $wol_lan_ip $wol_lan_port $wol_wan_port udp
+            issue_upnp_on_cmd 7
+            issue_upnp_on_cmd 8
+            issue_upnp_on_cmd 9
         fi
         ;;
     strop)
@@ -38,7 +48,9 @@ case "$1" in
         ;;
     stop)
         issue_arp_off_cmd
-        $upnp_cmd -d $wol_wan_port udp
+        issue_upnp_off_cmd 7
+        issue_upnp_off_cmd 8
+        issue_upnp_off_cmd 9
         ;;
     reload|restart)
         $0 stop
