@@ -4,13 +4,9 @@
 function checkData()
 {
     var cf = document.forms[0];
-    if (cf.wol_enable.checked) {
+    if (cf.wol_onoff.checked) {
         if (badLANIP(cf.wol_IPAddr1,cf.wol_IPAddr2,cf.wol_IPAddr3,cf.wol_IPAddr4,254)) {
             alert("Invald IP for routing adblocked requests");
-            return false;
-        }
-        if (!checkmac6to1(cf.wol_mac1,cf.wol_mac2,cf.wol_mac3,cf.wol_mac4,cf.wol_mac5,cf.wol_mac6)) {
-            alert(getErrorMsgByVar("gsm_msg_eth_inv_mac"));
             return false;
         }
     }
@@ -32,17 +28,9 @@ function checkData()
 
     <tr><!-- RULE --><td colspan="2" background="liteblue.gif" height="12"></td></tr>
 
-    <tr><td colspan="2" nowrap><input type="checkbox" name="wol_enable" value="@wol_enable#"><b>Enable Wake On LAN (WOL)</b></td></tr>
-    <tr><td colspan="2" nowrap>The next two must describe the same device on your LAN, the one which you wish to receive the WOL trigger</td></tr>
-    <tr><td>Internal IP address for WOL trigger</td>
-    <td nowrap align="right" class="num"><input type="text" name="wol_IPAddr1" class="num" size="4" maxlength="3" value="198">.<input type="text" name="wol_IPAddr2" class="num" size="4" maxlength="3" value="51">.<input type="text" name="wol_IPAddr3" class="num" size="4" maxlength="3" value="100">.<input type="text" name="wol_IPAddr4" class="num" size="4" maxlength="3" value="1"></td></tr>
-    <tr><td>MAC address for WOL trigger</td>
-    <td nowrap align="right"><input type="text" name="wol_mac1" class="num" size="3" value="" maxlength="2"> :
-               <input type="text" name="wol_mac2" class="num" size="3" value="" maxlength="2"> :
-               <input type="text" name="wol_mac3" class="num" size="3" value="" maxlength="2"> :
-               <input type="text" name="wol_mac4" class="num" size="3" value="" maxlength="2"> :
-               <input type="text" name="wol_mac5" class="num" size="3" value="" maxlength="2"> :
-               <input type="text" name="wol_mac6" class="num" size="3" value="" maxlength="2"></td></tr>
+    <tr><td colspan="2" nowrap><input type="checkbox" name="wol_onoff" value="@wol_onoff#"><b>Enable Wake On LAN (WOL)</b></td></tr>
+    <tr><td>Internal 'IP address' for WOL trigger (this must be an address which isn't used bny any device on your network, and isn't available to DHCP)</td>
+    <td nowrap align="right" class="num"><input type="text" name="wol_IPAddr1" class="num" size="4" maxlength="3" value="198">.<input type="text" name="wol_IPAddr2" class="num" size="4" maxlength="3" value="51">.<input type="text" name="wol_IPAddr3" class="num" size="4" maxlength="3" value="100">.<input type="text" name="wol_IPAddr4" class="num" size="4" maxlength="3" value="247"></td></tr>
 
     <tr><!-- RULE --><td colspan="2" background="liteblue.gif" height="12"></td></tr>
 
@@ -50,9 +38,9 @@ function checkData()
 <input type="hidden" name="todo" value="save" />
 <input type="hidden" name="this_file" value="wol.htm" />
 <input type="hidden" name="next_file" value="wol.htm" />
-<input type="hidden" name="h_wol_enable" value="@h_wol_enable#" />
+<input type="hidden" name="h_wol_onoff" value="@h_wol_onoff#" />
 <input type="hidden" name="c4_wol_IPAddr" value="@c4_wol_IPAddr#" />
-<input type="hidden" name="c6_wol_mac" value="@c6_wol_mac#">
+<!-- <input type="hidden" name="c6_wol_mac" value="@c6_wol_mac#"> -->
 <input type="hidden" name="SID" value="@SID#" />
 </div>
 </form>

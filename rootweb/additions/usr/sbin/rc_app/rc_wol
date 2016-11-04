@@ -13,7 +13,7 @@ upnp_cmd="/usr/sbin/upnpc -u http://$myip:$pnpport/rootDesc.xml"
 wol_enable="$(/usr/sbin/nvram-util get wol_enable)"
 wol_lan_ip="$(/usr/sbin/nvram-util get wol_ip)"
 wol_lan_port="9"
-wol_lan_mac="$(/usr/sbin/nvram-util get wol_mac)"
+wol_lan_mac="ff:ff:ff:ff:ff:ff"
 wol_wan_port="9"
 
 lan_interface="$(/usr/sbin/nvram-util get lan_if)"
@@ -38,7 +38,7 @@ case "$1" in
         ;;
     stop)
         issue_arp_off_cmd
-            $upnp_cmd -d $wol_wan_port udp
+        $upnp_cmd -d $wol_wan_port udp
         ;;
     reload|restart)
         $0 stop
