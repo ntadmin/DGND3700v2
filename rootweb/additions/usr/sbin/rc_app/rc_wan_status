@@ -14,7 +14,7 @@ run_netgear_rc_wan() {
 }
 
 force_correct_adsl_config() {
-    wan_mode="$(nvram-util get wan_mode_dsl)"
+    wan_mode="$(nvram-util get wan_mode)"
     if [ "x$wan_mode" = "xpppoa" ]; then
         adsl_needs="$(/usr/sbin/rc_app/rc_adsl needs)"
         if [ "x$adsl_needs" = "xconfigure" ]; then
