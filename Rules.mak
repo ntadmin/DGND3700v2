@@ -7,8 +7,11 @@
 # but the CUSTOM_VERSION should be set appropriately, as well as
 # where this file is in CUSTOM_BASE_DIR
 #
+# Change VARIANT to DGND3700Bv2 for that router.
+#
 PROJECT=DGND3700v2
-CUSTOM_VERSION=NEWT16A8
+VARIANT=DGND3700v2
+CUSTOM_VERSION=NEWT17X1
 CUSTOM_BASE_DIR=/usr/src/DGND3700v2/DGND3700v2
 
 #
@@ -54,7 +57,7 @@ FULL_FULL_VERSION=$(ANNEX)$(FULL_VERSION)
 export ROOT=$(NETGEAR_BASE_DIR)/Source/
 export CROSS=$(CROSS_TOOLS_ROOT)/usr/bin/mips-linux-
 
--include $(ROOT)/Builds/$(PROJECT).mak
+-include $(ROOT)/Builds/$(VARIANT).mak
 -include $(ROOT)/env.mak
 
 #

@@ -17,7 +17,7 @@ all:
 	@echo 'make <kernel/root/rootweb/extrabin/source/image>';
 
 image: kernel root source
-	@cp $(NETGEAR_BASE_DIR)/Source/image/$(PROJECT).img .
+	@cp $(NETGEAR_BASE_DIR)/Source/image/$(PROJECT).img $(VARIANT).img
 
 openwrt: openwrt-source
 	@cp $(NETGEAR_BASE_DIR)/Source/image/$(PROJECT).img $(PROJECT)-ow.img
@@ -46,6 +46,8 @@ packages:
 kernel: $(KERNEL_FILE)
 
 source: $(NETGEAR_BASE_DIR)/Makefile
+	@cp variants/$(VARIANT)/$(VARIANT).mak $(NETGEAR_BASE_DIR)/Source/Builds/$(PROJECT).mak
+	@cp $(NETGEAR_BASE_DIR)/Source/image/DGND3700Bv2_128M.par $(NETGEAR_BASE_DIR)/Source/image/DGND3700Bv2.par
 	@sed -i '/SUB_VER=/c\SUB_VER=$(CUSTOM_VERSION)' $(NETGEAR_BASE_DIR)/Source/Builds/$(PROJECT).mak
 	@$(foreach package, $(netgear_packages_not_needed), sed -i '/$(package)/c\# CUSTOM MOD: $(package) not needed for custom build' $(NETGEAR_APPS)/Makefile; )
 	make -C $(NETGEAR_BASE_DIR) source SHELL=/bin/bash
