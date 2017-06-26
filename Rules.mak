@@ -45,10 +45,31 @@ NETGEAR_APPS=$(NETGEAR_BASE_DIR)/Source/apps
 netgear_packages_not_needed=noip dnrd udhcp dhcpv6 totd busybox lsof
 
 #
-# Things not to edit
+# Things not to edit below here
 #
 FULL_VERSION=$(NETGEAR_VERSION)_$(CUSTOM_VERSION)
 FULL_FULL_VERSION=$(ANNEX)$(FULL_VERSION)
+
+#
+# Turn Variant into useful information for the Netgear bits
+# 
+# Default (DGND3700v2)
+#
+ANNEX=A
+FLASH=32M
+
+#
+# Variants
+#
+ifeq "$(VARIANT)" "DGND3700Bv2"
+ANNEX=B
+FLASH=128M
+endif
+
+ifeq "$(VARIANT)" "DGND3700v2h2"
+ANNEX=A
+FLASH=128M
+endif
 
 #
 # Get what we need from the Netgear mak includes, these should all
