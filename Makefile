@@ -45,12 +45,16 @@ packages:
 
 kernel: $(KERNEL_FILE)
 
+# Awful hack in here copying German into place for the Turkish language as I don't have the Turkish file.
 source: $(NETGEAR_BASE_DIR)/Makefile
-	@cp variants/$(VARIANT)/$(VARIANT).mak $(NETGEAR_BASE_DIR)/Source/Builds/$(PROJECT).mak
+	@echo ""
+	@echo "<<<<<<< NETGEAR SOURCE >>>>>>> VARIANT=$(VARIANT) ANNEX=$(ANNEX) FLASH=$(FLASH)"
+	@cp variants/$(VARIANT)/$(VARIANT).mak $(NETGEAR_BASE_DIR)/Source/Builds/
 	@cp $(NETGEAR_BASE_DIR)/Source/image/DGND3700Bv2_128M.par $(NETGEAR_BASE_DIR)/Source/image/DGND3700Bv2.par
+	@cp $(NETGEAR_BASE_DIR)/Source/image/langpkg_DEU.img $(NETGEAR_BASE_DIR)/Source/image/langpkg_TUR.img
 	@sed -i '/SUB_VER=/c\SUB_VER=$(CUSTOM_VERSION)' $(NETGEAR_BASE_DIR)/Source/Builds/$(PROJECT).mak
 	@$(foreach package, $(netgear_packages_not_needed), sed -i '/$(package)/c\# CUSTOM MOD: $(package) not needed for custom build' $(NETGEAR_APPS)/Makefile; )
-	make -C $(NETGEAR_BASE_DIR) source SHELL=/bin/bash
+	make -C $(NETGEAR_BASE_DIR) source SHELL=/bin/bash ANNEX="$(ANNEX)" FLASH="$(FLASH)"
 
 openwrt-source: $(NETGEAR_BASE_DIR)/Makefile
 	cp openwrt/rootfs.img $(NETGEAR_BASE_DIR)/Source/image
