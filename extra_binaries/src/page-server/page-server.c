@@ -37,14 +37,15 @@
 
 #define DEBUG_LEVEL DEBUG_ACTION
 
-#define ACTION_UNKNOWN   0
-#define ACTION_NONE      1
-#define ACTION_OTHER     2
-#define ACTION_CFG_INIT  4
-#define ACTION_NEWFILE   8
-#define ACTION_EDIT     16
-#define ACTION_SAVE     32
-#define ACTION_SAVE_PWD 64
+#define ACTION_UNKNOWN    0
+#define ACTION_NONE       1
+#define ACTION_OTHER      2
+#define ACTION_CFG_INIT   4
+#define ACTION_NEWFILE    8
+#define ACTION_EDIT      16
+#define ACTION_SAVE      32
+#define ACTION_SAVE_PWD  64
+#define ACTION_DELETE   128
 
 FILE *fp_debug = NULL;
 int   fd_debug = 0;
@@ -1003,6 +1004,7 @@ int main(int argc, char *argv[]) {
     else if (!strcmp(todo_value, "newfile"))     action_todo = ACTION_NEWFILE;
     else if (!strcmp(todo_value, "save_passwd")) action_todo = ACTION_SAVE_PWD;
     else if (!strcmp(todo_value, "save"))        action_todo = ACTION_SAVE;
+    else if (!strcmp(todo_value, "delete"))      action_todo = ACTION_DELETE;
     else                                         action_todo = ACTION_OTHER;
 
     // Handle (postive) actions that we can do and must do before render
