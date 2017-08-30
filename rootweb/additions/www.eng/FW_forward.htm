@@ -223,7 +223,7 @@ This comment is added to seperate two variables
 			<tr>
 				<td colspan="2" align="center"><br>
 				<input class="add_bt" type="button" name="inadd" value = "Add"
-					onClick="this.form.next_file.value='rule_in.htm';stdAction(this.form,'newfile')"
+					onClick="this.form.next_file.value='rule_in.htm';this.form.h_ruleSelect.value = document.getElementsByName('in_sel').length;stdAction(this.form,'newfile')"
 					languageCode = "93">
 	&nbsp;
 	<input class="edit_bt" type="button" name="inedit"
