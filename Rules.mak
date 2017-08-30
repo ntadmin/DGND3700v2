@@ -1,51 +1,55 @@
-# 
 # This file provides headline information for all the makefiles
 # The early lines should be edited to reflect your actual situion
-# The later lines should hopefullly not need changing
+# The later lines should hopefully not need changing
+
+#######################################################################
 #
-# You probably don't want ot touch the first one of these two,
-# but the CUSTOM_VERSION should be set appropriately, as well as
-# where this file is in CUSTOM_BASE_DIR
-#
-# Change VARIANT to DGND3700Bv2 for that router.
+# Proboably don't need to change this one, but it's nice to have it
+# at the start.
 #
 PROJECT=DGND3700v2
-VARIANT=DGND3700v2
-CUSTOM_VERSION=NEWT17X1
-CUSTOM_BASE_DIR=/usr/src/DGND3700v2/DGND3700v2
-
 #
-# Set these to reflect the base Netgear firmware being used.
+# Set this to DGND3700v2 or DGND3700Bv2 depending on which router you
+# are building for
+#
+VARIANT=DGND3700v2
+#
+# This doesn't affect the build at all, it is simply displayed on
+# the web pages so you know which version is on the router. Set as
+# appropriate.
+#
+CUSTOM_VERSION=NEWT17X1
+#
+# Set this to where this file is on your system.
+#
+CUSTOM_BASE_DIR=/usr/src/DGND3700v2/DGND3700v2
+#
+# Set these to reflect the base Netgear firmware source being used.
 #
 NETGEAR_VERSION=1.1.00.26
 NETGEAR_REGION=WW
 NETGEAR_FW_DATE=20150901
 NETGEAR_DL_BASE=http://www.downloads.netgear.com/files/GPL/
-
 #
 # Set this to reflect where the cross tools are
 #
 CROSS_TOOLS_ROOT=/opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw
 
+
+#########################################################################
 #
 # These should set automatically to the directory this file is in
 # and the one the Netgear code has been extracted to. Shouldn't
-# need touching
+# need touching.
 #
 NETGEAR_EXTRACT_DIR=$(PROJECT)_V$(NETGEAR_VERSION)_$(NETGEAR_REGION)_src_bak
 NETGEAR_BASE_DIR=$(CUSTOM_BASE_DIR)/$(NETGEAR_EXTRACT_DIR)
 NETGEAR_APPS=$(NETGEAR_BASE_DIR)/Source/apps
 
 
+##########################################################################
 #
-# Update this to control which of the packages that comes with
-# the netgear distruibution is not needed because it is superceded
-# by something in the custom packages directory
-#
-netgear_packages_not_needed=noip dnrd udhcp dhcpv6 totd busybox lsof
-
-#
-# Things not to edit below here
+# Things not to edit below here. Unless there's a bug, anyway!
 #
 FULL_VERSION=$(NETGEAR_VERSION)_$(CUSTOM_VERSION)
 FULL_FULL_VERSION=$(ANNEX)$(FULL_VERSION)
