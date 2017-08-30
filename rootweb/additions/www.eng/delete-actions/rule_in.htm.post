@@ -1,0 +1,2 @@
+#!/bin/sh
+/usr/sbin/rc user_nat restart
