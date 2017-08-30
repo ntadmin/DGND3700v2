@@ -54,7 +54,7 @@ miniupnpc.tar-args=xvf
 miniupnpc.make-command=INSTALLPREFIX=$(PKG_SRC_DIR)/miniupnpc/_install make install LIBDIR="/lib" CC="/opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/mips-linux-gcc"
 miniupnpc.test-compiled-file=_install/bin/upnpc
 
-dropbear.url=http://matt.ucc.asn.au/dropbear/releases/dropbear-2016.74.tar.bz2
+dropbear.url=http://matt.ucc.asn.au/dropbear/releases/dropbear-2017.75.tar.bz2
 dropbear.pkg-dl-name=dropbear-latest.tar.bz2
 dropbear.tar-args=jxf
 dropbear.configure-options=--host=mips-linux --disable-zlib CC=/opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/mips-linux-gcc ac_cv_func_malloc_0_nonnull=yes ac_cv_func_realloc_0_nonnull=yes
