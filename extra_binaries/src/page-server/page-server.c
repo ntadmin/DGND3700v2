@@ -503,18 +503,25 @@ var_val_pair_plus_array *get_page_vars(FILE *fp) {
                     tmp1 = tmp2 = 0;
                     if (!strncmp(var_rel_p, "ALLR,", 5)) {
                         tmp1 = VVPP_ALL_ROWS;
-                        sscanf(var_rel_p+5, "%d", &tmp2);
+                        var_rel_p += 5;
                     }
                     else if (sscanf(var_rel_p, "%d", &tmp1) == 1) {
-                        var_rel_p = strchr(var_rel_p, ',');
-                        if (var_rel_p != NULL) sscanf(var_rel_p+1, "%d", &tmp2);
+                        var_rel_p = strchr(var_rel_p, ',') + 1;
                     }
                     else {
                         tmp1 = VVPP_SELECTED_ROW;
                         add_var_val_pair_plus_text_attribute(new_vvpp, VVPP_HAS_ROW_ID, var_rel_p, ',');
-                        var_rel_p = strchr(var_rel_p, ',');
-                        if (var_rel_p != NULL) sscanf(var_rel_p+1, "%d", &tmp2);
+                        var_rel_p = strchr(var_rel_p, ',') + 1;
                     }
+
+                    if (!strncmp(var_rel_p, "ALLC", 4)) {
+                        tmp2 = VVPP_ALL_COLUMNS;
+                    }
+                    else {
+                        sscanf(var_rel_p, "%d", &tmp2);
+                    }
+
+
                     add_var_val_pair_plus_attribute(new_vvpp, VVPP_HAS_RC_INFO, tmp1, tmp2);
                 }
                 else if (*var_rel_p == '@') {
@@ -670,6 +677,55 @@ void core_info_to_render_data() {
 /*
  * Actions
  */
+
+bool delete_data() {
+    int     array_row_to_delete;
+    int     pv_index;
+    char   *cp;
+    char   *row_identifier;
+    char   *array_name;
+    var_val_pair_plus  *vvpp_action_entry;
+
+    // Find the action information
+    pv_index   = find_index_of_var_in_vvppa(action_page_vars, "TODO_ACTION_DELETE");
+    if (pv_index != VVPPA_NOT_FOUND) {
+        if (DEBUG_LEVEL >= DEBUG_LOTS) mylog("delete_data", "post variable is on action list");
+        vvpp_action_entry = action_page_vars->vvpps[pv_index];
+    }
+    else {
+        if (DEBUG_LEVEL >= DEBUG_ACTION) mylog("delete_data", "post variable is NOT on action list");
+        return false;
+    }
+
+    // Get the array to delete a row from (OK, this is an assumption, but it's the only use case so far.
+    array_name = vvpp_action_entry->value;
+    if (array_name == NULL) {
+        if (DEBUG_LEVEL >= DEBUG_ACTION) mylog("delete_data", "array name for action is null!");
+        return false;
+    }
+
+    // Get to row to delete (ditto)
+    row_identifier = vvpp_action_entry->row_identifier;
+    if (row_identifier == NULL) {
+        if (DEBUG_LEVEL >= DEBUG_ACTION) mylog("delete_data", "row identifer for row to delete is null");
+        return false;
+    }
+    cp = get_get_or_post_value(row_identifier);
+    if (cp == NULL) {
+        if (DEBUG_LEVEL >= DEBUG_ACTION) mylog("delete_data - row identifer isn't a page variable", row_identifier);
+        return false;
+    }
+    array_row_to_delete = atoi(cp);
+
+    // And remove that row from the array
+    //remove_row_from_array_in_nvram_cache(array_name, array_row_to_delete);
+
+    // And store
+    sync_nvram_cache_back_to_nvram();
+
+    if (DEBUG_LEVEL >= DEBUG_ACTION) mylog("delete_data", "deleting done");
+    return true;
+}
 
 void save_data() {
     int           i;
@@ -929,6 +985,24 @@ int do_post_save_action(char *file) {
     return do_action(fn);
 }
 
+int do_pre_delete_action(char *file) {
+    char   fn[512];
+
+    if (file == NULL) return -1;
+    sprintf(fn, "delete-actions/%s.pre", file);
+    if (DEBUG_LEVEL >= DEBUG_ACTION) mylog("do_pre_save_action - file", fn);
+    return do_action(fn);
+}
+
+int do_post_delete_action(char *file) {
+    char   fn[512];
+
+    if (file == NULL) return -1;
+    sprintf(fn, "delete-actions/%s.post", file);
+    if (DEBUG_LEVEL >= DEBUG_ACTION) mylog("do_post_save_action - file", fn);
+    return do_action(fn);
+}
+
 int do_post_netgear_action(char *file) {
     char   fn[512];
 
@@ -1008,7 +1082,7 @@ int main(int argc, char *argv[]) {
     else                                         action_todo = ACTION_OTHER;
 
     // Handle (postive) actions that we can do and must do before render
-    if ((action_todo == ACTION_SAVE) || (action_todo == ACTION_SAVE_PWD)) {
+    if ((action_todo == ACTION_SAVE) || (action_todo == ACTION_SAVE_PWD) || (action_todo == ACTION_DELETE)) {
         // If there is a this_file
         if (this_file_value != NULL) {
             if (strlen(this_file_value) > 80) {
@@ -1027,12 +1101,22 @@ int main(int argc, char *argv[]) {
         }
 
         // Handle todo actions that must be done before page render.
-        if (have_data_for_action && (action_todo == ACTION_SAVE)) {
-            if (DEBUG_LEVEL >= DEBUG_ACTION) mylog("main - action", "saving data");
-            do_pre_save_action(this_file_value);
-            save_data();
-            action_done = ACTION_SAVE;
-            do_post_save_action(this_file_value);
+        if (have_data_for_action) {
+            if (action_todo == ACTION_SAVE) {
+                if (DEBUG_LEVEL >= DEBUG_ACTION) mylog("main - action", "saving data");
+                do_pre_save_action(this_file_value);
+                save_data();
+                action_done = ACTION_SAVE;
+                do_post_save_action(this_file_value);
+            }
+            else if (action_todo == ACTION_DELETE) {
+                if (DEBUG_LEVEL >= DEBUG_ACTION) mylog("main - action", "deleting data");
+                do_pre_delete_action(this_file_value);
+		if (delete_data() == true) {
+                    action_done = ACTION_DELETE;
+    		    do_post_delete_action(this_file_value);
+                }
+            }
         }
 
         if ((action_todo == ACTION_SAVE_PWD) && (this_file_value != NULL)) {

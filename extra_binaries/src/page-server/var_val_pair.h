@@ -47,6 +47,8 @@ typedef struct var_val_pair_plus_array {
 #define VVPP_ALL_ROWS     -1
 #define VVPP_SELECTED_ROW -2
 
+#define VVPP_ALL_COLUMNS      -1
+
 #define VVPP_TYPE_TEXT         0
 #define VVPP_TYPE_OPTS         1
 #define VVPP_TYPE_OPTION_LIST  2

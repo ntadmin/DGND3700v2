@@ -386,6 +386,34 @@ void set_value_in_nvram_cache(char *name, char *value) {
     entry->changed = true;
 }
 
+void remove_row_from_array_in_nvram_cache(char *name, int row) {
+    int           i;
+    char        **row_to_go;
+    nvram_entry  *entry;
+
+    if (nc == NULL) return;
+
+    entry = nvram_cache_want_variable(name);
+    if (entry == NULL) return;
+    if (entry->type != NVRAM_ENTRY_TYPE_ARRAY) return;
+    if (row < 0) return;
+    if (row >= entry->rows_used) return;
+
+    row_to_go = entry->data[row];
+    if (row_to_go != NULL) {
+        for (i=0; i<entry->columns; i++) {
+             if (row_to_go[i] != NULL) free(row_to_go[i]);
+        }
+        free(row_to_go);
+    }
+
+    entry->rows_used--;
+    for (i=row; i<entry->rows_used; i++) {
+        entry->data[i] = entry->data[i+1];
+    }
+    entry->data[i] = calloc(entry->columns, sizeof(char *));
+}
+
 void clear_array_rows_this_and_above_in_nvram_cache(char *name, int row) {
     nvram_entry *entry;
 

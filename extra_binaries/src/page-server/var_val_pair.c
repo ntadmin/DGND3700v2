@@ -200,14 +200,24 @@ void vvpp_log_to_file(FILE *fp, var_val_pair_plus *vvpp, char *line) {
 
     if (vvpp->has & VVPP_HAS_RC_INFO) {
         strcat(buffer, ":#");
-        if (vvpp->row == VVPP_ALL_ROWS) strcat(buffer, "ALLR");
-        else if (vvpp->row == VVPP_SELECTED_ROW) strcat(buffer, vvpp->row_identifier);
+        if (vvpp->row == VVPP_ALL_ROWS) {
+            strcat(buffer, "ALLR");
+        }
+        else if (vvpp->row == VVPP_SELECTED_ROW) {
+            strcat(buffer, vvpp->row_identifier);
+        }
         else {
             sprintf(num, "%d", vvpp->row);
             strcat(buffer, num);
         }
-        sprintf(num, ",%d", vvpp->column);
-        strcat(buffer, num);
+        strcat(buffer, ",");
+        if (vvpp->column == VVPP_ALL_COLUMNS) {
+            strcat(buffer, "ALLC");
+        }
+        else {
+            sprintf(num, "%d", vvpp->column);
+            strcat(buffer, num);
+        }
     }
     if (vvpp->has & VVPP_HAS_IP_START) {
         strcat(buffer, ":@ipstart");
