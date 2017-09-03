@@ -703,6 +703,7 @@ bool delete_data() {
         if (DEBUG_LEVEL >= DEBUG_ACTION) mylog("delete_data", "array name for action is null!");
         return false;
     }
+    if (DEBUG_LEVEL >= DEBUG_ACTION) mylog("delete_data - deleting from", array_name);
 
     // Get to row to delete (ditto)
     row_identifier = vvpp_action_entry->row_identifier;
@@ -718,7 +719,8 @@ bool delete_data() {
     array_row_to_delete = atoi(cp);
 
     // And remove that row from the array
-    //remove_row_from_array_in_nvram_cache(array_name, array_row_to_delete);
+    if (DEBUG_LEVEL >= DEBUG_ACTION) mylog("delete_data - deleting row", cp);
+    remove_row_from_array_in_nvram_cache(array_name, array_row_to_delete);
 
     // And store
     sync_nvram_cache_back_to_nvram();

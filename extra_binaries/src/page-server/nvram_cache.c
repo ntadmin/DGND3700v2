@@ -391,6 +391,7 @@ void remove_row_from_array_in_nvram_cache(char *name, int row) {
     char        **row_to_go;
     nvram_entry  *entry;
 
+    if (nc == NULL) create_nvram_cache();
     if (nc == NULL) return;
 
     entry = nvram_cache_want_variable(name);
@@ -412,6 +413,7 @@ void remove_row_from_array_in_nvram_cache(char *name, int row) {
         entry->data[i] = entry->data[i+1];
     }
     entry->data[i] = calloc(entry->columns, sizeof(char *));
+    entry->changed = true;
 }
 
 void clear_array_rows_this_and_above_in_nvram_cache(char *name, int row) {
