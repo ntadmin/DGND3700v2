@@ -1,0 +1,43 @@
+#!/bin/sh
+PATH=/usr/sbin
+
+smb_extra_conf_file=/etc/samba/smb.usb.conf
+usb_drive_path=/mnt/shares/U
+
+if [ -e /usr/etc/log_rc_flag ]; then
+    echo "`/usr/sbin/date` [rc_usb_service] $0 $@">> /var/log/rc_calls
+fi
+
+run_netgear_rc_usb_service() {
+    myexec=/var/tmp/MYEXEC$$
+    mybase=rc_usb_service
+
+    mkdir $myexec
+    ln -fs /usr/sbin/rc_app/rc_apps $myexec/$mybase
+    $myexec/$mybase $@
+    rm -rf $myexec
+}
+
+create_smb_extra_conf_file() {
+    username="$(/usr/sbin/nvram-util get http_username)"
+    echo "[USB_Storage]" > $smb_extra_conf_file
+    echo "        path=$usb_drive_path" >> $smb_extra_conf_file
+    echo "        read list = $username,nobody" >> $smb_extra_conf_file
+    echo "        write list = $username,nobody" >> $smb_extra_conf_file
+}
+
+case "$1" in
+    kmount)
+        mkdir $usb_drive_path
+        device_path="$(/usr/sbin/fdisk -l | /usr/sbin/cut -d ' ' -f 1 | /usr/sbin/grep $2)"
+        mount $device_path $usb_drive_path
+        create_smb_extra_conf_file
+        /usr/sbin/rc_app/rc_smb event mount
+        /usr/sbin/rc_app/rc_ftpd event mount
+        /usr/sbin/rc_app/rc_smb_http_en_chk event mount
+        /usr/sbin/rc_app/rc_mediaserver event mount
+        ;;
+    *)
+        run_netgear_rc_usb_service $@
+        ;;
+esac
