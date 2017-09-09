@@ -36,7 +36,9 @@ int main(int argc, const char *argv[]) {
     char *pre_result = NULL;
     char *result  = NULL;
     char *cp_found;
+    int   i;
     int   offset;
+    int   length;
 
     if (argc < 3) exit_insufficient_args();
 
@@ -64,6 +66,18 @@ int main(int argc, const char *argv[]) {
                 free(result);
             }
         }
+    }
+    else if (!strcmp(argv[1], "setarray")) {
+        if (argc < 6) exit_insufficient_args();
+        length = strlen(argv[5]);
+        result = strdup(argv[5]);
+        for (i=0; i<length; i++) {
+            if      (result[i] == argv[3][0]) result[i] = ARRAY_CELL_END_CHAR;
+            else if (result[i] == argv[4][0]) result[i] = ARRAY_ROW_END_CHAR;
+        }
+        nvram_set(argv[2], result);
+        nvram_commit();
+        free(result);
     }
     else if (!strcmp(argv[1], "getarray-grep-row")) {
         if (argc < 5) exit_insufficient_args();
