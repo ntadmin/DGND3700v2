@@ -1,8 +1,11 @@
 #!/bin/sh
 PATH=/usr/sbin
 
+drive=U
+share_name=USB_Storage
 smb_extra_conf_file=/etc/samba/smb.usb.conf
-usb_drive_path=/mnt/shares/U
+usb_drive_path=/mnt/shares/$drive
+char_003=$'\03'
 
 if [ -e /usr/etc/log_rc_flag ]; then
     echo "`/usr/sbin/date` [rc_usb_service] $0 $@">> /var/log/rc_calls
@@ -20,10 +23,17 @@ run_netgear_rc_usb_service() {
 
 create_smb_extra_conf_file() {
     username="$(/usr/sbin/nvram-util get http_username)"
-    echo "[USB_Storage]" > $smb_extra_conf_file
+    echo "[$share_name]" > $smb_extra_conf_file
     echo "        path=$usb_drive_path" >> $smb_extra_conf_file
     echo "        read list = $username,nobody" >> $smb_extra_conf_file
     echo "        write list = $username,nobody" >> $smb_extra_conf_file
+}
+
+do_other_kmount_actions() {
+    /usr/sbin/rc_app/rc_smb event mount
+    /usr/sbin/rc_app/rc_ftpd event mount
+    /usr/sbin/rc_app/rc_smb_http_en_chk event mount
+    /usr/sbin/rc_app/rc_mediaserver event mount
 }
 
 case "$1" in
@@ -31,11 +41,15 @@ case "$1" in
         mkdir $usb_drive_path
         device_path="$(/usr/sbin/fdisk -l | /usr/sbin/cut -d ' ' -f 1 | /usr/sbin/grep $2)"
         mount $device_path $usb_drive_path
+        device="$(/usr/sbin/echo $device_path | cut -d '/' -f 2)"
+        echo "[$device_path] [$device]"
+        disk_info="$(/usr/sbin/df -k $device_path | grep $device)"
+        size="$(/usr/sbin/echo $disk_info | cut -d ' ' -f 2)"
+        used="$(/usr/sbin/echo $disk_info | cut -d ' ' -f 3)"
+        type="$(/usr/sbin/mount | grep sda | cut -d ' ' -f 5)"
+        /usr/sbin/nvram-util setarray sd_share : @ "Card:$drive Drive:$size:$used:$type::$drive:$device$char_003:$share_name:1:1$char_003@"
         create_smb_extra_conf_file
-        /usr/sbin/rc_app/rc_smb event mount
-        /usr/sbin/rc_app/rc_ftpd event mount
-        /usr/sbin/rc_app/rc_smb_http_en_chk event mount
-        /usr/sbin/rc_app/rc_mediaserver event mount
+        do_other_kmount_actions
         ;;
     *)
         run_netgear_rc_usb_service $@
