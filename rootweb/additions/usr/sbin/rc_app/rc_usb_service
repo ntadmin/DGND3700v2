@@ -3,7 +3,7 @@ PATH=/usr/sbin
 
 drive=U
 share_name=USB_Storage
-smb_extra_conf_file=/etc/samba/smb.usb.conf
+smb_extra_conf_file=/etc/smb.conf
 usb_drive_path=/mnt/shares/$drive
 char_003=$'\03'
 
