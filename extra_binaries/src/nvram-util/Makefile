@@ -1,8 +1,8 @@
 include ../../../Rules.mak
 
-CINCFLAGS = -I$(NETGEAR_BASE_DIR)/Source/apps/nvram
+CINCFLAGS = -I../nvram-lib
 LIBSNEEDED = -lscnvram
-LDFLAGS = -L$(NETGEAR_BASE_DIR)/Source/apps/nvram
+LDFLAGS = -L../nvram-lib
 
 TARGET=nvram-util
 OBJS=nvram-util.o
