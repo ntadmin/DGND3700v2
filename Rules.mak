@@ -18,7 +18,7 @@ VARIANT=DGND3700v2
 # the web pages so you know which version is on the router. Set as
 # appropriate.
 #
-CUSTOM_VERSION=NEWT17A1
+CUSTOM_VERSION=NEWT17A2
 #
 # Set this to where this file is on your system.
 #
