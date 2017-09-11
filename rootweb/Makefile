@@ -25,9 +25,9 @@ $(TAR_DESTDIR)/$(TARGET_FOR_SOURCE) :
 	$(TAR) $(TAR_EXTRACT_ARGS) $(TARGET_FROM_NETGEAR)
 	$(MV) $(NETGEAR_TARGET_DIR)/usr/sbin/setup.cgi $(NETGEAR_TARGET_DIR)/usr/sbin/netgear-setup.cgi
 	$(MV) $(NETGEAR_TARGET_DIR)/usr/sbin/rc_app/rc_apps $(NETGEAR_TARGET_DIR)/usr/sbin/rc_app/rc_apps_netgear
-	$(CP) -R $(UPDATES_TARGET_DIR)/* $(NETGEAR_TARGET_DIR) 
-	$(CP) -R $(PACKAGES_DIR)/* $(NETGEAR_TARGET_DIR) 
-	$(CP) -R $(EXTRA_BINARIES_DIR)/* $(NETGEAR_TARGET_DIR)
+	$(CP) --remove-destination -R $(UPDATES_TARGET_DIR)/* $(NETGEAR_TARGET_DIR) 
+	$(CP) --remove-destination -R $(PACKAGES_DIR)/* $(NETGEAR_TARGET_DIR) 
+	$(CP) --remove-destination -R $(EXTRA_BINARIES_DIR)/* $(NETGEAR_TARGET_DIR)
 	@make version
 	$(TAR) $(TAR_CREATE_ARGS) $(TARGET_FOR_SOURCE) $(NETGEAR_TARGET_DIR)
 
