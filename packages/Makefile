@@ -28,7 +28,7 @@ target_dirs=/usr/sbin /lib
 # For each package, set the following information up
 # Only set .configure-options if there is a configure to execute in the package
 #
-strace.url=http://downloads.sourceforge.net/project/strace/strace/4.14/strace-4.14.tar.xz
+strace.url=http://downloads.sourceforge.net/project/strace/strace/4.19/strace-4.19.tar.xz
 strace.pkg-dl-name=strace-latest.tar.xz
 strace.tar-args=Jxf
 strace.configure-options=--host=mips-linux CC=/opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/mips-linux-gcc --disable-sound ac_cv_func_malloc_0_nonnull=yes ac_cv_func_realloc_0_nonnull=yes --bindir=$(PKG_TARGET_DIR)/usr/sbin --libdir=$(PKG_TARGET_DIR)/usr/lib
@@ -42,13 +42,13 @@ inadyn-mt.configure-options=--host=mips-linux CC=/opt/toolchains/uclibc-crosstoo
 inadyn-mt.make-command=make
 inadyn-mt.test-compiled-file=src/inadyn-mt
 
-dnsmasq.url=http://www.thekelleys.org.uk/dnsmasq/dnsmasq-2.76.tar.xz
+dnsmasq.url=http://www.thekelleys.org.uk/dnsmasq/dnsmasq-2.77.tar.xz
 dnsmasq.pkg-dl-name=dnsmasq-latest.tar.xz
 dnsmasq.tar-args=Jxf
 dnsmasq.make-command=make CC="/opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/mips-linux-gcc" CFLAGS="-O3 -W -Wall -march=mips32 -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -fomit-frame-pointer -fno-strict-aliasing -mabi=32 -G 0 -msoft-float -pipe -Wa,-mips32" COPTS="-DNO_INOTIFY -DNO_IPSET -DNO_IPV6 -DNO_DHCP6 -DNO_AUTH"
 dnsmasq.test-compiled-file=src/dnsmasq
 
-miniupnpc.url=http://miniupnp.free.fr/files/download.php?file=miniupnpc-2.0.tar.gz
+miniupnpc.url=http://miniupnp.free.fr/files/download.php?file=miniupnpc-2.0.20170509.tar.gz
 miniupnpc.pkg-dl-name=miniupnpc-latest.tar.gz
 miniupnpc.tar-args=xvf
 miniupnpc.make-command=INSTALLPREFIX=$(PKG_SRC_DIR)/miniupnpc/_install make install LIBDIR="/lib" CC="/opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/bin/mips-linux-gcc"
@@ -61,7 +61,7 @@ dropbear.configure-options=--host=mips-linux --disable-zlib CC=/opt/toolchains/u
 dropbear.make-command=make PROGRAMS="dropbear dropbearkey dbclient scp" MULTI=1
 dropbear.test-compiled=dropbearmulti
 
-busybox.url=http://www.busybox.net/downloads/busybox-1.24.2.tar.bz2
+busybox.url=http://www.busybox.net/downloads/busybox-1.27.2.tar.bz2
 busybox.pkg-dl-name=busybox-latest.tar.bz2
 busybox.tar-args=jxf
 busybox.make-command=make ARCH="mips32"; make install
@@ -82,6 +82,7 @@ ppp.make-command=CC="/opt/toolchains/uclibc-crosstools-gcc-4.4.2-1-with-ftw/usr/
 #
 # As yet have been unable to find a recent version that compiles, so this here awaiting inspiration
 #
+miniupnpd.url=http://miniupnp.free.fr/files/download.php?file=miniupnpd-2.0.20170421.tar.gz
 miniupnpd.url=http://miniupnp.free.fr/files/download.php?file=miniupnpd-1.6.20120509.tar.gz
 miniupnpd.pkg-dl-name=miniupnpd-latest.tar.gz
 miniupnpd.tar-args=xvf
